@@ -1,0 +1,33 @@
+import { IPmcData } from "../@types/eft/common/IPmcData";
+import { Item } from "../@types/eft/common/tables/IItem";
+import { ISaveProgressRequestData } from "../@types/eft/inRaid/ISaveProgressRequestData";
+import { IInsuranceConfig } from "../@types/spt/config/IInsuranceConfig";
+import { ConfigServer } from "../servers/ConfigServer";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { SaveServer } from "../servers/SaveServer";
+import { InsuranceService } from "../services/InsuranceService";
+import { Logger } from "../utils/Logger";
+import { RandomUtil } from "../utils/RandomUtil";
+import { TimeUtil } from "../utils/TimeUtil";
+import { DialogueHelper } from "./DialogueHelper";
+import { InventoryHelper } from "./InventoryHelper";
+import { TraderHelper } from "./TraderHelper";
+export declare class InsuranceHelper {
+    private logger;
+    private insuranceService;
+    private inventoryHelper;
+    private randomUtil;
+    private timeUtil;
+    private saveServer;
+    private databaseServer;
+    private traderHelper;
+    private dialogueHelper;
+    private configServer;
+    insuranceConfig: IInsuranceConfig;
+    constructor(logger: Logger, insuranceService: InsuranceService, inventoryHelper: InventoryHelper, randomUtil: RandomUtil, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, configServer: ConfigServer);
+    storeLostGear(pmcData: IPmcData, offraidData: ISaveProgressRequestData, preRaidGear: Item[], sessionID: string): void;
+    addGearToSend(pmcData: IPmcData, insuredItem: any, actualItem: any, sessionID: string): any;
+    storeInsuredItemsForReturn(pmcData: IPmcData, offraidData: ISaveProgressRequestData, preRaidGear: Item[], sessionID: string): void;
+    sendInsuredItems(pmcData: IPmcData, sessionID: string): void;
+    getPremium(pmcData: IPmcData, inventoryItem: Item, traderId: string): number;
+}
