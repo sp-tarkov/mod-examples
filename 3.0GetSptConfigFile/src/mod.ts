@@ -1,7 +1,7 @@
 import type { DependencyContainer } from "tsyringe";
 import { IMod } from "../types/@types/external/mod";
 
-import type { Logger } from "../types/utils/Logger";
+import type { ILogger } from "../types/@types/spt/utils/ILogger";
 import { ConfigServer, ConfigTypes } from "../types/servers/ConfigServer";
 import { IBotConfig } from "../types/@types/spt/config/IBotConfig";
 
@@ -14,7 +14,7 @@ class Mod implements IMod
     public delayedLoad(container: DependencyContainer): void
     { 
         // get logger
-        const logger = container.resolve<Logger>("WinstonLogger");
+        const logger = container.resolve<ILogger>("WinstonLogger");
 
         // get the config server
         const configServer = container.resolve<ConfigServer>("ConfigServer");
@@ -23,7 +23,7 @@ class Mod implements IMod
         // Required - ConfigTypes.BOT is the enum of the config we want, others include ConfigTypes.Airdrop
         const botConfig = configServer.getConfig<IBotConfig>(ConfigTypes.BOT);
 
-        // log the pmc difficulty
+        // log the original pmc difficulty
         logger.info(`here is the original bot pmc difficulty: ${botConfig.pmc.difficulty}`)
 
         // adjust the difficulty
