@@ -1,0 +1,69 @@
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { ItemEventRouter } from "../routers/ItemEventRouter";
+import { HashUtil } from "../utils/HashUtil";
+import { JsonUtil } from "../utils/JsonUtil";
+import { TimeUtil } from "../utils/TimeUtil";
+import { ItemHelper } from "./ItemHelper";
+import { ProfileHelper } from "./ProfileHelper";
+import { DialogueHelper } from "./DialogueHelper";
+import { PaymentHelper } from "./PaymentHelper";
+import { TraderHelper } from "./TraderHelper";
+import { IPmcData, Quest } from "../@types/eft/common/IPmcData";
+import { AvailableForConditions, AvailableForProps, IQuest, Reward } from "../@types/eft/common/tables/IQuest";
+import { IItemEventRouterResponse } from "../@types/eft/itemEvent/IItemEventRouterResponse";
+import { IAcceptQuestRequestData } from "../@types/eft/quests/IAcceptQuestRequestData";
+import { ICompleteQuestRequestData } from "../@types/eft/quests/ICompleteQuestRequestData";
+import { ConfigServer } from "../servers/ConfigServer";
+import { IQuestConfig } from "../@types/spt/config/IQuestConfig";
+import { RagfairServerHelper } from "./RagfairServerHelper";
+import { ILogger } from "../@types/spt/utils/ILogger";
+export declare class QuestHelper {
+    private logger;
+    private jsonUtil;
+    private timeUtil;
+    private hashUtil;
+    private itemHelper;
+    private itemEventRouter;
+    private databaseServer;
+    private ragfairServerHelper;
+    private dialogueHelper;
+    private profileHelper;
+    private paymentHelper;
+    private traderHelper;
+    private configServer;
+    questConfig: IQuestConfig;
+    constructor(logger: ILogger, jsonUtil: JsonUtil, timeUtil: TimeUtil, hashUtil: HashUtil, itemHelper: ItemHelper, itemEventRouter: ItemEventRouter, databaseServer: DatabaseServer, ragfairServerHelper: RagfairServerHelper, dialogueHelper: DialogueHelper, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, traderHelper: TraderHelper, configServer: ConfigServer);
+    static get STATUS(): Record<string, number>;
+    questStatus(pmcData: IPmcData, questID: string): string;
+    /**
+     * returns true is the condition is satisfied
+     */
+    evaluateLevel(pmcProfile: IPmcData, cond: AvailableForConditions): boolean;
+    getDeltaQuests(before: IQuest[], after: IQuest[]): IQuest[];
+    rewardSkillPoints(sessionID: string, pmcData: IPmcData, output: IItemEventRouterResponse, skillName: string, progress: number): void;
+    getQuestLocale(questId: string): any;
+    /**
+     * Debug Routine for showing some information on the
+     * quest list in question.
+     */
+    dumpQuests(quests: any, label?: any): void;
+    loyaltyRequirementCheck(loyaltyRequirementProperties: AvailableForProps, profile: IPmcData): boolean;
+    private processReward;
+    getQuestRewardItems(quest: IQuest, state: string): Reward[];
+    addQuestToPMCData(pmcData: IPmcData, quest: Quest, newState: string, acceptedQuest: IAcceptQuestRequestData): void;
+    acceptedUnlocked(acceptedQuestId: string, sessionID: string): IQuest[];
+    failedUnlocked(failedQuestId: string, sessionID: string): IQuest[];
+    applyMoneyBoost(quest: IQuest, moneyBoost: number): IQuest;
+    changeItemStack(pmcData: IPmcData, id: string, value: number, sessionID: string, output: any): void;
+    /**
+     * Get List of All Quests as an array
+     */
+    questValues(): IQuest[];
+    private cleanQuestList;
+    cleanQuestConditions(quest: IQuest): IQuest;
+    failQuest(pmcData: IPmcData, body: any, sessionID: string): any;
+    getQuestFromDb(questId: string, pmcData: IPmcData): IQuest;
+    getQuestLocaleIdFromDb(messageId: string, localisation?: string): string;
+    applyQuestReward(pmcData: IPmcData, body: ICompleteQuestRequestData, state: string, sessionID: string): any[];
+    getFindItemIdForQuestItem(itemTpl: string): string;
+}

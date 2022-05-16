@@ -1,0 +1,36 @@
+import { RagfairServer } from "../servers/RagfairServer";
+import { RagfairController } from "../controllers/RagfairController";
+import { IPmcData } from "../@types/eft/common/IPmcData";
+import { IGetBodyResponseData } from "../@types/eft/httpResponse/IGetBodyResponseData";
+import { ISearchRequestData } from "../@types/eft/ragfair/ISearchRequestData";
+import { IEmptyRequestData } from "../@types/eft/common/IEmptyRequestData";
+import { IGetMarketPriceRequestData } from "../@types/eft/ragfair/IGetMarketPriceRequestData";
+import { IAddOfferRequestData } from "../@types/eft/ragfair/IAddOfferRequestData";
+import { IRemoveOfferRequestData } from "../@types/eft/ragfair/IRemoveOfferRequestData";
+import { IExtendOfferRequestData } from "../@types/eft/ragfair/IExtendOfferRequestData";
+import { IItemEventRouterResponse } from "../@types/eft/itemEvent/IItemEventRouterResponse";
+import { IGetItemPriceResult } from "../@types/eft/ragfair/IGetItemPriceResult";
+import { ConfigServer } from "../servers/ConfigServer";
+import { HttpResponse } from "../utils/HttpResponse";
+import { JsonUtil } from "../utils/JsonUtil";
+import { OnLoadOnUpdate } from "../di/OnLoadOnUpdate";
+import { ILogger } from "../@types/spt/utils/ILogger";
+export declare class RagfairCallbacks extends OnLoadOnUpdate {
+    private httpResponse;
+    private logger;
+    private jsonUtil;
+    private ragfairServer;
+    private ragfairController;
+    private configServer;
+    private ragfairConfig;
+    constructor(httpResponse: HttpResponse, logger: ILogger, jsonUtil: JsonUtil, ragfairServer: RagfairServer, ragfairController: RagfairController, configServer: ConfigServer);
+    onLoad(): void;
+    getRoute(): string;
+    search(url: string, info: ISearchRequestData, sessionID: string): IGetBodyResponseData<any>;
+    getMarketPrice(url: string, info: IGetMarketPriceRequestData, sessionID: string): IGetBodyResponseData<IGetItemPriceResult>;
+    getItemPrices(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
+    addOffer(pmcData: IPmcData, info: IAddOfferRequestData, sessionID: string): IItemEventRouterResponse;
+    removeOffer(pmcData: IPmcData, info: IRemoveOfferRequestData, sessionID: string): IItemEventRouterResponse;
+    extendOffer(pmcData: IPmcData, info: IExtendOfferRequestData, sessionID: string): IItemEventRouterResponse;
+    onUpdate(timeSinceLastRun: number): boolean;
+}

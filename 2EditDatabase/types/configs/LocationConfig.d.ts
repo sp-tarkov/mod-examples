@@ -1,0 +1,52 @@
+export namespace looseLootMultiplier {
+    const bigmap: number;
+    const develop: number;
+    const factory4_day: number;
+    const factory4_night: number;
+    const interchange: number;
+    const laboratory: number;
+    const rezervbase: number;
+    const shoreline: number;
+    const woods: number;
+    const hideout: number;
+    const lighthouse: number;
+    const privatearea: number;
+    const suburbs: number;
+    const tarkovstreets: number;
+    const terminal: number;
+    const town: number;
+}
+export namespace staticLootMultiplier {
+    const bigmap_1: number;
+    export { bigmap_1 as bigmap };
+    const develop_1: number;
+    export { develop_1 as develop };
+    const factory4_day_1: number;
+    export { factory4_day_1 as factory4_day };
+    const factory4_night_1: number;
+    export { factory4_night_1 as factory4_night };
+    const interchange_1: number;
+    export { interchange_1 as interchange };
+    const laboratory_1: number;
+    export { laboratory_1 as laboratory };
+    const rezervbase_1: number;
+    export { rezervbase_1 as rezervbase };
+    const shoreline_1: number;
+    export { shoreline_1 as shoreline };
+    const woods_1: number;
+    export { woods_1 as woods };
+    const hideout_1: number;
+    export { hideout_1 as hideout };
+    const lighthouse_1: number;
+    export { lighthouse_1 as lighthouse };
+    const privatearea_1: number;
+    export { privatearea_1 as privatearea };
+    const suburbs_1: number;
+    export { suburbs_1 as suburbs };
+    const tarkovstreets_1: number;
+    export { tarkovstreets_1 as tarkovstreets };
+    const terminal_1: number;
+    export { terminal_1 as terminal };
+    const town_1: number;
+    export { town_1 as town };
+}

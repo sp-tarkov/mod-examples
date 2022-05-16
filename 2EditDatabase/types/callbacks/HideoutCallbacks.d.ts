@@ -1,0 +1,31 @@
+import { HideoutController } from "../controllers/HideoutController";
+import { IPmcData } from "../@types/eft/common/IPmcData";
+import { IHideoutUpgradeRequestData } from "../@types/eft/hideout/IHideoutUpgradeRequestData";
+import { IHideoutUpgradeCompleteRequestData } from "../@types/eft/hideout/IHideoutUpgradeCompleteRequestData";
+import { IHideoutScavCaseStartRequestData } from "../@types/eft/hideout/IHideoutScavCaseStartRequestData";
+import { IHideoutPutItemInRequestData } from "../@types/eft/hideout/IHideoutPutItemInRequestData";
+import { IHideoutTakeItemOutRequestData } from "../@types/eft/hideout/IHideoutTakeItemOutRequestData";
+import { IHideoutToggleAreaRequestData } from "../@types/eft/hideout/IHideoutToggleAreaRequestData";
+import { IHideoutSingleProductionStartRequestData } from "../@types/eft/hideout/IHideoutSingleProductionStartRequestData";
+import { IHideoutContinousProductionStartRequestData } from "../@types/eft/hideout/IHideoutContinousProductionStartRequestData";
+import { IHideoutTakeProductionRequestData } from "../@types/eft/hideout/IHideoutTakeProductionRequestData";
+import { IItemEventRouterResponse } from "../@types/eft/itemEvent/IItemEventRouterResponse";
+import { ConfigServer } from "../servers/ConfigServer";
+import { OnUpdate } from "../di/OnUpdate";
+export declare class HideoutCallbacks extends OnUpdate {
+    private hideoutController;
+    private configServer;
+    private hideoutConfig;
+    constructor(hideoutController: HideoutController, configServer: ConfigServer);
+    upgrade(pmcData: IPmcData, body: IHideoutUpgradeRequestData, sessionID: string): IItemEventRouterResponse;
+    upgradeComplete(pmcData: IPmcData, body: IHideoutUpgradeCompleteRequestData, sessionID: string): IItemEventRouterResponse;
+    putItemsInAreaSlots(pmcData: IPmcData, body: IHideoutPutItemInRequestData, sessionID: string): IItemEventRouterResponse;
+    takeItemsFromAreaSlots(pmcData: IPmcData, body: IHideoutTakeItemOutRequestData, sessionID: string): IItemEventRouterResponse;
+    toggleArea(pmcData: IPmcData, body: IHideoutToggleAreaRequestData, sessionID: string): IItemEventRouterResponse;
+    singleProductionStart(pmcData: IPmcData, body: IHideoutSingleProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
+    scavCaseProductionStart(pmcData: IPmcData, body: IHideoutScavCaseStartRequestData, sessionID: string): IItemEventRouterResponse;
+    continuousProductionStart(pmcData: IPmcData, body: IHideoutContinousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
+    takeProduction(pmcData: IPmcData, body: IHideoutTakeProductionRequestData, sessionID: string): IItemEventRouterResponse;
+    onUpdate(timeSinceLastRun: number): boolean;
+    getRoute(): string;
+}

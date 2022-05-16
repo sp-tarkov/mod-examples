@@ -1,0 +1,17 @@
+{
+  "name": "ReplaceFunction",
+  "version": "1.0.0",
+  "main": "src/mod.js",
+  "license": "MIT",
+  "author": "Chomp",
+  "akiVersion": "2.4.0",
+  "scripts": {
+    "install": "npx handpick --target=devDependencies",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.31",
+    "tsyringe": "^4.6.0",
+    "typescript": "^4.6.4"
+  }
+}

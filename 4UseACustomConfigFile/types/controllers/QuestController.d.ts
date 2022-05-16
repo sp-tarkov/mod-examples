@@ -1,0 +1,37 @@
+import { TimeUtil } from "../utils/TimeUtil";
+import { ItemEventRouter } from "../routers/ItemEventRouter";
+import { QuestHelper } from "../helpers/QuestHelper";
+import { ItemHelper } from "../helpers/ItemHelper";
+import { DialogueHelper } from "../helpers/DialogueHelper";
+import { ProfileHelper } from "../helpers/ProfileHelper";
+import { QuestConditionHelper } from "../helpers/QuestConditionHelper";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { ConfigServer } from "../servers/ConfigServer";
+import { PlayerService } from "../services/PlayerService";
+import { IPmcData } from "../@types/eft/common/IPmcData";
+import { IQuest } from "../@types/eft/common/tables/IQuest";
+import { IAcceptQuestRequestData } from "../@types/eft/quests/IAcceptQuestRequestData";
+import { ICompleteQuestRequestData } from "../@types/eft/quests/ICompleteQuestRequestData";
+import { IHandoverQuestRequestData } from "../@types/eft/quests/IHandoverQuestRequestData";
+import { IItemEventRouterResponse } from "../@types/eft/itemEvent/IItemEventRouterResponse";
+import { ILogger } from "../@types/spt/utils/ILogger";
+export declare class QuestController {
+    private logger;
+    private timeUtil;
+    private itemEventRouter;
+    private databaseServer;
+    private itemHelper;
+    private dialogueHelper;
+    private profileHelper;
+    private questHelper;
+    private questConditionHelper;
+    private playerService;
+    private configServer;
+    private questConfig;
+    constructor(logger: ILogger, timeUtil: TimeUtil, itemEventRouter: ItemEventRouter, databaseServer: DatabaseServer, itemHelper: ItemHelper, dialogueHelper: DialogueHelper, profileHelper: ProfileHelper, questHelper: QuestHelper, questConditionHelper: QuestConditionHelper, playerService: PlayerService, configServer: ConfigServer);
+    getClientQuests(sessionID: string): IQuest[];
+    acceptQuest(pmcData: IPmcData, acceptedQuest: IAcceptQuestRequestData, sessionID: string): IItemEventRouterResponse;
+    acceptRepeatableQuest(pmcData: IPmcData, acceptedQuest: IAcceptQuestRequestData, sessionID: string): IItemEventRouterResponse;
+    completeQuest(pmcData: IPmcData, body: ICompleteQuestRequestData, sessionID: string): IItemEventRouterResponse;
+    handoverQuest(pmcData: IPmcData, body: IHandoverQuestRequestData, sessionID: string): IItemEventRouterResponse;
+}

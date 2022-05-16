@@ -1,0 +1,32 @@
+import { DependencyContainer } from 'tsyringe';
+import { JsonUtil } from "../utils/JsonUtil";
+import { VFS } from "../utils/VFS";
+import { ConfigServer } from "../servers/ConfigServer";
+import { IModLoader } from "../@types/spt/mod/IModLoader";
+import { ILogger } from '../@types/spt/utils/ILogger';
+export declare class InitialModLoader implements IModLoader {
+    private logger;
+    private vfs;
+    private jsonUtil;
+    private configServer;
+    private basepath;
+    private imported;
+    private onLoad;
+    private akiConfig;
+    constructor(logger: ILogger, vfs: VFS, jsonUtil: JsonUtil, configServer: ConfigServer);
+    load(container: DependencyContainer): void;
+    getBundles(local: boolean): string;
+    getBundle(key: string, local: boolean): void;
+    getImportedModsNames(): string[];
+    getModPath(mod: string): string;
+    private importClass;
+    private importMods;
+    private isModCombatibleWithAki;
+    private executeMods;
+    private addMod;
+    private areModDependenciesFulfilled;
+    private isModCompatible;
+    private validMod;
+    private getLoadOrderRecursive;
+    private getLoadOrder;
+}

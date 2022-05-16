@@ -1,0 +1,30 @@
+import { HttpResponse } from "../utils/HttpResponse";
+import { TimeUtil } from "../utils/TimeUtil";
+import { ProfileController } from "../controllers/ProfileController";
+import { IEmptyRequestData } from "../@types/eft/common/IEmptyRequestData";
+import { IGetBodyResponseData } from "../@types/eft/httpResponse/IGetBodyResponseData";
+import { INullResponseData } from "../@types/eft/httpResponse/INullResponseData";
+import { IProfileChangeNicknameRequestData } from "../@types/eft/profile/IProfileChangeNicknameRequestData";
+import { IProfileChangeVoiceRequestData } from "../@types/eft/profile/IProfileChangeVoiceRequestData";
+import { IProfileCreateRequestData } from "../@types/eft/profile/IProfileCreateRequestData";
+import { IValidateNicknameRequestData } from "../@types/eft/profile/IValidateNicknameRequestData";
+import { ISearchFriendRequestData } from "../@types/eft/profile/ISearchFriendRequestData";
+import { ISearchFriendResponse } from "../@types/eft/profile/ISearchFriendResponse";
+import { IGetMiniProfileRequestData } from "../@types/eft/launcher/IGetMiniProfileRequestData";
+export declare class ProfileCallbacks {
+    private httpResponse;
+    private timeUtil;
+    private profileController;
+    constructor(httpResponse: HttpResponse, timeUtil: TimeUtil, profileController: ProfileController);
+    createProfile(url: string, info: IProfileCreateRequestData, sessionID: string): IGetBodyResponseData<any>;
+    getProfileData(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
+    regenerateScav(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
+    changeVoice(url: string, info: IProfileChangeVoiceRequestData, sessionID: string): INullResponseData;
+    changeNickname(url: string, info: IProfileChangeNicknameRequestData, sessionID: string): IGetBodyResponseData<any>;
+    validateNickname(url: string, info: IValidateNicknameRequestData, sessionID: string): IGetBodyResponseData<any>;
+    getReservedNickname(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<string>;
+    getProfileStatus(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
+    searchFriend(url: string, info: ISearchFriendRequestData, sessionID: string): IGetBodyResponseData<ISearchFriendResponse[]>;
+    getMiniProfile(url: string, info: IGetMiniProfileRequestData, sessionID: string): string;
+    getAllMiniProfiles(url: string, info: any, sessionID: string): string;
+}

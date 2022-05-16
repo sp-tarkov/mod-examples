@@ -1,0 +1,32 @@
+import { SaveServer } from "../servers/SaveServer";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { ItemHelper } from "../helpers/ItemHelper";
+import { TraderHelper } from "../helpers/TraderHelper";
+import { ProfileHelper } from "../helpers/ProfileHelper";
+import { HealthHelper } from "../helpers/HealthHelper";
+import { IRegisterPlayerRequestData } from "../@types/eft/inRaid/IRegisterPlayerRequestData";
+import { ISaveProgressRequestData } from "../@types/eft/inRaid/ISaveProgressRequestData";
+import { ConfigServer } from "../servers/ConfigServer";
+import { JsonUtil } from "../utils/JsonUtil";
+import { QuestHelper } from "../helpers/QuestHelper";
+import { InRaidHelper } from "../helpers/InRaidHelper";
+import { InsuranceService } from "../services/InsuranceService";
+import { ILogger } from "../@types/spt/utils/ILogger";
+export declare class InraidController {
+    private logger;
+    private saveServer;
+    private jsonUtil;
+    private databaseServer;
+    private questHelper;
+    private itemHelper;
+    private profileHelper;
+    private healthHelper;
+    private traderHelper;
+    private insuranceService;
+    private inRaidHelper;
+    private configServer;
+    private inraidConfig;
+    constructor(logger: ILogger, saveServer: SaveServer, jsonUtil: JsonUtil, databaseServer: DatabaseServer, questHelper: QuestHelper, itemHelper: ItemHelper, profileHelper: ProfileHelper, healthHelper: HealthHelper, traderHelper: TraderHelper, insuranceService: InsuranceService, inRaidHelper: InRaidHelper, configServer: ConfigServer);
+    addPlayer(sessionID: string, info: IRegisterPlayerRequestData): void;
+    saveProgress(offraidData: ISaveProgressRequestData, sessionID: string): void;
+}

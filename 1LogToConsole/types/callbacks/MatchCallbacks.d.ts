@@ -1,0 +1,34 @@
+import { MatchController } from "../controllers/MatchController";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { IStartOfflineRaidRequestData } from "../@types/eft/match/IStartOffineRaidRequestData";
+import { IEndOfflineRaidRequestData } from "../@types/eft/match/IEndOfflineRaidRequestData";
+import { INullResponseData } from "../@types/eft/httpResponse/INullResponseData";
+import { IGetBodyResponseData } from "../@types/eft/httpResponse/IGetBodyResponseData";
+import { IPmcData } from "../@types/eft/common/IPmcData";
+import { HttpResponse } from "../utils/HttpResponse";
+import { JsonUtil } from "../utils/JsonUtil";
+export declare class MatchCallbacks {
+    private httpResponse;
+    private jsonUtil;
+    private matchController;
+    private databaseServer;
+    constructor(httpResponse: HttpResponse, jsonUtil: JsonUtil, matchController: MatchController, databaseServer: DatabaseServer);
+    updatePing(url: string, info: any, sessionID: string): INullResponseData;
+    exitMatch(url: string, info: any, sessionID: string): INullResponseData;
+    exitToMenu(url: string, info: any, sessionID: string): INullResponseData;
+    startGroupSearch(url: string, info: any, sessionID: string): INullResponseData;
+    stopGroupSearch(url: string, info: any, sessionID: string): INullResponseData;
+    sendGroupInvite(url: string, info: any, sessionID: string): INullResponseData;
+    acceptGroupInvite(url: string, info: any, sessionID: string): INullResponseData;
+    cancelGroupInvite(url: string, info: any, sessionID: string): INullResponseData;
+    putMetrics(url: string, info: any, sessionID: string): INullResponseData;
+    getProfile(url: string, info: any, sessionID: string): IGetBodyResponseData<IPmcData[]>;
+    serverAvailable(url: string, info: any, sessionID: string): IGetBodyResponseData<any> | IGetBodyResponseData<true>;
+    joinMatch(url: string, info: any, sessionID: string): IGetBodyResponseData<any>;
+    getMetrics(url: string, info: any, sessionID: string): IGetBodyResponseData<string>;
+    getGroupStatus(url: string, info: any, sessionID: string): IGetBodyResponseData<any>;
+    createGroup(url: string, info: any, sessionID: string): IGetBodyResponseData<any>;
+    deleteGroup(url: string, info: any, sessionID: string): INullResponseData;
+    startOfflineRaid(url: string, info: IStartOfflineRaidRequestData, sessionID: string): INullResponseData;
+    endOfflineRaid(url: string, info: IEndOfflineRaidRequestData, sessionID: string): INullResponseData;
+}

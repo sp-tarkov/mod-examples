@@ -1,0 +1,34 @@
+import { SaveServer } from "../servers/SaveServer";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { ItemHelper } from "../helpers/ItemHelper";
+import { ProfileHelper } from "../helpers/ProfileHelper";
+import { TraderHelper } from "../helpers/TraderHelper";
+import { IPmcData } from "../@types/eft/common/IPmcData";
+import { IProfileChangeNicknameRequestData } from "../@types/eft/profile/IProfileChangeNicknameRequestData";
+import { IProfileChangeVoiceRequestData } from "../@types/eft/profile/IProfileChangeVoiceRequestData";
+import { IProfileCreateRequestData } from "../@types/eft/profile/IProfileCreateRequestData";
+import { IValidateNicknameRequestData } from "../@types/eft/profile/IValidateNicknameRequestData";
+import { ISearchFriendRequestData } from "../@types/eft/profile/ISearchFriendRequestData";
+import { ISearchFriendResponse } from "../@types/eft/profile/ISearchFriendResponse";
+import { HashUtil } from "../utils/HashUtil";
+import { TimeUtil } from "../utils/TimeUtil";
+import { IMiniProfile } from "../@types/eft/launcher/IMiniProfile";
+export declare class ProfileController {
+    private hashUtil;
+    private timeUtil;
+    private saveServer;
+    private databaseServer;
+    private itemHelper;
+    private traderHelper;
+    private profileHelper;
+    constructor(hashUtil: HashUtil, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, itemHelper: ItemHelper, traderHelper: TraderHelper, profileHelper: ProfileHelper);
+    getMiniProfiles(): IMiniProfile[];
+    getMiniProfile(sessionID: string): any;
+    getCompleteProfile(sessionID: string): IPmcData[];
+    createProfile(info: IProfileCreateRequestData, sessionID: string): void;
+    generatePlayerScav(sessionID: string): IPmcData;
+    validateNickname(info: IValidateNicknameRequestData, sessionID: string): string;
+    changeNickname(info: IProfileChangeNicknameRequestData, sessionID: string): string;
+    changeVoice(info: IProfileChangeVoiceRequestData, sessionID: string): void;
+    getFriends(info: ISearchFriendRequestData, sessionID: string): ISearchFriendResponse[];
+}

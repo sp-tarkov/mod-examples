@@ -1,0 +1,11 @@
+import { IHttpServer } from "../../@types/spt/server/IHttpServer";
+import { ILogger } from "../../@types/spt/utils/ILogger";
+import { Serializer } from "../../di/Serializer";
+import { BundleLoader } from "../../loaders/BundleLoader";
+export declare class BundleSerializer extends Serializer {
+    private logger;
+    private bundleLoader;
+    constructor(logger: ILogger, bundleLoader: BundleLoader);
+    serialize(sessionID: string, req: any, resp: any, body: any, httpServer: IHttpServer): void;
+    canHandle(route: string): boolean;
+}
