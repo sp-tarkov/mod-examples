@@ -1,19 +1,18 @@
 import { SaveServer } from "../servers/SaveServer";
-import { IPmcData } from "../@types/eft/common/IPmcData";
-import { IAkiProfile } from "../@types/eft/profile/IAkiProfile";
-import { ISyncHealthRequestData } from "../@types/eft/health/ISyncHealthRequestData";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { IAkiProfile } from "../models/eft/profile/IAkiProfile";
+import { ISyncHealthRequestData } from "../models/eft/health/ISyncHealthRequestData";
 import { ConfigServer } from "../servers/ConfigServer";
-import { IHealthConfig } from "../@types/spt/config/IHealthConfig";
 import { JsonUtil } from "../utils/JsonUtil";
 import { TimeUtil } from "../utils/TimeUtil";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 export declare class HealthHelper {
     private jsonUtil;
     private logger;
     private timeUtil;
     private saveServer;
     private configServer;
-    healthConfig: IHealthConfig;
+    private healthConfig;
     constructor(jsonUtil: JsonUtil, logger: ILogger, timeUtil: TimeUtil, saveServer: SaveServer, configServer: ConfigServer);
     resetVitality(sessionID: string): IAkiProfile;
     saveVitality(pmcData: IPmcData, info: ISyncHealthRequestData, sessionID: string): void;

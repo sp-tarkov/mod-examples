@@ -1,15 +1,15 @@
 import { HideoutController } from "../controllers/HideoutController";
-import { IPmcData } from "../@types/eft/common/IPmcData";
-import { IHideoutUpgradeRequestData } from "../@types/eft/hideout/IHideoutUpgradeRequestData";
-import { IHideoutUpgradeCompleteRequestData } from "../@types/eft/hideout/IHideoutUpgradeCompleteRequestData";
-import { IHideoutScavCaseStartRequestData } from "../@types/eft/hideout/IHideoutScavCaseStartRequestData";
-import { IHideoutPutItemInRequestData } from "../@types/eft/hideout/IHideoutPutItemInRequestData";
-import { IHideoutTakeItemOutRequestData } from "../@types/eft/hideout/IHideoutTakeItemOutRequestData";
-import { IHideoutToggleAreaRequestData } from "../@types/eft/hideout/IHideoutToggleAreaRequestData";
-import { IHideoutSingleProductionStartRequestData } from "../@types/eft/hideout/IHideoutSingleProductionStartRequestData";
-import { IHideoutContinousProductionStartRequestData } from "../@types/eft/hideout/IHideoutContinousProductionStartRequestData";
-import { IHideoutTakeProductionRequestData } from "../@types/eft/hideout/IHideoutTakeProductionRequestData";
-import { IItemEventRouterResponse } from "../@types/eft/itemEvent/IItemEventRouterResponse";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { IHideoutUpgradeRequestData } from "../models/eft/hideout/IHideoutUpgradeRequestData";
+import { IHideoutUpgradeCompleteRequestData } from "../models/eft/hideout/IHideoutUpgradeCompleteRequestData";
+import { IHideoutScavCaseStartRequestData } from "../models/eft/hideout/IHideoutScavCaseStartRequestData";
+import { IHideoutPutItemInRequestData } from "../models/eft/hideout/IHideoutPutItemInRequestData";
+import { IHideoutTakeItemOutRequestData } from "../models/eft/hideout/IHideoutTakeItemOutRequestData";
+import { IHideoutToggleAreaRequestData } from "../models/eft/hideout/IHideoutToggleAreaRequestData";
+import { IHideoutSingleProductionStartRequestData } from "../models/eft/hideout/IHideoutSingleProductionStartRequestData";
+import { IHideoutContinousProductionStartRequestData } from "../models/eft/hideout/IHideoutContinousProductionStartRequestData";
+import { IHideoutTakeProductionRequestData } from "../models/eft/hideout/IHideoutTakeProductionRequestData";
+import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { ConfigServer } from "../servers/ConfigServer";
 import { OnUpdate } from "../di/OnUpdate";
 export declare class HideoutCallbacks extends OnUpdate {

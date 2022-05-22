@@ -1,7 +1,7 @@
 import { DatabaseServer } from "../servers/DatabaseServer";
-import { IPmcData } from "../@types/eft/common/IPmcData";
-import { IPlayerIncrementSkillLevelRequestData } from "../@types/eft/player/IPlayerIncrementSkillLevelRequestData";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { IPlayerIncrementSkillLevelRequestData } from "../models/eft/player/IPlayerIncrementSkillLevelRequestData";
+import { ILogger } from "../models/spt/utils/ILogger";
 export declare class PlayerService {
     private logger;
     private databaseServer;

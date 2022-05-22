@@ -1,5 +1,5 @@
-import { ITraderAssort } from "../@types/eft/common/tables/ITrader";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ITraderAssort } from "../models/eft/common/tables/ITrader";
+import { ILogger } from "../models/spt/utils/ILogger";
 import { RagfairAssortGenerator } from "../generators/RagfairAssortGenerator";
 import { RagfairOfferGenerator } from "../generators/RagfairOfferGenerator";
 import { DatabaseServer } from "../servers/DatabaseServer";

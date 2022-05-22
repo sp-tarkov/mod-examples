@@ -1,16 +1,16 @@
 /// <reference types="node" />
 import { HttpRouter } from "../routers/HttpRouter";
 import { JsonUtil } from "../utils/JsonUtil";
-import { HttpResponse } from "../utils/HttpResponse";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { DatabaseServer } from "./DatabaseServer";
 import { Serializer } from "../di/Serializer";
 import http, { ServerResponse } from "http";
-import { INotification } from "../@types/eft/notifier/INotifier";
+import { INotification } from "../models/eft/notifier/INotifier";
 import { NotifierHelper } from "../helpers/NotifierHelper";
 import { ConfigServer } from "./ConfigServer";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 import { HttpServerHelper } from "../helpers/HttpServerHelper";
-import { IHttpServer } from "../@types/spt/server/IHttpServer";
+import { IHttpServer } from "../models/spt/server/IHttpServer";
 export declare class HttpServer implements IHttpServer {
     private httpRouter;
     private logger;
@@ -21,7 +21,7 @@ export declare class HttpServer implements IHttpServer {
     private httpServerHelper;
     private serializers;
     private configServer;
-    constructor(httpRouter: HttpRouter, logger: ILogger, jsonUtil: JsonUtil, httpResponse: HttpResponse, databaseServer: DatabaseServer, notifierHelper: NotifierHelper, httpServerHelper: HttpServerHelper, serializers: Serializer[], configServer: ConfigServer);
+    constructor(httpRouter: HttpRouter, logger: ILogger, jsonUtil: JsonUtil, httpResponse: HttpResponseUtil, databaseServer: DatabaseServer, notifierHelper: NotifierHelper, httpServerHelper: HttpServerHelper, serializers: Serializer[], configServer: ConfigServer);
     private buffers;
     private onReceive;
     private onRespond;

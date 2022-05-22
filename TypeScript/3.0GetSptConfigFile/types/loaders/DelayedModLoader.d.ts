@@ -3,13 +3,15 @@ import { VFS } from "../utils/VFS";
 import { InitialModLoader } from "./InitialModLoader";
 import { BundleLoader } from "./BundleLoader";
 import { HandbookController } from "../controllers/HandbookController";
-import { IModLoader } from "../@types/spt/mod/IModLoader";
+import { IModLoader } from "../models/spt/mod/IModLoader";
+import { ModCompilerService } from "../services/ModCompilerService";
 export declare class DelayedModLoader implements IModLoader {
     private bundleLoader;
     private handbookController;
     private vfs;
+    private modCompilerService;
     private initialModLoader;
-    constructor(bundleLoader: BundleLoader, handbookController: HandbookController, vfs: VFS, initialModLoader: InitialModLoader);
+    constructor(bundleLoader: BundleLoader, handbookController: HandbookController, vfs: VFS, modCompilerService: ModCompilerService, initialModLoader: InitialModLoader);
     getBundles(local: boolean): string;
     getBundle(key: string, local: boolean): void;
     getImportedModsNames(): string[];

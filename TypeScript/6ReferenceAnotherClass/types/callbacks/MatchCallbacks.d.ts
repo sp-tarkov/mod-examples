@@ -1,18 +1,18 @@
 import { MatchController } from "../controllers/MatchController";
 import { DatabaseServer } from "../servers/DatabaseServer";
-import { IStartOfflineRaidRequestData } from "../@types/eft/match/IStartOffineRaidRequestData";
-import { IEndOfflineRaidRequestData } from "../@types/eft/match/IEndOfflineRaidRequestData";
-import { INullResponseData } from "../@types/eft/httpResponse/INullResponseData";
-import { IGetBodyResponseData } from "../@types/eft/httpResponse/IGetBodyResponseData";
-import { IPmcData } from "../@types/eft/common/IPmcData";
-import { HttpResponse } from "../utils/HttpResponse";
+import { IStartOfflineRaidRequestData } from "../models/eft/match/IStartOffineRaidRequestData";
+import { IEndOfflineRaidRequestData } from "../models/eft/match/IEndOfflineRaidRequestData";
+import { INullResponseData } from "../models/eft/httpResponse/INullResponseData";
+import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 export declare class MatchCallbacks {
     private httpResponse;
     private jsonUtil;
     private matchController;
     private databaseServer;
-    constructor(httpResponse: HttpResponse, jsonUtil: JsonUtil, matchController: MatchController, databaseServer: DatabaseServer);
+    constructor(httpResponse: HttpResponseUtil, jsonUtil: JsonUtil, matchController: MatchController, databaseServer: DatabaseServer);
     updatePing(url: string, info: any, sessionID: string): INullResponseData;
     exitMatch(url: string, info: any, sessionID: string): INullResponseData;
     exitToMenu(url: string, info: any, sessionID: string): INullResponseData;

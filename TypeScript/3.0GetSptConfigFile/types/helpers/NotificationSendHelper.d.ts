@@ -1,5 +1,5 @@
-import { INotification } from "../@types/eft/notifier/INotifier";
-import { IHttpServer } from "../@types/spt/server/IHttpServer";
+import { INotification } from "../models/eft/notifier/INotifier";
+import { IHttpServer } from "../models/spt/server/IHttpServer";
 import { NotificationService } from "../services/NotificationService";
 export declare class NotificationSendHelper {
     private httpServer;

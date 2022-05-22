@@ -1,4 +1,4 @@
-import { IHttpServer } from "../@types/spt/server/IHttpServer";
+import { IHttpServer } from "../models/spt/server/IHttpServer";
 import { OnLoad } from "../di/OnLoad";
 export declare class HttpCallbacks extends OnLoad {
     private httpServer;

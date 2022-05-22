@@ -1,7 +1,7 @@
 import { NoteController } from "../controllers/NoteController";
-import { IPmcData } from "../@types/eft/common/IPmcData";
-import { INoteActionData } from "../@types/eft/notes/INoteActionData";
-import { IItemEventRouterResponse } from "../@types/eft/itemEvent/IItemEventRouterResponse";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { INoteActionData } from "../models/eft/notes/INoteActionData";
+import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 export declare class NoteCallbacks {
     private noteController;
     constructor(noteController: NoteController);

@@ -1,10 +1,9 @@
-import { IPmcData } from "../@types/eft/common/IPmcData";
-import { Item } from "../@types/eft/common/tables/IItem";
-import { ISaveProgressRequestData } from "../@types/eft/inRaid/ISaveProgressRequestData";
-import { IInsuranceConfig } from "../@types/spt/config/IInsuranceConfig";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { Item } from "../models/eft/common/tables/IItem";
+import { ISaveProgressRequestData } from "../models/eft/inRaid/ISaveProgressRequestData";
+import { ILogger } from "../models/spt/utils/ILogger";
 import { DialogueHelper } from "../helpers/DialogueHelper";
-import { InventoryHelper } from "../helpers/InventoryHelper";
+import { SecureContainerHelper } from "../helpers/SecureContainerHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
@@ -14,7 +13,7 @@ import { TimeUtil } from "../utils/TimeUtil";
 export declare class InsuranceService {
     private logger;
     private databaseServer;
-    private inventoryHelper;
+    private secureContainerHelper;
     private randomUtil;
     private timeUtil;
     private saveServer;
@@ -23,8 +22,8 @@ export declare class InsuranceService {
     private configServer;
     private insured;
     private templatesById;
-    insuranceConfig: IInsuranceConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, inventoryHelper: InventoryHelper, randomUtil: RandomUtil, timeUtil: TimeUtil, saveServer: SaveServer, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, configServer: ConfigServer);
+    private insuranceConfig;
+    constructor(logger: ILogger, databaseServer: DatabaseServer, secureContainerHelper: SecureContainerHelper, randomUtil: RandomUtil, timeUtil: TimeUtil, saveServer: SaveServer, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, configServer: ConfigServer);
     insuranceExists(sessionId: string): boolean;
     insuranceTraderArrayExists(sessionId: string, traderId: string): boolean;
     getInsurance(sessionId: string): Record<string, Item[]>;

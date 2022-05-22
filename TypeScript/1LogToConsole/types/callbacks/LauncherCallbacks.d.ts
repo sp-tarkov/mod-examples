@@ -1,17 +1,17 @@
-import { HttpResponse } from "../utils/HttpResponse";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { SaveServer } from "../servers/SaveServer";
 import { LauncherController } from "../controllers/LauncherController";
-import { IRegisterData } from "../@types/eft/launcher/IRegisterData";
-import { IRemoveProfileData } from "../@types/eft/launcher/IRemoveProfileData";
-import { ILoginRequestData } from "../@types/eft/launcher/ILoginRequestData";
-import { IChangeRequestData } from "../@types/eft/launcher/IChangeRequestData";
-import { IWatermark } from "../@types/spt/utils/IWatermark";
+import { IRegisterData } from "../models/eft/launcher/IRegisterData";
+import { IRemoveProfileData } from "../models/eft/launcher/IRemoveProfileData";
+import { ILoginRequestData } from "../models/eft/launcher/ILoginRequestData";
+import { IChangeRequestData } from "../models/eft/launcher/IChangeRequestData";
+import { IWatermark } from "../models/spt/utils/IWatermark";
 declare class LauncherCallbacks {
     private httpResponse;
     private launcherController;
     private saveServer;
     private watermark;
-    constructor(httpResponse: HttpResponse, launcherController: LauncherController, saveServer: SaveServer, watermark: IWatermark);
+    constructor(httpResponse: HttpResponseUtil, launcherController: LauncherController, saveServer: SaveServer, watermark: IWatermark);
     connect(): string;
     login(url: string, info: ILoginRequestData, sessionID: string): string;
     register(url: string, info: IRegisterData, sessionID: string): "FAILED" | "OK";

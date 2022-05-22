@@ -9,7 +9,6 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
 		"resolveJsonModule": true,
-		"esModuleInterop": true,
         "outDir": "out"
     },
     "lib": [

@@ -1,11 +1,12 @@
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { ItemHelper } from "../helpers/ItemHelper";
-import { Inventory as PmcInventory } from "../@types/eft/common/IPmcData";
-import { MinMax, ModsChances, Mods } from "../@types/eft/common/tables/IBotType";
+import { Inventory as PmcInventory } from "../models/eft/common/IPmcData";
+import { MinMax, ModsChances, Mods } from "../models/eft/common/tables/IBotType";
 import { WeightedRandomHelper } from "../helpers/WeightedRandomHelper";
 import { BotGeneratorHelper } from "../helpers/BotGeneratorHelper";
 import { HashUtil } from "../utils/HashUtil";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
+import { RandomUtil } from "../utils/RandomUtil";
 export declare class BotWeaponGenerator {
     private logger;
     private hashUtil;
@@ -13,7 +14,8 @@ export declare class BotWeaponGenerator {
     private itemHelper;
     private weightedRandomHelper;
     private botGeneratorHelper;
-    constructor(logger: ILogger, hashUtil: HashUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper, weightedRandomHelper: WeightedRandomHelper, botGeneratorHelper: BotGeneratorHelper);
+    private randomUtil;
+    constructor(logger: ILogger, hashUtil: HashUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper, weightedRandomHelper: WeightedRandomHelper, botGeneratorHelper: BotGeneratorHelper, randomUtil: RandomUtil);
     generateWeapon(equipmentSlot: string, weaponPool: Record<string, number>, modPool: Mods, modChances: ModsChances, magCounts: MinMax, botRole: string, isPmc: boolean, inventory: PmcInventory): void;
     /** Checks if all required slots are occupied on a weapon and all it's mods */
     private isWeaponValid;

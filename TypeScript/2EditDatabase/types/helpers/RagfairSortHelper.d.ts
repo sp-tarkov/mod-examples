@@ -1,4 +1,4 @@
-import { IRagfairOffer } from "../@types/eft/ragfair/IRagfairOffer";
+import { IRagfairOffer } from "../models/eft/ragfair/IRagfairOffer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 export declare class RagfairSortHelper {
     private databaseServer;

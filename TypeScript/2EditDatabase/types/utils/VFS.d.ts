@@ -1,8 +1,8 @@
 /// <reference types="node" />
 import "reflect-metadata";
 import fs from "fs";
-import { IAsyncQueue } from "../@types/spt/utils/IAsyncQueue";
-import { IUUidGenerator } from "../@types/spt/utils/IUuidGenerator";
+import { IAsyncQueue } from "../models/spt/utils/IAsyncQueue";
+import { IUUidGenerator } from "../models/spt/utils/IUuidGenerator";
 export declare class VFS {
     private asyncQueue;
     private uuidGenerator;
@@ -50,4 +50,5 @@ export declare class VFS {
     stripExtension(filepath: string): string;
     minifyAllJsonInDirRecursive(filepath: string): Promise<void>;
     minifyAllJsonInDirRecursiveAsync(filepath: string): Promise<void>;
+    getFilesOfType(directory: string, fileType: string, files?: string[]): string[];
 }

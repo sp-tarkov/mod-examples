@@ -1,7 +1,7 @@
-import { IPmcData, Victim } from "../@types/eft/common/IPmcData";
-import { Item } from "../@types/eft/common/tables/IItem";
-import { ISaveProgressRequestData } from "../@types/eft/inRaid/ISaveProgressRequestData";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { IPmcData, Victim } from "../models/eft/common/IPmcData";
+import { Item } from "../models/eft/common/tables/IItem";
+import { ISaveProgressRequestData } from "../models/eft/inRaid/ISaveProgressRequestData";
+import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
 import { JsonUtil } from "../utils/JsonUtil";

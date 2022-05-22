@@ -1,12 +1,12 @@
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 import { HashUtil } from "./HashUtil";
 import { VFS } from "./VFS";
 export declare class JsonUtil {
     private vfs;
-    private hashutil;
+    private hashUtil;
     private logger;
     private fileHashes;
-    constructor(vfs: VFS, hashutil: HashUtil, logger: ILogger);
+    constructor(vfs: VFS, hashUtil: HashUtil, logger: ILogger);
     /**
      * From object to string
      * @param data object to turn into JSON

@@ -1,11 +1,9 @@
 import { TraderHelper } from "../helpers/TraderHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
-import { IEndOfflineRaidRequestData } from "../@types/eft/match/IEndOfflineRaidRequestData";
-import { IStartOfflineRaidRequestData } from "../@types/eft/match/IStartOffineRaidRequestData";
-import { IPmcData } from "../@types/eft/common/IPmcData";
+import { IEndOfflineRaidRequestData } from "../models/eft/match/IEndOfflineRaidRequestData";
+import { IStartOfflineRaidRequestData } from "../models/eft/match/IStartOffineRaidRequestData";
+import { IPmcData } from "../models/eft/common/IPmcData";
 import { ConfigServer } from "../servers/ConfigServer";
-import { IMatchConfig } from "../@types/spt/config/IMatchConfig";
-import { IInRaidConfig } from "../@types/spt/config/IInRaidConfig";
 import { SaveServer } from "../servers/SaveServer";
 import { MatchLocationService } from "../services/MatchLocationService";
 export declare class MatchController {
@@ -14,8 +12,8 @@ export declare class MatchController {
     private matchLocationService;
     private traderHelper;
     private configServer;
-    matchConfig: IMatchConfig;
-    inraidConfig: IInRaidConfig;
+    private matchConfig;
+    private inraidConfig;
     constructor(saveServer: SaveServer, profileHelper: ProfileHelper, matchLocationService: MatchLocationService, traderHelper: TraderHelper, configServer: ConfigServer);
     getEnabled(): boolean;
     getProfile(info: any): IPmcData[];

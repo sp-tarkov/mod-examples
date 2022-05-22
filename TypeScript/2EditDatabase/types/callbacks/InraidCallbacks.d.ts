@@ -1,17 +1,17 @@
 import { InraidController } from "../controllers/InraidController";
-import { INullResponseData } from "../@types/eft/httpResponse/INullResponseData";
-import { IEmptyRequestData } from "../@types/eft/common/IEmptyRequestData";
-import { IRegisterPlayerRequestData } from "../@types/eft/inRaid/IRegisterPlayerRequestData";
-import { ISaveProgressRequestData } from "../@types/eft/inRaid/ISaveProgressRequestData";
+import { INullResponseData } from "../models/eft/httpResponse/INullResponseData";
+import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
+import { IRegisterPlayerRequestData } from "../models/eft/inRaid/IRegisterPlayerRequestData";
+import { ISaveProgressRequestData } from "../models/eft/inRaid/ISaveProgressRequestData";
 import { ConfigServer } from "../servers/ConfigServer";
-import { HttpResponse } from "../utils/HttpResponse";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class InraidCallbacks {
     private inraidController;
     private httpResponse;
     private configServer;
     private airdropConfig;
     private inraidConfig;
-    constructor(inraidController: InraidController, httpResponse: HttpResponse, configServer: ConfigServer);
+    constructor(inraidController: InraidController, httpResponse: HttpResponseUtil, configServer: ConfigServer);
     registerPlayer(url: string, info: IRegisterPlayerRequestData, sessionID: string): INullResponseData;
     saveProgress(url: string, info: ISaveProgressRequestData, sessionID: string): INullResponseData;
     getRaidEndState(): string;

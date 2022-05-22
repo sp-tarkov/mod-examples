@@ -1,13 +1,13 @@
 import { RagfairServer } from "../servers/RagfairServer";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { TradeHelper } from "../helpers/TradeHelper";
-import { IPmcData } from "../@types/eft/common/IPmcData";
-import { IProcessRagfairTradeRequestData } from "../@types/eft/trade/IProcessRagfairTradeRequestData";
-import { IItemEventRouterResponse } from "../@types/eft/itemEvent/IItemEventRouterResponse";
-import { Upd } from "../@types/eft/common/tables/IItem";
-import { IProcessBaseTradeRequestData } from "../@types/eft/trade/IProcessBaseTradeRequestData";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { IProcessRagfairTradeRequestData } from "../models/eft/trade/IProcessRagfairTradeRequestData";
+import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
+import { Upd } from "../models/eft/common/tables/IItem";
+import { IProcessBaseTradeRequestData } from "../models/eft/trade/IProcessBaseTradeRequestData";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 declare class TradeController {
     private logger;
     private itemEventRouter;

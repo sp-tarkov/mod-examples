@@ -1,5 +1,5 @@
-import { IHttpServer } from "../../@types/spt/server/IHttpServer";
-import { ILogger } from "../../@types/spt/utils/ILogger";
+import { IHttpServer } from "../../models/spt/server/IHttpServer";
+import { ILogger } from "../../models/spt/utils/ILogger";
 import { Serializer } from "../../di/Serializer";
 import { BundleLoader } from "../../loaders/BundleLoader";
 export declare class BundleSerializer extends Serializer {

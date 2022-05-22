@@ -4,9 +4,9 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { HandbookHelper } from "../helpers/HandbookHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
 import { PresetHelper } from "../helpers/PresetHelper";
-import { Item } from "../@types/eft/common/tables/IItem";
-import { IBarterScheme } from "../@types/eft/common/tables/ITrader";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { Item } from "../models/eft/common/tables/IItem";
+import { IBarterScheme } from "../models/eft/common/tables/ITrader";
+import { ILogger } from "../models/spt/utils/ILogger";
 export declare class RagfairPriceService {
     private handbookHelper;
     private databaseServer;

@@ -1,8 +1,8 @@
 import { DatabaseServer } from "../servers/DatabaseServer";
-import { Difficulty } from "../@types/eft/common/tables/IBotType";
-import { IGenerateBotsRequestData } from "../@types/eft/bot/IGenerateBotsRequestData";
-import { IBotBase } from "../@types/eft/common/tables/IBotBase";
-import { IBotCore } from "../@types/eft/common/tables/IBotCore";
+import { Difficulty } from "../models/eft/common/tables/IBotType";
+import { IGenerateBotsRequestData } from "../models/eft/bot/IGenerateBotsRequestData";
+import { IBotBase } from "../models/eft/common/tables/IBotBase";
+import { IBotCore } from "../models/eft/common/tables/IBotCore";
 import { ConfigServer } from "../servers/ConfigServer";
 import { BotHelper } from "../helpers/BotHelper";
 import { BotGenerator } from "../generators/BotGenerator";

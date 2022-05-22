@@ -2,11 +2,10 @@ import { HashUtil } from "../utils/HashUtil";
 import { SaveServer } from "../servers/SaveServer";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
-import { IRegisterData } from "../@types/eft/launcher/IRegisterData";
-import { ILoginRequestData } from "../@types/eft/launcher/ILoginRequestData";
-import { IChangeRequestData } from "../@types/eft/launcher/IChangeRequestData";
-import { Info } from "../@types/eft/profile/IAkiProfile";
-import { ICoreConfig } from "../@types/spt/config/ICoreConfig";
+import { IRegisterData } from "../models/eft/launcher/IRegisterData";
+import { ILoginRequestData } from "../models/eft/launcher/ILoginRequestData";
+import { IChangeRequestData } from "../models/eft/launcher/IChangeRequestData";
+import { Info } from "../models/eft/profile/IAkiProfile";
 import { HttpServerHelper } from "../helpers/HttpServerHelper";
 export declare class LauncherController {
     private hashUtil;
@@ -14,7 +13,7 @@ export declare class LauncherController {
     private httpServerHelper;
     private databaseServer;
     private configServer;
-    coreConfig: ICoreConfig;
+    private coreConfig;
     constructor(hashUtil: HashUtil, saveServer: SaveServer, httpServerHelper: HttpServerHelper, databaseServer: DatabaseServer, configServer: ConfigServer);
     connect(): any;
     find(sessionIdKey: string): Info;

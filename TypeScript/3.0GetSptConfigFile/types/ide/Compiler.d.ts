@@ -1,1 +1,1 @@
-export {};
+import "reflect-metadata";

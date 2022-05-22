@@ -1,5 +1,5 @@
-import { INotification } from "../@types/eft/notifier/INotifier";
-import { Message, MessageContentRagfair } from "../@types/eft/profile/IAkiProfile";
+import { INotification } from "../models/eft/notifier/INotifier";
+import { Message, MessageContentRagfair } from "../models/eft/profile/IAkiProfile";
 import { HttpServerHelper } from "./HttpServerHelper";
 export declare class NotifierHelper {
     private httpServerHelper;

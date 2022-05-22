@@ -8,12 +8,12 @@ import { PaymentService } from "../services/PaymentService";
 import { DialogueHelper } from "../helpers/DialogueHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
-import { IPmcData } from "../@types/eft/common/IPmcData";
-import { IGetInsuranceCostRequestData } from "../@types/eft/insurance/IGetInsuranceCostRequestData";
-import { IInsureRequestData } from "../@types/eft/insurance/IInsureRequestData";
-import { IItemEventRouterResponse } from "../@types/eft/itemEvent/IItemEventRouterResponse";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { IGetInsuranceCostRequestData } from "../models/eft/insurance/IGetInsuranceCostRequestData";
+import { IInsureRequestData } from "../models/eft/insurance/IInsureRequestData";
+import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { InsuranceService } from "../services/InsuranceService";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 export declare class InsuranceController {
     private logger;
     private randomUtil;

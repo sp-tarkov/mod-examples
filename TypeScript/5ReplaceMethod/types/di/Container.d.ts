@@ -1,7 +1,6 @@
 import { DependencyContainer } from "tsyringe";
 export declare class Container {
     static registerTypes(depContainer: DependencyContainer): void;
-    static registerServerSpecificClasses(depContainer: DependencyContainer): void;
     private static registerUtils;
     private static registerRouters;
     private static registerGenerators;

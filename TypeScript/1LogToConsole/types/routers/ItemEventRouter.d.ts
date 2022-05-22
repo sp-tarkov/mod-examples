@@ -1,9 +1,9 @@
 import { JsonUtil } from "../utils/JsonUtil";
-import { IItemEventRouterResponse } from "../@types/eft/itemEvent/IItemEventRouterResponse";
-import { IItemEventRouterRequest } from "../@types/eft/itemEvent/IItemEventRouterRequest";
+import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
+import { IItemEventRouterRequest } from "../models/eft/itemEvent/IItemEventRouterRequest";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { ItemEventRouterDefinition } from "../di/Router";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 export declare class ItemEventRouter {
     private logger;
     private jsonUtil;

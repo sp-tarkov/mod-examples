@@ -1,16 +1,16 @@
 import { SaveServer } from "../servers/SaveServer";
 import { DialogueHelper } from "../helpers/DialogueHelper";
-import { DialogueInfo } from "../@types/eft/profile/IAkiProfile";
-import { IGetBodyResponseData } from "../@types/eft/httpResponse/IGetBodyResponseData";
-import { IGetFriendListDataResponse } from "../@types/eft/dialog/IGetFriendListDataResponse";
-import { IGetMailDialogViewResponseData } from "../@types/eft/dialog/IGetMailDialogViewResponseData";
-import { IGetAllAttachmentsResponse } from "../@types/eft/dialog/IGetAllAttachmentsResponse";
-import { HttpResponse } from "../utils/HttpResponse";
+import { DialogueInfo } from "../models/eft/profile/IAkiProfile";
+import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
+import { IGetFriendListDataResponse } from "../models/eft/dialog/IGetFriendListDataResponse";
+import { IGetMailDialogViewResponseData } from "../models/eft/dialog/IGetMailDialogViewResponseData";
+import { IGetAllAttachmentsResponse } from "../models/eft/dialog/IGetAllAttachmentsResponse";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class DialogueController {
     private httpResponse;
     private saveServer;
     private dialogueHelper;
-    constructor(httpResponse: HttpResponse, saveServer: SaveServer, dialogueHelper: DialogueHelper);
+    constructor(httpResponse: HttpResponseUtil, saveServer: SaveServer, dialogueHelper: DialogueHelper);
     getFriendList(sessionID: string): IGetFriendListDataResponse;
     generateDialogueList(sessionID: string): IGetBodyResponseData<DialogueInfo[]>;
     getDialogueInfo(dialogueID: string, sessionID: string): DialogueInfo;

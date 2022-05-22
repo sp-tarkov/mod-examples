@@ -1,3 +1,4 @@
+import { ILogger } from "../models/spt/utils/ILogger";
 import { JsonUtil } from "./JsonUtil";
 import { MathUtil } from "./MathUtil";
 /**
@@ -103,7 +104,8 @@ export declare class ProbabilityObject<K, V = undefined> {
 }
 export declare class RandomUtil {
     private jsonUtil;
-    constructor(jsonUtil: JsonUtil);
+    private logger;
+    constructor(jsonUtil: JsonUtil, logger: ILogger);
     getInt(min: number, max: number): number;
     getIntEx(max: number): number;
     getFloat(min: number, max: number): number;
@@ -147,4 +149,5 @@ export declare class RandomUtil {
      * @return  {array}                     Array consisting of N random keys of the dictionary
      */
     drawRandomFromDict(dict: any, count?: number, replacement?: boolean): any[];
+    getBiasedRandomNumber(min: number, max: number, shift: number, n: number): number;
 }

@@ -1,4 +1,4 @@
-import { INotification } from "../@types/eft/notifier/INotifier";
+import { INotification } from "../models/eft/notifier/INotifier";
 export declare class NotificationService {
     private messageQueue;
     getMessageQueue(): {};

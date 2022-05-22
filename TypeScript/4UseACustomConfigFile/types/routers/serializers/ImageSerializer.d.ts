@@ -1,4 +1,4 @@
-import { IHttpServer } from "../../@types/spt/server/IHttpServer";
+import { IHttpServer } from "../../models/spt/server/IHttpServer";
 import { Serializer } from "../../di/Serializer";
 import { ImageRouter } from "../ImageRouter";
 export declare class ImageSerializer extends Serializer {

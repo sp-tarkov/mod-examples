@@ -1,13 +1,12 @@
 import { ConfigServer } from "../servers/ConfigServer";
-import { IBotConfig } from "../@types/spt/config/IBotConfig";
-import { ITemplateItem } from "../@types/eft/common/tables/ITemplateItem";
+import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { RandomUtil } from "../utils/RandomUtil";
 import { BotHelper } from "./BotHelper";
 export declare class DurabilityLimitsHelper {
     private randomUtil;
     private botHelper;
     private configServer;
-    botConfig: IBotConfig;
+    private botConfig;
     constructor(randomUtil: RandomUtil, botHelper: BotHelper, configServer: ConfigServer);
     getRandomisedMaxWeaponDurability(itemTemplate: ITemplateItem, botRole: string): number;
     getRandomisedMaxArmorDurability(itemTemplate: ITemplateItem, botRole: string): number;

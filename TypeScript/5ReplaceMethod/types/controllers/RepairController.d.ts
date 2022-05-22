@@ -2,15 +2,14 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { QuestHelper } from "../helpers/QuestHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
 import { PaymentService } from "../services/PaymentService";
-import { IPmcData } from "../@types/eft/common/IPmcData";
-import { IRepairActionDataRequest } from "../@types/eft/repair/IRepairActionDataRequest";
-import { IItemEventRouterResponse } from "../@types/eft/itemEvent/IItemEventRouterResponse";
-import { ITraderRepairActionDataRequest } from "../@types/eft/repair/ITraderRepairActionDataRequest";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { IRepairActionDataRequest } from "../models/eft/repair/IRepairActionDataRequest";
+import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
+import { ITraderRepairActionDataRequest } from "../models/eft/repair/ITraderRepairActionDataRequest";
 import { ConfigServer } from "../servers/ConfigServer";
-import { IRepairConfig } from "../@types/spt/config/IRepairConfig";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { RepairHelper } from "../helpers/RepairHelper";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 export declare class RepairController {
     private logger;
     private itemEventRouter;
@@ -20,7 +19,7 @@ export declare class RepairController {
     private paymentService;
     private repairHelper;
     private configServer;
-    repairConfig: IRepairConfig;
+    private repairConfig;
     constructor(logger: ILogger, itemEventRouter: ItemEventRouter, databaseServer: DatabaseServer, questHelper: QuestHelper, traderHelper: TraderHelper, paymentService: PaymentService, repairHelper: RepairHelper, configServer: ConfigServer);
     /**
      * Repair with trader

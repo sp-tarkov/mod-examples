@@ -1,10 +1,10 @@
 import { DatabaseServer } from "../servers/DatabaseServer";
-import { InsuredItem, IPmcData } from "../@types/eft/common/IPmcData";
-import { ITemplateItem, StackSlot } from "../@types/eft/common/tables/ITemplateItem";
-import { Item } from "../@types/eft/common/tables/IItem";
+import { InsuredItem, IPmcData } from "../models/eft/common/IPmcData";
+import { ITemplateItem, StackSlot } from "../models/eft/common/tables/ITemplateItem";
+import { Item } from "../models/eft/common/tables/IItem";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 declare class ItemHelper {
     private logger;
     private hashUtil;

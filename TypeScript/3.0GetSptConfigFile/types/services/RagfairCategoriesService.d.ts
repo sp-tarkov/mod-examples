@@ -1,4 +1,4 @@
-import { IRagfairOffer } from "../@types/eft/ragfair/IRagfairOffer";
+import { IRagfairOffer } from "../models/eft/ragfair/IRagfairOffer";
 export declare class RagfairCategoriesService {
     updateCategories(offers: IRagfairOffer[]): void;
     private categories;

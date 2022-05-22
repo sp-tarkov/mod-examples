@@ -2,9 +2,8 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
 import { TimeUtil } from "../utils/TimeUtil";
-import { Item } from "../@types/eft/common/tables/IItem";
-import { IRagfairOffer } from "../@types/eft/ragfair/IRagfairOffer";
-import { IRagfairConfig } from "../@types/spt/config/IRagfairConfig";
+import { Item } from "../models/eft/common/tables/IItem";
+import { IRagfairOffer } from "../models/eft/ragfair/IRagfairOffer";
 export declare class RagfairOfferService {
     private timeUtil;
     private databaseServer;
@@ -14,7 +13,7 @@ export declare class RagfairOfferService {
     private toUpdate;
     private expiredOffers;
     private offers;
-    ragfairConfig: IRagfairConfig;
+    private ragfairConfig;
     constructor(timeUtil: TimeUtil, databaseServer: DatabaseServer, saveServer: SaveServer, configServer: ConfigServer);
     getOffers(): IRagfairOffer[];
     getOfferByOfferId(offerId: string): IRagfairOffer;

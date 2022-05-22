@@ -1,9 +1,9 @@
 import { HashUtil } from "../utils/HashUtil";
 import { TimeUtil } from "../utils/TimeUtil";
-import { IPmcData } from "../@types/eft/common/IPmcData";
-import { ITraderAssort } from "../@types/eft/common/tables/ITrader";
-import { IRagfairOffer } from "../@types/eft/ragfair/IRagfairOffer";
-import { ISearchRequestData } from "../@types/eft/ragfair/ISearchRequestData";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { ITraderAssort } from "../models/eft/common/tables/ITrader";
+import { IRagfairOffer } from "../models/eft/ragfair/IRagfairOffer";
+import { ISearchRequestData } from "../models/eft/ragfair/ISearchRequestData";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
 import { RagfairOfferService } from "../services/RagfairOfferService";
@@ -17,7 +17,7 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { RagfairSortHelper } from "./RagfairSortHelper";
 import { RagfairHelper } from "./RagfairHelper";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 export declare class RagfairOfferHelper {
     private logger;
     private timeUtil;

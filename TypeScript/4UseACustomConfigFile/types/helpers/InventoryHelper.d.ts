@@ -1,6 +1,6 @@
-import { IPmcData } from "../@types/eft/common/IPmcData";
-import { Item } from "../@types/eft/common/tables/IItem";
-import { IItemEventRouterResponse } from "../@types/eft/itemEvent/IItemEventRouterResponse";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { Item } from "../models/eft/common/tables/IItem";
+import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { FenceService } from "../services/FenceService";
@@ -10,12 +10,12 @@ import { PaymentHelper } from "./PaymentHelper";
 import { ProfileHelper } from "./ProfileHelper";
 import { DialogueHelper } from "./DialogueHelper";
 import { HashUtil } from "../utils/HashUtil";
-import { HttpResponse } from "../utils/HttpResponse";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { JsonUtil } from "../utils/JsonUtil";
-import { IInventoryMoveRequestData } from "../@types/eft/inventory/IInventoryMoveRequestData";
-import { IInventorySplitRequestData } from "../@types/eft/inventory/IInventorySplitRequestData";
-import { IInventoryMergeRequestData } from "../@types/eft/inventory/IInventoryMergeRequestData";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { IInventoryMoveRequestData } from "../models/eft/inventory/IInventoryMoveRequestData";
+import { IInventorySplitRequestData } from "../models/eft/inventory/IInventorySplitRequestData";
+import { IInventoryMergeRequestData } from "../models/eft/inventory/IInventoryMergeRequestData";
+import { ILogger } from "../models/spt/utils/ILogger";
 import { TraderAssortHelper } from "./TraderAssortHelper";
 export interface OwnerInventoryItems {
     from: Item[];
@@ -38,19 +38,12 @@ export declare class InventoryHelper {
     private profileHelper;
     private configServer;
     private inventoryConfig;
-    constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, httpResponse: HttpResponse, fenceService: FenceService, databaseServer: DatabaseServer, paymentHelper: PaymentHelper, traderAssortHelper: TraderAssortHelper, dialogueHelper: DialogueHelper, itemHelper: ItemHelper, containerHelper: ContainerHelper, profileHelper: ProfileHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, httpResponse: HttpResponseUtil, fenceService: FenceService, databaseServer: DatabaseServer, paymentHelper: PaymentHelper, traderAssortHelper: TraderAssortHelper, dialogueHelper: DialogueHelper, itemHelper: ItemHelper, containerHelper: ContainerHelper, profileHelper: ProfileHelper, configServer: ConfigServer);
     addItem(pmcData: IPmcData, body: any, output: IItemEventRouterResponse, sessionID: string, callback: any, foundInRaid?: boolean, addUpd?: any): IItemEventRouterResponse;
     removeItem(pmcData: IPmcData, itemId: string, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
-    getSecureContainerItems(items: Item[]): string[];
     getItemSize(itemTpl: string, itemID: string, inventoryItem: Item[]): Record<number, number>;
     private getSizeByInventoryItemHash;
     private getInventoryItemHash;
-    /**
-   * Recursively checks if the given item is
-   * inside the stash, that is it has the stash as
-   * ancestor with slotId=hideout
-   */
-    isItemInStash(pmcData: IPmcData, item: Item): boolean;
     getContainerMap(containerW: number, containerH: number, itemList: Item[], containerId: string): number[][];
     /**
      * Based on the item action, determine whose inventories we should be looking at for from and to.

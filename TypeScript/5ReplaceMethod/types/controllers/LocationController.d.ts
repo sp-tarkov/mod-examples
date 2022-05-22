@@ -1,10 +1,10 @@
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { LocationGenerator } from "../generators/LocationGenerator";
-import { ILocationBase } from "../@types/eft/common/ILocationBase";
-import { ILocationsGenerateAllResponse } from "../@types/eft/common/ILocationsSourceDestinationBase";
+import { ILocationBase } from "../models/eft/common/ILocationBase";
+import { ILocationsGenerateAllResponse } from "../models/eft/common/ILocationsSourceDestinationBase";
 import { JsonUtil } from "../utils/JsonUtil";
 import { TimeUtil } from "../utils/TimeUtil";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 export declare class LocationController {
     private jsonUtil;
     private logger;

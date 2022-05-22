@@ -1,10 +1,10 @@
 {
-  "name": "EditDatabase",
+  "name": "ReferenceAnotherClass",
   "version": "1.0.0",
   "main": "src/mod.js",
   "license": "MIT",
   "author": "Chomp",
-  "akiVersion": "2.4.0",
+  "akiVersion": "3.0.0",
   "scripts": {
     "install": "npx handpick --target=devDependencies",
     "build": "tsc"

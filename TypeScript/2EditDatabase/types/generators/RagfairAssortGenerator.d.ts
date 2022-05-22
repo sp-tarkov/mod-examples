@@ -1,4 +1,4 @@
-import { Item } from "../@types/eft/common/tables/IItem";
+import { Item } from "../models/eft/common/tables/IItem";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { ItemHelper } from "../helpers/ItemHelper";
 import { HashUtil } from "../utils/HashUtil";

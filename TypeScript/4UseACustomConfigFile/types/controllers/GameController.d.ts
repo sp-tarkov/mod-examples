@@ -1,9 +1,9 @@
 import { ProfileHelper } from "../helpers/ProfileHelper";
-import { IEmptyRequestData } from "../@types/eft/common/IEmptyRequestData";
-import { IGameConfigResponse } from "../@types/eft/game/IGameConfigResponse";
+import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
+import { IGameConfigResponse } from "../models/eft/game/IGameConfigResponse";
 import { ConfigServer } from "../servers/ConfigServer";
-import { ILogger } from "../@types/spt/utils/ILogger";
-import { IWatermark } from "../@types/spt/utils/IWatermark";
+import { ILogger } from "../models/spt/utils/ILogger";
+import { IWatermark } from "../models/spt/utils/IWatermark";
 import { HttpServerHelper } from "../helpers/HttpServerHelper";
 export declare class GameController {
     private logger;

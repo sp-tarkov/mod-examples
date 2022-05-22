@@ -1,5 +1,5 @@
-import { IAsyncQueue } from "../@types/spt/utils/IAsyncQueue";
-import { ICommand } from "../@types/spt/utils/ICommand";
+import { IAsyncQueue } from "../models/spt/utils/IAsyncQueue";
+import { ICommand } from "../models/spt/utils/ICommand";
 export declare class AsyncQueue implements IAsyncQueue {
     commandsQueue: ICommand[];
     constructor();

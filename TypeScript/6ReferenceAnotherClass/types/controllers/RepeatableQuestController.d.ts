@@ -5,20 +5,20 @@ import { JsonUtil } from "../utils/JsonUtil";
 import { MathUtil } from "../utils/MathUtil";
 import { ItemHelper } from "../helpers/ItemHelper";
 import { DatabaseServer } from "../servers/DatabaseServer";
-import { IEmptyRequestData } from "../@types/eft/common/IEmptyRequestData";
-import { IPmcData, TraderInfo } from "../@types/eft/common/IPmcData";
-import { IRepeatableQuestConfig, ELocationName, IQuestConfig } from "../@types/spt/config/IQuestConfig";
-import { IExploration, IRepeatableQuest, IReward, IRewards, IExplorationCondition, ICompletionAvailableFor, IEliminationCondition, ICompletion, IElimination, IPmcDataRepeatableQuest } from "../@types/eft/common/tables/IRepeatableQuests";
-import { Exit } from "../@types/eft/common/ILocationBase";
-import { IRepeatableQuestChangeRequest } from "../@types/eft/quests/IRepeatableQuestChangeRequest";
-import { IItemEventRouterResponse } from "../@types/eft/itemEvent/IItemEventRouterResponse";
+import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
+import { IPmcData, TraderInfo } from "../models/eft/common/IPmcData";
+import { IRepeatableQuestConfig, ELocationName } from "../models/spt/config/IQuestConfig";
+import { IExploration, IRepeatableQuest, IReward, IRewards, IExplorationCondition, ICompletionAvailableFor, IEliminationCondition, ICompletion, IElimination, IPmcDataRepeatableQuest } from "../models/eft/common/tables/IRepeatableQuests";
+import { Exit } from "../models/eft/common/ILocationBase";
+import { IRepeatableQuestChangeRequest } from "../models/eft/quests/IRepeatableQuestChangeRequest";
+import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { PresetHelper } from "../helpers/PresetHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { PaymentService } from "../services/PaymentService";
 import { ConfigServer } from "../servers/ConfigServer";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { RagfairServerHelper } from "../helpers/RagfairServerHelper";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 export interface IQuestTypePool {
     types: string[];
     pool: IQuestPool;
@@ -61,7 +61,7 @@ export declare class RepeatableQuestController {
     private paymentService;
     private objectId;
     private configServer;
-    questConfig: IQuestConfig;
+    private questConfig;
     constructor(timeUtil: TimeUtil, logger: ILogger, randomUtil: RandomUtil, mathUtil: MathUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper, presetHelper: PresetHelper, profileHelper: ProfileHelper, ragfairServerHelper: RagfairServerHelper, itemEventRouter: ItemEventRouter, paymentService: PaymentService, objectId: ObjectId, configServer: ConfigServer);
     /**
      * This is the method reached by the /client/repeatalbeQuests/activityPeriods endpoint

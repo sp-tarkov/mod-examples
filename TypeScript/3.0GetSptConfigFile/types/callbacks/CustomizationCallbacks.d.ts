@@ -1,17 +1,17 @@
 import { SaveServer } from "../servers/SaveServer";
 import { CustomizationController } from "../controllers/CustomizationController";
-import { IPmcData } from "../@types/eft/common/IPmcData";
-import { IBuyClothingRequestData } from "../@types/eft/customization/IBuyClothingRequestData";
-import { IWearClothingRequestData } from "../@types/eft/customization/IWearClothingRequestData";
-import { IGetBodyResponseData } from "../@types/eft/httpResponse/IGetBodyResponseData";
-import { ISuit } from "../@types/eft/common/tables/ITrader";
-import { IItemEventRouterResponse } from "../@types/eft/itemEvent/IItemEventRouterResponse";
-import { HttpResponse } from "../utils/HttpResponse";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { IBuyClothingRequestData } from "../models/eft/customization/IBuyClothingRequestData";
+import { IWearClothingRequestData } from "../models/eft/customization/IWearClothingRequestData";
+import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
+import { ISuit } from "../models/eft/common/tables/ITrader";
+import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class CustomizationCallbacks {
     private customizationController;
     private saveServer;
     private httpResponse;
-    constructor(customizationController: CustomizationController, saveServer: SaveServer, httpResponse: HttpResponse);
+    constructor(customizationController: CustomizationController, saveServer: SaveServer, httpResponse: HttpResponseUtil);
     getSuits(url: string, info: any, sessionID: string): IGetBodyResponseData<{
         _id: string;
         suites: string[];

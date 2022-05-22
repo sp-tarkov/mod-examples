@@ -1,10 +1,10 @@
 import { WeatherController } from "../controllers/WeatherController";
-import { IGetBodyResponseData } from "../@types/eft/httpResponse/IGetBodyResponseData";
-import { IEmptyRequestData } from "../@types/eft/common/IEmptyRequestData";
-import { HttpResponse } from "../utils/HttpResponse";
+import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
+import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class WeatherCallbacks {
     private httpResponse;
     private weatherController;
-    constructor(httpResponse: HttpResponse, weatherController: WeatherController);
+    constructor(httpResponse: HttpResponseUtil, weatherController: WeatherController);
     getWeather(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
 }

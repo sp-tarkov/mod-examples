@@ -6,10 +6,10 @@ import { ItemHelper } from "./ItemHelper";
 import { ProfileHelper } from "./ProfileHelper";
 import { PaymentHelper } from "./PaymentHelper";
 import { FenceService } from "../services/FenceService";
-import { IBarterScheme, ITraderAssort, ITraderBase, LoyaltyLevel } from "../@types/eft/common/tables/ITrader";
-import { IPmcData } from "../@types/eft/common/IPmcData";
+import { IBarterScheme, ITraderAssort, ITraderBase, LoyaltyLevel } from "../models/eft/common/tables/ITrader";
+import { IPmcData } from "../models/eft/common/IPmcData";
 import { ConfigServer } from "../servers/ConfigServer";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 export declare class TraderHelper {
     private logger;
     private databaseServer;

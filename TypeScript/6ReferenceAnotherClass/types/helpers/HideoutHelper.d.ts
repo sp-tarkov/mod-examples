@@ -1,21 +1,21 @@
 import { DatabaseServer } from "../servers/DatabaseServer";
-import { IPmcData, Production, Productive } from "../@types/eft/common/IPmcData";
-import { IHideoutSingleProductionStartRequestData } from "../@types/eft/hideout/IHideoutSingleProductionStartRequestData";
-import { StageBonus } from "../@types/eft/hideout/IHideoutArea";
+import { IPmcData, Production, Productive } from "../models/eft/common/IPmcData";
+import { IHideoutSingleProductionStartRequestData } from "../models/eft/hideout/IHideoutSingleProductionStartRequestData";
+import { StageBonus } from "../models/eft/hideout/IHideoutArea";
 import { TimeUtil } from "../utils/TimeUtil";
 import { RandomUtil } from "../utils/RandomUtil";
 import { HashUtil } from "../utils/HashUtil";
 import { ProfileHelper } from "./ProfileHelper";
-import { IHideoutContinousProductionStartRequestData } from "../@types/eft/hideout/IHideoutContinousProductionStartRequestData";
-import { IItemEventRouterResponse } from "../@types/eft/itemEvent/IItemEventRouterResponse";
+import { IHideoutContinousProductionStartRequestData } from "../models/eft/hideout/IHideoutContinousProductionStartRequestData";
+import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { ConfigServer } from "../servers/ConfigServer";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
-import { HttpResponse } from "../utils/HttpResponse";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { PlayerService } from "../services/PlayerService";
-import { IHideoutTakeProductionRequestData } from "../@types/eft/hideout/IHideoutTakeProductionRequestData";
+import { IHideoutTakeProductionRequestData } from "../models/eft/hideout/IHideoutTakeProductionRequestData";
 import { InventoryHelper } from "./InventoryHelper";
-import { ITemplateItem } from "../@types/eft/common/tables/ITemplateItem";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
+import { ILogger } from "../models/spt/utils/ILogger";
 export declare class HideoutHelper {
     private logger;
     private hashUtil;
@@ -29,15 +29,15 @@ export declare class HideoutHelper {
     private playerService;
     private configServer;
     static BITCOIN_FARM: string;
-    static WATER_COLLECTOR: string;
-    static BITCOIN: string;
-    static EXPEDITIONARY_FUEL_TANK: string;
+    private WATER_COLLECTOR;
+    private BITCOIN;
+    private EXPEDITIONARY_FUEL_TANK;
     static NAME_BACKENDCOUNTERS_CRAFTING: string;
     static SKILL_NAME_HIDEOUT: string;
     static HOUR_FOR_SKILL_CRAFTING: number;
     static SKILL_NAME_CRAFITING: string;
     private hideoutConfig;
-    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, itemEventRouter: ItemEventRouter, httpResponse: HttpResponse, profileHelper: ProfileHelper, inventoryHelper: InventoryHelper, playerService: PlayerService, configServer: ConfigServer);
+    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, itemEventRouter: ItemEventRouter, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, inventoryHelper: InventoryHelper, playerService: PlayerService, configServer: ConfigServer);
     registerProduction(pmcData: IPmcData, body: IHideoutSingleProductionStartRequestData | IHideoutContinousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * This convinience function intialies new Production Object

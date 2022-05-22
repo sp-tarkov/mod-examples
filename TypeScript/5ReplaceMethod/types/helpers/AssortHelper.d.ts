@@ -1,6 +1,6 @@
-import { IPmcData } from "../@types/eft/common/IPmcData";
-import { ITraderAssort } from "../@types/eft/common/tables/ITrader";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { ITraderAssort } from "../models/eft/common/tables/ITrader";
+import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { ItemHelper } from "./ItemHelper";
 import { QuestHelper } from "./QuestHelper";

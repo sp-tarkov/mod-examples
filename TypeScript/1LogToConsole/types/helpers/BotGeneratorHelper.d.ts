@@ -1,10 +1,9 @@
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { ConfigServer } from "../servers/ConfigServer";
-import { IBotConfig } from "../@types/spt/config/IBotConfig";
-import { Inventory as PmcInventory } from "../@types/eft/common/IPmcData";
-import { ModsChances, Mods } from "../@types/eft/common/tables/IBotType";
-import { Item, Upd } from "../@types/eft/common/tables/IItem";
-import { ITemplateItem } from "../@types/eft/common/tables/ITemplateItem";
+import { Inventory as PmcInventory } from "../models/eft/common/IPmcData";
+import { ModsChances, Mods } from "../models/eft/common/tables/IBotType";
+import { Item, Upd } from "../models/eft/common/tables/IItem";
+import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { DurabilityLimitsHelper } from "../helpers/DurabilityLimitsHelper";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
@@ -12,7 +11,7 @@ import { RandomUtil } from "../utils/RandomUtil";
 import { InventoryHelper } from "./InventoryHelper";
 import { ContainerHelper } from "./ContainerHelper";
 import { ItemHelper } from "./ItemHelper";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 declare class BotGeneratorHelper {
     private logger;
     private jsonUtil;
@@ -24,7 +23,7 @@ declare class BotGeneratorHelper {
     private inventoryHelper;
     private containerHelper;
     private configServer;
-    botConfig: IBotConfig;
+    private botConfig;
     constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, durabilityLimitsHelper: DurabilityLimitsHelper, itemHelper: ItemHelper, inventoryHelper: InventoryHelper, containerHelper: ContainerHelper, configServer: ConfigServer);
     generateModsForItem(items: Item[], modPool: Mods, parentId: string, parentTemplate: ITemplateItem, modSpawnChances: ModsChances, isPmc?: boolean): Item[];
     /**
@@ -44,7 +43,6 @@ declare class BotGeneratorHelper {
     };
     private getModTplFromItemDb;
     isItemIncompatibleWithCurrentItems(items: Item[], tplToCheck: string, equipmentSlot: string): boolean;
-    getBiasedRandomNumber(min: number, max: number, shift: number, n: number): number;
     /** Adds an item with all its childern into specified equipmentSlots, wherever it fits.
      * Returns a `boolean` indicating success. */
     addItemWithChildrenToEquipmentSlot(equipmentSlots: string[], parentId: string, parentTpl: string, itemWithChildren: Item[], inventory: PmcInventory): boolean;

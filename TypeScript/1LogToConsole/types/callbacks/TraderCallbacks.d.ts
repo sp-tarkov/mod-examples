@@ -1,13 +1,13 @@
-import { HttpResponse } from "../utils/HttpResponse";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { TraderController } from "../controllers/TraderController";
-import { IEmptyRequestData } from "../@types/eft/common/IEmptyRequestData";
-import { IBarterScheme, ITraderAssort, ITraderBase } from "../@types/eft/common/tables/ITrader";
-import { IGetBodyResponseData } from "../@types/eft/httpResponse/IGetBodyResponseData";
+import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
+import { IBarterScheme, ITraderAssort, ITraderBase } from "../models/eft/common/tables/ITrader";
+import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
 import { OnLoadOnUpdate } from "../di/OnLoadOnUpdate";
 export declare class TraderCallbacks extends OnLoadOnUpdate {
     private httpResponse;
     private traderController;
-    constructor(httpResponse: HttpResponse, traderController: TraderController);
+    constructor(httpResponse: HttpResponseUtil, traderController: TraderController);
     onLoad(): void;
     getRoute(): string;
     getTraderSettings(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ITraderBase[]>;

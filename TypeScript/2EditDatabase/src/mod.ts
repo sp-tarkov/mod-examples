@@ -1,6 +1,6 @@
 import type { DependencyContainer } from "tsyringe";
 
-import { IMod } from "../types/@types/external/mod";
+import { IMod } from "../types/models/external/mod";
 import type { DatabaseServer } from "../types/servers/DatabaseServer";
 
 class Mod implements IMod

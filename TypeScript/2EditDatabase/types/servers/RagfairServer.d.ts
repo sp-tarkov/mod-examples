@@ -1,4 +1,4 @@
-import { HttpResponse } from "../utils/HttpResponse";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { RagfairServerHelper } from "../helpers/RagfairServerHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { RagfairOfferGenerator } from "../generators/RagfairOfferGenerator";
@@ -7,12 +7,12 @@ import { RagfairPriceService } from "../services/RagfairPriceService";
 import { RagfairOfferService } from "../services/RagfairOfferService";
 import { RagfairCategoriesService } from "../services/RagfairCategoriesService";
 import { RagfairLinkedItemService } from "../services/RagfairLinkedItemService";
-import { IRagfairOffer } from "../@types/eft/ragfair/IRagfairOffer";
-import { IItemEventRouterResponse } from "../@types/eft/itemEvent/IItemEventRouterResponse";
+import { IRagfairOffer } from "../models/eft/ragfair/IRagfairOffer";
+import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { ConfigServer } from "./ConfigServer";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { RagfairRequiredItemsService } from "../services/RagfairRequiredItemsService";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 export declare class RagfairServer {
     private logger;
     private ragfairOfferGenerator;
@@ -28,7 +28,7 @@ export declare class RagfairServer {
     private ragfairRequiredItemsService;
     private configServer;
     private ragfairConfig;
-    constructor(logger: ILogger, ragfairOfferGenerator: RagfairOfferGenerator, ragfairServerHelper: RagfairServerHelper, profileHelper: ProfileHelper, itemEventRouter: ItemEventRouter, httpResponse: HttpResponse, saveServer: SaveServer, ragfairPriceService: RagfairPriceService, ragfairOfferService: RagfairOfferService, ragfairLinkedItemService: RagfairLinkedItemService, ragfairCategoriesService: RagfairCategoriesService, ragfairRequiredItemsService: RagfairRequiredItemsService, configServer: ConfigServer);
+    constructor(logger: ILogger, ragfairOfferGenerator: RagfairOfferGenerator, ragfairServerHelper: RagfairServerHelper, profileHelper: ProfileHelper, itemEventRouter: ItemEventRouter, httpResponse: HttpResponseUtil, saveServer: SaveServer, ragfairPriceService: RagfairPriceService, ragfairOfferService: RagfairOfferService, ragfairLinkedItemService: RagfairLinkedItemService, ragfairCategoriesService: RagfairCategoriesService, ragfairRequiredItemsService: RagfairRequiredItemsService, configServer: ConfigServer);
     load(): void;
     update(): void;
     private processExpiredOffer;

@@ -1,9 +1,9 @@
-import { IAkiProfile, Info } from "../@types/eft/profile/IAkiProfile";
+import { IAkiProfile, Info } from "../models/eft/profile/IAkiProfile";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { VFS } from "../utils/VFS";
 import { SaveLoadRouter } from "../di/Router";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 export declare class SaveServer {
     private vfs;
     private saveLoadRouters;

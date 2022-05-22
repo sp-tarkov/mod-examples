@@ -1,7 +1,7 @@
 import { TimeUtil } from "./TimeUtil";
 import { OnLoad } from "../di/OnLoad";
 import { OnUpdate } from "../di/OnUpdate";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 export declare class App {
     private logger;
     private timeUtil;

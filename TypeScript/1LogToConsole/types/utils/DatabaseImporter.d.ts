@@ -3,7 +3,7 @@ import { JsonUtil } from "./JsonUtil";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { ImageRouter } from "../routers/ImageRouter";
 import { OnLoad } from "../di/OnLoad";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 export declare class DatabaseImporter extends OnLoad {
     private logger;
     private vfs;

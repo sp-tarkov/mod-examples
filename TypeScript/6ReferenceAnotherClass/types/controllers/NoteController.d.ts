@@ -1,6 +1,6 @@
-import { IPmcData } from "../@types/eft/common/IPmcData";
-import { INoteActionData } from "../@types/eft/notes/INoteActionData";
-import { IItemEventRouterResponse } from "../@types/eft/itemEvent/IItemEventRouterResponse";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { INoteActionData } from "../models/eft/notes/INoteActionData";
+import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 declare class NoteController {
     private itemEventRouter;

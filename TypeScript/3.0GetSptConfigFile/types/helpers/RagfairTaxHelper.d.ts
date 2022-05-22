@@ -1,9 +1,9 @@
-import { IPmcData } from "../@types/eft/common/IPmcData";
-import { Item } from "../@types/eft/common/tables/IItem";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { Item } from "../models/eft/common/tables/IItem";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { RagfairPriceService } from "../services/RagfairPriceService";
 import { ItemHelper } from "./ItemHelper";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 export declare class RagfairTaxHelper {
     private logger;
     private databaseServer;

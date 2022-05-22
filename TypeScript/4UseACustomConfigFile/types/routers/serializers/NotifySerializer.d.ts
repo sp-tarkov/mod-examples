@@ -1,4 +1,4 @@
-import { IHttpServer } from "../../@types/spt/server/IHttpServer";
+import { IHttpServer } from "../../models/spt/server/IHttpServer";
 import { NotifierController } from "../../controllers/NotifierController";
 import { Serializer } from "../../di/Serializer";
 import { HttpServerHelper } from "../../helpers/HttpServerHelper";

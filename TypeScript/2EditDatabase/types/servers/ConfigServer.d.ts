@@ -1,6 +1,6 @@
 import { JsonUtil } from "../utils/JsonUtil";
 import { VFS } from "../utils/VFS";
-import { ILogger } from "../@types/spt/utils/ILogger";
+import { ILogger } from "../models/spt/utils/ILogger";
 export declare class ConfigServer {
     private logger;
     private vfs;

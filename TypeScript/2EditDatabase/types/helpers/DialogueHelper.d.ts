@@ -1,7 +1,7 @@
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
 import { ItemHelper } from "./ItemHelper";
-import { Dialogue, MessageContent, MessagePreview, MessageType } from "../@types/eft/profile/IAkiProfile";
+import { Dialogue, MessageContent, MessagePreview, MessageType } from "../models/eft/profile/IAkiProfile";
 import { HashUtil } from "../utils/HashUtil";
 import { NotifierHelper } from "./NotifierHelper";
 import { NotificationSendHelper } from "./NotificationSendHelper";
