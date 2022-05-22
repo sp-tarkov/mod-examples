@@ -1,9 +1,9 @@
 {
-  "name": "ReplaceFunction",
+  "name": "OnUpdateOnLoadHooks",
   "version": "1.0.0",
   "main": "src/mod.js",
   "license": "MIT",
-  "author": "Chomp",
+  "author": "Alex",
   "akiVersion": "3.0.0",
   "scripts": {
     "install": "npx handpick --target=devDependencies",
