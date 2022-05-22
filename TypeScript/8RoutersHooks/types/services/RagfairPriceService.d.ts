@@ -1,0 +1,30 @@
+import { RandomUtil } from "../utils/RandomUtil";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { ConfigServer } from "../servers/ConfigServer";
+import { HandbookHelper } from "../helpers/HandbookHelper";
+import { ItemHelper } from "../helpers/ItemHelper";
+import { PresetHelper } from "../helpers/PresetHelper";
+import { Item } from "../models/eft/common/tables/IItem";
+import { IBarterScheme } from "../models/eft/common/tables/ITrader";
+import { ILogger } from "../models/spt/utils/ILogger";
+export declare class RagfairPriceService {
+    private handbookHelper;
+    private databaseServer;
+    private logger;
+    private itemHelper;
+    private presetHelper;
+    private randomUtil;
+    private configServer;
+    private ragfairConfig;
+    private prices;
+    constructor(handbookHelper: HandbookHelper, databaseServer: DatabaseServer, logger: ILogger, itemHelper: ItemHelper, presetHelper: PresetHelper, randomUtil: RandomUtil, configServer: ConfigServer);
+    generateStaticPrices(): void;
+    generateDynamicPrices(): void;
+    hasDynamicPrices(): boolean;
+    getDynamicPrice(itemTpl: string): number;
+    getAllFleaPrices(): Record<string, number>;
+    getFleaPriceForItem(tplId: string): number;
+    getBarterPrice(barterScheme: IBarterScheme[]): number;
+    getDynamicOfferPrice(items: Item[], desiredCurrency: string): number;
+    getWeaponPresetPrice(item: Item, items: Item[], existingPrice: number): number;
+}
