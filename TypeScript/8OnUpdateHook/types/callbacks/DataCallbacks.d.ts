@@ -1,0 +1,32 @@
+import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
+import { IGlobals } from "../models/eft/common/IGlobals";
+import { ICustomizationItem } from "../models/eft/common/tables/ICustomizationItem";
+import { IQuest } from "../models/eft/common/tables/IQuest";
+import { IHideoutArea } from "../models/eft/hideout/IHideoutArea";
+import { IHideoutProduction } from "../models/eft/hideout/IHideoutProduction";
+import { IHideoutScavCase } from "../models/eft/hideout/IHideoutScavCase";
+import { IHideoutSettingsBase } from "../models/eft/hideout/IHideoutSettingsBase";
+import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
+import { ILanguageBase } from "../models/spt/server/ILocaleBase";
+import { ISettingsBase } from "../models/spt/server/ISettingsBase";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
+export declare class DataCallbacks {
+    private httpResponse;
+    private databaseServer;
+    constructor(httpResponse: HttpResponseUtil, databaseServer: DatabaseServer);
+    getSettings(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ISettingsBase>;
+    getGlobals(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IGlobals>;
+    getTemplateItems(url: string, info: IEmptyRequestData, sessionID: string): string;
+    getTemplateHandbook(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
+    getTemplateSuits(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<Record<string, ICustomizationItem>>;
+    getTemplateCharacter(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<string[]>;
+    getTemplateQuests(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IQuest[]>;
+    getHideoutSettings(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IHideoutSettingsBase>;
+    getHideoutAreas(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IHideoutArea[]>;
+    gethideoutProduction(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IHideoutProduction[]>;
+    getHideoutScavcase(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IHideoutScavCase[]>;
+    getLocalesLanguages(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ILanguageBase[]>;
+    getLocalesMenu(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
+    getLocalesGlobal(url: string, info: IEmptyRequestData, sessionID: string): string;
+}
