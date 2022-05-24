@@ -1,9 +1,9 @@
-import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { OnLoad } from "../di/OnLoad";
 import { DelayedModLoader } from "../loaders/DelayedModLoader";
+import { IHttpServer } from "../models/spt/server/IHttpServer";
+import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
-import { ILogger } from '../models/spt/utils/ILogger';
-import { IHttpServer } from '../models/spt/server/IHttpServer';
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 declare class ModCallbacks extends OnLoad {
     private logger;
     private httpResponse;

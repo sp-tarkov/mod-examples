@@ -1,13 +1,12 @@
-import { IWatermark, IWatermarkLocale } from "../models/spt/utils/IWatermark";
 import { ConfigServer } from "../servers/ConfigServer";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class WatermarkLocale implements IWatermarkLocale {
+export declare class WatermarkLocale {
     private locales;
     getLocale(): string;
     getDescription(): string[];
     getWarning(): string[];
 }
-export declare class Watermark implements IWatermark {
+export declare class Watermark {
     private logger;
     private configServer;
     private watermarkLocale?;

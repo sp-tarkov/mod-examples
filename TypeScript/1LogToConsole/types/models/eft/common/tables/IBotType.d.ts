@@ -100,6 +100,7 @@ export interface Generation {
 export interface ItemMinMax {
     grenades: MinMax;
     healing: MinMax;
+    stims: MinMax;
     looseLoot: MinMax;
     magazines: MinMax;
     specialItems: MinMax;

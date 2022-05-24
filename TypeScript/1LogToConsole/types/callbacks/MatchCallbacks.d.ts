@@ -1,10 +1,11 @@
 import { MatchController } from "../controllers/MatchController";
-import { DatabaseServer } from "../servers/DatabaseServer";
-import { IStartOfflineRaidRequestData } from "../models/eft/match/IStartOffineRaidRequestData";
-import { IEndOfflineRaidRequestData } from "../models/eft/match/IEndOfflineRaidRequestData";
-import { INullResponseData } from "../models/eft/httpResponse/INullResponseData";
-import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
 import { IPmcData } from "../models/eft/common/IPmcData";
+import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
+import { INullResponseData } from "../models/eft/httpResponse/INullResponseData";
+import { IEndOfflineRaidRequestData } from "../models/eft/match/IEndOfflineRaidRequestData";
+import { IGetProfileRequestData } from "../models/eft/match/IGetProfileRequestData";
+import { IStartOfflineRaidRequestData } from "../models/eft/match/IStartOffineRaidRequestData";
+import { DatabaseServer } from "../servers/DatabaseServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 export declare class MatchCallbacks {
@@ -22,7 +23,7 @@ export declare class MatchCallbacks {
     acceptGroupInvite(url: string, info: any, sessionID: string): INullResponseData;
     cancelGroupInvite(url: string, info: any, sessionID: string): INullResponseData;
     putMetrics(url: string, info: any, sessionID: string): INullResponseData;
-    getProfile(url: string, info: any, sessionID: string): IGetBodyResponseData<IPmcData[]>;
+    getProfile(url: string, info: IGetProfileRequestData, sessionID: string): IGetBodyResponseData<IPmcData[]>;
     serverAvailable(url: string, info: any, sessionID: string): IGetBodyResponseData<any> | IGetBodyResponseData<true>;
     joinMatch(url: string, info: any, sessionID: string): IGetBodyResponseData<any>;
     getMetrics(url: string, info: any, sessionID: string): IGetBodyResponseData<string>;
