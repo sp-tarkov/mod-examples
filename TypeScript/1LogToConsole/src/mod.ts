@@ -1,10 +1,10 @@
 import type { DependencyContainer } from "tsyringe";
-import { IMod } from "../types/models/external/mod";
-import { ILogger } from "../types/models/spt/utils/ILogger";
+import type { IMod } from "../types/models/external/mod";
+import type { ILogger } from "../types/models/spt/utils/ILogger";
 
 class Mod implements IMod
 {
-    // Code added here will load BEFORE the server has started loading
+	// Code added here will load BEFORE the server has started loading
     public load(container: DependencyContainer): void
     { 
         // get the logger from the server container
@@ -16,6 +16,7 @@ class Mod implements IMod
     }
 
     // Code added here will be run AFTER the server has started
+	// not used in this example
     public delayedLoad(container: DependencyContainer): void
     { return }
 }
