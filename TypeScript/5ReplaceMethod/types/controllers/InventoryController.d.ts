@@ -25,7 +25,8 @@ import { IInventoryCreateMarkerRequestData } from "../models/eft/inventory/IInve
 import { IInventoryDeleteMarkerRequestData } from "../models/eft/inventory/IInventoryDeleteMarkerRequestData";
 import { IInventoryEditMarkerRequestData } from "../models/eft/inventory/IInventoryEditMarkerRequestData";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class InventoryController {
+export declare class InventoryController 
+{
     private logger;
     private hashUtil;
     private jsonUtil;

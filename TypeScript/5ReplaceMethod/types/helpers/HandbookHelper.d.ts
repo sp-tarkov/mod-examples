@@ -1,14 +1,17 @@
-declare class LookupItem {
+declare class LookupItem 
+{
     byId: Record<number, string>;
     byParent: Record<string, string[]>;
     constructor();
 }
-export declare class LookupCollection {
+export declare class LookupCollection 
+{
     items: LookupItem;
     categories: LookupItem;
     constructor();
 }
-export declare class HandbookHelper {
+export declare class HandbookHelper 
+{
     private lookup;
     hydrateLookup(lookup: LookupCollection): void;
     getTemplatePrice(x: string): number;

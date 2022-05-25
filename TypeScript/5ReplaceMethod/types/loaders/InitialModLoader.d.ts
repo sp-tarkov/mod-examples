@@ -6,7 +6,8 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { ModCompilerService } from "../services/ModCompilerService";
 import { HashCacheService } from "../services/HashCacheService";
 import { IModLoader } from "../models/spt/mod/IModLoader";
-export declare class InitialModLoader implements IModLoader {
+export declare class InitialModLoader implements IModLoader 
+{
     private logger;
     private vfs;
     private jsonUtil;

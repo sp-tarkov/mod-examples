@@ -1,6 +1,7 @@
 import { LauncherCallbacks } from "../../callbacks/LauncherCallbacks";
 import { HandledRoute, StaticRouter } from "../../di/Router";
-export declare class LauncherStaticRouter extends StaticRouter {
+export declare class LauncherStaticRouter extends StaticRouter 
+{
     private launcherCallbacks;
     constructor(launcherCallbacks: LauncherCallbacks);
     getHandledRoutes(): HandledRoute[];

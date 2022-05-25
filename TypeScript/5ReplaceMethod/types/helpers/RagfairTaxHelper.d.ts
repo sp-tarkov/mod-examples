@@ -4,7 +4,8 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { RagfairPriceService } from "../services/RagfairPriceService";
 import { ItemHelper } from "./ItemHelper";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class RagfairTaxHelper {
+export declare class RagfairTaxHelper 
+{
     private logger;
     private databaseServer;
     private ragfairPriceService;

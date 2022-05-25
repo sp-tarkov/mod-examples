@@ -12,7 +12,8 @@ import { InventoryHelper } from "./InventoryHelper";
 import { ContainerHelper } from "./ContainerHelper";
 import { ItemHelper } from "./ItemHelper";
 import { ILogger } from "../models/spt/utils/ILogger";
-declare class BotGeneratorHelper {
+declare class BotGeneratorHelper 
+{
     private logger;
     private jsonUtil;
     private hashUtil;
@@ -48,7 +49,8 @@ declare class BotGeneratorHelper {
     addItemWithChildrenToEquipmentSlot(equipmentSlots: string[], parentId: string, parentTpl: string, itemWithChildren: Item[], inventory: PmcInventory): boolean;
     private itemAllowedInContainer;
 }
-export declare class ExhaustableArray<T> {
+export declare class ExhaustableArray<T> 
+{
     private itemPool;
     private randomUtil;
     private jsonUtil;
@@ -58,8 +60,10 @@ export declare class ExhaustableArray<T> {
     getFirstValue(): T;
     hasValues(): boolean;
 }
-declare namespace BotGeneratorHelper {
-    enum EquipmentSlots {
+declare namespace BotGeneratorHelper 
+{
+    enum EquipmentSlots 
+        {
         HEADWEAR = "Headwear",
         EARPIECE = "Earpiece",
         FACE_COVER = "FaceCover",

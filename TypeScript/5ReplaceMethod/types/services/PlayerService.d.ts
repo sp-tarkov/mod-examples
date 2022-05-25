@@ -2,7 +2,8 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { IPlayerIncrementSkillLevelRequestData } from "../models/eft/player/IPlayerIncrementSkillLevelRequestData";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class PlayerService {
+export declare class PlayerService 
+{
     private logger;
     private databaseServer;
     constructor(logger: ILogger, databaseServer: DatabaseServer);

@@ -20,7 +20,8 @@ import { ISendMessageRequest } from "../models/eft/dialog/ISendMessageRequest";
 import { IGetMailDialogViewResponseData } from "../models/eft/dialog/IGetMailDialogViewResponseData";
 import { IGetAllAttachmentsResponse } from "../models/eft/dialog/IGetAllAttachmentsResponse";
 import { OnUpdate } from "../di/OnUpdate";
-export declare class DialogueCallbacks extends OnUpdate {
+export declare class DialogueCallbacks extends OnUpdate 
+{
     private hashUtil;
     private timeUtil;
     private httpResponse;

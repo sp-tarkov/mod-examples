@@ -1,6 +1,7 @@
 import { GameCallbacks } from "../../callbacks/GameCallbacks";
 import { HandledRoute, StaticRouter } from "../../di/Router";
-export declare class GameStaticRouter extends StaticRouter {
+export declare class GameStaticRouter extends StaticRouter 
+{
     private gameCallbacks;
     constructor(gameCallbacks: GameCallbacks);
     getHandledRoutes(): HandledRoute[];

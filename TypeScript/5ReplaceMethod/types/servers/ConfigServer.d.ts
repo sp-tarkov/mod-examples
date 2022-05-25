@@ -1,7 +1,8 @@
 import { JsonUtil } from "../utils/JsonUtil";
 import { VFS } from "../utils/VFS";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class ConfigServer {
+export declare class ConfigServer 
+{
     private logger;
     private vfs;
     private jsonUtil;
@@ -10,7 +11,8 @@ export declare class ConfigServer {
     getConfig<T>(configType: ConfigTypes): T;
     initialize(): void;
 }
-export declare const enum ConfigTypes {
+export declare const enum ConfigTypes 
+    {
     AIRDROP = "aki-airdrop",
     BOT = "aki-bot",
     CORE = "aki-core",

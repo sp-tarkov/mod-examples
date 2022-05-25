@@ -1,6 +1,7 @@
 import { BackendCounter, Bonus } from "../IPmcData";
 import { Item } from "./IItem";
-export interface IBotBase {
+export interface IBotBase 
+{
     _id: string;
     aid: string;
     savage: any;
@@ -17,7 +18,8 @@ export interface IBotBase {
     Hideout: Hideout;
     Bonuses: Bonus[];
 }
-export interface Info {
+export interface Info 
+{
     Nickname: string;
     LowerNickname: string;
     Side: string;
@@ -39,22 +41,26 @@ export interface Info {
     BannedUntil: number;
     IsStreamerModeAvailable: boolean;
 }
-export interface Settings {
+export interface Settings 
+{
     Role: string;
     BotDifficulty: string;
     Experience: number;
     StandingForKill: number;
     AggressorBonus: number;
 }
-export interface Customization {
+export interface Customization 
+{
     Head: string;
     Body: string;
     Feet: string;
     Hands: string;
 }
-export interface Health {
+export interface Health 
+{
 }
-export interface Inventory {
+export interface Inventory 
+{
     items: Item[];
     equipment: string;
     stash: string;
@@ -63,33 +69,42 @@ export interface Inventory {
     questStashItems: string;
     fastPanel: FastPanel;
 }
-export interface FastPanel {
+export interface FastPanel 
+{
 }
-export interface Skills {
+export interface Skills 
+{
     Common: any[];
     Mastering: any[];
     Points: number;
 }
-export interface Stats {
+export interface Stats 
+{
     SessionCounters: SessionCounters;
     OverallCounters: OverallCounters;
 }
-export interface SessionCounters {
+export interface SessionCounters 
+{
     Items: any[];
 }
-export interface OverallCounters {
+export interface OverallCounters 
+{
     Items: any[];
 }
-export interface ConditionCounters {
+export interface ConditionCounters 
+{
     Counters: any[];
 }
-export interface Hideout {
+export interface Hideout 
+{
     Production: Production;
     Areas: Area[];
 }
-export interface Production {
+export interface Production 
+{
 }
-export interface Area {
+export interface Area 
+{
     type: number;
     level: number;
     active: boolean;

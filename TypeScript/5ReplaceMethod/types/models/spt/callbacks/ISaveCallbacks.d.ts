@@ -1,4 +1,5 @@
-export interface ISaveCallbacks {
+export interface ISaveCallbacks 
+{
     load(): void;
     update(secondsSinceLastRun: number): boolean;
 }

@@ -13,7 +13,8 @@ import { HashUtil } from "../utils/HashUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 import { IMiniProfile } from "../models/eft/launcher/IMiniProfile";
 import { ExtendedProfileHelper } from "../helpers/ExtendedProfileHelper";
-export declare class ProfileController {
+export declare class ProfileController 
+{
     private hashUtil;
     private timeUtil;
     private saveServer;

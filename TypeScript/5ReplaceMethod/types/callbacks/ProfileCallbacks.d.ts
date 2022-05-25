@@ -11,7 +11,8 @@ import { IValidateNicknameRequestData } from "../models/eft/profile/IValidateNic
 import { ISearchFriendRequestData } from "../models/eft/profile/ISearchFriendRequestData";
 import { ISearchFriendResponse } from "../models/eft/profile/ISearchFriendResponse";
 import { IGetMiniProfileRequestData } from "../models/eft/launcher/IGetMiniProfileRequestData";
-export declare class ProfileCallbacks {
+export declare class ProfileCallbacks 
+{
     private httpResponse;
     private timeUtil;
     private profileController;

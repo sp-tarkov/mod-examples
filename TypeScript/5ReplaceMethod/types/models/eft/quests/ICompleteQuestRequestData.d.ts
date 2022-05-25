@@ -1,4 +1,5 @@
-export interface ICompleteQuestRequestData {
+export interface ICompleteQuestRequestData 
+{
     Action: string;
     qid: string;
     removeExcessItems: boolean;

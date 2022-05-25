@@ -2,7 +2,8 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { RandomUtil } from "../utils/RandomUtil";
 import { BotHelper } from "./BotHelper";
-export declare class DurabilityLimitsHelper {
+export declare class DurabilityLimitsHelper 
+{
     private randomUtil;
     private botHelper;
     private configServer;

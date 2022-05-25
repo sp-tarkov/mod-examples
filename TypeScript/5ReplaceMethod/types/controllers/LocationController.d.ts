@@ -5,7 +5,8 @@ import { ILocationsGenerateAllResponse } from "../models/eft/common/ILocationsSo
 import { JsonUtil } from "../utils/JsonUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class LocationController {
+export declare class LocationController 
+{
     private jsonUtil;
     private logger;
     private locationGenerator;

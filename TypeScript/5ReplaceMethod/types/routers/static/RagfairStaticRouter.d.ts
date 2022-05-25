@@ -1,6 +1,7 @@
 import { RagfairCallbacks } from "../../callbacks/RagfairCallbacks";
 import { HandledRoute, StaticRouter } from "../../di/Router";
-export declare class RagfairStaticRouter extends StaticRouter {
+export declare class RagfairStaticRouter extends StaticRouter 
+{
     private ragfairCallbacks;
     constructor(ragfairCallbacks: RagfairCallbacks);
     getHandledRoutes(): HandledRoute[];

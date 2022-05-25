@@ -10,7 +10,8 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
 import { RandomUtil } from "../utils/RandomUtil";
 import { TimeUtil } from "../utils/TimeUtil";
-export declare class InsuranceService {
+export declare class InsuranceService 
+{
     private logger;
     private databaseServer;
     private secureContainerHelper;

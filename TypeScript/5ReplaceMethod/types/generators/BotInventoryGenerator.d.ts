@@ -8,7 +8,8 @@ import { BotLootGenerator } from "./BotLootGenerator";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { WeightedRandomHelper } from "../helpers/WeightedRandomHelper";
-export declare class BotInventoryGenerator {
+export declare class BotInventoryGenerator 
+{
     private logger;
     private hashUtil;
     private randomUtil;

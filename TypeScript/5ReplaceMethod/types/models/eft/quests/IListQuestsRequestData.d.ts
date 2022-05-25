@@ -1,3 +1,4 @@
-export interface IListQuestsRequestData {
+export interface IListQuestsRequestData 
+{
     completed: boolean;
 }

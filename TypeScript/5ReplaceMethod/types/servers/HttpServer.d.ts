@@ -11,7 +11,8 @@ import { ConfigServer } from "./ConfigServer";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { HttpServerHelper } from "../helpers/HttpServerHelper";
 import { IHttpServer } from "../models/spt/server/IHttpServer";
-export declare class HttpServer implements IHttpServer {
+export declare class HttpServer implements IHttpServer 
+{
     private httpRouter;
     private logger;
     private jsonUtil;

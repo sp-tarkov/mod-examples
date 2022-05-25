@@ -5,7 +5,8 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { IWatermark } from "../models/spt/utils/IWatermark";
 import { HttpServerHelper } from "../helpers/HttpServerHelper";
-export declare class GameController {
+export declare class GameController 
+{
     private logger;
     private watermark;
     private httpServerHelper;

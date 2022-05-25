@@ -4,7 +4,8 @@ import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyRespons
 import { ILocationsGenerateAllResponse } from "../models/eft/common/ILocationsSourceDestinationBase";
 import { ILocationBase } from "../models/eft/common/ILocationBase";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
-export declare class LocationCallbacks {
+export declare class LocationCallbacks 
+{
     private httpResponse;
     private locationController;
     constructor(httpResponse: HttpResponseUtil, locationController: LocationController);

@@ -1,5 +1,6 @@
 import { TimeUtil } from "../utils/TimeUtil";
-export declare class MatchLocationService {
+export declare class MatchLocationService 
+{
     private timeUtil;
     private locations;
     constructor(timeUtil: TimeUtil);

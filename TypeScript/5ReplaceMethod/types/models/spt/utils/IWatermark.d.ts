@@ -1,9 +1,11 @@
-export interface IWatermarkLocale {
+export interface IWatermarkLocale 
+{
     getLocale(): string;
     getDescription(): string[];
     getWarning(): string[];
 }
-export interface IWatermark {
+export interface IWatermark 
+{
     initialize(): void;
     getVersionTag(): string;
     /**

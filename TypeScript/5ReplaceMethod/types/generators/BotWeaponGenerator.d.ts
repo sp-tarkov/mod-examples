@@ -7,7 +7,8 @@ import { BotGeneratorHelper } from "../helpers/BotGeneratorHelper";
 import { HashUtil } from "../utils/HashUtil";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { RandomUtil } from "../utils/RandomUtil";
-export declare class BotWeaponGenerator {
+export declare class BotWeaponGenerator 
+{
     private logger;
     private hashUtil;
     private databaseServer;

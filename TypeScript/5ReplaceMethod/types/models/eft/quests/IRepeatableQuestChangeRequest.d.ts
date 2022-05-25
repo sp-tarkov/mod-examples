@@ -1,4 +1,5 @@
-export interface IRepeatableQuestChangeRequest {
+export interface IRepeatableQuestChangeRequest 
+{
     Action: "RepeatableQuestChange";
     qid: string;
 }

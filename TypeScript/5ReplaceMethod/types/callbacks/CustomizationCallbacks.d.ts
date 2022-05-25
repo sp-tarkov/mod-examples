@@ -7,7 +7,8 @@ import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyRespons
 import { ISuit } from "../models/eft/common/tables/ITrader";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
-export declare class CustomizationCallbacks {
+export declare class CustomizationCallbacks 
+{
     private customizationController;
     private saveServer;
     private httpResponse;

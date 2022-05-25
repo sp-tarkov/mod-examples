@@ -4,7 +4,8 @@ import { IVersionValidateRequestData } from "../../eft/game/IVersionValidateRequ
 import { IGetBodyResponseData } from "../../eft/httpResponse/IGetBodyResponseData";
 import { INullResponseData } from "../../eft/httpResponse/INullResponseData";
 import { IGameConfigResponse } from "../../eft/game/IGameConfigResponse";
-export interface IGameCallbacks {
+export interface IGameCallbacks 
+{
     versionValidate(url: string, info: IVersionValidateRequestData, sessionID: string): INullResponseData;
     gameStart(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
     gameLogout(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;

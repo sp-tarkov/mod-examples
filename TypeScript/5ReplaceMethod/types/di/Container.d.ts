@@ -1,5 +1,6 @@
 import { DependencyContainer } from "tsyringe";
-export declare class Container {
+export declare class Container 
+{
     static registerTypes(depContainer: DependencyContainer): void;
     private static registerUtils;
     private static registerRouters;

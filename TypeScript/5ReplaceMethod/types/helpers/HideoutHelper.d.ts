@@ -16,7 +16,8 @@ import { IHideoutTakeProductionRequestData } from "../models/eft/hideout/IHideou
 import { InventoryHelper } from "./InventoryHelper";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class HideoutHelper {
+export declare class HideoutHelper 
+{
     private logger;
     private hashUtil;
     private timeUtil;

@@ -4,7 +4,8 @@ import { JsonUtil } from "../utils/JsonUtil";
 import { VFS } from "../utils/VFS";
 import { SaveLoadRouter } from "../di/Router";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class SaveServer {
+export declare class SaveServer 
+{
     private vfs;
     private saveLoadRouters;
     private jsonUtil;

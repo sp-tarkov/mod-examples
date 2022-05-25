@@ -6,7 +6,8 @@ import { IRemoveProfileData } from "../models/eft/launcher/IRemoveProfileData";
 import { ILoginRequestData } from "../models/eft/launcher/ILoginRequestData";
 import { IChangeRequestData } from "../models/eft/launcher/IChangeRequestData";
 import { IWatermark } from "../models/spt/utils/IWatermark";
-declare class LauncherCallbacks {
+declare class LauncherCallbacks 
+{
     private httpResponse;
     private launcherController;
     private saveServer;

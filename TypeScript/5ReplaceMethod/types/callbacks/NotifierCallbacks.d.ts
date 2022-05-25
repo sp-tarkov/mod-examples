@@ -5,7 +5,8 @@ import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyRespons
 import { INotifierChannel } from "../models/eft/notifier/INotifier";
 import { ISelectProfileRequestData } from "../models/eft/notifier/ISelectProfileRequestData";
 import { NotifierController } from "../controllers/NotifierController";
-export declare class NotifierCallbacks {
+export declare class NotifierCallbacks 
+{
     private httpServerHelper;
     private httpResponse;
     private notifierController;

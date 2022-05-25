@@ -2,7 +2,8 @@ import { IPmcData } from "../../models/eft/common/IPmcData";
 import { IItemEventRouterResponse } from "../../models/eft/itemEvent/IItemEventRouterResponse";
 import { QuestCallbacks } from "../../callbacks/QuestCallbacks";
 import { HandledRoute, ItemEventRouterDefinition } from "../../di/Router";
-export declare class QuestItemEventRouter extends ItemEventRouterDefinition {
+export declare class QuestItemEventRouter extends ItemEventRouterDefinition 
+{
     private questCallbacks;
     constructor(questCallbacks: QuestCallbacks);
     getHandledRoutes(): HandledRoute[];

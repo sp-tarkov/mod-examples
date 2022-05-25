@@ -1,4 +1,5 @@
-export declare class Program {
+export declare class Program 
+{
     constructor();
     start(): void;
 }

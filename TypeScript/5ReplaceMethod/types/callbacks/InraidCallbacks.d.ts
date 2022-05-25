@@ -5,7 +5,8 @@ import { IRegisterPlayerRequestData } from "../models/eft/inRaid/IRegisterPlayer
 import { ISaveProgressRequestData } from "../models/eft/inRaid/ISaveProgressRequestData";
 import { ConfigServer } from "../servers/ConfigServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
-export declare class InraidCallbacks {
+export declare class InraidCallbacks 
+{
     private inraidController;
     private httpResponse;
     private configServer;

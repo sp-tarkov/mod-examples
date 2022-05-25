@@ -1,10 +1,12 @@
-export interface IWeatherData {
+export interface IWeatherData 
+{
     acceleration: number;
     time: string;
     date: string;
     weather: IWeather;
 }
-export interface IWeather {
+export interface IWeather 
+{
     pressure: number;
     temp: number;
     fog: string;

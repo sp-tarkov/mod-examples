@@ -1,4 +1,5 @@
-export interface IHideoutTakeItemOutRequestData {
+export interface IHideoutTakeItemOutRequestData 
+{
     Action: "HideoutTakeItemsFromAreaSlots";
     areaType: number;
     slots: number[];

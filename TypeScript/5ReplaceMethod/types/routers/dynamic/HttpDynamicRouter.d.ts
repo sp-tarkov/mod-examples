@@ -1,6 +1,7 @@
 import { DynamicRouter, HandledRoute } from "../../di/Router";
 import { ImageRouter } from "../ImageRouter";
-export declare class HttpDynamicRouter extends DynamicRouter {
+export declare class HttpDynamicRouter extends DynamicRouter 
+{
     private imageRouter;
     constructor(imageRouter: ImageRouter);
     private readonly _routes;

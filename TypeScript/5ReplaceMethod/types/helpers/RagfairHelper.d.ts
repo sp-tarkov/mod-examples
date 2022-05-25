@@ -11,7 +11,8 @@ import { UtilityHelper } from "./UtilityHelper";
 import { ConfigServer } from "../servers/ConfigServer";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { TraderAssortHelper } from "./TraderAssortHelper";
-export declare class RagfairHelper {
+export declare class RagfairHelper 
+{
     private logger;
     private jsonUtil;
     private traderAssortHelper;

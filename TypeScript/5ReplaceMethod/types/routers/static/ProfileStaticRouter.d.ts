@@ -1,6 +1,7 @@
 import { ProfileCallbacks } from "../../callbacks/ProfileCallbacks";
 import { HandledRoute, StaticRouter } from "../../di/Router";
-export declare class ProfileStaticRouter extends StaticRouter {
+export declare class ProfileStaticRouter extends StaticRouter 
+{
     private profileCallbacks;
     constructor(profileCallbacks: ProfileCallbacks);
     getHandledRoutes(): HandledRoute[];

@@ -1,5 +1,6 @@
 import { IBaseConfig } from "./IBaseConfig";
-export interface IBotConfig extends IBaseConfig {
+export interface IBotConfig extends IBaseConfig 
+{
     kind: "aki-bot";
     presetBatch: PresetBatch;
     bosses: string[];
@@ -9,7 +10,8 @@ export interface IBotConfig extends IBaseConfig {
     showTypeInNickname: boolean;
     maxBotCap: number;
 }
-export interface PresetBatch {
+export interface PresetBatch 
+{
     assault: number;
     bossBully: number;
     bossGluhar: number;
@@ -36,7 +38,8 @@ export interface PresetBatch {
     test: number;
     exUsec: number;
 }
-export interface Durability {
+export interface Durability 
+{
     default: DefaultDurability;
     pmc: PmcDurability;
     boss: BotDurability;
@@ -49,43 +52,52 @@ export interface Durability {
     sectantpriest: BotDurability;
     sectantwarrior: BotDurability;
 }
-export interface DefaultDurability {
+export interface DefaultDurability 
+{
     armor: DefaultArmor;
     weapon: WeaponDurability;
 }
-export interface DefaultArmor {
+export interface DefaultArmor 
+{
     maxDelta: number;
     minDelta: number;
 }
-export interface WeaponDurability {
+export interface WeaponDurability 
+{
     lowestMax: number;
     highestMax: number;
     maxDelta: number;
     minDelta: number;
 }
-export interface PmcDurability {
+export interface PmcDurability 
+{
     armor: PmcDurabilityArmor;
     weapon: WeaponDurability;
 }
-export interface PmcDurabilityArmor {
+export interface PmcDurabilityArmor 
+{
     lowestMaxPercent: number;
     highestMaxPercent: number;
     maxDelta: number;
     minDelta: number;
 }
-export interface BotDurability {
+export interface BotDurability 
+{
     armor: ArmorDurability;
     weapon: WeaponDurability;
 }
-export interface ArmorDurability {
+export interface ArmorDurability 
+{
     maxDelta: number;
     minDelta: number;
 }
-export interface LootNvalue {
+export interface LootNvalue 
+{
     scav: number;
     pmc: number;
 }
-export interface PmcConfig {
+export interface PmcConfig 
+{
     dynamicLoot: DynamicLoot;
     cartridgeBlacklist: string[];
     difficulty: string;
@@ -98,13 +110,15 @@ export interface PmcConfig {
     maxVestLootTotalRub: number;
     types: Types;
 }
-export interface DynamicLoot {
+export interface DynamicLoot 
+{
     whitelist: string[];
     blacklist: string[];
     spawnLimits: Record<string, number>;
     moneyStackLimits: Record<string, number>;
 }
-export interface Types {
+export interface Types 
+{
     assault: number;
     cursedAssault: number;
     pmcBot: number;

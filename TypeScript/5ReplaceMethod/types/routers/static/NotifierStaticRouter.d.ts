@@ -1,6 +1,7 @@
 import { NotifierCallbacks } from "../../callbacks/NotifierCallbacks";
 import { HandledRoute, StaticRouter } from "../../di/Router";
-export declare class NotifierStaticRouter extends StaticRouter {
+export declare class NotifierStaticRouter extends StaticRouter 
+{
     private notifierCallbacks;
     constructor(notifierCallbacks: NotifierCallbacks);
     getHandledRoutes(): HandledRoute[];

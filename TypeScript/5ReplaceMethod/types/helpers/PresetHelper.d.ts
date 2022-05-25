@@ -1,6 +1,7 @@
 import { Preset } from "../models/eft/common/IGlobals";
 import { DatabaseServer } from "../servers/DatabaseServer";
-export declare class PresetHelper {
+export declare class PresetHelper 
+{
     private databaseServer;
     private lookup;
     constructor(databaseServer: DatabaseServer);

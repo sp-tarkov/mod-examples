@@ -32,7 +32,8 @@ import { RagfairTaxHelper } from "../helpers/RagfairTaxHelper";
 import { RagfairOfferHelper } from "../helpers/RagfairOfferHelper";
 import { RagfairRequiredItemsService } from "../services/RagfairRequiredItemsService";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class RagfairController {
+export declare class RagfairController 
+{
     private logger;
     private timeUtil;
     private httpResponse;

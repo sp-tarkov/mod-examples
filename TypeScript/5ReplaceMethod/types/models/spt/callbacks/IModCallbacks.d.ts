@@ -1,4 +1,5 @@
-export interface IModCallbacks {
+export interface IModCallbacks 
+{
     load(): void;
     sendBundle(sessionID: string, req: any, resp: any, body: any): void;
     getBundles(url: string, info: any, sessionID: string): string;

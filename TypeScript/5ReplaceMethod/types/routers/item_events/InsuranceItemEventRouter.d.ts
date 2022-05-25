@@ -2,7 +2,8 @@ import { IPmcData } from "../../models/eft/common/IPmcData";
 import { IItemEventRouterResponse } from "../../models/eft/itemEvent/IItemEventRouterResponse";
 import { InsuranceCallbacks } from "../../callbacks/InsuranceCallbacks";
 import { HandledRoute, ItemEventRouterDefinition } from "../../di/Router";
-export declare class InsuranceItemEventRouter extends ItemEventRouterDefinition {
+export declare class InsuranceItemEventRouter extends ItemEventRouterDefinition 
+{
     private insuranceCallbacks;
     constructor(insuranceCallbacks: InsuranceCallbacks);
     getHandledRoutes(): HandledRoute[];

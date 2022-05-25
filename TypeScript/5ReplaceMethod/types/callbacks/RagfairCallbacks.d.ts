@@ -15,7 +15,8 @@ import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { OnLoadOnUpdate } from "../di/OnLoadOnUpdate";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class RagfairCallbacks extends OnLoadOnUpdate {
+export declare class RagfairCallbacks extends OnLoadOnUpdate 
+{
     private httpResponse;
     private logger;
     private jsonUtil;

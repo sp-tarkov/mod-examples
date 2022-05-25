@@ -10,7 +10,8 @@ import { DialogueHelper } from "./DialogueHelper";
 import { Item } from "../models/eft/common/tables/IItem";
 import { JsonUtil } from "../utils/JsonUtil";
 import { HashUtil } from "../utils/HashUtil";
-export declare class RagfairServerHelper {
+export declare class RagfairServerHelper 
+{
     private randomUtil;
     private hashUtil;
     private saveServer;

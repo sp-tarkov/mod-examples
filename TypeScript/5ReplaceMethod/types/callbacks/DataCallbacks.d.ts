@@ -11,7 +11,8 @@ import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyRespons
 import { ILanguageBase } from "../models/spt/server/ILocaleBase";
 import { ISettingsBase } from "../models/spt/server/ISettingsBase";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
-export declare class DataCallbacks {
+export declare class DataCallbacks 
+{
     private httpResponse;
     private databaseServer;
     constructor(httpResponse: HttpResponseUtil, databaseServer: DatabaseServer);

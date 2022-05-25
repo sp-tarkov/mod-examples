@@ -1,6 +1,7 @@
 import { CustomizationCallbacks } from "../../callbacks/CustomizationCallbacks";
 import { DynamicRouter, HandledRoute } from "../../di/Router";
-export declare class CustomizationDynamicRouter extends DynamicRouter {
+export declare class CustomizationDynamicRouter extends DynamicRouter 
+{
     private customizationCallbacks;
     constructor(customizationCallbacks: CustomizationCallbacks);
     private readonly _routes;

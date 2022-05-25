@@ -5,7 +5,8 @@ import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRout
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
 import { WeaponBuild } from "../models/eft/profile/IAkiProfile";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
-export declare class PresetBuildCallbacks {
+export declare class PresetBuildCallbacks 
+{
     private httpResponse;
     private presetBuildController;
     constructor(httpResponse: HttpResponseUtil, presetBuildController: PresetBuildController);

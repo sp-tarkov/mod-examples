@@ -1,4 +1,5 @@
-export interface IGetItemPriceResult {
+export interface IGetItemPriceResult 
+{
     avg: number;
     min: number;
     max: number;

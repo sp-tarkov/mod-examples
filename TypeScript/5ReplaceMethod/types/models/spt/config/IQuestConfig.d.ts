@@ -1,10 +1,12 @@
 import { IBaseConfig } from "./IBaseConfig";
-export interface IQuestConfig extends IBaseConfig {
+export interface IQuestConfig extends IBaseConfig 
+{
     kind: "aki-quest";
     redeemTime: number;
     repeatableQuests: IRepeatableQuestConfig[];
 }
-export interface IRepeatableQuestConfig {
+export interface IRepeatableQuestConfig 
+{
     name: string;
     types: string[];
     resetTime: number;
@@ -15,7 +17,8 @@ export interface IRepeatableQuestConfig {
     traderWhitelist: ITraderWhitelist[];
     questConfig: IQuestConfig;
 }
-export declare enum ELocationName {
+export declare enum ELocationName 
+    {
     FACTORY_DAY = "factory4_day",
     BIGMAP = "bigmap",
     WOODS = "Woods",
@@ -26,7 +29,8 @@ export declare enum ELocationName {
     RESERVE = "RezervBase",
     ANY = "any"
 }
-export interface IRewardScaling {
+export interface IRewardScaling 
+{
     levels: number[];
     experience: number[];
     roubles: number[];
@@ -34,24 +38,29 @@ export interface IRewardScaling {
     reputation: number[];
     rewardSpread: number;
 }
-export interface ITraderWhitelist {
+export interface ITraderWhitelist 
+{
     traderId: string;
     questTypes: string[];
 }
-export interface IQuestConfig {
+export interface IQuestConfig 
+{
     Exploration: IExploration;
     Completion: ICompletion;
     Elimination: IElimination;
 }
-export interface IExploration {
+export interface IExploration 
+{
     maxExtracts: number;
     specificExits: ISpecificExits;
 }
-export interface ISpecificExits {
+export interface ISpecificExits 
+{
     probability: number;
     passageRequirementWhitelist: string[];
 }
-export interface ICompletion {
+export interface ICompletion 
+{
     minRequestedAmount: number;
     maxRequestedAmount: number;
     minRequestedBulletAmount: number;
@@ -59,7 +68,8 @@ export interface ICompletion {
     useWhitelist: boolean;
     useBlacklist: boolean;
 }
-export interface IElimination {
+export interface IElimination 
+{
     targets: ITarget[];
     bodyPartProb: number;
     bodyParts: IBodyPart[];
@@ -71,17 +81,21 @@ export interface IElimination {
     maxKills: number;
     minKills: number;
 }
-export interface IProbabilityObject {
+export interface IProbabilityObject 
+{
     key: string;
     relativeProbability: number;
     data?: any;
 }
-export interface ITarget extends IProbabilityObject {
+export interface ITarget extends IProbabilityObject 
+{
     data: IBossInfo;
 }
-export interface IBossInfo {
+export interface IBossInfo 
+{
     isBoss: boolean;
 }
-export interface IBodyPart extends IProbabilityObject {
+export interface IBodyPart extends IProbabilityObject 
+{
     data: string[];
 }

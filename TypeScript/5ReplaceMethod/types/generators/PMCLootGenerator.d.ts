@@ -1,7 +1,8 @@
 import { ItemHelper } from "../helpers/ItemHelper";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { ConfigServer } from "../servers/ConfigServer";
-export declare class PMCLootGenerator {
+export declare class PMCLootGenerator 
+{
     private itemHelper;
     private databaseServer;
     private configServer;

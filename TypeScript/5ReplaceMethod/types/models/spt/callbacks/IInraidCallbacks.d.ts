@@ -3,7 +3,8 @@ import { IAkiProfile } from "../../eft/profile/IAkiProfile";
 import { IEmptyRequestData } from "../../eft/common/IEmptyRequestData";
 import { IRegisterPlayerRequestData } from "../../eft/inRaid/IRegisterPlayerRequestData";
 import { ISaveProgressRequestData } from "../../eft/inRaid/ISaveProgressRequestData";
-export interface IInraidCallbacks {
+export interface IInraidCallbacks 
+{
     onLoad(sessionID: string): IAkiProfile;
     registerPlayer(url: string, info: IRegisterPlayerRequestData, sessionID: string): INullResponseData;
     saveProgress(url: string, info: ISaveProgressRequestData, sessionID: string): INullResponseData;

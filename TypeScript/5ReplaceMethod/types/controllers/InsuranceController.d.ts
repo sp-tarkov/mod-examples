@@ -14,7 +14,8 @@ import { IInsureRequestData } from "../models/eft/insurance/IInsureRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { InsuranceService } from "../services/InsuranceService";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class InsuranceController {
+export declare class InsuranceController 
+{
     private logger;
     private randomUtil;
     private itemEventRouter;

@@ -1,6 +1,7 @@
 import { InraidCallbacks } from "../../callbacks/InraidCallbacks";
 import { HandledRoute, StaticRouter } from "../../di/Router";
-export declare class InraidStaticRouter extends StaticRouter {
+export declare class InraidStaticRouter extends StaticRouter 
+{
     private inraidCallbacks;
     constructor(inraidCallbacks: InraidCallbacks);
     getHandledRoutes(): HandledRoute[];

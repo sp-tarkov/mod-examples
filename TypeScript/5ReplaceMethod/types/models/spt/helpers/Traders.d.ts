@@ -1,4 +1,5 @@
-export declare enum Traders {
+export declare enum Traders 
+    {
     PRAPOR = "54cb50c76803fa8b248b4571",
     THERAPIST = "54cb57776803fa99248b456e",
     FENCE = "579dc571d53a0658a154fbec",

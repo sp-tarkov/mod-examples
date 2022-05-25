@@ -10,7 +10,8 @@ import { ISyncHealthRequestData } from "../models/eft/health/ISyncHealthRequestD
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class HealthController {
+export declare class HealthController 
+{
     private logger;
     private itemEventRouter;
     private itemHelper;

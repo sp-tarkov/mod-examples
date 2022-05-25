@@ -6,7 +6,8 @@ import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRout
 import { WeaponBuild } from "../models/eft/profile/IAkiProfile";
 import { HashUtil } from "../utils/HashUtil";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
-export declare class PresetBuildController {
+export declare class PresetBuildController 
+{
     private hashUtil;
     private itemEventRouter;
     private itemHelper;

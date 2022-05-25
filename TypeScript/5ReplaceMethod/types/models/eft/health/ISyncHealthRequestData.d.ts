@@ -1,11 +1,13 @@
-export interface ISyncHealthRequestData {
+export interface ISyncHealthRequestData 
+{
     Health: Health;
     IsAlive: boolean;
     Hydration?: number;
     Energy?: number;
     Temperature?: number;
 }
-export interface Health {
+export interface Health 
+{
     Head?: BodyPartHealth;
     Chest?: BodyPartHealth;
     Stomach?: BodyPartHealth;
@@ -14,7 +16,8 @@ export interface Health {
     LeftLeg?: BodyPartHealth;
     RightLeg?: BodyPartHealth;
 }
-export interface BodyPartHealth {
+export interface BodyPartHealth 
+{
     Maximum: number;
     Current: number;
     Effects: Record<string, number>;

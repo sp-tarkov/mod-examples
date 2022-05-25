@@ -6,7 +6,8 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { JsonUtil } from "../utils/JsonUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class HealthHelper {
+export declare class HealthHelper 
+{
     private jsonUtil;
     private logger;
     private timeUtil;

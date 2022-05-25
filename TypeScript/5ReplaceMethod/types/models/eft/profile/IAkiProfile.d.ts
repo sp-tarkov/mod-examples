@@ -1,6 +1,7 @@
 import { IPmcData } from "../common/IPmcData";
 import { Item } from "../common/tables/IItem";
-export interface IAkiProfile {
+export interface IAkiProfile 
+{
     info: Info;
     characters: Characters;
     suits: string[];
@@ -11,31 +12,36 @@ export interface IAkiProfile {
     inraid: Inraid;
     insurance: Insurance[];
 }
-export interface Info {
+export interface Info 
+{
     id: string;
     username: string;
     password: string;
     wipe: boolean;
     edition: string;
 }
-export interface Characters {
+export interface Characters 
+{
     pmc: IPmcData;
     scav: IPmcData;
 }
-export interface WeaponBuild {
+export interface WeaponBuild 
+{
     id: string;
     name: string;
     root: string;
     items: Item[];
 }
-export interface Dialogue {
+export interface Dialogue 
+{
     _id: string;
     messages: Message[];
     pinned: boolean;
     new: number;
     attachmentsNew: number;
 }
-export interface DialogueInfo {
+export interface DialogueInfo 
+{
     _id: string;
     type: MessageType;
     message: MessagePreview;
@@ -43,7 +49,8 @@ export interface DialogueInfo {
     new: number;
     attachmentsNew: number;
 }
-export declare enum MessageType {
+export declare enum MessageType 
+    {
     USER_MESSAGE = 1,
     NPC_TRADER = 2,
     AUCTION_MESSAGE = 3,
@@ -59,7 +66,8 @@ export declare enum MessageType {
     MESSAGE_WITH_ITEMS = 13,
     INITIAL_SUPPORT = 14
 }
-export interface Message {
+export interface Message 
+{
     _id: string;
     uid: string;
     type: MessageType;
@@ -75,18 +83,21 @@ export interface Message {
     maxStorageTime?: number;
     systemData?: ISystemData;
 }
-export interface MessagePreview {
+export interface MessagePreview 
+{
     uid: string;
     type: MessageType;
     dt: number;
     templateId: string;
     text?: string;
 }
-export interface Items {
+export interface Items 
+{
     stash?: string;
     data?: Item[];
 }
-export interface ISystemData {
+export interface ISystemData 
+{
     date?: string;
     time?: string;
     location?: string;
@@ -94,7 +105,8 @@ export interface ISystemData {
     soldItem?: string;
     itemCount?: number;
 }
-export interface IUpdatableChatMember {
+export interface IUpdatableChatMember 
+{
     Nickname: string;
     Side: string;
     Level: number;
@@ -102,18 +114,22 @@ export interface IUpdatableChatMember {
     Ignored: boolean;
     Banned: boolean;
 }
-export interface DateTime {
+export interface DateTime 
+{
     date: string;
     time: string;
 }
-export interface Aki {
+export interface Aki 
+{
     version: string;
 }
-export interface Vitality {
+export interface Vitality 
+{
     health: Health;
     effects: Effects;
 }
-export interface Health {
+export interface Health 
+{
     Hydration: number;
     Energy: number;
     Temperature: number;
@@ -125,7 +141,8 @@ export interface Health {
     LeftLeg: number;
     RightLeg: number;
 }
-export interface Effects {
+export interface Effects 
+{
     Head: Head;
     Chest: Chest;
     Stomach: Stomach;
@@ -134,31 +151,41 @@ export interface Effects {
     LeftLeg: LeftLeg;
     RightLeg: RightLeg;
 }
-export interface Head {
+export interface Head 
+{
 }
-export interface Chest {
+export interface Chest 
+{
 }
-export interface Stomach {
+export interface Stomach 
+{
 }
-export interface LeftArm {
+export interface LeftArm 
+{
 }
-export interface RightArm {
+export interface RightArm 
+{
 }
-export interface LeftLeg {
+export interface LeftLeg 
+{
 }
-export interface RightLeg {
+export interface RightLeg 
+{
 }
-export interface Inraid {
+export interface Inraid 
+{
     location: string;
     character: string;
 }
-export interface Insurance {
+export interface Insurance 
+{
     scheduledTime: number;
     traderId: string;
     messageContent: MessageContent;
     items: Item[];
 }
-export interface MessageContent {
+export interface MessageContent 
+{
     ragfair?: MessageContentRagfair;
     text?: string;
     templateId: string;
@@ -166,12 +193,14 @@ export interface MessageContent {
     maxStorageTime?: number;
     systemData?: MessageContentData;
 }
-export interface MessageContentRagfair {
+export interface MessageContentRagfair 
+{
     offerId: string;
     count: number;
     handbookId: string;
 }
-export interface MessageContentData {
+export interface MessageContentData 
+{
     date: string;
     time: string;
     location: string;

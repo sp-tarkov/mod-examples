@@ -1,6 +1,7 @@
 import { LocationCallbacks } from "../../callbacks/LocationCallbacks";
 import { DynamicRouter, HandledRoute } from "../../di/Router";
-export declare class LocationDynamicRouter extends DynamicRouter {
+export declare class LocationDynamicRouter extends DynamicRouter 
+{
     private locationCallbacks;
     constructor(locationCallbacks: LocationCallbacks);
     private readonly _routes;

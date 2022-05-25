@@ -17,7 +17,8 @@ import { ILocaleBase } from "./ILocaleBase";
 import { ILocations } from "./ILocations";
 import { IServerBase } from "./IServerBase";
 import { ISettingsBase } from "./ISettingsBase";
-export interface IDatabaseTables {
+export interface IDatabaseTables 
+{
     bots: {
         types: Record<string, IBotType>;
         base: IBotBase;

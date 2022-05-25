@@ -1,7 +1,8 @@
 import { INotification } from "../models/eft/notifier/INotifier";
 import { Message, MessageContentRagfair } from "../models/eft/profile/IAkiProfile";
 import { HttpServerHelper } from "./HttpServerHelper";
-export declare class NotifierHelper {
+export declare class NotifierHelper 
+{
     private httpServerHelper;
     /**
      * The default notification sent when waiting times out.

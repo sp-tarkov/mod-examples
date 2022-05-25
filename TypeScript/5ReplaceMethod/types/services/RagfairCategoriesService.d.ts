@@ -1,5 +1,6 @@
 import { IRagfairOffer } from "../models/eft/ragfair/IRagfairOffer";
-export declare class RagfairCategoriesService {
+export declare class RagfairCategoriesService 
+{
     updateCategories(offers: IRagfairOffer[]): void;
     private categories;
     getCategories(): Record<string, number>;

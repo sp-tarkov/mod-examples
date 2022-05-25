@@ -1,12 +1,14 @@
 import { Item } from "./tables/IItem";
-export interface IGlobals {
+export interface IGlobals 
+{
     time: number;
     config: Config;
     bot_presets: BotPreset[];
     BotWeaponScatterings: BotWeaponScattering[];
     ItemPresets: Record<string, Preset>;
 }
-export interface Config {
+export interface Config 
+{
     content: Content;
     AimPunchMagnitude: number;
     WeaponSkillProgressRate: number;
@@ -83,12 +85,14 @@ export interface Config {
     Inertia: Inertia;
     Ballistic: Ballistic;
 }
-export interface Content {
+export interface Content 
+{
     ip: string;
     port: number;
     root: string;
 }
-export interface Exp {
+export interface Exp 
+{
     heal: Heal;
     match_end: MatchEnd;
     kill: Kill;
@@ -98,12 +102,14 @@ export interface Exp {
     expForLockedDoorBreach: number;
     triggerMult: number;
 }
-export interface Heal {
+export interface Heal 
+{
     expForHeal: number;
     expForHydration: number;
     expForEnergy: number;
 }
-export interface MatchEnd {
+export interface MatchEnd 
+{
     README: string;
     survived_exp_requirement: number;
     survived_seconds_requirement: number;
@@ -116,7 +122,8 @@ export interface MatchEnd {
     runnerMult: number;
     killedMult: number;
 }
-export interface Kill {
+export interface Kill 
+{
     combo: Combo[];
     victimLevelExp: number;
     headShotMult: number;
@@ -125,10 +132,12 @@ export interface Kill {
     bloodLossToLitre: number;
     victimBotLevelExp: number;
 }
-export interface Combo {
+export interface Combo 
+{
     percent: number;
 }
-export interface Level {
+export interface Level 
+{
     exp_table: ExpTable[];
     trade_level: number;
     savage_level: number;
@@ -136,32 +145,39 @@ export interface Level {
     mastering1: number;
     mastering2: number;
 }
-export interface ExpTable {
+export interface ExpTable 
+{
     exp: number;
 }
-export interface LootAttempt {
+export interface LootAttempt 
+{
     k_exp: number;
 }
-export interface Armor {
+export interface Armor 
+{
     class: Class[];
 }
-export interface Class {
+export interface Class 
+{
     resistance: number;
 }
-export interface Mastering {
+export interface Mastering 
+{
     Name: string;
     Templates: string[];
     Level2: number;
     Level3: number;
 }
-export interface Customization {
+export interface Customization 
+{
     SavageHead: SavageHead;
     SavageBody: SavageBody;
     SavageFeet: SavageFeet;
     CustomizationVoice: CustomizationVoice[];
     BodyParts: BodyParts;
 }
-export interface SavageHead {
+export interface SavageHead 
+{
     wild_head_1: WildHead;
     wild_head_2: WildHead;
     wild_head_3: WildHead;
@@ -183,12 +199,14 @@ export interface SavageHead {
     usec_head_4: WildHead;
     usec_head_5: WildHead;
 }
-export interface WildHead {
+export interface WildHead 
+{
     head: string;
     isNotRandom: boolean;
     NotRandom: boolean;
 }
-export interface SavageBody {
+export interface SavageBody 
+{
     wild_body: WildBody;
     wild_body_1: WildBody;
     wild_body_2: WildBody;
@@ -229,12 +247,14 @@ export interface SavageBody {
     wild_body_bomber: WildBody;
     wild_top_yellowcoat: WildBody;
 }
-export interface WildBody {
+export interface WildBody 
+{
     body: string;
     hands: string;
     isNotRandom: boolean;
 }
-export interface SavageFeet {
+export interface SavageFeet 
+{
     wild_feet: WildFeet;
     wild_feet_1: WildFeet;
     wild_feet_2: WildFeet;
@@ -258,23 +278,27 @@ export interface SavageFeet {
     wild_feet_bomber: WildFeet;
     wild_pants_yellowcoat: WildFeet;
 }
-export interface WildFeet {
+export interface WildFeet 
+{
     feet: string;
     isNotRandom: boolean;
     NotRandom: boolean;
 }
-export interface CustomizationVoice {
+export interface CustomizationVoice 
+{
     voice: string;
     side: string[];
     isNotRandom: boolean;
 }
-export interface BodyParts {
+export interface BodyParts 
+{
     Head: string;
     Body: string;
     Feet: string;
     Hands: string;
 }
-export interface ArmorMaterials {
+export interface ArmorMaterials 
+{
     UHMWPE: ArmorType;
     Aramid: ArmorType;
     Combined: ArmorType;
@@ -284,7 +308,8 @@ export interface ArmorMaterials {
     Ceramic: ArmorType;
     Glass: ArmorType;
 }
-export interface ArmorType {
+export interface ArmorType 
+{
     Destructibility: number;
     MinRepairDegradation: number;
     MaxRepairDegradation: number;
@@ -292,17 +317,20 @@ export interface ArmorType {
     MinRepairKitDegradation: number;
     MaxRepairKitDegradation: number;
 }
-export interface Health {
+export interface Health 
+{
     Falling: Falling;
     Effects: Effects;
     HealPrice: HealPrice;
     ProfileHealthSettings: ProfileHealthSettings;
 }
-export interface Falling {
+export interface Falling 
+{
     DamagePerMeter: number;
     SafeHeight: number;
 }
-export interface Effects {
+export interface Effects 
+{
     Existence: Existence;
     Dehydration: Dehydration;
     BreakPart: BreakPart;
@@ -329,7 +357,8 @@ export interface Effects {
     LightBleeding: LightBleeding2;
     BodyTemperature: BodyTemperature;
 }
-export interface Existence {
+export interface Existence 
+{
     EnergyLoopTime: number;
     HydrationLoopTime: number;
     EnergyDamage: number;
@@ -337,7 +366,8 @@ export interface Existence {
     DestroyedStomachEnergyTimeFactor: number;
     DestroyedStomachHydrationTimeFactor: number;
 }
-export interface Dehydration {
+export interface Dehydration 
+{
     DefaultDelay: number;
     DefaultResidueTime: number;
     BleedingHealth: number;
@@ -346,7 +376,8 @@ export interface Dehydration {
     DamageOnStrongDehydration: number;
     StrongDehydrationLoopTime: number;
 }
-export interface BreakPart {
+export interface BreakPart 
+{
     DefaultDelay: number;
     DefaultResidueTime: number;
     HealExperience: number;
@@ -357,31 +388,38 @@ export interface BreakPart {
     BulletHitProbability: Probability;
     FallingProbability: Probability;
 }
-export interface Contusion {
+export interface Contusion 
+{
     Dummy: number;
 }
-export interface Disorientation {
+export interface Disorientation 
+{
     Dummy: number;
 }
-export interface Exhaustion {
+export interface Exhaustion 
+{
     DefaultDelay: number;
     DefaultResidueTime: number;
     Damage: number;
     DamageLoopTime: number;
 }
-export interface LowEdgeHealth {
+export interface LowEdgeHealth 
+{
     DefaultDelay: number;
     DefaultResidueTime: number;
     StartCommonHealth: number;
 }
-export interface RadExposure {
+export interface RadExposure 
+{
     Damage: number;
     DamageLoopTime: number;
 }
-export interface Stun {
+export interface Stun 
+{
     Dummy: number;
 }
-export interface Intoxication {
+export interface Intoxication 
+{
     DefaultDelay: number;
     DefaultResidueTime: number;
     DamageHealth: number;
@@ -392,7 +430,8 @@ export interface Intoxication {
     HealExperience: number;
     RemovePrice: number;
 }
-export interface Regeneration {
+export interface Regeneration 
+{
     LoopTime: number;
     MinimumHealthPercentage: number;
     Energy: number;
@@ -400,7 +439,8 @@ export interface Regeneration {
     BodyHealth: BodyHealth;
     Influences: Influences;
 }
-export interface BodyHealth {
+export interface BodyHealth 
+{
     Head: BodyHealthValue;
     Chest: BodyHealthValue;
     Stomach: BodyHealthValue;
@@ -409,35 +449,42 @@ export interface BodyHealth {
     LeftLeg: BodyHealthValue;
     RightLeg: BodyHealthValue;
 }
-export interface BodyHealthValue {
+export interface BodyHealthValue 
+{
     Value: number;
 }
-export interface Influences {
+export interface Influences 
+{
     LightBleeding: Influence;
     HeavyBleeding: Influence;
     Fracture: Influence;
     RadExposure: Influence;
     Intoxication: Influence;
 }
-export interface Influence {
+export interface Influence 
+{
     HealthSlowDownPercentage: number;
     EnergySlowDownPercentage: number;
     HydrationSlowDownPercentage: number;
 }
-export interface Wound {
+export interface Wound 
+{
     WorkingTime: number;
     ThresholdMin: number;
     ThresholdMax: number;
 }
-export interface Berserk {
+export interface Berserk 
+{
     DefaultDelay: number;
     WorkingTime: number;
     DefaultResidueTime: number;
 }
-export interface Flash {
+export interface Flash 
+{
     Dummy: number;
 }
-export interface MedEffect {
+export interface MedEffect 
+{
     LoopTime: number;
     StartDelay: number;
     DrinkStartDelay: number;
@@ -447,21 +494,26 @@ export interface MedEffect {
     MedicalStartDelay: number;
     StimulatorStartDelay: number;
 }
-export interface Pain {
+export interface Pain 
+{
     TremorDelay: number;
     HealExperience: number;
 }
-export interface PainKiller {
+export interface PainKiller 
+{
     Dummy: number;
 }
-export interface SandingScreen {
+export interface SandingScreen 
+{
     Dummy: number;
 }
-export interface Stimulator {
+export interface Stimulator 
+{
     BuffLoopTime: number;
     Buffs: Buffs;
 }
-export interface Buffs {
+export interface Buffs 
+{
     BuffsSJ1TGLabs: Buff[];
     BuffsSJ6TGLabs: Buff[];
     BuffsPropital: Buff[];
@@ -504,7 +556,8 @@ export interface Buffs {
     Buffs_food_slippers: Buff[];
     Buffs_knife: Buff[];
 }
-export interface Buff {
+export interface Buff 
+{
     BuffType: string;
     Chance: number;
     Delay: number;
@@ -513,17 +566,20 @@ export interface Buff {
     AbsoluteValue: boolean;
     SkillName: string;
 }
-export interface Tremor {
+export interface Tremor 
+{
     DefaultDelay: number;
     DefaultResidueTime: number;
 }
-export interface ChronicStaminaFatigue {
+export interface ChronicStaminaFatigue 
+{
     EnergyRate: number;
     WorkingTime: number;
     TicksEvery: number;
     EnergyRatePerStack: number;
 }
-export interface Fracture2 {
+export interface Fracture2 
+{
     DefaultDelay: number;
     DefaultResidueTime: number;
     HealExperience: number;
@@ -534,7 +590,8 @@ export interface Fracture2 {
     BulletHitProbability: Probability;
     FallingProbability: Probability;
 }
-export interface HeavyBleeding2 {
+export interface HeavyBleeding2 
+{
     DefaultDelay: number;
     DefaultResidueTime: number;
     DamageEnergy: number;
@@ -552,13 +609,15 @@ export interface HeavyBleeding2 {
     RemovedAfterDeath: boolean;
     Probability: Probability;
 }
-export interface Probability {
+export interface Probability 
+{
     FunctionType: string;
     K: number;
     B: number;
     Threshold: number;
 }
-export interface LightBleeding2 {
+export interface LightBleeding2 
+{
     DefaultDelay: number;
     DefaultResidueTime: number;
     DamageEnergy: number;
@@ -576,23 +635,27 @@ export interface LightBleeding2 {
     RemovedAfterDeath: boolean;
     Probability: Probability;
 }
-export interface BodyTemperature {
+export interface BodyTemperature 
+{
     DefaultBuildUpTime: number;
     DefaultResidueTime: number;
     LoopTime: number;
 }
-export interface HealPrice {
+export interface HealPrice 
+{
     HealthPointPrice: number;
     HydrationPointPrice: number;
     EnergyPointPrice: number;
     TrialLevels: number;
     TrialRaids: number;
 }
-export interface ProfileHealthSettings {
+export interface ProfileHealthSettings 
+{
     BodyPartsSettings: BodyPartsSettings;
     HealthFactorsSettings: HealthFactorsSettings;
 }
-export interface BodyPartsSettings {
+export interface BodyPartsSettings 
+{
     Head: BodyPartsSetting;
     Chest: BodyPartsSetting;
     Stomach: BodyPartsSetting;
@@ -601,30 +664,35 @@ export interface BodyPartsSettings {
     LeftLeg: BodyPartsSetting;
     RightLeg: BodyPartsSetting;
 }
-export interface BodyPartsSetting {
+export interface BodyPartsSetting 
+{
     Minimum: number;
     Maximum: number;
     Default: number;
     OverDamageReceivedMultiplier: number;
 }
-export interface HealthFactorsSettings {
+export interface HealthFactorsSettings 
+{
     Energy: HealthFactorSetting;
     Hydration: HealthFactorSetting;
     Temperature: HealthFactorSetting;
     Poisoning: HealthFactorSetting;
     Radiation: HealthFactorSetting;
 }
-export interface HealthFactorSetting {
+export interface HealthFactorSetting 
+{
     Minimum: number;
     Maximum: number;
     Default: number;
 }
-export interface Rating {
+export interface Rating 
+{
     levelRequired: number;
     limit: number;
     categories: Categories;
 }
-export interface Categories {
+export interface Categories 
+{
     experience: boolean;
     kd: boolean;
     surviveRatio: boolean;
@@ -636,15 +704,18 @@ export interface Categories {
     inventoryFullCost: boolean;
     ragFairStanding: boolean;
 }
-export interface Tournament {
+export interface Tournament 
+{
     categories: Categories2;
     limit: number;
     levelRequired: number;
 }
-export interface Categories2 {
+export interface Categories2 
+{
     dogtags: boolean;
 }
-export interface RagFair {
+export interface RagFair 
+{
     enabled: boolean;
     priceStabilizerEnabled: boolean;
     includePveTraderSales: boolean;
@@ -680,24 +751,29 @@ export interface RagFair {
     isOnlyFoundInRaidAllowed: boolean;
     sellInOnePiece: number;
 }
-export interface MaxActiveOfferCount {
+export interface MaxActiveOfferCount 
+{
     from: number;
     to: number;
     count: number;
 }
-export interface MaxSumForRarity {
+export interface MaxSumForRarity 
+{
     Common: RarityMaxSum;
     Rare: RarityMaxSum;
     Superrare: RarityMaxSum;
     Not_exist: RarityMaxSum;
 }
-export interface RarityMaxSum {
+export interface RarityMaxSum 
+{
     value: number;
 }
-export interface Handbook {
+export interface Handbook 
+{
     defaultCategory: string;
 }
-export interface Stamina {
+export interface Stamina 
+{
     Capacity: number;
     SprintDrainRate: number;
     BaseRestorationRate: number;
@@ -744,7 +820,8 @@ export interface Stamina {
     PoseLevelDecreaseSpeed: xyz;
     PoseLevelConsumptionPerNotch: xyz;
 }
-export interface StaminaRestoration {
+export interface StaminaRestoration 
+{
     LowerLeftPoint: number;
     LowerRightPoint: number;
     LeftPlatoPoint: number;
@@ -752,7 +829,8 @@ export interface StaminaRestoration {
     RightLimit: number;
     ZeroValue: number;
 }
-export interface StaminaDrain {
+export interface StaminaDrain 
+{
     LowerLeftPoint: number;
     LowerRightPoint: number;
     LeftPlatoPoint: number;
@@ -760,24 +838,29 @@ export interface StaminaDrain {
     RightLimit: number;
     ZeroValue: number;
 }
-export interface RequirementReferences {
+export interface RequirementReferences 
+{
     Alpinist: Alpinist[];
 }
-export interface Alpinist {
+export interface Alpinist 
+{
     Requirement: string;
     Id: string;
     Count: number;
     RequiredSlot: string;
     RequirementTip: string;
 }
-export interface RestrictionsInRaid {
+export interface RestrictionsInRaid 
+{
     TemplateId: string;
     Value: number;
 }
-export interface Insurance {
+export interface Insurance 
+{
     MaxStorageTimeInHour: number;
 }
-export interface SkillsSettings {
+export interface SkillsSettings 
+{
     SkillProgressRate: number;
     WeaponSkillProgressRate: number;
     WeaponSkillRecoilBonusPerLevel: number;
@@ -846,11 +929,13 @@ export interface SkillsSettings {
     BotSound: any[];
     TroubleShooting: TroubleShooting;
 }
-export interface ArmorSkills {
+export interface ArmorSkills 
+{
     WearAmountRepairLVestsReducePerLevel: number;
     WearChanceRepairLVestsReduceEliteLevel: number;
 }
-export interface HideoutManagement {
+export interface HideoutManagement 
+{
     SkillPointsPerAreaUpgrade: number;
     SkillPointsPerCraft: number;
     ConsumptionReductionPerLevel: number;
@@ -858,27 +943,32 @@ export interface HideoutManagement {
     SkillPointsRate: SkillPointsRate;
     EliteSlots: EliteSlots;
 }
-export interface SkillPointsRate {
+export interface SkillPointsRate 
+{
     Generator: Generator;
     AirFilteringUnit: SkillPointRate;
     WaterCollector: SkillPointRate;
     SolarPower: SkillPointRate;
 }
-export interface SkillPointRate {
+export interface SkillPointRate 
+{
     ResourceSpent: number;
     PointsGained: number;
 }
-export interface EliteSlots {
+export interface EliteSlots 
+{
     Generator: EliteSlot;
     AirFilteringUnit: EliteSlot;
     WaterCollector: EliteSlot;
     BitcoinFarm: EliteSlot;
 }
-export interface EliteSlot {
+export interface EliteSlot 
+{
     Slots: number;
     Container: number;
 }
-export interface Crafting {
+export interface Crafting 
+{
     PointsPerCraftingCycle: number;
     CraftingCycleHours: number;
     PointsPerUniqueCraftCycle: number;
@@ -888,26 +978,30 @@ export interface Crafting {
     EliteExtraProductions: number;
     CraftingPointsToInteligence: number;
 }
-export interface Metabolism {
+export interface Metabolism 
+{
     HydrationRecoveryRate: number;
     EnergyRecoveryRate: number;
     IncreasePositiveEffectDurationRate: number;
     DecreaseNegativeEffectDurationRate: number;
     DecreasePoisonDurationRate: number;
 }
-export interface Immunity {
+export interface Immunity 
+{
     ImmunityMiscEffects: number;
     ImmunityPoisonBuff: number;
     ImmunityPainKiller: number;
     HealthNegativeEffect: number;
     StimulatorNegativeBuff: number;
 }
-export interface Endurance {
+export interface Endurance 
+{
     MovementAction: number;
     SprintAction: number;
     GainPerFatigueStack: number;
 }
-export interface Strength {
+export interface Strength 
+{
     SprintActionMin: number;
     SprintActionMax: number;
     MovementActionMin: number;
@@ -917,54 +1011,66 @@ export interface Strength {
     FistfightAction: number;
     ThrowAction: number;
 }
-export interface Vitality {
+export interface Vitality 
+{
     DamageTakenAction: number;
     HealthNegativeEffect: number;
 }
-export interface Health2 {
+export interface Health2 
+{
     SkillProgress: number;
 }
-export interface StressResistance {
+export interface StressResistance 
+{
     HealthNegativeEffect: number;
     LowHPDuration: number;
 }
-export interface Throwing {
+export interface Throwing 
+{
     ThrowAction: number;
 }
-export interface RecoilControl {
+export interface RecoilControl 
+{
     RecoilAction: number;
     RecoilBonusPerLevel: number;
 }
-export interface WeaponSkills {
+export interface WeaponSkills 
+{
     WeaponReloadAction: number;
     WeaponShotAction: number;
     WeaponFixAction: number;
     WeaponChamberAction: number;
 }
-export interface CovertMovement {
+export interface CovertMovement 
+{
     MovementAction: number;
 }
-export interface Search {
+export interface Search 
+{
     SearchAction: number;
     FindAction: number;
 }
-export interface WeaponTreatment {
+export interface WeaponTreatment 
+{
     DurLossReducePerLevel: number;
     SkillPointsPerRepair: number;
     Filter: any[];
     WearAmountRepairGunsReducePerLevel: number;
     WearChanceRepairGunsReduceEliteLevel: number;
 }
-export interface MagDrills {
+export interface MagDrills 
+{
     RaidLoadedAmmoAction: number;
     RaidUnloadedAmmoAction: number;
     MagazineCheckAction: number;
 }
-export interface Perception {
+export interface Perception 
+{
     OnlineAction: number;
     UniqueLoot: number;
 }
-export interface Intellect {
+export interface Intellect 
+{
     ExamineAction: number;
     SkillProgress: number;
     RepairAction: number;
@@ -972,35 +1078,42 @@ export interface Intellect {
     WearChanceReduceEliteLevel: number;
     RepairPointsCostReduction: number;
 }
-export interface Attention {
+export interface Attention 
+{
     ExamineWithInstruction: number;
     FindActionFalse: number;
     FindActionTrue: number;
 }
-export interface Charisma {
+export interface Charisma 
+{
     SkillProgressInt: number;
     SkillProgressAtn: number;
     SkillProgressPer: number;
 }
-export interface Memory {
+export interface Memory 
+{
     AnySkillUp: number;
     SkillProgress: number;
 }
-export interface Surgery {
+export interface Surgery 
+{
     SurgeryAction: number;
     SkillProgress: number;
 }
-export interface AimDrills {
+export interface AimDrills 
+{
     WeaponShotAction: number;
 }
-export interface TroubleShooting {
+export interface TroubleShooting 
+{
     MalfRepairSpeedBonusPerLevel: number;
     SkillPointsPerMalfFix: number;
     EliteDurabilityChanceReduceMult: number;
     EliteAmmoChanceReduceMult: number;
     EliteMagChanceReduceMult: number;
 }
-export interface Aiming {
+export interface Aiming 
+{
     ProceduralIntensityByPose: xyz;
     AimProceduralIntensity: number;
     HeavyWeight: number;
@@ -1021,7 +1134,8 @@ export interface Aiming {
     RecoilVertBonus: number;
     RecoilBackBonus: number;
 }
-export interface Malfunction {
+export interface Malfunction 
+{
     AmmoMalfChanceMult: number;
     MagazineMalfChanceMult: number;
     MalfRepairHardSlideMult: number;
@@ -1048,7 +1162,8 @@ export interface Malfunction {
     OverheatHardSlideMinWt: number;
     OverheatHardSlideMaxWt: number;
 }
-export interface Overheat {
+export interface Overheat 
+{
     MinOverheat: number;
     MaxOverheat: number;
     OverheatProblemsStart: number;
@@ -1078,12 +1193,14 @@ export interface Overheat {
     AutoshotPossibilityDuration: number;
     MaxOverheatCoolCoef: number;
 }
-export interface FenceSettings {
+export interface FenceSettings 
+{
     FenceId: string;
     Levels: Record<string, FenceLevel>;
     paidExitStandingNumerator: number;
 }
-export interface FenceLevel {
+export interface FenceLevel 
+{
     SavageCooldownModifier: number;
     ScavCaseTimeModifier: number;
     PaidExitCostModifier: number;
@@ -1096,7 +1213,8 @@ export interface FenceLevel {
     ExfiltrationPriceModifier: number;
     AvailableExits: number;
 }
-export interface Inertia {
+export interface Inertia 
+{
     InertiaLimits: xyz;
     InertiaLimitsStep: number;
     ExitMovementStateSpeedThreshold: xyz;
@@ -1133,20 +1251,24 @@ export interface Inertia {
     MinMovementAccelerationRangeRight: xyz;
     MaxMovementAccelerationRangeRight: xyz;
 }
-export interface xyz {
+export interface xyz 
+{
     x: number;
     y: number;
     z: number;
 }
-export interface Ballistic {
+export interface Ballistic 
+{
     GlobalDamageDegradationCoefficient: number;
 }
-export interface RepairKitSettings {
+export interface RepairKitSettings 
+{
     armorClassDivisor: number;
     durabilityPointCostArmor: number;
     durabilityPointCostGuns: number;
 }
-export interface BotPreset {
+export interface BotPreset 
+{
     UseThis: boolean;
     Role: string;
     BotDifficulty: string;
@@ -1159,13 +1281,15 @@ export interface BotPreset {
     FIRST_CONTACT_ADD_SEC: number;
     COEF_IF_MOVE: number;
 }
-export interface BotWeaponScattering {
+export interface BotWeaponScattering 
+{
     Name: string;
     PriorityScatter1meter: number;
     PriorityScatter10meter: number;
     PriorityScatter100meter: number;
 }
-export interface Preset {
+export interface Preset 
+{
     _id: string;
     _type: string;
     _changeWeaponName: boolean;

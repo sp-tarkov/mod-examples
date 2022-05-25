@@ -1,4 +1,5 @@
-export interface ICustomizationItem {
+export interface ICustomizationItem 
+{
     _id: string;
     _name: string;
     _parent: string;
@@ -6,7 +7,8 @@ export interface ICustomizationItem {
     _props: Props;
     _proto: string;
 }
-export interface Props {
+export interface Props 
+{
     Name: string;
     ShortName: string;
     Description: string;
@@ -22,11 +24,13 @@ export interface Props {
     WatchPosition: Xyz;
     WatchRotation: Xyz;
 }
-export interface Prefab {
+export interface Prefab 
+{
     path: string;
     rcid: string;
 }
-export interface Xyz {
+export interface Xyz 
+{
     x: number;
     y: number;
     z: number;

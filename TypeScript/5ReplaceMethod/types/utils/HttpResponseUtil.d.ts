@@ -2,7 +2,8 @@ import { JsonUtil } from "./JsonUtil";
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
 import { INullResponseData } from "../models/eft/httpResponse/INullResponseData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
-export declare class HttpResponseUtil {
+export declare class HttpResponseUtil 
+{
     private jsonUtil;
     constructor(jsonUtil: JsonUtil);
     private clearString;

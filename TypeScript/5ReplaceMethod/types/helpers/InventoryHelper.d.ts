@@ -17,13 +17,15 @@ import { IInventorySplitRequestData } from "../models/eft/inventory/IInventorySp
 import { IInventoryMergeRequestData } from "../models/eft/inventory/IInventoryMergeRequestData";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { TraderAssortHelper } from "./TraderAssortHelper";
-export interface OwnerInventoryItems {
+export interface OwnerInventoryItems 
+{
     from: Item[];
     to: Item[];
     sameInventory: boolean;
     isMail: boolean;
 }
-export declare class InventoryHelper {
+export declare class InventoryHelper 
+{
     private logger;
     private jsonUtil;
     private hashUtil;

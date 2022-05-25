@@ -1,6 +1,7 @@
 import { NotifierCallbacks } from "../../callbacks/NotifierCallbacks";
 import { DynamicRouter, HandledRoute } from "../../di/Router";
-export declare class NotifierDynamicRouter extends DynamicRouter {
+export declare class NotifierDynamicRouter extends DynamicRouter 
+{
     private notifierCallbacks;
     constructor(notifierCallbacks: NotifierCallbacks);
     private readonly _routes;

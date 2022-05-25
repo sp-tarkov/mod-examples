@@ -1,4 +1,5 @@
-export declare class PaymentHelper {
+export declare class PaymentHelper 
+{
     /**
      * Check whether tpl is Money
      * @param {string} tpl

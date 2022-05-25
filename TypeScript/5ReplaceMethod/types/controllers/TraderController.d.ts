@@ -8,7 +8,8 @@ import { ProfileHelper } from "../helpers/ProfileHelper";
 import { ConfigServer } from "../servers/ConfigServer";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { TraderAssortHelper } from "../helpers/TraderAssortHelper";
-export declare class TraderController {
+export declare class TraderController 
+{
     private logger;
     private databaseServer;
     private traderAssortHelper;

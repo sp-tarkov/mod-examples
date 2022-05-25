@@ -5,7 +5,8 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class RepairHelper {
+export declare class RepairHelper 
+{
     private logger;
     private jsonUtil;
     private randomUtil;

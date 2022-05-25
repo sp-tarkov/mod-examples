@@ -16,7 +16,8 @@ import { ICompleteQuestRequestData } from "../models/eft/quests/ICompleteQuestRe
 import { ConfigServer } from "../servers/ConfigServer";
 import { RagfairServerHelper } from "./RagfairServerHelper";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class QuestHelper {
+export declare class QuestHelper 
+{
     private logger;
     private jsonUtil;
     private timeUtil;

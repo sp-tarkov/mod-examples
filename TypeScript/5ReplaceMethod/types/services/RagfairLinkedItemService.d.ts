@@ -1,5 +1,6 @@
 import { DatabaseServer } from "../servers/DatabaseServer";
-export declare class RagfairLinkedItemService {
+export declare class RagfairLinkedItemService 
+{
     private databaseServer;
     private linkedItemsCache;
     constructor(databaseServer: DatabaseServer);

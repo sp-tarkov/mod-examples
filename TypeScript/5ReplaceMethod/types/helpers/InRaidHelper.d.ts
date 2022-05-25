@@ -7,7 +7,8 @@ import { SaveServer } from "../servers/SaveServer";
 import { JsonUtil } from "../utils/JsonUtil";
 import { InventoryHelper } from "./InventoryHelper";
 import { PaymentHelper } from "./PaymentHelper";
-export declare class InRaidHelper {
+export declare class InRaidHelper 
+{
     private logger;
     private saveServer;
     private jsonUtil;

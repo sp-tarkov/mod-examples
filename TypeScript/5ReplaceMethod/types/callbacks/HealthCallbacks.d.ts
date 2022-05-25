@@ -8,7 +8,8 @@ import { ProfileHelper } from "../helpers/ProfileHelper";
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
-export declare class HealthCallbacks {
+export declare class HealthCallbacks 
+{
     private httpResponse;
     private profileHelper;
     private healthController;

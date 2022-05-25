@@ -7,7 +7,8 @@ import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyRespons
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { JsonUtil } from "../utils/JsonUtil";
-export declare class MatchCallbacks {
+export declare class MatchCallbacks 
+{
     private httpResponse;
     private jsonUtil;
     private matchController;

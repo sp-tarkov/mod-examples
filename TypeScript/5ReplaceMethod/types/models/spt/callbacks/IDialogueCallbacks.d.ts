@@ -15,7 +15,8 @@ import { ISendMessageRequest } from "../../eft/dialog/ISendMessageRequest";
 import { IGetMailDialogViewResponseData } from "../../eft/dialog/IGetMailDialogViewResponseData";
 import { IGetAllAttachmentsResponse } from "../../eft/dialog/IGetAllAttachmentsResponse";
 import { DialogueInfo } from "../../eft/profile/IAkiProfile";
-export interface IDialogueCallbacks {
+export interface IDialogueCallbacks 
+{
     getFriendList(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IGetFriendListDataResponse>;
     getChatServerList(url: string, info: IGetChatServerListRequestData, sessionID: string): IGetBodyResponseData<any[]>;
     getMailDialogList(url: string, info: IGetMailDialogListRequestData, sessionID: string): IGetBodyResponseData<DialogueInfo[]>;

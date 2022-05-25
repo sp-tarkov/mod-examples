@@ -1,6 +1,7 @@
 import { BotCallbacks } from "../../callbacks/BotCallbacks";
 import { HandledRoute, StaticRouter } from "../../di/Router";
-export declare class BotStaticRouter extends StaticRouter {
+export declare class BotStaticRouter extends StaticRouter 
+{
     private botCallbacks;
     constructor(botCallbacks: BotCallbacks);
     getHandledRoutes(): HandledRoute[];

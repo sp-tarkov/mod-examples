@@ -4,7 +4,8 @@ import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
 import { IBotBase } from "../models/eft/common/tables/IBotBase";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
-export declare class BotCallbacks {
+export declare class BotCallbacks 
+{
     private botController;
     private httpResponse;
     constructor(botController: BotController, httpResponse: HttpResponseUtil);

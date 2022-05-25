@@ -17,7 +17,8 @@ import { IInventoryCreateMarkerRequestData } from "../models/eft/inventory/IInve
 import { IInventoryDeleteMarkerRequestData } from "../models/eft/inventory/IInventoryDeleteMarkerRequestData";
 import { IInventoryEditMarkerRequestData } from "../models/eft/inventory/IInventoryEditMarkerRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
-export declare class InventoryCallbacks {
+export declare class InventoryCallbacks 
+{
     private inventoryController;
     constructor(inventoryController: InventoryController);
     moveItem(pmcData: IPmcData, body: IInventoryMoveRequestData, sessionID: string): IItemEventRouterResponse;

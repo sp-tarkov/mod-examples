@@ -11,7 +11,8 @@ import { Upd } from "../models/eft/common/tables/IItem";
 import { ItemHelper } from "../helpers/ItemHelper";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class TradeHelper {
+export declare class TradeHelper 
+{
     private logger;
     private itemEventRouter;
     private traderHelper;

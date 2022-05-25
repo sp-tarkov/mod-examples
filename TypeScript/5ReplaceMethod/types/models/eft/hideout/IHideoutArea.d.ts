@@ -1,4 +1,5 @@
-export interface IHideoutArea {
+export interface IHideoutArea 
+{
     _id: string;
     type: number;
     enabled: boolean;
@@ -7,14 +8,16 @@ export interface IHideoutArea {
     craftGivesExp: boolean;
     stages: Record<string, Stage>;
 }
-export interface Stage {
+export interface Stage 
+{
     requirements: Requirement[];
     bonuses: StageBonus[];
     slots: number;
     constructionTime: number;
     description: string;
 }
-export interface Requirement {
+export interface Requirement 
+{
     areaType?: number;
     requiredLevel?: number;
     type: string;
@@ -26,7 +29,8 @@ export interface Requirement {
     skillName?: string;
     skillLevel?: number;
 }
-export interface StageBonus {
+export interface StageBonus 
+{
     value: number;
     passive: boolean;
     production: boolean;

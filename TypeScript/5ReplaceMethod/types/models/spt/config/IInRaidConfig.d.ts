@@ -1,5 +1,6 @@
 import { IBaseConfig } from "./IBaseConfig";
-export interface IInRaidConfig extends IBaseConfig {
+export interface IInRaidConfig extends IBaseConfig 
+{
     kind: "aki-inraid";
     MIAOnRaidEnd: boolean;
     raidMenuSettings: RaidMenuSettings;
@@ -8,14 +9,16 @@ export interface IInRaidConfig extends IBaseConfig {
     carExtractBaseStandingGain: number;
     scavExtractGain: number;
 }
-export interface RaidMenuSettings {
+export interface RaidMenuSettings 
+{
     aiAmount: string;
     aiDifficulty: string;
     bossEnabled: boolean;
     scavWars: boolean;
     taggedAndCursed: boolean;
 }
-export interface Save {
+export interface Save 
+{
     loot: boolean;
     durability: boolean;
 }

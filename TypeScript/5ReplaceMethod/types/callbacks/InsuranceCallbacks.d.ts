@@ -8,7 +8,8 @@ import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { OnLoadOnUpdate } from "../di/OnLoadOnUpdate";
 import { InsuranceService } from "../services/InsuranceService";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
-export declare class InsuranceCallbacks extends OnLoadOnUpdate {
+export declare class InsuranceCallbacks extends OnLoadOnUpdate 
+{
     private insuranceController;
     private insuranceService;
     private httpResponse;

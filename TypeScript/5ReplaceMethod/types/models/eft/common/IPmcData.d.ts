@@ -3,7 +3,8 @@ import { IPmcDataRepeatableQuest } from "./tables/IRepeatableQuests";
 import { Item, Upd } from "./tables/IItem";
 import { HideoutAreasEnum } from "../hideout/HideoutAreasEnum";
 import { MemberCategory } from "./MemberCategory";
-export interface IPmcData {
+export interface IPmcData 
+{
     _id: string;
     aid: string;
     savage: string;
@@ -28,14 +29,16 @@ export interface IPmcData {
     CarExtractCounts: CarExtractCounts;
     SurvivorClass: SurvivorClass;
 }
-export declare enum SurvivorClass {
+export declare enum SurvivorClass 
+    {
     Unknown = 0,
     Neutralizer = 1,
     Marauder = 2,
     Paramedic = 3,
     Survivor = 4
 }
-export interface Info {
+export interface Info 
+{
     EntryPoint: string;
     Nickname: string;
     LowerNickname: string;
@@ -57,18 +60,21 @@ export interface Info {
     BannedState: boolean;
     BannedUntil: number;
 }
-export interface Settings {
+export interface Settings 
+{
     Role: string;
     BotDifficulty: string;
     Experience: number;
     StandingForKill: number;
     AggressorBonus: number;
 }
-export interface IBan {
+export interface IBan 
+{
     type: BanType;
     dateTime: number;
 }
-export declare enum BanType {
+export declare enum BanType 
+    {
     Chat = 0,
     RagFair = 1,
     Voip = 2,
@@ -77,27 +83,32 @@ export declare enum BanType {
     Friends = 5,
     ChangeNickname = 6
 }
-export interface Notes {
+export interface Notes 
+{
     Notes: Note[];
 }
-export interface Note {
+export interface Note 
+{
     Time: number;
     Text: string;
 }
-export interface Customization {
+export interface Customization 
+{
     Head: string;
     Body: string;
     Feet: string;
     Hands: string;
 }
-export interface Health {
+export interface Health 
+{
     Hydration: CurrentMax;
     Energy: CurrentMax;
     Temperature: CurrentMax;
     BodyParts: BodyPartsHealth;
     UpdateTime: number;
 }
-export interface BodyPartsHealth {
+export interface BodyPartsHealth 
+{
     Head: BodyPartHealth;
     Chest: BodyPartHealth;
     Stomach: BodyPartHealth;
@@ -106,15 +117,18 @@ export interface BodyPartsHealth {
     LeftLeg: BodyPartHealth;
     RightLeg: BodyPartHealth;
 }
-export interface BodyPartHealth {
+export interface BodyPartHealth 
+{
     Health: CurrentMax;
     Effects?: Record<string, number>;
 }
-export interface CurrentMax {
+export interface CurrentMax 
+{
     Current: number;
     Maximum: number;
 }
-export interface Inventory {
+export interface Inventory 
+{
     items: Item[];
     equipment: string;
     stash: string;
@@ -123,25 +137,30 @@ export interface Inventory {
     questStashItems: string;
     fastPanel: FastPanel;
 }
-export interface FastPanel {
+export interface FastPanel 
+{
 }
-export interface Skills {
+export interface Skills 
+{
     Common: Common[];
     Mastering: Mastering[];
     Bonuses?: any[];
     Points: number;
 }
-export interface Common {
+export interface Common 
+{
     Id: string;
     Progress: number;
     PointsEarnedDuringSession: number;
     LastAccess: number;
 }
-export interface Mastering {
+export interface Mastering 
+{
     Id: string;
     Progress: number;
 }
-export interface Stats {
+export interface Stats 
+{
     CarriedQuestItems: string[];
     Victims: Victim[];
     TotalSessionExperience: number;
@@ -159,16 +178,19 @@ export interface Stats {
     TotalInGameTime: number;
     SurvivorClass?: string;
 }
-export interface IDroppedItem {
+export interface IDroppedItem 
+{
     QuestId: string;
     ItemId: string;
     ZoneId: string;
 }
-export interface FoundInRaidItem {
+export interface FoundInRaidItem 
+{
     QuestId: string;
     ItemId: string;
 }
-export interface Victim {
+export interface Victim 
+{
     AccountId: string;
     ProfileId: string;
     Name: string;
@@ -180,17 +202,21 @@ export interface Victim {
     Weapon: string;
     Role: string;
 }
-export interface SessionCounters {
+export interface SessionCounters 
+{
     Items: CounterKeyValue[];
 }
-export interface OverallCounters {
+export interface OverallCounters 
+{
     Items: CounterKeyValue[];
 }
-export interface CounterKeyValue {
+export interface CounterKeyValue 
+{
     Key: string[];
     Value: number;
 }
-export interface Aggressor {
+export interface Aggressor 
+{
     AccountId: string;
     ProfileId: string;
     MainProfileNickname: string;
@@ -201,12 +227,14 @@ export interface Aggressor {
     WeaponName: string;
     Category: string;
 }
-export interface DamageHistory {
+export interface DamageHistory 
+{
     LethalDamagePart: string;
     LethalDamage: LethalDamage;
     BodyParts: BodyPartsDamageHistory;
 }
-export interface LethalDamage {
+export interface LethalDamage 
+{
     Amount: number;
     Type: string;
     SourceId: string;
@@ -214,7 +242,8 @@ export interface LethalDamage {
     Blunt: boolean;
     ImpactsCount: number;
 }
-export interface BodyPartsDamageHistory {
+export interface BodyPartsDamageHistory 
+{
     Head: DamageStats[];
     Chest: DamageStats[];
     Stomach: DamageStats[];
@@ -224,7 +253,8 @@ export interface BodyPartsDamageHistory {
     RightLeg: DamageStats[];
     Common: DamageStats[];
 }
-export interface DamageStats {
+export interface DamageStats 
+{
     Amount: number;
     Type: string;
     SourceId: string;
@@ -232,63 +262,76 @@ export interface DamageStats {
     Blunt: boolean;
     ImpactsCount: number;
 }
-export interface DeathCause {
+export interface DeathCause 
+{
     DamageType: string;
     Side: string;
     Role: string;
     WeaponId: string;
 }
-export interface LastPlayerState {
+export interface LastPlayerState 
+{
     Info: LastPlayerStateInfo;
     Customization: Record<string, string>;
     Equipment: any;
 }
-export interface LastPlayerStateInfo {
+export interface LastPlayerStateInfo 
+{
     Nickname: string;
     Side: string;
     Level: number;
     MemberCategory: string;
 }
-export interface ConditionCounters {
+export interface ConditionCounters 
+{
     Counters: Counter[];
 }
-export interface Counter {
+export interface Counter 
+{
     id: string;
     value: number;
     qid: string;
 }
-export interface BackendCounter {
+export interface BackendCounter 
+{
     id: string;
     qid?: string;
     value: number;
 }
-export interface InsuredItem {
+export interface InsuredItem 
+{
     tid: string;
     itemId: string;
 }
-export interface Hideout {
+export interface Hideout 
+{
     Production: Record<string, Productive>;
     Areas: HideoutArea[];
 }
-export interface Productive {
+export interface Productive 
+{
     Products: Product[];
     Progress?: number;
     inProgress?: boolean;
     StartTimestamp?: number;
 }
-export interface Product {
+export interface Product 
+{
     _id: string;
     _tpl: string;
     upd?: Upd;
 }
-export interface ScavCase extends Productive {
+export interface ScavCase extends Productive 
+{
 }
-export interface Production extends Productive {
+export interface Production extends Productive 
+{
     RecipeId: string;
     SkipTime: number;
     ProductionTime: number;
 }
-export interface HideoutArea {
+export interface HideoutArea 
+{
     type: HideoutAreasEnum;
     level: number;
     active: boolean;
@@ -298,15 +341,18 @@ export interface HideoutArea {
     slots: HideoutSlot[];
     lastRecipe: string;
 }
-export interface HideoutSlot {
+export interface HideoutSlot 
+{
     item: HideoutItem[];
 }
-export interface HideoutItem {
+export interface HideoutItem 
+{
     _id: string;
     _tpl: string;
     upd?: Upd;
 }
-export interface Bonus {
+export interface Bonus 
+{
     type: string;
     templateId?: string;
     passive?: boolean;
@@ -315,27 +361,32 @@ export interface Bonus {
     value?: number;
     icon?: string;
 }
-export interface Quest {
+export interface Quest 
+{
     qid: string;
     startTime: number;
     status: string;
     statusTimers?: StatusTimer;
     completedConditions?: string[];
 }
-export interface StatusTimer {
+export interface StatusTimer 
+{
     AvailableForStart?: number;
 }
-export interface TraderInfo {
+export interface TraderInfo 
+{
     loyaltyLevel: number;
     salesSum: number;
     standing: number;
     nextResupply: number;
     unlocked: boolean;
 }
-export interface RagfairInfo {
+export interface RagfairInfo 
+{
     rating: number;
     isRatingGrowing: boolean;
     offers: IRagfairOffer[];
 }
-export interface CarExtractCounts {
+export interface CarExtractCounts 
+{
 }

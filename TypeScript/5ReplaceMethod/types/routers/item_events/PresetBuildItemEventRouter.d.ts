@@ -2,7 +2,8 @@ import { IPmcData } from "../../models/eft/common/IPmcData";
 import { IItemEventRouterResponse } from "../../models/eft/itemEvent/IItemEventRouterResponse";
 import { PresetBuildCallbacks } from "../../callbacks/PresetBuildCallbacks";
 import { HandledRoute, ItemEventRouterDefinition } from "../../di/Router";
-export declare class PresetBuildItemEventRouter extends ItemEventRouterDefinition {
+export declare class PresetBuildItemEventRouter extends ItemEventRouterDefinition 
+{
     private presetBuildCallbacks;
     constructor(presetBuildCallbacks: PresetBuildCallbacks);
     getHandledRoutes(): HandledRoute[];

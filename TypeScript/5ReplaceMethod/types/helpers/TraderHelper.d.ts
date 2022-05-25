@@ -10,7 +10,8 @@ import { IBarterScheme, ITraderAssort, ITraderBase, LoyaltyLevel } from "../mode
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { ConfigServer } from "../servers/ConfigServer";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class TraderHelper {
+export declare class TraderHelper 
+{
     private logger;
     private databaseServer;
     private saveServer;

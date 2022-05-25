@@ -8,7 +8,8 @@ import { JsonUtil } from "../utils/JsonUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 import { ItemHelper } from "./ItemHelper";
 import { IWatermark } from "../models/spt/utils/IWatermark";
-export declare class ProfileHelper {
+export declare class ProfileHelper 
+{
     protected jsonUtil: JsonUtil;
     protected watermark: IWatermark;
     protected timeUtil: TimeUtil;

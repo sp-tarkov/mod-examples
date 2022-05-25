@@ -7,7 +7,8 @@ import { INullResponseData } from "../models/eft/httpResponse/INullResponseData"
 import { IGameConfigResponse } from "../models/eft/game/IGameConfigResponse";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { IWatermark } from "../models/spt/utils/IWatermark";
-declare class GameCallbacks {
+declare class GameCallbacks 
+{
     private httpResponse;
     private watermark;
     private gameController;

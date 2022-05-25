@@ -3,7 +3,8 @@ import { IItemEventRouterRequest } from "../models/eft/itemEvent/IItemEventRoute
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
-export declare class ItemEventCallbacks {
+export declare class ItemEventCallbacks 
+{
     private httpResponse;
     private itemEventRouter;
     constructor(httpResponse: HttpResponseUtil, itemEventRouter: ItemEventRouter);

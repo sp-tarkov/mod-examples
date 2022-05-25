@@ -1,7 +1,9 @@
-export interface ISettingsBase {
+export interface ISettingsBase 
+{
     config: Config;
 }
-export interface Config {
+export interface Config 
+{
     AFKTimeoutSeconds: number;
     AdditionalRandomDelaySeconds: number;
     ClientSendRateLimit: number;
@@ -23,12 +25,14 @@ export interface Config {
     WeaponOverlapDistanceCulling: number;
     WebDiagnosticsEnabled: boolean;
 }
-export interface FramerateLimit {
+export interface FramerateLimit 
+{
     MaxFramerateGameLimit: number;
     MaxFramerateLobbyLimit: number;
     MinFramerateLimit: number;
 }
-export interface MemoryManagementSettings {
+export interface MemoryManagementSettings 
+{
     AggressiveGC: boolean;
     GigabytesRequiredToDisableGCDuringRaid: number;
     HeapPreAllocationEnabled: boolean;
@@ -36,7 +40,8 @@ export interface MemoryManagementSettings {
     OverrideRamCleanerSettings: boolean;
     RamCleanerEnabled: boolean;
 }
-export interface ReleaseProfiler {
+export interface ReleaseProfiler 
+{
     Enabled: boolean;
     MaxRecords: number;
     RecordTriggerValue: number;

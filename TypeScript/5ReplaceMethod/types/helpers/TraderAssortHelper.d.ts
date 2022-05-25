@@ -8,7 +8,8 @@ import { TraderAssortService } from "../services/TraderAssortService";
 import { JsonUtil } from "../utils/JsonUtil";
 import { AssortHelper } from "./AssortHelper";
 import { ProfileHelper } from "./ProfileHelper";
-export declare class TraderAssortHelper {
+export declare class TraderAssortHelper 
+{
     private logger;
     private jsonUtil;
     private databaseServer;

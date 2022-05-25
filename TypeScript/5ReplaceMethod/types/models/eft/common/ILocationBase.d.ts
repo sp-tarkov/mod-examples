@@ -1,4 +1,5 @@
-export interface ILocationBase {
+export interface ILocationBase 
+{
     AccessKeys: string[];
     AirdropParameters: AirdropParameter[];
     Area: number;
@@ -72,12 +73,14 @@ export interface ILocationBase {
     users_summon_seconds: number;
     waves: Wave[];
 }
-export interface ILimit {
+export interface ILimit 
+{
     min: number;
     max: number;
     items: any[];
 }
-export interface AirdropParameter {
+export interface AirdropParameter 
+{
     AirdropPointDeactivateDistance: number;
     MinPlayersCountToSpawnAirdrop: number;
     PlaneAirdropChance: number;
@@ -89,15 +92,18 @@ export interface AirdropParameter {
     PlaneAirdropStartMin: number;
     UnsuccessfulTryPenalty: number;
 }
-export interface Banner {
+export interface Banner 
+{
     id: string;
     pic: Pic;
 }
-export interface Pic {
+export interface Pic 
+{
     path: string;
     rcid: string;
 }
-export interface BossLocationSpawn {
+export interface BossLocationSpawn 
+{
     BossChance: number;
     BossDifficult: string;
     BossEscortAmount: string;
@@ -108,7 +114,8 @@ export interface BossLocationSpawn {
     BossZone: string;
     Time: number;
 }
-export interface BotLocationModifier {
+export interface BotLocationModifier 
+{
     AccuracySpeed: number;
     DistToActivate: number;
     DistToPersueAxemanCoef: number;
@@ -120,20 +127,24 @@ export interface BotLocationModifier {
     Scattering: number;
     VisibleDistance: number;
 }
-export interface MinMaxBot {
+export interface MinMaxBot 
+{
     WildSpawnType: string;
     max: number;
     min: number;
 }
-export interface Preview {
+export interface Preview 
+{
     path: string;
     rcid: string;
 }
-export interface Scene {
+export interface Scene 
+{
     path: string;
     rcid: string;
 }
-export interface SpawnPointParam {
+export interface SpawnPointParam 
+{
     BotZoneName: string;
     Categories: string[];
     ColliderParams: ColliderParams;
@@ -144,20 +155,24 @@ export interface SpawnPointParam {
     Rotation: number;
     Sides: string[];
 }
-export interface ColliderParams {
+export interface ColliderParams 
+{
     _parent: string;
     _props: Props;
 }
-export interface Props {
+export interface Props 
+{
     Center: xyz;
     Radius: number;
 }
-export interface xyz {
+export interface xyz 
+{
     x: number;
     y: number;
     z: number;
 }
-export interface Exit {
+export interface Exit 
+{
     Chance: number;
     Count: number;
     EntryPoints: string;
@@ -171,11 +186,13 @@ export interface Exit {
     PlayersCount: number;
     RequirementTip: string;
 }
-export interface MaxItemCountInLocation {
+export interface MaxItemCountInLocation 
+{
     TemplateId: string;
     Value: number;
 }
-export interface Wave {
+export interface Wave 
+{
     BotPreset: string;
     BotSide: string;
     SpawnPoints: string;

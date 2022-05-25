@@ -3,7 +3,8 @@ import "reflect-metadata";
 import fs from "fs";
 import { IAsyncQueue } from "../models/spt/utils/IAsyncQueue";
 import { IUUidGenerator } from "../models/spt/utils/IUuidGenerator";
-export declare class VFS {
+export declare class VFS 
+{
     private asyncQueue;
     private uuidGenerator;
     accessFilePromisify: (path: fs.PathLike, mode?: number) => Promise<void>;

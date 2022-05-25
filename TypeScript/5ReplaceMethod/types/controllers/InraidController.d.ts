@@ -11,7 +11,8 @@ import { QuestHelper } from "../helpers/QuestHelper";
 import { InRaidHelper } from "../helpers/InRaidHelper";
 import { InsuranceService } from "../services/InsuranceService";
 import { ExtendedProfileHelper } from "../helpers/ExtendedProfileHelper";
-export declare class InraidController {
+export declare class InraidController 
+{
     private saveServer;
     private jsonUtil;
     private databaseServer;

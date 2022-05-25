@@ -1,4 +1,5 @@
-export declare enum MemberCategory {
+export declare enum MemberCategory 
+    {
     Default = 0,
     Developer = 1,
     UniqueId = 2,

@@ -4,7 +4,8 @@ import { ISyncHealthRequestData } from "../../eft/health/ISyncHealthRequestData"
 import { IOffraidEatRequestData } from "../../eft/health/IOffraidEatRequestData";
 import { IOffraidHealRequestData } from "../../eft/health/IOffraidHealRequestData";
 import { IHealthTreatmentRequestData } from "../../eft/health/IHealthTreatmentRequestData";
-export interface IHealthCallbacks {
+export interface IHealthCallbacks 
+{
     onLoad(sessionID: string): IAkiProfile;
     syncHealth(url: string, info: ISyncHealthRequestData, sessionID: string): any;
     offraidEat(pmcData: IPmcData, body: IOffraidEatRequestData, sessionID: string): any;

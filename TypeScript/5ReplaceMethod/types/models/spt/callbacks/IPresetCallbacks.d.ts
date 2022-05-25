@@ -1,3 +1,4 @@
-export interface IPresetCallbacks {
+export interface IPresetCallbacks 
+{
     load(): void;
 }

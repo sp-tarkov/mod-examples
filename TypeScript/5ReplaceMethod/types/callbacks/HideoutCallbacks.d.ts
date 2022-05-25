@@ -12,7 +12,8 @@ import { IHideoutTakeProductionRequestData } from "../models/eft/hideout/IHideou
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { ConfigServer } from "../servers/ConfigServer";
 import { OnUpdate } from "../di/OnUpdate";
-export declare class HideoutCallbacks extends OnUpdate {
+export declare class HideoutCallbacks extends OnUpdate 
+{
     private hideoutController;
     private configServer;
     private hideoutConfig;

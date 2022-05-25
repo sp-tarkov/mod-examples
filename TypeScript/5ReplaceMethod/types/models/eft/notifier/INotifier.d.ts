@@ -1,4 +1,5 @@
-export interface INotifierChannel {
+export interface INotifierChannel 
+{
     "server": string;
     "channel_id": string;
     "url": string;
@@ -6,7 +7,8 @@ export interface INotifierChannel {
     "ws": string;
 }
 import { Message } from "../profile/IAkiProfile";
-export interface INotification {
+export interface INotification 
+{
     type: "RagfairOfferSold" | "new_message" | "ping";
     eventId: string;
     dialogId?: string;

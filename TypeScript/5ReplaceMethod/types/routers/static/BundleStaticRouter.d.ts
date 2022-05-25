@@ -1,6 +1,7 @@
 import { BundleCallbacks } from "../../callbacks/BundleCallbacks";
 import { HandledRoute, StaticRouter } from "../../di/Router";
-export declare class BundleStaticRouter extends StaticRouter {
+export declare class BundleStaticRouter extends StaticRouter 
+{
     private bundleCallbacks;
     constructor(bundleCallbacks: BundleCallbacks);
     getHandledRoutes(): HandledRoute[];

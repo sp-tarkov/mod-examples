@@ -8,7 +8,8 @@ import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
 import { BotGeneratorHelper } from "../helpers/BotGeneratorHelper";
-export declare class BotLootGenerator {
+export declare class BotLootGenerator 
+{
     private jsonUtil;
     private hashUtil;
     private randomUtil;

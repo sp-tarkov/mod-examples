@@ -1,4 +1,5 @@
-export interface IBotType {
+export interface IBotType 
+{
     appearance: Appearance;
     chances: Chances;
     difficulty: Difficulties;
@@ -10,18 +11,21 @@ export interface IBotType {
     lastName: string[];
     skills: Skills;
 }
-export interface Appearance {
+export interface Appearance 
+{
     body: string[];
     feet: string[];
     hands: string[];
     head: string[];
     voice: string[];
 }
-export interface Chances {
+export interface Chances 
+{
     equipment: EquipmentChances;
     mods: ModsChances;
 }
-export interface EquipmentChances {
+export interface EquipmentChances 
+{
     ArmBand: number;
     ArmorVest: number;
     Backpack: number;
@@ -37,7 +41,8 @@ export interface EquipmentChances {
     SecuredContainer: number;
     TacticalVest: number;
 }
-export interface ModsChances {
+export interface ModsChances 
+{
     mod_charge: number;
     mod_equipment: number;
     mod_equipment_000: number;
@@ -66,13 +71,15 @@ export interface ModsChances {
     mod_tactical_002: number;
     mod_tactical_003: number;
 }
-export interface Difficulties {
+export interface Difficulties 
+{
     easy: Difficulty;
     normal: Difficulty;
     hard: Difficulty;
     impossible: Difficulty;
 }
-export interface Difficulty {
+export interface Difficulty 
+{
     Aiming: Record<string, string | number | boolean>;
     Boss: Record<string, string | number | boolean>;
     Change: Record<string, string | number | boolean>;
@@ -88,29 +95,34 @@ export interface Difficulty {
     Scattering: Record<string, string | number | boolean>;
     Shoot: Record<string, string | number | boolean>;
 }
-export interface Experience {
+export interface Experience 
+{
     aggressorBonus: number;
     level: MinMax;
     reward: MinMax;
     standingForKill: number;
 }
-export interface Generation {
+export interface Generation 
+{
     items: ItemMinMax;
 }
-export interface ItemMinMax {
+export interface ItemMinMax 
+{
     grenades: MinMax;
     healing: MinMax;
     looseLoot: MinMax;
     magazines: MinMax;
     specialItems: MinMax;
 }
-export interface Health {
+export interface Health 
+{
     BodyParts: BodyPart[];
     Energy: MinMax;
     Hydration: MinMax;
     Temperature: MinMax;
 }
-export interface BodyPart {
+export interface BodyPart 
+{
     Chest: MinMax;
     Head: MinMax;
     LeftArm: MinMax;
@@ -119,16 +131,19 @@ export interface BodyPart {
     RightLeg: MinMax;
     Stomach: MinMax;
 }
-export interface MinMax {
+export interface MinMax 
+{
     max: number;
     min: number;
 }
-export interface Inventory {
+export interface Inventory 
+{
     equipment: Equipment;
     items: Items;
     mods: Mods;
 }
-export interface Equipment {
+export interface Equipment 
+{
     ArmBand: Record<string, number>;
     ArmorVest: Record<string, number>;
     Backpack: Record<string, number>;
@@ -144,7 +159,8 @@ export interface Equipment {
     SecuredContainer: Record<string, number>;
     TacticalVest: Record<string, number>;
 }
-export interface Items {
+export interface Items 
+{
     Backpack: string[];
     Pockets: string[];
     SecuredContainer: string[];
@@ -152,19 +168,22 @@ export interface Items {
     TacticalVest: string[];
 }
 export declare type Mods = Record<string, Record<string, string[]>>;
-export interface Skills {
+export interface Skills 
+{
     Common: Common[];
     Bonuses?: any;
     Mastering: Mastering[];
     Points: number;
 }
-export interface Mastering {
+export interface Mastering 
+{
     Id: string;
     Progress: number;
     max?: number;
     min?: number;
 }
-export interface Common {
+export interface Common 
+{
     Id: string;
     Progress: number;
     PointsEarnedDuringSession?: number;

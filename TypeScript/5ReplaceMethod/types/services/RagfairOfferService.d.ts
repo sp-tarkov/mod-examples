@@ -4,7 +4,8 @@ import { SaveServer } from "../servers/SaveServer";
 import { TimeUtil } from "../utils/TimeUtil";
 import { Item } from "../models/eft/common/tables/IItem";
 import { IRagfairOffer } from "../models/eft/ragfair/IRagfairOffer";
-export declare class RagfairOfferService {
+export declare class RagfairOfferService 
+{
     private timeUtil;
     private databaseServer;
     private saveServer;

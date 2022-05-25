@@ -1,4 +1,5 @@
-export interface IHideoutUpgradeCompleteRequestData {
+export interface IHideoutUpgradeCompleteRequestData 
+{
     Action: "HideoutUpgradeComplete";
     areaType: number;
     timestamp: number;

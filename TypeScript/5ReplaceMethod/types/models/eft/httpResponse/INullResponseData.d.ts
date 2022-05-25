@@ -1,4 +1,5 @@
-export interface INullResponseData {
+export interface INullResponseData 
+{
     err: number;
     errmsg: any;
     data: null;

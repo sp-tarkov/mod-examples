@@ -10,7 +10,8 @@ import { PaymentHelper } from "../helpers/PaymentHelper";
 import { HandbookHelper } from "../helpers/HandbookHelper";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class PaymentService {
+export declare class PaymentService 
+{
     private logger;
     private httpResponse;
     private databaseServer;

@@ -1,6 +1,7 @@
 import { DataCallbacks } from "../../callbacks/DataCallbacks";
 import { DynamicRouter, HandledRoute } from "../../di/Router";
-export declare class DataDynamicRouter extends DynamicRouter {
+export declare class DataDynamicRouter extends DynamicRouter 
+{
     private dataCallbacks;
     constructor(dataCallbacks: DataCallbacks);
     private readonly _routes;

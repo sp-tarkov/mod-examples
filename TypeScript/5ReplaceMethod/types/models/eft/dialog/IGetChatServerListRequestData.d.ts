@@ -1,3 +1,4 @@
-export interface IGetChatServerListRequestData {
+export interface IGetChatServerListRequestData 
+{
     VersionId: string;
 }

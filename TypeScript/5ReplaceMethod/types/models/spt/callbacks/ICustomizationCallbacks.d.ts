@@ -4,7 +4,8 @@ import { IWearClothingRequestData } from "../../eft/customization/IWearClothingR
 import { IGetBodyResponseData } from "../../eft/httpResponse/IGetBodyResponseData";
 import { ISuit } from "../../eft/common/tables/ITrader";
 import { IItemEventRouterResponse } from "../../eft/itemEvent/IItemEventRouterResponse";
-export interface ICustomizationCallbacks {
+export interface ICustomizationCallbacks 
+{
     getSuits(url: string, info: any, sessionID: string): IGetBodyResponseData<any>;
     getTraderSuits(url: string, info: any, sessionID: string): IGetBodyResponseData<ISuit[]>;
     wearClothing(pmcData: IPmcData, body: IWearClothingRequestData, sessionID: string): IItemEventRouterResponse;

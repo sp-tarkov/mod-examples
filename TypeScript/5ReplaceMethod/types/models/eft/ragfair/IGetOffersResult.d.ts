@@ -1,5 +1,6 @@
 import { IRagfairOffer } from "./IRagfairOffer";
-export interface IGetOffersResult {
+export interface IGetOffersResult 
+{
     categories: Record<string, number>;
     offers: IRagfairOffer[];
     offersCount: number;

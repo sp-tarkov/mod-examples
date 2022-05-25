@@ -1,10 +1,12 @@
 import { IBaseConfig } from "./IBaseConfig";
-export interface IWeatherConfig extends IBaseConfig {
+export interface IWeatherConfig extends IBaseConfig 
+{
     kind: "aki-weather";
     acceleration: number;
     weather: Weather;
 }
-export interface Weather {
+export interface Weather 
+{
     clouds: MinMax;
     windSpeed: MinMax;
     windDirection: MinMax;
@@ -15,7 +17,8 @@ export interface Weather {
     temp: MinMax;
     pressure: MinMax;
 }
-export interface MinMax {
+export interface MinMax 
+{
     min: number;
     max: number;
 }

@@ -18,7 +18,8 @@ import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { RagfairSortHelper } from "./RagfairSortHelper";
 import { RagfairHelper } from "./RagfairHelper";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class RagfairOfferHelper {
+export declare class RagfairOfferHelper 
+{
     private logger;
     private timeUtil;
     private hashUtil;

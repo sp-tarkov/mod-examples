@@ -1,6 +1,7 @@
 import { TraderCallbacks } from "../../callbacks/TraderCallbacks";
 import { HandledRoute, StaticRouter } from "../../di/Router";
-export declare class TraderStaticRouter extends StaticRouter {
+export declare class TraderStaticRouter extends StaticRouter 
+{
     private traderCallbacks;
     constructor(traderCallbacks: TraderCallbacks);
     getHandledRoutes(): HandledRoute[];

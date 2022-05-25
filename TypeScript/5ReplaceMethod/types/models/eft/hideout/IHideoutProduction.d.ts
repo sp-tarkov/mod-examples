@@ -1,4 +1,5 @@
-export interface IHideoutProduction {
+export interface IHideoutProduction 
+{
     _id: string;
     areaType: number;
     requirements: Requirement[];
@@ -9,7 +10,8 @@ export interface IHideoutProduction {
     count: number;
     productionLimitCount: number;
 }
-export interface Requirement {
+export interface Requirement 
+{
     templateId?: string;
     count?: number;
     isFunctional?: boolean;

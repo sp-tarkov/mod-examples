@@ -1,6 +1,7 @@
 import { MemberCategory } from "../common/MemberCategory";
 import { Item } from "../common/tables/IItem";
-export interface IRagfairOffer {
+export interface IRagfairOffer 
+{
     sellResult?: SellResult[];
     _id: string;
     items: Item[];
@@ -23,12 +24,14 @@ export interface IRagfairOffer {
     CurrentItemCount: number;
     priority: boolean;
 }
-export interface OfferRequirement {
+export interface OfferRequirement 
+{
     _tpl: string;
     count: number;
     onlyFunctional: boolean;
 }
-export interface IRagfairOfferUser {
+export interface IRagfairOfferUser 
+{
     id: string;
     nickname: string;
     rating: number;
@@ -36,7 +39,8 @@ export interface IRagfairOfferUser {
     avatar: string;
     isRatingGrowing: boolean;
 }
-export interface SellResult {
+export interface SellResult 
+{
     sellTime: number;
     amount: number;
 }

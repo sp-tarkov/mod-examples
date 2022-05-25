@@ -1,4 +1,5 @@
 import { Item } from "../../eft/common/tables/IItem";
-export interface IRagfairAssortGenerator {
+export interface IRagfairAssortGenerator 
+{
     getAssortItems(): Item[];
 }

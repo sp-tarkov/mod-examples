@@ -1,4 +1,5 @@
-export declare class MathUtil {
+export declare class MathUtil 
+{
     /**
      * Helper to create the sum of all array elements
     * @param   {array}     values          The array with numbers of which to calculate the sum

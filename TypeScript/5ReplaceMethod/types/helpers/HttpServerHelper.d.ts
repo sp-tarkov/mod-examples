@@ -1,5 +1,6 @@
 import { ConfigServer } from "../servers/ConfigServer";
-export declare class HttpServerHelper {
+export declare class HttpServerHelper 
+{
     private configServer;
     private httpConfig;
     private mime;

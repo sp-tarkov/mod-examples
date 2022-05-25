@@ -3,7 +3,8 @@ import { IPmcData } from "../models/eft/common/IPmcData";
 import { IProcessRagfairTradeRequestData } from "../models/eft/trade/IProcessRagfairTradeRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IProcessBaseTradeRequestData } from "../models/eft/trade/IProcessBaseTradeRequestData";
-export declare class TradeCallbacks {
+export declare class TradeCallbacks 
+{
     private tradeController;
     constructor(tradeController: TradeController);
     processTrade(pmcData: IPmcData, body: IProcessBaseTradeRequestData, sessionID: string): IItemEventRouterResponse;

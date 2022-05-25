@@ -1,12 +1,14 @@
 import { IBaseInteractionRequestData } from "../common/request/IBaseInteractionRequestData";
-export interface IOffraidHealRequestData extends IBaseInteractionRequestData {
+export interface IOffraidHealRequestData extends IBaseInteractionRequestData 
+{
     Action: "Heal";
     item: string;
     part: BodyPart;
     count: number;
     time: number;
 }
-export declare enum BodyPart {
+export declare enum BodyPart 
+    {
     Head = 0,
     Chest = 1,
     Stomach = 2,

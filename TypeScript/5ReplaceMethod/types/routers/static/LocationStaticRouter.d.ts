@@ -1,6 +1,7 @@
 import { LocationCallbacks } from "../../callbacks/LocationCallbacks";
 import { HandledRoute, StaticRouter } from "../../di/Router";
-export declare class LocationStaticRouter extends StaticRouter {
+export declare class LocationStaticRouter extends StaticRouter 
+{
     private locationCallbacks;
     constructor(locationCallbacks: LocationCallbacks);
     getHandledRoutes(): HandledRoute[];

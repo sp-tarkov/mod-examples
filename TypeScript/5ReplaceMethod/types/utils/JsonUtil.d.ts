@@ -1,7 +1,8 @@
 import { ILogger } from "../models/spt/utils/ILogger";
 import { HashUtil } from "./HashUtil";
 import { VFS } from "./VFS";
-export declare class JsonUtil {
+export declare class JsonUtil 
+{
     private vfs;
     private hashUtil;
     private logger;

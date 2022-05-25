@@ -19,21 +19,26 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { RagfairServerHelper } from "../helpers/RagfairServerHelper";
 import { ILogger } from "../models/spt/utils/ILogger";
-export interface IQuestTypePool {
+export interface IQuestTypePool 
+{
     types: string[];
     pool: IQuestPool;
 }
-export interface IQuestPool {
+export interface IQuestPool 
+{
     Exploration: IExplorationPool;
     Elimination: IEliminationPool;
 }
-export interface IExplorationPool {
+export interface IExplorationPool 
+{
     locations: Partial<Record<ELocationName, string[]>>;
 }
-export interface IEliminationPool {
+export interface IEliminationPool 
+{
     targets: IEliminationTargetPool;
 }
-export interface IEliminationTargetPool {
+export interface IEliminationTargetPool 
+{
     Savage?: ITargetLocation;
     AnyPmc?: ITargetLocation;
     bossBully?: ITargetLocation;
@@ -43,10 +48,12 @@ export interface IEliminationTargetPool {
     bossTagilla?: ITargetLocation;
     bossKojaniy?: ITargetLocation;
 }
-export interface ITargetLocation {
+export interface ITargetLocation 
+{
     locations: string[];
 }
-export declare class RepeatableQuestController {
+export declare class RepeatableQuestController 
+{
     private timeUtil;
     private logger;
     private randomUtil;

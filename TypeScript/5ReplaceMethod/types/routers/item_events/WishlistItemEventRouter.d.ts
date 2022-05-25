@@ -2,7 +2,8 @@ import { IPmcData } from "../../models/eft/common/IPmcData";
 import { IItemEventRouterResponse } from "../../models/eft/itemEvent/IItemEventRouterResponse";
 import { WishlistCallbacks } from "../../callbacks/WishlistCallbacks";
 import { HandledRoute, ItemEventRouterDefinition } from "../../di/Router";
-export declare class WishlistItemEventRouter extends ItemEventRouterDefinition {
+export declare class WishlistItemEventRouter extends ItemEventRouterDefinition 
+{
     private wishlistCallbacks;
     constructor(wishlistCallbacks: WishlistCallbacks);
     getHandledRoutes(): HandledRoute[];

@@ -1,5 +1,6 @@
 import { IBaseConfig } from "./IBaseConfig";
-export interface IAirdropConfig extends IBaseConfig {
+export interface IAirdropConfig extends IBaseConfig 
+{
     kind: "aki-airdrop";
     airdropChancePercent: AirdropChancePercent;
     airdropMinOpenHeight: number;
@@ -10,7 +11,8 @@ export interface IAirdropConfig extends IBaseConfig {
     airdropMinStartTimeSeconds: number;
     airdropMaxStartTimeSeconds: number;
 }
-export interface AirdropChancePercent {
+export interface AirdropChancePercent 
+{
     bigmap: number;
     woods: number;
     lighthouse: number;

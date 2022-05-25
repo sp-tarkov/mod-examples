@@ -1,6 +1,7 @@
 import { BundleCallbacks } from "../../callbacks/BundleCallbacks";
 import { DynamicRouter, HandledRoute } from "../../di/Router";
-export declare class BundleDynamicRouter extends DynamicRouter {
+export declare class BundleDynamicRouter extends DynamicRouter 
+{
     private bundleCallbacks;
     constructor(bundleCallbacks: BundleCallbacks);
     private readonly _routes;

@@ -12,7 +12,8 @@ import { IQuest } from "../models/eft/common/tables/IQuest";
 import { IPmcDataRepeatableQuest } from "../models/eft/common/tables/IRepeatableQuests";
 import { IRepeatableQuestChangeRequest } from "../models/eft/quests/IRepeatableQuestChangeRequest";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
-export declare class QuestCallbacks {
+export declare class QuestCallbacks 
+{
     private httpResponse;
     private questController;
     private repeatableQuestController;

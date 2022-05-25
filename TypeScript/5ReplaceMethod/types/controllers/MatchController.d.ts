@@ -6,7 +6,8 @@ import { IPmcData } from "../models/eft/common/IPmcData";
 import { ConfigServer } from "../servers/ConfigServer";
 import { SaveServer } from "../servers/SaveServer";
 import { MatchLocationService } from "../services/MatchLocationService";
-export declare class MatchController {
+export declare class MatchController 
+{
     private saveServer;
     private profileHelper;
     private matchLocationService;

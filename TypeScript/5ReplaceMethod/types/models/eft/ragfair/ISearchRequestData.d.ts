@@ -1,4 +1,5 @@
-export interface ISearchRequestData {
+export interface ISearchRequestData 
+{
     page: number;
     limit: number;
     sortType: number;
@@ -23,10 +24,12 @@ export interface ISearchRequestData {
     tm: number;
     reload: number;
 }
-export declare enum OfferOwnerType {
+export declare enum OfferOwnerType 
+    {
     ANYOWNERTYPE = 0,
     TRADEROWNERTYPE = 1,
     PLAYEROWNERTYPE = 2
 }
-export interface BuildItems {
+export interface BuildItems 
+{
 }

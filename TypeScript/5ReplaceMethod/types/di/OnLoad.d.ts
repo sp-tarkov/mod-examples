@@ -1,4 +1,5 @@
-export declare class OnLoad {
+export declare class OnLoad 
+{
     onLoad(): void;
     getRoute(): string;
 }
