@@ -9,11 +9,13 @@ import { ILogger } from "../models/spt/utils/ILogger";
 import { HttpRouter } from "../routers/HttpRouter";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { JsonUtil } from "../utils/JsonUtil";
+import { RandomUtil } from "../utils/RandomUtil";
 import { ConfigServer } from "./ConfigServer";
 import { DatabaseServer } from "./DatabaseServer";
 export declare class HttpServer implements IHttpServer {
     private httpRouter;
     private logger;
+    private randomUtil;
     private jsonUtil;
     private httpResponse;
     private databaseServer;
@@ -22,7 +24,7 @@ export declare class HttpServer implements IHttpServer {
     private serializers;
     private configServer;
     constructor(httpRouter: HttpRouter, // TODO: delay required
-    logger: ILogger, jsonUtil: JsonUtil, httpResponse: HttpResponseUtil, databaseServer: DatabaseServer, notifierHelper: NotifierHelper, httpServerHelper: HttpServerHelper, serializers: Serializer[], configServer: ConfigServer);
+    logger: ILogger, randomUtil: RandomUtil, jsonUtil: JsonUtil, httpResponse: HttpResponseUtil, databaseServer: DatabaseServer, notifierHelper: NotifierHelper, httpServerHelper: HttpServerHelper, serializers: Serializer[], configServer: ConfigServer);
     private buffers;
     private onReceive;
     private onRespond;
@@ -40,5 +42,6 @@ export declare class HttpServer implements IHttpServer {
     sendResponse(sessionID: string, req: any, resp: any, body: Buffer): void;
     handleRequest(req: http.IncomingMessage, resp: http.ServerResponse): void;
     load(): void;
+    private getRandomisedMessage;
     wsOnConnection(ws: any, req: any): void;
 }

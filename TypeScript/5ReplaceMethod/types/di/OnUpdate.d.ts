@@ -1,5 +1,4 @@
-export declare class OnUpdate 
-{
+export declare class OnUpdate {
     onUpdate(timeSinceLastRun: number): boolean;
     getRoute(): string;
 }

@@ -1,5 +1,6 @@
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { Item } from "../models/eft/common/tables/IItem";
+import { IAddItemRequestData } from "../models/eft/inventory/IAddItemRequestData";
 import { IInventoryMergeRequestData } from "../models/eft/inventory/IInventoryMergeRequestData";
 import { IInventoryMoveRequestData } from "../models/eft/inventory/IInventoryMoveRequestData";
 import { IInventorySplitRequestData } from "../models/eft/inventory/IInventorySplitRequestData";
@@ -39,7 +40,7 @@ export declare class InventoryHelper {
     private configServer;
     private inventoryConfig;
     constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, httpResponse: HttpResponseUtil, fenceService: FenceService, databaseServer: DatabaseServer, paymentHelper: PaymentHelper, traderAssortHelper: TraderAssortHelper, dialogueHelper: DialogueHelper, itemHelper: ItemHelper, containerHelper: ContainerHelper, profileHelper: ProfileHelper, configServer: ConfigServer);
-    addItem(pmcData: IPmcData, body: any, output: IItemEventRouterResponse, sessionID: string, callback: any, foundInRaid?: boolean, addUpd?: any): IItemEventRouterResponse;
+    addItem(pmcData: IPmcData, body: IAddItemRequestData, output: IItemEventRouterResponse, sessionID: string, callback: any, foundInRaid?: boolean, addUpd?: any): IItemEventRouterResponse;
     removeItem(pmcData: IPmcData, itemId: string, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
     getItemSize(itemTpl: string, itemID: string, inventoryItem: Item[]): Record<number, number>;
     private getSizeByInventoryItemHash;

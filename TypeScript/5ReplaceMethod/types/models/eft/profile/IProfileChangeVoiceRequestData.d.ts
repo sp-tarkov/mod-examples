@@ -1,4 +1,3 @@
-export interface IProfileChangeVoiceRequestData 
-{
+export interface IProfileChangeVoiceRequestData {
     voice: string;
 }

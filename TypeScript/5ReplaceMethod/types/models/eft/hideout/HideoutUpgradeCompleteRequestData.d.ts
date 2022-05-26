@@ -1,5 +1,4 @@
-export interface HideoutUpgradeCompleteRequestData 
-{
+export interface HideoutUpgradeCompleteRequestData {
     Action: string;
     areaType: number;
     timestamp: number;

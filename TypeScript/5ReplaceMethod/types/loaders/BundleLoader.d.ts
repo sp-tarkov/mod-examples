@@ -1,8 +1,7 @@
 import { HttpServerHelper } from "../helpers/HttpServerHelper";
 import { JsonUtil } from "../utils/JsonUtil";
 import { VFS } from "../utils/VFS";
-declare class BundleInfo 
-{
+declare class BundleInfo {
     private httpServerHelper;
     key: string;
     path: string;
@@ -10,8 +9,7 @@ declare class BundleInfo
     dependencyKeys: string[];
     constructor(modpath: string, bundle: any, httpServerHelper: HttpServerHelper);
 }
-export declare class BundleLoader 
-{
+export declare class BundleLoader {
     private httpServerHelper;
     private vfs;
     private jsonUtil;

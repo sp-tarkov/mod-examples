@@ -4,8 +4,7 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class BotHelper 
-{
+export declare class BotHelper {
     private logger;
     private jsonUtil;
     private databaseServer;

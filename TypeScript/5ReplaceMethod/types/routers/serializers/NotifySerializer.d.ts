@@ -1,9 +1,8 @@
-import { IHttpServer } from "../../models/spt/server/IHttpServer";
 import { NotifierController } from "../../controllers/NotifierController";
 import { Serializer } from "../../di/Serializer";
 import { HttpServerHelper } from "../../helpers/HttpServerHelper";
-export declare class NotifySerializer extends Serializer 
-{
+import { IHttpServer } from "../../models/spt/server/IHttpServer";
+export declare class NotifySerializer extends Serializer {
     private notifierController;
     private httpServerHelper;
     constructor(notifierController: NotifierController, httpServerHelper: HttpServerHelper);

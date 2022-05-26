@@ -11,6 +11,7 @@ export declare class InitialModLoader implements IModLoader {
     private jsonUtil;
     private modCompilerService;
     private configServer;
+    private static container;
     private readonly basepath;
     private imported;
     private onLoad;
@@ -32,4 +33,5 @@ export declare class InitialModLoader implements IModLoader {
     private validMod;
     private getLoadOrderRecursive;
     private getLoadOrder;
+    getContainer(): DependencyContainer;
 }

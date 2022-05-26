@@ -5,8 +5,7 @@ import { Dialogue, MessageContent, MessagePreview, MessageType } from "../models
 import { HashUtil } from "../utils/HashUtil";
 import { NotifierHelper } from "./NotifierHelper";
 import { NotificationSendHelper } from "./NotificationSendHelper";
-export declare class DialogueHelper 
-{
+export declare class DialogueHelper {
     private hashUtil;
     private saveServer;
     private databaseServer;

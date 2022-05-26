@@ -9,8 +9,7 @@ import { IHideoutSingleProductionStartRequestData } from "../../eft/hideout/IHid
 import { IHideoutContinousProductionStartRequestData } from "../../eft/hideout/IHideoutContinousProductionStartRequestData";
 import { IHideoutTakeProductionRequestData } from "../../eft/hideout/IHideoutTakeProductionRequestData";
 import { IItemEventRouterResponse } from "../../eft/itemEvent/IItemEventRouterResponse";
-export interface IHideoutCallbacks 
-{
+export interface IHideoutCallbacks {
     upgrade(pmcData: IPmcData, body: IHideoutUpgradeRequestData, sessionID: string): IItemEventRouterResponse;
     upgradeComplete(pmcData: IPmcData, body: IHideoutUpgradeCompleteRequestData, sessionID: string): IItemEventRouterResponse;
     putItemsInAreaSlots(pmcData: IPmcData, body: IHideoutPutItemInRequestData, sessionID: string): IItemEventRouterResponse;

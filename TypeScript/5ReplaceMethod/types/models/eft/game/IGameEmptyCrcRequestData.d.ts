@@ -1,4 +1,3 @@
-export interface IGameEmptyCrcRequestData 
-{
+export interface IGameEmptyCrcRequestData {
     crc: number;
 }

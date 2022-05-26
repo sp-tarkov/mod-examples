@@ -1,12 +1,11 @@
 import { InraidController } from "../controllers/InraidController";
-import { INullResponseData } from "../models/eft/httpResponse/INullResponseData";
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
+import { INullResponseData } from "../models/eft/httpResponse/INullResponseData";
 import { IRegisterPlayerRequestData } from "../models/eft/inRaid/IRegisterPlayerRequestData";
 import { ISaveProgressRequestData } from "../models/eft/inRaid/ISaveProgressRequestData";
 import { ConfigServer } from "../servers/ConfigServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
-export declare class InraidCallbacks 
-{
+export declare class InraidCallbacks {
     private inraidController;
     private httpResponse;
     private configServer;

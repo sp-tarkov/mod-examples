@@ -7,8 +7,7 @@ import { IProfileCreateRequestData } from "../../eft/profile/IProfileCreateReque
 import { IValidateNicknameRequestData } from "../../eft/profile/IValidateNicknameRequestData";
 import { ISearchFriendRequestData } from "../../eft/profile/ISearchFriendRequestData";
 import { ISearchFriendResponse } from "../../eft/profile/ISearchFriendResponse";
-export interface IProfileCallbacks 
-{
+export interface IProfileCallbacks {
     onLoad(sessionID: string): any;
     createProfile(url: string, info: IProfileCreateRequestData, sessionID: string): IGetBodyResponseData<any>;
     getProfileData(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;

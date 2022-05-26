@@ -8,8 +8,7 @@ import { IHideoutSettingsBase } from "../../eft/hideout/IHideoutSettingsBase";
 import { IGetBodyResponseData } from "../../eft/httpResponse/IGetBodyResponseData";
 import { ILanguageBase } from "../server/ILocaleBase";
 import { ISettingsBase } from "../server/ISettingsBase";
-export interface IDataCallbacks 
-{
+export interface IDataCallbacks {
     getSettings(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ISettingsBase>;
     getGlobals(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IGlobals>;
     getTemplateItems(url: string, info: IEmptyRequestData, sessionID: string): string;

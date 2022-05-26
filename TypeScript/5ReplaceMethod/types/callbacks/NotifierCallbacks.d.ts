@@ -1,12 +1,11 @@
-import { HttpResponseUtil } from "../utils/HttpResponseUtil";
+import { NotifierController } from "../controllers/NotifierController";
 import { HttpServerHelper } from "../helpers/HttpServerHelper";
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
 import { INotifierChannel } from "../models/eft/notifier/INotifier";
 import { ISelectProfileRequestData } from "../models/eft/notifier/ISelectProfileRequestData";
-import { NotifierController } from "../controllers/NotifierController";
-export declare class NotifierCallbacks 
-{
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
+export declare class NotifierCallbacks {
     private httpServerHelper;
     private httpResponse;
     private notifierController;

@@ -1,6 +1,5 @@
 import { IBaseConfig } from "./IBaseConfig";
-export interface ITraderConfig extends IBaseConfig 
-{
+export interface ITraderConfig extends IBaseConfig {
     kind: "aki-trader";
     updateTime: UpdateTime[];
     updateTimeDefault: number;
@@ -10,8 +9,7 @@ export interface ITraderConfig extends IBaseConfig
     minDurabilityForSale: number;
     fenceItemIgnoreList: string[];
 }
-export interface UpdateTime 
-{
+export interface UpdateTime {
     traderId: string;
     seconds: number;
 }

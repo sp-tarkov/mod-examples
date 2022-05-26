@@ -1,13 +1,11 @@
-export declare class FindSlotResult 
-{
+export declare class FindSlotResult {
     success: boolean;
     x: any;
     y: any;
     rotation: boolean;
     constructor(success?: boolean, x?: any, y?: any, rotation?: boolean);
 }
-export declare class ContainerHelper 
-{
+export declare class ContainerHelper {
     private locateSlot;
     findSlotForItem(container2D: number[][], itemWidth: number, itemHeight: number): FindSlotResult;
     fillContainerMapWithItem(container2D: number[][], x: number, y: number, itemW: number, itemH: number, rotate: boolean): any;

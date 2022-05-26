@@ -10,8 +10,7 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { RepairHelper } from "../helpers/RepairHelper";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class RepairController 
-{
+export declare class RepairController {
     private logger;
     private itemEventRouter;
     private databaseServer;

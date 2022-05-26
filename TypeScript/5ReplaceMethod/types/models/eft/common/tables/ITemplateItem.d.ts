@@ -1,5 +1,4 @@
-export interface ITemplateItem 
-{
+export interface ITemplateItem {
     _id: string;
     _name: string;
     _parent: string;
@@ -7,8 +6,7 @@ export interface ITemplateItem
     _props: Props;
     _proto: string;
 }
-export interface Props 
-{
+export interface Props {
     Name: string;
     ShortName: string;
     Description: string;
@@ -288,21 +286,18 @@ export interface Props
     apResource: number;
     krResource: number;
 }
-export interface Prefab 
-{
+export interface Prefab {
     path: string;
     rcid: string;
 }
-export interface Grid 
-{
+export interface Grid {
     _name: string;
     _id: string;
     _parent: string;
     _props: GridProps;
     _proto: string;
 }
-export interface GridProps 
-{
+export interface GridProps {
     filters: GridFilter[];
     cellsH: number;
     cellsV: number;
@@ -311,13 +306,11 @@ export interface GridProps
     maxWeight: number;
     isSortingTable: boolean;
 }
-export interface GridFilter 
-{
+export interface GridFilter {
     Filter: string[];
     ExcludedFilter: string[];
 }
-export interface Slot 
-{
+export interface Slot {
     _name: string;
     _id: string;
     _parent: string;
@@ -326,12 +319,10 @@ export interface Slot
     _mergeSlotWithChildren: boolean;
     _proto: string;
 }
-export interface SlotProps 
-{
+export interface SlotProps {
     filters: Filter[];
 }
-export interface Chamber 
-{
+export interface Chamber {
     _name: string;
     _id: string;
     _parent: string;
@@ -340,22 +331,18 @@ export interface Chamber
     _mergeSlotWithChildren: boolean;
     _proto: string;
 }
-export interface ChamberProps 
-{
+export interface ChamberProps {
     filters: FilterProps[];
 }
-export interface FilterProps 
-{
+export interface FilterProps {
     Filter: string[];
 }
-export interface Xyz 
-{
+export interface Xyz {
     x: number;
     y: number;
     z: number;
 }
-export interface StackSlot 
-{
+export interface StackSlot {
     _name?: string;
     _id: string;
     _sptTpl: string;
@@ -367,37 +354,30 @@ export interface StackSlot
     _proto?: string;
     upd: any;
 }
-export interface StackSlotProps 
-{
+export interface StackSlotProps {
     filters: Filter[];
 }
-export interface EffectsHealth 
-{
+export interface EffectsHealth {
     Hydration: Hydration;
 }
-export interface Hydration 
-{
+export interface Hydration {
     value: number;
 }
-export interface EffectsDamage 
-{
+export interface EffectsDamage {
     Pain: Pain;
     Contusion: Contusion;
 }
-export interface Pain 
-{
+export interface Pain {
     delay: number;
     duration: number;
     fadeOut: number;
 }
-export interface Contusion 
-{
+export interface Contusion {
     delay: number;
     duration: number;
     fadeOut: number;
 }
-export interface Cartridge 
-{
+export interface Cartridge {
     _name: string;
     _id: string;
     _parent: string;
@@ -405,18 +385,15 @@ export interface Cartridge
     _props: CartridgeProps;
     _proto: string;
 }
-export interface CartridgeProps 
-{
+export interface CartridgeProps {
     filters: Filter[];
 }
-export interface Filter 
-{
+export interface Filter {
     Shift?: number;
     Filter: string[];
     AnimationIndex?: number;
 }
-export interface Color 
-{
+export interface Color {
     r: number;
     g: number;
     b: number;

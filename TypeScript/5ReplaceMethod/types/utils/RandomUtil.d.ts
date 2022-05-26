@@ -16,8 +16,7 @@ import { MathUtil } from "./MathUtil";
      *   // count the elements which should be distributed according to the relative probabilities
      *   res.filter(x => x==="b").reduce((sum, x) => sum + 1 , 0)
      */
-export declare class ProbabilityObjectArray<K, V = undefined> extends Array<ProbabilityObject<K, V>> 
-{
+export declare class ProbabilityObjectArray<K, V = undefined> extends Array<ProbabilityObject<K, V>> {
     private mathUtil;
     constructor(mathUtil: MathUtil, ...items: ProbabilityObject<K, V>[]);
     filter(callbackfn: (value: ProbabilityObject<K, V>, index: number, array: ProbabilityObject<K, V>[]) => any): ProbabilityObjectArray<K, V>;
@@ -91,8 +90,7 @@ export declare class ProbabilityObjectArray<K, V = undefined> extends Array<Prob
      * A ProbabilityObject which is use as an element to the ProbabilityObjectArray array
      * It contains a key, the relative probability as well as optional data.
      */
-export declare class ProbabilityObject<K, V = undefined> 
-{
+export declare class ProbabilityObject<K, V = undefined> {
     key: K;
     relativeProbability: number;
     data: V;
@@ -104,8 +102,7 @@ export declare class ProbabilityObject<K, V = undefined>
       */
     constructor(key: K, relativeProbability: number, data?: V);
 }
-export declare class RandomUtil 
-{
+export declare class RandomUtil {
     private jsonUtil;
     private logger;
     constructor(jsonUtil: JsonUtil, logger: ILogger);

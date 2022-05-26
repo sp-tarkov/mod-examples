@@ -4,8 +4,7 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { ImageRouter } from "../routers/ImageRouter";
 import { OnLoad } from "../di/OnLoad";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class DatabaseImporter extends OnLoad 
-{
+export declare class DatabaseImporter extends OnLoad {
     private logger;
     private vfs;
     private jsonUtil;

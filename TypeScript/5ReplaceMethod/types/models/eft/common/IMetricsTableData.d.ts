@@ -1,5 +1,4 @@
-export interface IMetricsTableData 
-{
+export interface IMetricsTableData {
     Keys: number[];
     NetProcessingBins: number[];
     RenderBins: number[];

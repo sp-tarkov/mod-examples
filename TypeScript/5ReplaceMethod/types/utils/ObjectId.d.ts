@@ -1,7 +1,6 @@
 /// <reference types="node" />
 import { TimeUtil } from "./TimeUtil";
-export declare class ObjectId 
-{
+export declare class ObjectId {
     private timeUtil;
     constructor(timeUtil: TimeUtil);
     private randomBytes;

@@ -8,8 +8,7 @@ import { IRemoveOfferRequestData } from "../../eft/ragfair/IRemoveOfferRequestDa
 import { IExtendOfferRequestData } from "../../eft/ragfair/IExtendOfferRequestData";
 import { IItemEventRouterResponse } from "../../eft/itemEvent/IItemEventRouterResponse";
 import { IGetItemPriceResult } from "../../eft/ragfair/IGetItemPriceResult";
-export interface IRagfairCallbacks 
-{
+export interface IRagfairCallbacks {
     load(): void;
     search(url: string, info: ISearchRequestData, sessionID: string): IGetBodyResponseData<any>;
     getMarketPrice(url: string, info: IGetMarketPriceRequestData, sessionID: string): IGetBodyResponseData<IGetItemPriceResult>;

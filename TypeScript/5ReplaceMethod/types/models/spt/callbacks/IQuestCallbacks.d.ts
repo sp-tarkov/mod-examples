@@ -9,8 +9,7 @@ import { IItemEventRouterResponse } from "../../eft/itemEvent/IItemEventRouterRe
 import { IQuest } from "../../eft/common/tables/IQuest";
 import { IPmcDataRepeatableQuest } from "../../eft/common/tables/IRepeatableQuests";
 import { IRepeatableQuestChangeRequest } from "../../eft/quests/IRepeatableQuestChangeRequest";
-export interface IQuestCallbacks 
-{
+export interface IQuestCallbacks {
     changeRepeatableQuest(pmcData: IPmcData, body: IRepeatableQuestChangeRequest, sessionID: string): IItemEventRouterResponse;
     acceptQuest(pmcData: IPmcData, body: IAcceptQuestRequestData, sessionID: string): IItemEventRouterResponse;
     completeQuest(pmcData: IPmcData, body: ICompleteQuestRequestData, sessionID: string): IItemEventRouterResponse;

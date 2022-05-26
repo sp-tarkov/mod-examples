@@ -1,23 +1,22 @@
-import { DatabaseServer } from "../servers/DatabaseServer";
-import { ItemEventRouter } from "../routers/ItemEventRouter";
-import { HashUtil } from "../utils/HashUtil";
-import { JsonUtil } from "../utils/JsonUtil";
-import { TimeUtil } from "../utils/TimeUtil";
-import { ItemHelper } from "./ItemHelper";
-import { ProfileHelper } from "./ProfileHelper";
-import { DialogueHelper } from "./DialogueHelper";
-import { PaymentHelper } from "./PaymentHelper";
-import { TraderHelper } from "./TraderHelper";
 import { IPmcData, Quest } from "../models/eft/common/IPmcData";
 import { AvailableForConditions, AvailableForProps, IQuest, Reward } from "../models/eft/common/tables/IQuest";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IAcceptQuestRequestData } from "../models/eft/quests/IAcceptQuestRequestData";
 import { ICompleteQuestRequestData } from "../models/eft/quests/ICompleteQuestRequestData";
-import { ConfigServer } from "../servers/ConfigServer";
-import { RagfairServerHelper } from "./RagfairServerHelper";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class QuestHelper 
-{
+import { ItemEventRouter } from "../routers/ItemEventRouter";
+import { ConfigServer } from "../servers/ConfigServer";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { HashUtil } from "../utils/HashUtil";
+import { JsonUtil } from "../utils/JsonUtil";
+import { TimeUtil } from "../utils/TimeUtil";
+import { DialogueHelper } from "./DialogueHelper";
+import { ItemHelper } from "./ItemHelper";
+import { PaymentHelper } from "./PaymentHelper";
+import { ProfileHelper } from "./ProfileHelper";
+import { RagfairServerHelper } from "./RagfairServerHelper";
+import { TraderHelper } from "./TraderHelper";
+export declare class QuestHelper {
     private logger;
     private jsonUtil;
     private timeUtil;

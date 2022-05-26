@@ -1,22 +1,18 @@
-export interface ILooseLoot 
-{
+export interface ILooseLoot {
     spawnpointCount: SpawnpointCount;
     spawnpointsForced: SpawnpointsForced[];
     spawnpoints: Spawnpoint[];
 }
-export interface SpawnpointCount 
-{
+export interface SpawnpointCount {
     mean: number;
     std: number;
 }
-export interface SpawnpointsForced 
-{
+export interface SpawnpointsForced {
     locationId: string;
     probability: number;
     template: SpawnpointTemplate;
 }
-export interface SpawnpointTemplate 
-{
+export interface SpawnpointTemplate {
     Id: string;
     IsStatic: boolean;
     useGravity: boolean;
@@ -28,26 +24,22 @@ export interface SpawnpointTemplate
     Root: any;
     Items: Item[];
 }
-export interface Item 
-{
+export interface Item {
     _id: string;
     _tpl?: string;
 }
-export interface Spawnpoint 
-{
+export interface Spawnpoint {
     locationId: string;
     probability: number;
     template: SpawnpointTemplate;
     itemDistribution: ItemDistribution[];
 }
-export interface Xyz 
-{
+export interface Xyz {
     x: number;
     y: number;
     z: number;
 }
-export interface ItemDistribution 
-{
+export interface ItemDistribution {
     tpl: string;
     relativeProbability: number;
 }

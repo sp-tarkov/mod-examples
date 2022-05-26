@@ -1,14 +1,13 @@
-import { DatabaseServer } from "../servers/DatabaseServer";
-import { ItemHelper } from "../helpers/ItemHelper";
-import { Inventory as PmcInventory } from "../models/eft/common/IPmcData";
-import { MinMax, ModsChances, Mods } from "../models/eft/common/tables/IBotType";
-import { WeightedRandomHelper } from "../helpers/WeightedRandomHelper";
 import { BotGeneratorHelper } from "../helpers/BotGeneratorHelper";
-import { HashUtil } from "../utils/HashUtil";
+import { ItemHelper } from "../helpers/ItemHelper";
+import { WeightedRandomHelper } from "../helpers/WeightedRandomHelper";
+import { Inventory as PmcInventory } from "../models/eft/common/IPmcData";
+import { MinMax, Mods, ModsChances } from "../models/eft/common/tables/IBotType";
 import { ILogger } from "../models/spt/utils/ILogger";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { HashUtil } from "../utils/HashUtil";
 import { RandomUtil } from "../utils/RandomUtil";
-export declare class BotWeaponGenerator 
-{
+export declare class BotWeaponGenerator {
     private logger;
     private hashUtil;
     private databaseServer;

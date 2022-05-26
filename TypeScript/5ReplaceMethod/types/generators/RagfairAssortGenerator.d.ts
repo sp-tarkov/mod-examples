@@ -3,8 +3,7 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { ItemHelper } from "../helpers/ItemHelper";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
-export declare class RagfairAssortGenerator 
-{
+export declare class RagfairAssortGenerator {
     private jsonUtil;
     private hashUtil;
     private itemHelper;

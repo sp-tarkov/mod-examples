@@ -1,11 +1,12 @@
 import { ILogger } from "../models/spt/utils/ILogger";
 import { VFS } from "../utils/VFS";
-export declare class ModCompilerService 
-{
+import { HashCacheService } from "./HashCacheService";
+export declare class ModCompilerService {
     private logger;
+    private hashCacheService;
     private vfs;
-    constructor(logger: ILogger, vfs: VFS);
-    compileMod(path: string, modTypeScriptFiles: string[]): Promise<void>;
+    constructor(logger: ILogger, hashCacheService: HashCacheService, vfs: VFS);
+    compileMod(modName: string, path: string, modTypeScriptFiles: string[]): Promise<void>;
     private compile;
     private areFilesReady;
     private delay;

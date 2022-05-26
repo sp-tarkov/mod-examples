@@ -1,14 +1,14 @@
 import { LocationController } from "../controllers/LocationController";
-import { IGetLocationRequestData } from "../models/eft/location/IGetLocationRequestData";
-import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
-import { ILocationsGenerateAllResponse } from "../models/eft/common/ILocationsSourceDestinationBase";
+import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { ILocationBase } from "../models/eft/common/ILocationBase";
+import { ILocationsGenerateAllResponse } from "../models/eft/common/ILocationsSourceDestinationBase";
+import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
+import { IGetLocationRequestData } from "../models/eft/location/IGetLocationRequestData";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
-export declare class LocationCallbacks 
-{
+export declare class LocationCallbacks {
     private httpResponse;
     private locationController;
     constructor(httpResponse: HttpResponseUtil, locationController: LocationController);
-    getLocationData(url: string, info: any, sessionID: string): IGetBodyResponseData<ILocationsGenerateAllResponse>;
+    getLocationData(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ILocationsGenerateAllResponse>;
     getLocation(url: string, info: IGetLocationRequestData, sessionID: string): IGetBodyResponseData<ILocationBase>;
 }

@@ -4,8 +4,7 @@ import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { ItemHelper } from "./ItemHelper";
 import { QuestHelper } from "./QuestHelper";
-export declare class AssortHelper 
-{
+export declare class AssortHelper {
     private logger;
     private itemHelper;
     private databaseServer;

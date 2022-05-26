@@ -1,32 +1,32 @@
 import { InventoryHelper } from "../helpers/InventoryHelper";
-import { HashUtil } from "../utils/HashUtil";
-import { JsonUtil } from "../utils/JsonUtil";
+import { PaymentHelper } from "../helpers/PaymentHelper";
 import { PresetHelper } from "../helpers/PresetHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
-import { PaymentHelper } from "../helpers/PaymentHelper";
-import { ItemEventRouter } from "../routers/ItemEventRouter";
-import { DatabaseServer } from "../servers/DatabaseServer";
 import { IPmcData } from "../models/eft/common/IPmcData";
-import { IInventoryMoveRequestData } from "../models/eft/inventory/IInventoryMoveRequestData";
-import { IInventoryRemoveRequestData } from "../models/eft/inventory/IInventoryRemoveRequestData";
-import { IInventorySplitRequestData } from "../models/eft/inventory/IInventorySplitRequestData";
-import { IInventoryMergeRequestData } from "../models/eft/inventory/IInventoryMergeRequestData";
-import { IInventoryTransferRequestData } from "../models/eft/inventory/IInventoryTransferRequestData";
-import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
-import { IInventorySwapRequestData } from "../models/eft/inventory/IInventorySwapRequestData";
-import { IInventoryFoldRequestData } from "../models/eft/inventory/IInventoryFoldRequestData";
-import { IInventoryToggleRequestData } from "../models/eft/inventory/IInventoryToggleRequestData";
-import { IInventoryTagRequestData } from "../models/eft/inventory/IInventoryTagRequestData";
+import { IAddItemRequestData } from "../models/eft/inventory/IAddItemRequestData";
 import { IInventoryBindRequestData } from "../models/eft/inventory/IInventoryBindRequestData";
-import { IInventoryExamineRequestData } from "../models/eft/inventory/IInventoryExamineRequestData";
-import { IInventoryReadEncyclopediaRequestData } from "../models/eft/inventory/IInventoryReadEncyclopediaRequestData";
-import { IInventorySortRequestData } from "../models/eft/inventory/IInventorySortRequestData";
 import { IInventoryCreateMarkerRequestData } from "../models/eft/inventory/IInventoryCreateMarkerRequestData";
 import { IInventoryDeleteMarkerRequestData } from "../models/eft/inventory/IInventoryDeleteMarkerRequestData";
 import { IInventoryEditMarkerRequestData } from "../models/eft/inventory/IInventoryEditMarkerRequestData";
+import { IInventoryExamineRequestData } from "../models/eft/inventory/IInventoryExamineRequestData";
+import { IInventoryFoldRequestData } from "../models/eft/inventory/IInventoryFoldRequestData";
+import { IInventoryMergeRequestData } from "../models/eft/inventory/IInventoryMergeRequestData";
+import { IInventoryMoveRequestData } from "../models/eft/inventory/IInventoryMoveRequestData";
+import { IInventoryReadEncyclopediaRequestData } from "../models/eft/inventory/IInventoryReadEncyclopediaRequestData";
+import { IInventoryRemoveRequestData } from "../models/eft/inventory/IInventoryRemoveRequestData";
+import { IInventorySortRequestData } from "../models/eft/inventory/IInventorySortRequestData";
+import { IInventorySplitRequestData } from "../models/eft/inventory/IInventorySplitRequestData";
+import { IInventorySwapRequestData } from "../models/eft/inventory/IInventorySwapRequestData";
+import { IInventoryTagRequestData } from "../models/eft/inventory/IInventoryTagRequestData";
+import { IInventoryToggleRequestData } from "../models/eft/inventory/IInventoryToggleRequestData";
+import { IInventoryTransferRequestData } from "../models/eft/inventory/IInventoryTransferRequestData";
+import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class InventoryController 
-{
+import { ItemEventRouter } from "../routers/ItemEventRouter";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { HashUtil } from "../utils/HashUtil";
+import { JsonUtil } from "../utils/JsonUtil";
+export declare class InventoryController {
     private logger;
     private hashUtil;
     private jsonUtil;
@@ -78,7 +78,7 @@ export declare class InventoryController
     * Give Item
     * its used for "add" item like gifts etc.
     */
-    addItem(pmcData: IPmcData, body: any, output: IItemEventRouterResponse, sessionID: string, callback: any, foundInRaid?: boolean, addUpd?: any): IItemEventRouterResponse;
+    addItem(pmcData: IPmcData, body: IAddItemRequestData, output: IItemEventRouterResponse, sessionID: string, callback: any, foundInRaid?: boolean, addUpd?: any): IItemEventRouterResponse;
     /**
      * Handles folding of Weapons
      */

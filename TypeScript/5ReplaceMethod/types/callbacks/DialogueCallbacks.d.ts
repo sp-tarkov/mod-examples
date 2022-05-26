@@ -1,27 +1,26 @@
-import { HttpResponseUtil } from "../utils/HttpResponseUtil";
-import { HashUtil } from "../utils/HashUtil";
-import { TimeUtil } from "../utils/TimeUtil";
 import { DialogueController } from "../controllers/DialogueController";
-import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
-import { DialogueInfo } from "../models/eft/profile/IAkiProfile";
-import { INullResponseData } from "../models/eft/httpResponse/INullResponseData";
-import { IGetMailDialogViewRequestData } from "../models/eft/dialog/IGetMailDialogViewRequestData";
-import { IGetMailDialogInfoRequestData } from "../models/eft/dialog/IGetMailDialogInfoRequestData";
-import { IRemoveDialogRequestData } from "../models/eft/dialog/IRemoveDialogRequestData";
-import { IGetMailDialogListRequestData } from "../models/eft/dialog/IGetMailDialogListRequestData";
+import { OnUpdate } from "../di/OnUpdate";
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { IFriendRequestData } from "../models/eft/dialog/IFriendRequestData";
-import { IPinDialogRequestData } from "../models/eft/dialog/IPinDialogRequestData";
-import { ISetDialogReadRequestData } from "../models/eft/dialog/ISetDialogReadRequestData";
 import { IGetAllAttachmentsRequestData } from "../models/eft/dialog/IGetAllAttachmentsRequestData";
+import { IGetAllAttachmentsResponse } from "../models/eft/dialog/IGetAllAttachmentsResponse";
 import { IGetChatServerListRequestData } from "../models/eft/dialog/IGetChatServerListRequestData";
 import { IGetFriendListDataResponse } from "../models/eft/dialog/IGetFriendListDataResponse";
-import { ISendMessageRequest } from "../models/eft/dialog/ISendMessageRequest";
+import { IGetMailDialogInfoRequestData } from "../models/eft/dialog/IGetMailDialogInfoRequestData";
+import { IGetMailDialogListRequestData } from "../models/eft/dialog/IGetMailDialogListRequestData";
+import { IGetMailDialogViewRequestData } from "../models/eft/dialog/IGetMailDialogViewRequestData";
 import { IGetMailDialogViewResponseData } from "../models/eft/dialog/IGetMailDialogViewResponseData";
-import { IGetAllAttachmentsResponse } from "../models/eft/dialog/IGetAllAttachmentsResponse";
-import { OnUpdate } from "../di/OnUpdate";
-export declare class DialogueCallbacks extends OnUpdate 
-{
+import { IPinDialogRequestData } from "../models/eft/dialog/IPinDialogRequestData";
+import { IRemoveDialogRequestData } from "../models/eft/dialog/IRemoveDialogRequestData";
+import { ISendMessageRequest } from "../models/eft/dialog/ISendMessageRequest";
+import { ISetDialogReadRequestData } from "../models/eft/dialog/ISetDialogReadRequestData";
+import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
+import { INullResponseData } from "../models/eft/httpResponse/INullResponseData";
+import { DialogueInfo } from "../models/eft/profile/IAkiProfile";
+import { HashUtil } from "../utils/HashUtil";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
+import { TimeUtil } from "../utils/TimeUtil";
+export declare class DialogueCallbacks extends OnUpdate {
     private hashUtil;
     private timeUtil;
     private httpResponse;

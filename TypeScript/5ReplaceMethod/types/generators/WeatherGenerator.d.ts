@@ -3,8 +3,7 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { IWeatherData } from "../models/eft/weather/IWeatherData";
 import { RandomUtil } from "../utils/RandomUtil";
 import { TimeUtil } from "../utils/TimeUtil";
-export declare class WeatherGenerator 
-{
+export declare class WeatherGenerator {
     private weightedRandomHelper;
     private randomUtil;
     private timeUtil;

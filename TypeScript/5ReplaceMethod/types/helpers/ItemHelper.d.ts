@@ -5,8 +5,7 @@ import { Item } from "../models/eft/common/tables/IItem";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { ILogger } from "../models/spt/utils/ILogger";
-declare class ItemHelper 
-{
+declare class ItemHelper {
     private logger;
     private hashUtil;
     private jsonUtil;
@@ -139,10 +138,8 @@ declare class ItemHelper
     isQuestItem(tpl: string): boolean;
     getItemSize(items: Item[], rootItemId: string): ItemHelper.ItemSize;
 }
-declare namespace ItemHelper 
-{
-    enum BaseClasses 
-        {
+declare namespace ItemHelper {
+    enum BaseClasses {
         WEAPON = "5422acb9af1c889c16000029",
         ARMOR = "5448e54d4bdc2dcc718b4568",
         VEST = "5448e5284bdc2dcb718b4567",
@@ -226,13 +223,11 @@ declare namespace ItemHelper
         ITEM = "54009119af1c881c07000029",
         CYLINDER_MAGAZINE = "610720f290b75a49ff2e5e25"
     }
-    interface ItemSize 
-    {
+    interface ItemSize {
         width: number;
         height: number;
     }
-    enum Money 
-        {
+    enum Money {
         ROUBLES = "5449016a4bdc2d6f028b456f",
         EUROS = "569668774bdc2da2298b4568",
         DOLLARS = "5696686a4bdc2da3298b456a"

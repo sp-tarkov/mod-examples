@@ -1,14 +1,12 @@
 import { Item } from "./IItem";
-export interface ITrader 
-{
+export interface ITrader {
     assort: ITraderAssort;
     base: ITraderBase;
     dialogue?: Record<string, string[]>;
     questassort: Record<string, Record<string, string>>;
     suits?: ISuit[];
 }
-export interface ITraderBase 
-{
+export interface ITraderBase {
     refreshAssort: boolean;
     _id: string;
     avatar: string;
@@ -33,8 +31,7 @@ export interface ITraderBase
     surname: string;
     unlockedByDefault: boolean;
 }
-export interface Insurance 
-{
+export interface Insurance {
     availability: boolean;
     excluded_category: string[];
     max_return_hour: number;
@@ -42,8 +39,7 @@ export interface Insurance
     min_payment: number;
     min_return_hour: number;
 }
-export interface LoyaltyLevel 
-{
+export interface LoyaltyLevel {
     buy_price_coef: number;
     exchange_price_coef: number;
     heal_price_coef: number;
@@ -53,8 +49,7 @@ export interface LoyaltyLevel
     minStanding: number;
     repair_price_coef: number;
 }
-export interface Repair 
-{
+export interface Repair {
     availability: boolean;
     currency: string;
     currency_coefficient: number;
@@ -62,29 +57,25 @@ export interface Repair
     excluded_id_list: any[];
     quality: string;
 }
-export interface ITraderAssort 
-{
+export interface ITraderAssort {
     nextResupply?: number;
     items: Item[];
     barter_scheme: Record<string, IBarterScheme[][]>;
     loyal_level_items: Record<string, number>;
 }
-export interface IBarterScheme 
-{
+export interface IBarterScheme {
     count: number;
     _tpl: string;
     onlyFunctional?: boolean;
 }
-export interface ISuit 
-{
+export interface ISuit {
     _id: string;
     tid: string;
     suiteId: string;
     isActive: boolean;
     requirements: Requirements;
 }
-export interface Requirements 
-{
+export interface Requirements {
     loyaltyLevel: number;
     profileLevel: number;
     standing: number;
@@ -92,8 +83,7 @@ export interface Requirements
     questRequirements: string[];
     itemRequirements: ItemRequirement[];
 }
-export interface ItemRequirement 
-{
+export interface ItemRequirement {
     count: number;
     _tpl: string;
     onlyFunctional: boolean;

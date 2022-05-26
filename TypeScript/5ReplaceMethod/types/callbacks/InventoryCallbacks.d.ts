@@ -1,24 +1,23 @@
 import { InventoryController } from "../controllers/InventoryController";
 import { IPmcData } from "../models/eft/common/IPmcData";
-import { IInventoryFoldRequestData } from "../models/eft/inventory/IInventoryFoldRequestData";
-import { IInventorySplitRequestData } from "../models/eft/inventory/IInventorySplitRequestData";
-import { IInventoryMoveRequestData } from "../models/eft/inventory/IInventoryMoveRequestData";
-import { IInventoryMergeRequestData } from "../models/eft/inventory/IInventoryMergeRequestData";
-import { IInventoryRemoveRequestData } from "../models/eft/inventory/IInventoryRemoveRequestData";
-import { IInventoryTransferRequestData } from "../models/eft/inventory/IInventoryTransferRequestData";
-import { IInventorySwapRequestData } from "../models/eft/inventory/IInventorySwapRequestData";
-import { IInventoryToggleRequestData } from "../models/eft/inventory/IInventoryToggleRequestData";
-import { IInventoryTagRequestData } from "../models/eft/inventory/IInventoryTagRequestData";
 import { IInventoryBindRequestData } from "../models/eft/inventory/IInventoryBindRequestData";
-import { IInventoryExamineRequestData } from "../models/eft/inventory/IInventoryExamineRequestData";
-import { IInventoryReadEncyclopediaRequestData } from "../models/eft/inventory/IInventoryReadEncyclopediaRequestData";
-import { IInventorySortRequestData } from "../models/eft/inventory/IInventorySortRequestData";
 import { IInventoryCreateMarkerRequestData } from "../models/eft/inventory/IInventoryCreateMarkerRequestData";
 import { IInventoryDeleteMarkerRequestData } from "../models/eft/inventory/IInventoryDeleteMarkerRequestData";
 import { IInventoryEditMarkerRequestData } from "../models/eft/inventory/IInventoryEditMarkerRequestData";
+import { IInventoryExamineRequestData } from "../models/eft/inventory/IInventoryExamineRequestData";
+import { IInventoryFoldRequestData } from "../models/eft/inventory/IInventoryFoldRequestData";
+import { IInventoryMergeRequestData } from "../models/eft/inventory/IInventoryMergeRequestData";
+import { IInventoryMoveRequestData } from "../models/eft/inventory/IInventoryMoveRequestData";
+import { IInventoryReadEncyclopediaRequestData } from "../models/eft/inventory/IInventoryReadEncyclopediaRequestData";
+import { IInventoryRemoveRequestData } from "../models/eft/inventory/IInventoryRemoveRequestData";
+import { IInventorySortRequestData } from "../models/eft/inventory/IInventorySortRequestData";
+import { IInventorySplitRequestData } from "../models/eft/inventory/IInventorySplitRequestData";
+import { IInventorySwapRequestData } from "../models/eft/inventory/IInventorySwapRequestData";
+import { IInventoryTagRequestData } from "../models/eft/inventory/IInventoryTagRequestData";
+import { IInventoryToggleRequestData } from "../models/eft/inventory/IInventoryToggleRequestData";
+import { IInventoryTransferRequestData } from "../models/eft/inventory/IInventoryTransferRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
-export declare class InventoryCallbacks 
-{
+export declare class InventoryCallbacks {
     private inventoryController;
     constructor(inventoryController: InventoryController);
     moveItem(pmcData: IPmcData, body: IInventoryMoveRequestData, sessionID: string): IItemEventRouterResponse;

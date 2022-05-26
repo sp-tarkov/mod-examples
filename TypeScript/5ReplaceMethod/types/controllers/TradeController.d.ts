@@ -8,8 +8,7 @@ import { Upd } from "../models/eft/common/tables/IItem";
 import { IProcessBaseTradeRequestData } from "../models/eft/trade/IProcessBaseTradeRequestData";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { ILogger } from "../models/spt/utils/ILogger";
-declare class TradeController 
-{
+declare class TradeController {
     private logger;
     private itemEventRouter;
     private tradeHelper;

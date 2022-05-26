@@ -4,8 +4,7 @@ import { ILogger } from "../models/spt/utils/ILogger";
 import { IAsyncQueue } from "../models/spt/utils/IAsyncQueue";
 import { IUUidGenerator } from "../models/spt/utils/IUuidGenerator";
 import fs from "fs";
-export declare class WinstonLogger implements ILogger 
-{
+export declare class WinstonLogger implements ILogger {
     private asyncQueue;
     private uuidGenerator;
     private showDebugInConsole;

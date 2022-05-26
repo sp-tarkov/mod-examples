@@ -1,5 +1,4 @@
-export declare enum HideoutAreasEnum 
-    {
+export declare enum HideoutAreasEnum {
     NOTSET = -1,
     VENTS = 0,
     SECURITY = 1,

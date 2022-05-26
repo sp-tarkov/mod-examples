@@ -1,6 +1,5 @@
 import { Daum } from "../../eft/itemEvent/IItemEventRouterRequest";
-export interface ILogger 
-{
+export interface ILogger {
     writeToLogFile(data: string | Daum): void;
     log(data: string | Record<string, unknown> | Error, color: string): void;
     error(data: string): void;

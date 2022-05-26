@@ -8,8 +8,7 @@ import { ISuit } from "../models/eft/common/tables/ITrader";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class CustomizationController 
-{
+export declare class CustomizationController {
     private logger;
     private itemEventRouter;
     private databaseServer;

@@ -1,6 +1,5 @@
 import { Skills } from "../common/IPmcData";
-export interface IPlayerIncrementSkillLevelRequestData 
-{
+export interface IPlayerIncrementSkillLevelRequestData {
     _id: string;
     experience: number;
     quests: any[];
@@ -11,15 +10,12 @@ export interface IPlayerIncrementSkillLevelRequestData
     skills: Skills;
     traderRelations: TraderRelations;
 }
-export interface Items 
-{
+export interface Items {
     new: any[];
     change: any[];
     del: any[];
 }
-export interface Production 
-{
+export interface Production {
 }
-export interface TraderRelations 
-{
+export interface TraderRelations {
 }

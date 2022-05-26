@@ -16,8 +16,7 @@ import { RagfairOfferService } from "../services/RagfairOfferService";
 import { RagfairPriceService } from "../services/RagfairPriceService";
 import { FenceService } from "../services/FenceService";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class RagfairOfferGenerator 
-{
+export declare class RagfairOfferGenerator {
     private logger;
     private jsonUtil;
     private hashUtil;

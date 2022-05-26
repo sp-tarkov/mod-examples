@@ -2,8 +2,7 @@ import { TimeUtil } from "./TimeUtil";
 import { OnLoad } from "../di/OnLoad";
 import { OnUpdate } from "../di/OnUpdate";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class App 
-{
+export declare class App {
     private logger;
     private timeUtil;
     private onLoadComponents;

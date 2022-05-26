@@ -1,22 +1,21 @@
-import { RagfairServer } from "../servers/RagfairServer";
 import { RagfairController } from "../controllers/RagfairController";
+import { OnLoadOnUpdate } from "../di/OnLoadOnUpdate";
+import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
-import { ISearchRequestData } from "../models/eft/ragfair/ISearchRequestData";
-import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
-import { IGetMarketPriceRequestData } from "../models/eft/ragfair/IGetMarketPriceRequestData";
-import { IAddOfferRequestData } from "../models/eft/ragfair/IAddOfferRequestData";
-import { IRemoveOfferRequestData } from "../models/eft/ragfair/IRemoveOfferRequestData";
-import { IExtendOfferRequestData } from "../models/eft/ragfair/IExtendOfferRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
+import { IAddOfferRequestData } from "../models/eft/ragfair/IAddOfferRequestData";
+import { IExtendOfferRequestData } from "../models/eft/ragfair/IExtendOfferRequestData";
 import { IGetItemPriceResult } from "../models/eft/ragfair/IGetItemPriceResult";
+import { IGetMarketPriceRequestData } from "../models/eft/ragfair/IGetMarketPriceRequestData";
+import { IRemoveOfferRequestData } from "../models/eft/ragfair/IRemoveOfferRequestData";
+import { ISearchRequestData } from "../models/eft/ragfair/ISearchRequestData";
+import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
+import { RagfairServer } from "../servers/RagfairServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { JsonUtil } from "../utils/JsonUtil";
-import { OnLoadOnUpdate } from "../di/OnLoadOnUpdate";
-import { ILogger } from "../models/spt/utils/ILogger";
-export declare class RagfairCallbacks extends OnLoadOnUpdate 
-{
+export declare class RagfairCallbacks extends OnLoadOnUpdate {
     private httpResponse;
     private logger;
     private jsonUtil;

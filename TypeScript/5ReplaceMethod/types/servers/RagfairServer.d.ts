@@ -13,8 +13,7 @@ import { ConfigServer } from "./ConfigServer";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { RagfairRequiredItemsService } from "../services/RagfairRequiredItemsService";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class RagfairServer 
-{
+export declare class RagfairServer {
     private logger;
     private ragfairOfferGenerator;
     private ragfairServerHelper;

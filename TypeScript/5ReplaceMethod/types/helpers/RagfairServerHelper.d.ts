@@ -1,17 +1,16 @@
-import { SaveServer } from "../servers/SaveServer";
-import { DatabaseServer } from "../servers/DatabaseServer";
-import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
-import { ItemHelper } from "./ItemHelper";
-import { ProfileHelper } from "./ProfileHelper";
 import { MemberCategory } from "../models/eft/common/MemberCategory";
+import { Item } from "../models/eft/common/tables/IItem";
+import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { ConfigServer } from "../servers/ConfigServer";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { SaveServer } from "../servers/SaveServer";
+import { HashUtil } from "../utils/HashUtil";
+import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
 import { DialogueHelper } from "./DialogueHelper";
-import { Item } from "../models/eft/common/tables/IItem";
-import { JsonUtil } from "../utils/JsonUtil";
-import { HashUtil } from "../utils/HashUtil";
-export declare class RagfairServerHelper 
-{
+import { ItemHelper } from "./ItemHelper";
+import { ProfileHelper } from "./ProfileHelper";
+export declare class RagfairServerHelper {
     private randomUtil;
     private hashUtil;
     private saveServer;

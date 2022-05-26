@@ -1,9 +1,9 @@
-import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { TraderController } from "../controllers/TraderController";
+import { OnLoadOnUpdate } from "../di/OnLoadOnUpdate";
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { IBarterScheme, ITraderAssort, ITraderBase } from "../models/eft/common/tables/ITrader";
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
-import { OnLoadOnUpdate } from "../di/OnLoadOnUpdate";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class TraderCallbacks extends OnLoadOnUpdate {
     private httpResponse;
     private traderController;

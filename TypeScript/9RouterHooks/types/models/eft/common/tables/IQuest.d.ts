@@ -44,7 +44,7 @@ export interface AvailableForProps {
     value?: number;
     compareMethod?: string;
     visibilityConditions?: VisibilityCondition[];
-    target?: string;
+    target?: string | string[];
     status?: number[];
 }
 export interface VisibilityCondition {

@@ -1,7 +1,5 @@
-declare namespace ModLoader 
-{
-    interface IMod 
-    {
+declare namespace ModLoader {
+    interface IMod {
         name: string;
         version: string;
         main?: string;

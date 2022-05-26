@@ -1,7 +1,6 @@
 import { OwnerInfo } from "../common/request/IBaseInteractionRequestData";
 import { IInventoryBaseActionRequestData, To } from "./IInventoryBaseActionRequestData";
-export interface IInventorySwapRequestData extends IInventoryBaseActionRequestData 
-{
+export interface IInventorySwapRequestData extends IInventoryBaseActionRequestData {
     Action: "Swap";
     item: string;
     to: To;

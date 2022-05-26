@@ -3,20 +3,17 @@ import { Item, Upd } from "../common/tables/IItem";
 import { IQuest } from "../common/tables/IQuest";
 import { IPmcDataRepeatableQuest } from "../common/tables/IRepeatableQuests";
 import { IRagfairOffer } from "../ragfair/IRagfairOffer";
-export interface IItemEventRouterBase 
-{
+export interface IItemEventRouterBase {
     warnings: Warning[];
     profileChanges: TProfileChanges | "";
 }
 export declare type TProfileChanges = Record<string, ProfileChange>;
-export interface Warning 
-{
+export interface Warning {
     index: number;
     err: string;
     errmsg: string;
 }
-export interface ProfileChange 
-{
+export interface ProfileChange {
     _id: string;
     experience: number;
     quests: IQuest[];
@@ -28,21 +25,18 @@ export interface ProfileChange
     traderRelations: Record<string, TraderRelations>;
     repeatableQuests?: IPmcDataRepeatableQuest[];
 }
-export interface BuildChange 
-{
+export interface BuildChange {
     id: string;
     name: string;
     root: string;
     items: Item[];
 }
-export interface ItemChanges 
-{
+export interface ItemChanges {
     new: Product[];
     change: Product[];
     del: Product[];
 }
-export interface Production 
-{
+export interface Production {
     Progress: number;
     StartTimestamp: number;
     ProductionTime: number;
@@ -50,8 +44,7 @@ export interface Production
     RecipeId: string;
     Products: Product[];
 }
-export interface Product 
-{
+export interface Product {
     _id: string;
     _tpl?: string;
     parentId?: string;
@@ -59,15 +52,13 @@ export interface Product
     location?: ItemChangeLocation;
     upd?: Upd;
 }
-export interface ItemChangeLocation 
-{
+export interface ItemChangeLocation {
     x: number;
     y: number;
     r: number;
     isSearched?: boolean;
 }
-export interface TraderRelations 
-{
+export interface TraderRelations {
     salesSum?: number;
     standing?: number;
     loyalty?: number;

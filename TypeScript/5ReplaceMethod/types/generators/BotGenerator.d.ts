@@ -9,8 +9,7 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { GameEventHelper } from "../helpers/GameEventHelper";
 import { BotInventoryGenerator } from "./BotInventoryGenerator";
 import { BotHelper } from "../helpers/BotHelper";
-export declare class BotGenerator 
-{
+export declare class BotGenerator {
     private logger;
     private hashUtil;
     private randomUtil;

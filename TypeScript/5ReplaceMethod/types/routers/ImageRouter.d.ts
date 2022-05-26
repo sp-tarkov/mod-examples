@@ -2,8 +2,7 @@
 import { IncomingMessage, ServerResponse } from "http";
 import { VFS } from "../utils/VFS";
 import { IHttpServer } from "../models/spt/server/IHttpServer";
-export declare class ImageRouter 
-{
+export declare class ImageRouter {
     private vfs;
     constructor(vfs: VFS);
     private onRoute;

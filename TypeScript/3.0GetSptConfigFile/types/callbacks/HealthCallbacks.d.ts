@@ -1,13 +1,13 @@
 import { HealthController } from "../controllers/HealthController";
+import { ProfileHelper } from "../helpers/ProfileHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
-import { ISyncHealthRequestData } from "../models/eft/health/ISyncHealthRequestData";
+import { IHealthTreatmentRequestData } from "../models/eft/health/IHealthTreatmentRequestData";
 import { IOffraidEatRequestData } from "../models/eft/health/IOffraidEatRequestData";
 import { IOffraidHealRequestData } from "../models/eft/health/IOffraidHealRequestData";
-import { IHealthTreatmentRequestData } from "../models/eft/health/IHealthTreatmentRequestData";
-import { ProfileHelper } from "../helpers/ProfileHelper";
+import { ISyncHealthRequestData } from "../models/eft/health/ISyncHealthRequestData";
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
-import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class HealthCallbacks {
     private httpResponse;
     private profileHelper;

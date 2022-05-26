@@ -15,8 +15,7 @@ import { ICompleteQuestRequestData } from "../models/eft/quests/ICompleteQuestRe
 import { IHandoverQuestRequestData } from "../models/eft/quests/IHandoverQuestRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class QuestController 
-{
+export declare class QuestController {
     private logger;
     private timeUtil;
     private itemEventRouter;

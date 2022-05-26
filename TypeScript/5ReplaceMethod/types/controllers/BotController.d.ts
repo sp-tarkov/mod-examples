@@ -6,8 +6,7 @@ import { IBotCore } from "../models/eft/common/tables/IBotCore";
 import { ConfigServer } from "../servers/ConfigServer";
 import { BotHelper } from "../helpers/BotHelper";
 import { BotGenerator } from "../generators/BotGenerator";
-export declare class BotController 
-{
+export declare class BotController {
     private databaseServer;
     private botGenerator;
     private botHelper;

@@ -1,5 +1,4 @@
 import { ICommand } from "./ICommand";
-export interface IAsyncQueue 
-{
+export interface IAsyncQueue {
     waitFor(command: ICommand): Promise<any>;
 }

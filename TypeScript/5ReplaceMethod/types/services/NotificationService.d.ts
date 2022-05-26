@@ -1,6 +1,5 @@
 import { INotification } from "../models/eft/notifier/INotifier";
-export declare class NotificationService 
-{
+export declare class NotificationService {
     private messageQueue;
     getMessageQueue(): {};
     getMessageFromQueue(sessionId: string): any;

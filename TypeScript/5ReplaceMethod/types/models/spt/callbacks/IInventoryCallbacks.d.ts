@@ -16,8 +16,7 @@ import { IInventoryCreateMarkerRequestData } from "../../eft/inventory/IInventor
 import { IInventoryDeleteMarkerRequestData } from "../../eft/inventory/IInventoryDeleteMarkerRequestData";
 import { IInventoryEditMarkerRequestData } from "../../eft/inventory/IInventoryEditMarkerRequestData";
 import { IItemEventRouterResponse } from "../../eft/itemEvent/IItemEventRouterResponse";
-export interface IInventoryCallbacks 
-{
+export interface IInventoryCallbacks {
     moveItem(pmcData: IPmcData, body: IInventoryMoveRequestData, sessionID: string): IItemEventRouterResponse;
     removeItem(pmcData: IPmcData, body: IInventoryRemoveRequestData, sessionID: string): IItemEventRouterResponse;
     splitItem(pmcData: IPmcData, body: IInventorySplitRequestData, sessionID: string): IItemEventRouterResponse;

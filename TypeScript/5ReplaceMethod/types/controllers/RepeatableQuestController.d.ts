@@ -1,44 +1,39 @@
-import { TimeUtil } from "../utils/TimeUtil";
-import { ObjectId } from "../utils/ObjectId";
-import { RandomUtil, ProbabilityObjectArray, ProbabilityObject } from "../utils/RandomUtil";
-import { JsonUtil } from "../utils/JsonUtil";
-import { MathUtil } from "../utils/MathUtil";
 import { ItemHelper } from "../helpers/ItemHelper";
-import { DatabaseServer } from "../servers/DatabaseServer";
-import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
-import { IPmcData, TraderInfo } from "../models/eft/common/IPmcData";
-import { IRepeatableQuestConfig, ELocationName } from "../models/spt/config/IQuestConfig";
-import { IExploration, IRepeatableQuest, IReward, IRewards, IExplorationCondition, ICompletionAvailableFor, IEliminationCondition, ICompletion, IElimination, IPmcDataRepeatableQuest } from "../models/eft/common/tables/IRepeatableQuests";
-import { Exit } from "../models/eft/common/ILocationBase";
-import { IRepeatableQuestChangeRequest } from "../models/eft/quests/IRepeatableQuestChangeRequest";
-import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { PresetHelper } from "../helpers/PresetHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
-import { PaymentService } from "../services/PaymentService";
-import { ConfigServer } from "../servers/ConfigServer";
-import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { RagfairServerHelper } from "../helpers/RagfairServerHelper";
+import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
+import { Exit } from "../models/eft/common/ILocationBase";
+import { IPmcData, TraderInfo } from "../models/eft/common/IPmcData";
+import { ICompletion, ICompletionAvailableFor, IElimination, IEliminationCondition, IExploration, IExplorationCondition, IPmcDataRepeatableQuest, IRepeatableQuest, IReward, IRewards } from "../models/eft/common/tables/IRepeatableQuests";
+import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
+import { IRepeatableQuestChangeRequest } from "../models/eft/quests/IRepeatableQuestChangeRequest";
+import { ELocationName, IRepeatableQuestConfig } from "../models/spt/config/IQuestConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
-export interface IQuestTypePool 
-{
+import { ItemEventRouter } from "../routers/ItemEventRouter";
+import { ConfigServer } from "../servers/ConfigServer";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { PaymentService } from "../services/PaymentService";
+import { JsonUtil } from "../utils/JsonUtil";
+import { MathUtil } from "../utils/MathUtil";
+import { ObjectId } from "../utils/ObjectId";
+import { ProbabilityObject, ProbabilityObjectArray, RandomUtil } from "../utils/RandomUtil";
+import { TimeUtil } from "../utils/TimeUtil";
+export interface IQuestTypePool {
     types: string[];
     pool: IQuestPool;
 }
-export interface IQuestPool 
-{
+export interface IQuestPool {
     Exploration: IExplorationPool;
     Elimination: IEliminationPool;
 }
-export interface IExplorationPool 
-{
+export interface IExplorationPool {
     locations: Partial<Record<ELocationName, string[]>>;
 }
-export interface IEliminationPool 
-{
+export interface IEliminationPool {
     targets: IEliminationTargetPool;
 }
-export interface IEliminationTargetPool 
-{
+export interface IEliminationTargetPool {
     Savage?: ITargetLocation;
     AnyPmc?: ITargetLocation;
     bossBully?: ITargetLocation;
@@ -48,12 +43,10 @@ export interface IEliminationTargetPool
     bossTagilla?: ITargetLocation;
     bossKojaniy?: ITargetLocation;
 }
-export interface ITargetLocation 
-{
+export interface ITargetLocation {
     locations: string[];
 }
-export declare class RepeatableQuestController 
-{
+export declare class RepeatableQuestController {
     private timeUtil;
     private logger;
     private randomUtil;

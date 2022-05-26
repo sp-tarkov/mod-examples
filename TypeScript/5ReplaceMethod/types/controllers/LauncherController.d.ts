@@ -7,8 +7,7 @@ import { ILoginRequestData } from "../models/eft/launcher/ILoginRequestData";
 import { IChangeRequestData } from "../models/eft/launcher/IChangeRequestData";
 import { Info } from "../models/eft/profile/IAkiProfile";
 import { HttpServerHelper } from "../helpers/HttpServerHelper";
-export declare class LauncherController 
-{
+export declare class LauncherController {
     private hashUtil;
     private saveServer;
     private httpServerHelper;

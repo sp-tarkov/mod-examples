@@ -1,6 +1,5 @@
 import { Item } from "./IItem";
-export interface IQuest 
-{
+export interface IQuest {
     QuestName: string;
     _id: string;
     canShowNotificationsInGame: boolean;
@@ -25,22 +24,19 @@ export interface IQuest
     KeyQuest: boolean;
     changeQuestMessageText: string;
 }
-export interface Conditions 
-{
+export interface Conditions {
     Started: AvailableForConditions[];
     AvailableForFinish: AvailableForConditions[];
     AvailableForStart: AvailableForConditions[];
     Success: AvailableForConditions[];
     Fail: AvailableForConditions[];
 }
-export interface AvailableForConditions 
-{
+export interface AvailableForConditions {
     _parent: string;
     _props: AvailableForProps;
     dynamicLocale: boolean;
 }
-export interface AvailableForProps 
-{
+export interface AvailableForProps {
     id: string;
     index: number;
     parentId: string;
@@ -48,18 +44,16 @@ export interface AvailableForProps
     value?: number;
     compareMethod?: string;
     visibilityConditions?: VisibilityCondition[];
-    target?: string;
+    target?: string | string[];
     status?: number[];
 }
-export interface VisibilityCondition 
-{
+export interface VisibilityCondition {
     id: string;
     value: number;
     dynamicLocale: boolean;
     oneSessionOnly: boolean;
 }
-export interface Rewards 
-{
+export interface Rewards {
     AvailableForStart: Reward[];
     AvailableForFinish: Reward[];
     Started: Reward[];
@@ -68,8 +62,7 @@ export interface Rewards
     FailRestartable: Reward[];
     Expired: Reward[];
 }
-export interface Reward 
-{
+export interface Reward {
     value?: string;
     id: string;
     type: string;

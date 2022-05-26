@@ -1,8 +1,8 @@
 import { BundleLoader } from "../loaders/BundleLoader";
+import { IHttpServer } from "../models/spt/server/IHttpServer";
+import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
-import { ILogger } from "../models/spt/utils/ILogger";
-import { IHttpServer } from "../models/spt/server/IHttpServer";
 export declare class BundleCallbacks {
     private logger;
     private httpResponse;

@@ -2,8 +2,7 @@ import { NotifierHelper } from "../helpers/NotifierHelper";
 import { NotificationService } from "../services/NotificationService";
 import { INotifierChannel } from "../models/eft/notifier/INotifier";
 import { HttpServerHelper } from "../helpers/HttpServerHelper";
-export declare class NotifierController 
-{
+export declare class NotifierController {
     private notifierHelper;
     private httpServerHelper;
     private notificationService;

@@ -2,8 +2,7 @@ import { ILogger } from "../models/spt/utils/ILogger";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { VFS } from "../utils/VFS";
-export declare class HashCacheService 
-{
+export declare class HashCacheService {
     private vfs;
     private hashUtil;
     private jsonUtil;

@@ -1,16 +1,16 @@
-import { JsonUtil } from "../utils/JsonUtil";
 import { Item } from "../models/eft/common/tables/IItem";
 import { ITraderAssort } from "../models/eft/common/tables/ITrader";
 import { IGetOffersResult } from "../models/eft/ragfair/IGetOffersResult";
 import { ISearchRequestData } from "../models/eft/ragfair/ISearchRequestData";
+import { ILogger } from "../models/spt/utils/ILogger";
+import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { RagfairLinkedItemService } from "../services/RagfairLinkedItemService";
+import { JsonUtil } from "../utils/JsonUtil";
 import { HandbookHelper } from "./HandbookHelper";
 import { ItemHelper } from "./ItemHelper";
-import { RagfairLinkedItemService } from "../services/RagfairLinkedItemService";
-import { UtilityHelper } from "./UtilityHelper";
-import { ConfigServer } from "../servers/ConfigServer";
-import { ILogger } from "../models/spt/utils/ILogger";
 import { TraderAssortHelper } from "./TraderAssortHelper";
+import { UtilityHelper } from "./UtilityHelper";
 export declare class RagfairHelper {
     private logger;
     private jsonUtil;

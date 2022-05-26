@@ -24,8 +24,7 @@ import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRout
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class HideoutController 
-{
+export declare class HideoutController {
     private logger;
     private hashUtil;
     private timeUtil;

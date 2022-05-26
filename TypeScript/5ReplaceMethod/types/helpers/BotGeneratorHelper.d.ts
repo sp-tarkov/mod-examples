@@ -1,19 +1,18 @@
-import { DatabaseServer } from "../servers/DatabaseServer";
-import { ConfigServer } from "../servers/ConfigServer";
+import { DurabilityLimitsHelper } from "../helpers/DurabilityLimitsHelper";
 import { Inventory as PmcInventory } from "../models/eft/common/IPmcData";
-import { ModsChances, Mods } from "../models/eft/common/tables/IBotType";
+import { Mods, ModsChances } from "../models/eft/common/tables/IBotType";
 import { Item, Upd } from "../models/eft/common/tables/IItem";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
-import { DurabilityLimitsHelper } from "../helpers/DurabilityLimitsHelper";
+import { ILogger } from "../models/spt/utils/ILogger";
+import { ConfigServer } from "../servers/ConfigServer";
+import { DatabaseServer } from "../servers/DatabaseServer";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
-import { InventoryHelper } from "./InventoryHelper";
 import { ContainerHelper } from "./ContainerHelper";
+import { InventoryHelper } from "./InventoryHelper";
 import { ItemHelper } from "./ItemHelper";
-import { ILogger } from "../models/spt/utils/ILogger";
-declare class BotGeneratorHelper 
-{
+declare class BotGeneratorHelper {
     private logger;
     private jsonUtil;
     private hashUtil;
@@ -49,8 +48,7 @@ declare class BotGeneratorHelper
     addItemWithChildrenToEquipmentSlot(equipmentSlots: string[], parentId: string, parentTpl: string, itemWithChildren: Item[], inventory: PmcInventory): boolean;
     private itemAllowedInContainer;
 }
-export declare class ExhaustableArray<T> 
-{
+export declare class ExhaustableArray<T> {
     private itemPool;
     private randomUtil;
     private jsonUtil;
@@ -60,10 +58,8 @@ export declare class ExhaustableArray<T>
     getFirstValue(): T;
     hasValues(): boolean;
 }
-declare namespace BotGeneratorHelper 
-{
-    enum EquipmentSlots 
-        {
+declare namespace BotGeneratorHelper {
+    enum EquipmentSlots {
         HEADWEAR = "Headwear",
         EARPIECE = "Earpiece",
         FACE_COVER = "FaceCover",

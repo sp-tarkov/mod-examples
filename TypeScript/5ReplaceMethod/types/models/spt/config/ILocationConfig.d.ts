@@ -1,12 +1,10 @@
 import { IBaseConfig } from "./IBaseConfig";
-export interface ILocationConfig extends IBaseConfig 
-{
+export interface ILocationConfig extends IBaseConfig {
     kind: "aki-location";
     looseLootMultiplier: LootMultiplier;
     staticLootMultiplier: LootMultiplier;
 }
-export interface LootMultiplier 
-{
+export interface LootMultiplier {
     bigmap: number;
     develop: number;
     factory4_day: number;

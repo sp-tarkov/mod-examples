@@ -1,11 +1,9 @@
-export interface ILocaleBase 
-{
+export interface ILocaleBase {
     global: ILocaleGlobalBase;
     menu: Record<string, string>;
     languages: ILanguageBase[];
 }
-export interface ILocaleGlobalBase 
-{
+export interface ILocaleGlobalBase {
     interface: Record<string, string>;
     enum: any[];
     mail: Record<string, string>;
@@ -20,8 +18,7 @@ export interface ILocaleGlobalBase
     banners: ILocaleBannersBase;
     trading: ILocaleTradingBase;
 }
-export interface ILocaleQuest 
-{
+export interface ILocaleQuest {
     name: string;
     description: string;
     note: string;
@@ -31,42 +28,34 @@ export interface ILocaleQuest
     conditions: Record<string, string>;
     location: string;
 }
-export interface ILocalePreset 
-{
+export interface ILocalePreset {
     Name: string;
 }
-export interface ILocaleTemplateBase 
-{
+export interface ILocaleTemplateBase {
     templates: Record<string, ILocaleProps>;
 }
-export interface ILocaleLocationsBase 
-{
+export interface ILocaleLocationsBase {
     locations: Record<string, ILocaleProps>;
 }
-export interface ILocaleBannersBase 
-{
+export interface ILocaleBannersBase {
     locations: Record<string, ILocaleProps>;
 }
-export interface ILocaleProps 
-{
+export interface ILocaleProps {
     Name: string;
     ShortName: string;
     Description: string;
 }
-export interface ILocaleTradingBase 
-{
+export interface ILocaleTradingBase {
     locations: Record<string, ILocaleTradingProps>;
 }
-export interface ILocaleTradingProps 
-{
+export interface ILocaleTradingProps {
     FullName: string;
     FirstName: string;
     Nickname: string;
     Location: string;
     Description: string;
 }
-export interface ILanguageBase 
-{
+export interface ILanguageBase {
     ShortName: string;
     Name: string;
 }

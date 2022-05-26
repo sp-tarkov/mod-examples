@@ -1,10 +1,8 @@
-export interface IVersionValidateRequestData 
-{
+export interface IVersionValidateRequestData {
     version: Version;
     develop: boolean;
 }
-export interface Version 
-{
+export interface Version {
     major: string;
     minor: string;
     game: string;

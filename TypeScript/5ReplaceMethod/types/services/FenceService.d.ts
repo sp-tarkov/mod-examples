@@ -10,8 +10,7 @@ import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class FenceService 
-{
+export declare class FenceService {
     private logger;
     private hashUtil;
     private jsonUtil;

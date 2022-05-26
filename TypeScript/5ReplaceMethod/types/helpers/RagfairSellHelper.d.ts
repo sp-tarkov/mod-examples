@@ -3,8 +3,7 @@ import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { RandomUtil } from "../utils/RandomUtil";
 import { TimeUtil } from "../utils/TimeUtil";
-export declare class RagfairSellHelper 
-{
+export declare class RagfairSellHelper {
     private logger;
     private randomUtil;
     private timeUtil;

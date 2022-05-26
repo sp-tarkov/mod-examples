@@ -107,6 +107,15 @@ export interface BossLocationSpawn {
     BossPlayer: boolean;
     BossZone: string;
     Time: number;
+    TriggerId: string;
+    TriggerName: string;
+    Delay?: number;
+    Supports?: BossSupport[];
+}
+export interface BossSupport {
+    BossEscortAmount: string;
+    BossEscortDifficult: string[];
+    BossEscortType: string;
 }
 export interface BotLocationModifier {
     AccuracySpeed: number;

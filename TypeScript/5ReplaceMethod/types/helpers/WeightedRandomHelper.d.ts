@@ -1,5 +1,4 @@
-export declare class WeightedRandomHelper 
-{
+export declare class WeightedRandomHelper {
     /**
      * Gets a tplId from a weighted dictionary
      * @param {tplId: weighting[]} itemArray

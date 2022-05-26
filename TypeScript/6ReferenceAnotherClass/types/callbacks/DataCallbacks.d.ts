@@ -1,4 +1,3 @@
-import { DatabaseServer } from "../servers/DatabaseServer";
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { IGlobals } from "../models/eft/common/IGlobals";
 import { ICustomizationItem } from "../models/eft/common/tables/ICustomizationItem";
@@ -10,6 +9,7 @@ import { IHideoutSettingsBase } from "../models/eft/hideout/IHideoutSettingsBase
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
 import { ILanguageBase } from "../models/spt/server/ILocaleBase";
 import { ISettingsBase } from "../models/spt/server/ISettingsBase";
+import { DatabaseServer } from "../servers/DatabaseServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class DataCallbacks {
     private httpResponse;

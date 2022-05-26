@@ -1,15 +1,13 @@
-import { JsonUtil } from "../utils/JsonUtil";
-import { TimeUtil } from "../utils/TimeUtil";
+import { ProfileHelper } from "../helpers/ProfileHelper";
+import { TraderAssortHelper } from "../helpers/TraderAssortHelper";
+import { TraderHelper } from "../helpers/TraderHelper";
+import { IBarterScheme, ITraderAssort, ITraderBase } from "../models/eft/common/tables/ITrader";
+import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { TraderAssortService } from "../services/TraderAssortService";
-import { IBarterScheme, ITraderAssort, ITraderBase } from "../models/eft/common/tables/ITrader";
-import { TraderHelper } from "../helpers/TraderHelper";
-import { ProfileHelper } from "../helpers/ProfileHelper";
-import { ConfigServer } from "../servers/ConfigServer";
-import { ILogger } from "../models/spt/utils/ILogger";
-import { TraderAssortHelper } from "../helpers/TraderAssortHelper";
-export declare class TraderController 
-{
+import { JsonUtil } from "../utils/JsonUtil";
+import { TimeUtil } from "../utils/TimeUtil";
+export declare class TraderController {
     private logger;
     private databaseServer;
     private traderAssortHelper;
@@ -18,9 +16,7 @@ export declare class TraderController
     private timeUtil;
     private traderAssortService;
     private jsonUtil;
-    private configServer;
-    private traderConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, traderAssortHelper: TraderAssortHelper, profileHelper: ProfileHelper, traderHelper: TraderHelper, timeUtil: TimeUtil, traderAssortService: TraderAssortService, jsonUtil: JsonUtil, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, traderAssortHelper: TraderAssortHelper, profileHelper: ProfileHelper, traderHelper: TraderHelper, timeUtil: TimeUtil, traderAssortService: TraderAssortService, jsonUtil: JsonUtil);
     load(): void;
     getTrader(traderID: string, sessionID: string): ITraderBase;
     getAllTraders(sessionID: string): ITraderBase[];

@@ -1,38 +1,32 @@
 import { IBaseConfig } from "./IBaseConfig";
-export interface IRagfairConfig extends IBaseConfig 
-{
+export interface IRagfairConfig extends IBaseConfig {
     kind: "aki-ragfair";
     runIntervalSeconds: number;
     sell: Sell;
     traders: Record<string, boolean>;
     dynamic: Dynamic;
 }
-export interface Sell 
-{
+export interface Sell {
     fees: boolean;
     chance: Chance;
     time: Time;
     reputation: Reputation;
 }
-export interface Chance 
-{
+export interface Chance {
     base: number;
     overprices: number;
     underpriced: number;
 }
-export interface Time 
-{
+export interface Time {
     base: number;
     min: number;
     max: number;
 }
-export interface Reputation 
-{
+export interface Reputation {
     gain: number;
     loss: number;
 }
-export interface Dynamic 
-{
+export interface Dynamic {
     expiredOfferThreshold: number;
     offerItemCount: MinMax;
     price: MinMax;
@@ -45,19 +39,16 @@ export interface Dynamic
     showAsSingleStack: string[];
     blacklist: Blacklist;
 }
-export interface MinMax 
-{
+export interface MinMax {
     min: number;
     max: number;
 }
-export interface Condition 
-{
+export interface Condition {
     conditionChance: number;
     min: number;
     max: number;
 }
-export interface Blacklist 
-{
+export interface Blacklist {
     /**
      * show/hide trader items that are blacklisted by bsg
      */

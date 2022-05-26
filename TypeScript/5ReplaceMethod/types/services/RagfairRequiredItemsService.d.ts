@@ -1,8 +1,7 @@
 import { PaymentHelper } from "../helpers/PaymentHelper";
 import { RagfairOfferService } from "../services/RagfairOfferService";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class RagfairRequiredItemsService 
-{
+export declare class RagfairRequiredItemsService {
     private logger;
     private paymentHelper;
     private ragfairOfferService;

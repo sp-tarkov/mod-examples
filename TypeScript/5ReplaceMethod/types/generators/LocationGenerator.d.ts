@@ -12,14 +12,12 @@ import { MathUtil } from "../utils/MathUtil";
 import { ObjectId } from "../utils/ObjectId";
 import { RagfairServerHelper } from "../helpers/RagfairServerHelper";
 import { ILogger } from "../models/spt/utils/ILogger";
-export interface IContainerItem 
-{
+export interface IContainerItem {
     items: Item[];
     width: number;
     height: number;
 }
-export declare class LocationGenerator 
-{
+export declare class LocationGenerator {
     private logger;
     private jsonUtil;
     private objectId;

@@ -4,8 +4,7 @@ import { IItemEventRouterRequest } from "../models/eft/itemEvent/IItemEventRoute
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { ItemEventRouterDefinition } from "../di/Router";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class ItemEventRouter 
-{
+export declare class ItemEventRouter {
     private logger;
     private jsonUtil;
     private profileHelper;

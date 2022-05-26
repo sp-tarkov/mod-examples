@@ -1,5 +1,5 @@
-import { IEmptyRequestData } from "../../types/models/eft/common/IEmptyRequestData";
 import { CustomizationController } from "../controllers/CustomizationController";
+import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { ISuit } from "../models/eft/common/tables/ITrader";
 import { IBuyClothingRequestData } from "../models/eft/customization/IBuyClothingRequestData";

@@ -17,7 +17,6 @@ export declare class BotInventoryGenerator {
     private botLootGenerator;
     private botGeneratorHelper;
     private weightedRandomHelper;
-    private botConfig;
     constructor(logger: ILogger, hashUtil: HashUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, botWeaponGenerator: BotWeaponGenerator, botLootGenerator: BotLootGenerator, botGeneratorHelper: BotGeneratorHelper, weightedRandomHelper: WeightedRandomHelper);
     generateInventory(templateInventory: Inventory, equipmentChances: Chances, generation: Generation, botRole: string, isPmc: boolean): PmcInventory;
     private generateEquipment;

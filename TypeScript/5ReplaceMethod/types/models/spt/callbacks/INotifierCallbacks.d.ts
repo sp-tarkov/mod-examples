@@ -2,8 +2,7 @@ import { IEmptyRequestData } from "../../eft/common/IEmptyRequestData";
 import { IGetBodyResponseData } from "../../eft/httpResponse/IGetBodyResponseData";
 import { INotifierChannel } from "../../eft/notifier/INotifier";
 import { ISelectProfileRequestData } from "../../eft/notifier/ISelectProfileRequestData";
-export interface INotifierCallbacks 
-{
+export interface INotifierCallbacks {
     /**
      * If we don't have anything to send, it's ok to not send anything back
      * because notification requests can be long-polling. In fact, we SHOULD wait

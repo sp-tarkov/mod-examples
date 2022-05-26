@@ -1,17 +1,16 @@
+import { HandbookHelper } from "../helpers/HandbookHelper";
 import { InventoryHelper } from "../helpers/InventoryHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
-import { DatabaseServer } from "../servers/DatabaseServer";
+import { PaymentHelper } from "../helpers/PaymentHelper";
+import { TraderHelper } from "../helpers/TraderHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IProcessBuyTradeRequestData } from "../models/eft/trade/IProcessBuyTradeRequestData";
 import { IProcessSellTradeRequestData } from "../models/eft/trade/IProcessSellTradeRequestData";
-import { TraderHelper } from "../helpers/TraderHelper";
-import { PaymentHelper } from "../helpers/PaymentHelper";
-import { HandbookHelper } from "../helpers/HandbookHelper";
-import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class PaymentService 
-{
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
+export declare class PaymentService {
     private logger;
     private httpResponse;
     private databaseServer;

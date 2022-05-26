@@ -1,4 +1,3 @@
-export interface IRemoveDialogRequestData 
-{
+export interface IRemoveDialogRequestData {
     dialogId: string;
 }

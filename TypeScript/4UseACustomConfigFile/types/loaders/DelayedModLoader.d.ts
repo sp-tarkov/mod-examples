@@ -1,10 +1,9 @@
-import { DependencyContainer } from 'tsyringe';
-import { VFS } from "../utils/VFS";
-import { InitialModLoader } from "./InitialModLoader";
-import { BundleLoader } from "./BundleLoader";
 import { HandbookController } from "../controllers/HandbookController";
 import { IModLoader } from "../models/spt/mod/IModLoader";
 import { ModCompilerService } from "../services/ModCompilerService";
+import { VFS } from "../utils/VFS";
+import { BundleLoader } from "./BundleLoader";
+import { InitialModLoader } from "./InitialModLoader";
 export declare class DelayedModLoader implements IModLoader {
     private bundleLoader;
     private handbookController;
@@ -16,7 +15,7 @@ export declare class DelayedModLoader implements IModLoader {
     getBundle(key: string, local: boolean): void;
     getImportedModsNames(): string[];
     getModPath(mod: string): string;
-    load(container: DependencyContainer): void;
+    load(): void;
     private executeMods;
     private addBundles;
 }

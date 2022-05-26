@@ -1,13 +1,10 @@
-export interface ILocationsBase 
-{
+export interface ILocationsBase {
     locations: Locations;
     paths: Path[];
 }
-export interface Locations 
-{
+export interface Locations {
 }
-export interface Path 
-{
+export interface Path {
     Source: string;
     Destination: string;
 }

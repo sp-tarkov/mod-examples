@@ -6,8 +6,7 @@ import { IGetFriendListDataResponse } from "../models/eft/dialog/IGetFriendListD
 import { IGetMailDialogViewResponseData } from "../models/eft/dialog/IGetMailDialogViewResponseData";
 import { IGetAllAttachmentsResponse } from "../models/eft/dialog/IGetAllAttachmentsResponse";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
-export declare class DialogueController 
-{
+export declare class DialogueController {
     private httpResponse;
     private saveServer;
     private dialogueHelper;

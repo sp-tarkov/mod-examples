@@ -3,8 +3,7 @@ import { IEndOfflineRaidRequestData } from "../../eft/match/IEndOfflineRaidReque
 import { INullResponseData } from "../../eft/httpResponse/INullResponseData";
 import { IGetBodyResponseData } from "../../eft/httpResponse/IGetBodyResponseData";
 import { IPmcData } from "../../eft/common/IPmcData";
-export interface IMatchCallbacks 
-{
+export interface IMatchCallbacks {
     updatePing(url: string, info: any, sessionID: string): INullResponseData;
     exitMatch(url: string, info: any, sessionID: string): INullResponseData;
     exitToMenu(url: string, info: any, sessionID: string): INullResponseData;

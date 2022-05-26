@@ -1,5 +1,5 @@
-import { IEmptyRequestData } from "../../types/models/eft/common/IEmptyRequestData";
 import { LocationController } from "../controllers/LocationController";
+import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { ILocationBase } from "../models/eft/common/ILocationBase";
 import { ILocationsGenerateAllResponse } from "../models/eft/common/ILocationsSourceDestinationBase";
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";

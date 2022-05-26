@@ -1,8 +1,7 @@
 import { ILocationBase } from "../../eft/common/ILocationBase";
 import { ILooseLoot } from "../../eft/common/ILooseLoot";
 import { ILocationsBase } from "../../eft/common/tables/ILocationsBase";
-export interface ILocations 
-{
+export interface ILocations {
     bigmap?: ILocationData;
     develop?: ILocationData;
     factory4_day?: ILocationData;
@@ -21,8 +20,7 @@ export interface ILocations
     woods?: ILocationData;
     base?: ILocationsBase;
 }
-export interface ILocationData 
-{
+export interface ILocationData {
     base: ILocationBase;
     looseLoot?: ILooseLoot;
 }

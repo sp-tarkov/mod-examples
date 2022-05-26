@@ -1,5 +1,5 @@
-import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { LauncherController } from "../controllers/LauncherController";
+import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { IChangeRequestData } from "../models/eft/launcher/IChangeRequestData";
 import { ILoginRequestData } from "../models/eft/launcher/ILoginRequestData";
 import { IRegisterData } from "../models/eft/launcher/IRegisterData";

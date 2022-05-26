@@ -1,8 +1,8 @@
 import { TradeController } from "../controllers/TradeController";
 import { IPmcData } from "../models/eft/common/IPmcData";
-import { IProcessRagfairTradeRequestData } from "../models/eft/trade/IProcessRagfairTradeRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IProcessBaseTradeRequestData } from "../models/eft/trade/IProcessBaseTradeRequestData";
+import { IProcessRagfairTradeRequestData } from "../models/eft/trade/IProcessRagfairTradeRequestData";
 export declare class TradeCallbacks {
     private tradeController;
     constructor(tradeController: TradeController);

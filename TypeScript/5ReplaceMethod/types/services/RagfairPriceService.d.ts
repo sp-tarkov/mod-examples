@@ -7,8 +7,7 @@ import { PresetHelper } from "../helpers/PresetHelper";
 import { Item } from "../models/eft/common/tables/IItem";
 import { IBarterScheme } from "../models/eft/common/tables/ITrader";
 import { ILogger } from "../models/spt/utils/ILogger";
-export declare class RagfairPriceService 
-{
+export declare class RagfairPriceService {
     private handbookHelper;
     private databaseServer;
     private logger;

@@ -1,5 +1,4 @@
-export interface IHideoutSettingsBase 
-{
+export interface IHideoutSettingsBase {
     generatorSpeedWithoutFuel: number;
     generatorFuelFlowRate: number;
     airFilterUnitFlowRate: number;
