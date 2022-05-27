@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
-import { ILogger } from "../types/models/spt/utils/ILogger";
-import { Processing } from "./Processing";
+import type { ILogger } from "../types/models/spt/utils/ILogger";
+import type { Processing } from "./Processing";
 
 @injectable()
 export class MyMod 
