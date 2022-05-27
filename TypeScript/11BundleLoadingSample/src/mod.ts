@@ -1,0 +1,21 @@
+import type { DependencyContainer } from "tsyringe";
+import { IMod } from "../types/models/external/mod";
+import { ILogger } from "../types/models/spt/utils/ILogger";
+
+class Mod implements IMod
+{
+    public load(container: DependencyContainer): void
+    { 
+        return;
+    }
+
+    public delayedLoad(container: DependencyContainer): void
+    {
+		// get the logger from the server container
+        const logger = container.resolve<ILogger>("WinstonLogger");
+		
+        logger.info("Loading: Bundle Loading Sample");
+	}
+}
+
+module.exports = { mod: new Mod() }

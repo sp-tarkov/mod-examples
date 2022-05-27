@@ -1,0 +1,9 @@
+{
+	"name": "Bundle Loading Sample",
+	"author": "JustNU",
+	"version": "1.0.0",
+	"license": "does it really matter lol",
+	"main": "src/mod.js",
+	"akiVersion": "3.0.0",
+	"isBundleMod": true
+}
