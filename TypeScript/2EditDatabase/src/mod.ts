@@ -1,7 +1,7 @@
-import type { DependencyContainer } from "tsyringe";
+import { DependencyContainer } from "tsyringe";
 
-import type { IMod } from "../types/models/external/mod";
-import type { DatabaseServer } from "../types/servers/DatabaseServer";
+import { IMod } from "@spt-aki/models/external/mod";
+import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 
 class Mod implements IMod
 {

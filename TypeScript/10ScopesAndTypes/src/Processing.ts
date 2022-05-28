@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe";
-import type { ILogger } from "../types/models/spt/utils/ILogger";
+import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 
 @injectable()
 export class Processing 

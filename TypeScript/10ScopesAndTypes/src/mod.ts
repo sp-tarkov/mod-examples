@@ -1,5 +1,5 @@
 import { DependencyContainer, Lifecycle } from "tsyringe";
-import type { IMod } from "../types/models/external/mod";
+import { IMod } from "@spt-aki/models/external/mod";
 import { MyMod } from "./MyMod";
 import { Processing } from "./Processing";
 

@@ -8,8 +8,12 @@
         "downlevelIteration": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-		"resolveJsonModule": true,
-        "outDir": "out"
+        "resolveJsonModule": true,
+        "outDir": "tmp",
+        "baseUrl": ".",
+        "paths": {
+            "@spt-aki/*": ["./types/*"]
+        }
     },
     "lib": [
         "es2020"

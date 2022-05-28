@@ -1,10 +1,10 @@
-import type { DependencyContainer } from "tsyringe";
-import type { IMod } from "../types/models/external/mod";
+import { DependencyContainer } from "tsyringe";
+import { IMod } from "@spt-aki/models/external/mod";
 
-import type { ILogger } from "../types/models/spt/utils/ILogger";
-import type { ConfigServer } from "../types/servers/ConfigServer";
-import { ConfigTypes } from "../types/models/enums/ConfigTypes";
-import type { IBotConfig } from "../types/models/spt/config/IBotConfig";
+import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
+import { ConfigServer } from "@spt-aki/servers/ConfigServer";
+import { ConfigTypes } from "@spt-aki/models/enums/ConfigTypes";
+import { IBotConfig } from "@spt-aki/models/spt/config/IBotConfig";
 
 class Mod implements IMod
 {

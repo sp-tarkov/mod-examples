@@ -1,7 +1,7 @@
-import type { DependencyContainer } from "tsyringe";
+import { DependencyContainer } from "tsyringe";
 
-import type { IMod } from "../types/models/external/mod";
-import type { ILogger } from "../types/models/spt/utils/ILogger";
+import { IMod } from "@spt-aki/models/external/mod";
+import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 
 class Mod implements IMod
 {

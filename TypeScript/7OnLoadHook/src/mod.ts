@@ -1,7 +1,7 @@
 import { DependencyContainer } from "tsyringe";
-import type { IMod } from "../types/models/external/mod"
-import type { ILogger } from "../types/models/spt/utils/ILogger"
-import type { OnLoadModService } from "../types/services/mod/onLoad/OnLoadModService"
+import { IMod } from "@spt-aki/models/external/mod"
+import { ILogger } from "@spt-aki/models/spt/utils/ILogger"
+import { OnLoadModService } from "@spt-aki/services/mod/onLoad/OnLoadModService"
 
 class Mod implements IMod
 {

@@ -1,8 +1,8 @@
 import { DependencyContainer } from "tsyringe";
-import type { IMod } from "../types/models/external/mod";
-import type { ILogger } from "../types/models/spt/utils/ILogger";
-import type {DynamicRouterModService} from "../types/services/mod/dynamicRouter/DynamicRouterModService";
-import type {StaticRouterModService} from "../types/services/mod/staticRouter/StaticRouterModService";
+import type { IMod } from "@spt-aki/models/external/mod";
+import type { ILogger } from "@spt-aki/models/spt/utils/ILogger";
+import type {DynamicRouterModService} from "@spt-aki/services/mod/dynamicRouter/DynamicRouterModService";
+import type {StaticRouterModService} from "@spt-aki/services/mod/staticRouter/StaticRouterModService";
 
 class Mod implements IMod
 {

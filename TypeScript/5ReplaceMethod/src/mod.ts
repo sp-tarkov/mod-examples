@@ -1,10 +1,10 @@
-import type { DependencyContainer } from "tsyringe";
-import type { IMod } from "../types/models/external/mod";
-import type { LauncherController } from "../types/controllers/LauncherController";
-import type { DatabaseServer } from "../types/servers/DatabaseServer";
-import type { ILoginRequestData } from "../types/models/eft/launcher/ILoginRequestData";
-import type { ILogger } from "../types/models/spt/utils/ILogger";
-import type { SaveServer } from "../types/servers/SaveServer";
+import { DependencyContainer } from "tsyringe";
+import { IMod } from "@spt-aki/models/external/mod";
+import { LauncherController } from "@spt-aki/controllers/LauncherController";
+import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
+import { ILoginRequestData } from "@spt-aki/models/eft/launcher/ILoginRequestData";
+import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
+import { SaveServer } from "@spt-aki/servers/SaveServer";
 
 class Mod implements IMod
 {
