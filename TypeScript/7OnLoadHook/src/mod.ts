@@ -1,7 +1,7 @@
 import { DependencyContainer } from "tsyringe";
-import { IMod } from "../types/models/external/mod"
-import { ILogger } from "../types/models/spt/utils/ILogger"
-import { OnLoadModService } from "../types/services/mod/onLoad/OnLoadModService"
+import type { IMod } from "../types/models/external/mod"
+import type { ILogger } from "../types/models/spt/utils/ILogger"
+import type { OnLoadModService } from "../types/services/mod/onLoad/OnLoadModService"
 
 class Mod implements IMod
 {
@@ -10,7 +10,7 @@ class Mod implements IMod
         const logger = container.resolve<ILogger>("WinstonLogger");
         const onLoadModService = container.resolve<OnLoadModService>("OnLoadModService");
         onLoadModService.registerOnLoad(
-            "MyCustomMod", 
+            "MyCustomMod", // route key
             () => this.customFunctionThatRunsOnLoad(logger), 
             () => "custom-mod" // new route name
         )
