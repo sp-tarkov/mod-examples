@@ -1,3 +1,4 @@
+import { ELocationName } from "../../enums/ELocationName";
 import { IBaseConfig } from "./IBaseConfig";
 export interface IQuestConfig extends IBaseConfig {
     kind: "aki-quest";
@@ -14,17 +15,6 @@ export interface IRepeatableQuestConfig {
     locations: Record<ELocationName, string[]>;
     traderWhitelist: ITraderWhitelist[];
     questConfig: IQuestConfig;
-}
-export declare enum ELocationName {
-    FACTORY_DAY = "factory4_day",
-    BIGMAP = "bigmap",
-    WOODS = "Woods",
-    SHORELINE = "Shoreline",
-    INTERCHANGE = "Interchange",
-    LIGHTHOUSE = "Lighthouse",
-    LABORATORY = "laboratory",
-    RESERVE = "RezervBase",
-    ANY = "any"
 }
 export interface IRewardScaling {
     levels: number[];

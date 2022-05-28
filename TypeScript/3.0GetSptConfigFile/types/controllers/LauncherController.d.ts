@@ -1,12 +1,12 @@
-import { HashUtil } from "../utils/HashUtil";
-import { SaveServer } from "../servers/SaveServer";
+import { HttpServerHelper } from "../helpers/HttpServerHelper";
+import { IChangeRequestData } from "../models/eft/launcher/IChangeRequestData";
+import { ILoginRequestData } from "../models/eft/launcher/ILoginRequestData";
+import { IRegisterData } from "../models/eft/launcher/IRegisterData";
+import { Info } from "../models/eft/profile/IAkiProfile";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
-import { IRegisterData } from "../models/eft/launcher/IRegisterData";
-import { ILoginRequestData } from "../models/eft/launcher/ILoginRequestData";
-import { IChangeRequestData } from "../models/eft/launcher/IChangeRequestData";
-import { Info } from "../models/eft/profile/IAkiProfile";
-import { HttpServerHelper } from "../helpers/HttpServerHelper";
+import { SaveServer } from "../servers/SaveServer";
+import { HashUtil } from "../utils/HashUtil";
 export declare class LauncherController {
     private hashUtil;
     private saveServer;

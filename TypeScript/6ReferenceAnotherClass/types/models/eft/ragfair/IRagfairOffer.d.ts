@@ -1,4 +1,4 @@
-import { MemberCategory } from "../common/MemberCategory";
+import { MemberCategory } from "../../enums/MemberCategory";
 import { Item } from "../common/tables/IItem";
 export interface IRagfairOffer {
     sellResult?: SellResult[];

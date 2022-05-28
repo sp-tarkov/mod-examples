@@ -1,11 +1,11 @@
-import { DatabaseServer } from "../servers/DatabaseServer";
-import { Difficulty } from "../models/eft/common/tables/IBotType";
+import { BotGenerator } from "../generators/BotGenerator";
+import { BotHelper } from "../helpers/BotHelper";
 import { IGenerateBotsRequestData } from "../models/eft/bot/IGenerateBotsRequestData";
 import { IBotBase } from "../models/eft/common/tables/IBotBase";
 import { IBotCore } from "../models/eft/common/tables/IBotCore";
+import { Difficulty } from "../models/eft/common/tables/IBotType";
 import { ConfigServer } from "../servers/ConfigServer";
-import { BotHelper } from "../helpers/BotHelper";
-import { BotGenerator } from "../generators/BotGenerator";
+import { DatabaseServer } from "../servers/DatabaseServer";
 export declare class BotController {
     private databaseServer;
     private botGenerator;

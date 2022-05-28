@@ -1,10 +1,10 @@
-import { SaveServer } from "../servers/SaveServer";
 import { DialogueHelper } from "../helpers/DialogueHelper";
-import { DialogueInfo } from "../models/eft/profile/IAkiProfile";
-import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
+import { IGetAllAttachmentsResponse } from "../models/eft/dialog/IGetAllAttachmentsResponse";
 import { IGetFriendListDataResponse } from "../models/eft/dialog/IGetFriendListDataResponse";
 import { IGetMailDialogViewResponseData } from "../models/eft/dialog/IGetMailDialogViewResponseData";
-import { IGetAllAttachmentsResponse } from "../models/eft/dialog/IGetAllAttachmentsResponse";
+import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
+import { DialogueInfo } from "../models/eft/profile/IAkiProfile";
+import { SaveServer } from "../servers/SaveServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class DialogueController {
     private httpResponse;

@@ -1,12 +1,12 @@
-import { RandomUtil } from "../utils/RandomUtil";
-import { DatabaseServer } from "../servers/DatabaseServer";
-import { ConfigServer } from "../servers/ConfigServer";
 import { HandbookHelper } from "../helpers/HandbookHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
 import { PresetHelper } from "../helpers/PresetHelper";
 import { Item } from "../models/eft/common/tables/IItem";
 import { IBarterScheme } from "../models/eft/common/tables/ITrader";
 import { ILogger } from "../models/spt/utils/ILogger";
+import { ConfigServer } from "../servers/ConfigServer";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { RandomUtil } from "../utils/RandomUtil";
 export declare class RagfairPriceService {
     private handbookHelper;
     private databaseServer;

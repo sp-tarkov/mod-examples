@@ -1,4 +1,4 @@
-import { MessageType } from "../profile/IAkiProfile";
+import { MessageType } from "../../enums/MessageType";
 export interface ISendMessageRequest {
     dialogId: string;
     type: MessageType;

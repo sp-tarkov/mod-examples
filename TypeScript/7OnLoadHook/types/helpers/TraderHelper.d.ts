@@ -1,15 +1,15 @@
-import { SaveServer } from "../servers/SaveServer";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { IBarterScheme, ITraderAssort, ITraderBase, LoyaltyLevel } from "../models/eft/common/tables/ITrader";
+import { ILogger } from "../models/spt/utils/ILogger";
+import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { SaveServer } from "../servers/SaveServer";
+import { FenceService } from "../services/FenceService";
 import { PlayerService } from "../services/PlayerService";
 import { HandbookHelper } from "./HandbookHelper";
 import { ItemHelper } from "./ItemHelper";
-import { ProfileHelper } from "./ProfileHelper";
 import { PaymentHelper } from "./PaymentHelper";
-import { FenceService } from "../services/FenceService";
-import { IBarterScheme, ITraderAssort, ITraderBase, LoyaltyLevel } from "../models/eft/common/tables/ITrader";
-import { IPmcData } from "../models/eft/common/IPmcData";
-import { ConfigServer } from "../servers/ConfigServer";
-import { ILogger } from "../models/spt/utils/ILogger";
+import { ProfileHelper } from "./ProfileHelper";
 export declare class TraderHelper {
     private logger;
     private databaseServer;

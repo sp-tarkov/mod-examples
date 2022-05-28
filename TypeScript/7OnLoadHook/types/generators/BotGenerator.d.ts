@@ -1,14 +1,14 @@
-import { HashUtil } from "../utils/HashUtil";
-import { RandomUtil } from "../utils/RandomUtil";
-import { ILogger } from "../models/spt/utils/ILogger";
+import { BotHelper } from "../helpers/BotHelper";
+import { GameEventHelper } from "../helpers/GameEventHelper";
 import { IGenerateBotsRequestData } from "../models/eft/bot/IGenerateBotsRequestData";
 import { IBotBase } from "../models/eft/common/tables/IBotBase";
-import { DatabaseServer } from "../servers/DatabaseServer";
-import { JsonUtil } from "../utils/JsonUtil";
+import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
-import { GameEventHelper } from "../helpers/GameEventHelper";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { HashUtil } from "../utils/HashUtil";
+import { JsonUtil } from "../utils/JsonUtil";
+import { RandomUtil } from "../utils/RandomUtil";
 import { BotInventoryGenerator } from "./BotInventoryGenerator";
-import { BotHelper } from "../helpers/BotHelper";
 export declare class BotGenerator {
     private logger;
     private hashUtil;

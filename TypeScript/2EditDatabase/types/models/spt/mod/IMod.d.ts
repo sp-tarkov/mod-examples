@@ -1,4 +1,4 @@
-declare namespace ModLoader {
+export declare namespace ModLoader {
     interface IMod {
         name: string;
         version: string;

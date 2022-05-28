@@ -1,9 +1,9 @@
-import { DatabaseServer } from "../servers/DatabaseServer";
 import { Difficulty } from "../models/eft/common/tables/IBotType";
+import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
+import { DatabaseServer } from "../servers/DatabaseServer";
 import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
-import { ILogger } from "../models/spt/utils/ILogger";
 export declare class BotHelper {
     private logger;
     private jsonUtil;

@@ -1,5 +1,5 @@
-import { ConfigServer } from "../servers/ConfigServer";
 import { ILogger } from "../models/spt/utils/ILogger";
+import { ConfigServer } from "../servers/ConfigServer";
 export declare class WatermarkLocale {
     private locales;
     getLocale(): string;

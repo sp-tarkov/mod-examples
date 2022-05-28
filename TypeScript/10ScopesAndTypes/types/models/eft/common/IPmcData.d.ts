@@ -1,8 +1,8 @@
 import { IRagfairOffer } from "../ragfair/IRagfairOffer";
 import { IPmcDataRepeatableQuest } from "./tables/IRepeatableQuests";
 import { Item, Upd } from "./tables/IItem";
-import { HideoutAreasEnum } from "../hideout/HideoutAreasEnum";
-import { MemberCategory } from "./MemberCategory";
+import { HideoutAreas } from "../../enums/HideoutAreas";
+import { MemberCategory } from "../../enums/MemberCategory";
 export interface IPmcData {
     _id: string;
     aid: string;
@@ -289,7 +289,7 @@ export interface Production extends Productive {
     ProductionTime: number;
 }
 export interface HideoutArea {
-    type: HideoutAreasEnum;
+    type: HideoutAreas;
     level: number;
     active: boolean;
     passiveBonusesEnabled: boolean;

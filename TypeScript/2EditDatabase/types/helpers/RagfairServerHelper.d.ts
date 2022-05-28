@@ -1,4 +1,4 @@
-import { MemberCategory } from "../models/eft/common/MemberCategory";
+import { MemberCategory } from "../models/enums/MemberCategory";
 import { Item } from "../models/eft/common/tables/IItem";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { ConfigServer } from "../servers/ConfigServer";

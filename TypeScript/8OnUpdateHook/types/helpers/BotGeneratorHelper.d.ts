@@ -12,7 +12,7 @@ import { RandomUtil } from "../utils/RandomUtil";
 import { ContainerHelper } from "./ContainerHelper";
 import { InventoryHelper } from "./InventoryHelper";
 import { ItemHelper } from "./ItemHelper";
-declare class BotGeneratorHelper {
+export declare class BotGeneratorHelper {
     private logger;
     private jsonUtil;
     private hashUtil;
@@ -58,22 +58,3 @@ export declare class ExhaustableArray<T> {
     getFirstValue(): T;
     hasValues(): boolean;
 }
-declare namespace BotGeneratorHelper {
-    enum EquipmentSlots {
-        HEADWEAR = "Headwear",
-        EARPIECE = "Earpiece",
-        FACE_COVER = "FaceCover",
-        ARMOR_VEST = "ArmorVest",
-        EYEWEAR = "Eyewear",
-        ARM_BAND = "ArmBand",
-        TACTICAL_VEST = "TacticalVest",
-        POCKETS = "Pockets",
-        BACKPACK = "Backpack",
-        SECURED_CONTAINER = "SecuredContainer",
-        FIRST_PRIMARY_WEAPON = "FirstPrimaryWeapon",
-        SECOND_PRIMARY_WEAPON = "SecondPrimaryWeapon",
-        HOLSTER = "Holster",
-        SCABBARD = "Scabbard"
-    }
-}
-export { BotGeneratorHelper };

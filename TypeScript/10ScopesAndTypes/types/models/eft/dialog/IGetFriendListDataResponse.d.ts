@@ -1,4 +1,4 @@
-import { MemberCategory } from "../common/MemberCategory";
+import { MemberCategory } from "../../enums/MemberCategory";
 export interface IGetFriendListDataResponse {
     Friends: Friend[];
     Ignore: any[];

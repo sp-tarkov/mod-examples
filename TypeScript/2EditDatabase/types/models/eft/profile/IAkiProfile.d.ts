@@ -1,3 +1,4 @@
+import { MessageType } from "../../enums/MessageType";
 import { IPmcData } from "../common/IPmcData";
 import { Item } from "../common/tables/IItem";
 export interface IAkiProfile {
@@ -42,22 +43,6 @@ export interface DialogueInfo {
     pinned: boolean;
     new: number;
     attachmentsNew: number;
-}
-export declare enum MessageType {
-    USER_MESSAGE = 1,
-    NPC_TRADER = 2,
-    AUCTION_MESSAGE = 3,
-    FLEAMARKET_MESSAGE = 4,
-    ADMIN_MESSAGE = 5,
-    GROUP_CHAT_MESSAGE = 6,
-    SYSTEM_MESSAGE = 7,
-    INSURANCE_RETURN = 8,
-    GLOBAL_CHAT = 9,
-    QUEST_START = 10,
-    QUEST_FAIL = 11,
-    QUEST_SUCCESS = 12,
-    MESSAGE_WITH_ITEMS = 13,
-    INITIAL_SUPPORT = 14
 }
 export interface Message {
     _id: string;

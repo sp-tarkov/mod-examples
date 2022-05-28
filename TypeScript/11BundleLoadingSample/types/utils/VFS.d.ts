@@ -1,4 +1,5 @@
 /// <reference types="node" />
+/// <reference types="node" />
 import "reflect-metadata";
 import fs from "fs";
 import { IAsyncQueue } from "../models/spt/utils/IAsyncQueue";

@@ -46,6 +46,40 @@ export interface AvailableForProps {
     visibilityConditions?: VisibilityCondition[];
     target?: string | string[];
     status?: number[];
+    onlyFoundInRaid?: boolean;
+    oneSessionOnly?: boolean;
+    doNotResetIfCounterCompleted?: boolean;
+    dogtagLevel?: number;
+    maxDurability?: number;
+    minDurability?: number;
+    counter?: AvailableForCounter;
+    plantTime?: number;
+    zoneId?: string;
+    type?: boolean;
+}
+export interface AvailableForCounter {
+    id: string;
+    conditions: CounterCondition[];
+}
+export interface CounterCondition {
+    _parent: string;
+    _props: CounterProps;
+}
+export interface CounterProps {
+    id: string;
+    target: string[] | string;
+    compareMethod?: string;
+    value?: string;
+    weapon?: string[];
+    equipmentInclusive?: string[][];
+    weaponModsInclusive?: string[][];
+    status?: string[];
+    bodyPart?: string[];
+    daytime?: DaytimeCounter;
+}
+export interface DaytimeCounter {
+    from: number;
+    to: number;
 }
 export interface VisibilityCondition {
     id: string;
