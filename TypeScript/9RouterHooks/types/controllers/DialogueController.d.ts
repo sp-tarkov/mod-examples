@@ -19,6 +19,7 @@ export declare class DialogueController {
     setDialoguePin(dialogueID: string, shouldPin: boolean, sessionID: string): void;
     setRead(dialogueIDs: string[], sessionID: string): void;
     getAllAttachments(dialogueID: string, sessionID: string): IGetAllAttachmentsResponse;
+    private messagesHaveUncollectedRewards;
     private removeExpiredItems;
     update(): void;
 }

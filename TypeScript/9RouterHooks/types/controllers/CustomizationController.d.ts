@@ -1,13 +1,13 @@
-import { DatabaseServer } from "../servers/DatabaseServer";
-import { SaveServer } from "../servers/SaveServer";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
-import { IWearClothingRequestData } from "../models/eft/customization/IWearClothingRequestData";
-import { IBuyClothingRequestData } from "../models/eft/customization/IBuyClothingRequestData";
 import { ISuit } from "../models/eft/common/tables/ITrader";
+import { IBuyClothingRequestData } from "../models/eft/customization/IBuyClothingRequestData";
+import { IWearClothingRequestData } from "../models/eft/customization/IWearClothingRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
-import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { ILogger } from "../models/spt/utils/ILogger";
+import { ItemEventRouter } from "../routers/ItemEventRouter";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { SaveServer } from "../servers/SaveServer";
 export declare class CustomizationController {
     private logger;
     private itemEventRouter;

@@ -24,8 +24,13 @@ export declare class RagfairServerHelper {
     private questConfig;
     private static TPL_GOODS_RETURNED;
     constructor(randomUtil: RandomUtil, hashUtil: HashUtil, saveServer: SaveServer, databaseServer: DatabaseServer, profileHelper: ProfileHelper, itemHelper: ItemHelper, dialogueHelper: DialogueHelper, jsonUtil: JsonUtil, configServer: ConfigServer);
+    /**
+     * Is item valid / on blacklist / quest item
+     * @param itemDetails
+     * @returns boolean
+     */
     isItemValidRagfairItem(itemDetails: [boolean, ITemplateItem]): boolean;
-    isItemBlacklisted(itemTemplateId: string): boolean;
+    private isItemBlacklisted;
     isTrader(userID: string): boolean;
     isPlayer(userID: string): boolean;
     returnItems(sessionID: string, items: any[]): void;

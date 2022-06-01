@@ -1,5 +1,4 @@
 import { DependencyContainer } from "tsyringe";
-import { ModLoader } from "../models/spt/mod/IMod";
 import { IModLoader } from "../models/spt/mod/IModLoader";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
@@ -23,11 +22,29 @@ export declare class InitialModLoader implements IModLoader {
     load(container: DependencyContainer): Promise<void>;
     getBundles(local: boolean): string;
     getBundle(key: string, local: boolean): void;
-    getMods(): Record<string, ModLoader.IMod>;
     getImportedModsNames(): string[];
     getModPath(mod: string): string;
     private importClass;
     private importMods;
+    /**
+     *
+     * @param mods Get an array of broken/invalid mods by name
+     * @returns Mod names array
+     */
+    private getBrokenMods;
+    /**
+     * Get packageJson data for mods
+     * @param mods mods to get packageJson for
+     * @returns dictionary <modName - package.json>
+     */
+    private getModsPackageData;
+    /**
+     * Does mod have "delayedLoad(" string in its entry class
+     * @param modFolderName folder name
+     * @param modToValidate package.json details
+     * @returns boolean
+     */
+    private isModSpt300Compatible;
     private isModCombatibleWithAki;
     private executeMods;
     private sortModsLoadOrder;

@@ -39,6 +39,10 @@ export declare class RagfairOfferGenerator {
     private getRating;
     private getRatingGrowing;
     private getOfferEndTime;
+    /**
+     * Create multiple offers for items by using a unique list of items we've generated previously
+     * @param expiredOffers
+     */
     generateDynamicOffers(expiredOffers?: Item[]): void;
     generateTraderOffers(traderID: string): void;
     private getItemCondition;

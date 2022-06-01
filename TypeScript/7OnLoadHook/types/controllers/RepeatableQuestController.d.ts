@@ -89,7 +89,7 @@ export declare class RepeatableQuestController {
      * @param   {string}    sessionId       Player's session id
      * @returns  {array}                    array of "repeatableQuestObjects" as descibed above
      */
-    getClientRepeatableQuests(info: IEmptyRequestData, sessionID: string): IPmcDataRepeatableQuest[];
+    getClientRepeatableQuests(_info: IEmptyRequestData, sessionID: string): IPmcDataRepeatableQuest[];
     /**
      * This method is called by GetClientRepeatableQuests and creates one element of quest type format (see assets/database/templates/repeatableQuests.json).
      * It randomly draws a quest type (currently Elimination, Completion or Exploration) as well as a trader who is providing the quest

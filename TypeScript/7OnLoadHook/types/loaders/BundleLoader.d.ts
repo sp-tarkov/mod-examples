@@ -2,12 +2,12 @@ import { HttpServerHelper } from "../helpers/HttpServerHelper";
 import { JsonUtil } from "../utils/JsonUtil";
 import { VFS } from "../utils/VFS";
 declare class BundleInfo {
-    private httpServerHelper;
+    modPath: string;
     key: string;
     path: string;
     filepath: string;
     dependencyKeys: string[];
-    constructor(modpath: string, bundle: any, httpServerHelper: HttpServerHelper);
+    constructor(modpath: string, bundle: any, bundlePath: string, bundleFilepath: string);
 }
 export declare class BundleLoader {
     private httpServerHelper;

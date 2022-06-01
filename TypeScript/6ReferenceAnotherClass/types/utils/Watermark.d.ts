@@ -5,6 +5,7 @@ export declare class WatermarkLocale {
     getLocale(): string;
     getDescription(): string[];
     getWarning(): string[];
+    getModding(): string[];
 }
 export declare class Watermark {
     private logger;

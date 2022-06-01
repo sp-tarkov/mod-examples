@@ -6,8 +6,10 @@ export declare class ModCompilerService {
     private hashCacheService;
     private vfs;
     constructor(logger: ILogger, hashCacheService: HashCacheService, vfs: VFS);
-    compileMod(modName: string, path: string, modTypeScriptFiles: string[]): Promise<void>;
+    compileMod(modName: string, modPath: string, modTypeScriptFiles: string[]): Promise<void>;
     private compile;
+    private buildDepth;
+    private calculateDepth;
     private areFilesReady;
     private delay;
 }

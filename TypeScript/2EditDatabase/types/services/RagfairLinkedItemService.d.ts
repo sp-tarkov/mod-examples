@@ -4,6 +4,6 @@ export declare class RagfairLinkedItemService {
     private linkedItemsCache;
     constructor(databaseServer: DatabaseServer);
     getLinkedItems(linkedSearchId: string): Iterable<string>;
-    buildLinkedItemTable(): void;
+    private buildLinkedItemTable;
     private getFilters;
 }

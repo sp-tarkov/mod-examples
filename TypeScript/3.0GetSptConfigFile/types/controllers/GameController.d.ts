@@ -13,7 +13,15 @@ export declare class GameController {
     private configServer;
     private httpConfig;
     constructor(logger: ILogger, watermark: Watermark, httpServerHelper: HttpServerHelper, profileHelper: ProfileHelper, configServer: ConfigServer);
-    gameStart(url: string, info: IEmptyRequestData, sessionID: string): void;
+    gameStart(_url: string, _info: IEmptyRequestData, sessionID: string): void;
+    private addMissingBonusesProperty;
+    private addMissingRepeatableQuestsProperty;
+    private addMissingWeaponRepairSkill;
+    private addMissingAkiVersionTagToProfile;
+    private addMissingArmorRepairSkill;
+    private fixNullTraderSalesSums;
+    private removeDanglingConditionCounters;
+    private removeDanglingBackendCounters;
     getGameConfig(sessionID: string): IGameConfigResponse;
     getServer(): any[];
     private getActiveRepeatableQuests;

@@ -30,7 +30,7 @@ export declare class VFS {
     copyAsync(filepath: fs.PathLike, target: fs.PathLike): Promise<void>;
     createDir(filepath: string): void;
     createDirAsync(filepath: string): Promise<void>;
-    copyDir(filepath: string, target: string, fileExtensions: string | string[]): void;
+    copyDir(filepath: string, target: string, fileExtensions?: string | string[]): void;
     copyDirAsync(filepath: string, target: string, fileExtensions: string | string[]): Promise<void>;
     readFile(filepath: string): any;
     readFileAsync(filepath: string): Promise<any>;

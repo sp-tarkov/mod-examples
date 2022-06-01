@@ -48,6 +48,8 @@ export declare class HideoutHelper {
     applyPlayerUpgradesBonuses(pmcData: IPmcData, bonus: StageBonus): void;
     private applySkillXPBoost;
     updatePlayerHideout(sessionID: string): void;
+    private updateWaterCollector;
+    private doesWaterCollectorHaveFilter;
     private updateFuel;
     private updateWaterFilters;
     private getAreaUpdObject;

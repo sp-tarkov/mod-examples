@@ -1,5 +1,5 @@
-import { DatabaseServer } from "../servers/DatabaseServer";
 import { HandbookHelper } from "../helpers/HandbookHelper";
+import { DatabaseServer } from "../servers/DatabaseServer";
 export declare class HandbookController {
     private databaseServer;
     private handbookHelper;

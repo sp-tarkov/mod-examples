@@ -1,18 +1,18 @@
-import { SaveServer } from "../servers/SaveServer";
-import { DatabaseServer } from "../servers/DatabaseServer";
+import { ExtendedProfileHelper } from "../helpers/ExtendedProfileHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
+import { IMiniProfile } from "../models/eft/launcher/IMiniProfile";
 import { IProfileChangeNicknameRequestData } from "../models/eft/profile/IProfileChangeNicknameRequestData";
 import { IProfileChangeVoiceRequestData } from "../models/eft/profile/IProfileChangeVoiceRequestData";
 import { IProfileCreateRequestData } from "../models/eft/profile/IProfileCreateRequestData";
-import { IValidateNicknameRequestData } from "../models/eft/profile/IValidateNicknameRequestData";
 import { ISearchFriendRequestData } from "../models/eft/profile/ISearchFriendRequestData";
 import { ISearchFriendResponse } from "../models/eft/profile/ISearchFriendResponse";
+import { IValidateNicknameRequestData } from "../models/eft/profile/IValidateNicknameRequestData";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { SaveServer } from "../servers/SaveServer";
 import { HashUtil } from "../utils/HashUtil";
 import { TimeUtil } from "../utils/TimeUtil";
-import { IMiniProfile } from "../models/eft/launcher/IMiniProfile";
-import { ExtendedProfileHelper } from "../helpers/ExtendedProfileHelper";
 export declare class ProfileController {
     private hashUtil;
     private timeUtil;
