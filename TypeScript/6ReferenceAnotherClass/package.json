@@ -7,7 +7,7 @@
     "akiVersion": "3.0.0",
     "scripts": {
         "setup:environment": "npm i",
-        "build:unzipped": "copyfiles -e \"./node_modules/**/*.*\" -e \"./dist/**/*.*\" -e \"./package-lock.json\" -e \"./tsconfig.json\" -e \"./README.txt\" -e \"./mod.code-workspace\" ./**/*.* ./dist",
+        "build:unzipped": "copyfiles -e \"./node_modules/**/*.*\" -e \"./dist/**/*.*\" -e \"./package-lock.json\" -e \"./tsconfig.json\" -e \"./README.txt\" -e \"./mod.code-workspace\" \"\"./**/*.*\"\" ./dist",
         "zip:files": "cd dist/ && bestzip ../mod.zip *",
         "build:zip": "npm run clean:environment && npm run build:unzipped && npm run zip:files",
         "clean:environment": "node -e \"require('fs').rm('mod.zip', ()=>{})\" && node -e \"require('fs').rmdir('./dist/',{recursive:true},()=>{})\""
