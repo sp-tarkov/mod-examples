@@ -14,9 +14,30 @@ export declare class BotHelper {
     constructor(logger: ILogger, jsonUtil: JsonUtil, databaseServer: DatabaseServer, randomUtil: RandomUtil, configServer: ConfigServer);
     getBotDifficultySettings(type: string, difficulty: string): Difficulty;
     getPmcDifficultySettings(type: string, difficulty: string): Difficulty;
+    /**
+     * Randomise the chance the PMC will attack their own side
+     * @param difficultySettings pmc difficulty settings
+     */
     randomisePmcHostility(difficultySettings: Difficulty): void;
     isBotPmc(botRole: string): boolean;
     isBotBoss(botRole: string): boolean;
     isBotFollower(botRole: string): boolean;
+    /**
+     * Add a bot to the FRIENDLY_BOT_TYPES array
+     * @param difficultySettings bot settings to alter
+     * @param typeToAdd bot type to add to friendly list
+     */
     addBotToFriendlyList(difficultySettings: Difficulty, typeToAdd: string): void;
+    /**
+     * Add a bot to the ENEMY_BOT_TYPES array
+     * @param difficultySettings bot settings to alter
+     * @param typesToAdd bot type to add to enemy list
+     */
+    addBotToEnemyList(difficultySettings: Difficulty, typesToAdd: string[]): void;
+    /**
+     * Add a bot to the REVENGE_BOT_TYPES array
+     * @param difficultySettings bot settings to alter
+     * @param typesToAdd bot type to add to revenge list
+     */
+    addBotToRevengeList(difficultySettings: Difficulty, typesToAdd: string[]): void;
 }

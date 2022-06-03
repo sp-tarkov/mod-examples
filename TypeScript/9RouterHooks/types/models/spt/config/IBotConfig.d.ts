@@ -5,6 +5,7 @@ export interface IBotConfig extends IBaseConfig {
     bosses: string[];
     durability: Durability;
     lootNValue: LootNvalue;
+    revenge: Record<string, string[]>;
     pmc: PmcConfig;
     showTypeInNickname: boolean;
     maxBotCap: number;
@@ -97,6 +98,7 @@ export interface PmcConfig {
     maxPocketLootTotalRub: number;
     maxVestLootTotalRub: number;
     types: Types;
+    enemyTypes: string[];
 }
 export interface DynamicLoot {
     whitelist: string[];

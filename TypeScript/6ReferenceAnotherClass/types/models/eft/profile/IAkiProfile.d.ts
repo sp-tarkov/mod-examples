@@ -126,12 +126,16 @@ export interface Chest {
 export interface Stomach {
 }
 export interface LeftArm {
+    Fracture?: number;
 }
 export interface RightArm {
+    Fracture?: number;
 }
 export interface LeftLeg {
+    Fracture?: number;
 }
 export interface RightLeg {
+    Fracture?: number;
 }
 export interface Inraid {
     location: string;

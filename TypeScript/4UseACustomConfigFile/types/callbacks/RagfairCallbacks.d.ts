@@ -3,6 +3,7 @@ import { OnLoadOnUpdate } from "../di/OnLoadOnUpdate";
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
+import { INullResponseData } from "../models/eft/httpResponse/INullResponseData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IAddOfferRequestData } from "../models/eft/ragfair/IAddOfferRequestData";
 import { IExtendOfferRequestData } from "../models/eft/ragfair/IExtendOfferRequestData";
@@ -33,4 +34,5 @@ export declare class RagfairCallbacks extends OnLoadOnUpdate {
     removeOffer(pmcData: IPmcData, info: IRemoveOfferRequestData, sessionID: string): IItemEventRouterResponse;
     extendOffer(pmcData: IPmcData, info: IExtendOfferRequestData, sessionID: string): IItemEventRouterResponse;
     onUpdate(timeSinceLastRun: number): boolean;
+    sendReport(url: string, info: any, sessionID: string): INullResponseData;
 }

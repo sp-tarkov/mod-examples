@@ -9,6 +9,10 @@ export declare class ModCompilerService {
     compileMod(modName: string, modPath: string, modTypeScriptFiles: string[]): Promise<void>;
     private compile;
     private buildDepth;
+    private getNodesModulesPath;
+    private getAkiPath;
+    private getAkiFolder;
+    private getNodesModulesFolder;
     private calculateDepth;
     private areFilesReady;
     private delay;

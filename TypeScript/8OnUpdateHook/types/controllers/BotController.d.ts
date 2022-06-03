@@ -13,8 +13,21 @@ export declare class BotController {
     private configServer;
     private botConfig;
     constructor(databaseServer: DatabaseServer, botGenerator: BotGenerator, botHelper: BotHelper, configServer: ConfigServer);
-    getBotLimit(type: string): number;
+    /**
+     * Return the number of bot loadout varieties to be generated
+     * @param type bot Type we want the loadout gen count for
+     * @returns
+     */
+    getBotPresetGenerationLimit(type: string): number;
+    /**
+     * Get bot difficulty settings
+     * adjust PMC settings to ensure they engage the correct bot types
+     * @param type what bot the server is requesting settings for
+     * @param difficulty difficulty level server requested settings for
+     * @returns Difficulty object
+     */
     getBotDifficulty(type: string, difficulty: string): IBotCore | Difficulty;
+    private getPmcDifficultySettings;
     generate(info: IGenerateBotsRequestData, playerScav?: boolean): IBotBase[];
     getBotCap(): number;
 }
