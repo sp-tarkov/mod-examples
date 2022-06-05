@@ -12,6 +12,7 @@ import { ITraderAssort, ITraderBase } from "@spt-aki/models/eft/common/tables/IT
 import { ITraderConfig, UpdateTime } from "@spt-aki/models/spt/config/ITraderConfig";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 import { Item } from "@spt-aki/models/eft/common/tables/IItem";
+import { ILocaleGlobalBase } from "@spt-aki/models/spt/server/ILocaleBase";
 
 // The new trader config
 import * as baseJson from "../db/base.json";
@@ -53,7 +54,7 @@ class SampleTrader implements IMod {
         };
 
         // For each language, add locale for the new trader
-        const locales = Object.values(tables.locales.global);
+        const locales = Object.values(tables.locales.global) as ILocaleGlobalBase[];
         for (const locale of locales) {
             locale.trading[baseJson._id] = {
                 FullName: baseJson.name,
