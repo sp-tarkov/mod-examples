@@ -1,0 +1,35 @@
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { IBarterScheme, ITraderAssort, ITraderBase, LoyaltyLevel } from "../models/eft/common/tables/ITrader";
+import { ILogger } from "../models/spt/utils/ILogger";
+import { ConfigServer } from "../servers/ConfigServer";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { SaveServer } from "../servers/SaveServer";
+import { FenceService } from "../services/FenceService";
+import { PlayerService } from "../services/PlayerService";
+import { HandbookHelper } from "./HandbookHelper";
+import { ItemHelper } from "./ItemHelper";
+import { PaymentHelper } from "./PaymentHelper";
+import { ProfileHelper } from "./ProfileHelper";
+export declare class TraderHelper {
+    private logger;
+    private databaseServer;
+    private saveServer;
+    private profileHelper;
+    private paymentHelper;
+    private itemHelper;
+    private handbookHelper;
+    private playerService;
+    private fenceService;
+    private configServer;
+    private traderConfig;
+    constructor(logger: ILogger, databaseServer: DatabaseServer, saveServer: SaveServer, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, itemHelper: ItemHelper, handbookHelper: HandbookHelper, playerService: PlayerService, fenceService: FenceService, configServer: ConfigServer);
+    getTrader(traderID: string, sessionID: string): ITraderBase;
+    getTraderAssortsById(traderId: string): ITraderAssort;
+    resetTrader(sessionID: string, traderID: string): void;
+    changeTraderDisplay(traderID: string, status: boolean, sessionID: string): void;
+    getPurchasesData(traderID: string, sessionID: string): Record<string, IBarterScheme[][]>;
+    lvlUp(traderID: string, sessionID: string): void;
+    getTraderUpdateSeconds(traderId: string): number;
+    traderFilter(traderFilters: string[], tplToCheck: string): boolean;
+    getLoyaltyLevel(traderID: string, pmcData: IPmcData): LoyaltyLevel;
+}
