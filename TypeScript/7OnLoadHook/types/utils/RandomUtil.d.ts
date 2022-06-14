@@ -103,8 +103,8 @@ export declare class ProbabilityObject<K, V = undefined> {
     constructor(key: K, relativeProbability: number, data?: V);
 }
 export declare class RandomUtil {
-    private jsonUtil;
-    private logger;
+    protected jsonUtil: JsonUtil;
+    protected logger: ILogger;
     constructor(jsonUtil: JsonUtil, logger: ILogger);
     getInt(min: number, max: number): number;
     getIntEx(max: number): number;

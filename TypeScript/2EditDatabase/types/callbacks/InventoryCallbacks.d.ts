@@ -18,7 +18,7 @@ import { IInventoryToggleRequestData } from "../models/eft/inventory/IInventoryT
 import { IInventoryTransferRequestData } from "../models/eft/inventory/IInventoryTransferRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 export declare class InventoryCallbacks {
-    private inventoryController;
+    protected inventoryController: InventoryController;
     constructor(inventoryController: InventoryController);
     moveItem(pmcData: IPmcData, body: IInventoryMoveRequestData, sessionID: string): IItemEventRouterResponse;
     removeItem(pmcData: IPmcData, body: IInventoryRemoveRequestData, sessionID: string): IItemEventRouterResponse;

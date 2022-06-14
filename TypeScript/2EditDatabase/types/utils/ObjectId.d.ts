@@ -1,13 +1,13 @@
 /// <reference types="node" />
 import { TimeUtil } from "./TimeUtil";
 export declare class ObjectId {
-    private timeUtil;
+    protected timeUtil: TimeUtil;
     constructor(timeUtil: TimeUtil);
-    private randomBytes;
-    private constglobalCounter;
-    private consttime;
-    private globalCounter;
-    private time;
+    protected randomBytes: Buffer;
+    protected constglobalCounter: number;
+    protected consttime: number;
+    protected globalCounter: number;
+    protected time: number;
     incGlobalCounter(): number;
     toHexString(byteArray: string | any[] | Buffer): string;
     generate(): string;

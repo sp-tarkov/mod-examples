@@ -2,11 +2,11 @@ import { INotification } from "../models/eft/notifier/INotifier";
 import { Message, MessageContentRagfair } from "../models/eft/profile/IAkiProfile";
 import { HttpServerHelper } from "./HttpServerHelper";
 export declare class NotifierHelper {
-    private httpServerHelper;
+    protected httpServerHelper: HttpServerHelper;
     /**
      * The default notification sent when waiting times out.
      */
-    private defaultNotification;
+    protected defaultNotification: INotification;
     constructor(httpServerHelper: HttpServerHelper);
     getDefaultNotification(): INotification;
     /** Creates a new notification that displays the "Your offer was sold!" prompt and removes sold offer from "My Offers" on clientside */

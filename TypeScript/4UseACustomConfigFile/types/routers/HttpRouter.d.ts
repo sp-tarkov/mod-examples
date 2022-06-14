@@ -1,11 +1,16 @@
 /// <reference types="node" />
 import { IncomingMessage } from "http";
-import { DynamicRouter, StaticRouter } from "../di/Router";
+import { DynamicRouter, Router, StaticRouter } from "../di/Router";
 export declare class HttpRouter {
-    private staticRouters;
-    private dynamicRoutes;
+    protected staticRouters: StaticRouter[];
+    protected dynamicRoutes: DynamicRouter[];
     constructor(staticRouters: StaticRouter[], dynamicRoutes: DynamicRouter[]);
-    private groupBy;
+    protected groupBy<T>(list: T[], keyGetter: (t: T) => string): Map<string, T[]>;
     getResponse(req: IncomingMessage, info: any, sessionID: string): string;
-    private handleRoute;
+    protected handleRoute(url: string, info: any, sessionID: string, wrapper: ResponseWrapper, routers: Router[], dynamic: boolean): boolean;
 }
+declare class ResponseWrapper {
+    output: string;
+    constructor(output: string);
+}
+export {};

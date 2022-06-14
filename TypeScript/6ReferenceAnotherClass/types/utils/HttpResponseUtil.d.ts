@@ -3,9 +3,9 @@ import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyRespons
 import { INullResponseData } from "../models/eft/httpResponse/INullResponseData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 export declare class HttpResponseUtil {
-    private jsonUtil;
+    protected jsonUtil: JsonUtil;
     constructor(jsonUtil: JsonUtil);
-    private clearString;
+    protected clearString(s: string): any;
     noBody(data: any): any;
     getBody<T>(data: T, err?: number, errmsg?: any): IGetBodyResponseData<T>;
     getUnclearedBody(data: any, err?: number, errmsg?: any): string;

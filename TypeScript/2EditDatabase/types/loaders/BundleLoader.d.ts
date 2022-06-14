@@ -10,10 +10,10 @@ declare class BundleInfo {
     constructor(modpath: string, bundle: any, bundlePath: string, bundleFilepath: string);
 }
 export declare class BundleLoader {
-    private httpServerHelper;
-    private vfs;
-    private jsonUtil;
-    private bundles;
+    protected httpServerHelper: HttpServerHelper;
+    protected vfs: VFS;
+    protected jsonUtil: JsonUtil;
+    protected bundles: Record<string, BundleInfo>;
     constructor(httpServerHelper: HttpServerHelper, vfs: VFS, jsonUtil: JsonUtil);
     getBundles(local: boolean): BundleInfo[];
     getBundle(key: string, local: boolean): BundleInfo;

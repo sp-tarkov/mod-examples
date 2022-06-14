@@ -9,9 +9,9 @@ import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyRespons
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class HealthCallbacks {
-    private httpResponse;
-    private profileHelper;
-    private healthController;
+    protected httpResponse: HttpResponseUtil;
+    protected profileHelper: ProfileHelper;
+    protected healthController: HealthController;
     constructor(httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, healthController: HealthController);
     syncHealth(url: string, info: ISyncHealthRequestData, sessionID: string): IGetBodyResponseData<string>;
     offraidEat(pmcData: IPmcData, body: IOffraidEatRequestData, sessionID: string): IItemEventRouterResponse;

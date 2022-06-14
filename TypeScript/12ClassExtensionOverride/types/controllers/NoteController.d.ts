@@ -3,7 +3,7 @@ import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRout
 import { INoteActionData } from "../models/eft/notes/INoteActionData";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 declare class NoteController {
-    private itemEventRouter;
+    protected itemEventRouter: ItemEventRouter;
     constructor(itemEventRouter: ItemEventRouter);
     addNote(pmcData: IPmcData, body: INoteActionData, sessionID: string): IItemEventRouterResponse;
     editNote(pmcData: IPmcData, body: INoteActionData, sessionID: string): IItemEventRouterResponse;

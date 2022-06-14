@@ -3,8 +3,8 @@ import { IPlayerIncrementSkillLevelRequestData } from "../models/eft/player/IPla
 import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
 export declare class PlayerService {
-    private logger;
-    private databaseServer;
+    protected logger: ILogger;
+    protected databaseServer: DatabaseServer;
     constructor(logger: ILogger, databaseServer: DatabaseServer);
     /**
      * increases the profile skill and updates any output

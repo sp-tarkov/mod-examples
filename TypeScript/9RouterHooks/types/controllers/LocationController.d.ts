@@ -6,11 +6,11 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { JsonUtil } from "../utils/JsonUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 export declare class LocationController {
-    private jsonUtil;
-    private logger;
-    private locationGenerator;
-    private databaseServer;
-    private timeUtil;
+    protected jsonUtil: JsonUtil;
+    protected logger: ILogger;
+    protected locationGenerator: LocationGenerator;
+    protected databaseServer: DatabaseServer;
+    protected timeUtil: TimeUtil;
     constructor(jsonUtil: JsonUtil, logger: ILogger, locationGenerator: LocationGenerator, databaseServer: DatabaseServer, timeUtil: TimeUtil);
     get(location: string): ILocationBase;
     generate(name: string): ILocationBase;

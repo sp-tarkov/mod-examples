@@ -7,12 +7,12 @@ import { ItemHelper } from "./ItemHelper";
 import { NotificationSendHelper } from "./NotificationSendHelper";
 import { NotifierHelper } from "./NotifierHelper";
 export declare class DialogueHelper {
-    private hashUtil;
-    private saveServer;
-    private databaseServer;
-    private notifierHelper;
-    private notificationSendHelper;
-    private itemHelper;
+    protected hashUtil: HashUtil;
+    protected saveServer: SaveServer;
+    protected databaseServer: DatabaseServer;
+    protected notifierHelper: NotifierHelper;
+    protected notificationSendHelper: NotificationSendHelper;
+    protected itemHelper: ItemHelper;
     constructor(hashUtil: HashUtil, saveServer: SaveServer, databaseServer: DatabaseServer, notifierHelper: NotifierHelper, notificationSendHelper: NotificationSendHelper, itemHelper: ItemHelper);
     createMessageContext(templateId: string, messageType: MessageType, maxStoreTime: number): MessageContent;
     addDialogueMessage(dialogueID: string, messageContent: MessageContent, sessionID: string, rewards?: any[]): void;

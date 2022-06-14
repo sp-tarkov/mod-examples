@@ -9,7 +9,7 @@ export declare class LookupCollection {
     constructor();
 }
 export declare class HandbookHelper {
-    private lookup;
+    protected lookup: LookupCollection;
     hydrateLookup(lookup: LookupCollection): void;
     getTemplatePrice(x: string): number;
     templatesWithParent(x: string): string[];

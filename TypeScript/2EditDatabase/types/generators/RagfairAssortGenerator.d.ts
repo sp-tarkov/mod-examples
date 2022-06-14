@@ -4,22 +4,22 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 export declare class RagfairAssortGenerator {
-    private jsonUtil;
-    private hashUtil;
-    private itemHelper;
-    private databaseServer;
-    private generatedAssortItems;
+    protected jsonUtil: JsonUtil;
+    protected hashUtil: HashUtil;
+    protected itemHelper: ItemHelper;
+    protected databaseServer: DatabaseServer;
+    protected generatedAssortItems: Item[];
     constructor(jsonUtil: JsonUtil, hashUtil: HashUtil, itemHelper: ItemHelper, databaseServer: DatabaseServer);
     /**
      * Get an array of unique items that can be sold on the flea
      * @returns array of unique items
      */
     getAssortItems(): Item[];
-    private assortsAreGenerated;
+    protected assortsAreGenerated(): boolean;
     /**
      * Generate an array of items the flea can sell
      * @returns array of unique items
      */
-    private generateRagfairAssortItems;
-    private createRagfairAssortItem;
+    protected generateRagfairAssortItems(): Item[];
+    protected createRagfairAssortItem(tplId: string, id?: string): Item;
 }

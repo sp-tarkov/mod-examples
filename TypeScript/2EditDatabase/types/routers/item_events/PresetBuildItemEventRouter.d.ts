@@ -3,7 +3,7 @@ import { IItemEventRouterResponse } from "../../models/eft/itemEvent/IItemEventR
 import { PresetBuildCallbacks } from "../../callbacks/PresetBuildCallbacks";
 import { HandledRoute, ItemEventRouterDefinition } from "../../di/Router";
 export declare class PresetBuildItemEventRouter extends ItemEventRouterDefinition {
-    private presetBuildCallbacks;
+    protected presetBuildCallbacks: PresetBuildCallbacks;
     constructor(presetBuildCallbacks: PresetBuildCallbacks);
     getHandledRoutes(): HandledRoute[];
     handleItemEvent(url: string, pmcData: IPmcData, body: any, sessionID: string): IItemEventRouterResponse;

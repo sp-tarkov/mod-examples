@@ -1,8 +1,8 @@
 import { Preset } from "../models/eft/common/IGlobals";
 import { DatabaseServer } from "../servers/DatabaseServer";
 export declare class PresetHelper {
-    private databaseServer;
-    private lookup;
+    protected databaseServer: DatabaseServer;
+    protected lookup: Record<string, string[]>;
     constructor(databaseServer: DatabaseServer);
     hydratePresetStore(input: Record<string, string[]>): void;
     isPreset(id: string): boolean;

@@ -1,6 +1,6 @@
 import { IDatabaseTables } from "../models/spt/server/IDatabaseTables";
 export declare class DatabaseServer {
-    private tableData;
+    protected tableData: IDatabaseTables;
     getTables(): IDatabaseTables;
     setTables(any: any): void;
 }

@@ -1,7 +1,7 @@
 import { OnLoadOnUpdate } from "../di/OnLoadOnUpdate";
 import { SaveServer } from "../servers/SaveServer";
 export declare class SaveCallbacks extends OnLoadOnUpdate {
-    private saveServer;
+    protected saveServer: SaveServer;
     constructor(saveServer: SaveServer);
     onLoad(): void;
     getRoute(): string;

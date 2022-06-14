@@ -87,7 +87,7 @@ export interface Props {
     defAmmo: string;
     AdjustCollimatorsToTrajectory: boolean;
     shotgunDispersion: number;
-    Chambers: Chamber[];
+    Chambers: Slot[];
     CameraRecoil: number;
     CameraSnap: number;
     ReloadMode: string;
@@ -221,7 +221,7 @@ export interface Props {
     ShowHitEffectOnExplode: boolean;
     ExplosionType: string;
     AmmoLifeTimeSec: number;
-    Contusion: Contusion;
+    Contusion: Xyz;
     ArmorDistanceDistanceDamage: Xyz;
     Blindness: Xyz;
     IsLightAndSoundShot: boolean;
@@ -244,7 +244,7 @@ export interface Props {
     HasShoulderContact: boolean;
     DoubleActionAccuracyPenaltyMult: number;
     magAnimationIndex: number;
-    Cartridges: Cartridge[];
+    Cartridges: Slot[];
     CanFast: boolean;
     CanHit: boolean;
     CanAdmin: boolean;
@@ -285,6 +285,25 @@ export interface Props {
     TargetItemFilter: string[];
     apResource: number;
     krResource: number;
+    BlocksEarpiece?: boolean;
+    BlocksEyewear?: boolean;
+    BlocksHeadwear?: boolean;
+    BlocksFaceCover?: boolean;
+    Distortion?: number;
+    CompressorTreshold?: number;
+    CompressorAttack?: number;
+    CompressorRelease?: number;
+    CompressorGain?: number;
+    CutoffFreq?: number;
+    Resonance?: number;
+    CompressorVolume?: number;
+    AmbientVolume?: number;
+    DryVolume?: number;
+    headSegments?: string[];
+    FaceShieldComponent?: boolean;
+    RicochetParams?: Xyz;
+    DeafStrength?: string;
+    BlindnessProtection: number;
 }
 export interface Prefab {
     path: string;
@@ -315,27 +334,18 @@ export interface Slot {
     _id: string;
     _parent: string;
     _props: SlotProps;
+    _max_count?: number;
     _required: boolean;
     _mergeSlotWithChildren: boolean;
     _proto: string;
 }
 export interface SlotProps {
-    filters: Filter[];
+    filters: SlotFilter[];
 }
-export interface Chamber {
-    _name: string;
-    _id: string;
-    _parent: string;
-    _props: ChamberProps;
-    _required: boolean;
-    _mergeSlotWithChildren: boolean;
-    _proto: string;
-}
-export interface ChamberProps {
-    filters: FilterProps[];
-}
-export interface FilterProps {
+export interface SlotFilter {
+    Shift?: number;
     Filter: string[];
+    AnimationIndex?: number;
 }
 export interface Xyz {
     x: number;
@@ -345,53 +355,38 @@ export interface Xyz {
 export interface StackSlot {
     _name?: string;
     _id: string;
-    _sptTpl: string;
-    parent: string;
-    location: any;
-    slotId: string;
+    _parent: string;
     _max_count: number;
-    _props?: StackSlotProps;
-    _proto?: string;
+    _props: StackSlotProps;
+    _proto: string;
     upd: any;
 }
 export interface StackSlotProps {
-    filters: Filter[];
+    filters: SlotFilter[];
 }
 export interface EffectsHealth {
-    Hydration: Hydration;
+    Energy: EffectsHealthProps;
+    Hydration: EffectsHealthProps;
 }
-export interface Hydration {
+export interface EffectsHealthProps {
     value: number;
 }
 export interface EffectsDamage {
-    Pain: Pain;
-    Contusion: Contusion;
+    Pain: EffectDamageProps;
+    LightBleeding: EffectDamageProps;
+    HeavyBleeding: EffectDamageProps;
+    Contusion: EffectDamageProps;
+    RadExposure: EffectDamageProps;
+    Fracture: EffectDamageProps;
+    DestroyedPart: EffectDamageProps;
 }
-export interface Pain {
+export interface EffectDamageProps {
     delay: number;
     duration: number;
     fadeOut: number;
-}
-export interface Contusion {
-    delay: number;
-    duration: number;
-    fadeOut: number;
-}
-export interface Cartridge {
-    _name: string;
-    _id: string;
-    _parent: string;
-    _max_count: number;
-    _props: CartridgeProps;
-    _proto: string;
-}
-export interface CartridgeProps {
-    filters: Filter[];
-}
-export interface Filter {
-    Shift?: number;
-    Filter: string[];
-    AnimationIndex?: number;
+    cost?: number;
+    healthPenaltyMin?: number;
+    healthPenaltyMax?: number;
 }
 export interface Color {
     r: number;

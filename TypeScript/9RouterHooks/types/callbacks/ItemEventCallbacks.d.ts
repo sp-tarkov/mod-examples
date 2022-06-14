@@ -4,8 +4,8 @@ import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRout
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class ItemEventCallbacks {
-    private httpResponse;
-    private itemEventRouter;
+    protected httpResponse: HttpResponseUtil;
+    protected itemEventRouter: ItemEventRouter;
     constructor(httpResponse: HttpResponseUtil, itemEventRouter: ItemEventRouter);
     handleEvents(url: string, info: IItemEventRouterRequest, sessionID: string): IGetBodyResponseData<IItemEventRouterResponse>;
 }

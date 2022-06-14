@@ -3,7 +3,7 @@ import { IItemEventRouterResponse } from "../../models/eft/itemEvent/IItemEventR
 import { InventoryCallbacks } from "../../callbacks/InventoryCallbacks";
 import { HandledRoute, ItemEventRouterDefinition } from "../../di/Router";
 export declare class InventoryItemEventRouter extends ItemEventRouterDefinition {
-    private inventoryCallbacks;
+    protected inventoryCallbacks: InventoryCallbacks;
     constructor(inventoryCallbacks: InventoryCallbacks);
     getHandledRoutes(): HandledRoute[];
     handleItemEvent(url: string, pmcData: IPmcData, body: any, sessionID: string): IItemEventRouterResponse;

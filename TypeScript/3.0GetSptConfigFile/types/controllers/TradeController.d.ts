@@ -9,11 +9,11 @@ import { IProcessBaseTradeRequestData } from "../models/eft/trade/IProcessBaseTr
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { ILogger } from "../models/spt/utils/ILogger";
 declare class TradeController {
-    private logger;
-    private itemEventRouter;
-    private tradeHelper;
-    private profileHelper;
-    private ragfairServer;
+    protected logger: ILogger;
+    protected itemEventRouter: ItemEventRouter;
+    protected tradeHelper: TradeHelper;
+    protected profileHelper: ProfileHelper;
+    protected ragfairServer: RagfairServer;
     constructor(logger: ILogger, itemEventRouter: ItemEventRouter, tradeHelper: TradeHelper, profileHelper: ProfileHelper, ragfairServer: RagfairServer);
     confirmTrading(pmcData: IPmcData, body: IProcessBaseTradeRequestData, sessionID: string, foundInRaid?: boolean, upd?: Upd): IItemEventRouterResponse;
     confirmRagfairTrading(pmcData: IPmcData, body: IProcessRagfairTradeRequestData, sessionID: string): IItemEventRouterResponse;

@@ -4,6 +4,7 @@ import { ItemHelper } from "../helpers/ItemHelper";
 import { PaymentHelper } from "../helpers/PaymentHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
+import { Item } from "../models/eft/common/tables/IItem";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IProcessBuyTradeRequestData } from "../models/eft/trade/IProcessBuyTradeRequestData";
 import { IProcessSellTradeRequestData } from "../models/eft/trade/IProcessSellTradeRequestData";
@@ -11,14 +12,14 @@ import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class PaymentService {
-    private logger;
-    private httpResponse;
-    private databaseServer;
-    private handbookHelper;
-    private traderHelper;
-    private itemHelper;
-    private inventoryHelper;
-    private paymentHelper;
+    protected logger: ILogger;
+    protected httpResponse: HttpResponseUtil;
+    protected databaseServer: DatabaseServer;
+    protected handbookHelper: HandbookHelper;
+    protected traderHelper: TraderHelper;
+    protected itemHelper: ItemHelper;
+    protected inventoryHelper: InventoryHelper;
+    protected paymentHelper: PaymentHelper;
     constructor(logger: ILogger, httpResponse: HttpResponseUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, traderHelper: TraderHelper, itemHelper: ItemHelper, inventoryHelper: InventoryHelper, paymentHelper: PaymentHelper);
     /**
      * Take money and insert items into return to server request
@@ -43,6 +44,6 @@ export declare class PaymentService {
    * inside the stash, that is it has the stash as
    * ancestor with slotId=hideout
    */
-    private isItemInStash;
+    protected isItemInStash(pmcData: IPmcData, item: Item): boolean;
     addPaymentToOutput(pmcData: IPmcData, currencyTpl: string, amountToPay: number, sessionID: string, output: IItemEventRouterResponse): IItemEventRouterResponse;
 }

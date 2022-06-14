@@ -13,9 +13,9 @@ import { IListQuestsRequestData } from "../models/eft/quests/IListQuestsRequestD
 import { IRepeatableQuestChangeRequest } from "../models/eft/quests/IRepeatableQuestChangeRequest";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class QuestCallbacks {
-    private httpResponse;
-    private questController;
-    private repeatableQuestController;
+    protected httpResponse: HttpResponseUtil;
+    protected questController: QuestController;
+    protected repeatableQuestController: RepeatableQuestController;
     constructor(httpResponse: HttpResponseUtil, questController: QuestController, repeatableQuestController: RepeatableQuestController);
     changeRepeatableQuest(pmcData: IPmcData, body: IRepeatableQuestChangeRequest, sessionID: string): IItemEventRouterResponse;
     acceptQuest(pmcData: IPmcData, body: IAcceptQuestRequestData, sessionID: string): IItemEventRouterResponse;

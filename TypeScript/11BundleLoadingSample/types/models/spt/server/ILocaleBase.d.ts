@@ -1,5 +1,5 @@
 export interface ILocaleBase {
-    global: ILocaleGlobalBase;
+    global: Record<string, ILocaleGlobalBase>;
     menu: Record<string, string>;
     languages: ILanguageBase[];
 }

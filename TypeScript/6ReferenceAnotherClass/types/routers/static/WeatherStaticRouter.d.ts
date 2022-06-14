@@ -1,6 +1,6 @@
 import { WeatherCallbacks } from "../../callbacks/WeatherCallbacks";
 import { StaticRouter } from "../../di/Router";
 export declare class WeatherStaticRouter extends StaticRouter {
-    private weatherCallbacks;
+    protected weatherCallbacks: WeatherCallbacks;
     constructor(weatherCallbacks: WeatherCallbacks);
 }

@@ -11,11 +11,12 @@ import { IHideoutToggleAreaRequestData } from "../models/eft/hideout/IHideoutTog
 import { IHideoutUpgradeCompleteRequestData } from "../models/eft/hideout/IHideoutUpgradeCompleteRequestData";
 import { IHideoutUpgradeRequestData } from "../models/eft/hideout/IHideoutUpgradeRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
+import { IHideoutConfig } from "../models/spt/config/IHideoutConfig";
 import { ConfigServer } from "../servers/ConfigServer";
 export declare class HideoutCallbacks extends OnUpdate {
-    private hideoutController;
-    private configServer;
-    private hideoutConfig;
+    protected hideoutController: HideoutController;
+    protected configServer: ConfigServer;
+    protected hideoutConfig: IHideoutConfig;
     constructor(hideoutController: HideoutController, // TODO: delay needed
     configServer: ConfigServer);
     upgrade(pmcData: IPmcData, body: IHideoutUpgradeRequestData, sessionID: string): IItemEventRouterResponse;

@@ -1,5 +1,5 @@
 import { BotGenerator } from "../generators/BotGenerator";
-import { IPmcData } from "../models/eft/common/IPmcData";
+import { IPmcData, Skills, Stats } from "../models/eft/common/IPmcData";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
 import { FenceService } from "../services/FenceService";
@@ -9,14 +9,14 @@ import { Watermark } from "../utils/Watermark";
 import { ItemHelper } from "./ItemHelper";
 import { ProfileHelper } from "./ProfileHelper";
 export declare class ExtendedProfileHelper extends ProfileHelper {
-    private botGenerator;
+    protected botGenerator: BotGenerator;
     constructor(jsonUtil: JsonUtil, watermark: Watermark, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, itemHelper: ItemHelper, fenceService: FenceService, botGenerator: BotGenerator);
     generatePlayerScav(sessionID: string): IPmcData;
-    private getScavSkills;
-    private removeSecureContainer;
-    private getDefaultScavSkills;
-    private getScavStats;
-    private getScavLevel;
-    private getScavExperience;
-    private setScavCooldownTimer;
+    protected getScavSkills(sessionID: string): Skills;
+    protected removeSecureContainer(profile: IPmcData): IPmcData;
+    protected getDefaultScavSkills(): Skills;
+    protected getScavStats(sessionID: string): Stats;
+    protected getScavLevel(sessionID: string): number;
+    protected getScavExperience(sessionID: string): number;
+    protected setScavCooldownTimer(profile: IPmcData, pmcData: IPmcData): IPmcData;
 }

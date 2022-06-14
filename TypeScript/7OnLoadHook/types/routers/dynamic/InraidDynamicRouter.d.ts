@@ -1,7 +1,7 @@
 import { InraidCallbacks } from "../../callbacks/InraidCallbacks";
 import { DynamicRouter } from "../../di/Router";
 export declare class InraidDynamicRouter extends DynamicRouter {
-    private inraidCallbacks;
+    protected inraidCallbacks: InraidCallbacks;
     constructor(inraidCallbacks: InraidCallbacks);
     getTopLevelRoute(): string;
 }

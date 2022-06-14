@@ -9,9 +9,9 @@ import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRout
 import { SaveServer } from "../servers/SaveServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class CustomizationCallbacks {
-    private customizationController;
-    private saveServer;
-    private httpResponse;
+    protected customizationController: CustomizationController;
+    protected saveServer: SaveServer;
+    protected httpResponse: HttpResponseUtil;
     constructor(customizationController: CustomizationController, saveServer: SaveServer, httpResponse: HttpResponseUtil);
     getSuits(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<{
         _id: string;

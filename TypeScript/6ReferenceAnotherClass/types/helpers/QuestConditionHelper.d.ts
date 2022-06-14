@@ -3,5 +3,5 @@ export declare class QuestConditionHelper {
     getQuestConditions(q: AvailableForConditions[], furtherFilter?: (a: AvailableForConditions) => AvailableForConditions[]): AvailableForConditions[];
     getLevelConditions(q: AvailableForConditions[], furtherFilter?: (a: AvailableForConditions) => AvailableForConditions[]): AvailableForConditions[];
     getLoyaltyConditions(q: AvailableForConditions[], furtherFilter?: (a: AvailableForConditions) => AvailableForConditions[]): AvailableForConditions[];
-    private filterConditions;
+    protected filterConditions(q: AvailableForConditions[], questType: string, furtherFilter?: (a: AvailableForConditions) => AvailableForConditions[]): AvailableForConditions[];
 }

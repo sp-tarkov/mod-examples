@@ -7,7 +7,7 @@ export interface OwnerInventoryItems {
     isMail: boolean;
 }
 export declare class SecureContainerHelper {
-    private itemHelper;
+    protected itemHelper: ItemHelper;
     constructor(itemHelper: ItemHelper);
     getSecureContainerItems(items: Item[]): string[];
 }

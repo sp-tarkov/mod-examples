@@ -3,7 +3,7 @@ import { IItemEventRouterResponse } from "../../models/eft/itemEvent/IItemEventR
 import { TradeCallbacks } from "../../callbacks/TradeCallbacks";
 import { HandledRoute, ItemEventRouterDefinition } from "../../di/Router";
 export declare class TradeItemEventRouter extends ItemEventRouterDefinition {
-    private tradeCallbacks;
+    protected tradeCallbacks: TradeCallbacks;
     constructor(tradeCallbacks: TradeCallbacks);
     getHandledRoutes(): HandledRoute[];
     handleItemEvent(url: string, pmcData: IPmcData, body: any, sessionID: string): IItemEventRouterResponse;

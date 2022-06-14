@@ -9,14 +9,14 @@ import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
 export declare class CustomizationController {
-    private logger;
-    private itemEventRouter;
-    private databaseServer;
-    private saveServer;
-    private profileHelper;
+    protected logger: ILogger;
+    protected itemEventRouter: ItemEventRouter;
+    protected databaseServer: DatabaseServer;
+    protected saveServer: SaveServer;
+    protected profileHelper: ProfileHelper;
     constructor(logger: ILogger, itemEventRouter: ItemEventRouter, databaseServer: DatabaseServer, saveServer: SaveServer, profileHelper: ProfileHelper);
     getTraderSuits(traderID: string, sessionID: string): ISuit[];
     wearClothing(pmcData: IPmcData, body: IWearClothingRequestData, sessionID: string): IItemEventRouterResponse;
     buyClothing(pmcData: IPmcData, body: IBuyClothingRequestData, sessionID: string): IItemEventRouterResponse;
-    private getAllTraderSuits;
+    protected getAllTraderSuits(sessionID: string): ISuit[];
 }

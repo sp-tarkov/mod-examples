@@ -6,9 +6,9 @@ import { INotifierChannel } from "../models/eft/notifier/INotifier";
 import { ISelectProfileRequestData } from "../models/eft/notifier/ISelectProfileRequestData";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class NotifierCallbacks {
-    private httpServerHelper;
-    private httpResponse;
-    private notifierController;
+    protected httpServerHelper: HttpServerHelper;
+    protected httpResponse: HttpResponseUtil;
+    protected notifierController: NotifierController;
     constructor(httpServerHelper: HttpServerHelper, httpResponse: HttpResponseUtil, notifierController: NotifierController);
     /**
      * If we don't have anything to send, it's ok to not send anything back
@@ -16,7 +16,7 @@ export declare class NotifierCallbacks {
      * until we actually have something to send because otherwise we'd spam the client
      * and the client would abort the connection due to spam.
      */
-    sendNotification(sessionID: string, req: any, resp: any, data: any): void;
+    sendNotification(_sessionID: string, req: any, resp: any, _data: any): void;
     getNotifier(url: string, info: any, sessionID: string): IGetBodyResponseData<any[]>;
     createNotifierChannel(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<INotifierChannel>;
     selectProfile(url: string, info: ISelectProfileRequestData, sessionID: string): IGetBodyResponseData<any>;

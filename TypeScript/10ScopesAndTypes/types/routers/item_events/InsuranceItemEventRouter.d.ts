@@ -3,7 +3,7 @@ import { IItemEventRouterResponse } from "../../models/eft/itemEvent/IItemEventR
 import { InsuranceCallbacks } from "../../callbacks/InsuranceCallbacks";
 import { HandledRoute, ItemEventRouterDefinition } from "../../di/Router";
 export declare class InsuranceItemEventRouter extends ItemEventRouterDefinition {
-    private insuranceCallbacks;
+    protected insuranceCallbacks: InsuranceCallbacks;
     constructor(insuranceCallbacks: InsuranceCallbacks);
     getHandledRoutes(): HandledRoute[];
     handleItemEvent(url: string, pmcData: IPmcData, body: any, sessionID: string): IItemEventRouterResponse;

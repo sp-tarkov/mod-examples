@@ -12,9 +12,9 @@ import { IValidateNicknameRequestData } from "../models/eft/profile/IValidateNic
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 export declare class ProfileCallbacks {
-    private httpResponse;
-    private timeUtil;
-    private profileController;
+    protected httpResponse: HttpResponseUtil;
+    protected timeUtil: TimeUtil;
+    protected profileController: ProfileController;
     constructor(httpResponse: HttpResponseUtil, timeUtil: TimeUtil, profileController: ProfileController);
     createProfile(url: string, info: IProfileCreateRequestData, sessionID: string): IGetBodyResponseData<any>;
     getProfileData(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;

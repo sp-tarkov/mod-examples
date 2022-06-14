@@ -3,7 +3,7 @@ import { IItemEventRouterResponse } from "../../models/eft/itemEvent/IItemEventR
 import { WishlistCallbacks } from "../../callbacks/WishlistCallbacks";
 import { HandledRoute, ItemEventRouterDefinition } from "../../di/Router";
 export declare class WishlistItemEventRouter extends ItemEventRouterDefinition {
-    private wishlistCallbacks;
+    protected wishlistCallbacks: WishlistCallbacks;
     constructor(wishlistCallbacks: WishlistCallbacks);
     getHandledRoutes(): HandledRoute[];
     handleItemEvent(url: string, pmcData: IPmcData, body: any, sessionID: string): IItemEventRouterResponse;

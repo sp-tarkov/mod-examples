@@ -1,18 +1,19 @@
 import { RagfairOfferGenerator } from "../generators/RagfairOfferGenerator";
 import { IRagfairOffer } from "../models/eft/ragfair/IRagfairOffer";
+import { IRagfairConfig } from "../models/spt/config/IRagfairConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { RagfairCategoriesService } from "../services/RagfairCategoriesService";
 import { RagfairOfferService } from "../services/RagfairOfferService";
 import { RagfairRequiredItemsService } from "../services/RagfairRequiredItemsService";
 import { ConfigServer } from "./ConfigServer";
 export declare class RagfairServer {
-    private logger;
-    private ragfairOfferGenerator;
-    private ragfairOfferService;
-    private ragfairCategoriesService;
-    private ragfairRequiredItemsService;
-    private configServer;
-    private ragfairConfig;
+    protected logger: ILogger;
+    protected ragfairOfferGenerator: RagfairOfferGenerator;
+    protected ragfairOfferService: RagfairOfferService;
+    protected ragfairCategoriesService: RagfairCategoriesService;
+    protected ragfairRequiredItemsService: RagfairRequiredItemsService;
+    protected configServer: ConfigServer;
+    protected ragfairConfig: IRagfairConfig;
     constructor(logger: ILogger, ragfairOfferGenerator: RagfairOfferGenerator, ragfairOfferService: RagfairOfferService, ragfairCategoriesService: RagfairCategoriesService, ragfairRequiredItemsService: RagfairRequiredItemsService, configServer: ConfigServer);
     load(): void;
     update(): void;

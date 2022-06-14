@@ -12,8 +12,8 @@ import { ISettingsBase } from "../models/spt/server/ISettingsBase";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class DataCallbacks {
-    private httpResponse;
-    private databaseServer;
+    protected httpResponse: HttpResponseUtil;
+    protected databaseServer: DatabaseServer;
     constructor(httpResponse: HttpResponseUtil, databaseServer: DatabaseServer);
     getSettings(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ISettingsBase>;
     getGlobals(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IGlobals>;

@@ -3,11 +3,11 @@ import { NotificationService } from "../services/NotificationService";
 import { INotifierChannel } from "../models/eft/notifier/INotifier";
 import { HttpServerHelper } from "../helpers/HttpServerHelper";
 export declare class NotifierController {
-    private notifierHelper;
-    private httpServerHelper;
-    private notificationService;
-    private pollInterval;
-    private timeout;
+    protected notifierHelper: NotifierHelper;
+    protected httpServerHelper: HttpServerHelper;
+    protected notificationService: NotificationService;
+    protected pollInterval: number;
+    protected timeout: number;
     constructor(notifierHelper: NotifierHelper, httpServerHelper: HttpServerHelper, notificationService: NotificationService);
     /**
      * Resolve an array of session notifications.

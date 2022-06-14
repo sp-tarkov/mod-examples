@@ -21,10 +21,10 @@ import { HashUtil } from "../utils/HashUtil";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 export declare class DialogueCallbacks extends OnUpdate {
-    private hashUtil;
-    private timeUtil;
-    private httpResponse;
-    private dialogueController;
+    protected hashUtil: HashUtil;
+    protected timeUtil: TimeUtil;
+    protected httpResponse: HttpResponseUtil;
+    protected dialogueController: DialogueController;
     constructor(hashUtil: HashUtil, timeUtil: TimeUtil, httpResponse: HttpResponseUtil, dialogueController: DialogueController);
     getFriendList(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IGetFriendListDataResponse>;
     getChatServerList(url: string, info: IGetChatServerListRequestData, sessionID: string): IGetBodyResponseData<any[]>;

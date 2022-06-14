@@ -8,10 +8,10 @@ import { SaveServer } from "../servers/SaveServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { Watermark } from "../utils/Watermark";
 declare class LauncherCallbacks {
-    private httpResponse;
-    private launcherController;
-    private saveServer;
-    private watermark;
+    protected httpResponse: HttpResponseUtil;
+    protected launcherController: LauncherController;
+    protected saveServer: SaveServer;
+    protected watermark: Watermark;
     constructor(httpResponse: HttpResponseUtil, launcherController: LauncherController, saveServer: SaveServer, watermark: Watermark);
     connect(): string;
     login(url: string, info: ILoginRequestData, sessionID: string): string;

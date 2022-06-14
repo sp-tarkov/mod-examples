@@ -1,6 +1,6 @@
 import { ItemEventCallbacks } from "../../callbacks/ItemEventCallbacks";
 import { StaticRouter } from "../../di/Router";
 export declare class ItemEventStaticRouter extends StaticRouter {
-    private itemEventCallbacks;
+    protected itemEventCallbacks: ItemEventCallbacks;
     constructor(itemEventCallbacks: ItemEventCallbacks);
 }

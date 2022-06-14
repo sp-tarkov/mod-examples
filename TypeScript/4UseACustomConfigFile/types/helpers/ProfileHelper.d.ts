@@ -28,6 +28,6 @@ export declare class ProfileHelper {
     getPmcProfile(sessionID: string): IPmcData;
     getScavProfile(sessionID: string): IPmcData;
     getDefaultCounters(): Stats;
-    private isWiped;
-    private getServerVersion;
+    protected isWiped(sessionID: string): boolean;
+    protected getServerVersion(): string;
 }

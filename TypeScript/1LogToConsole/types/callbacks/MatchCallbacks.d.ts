@@ -9,10 +9,10 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 export declare class MatchCallbacks {
-    private httpResponse;
-    private jsonUtil;
-    private matchController;
-    private databaseServer;
+    protected httpResponse: HttpResponseUtil;
+    protected jsonUtil: JsonUtil;
+    protected matchController: MatchController;
+    protected databaseServer: DatabaseServer;
     constructor(httpResponse: HttpResponseUtil, jsonUtil: JsonUtil, matchController: MatchController, databaseServer: DatabaseServer);
     updatePing(url: string, info: any, sessionID: string): INullResponseData;
     exitMatch(url: string, info: any, sessionID: string): INullResponseData;

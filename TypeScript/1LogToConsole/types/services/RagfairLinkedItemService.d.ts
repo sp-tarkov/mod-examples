@@ -1,9 +1,10 @@
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 export declare class RagfairLinkedItemService {
-    private databaseServer;
-    private linkedItemsCache;
+    protected databaseServer: DatabaseServer;
+    protected linkedItemsCache: Record<string, Iterable<string>>;
     constructor(databaseServer: DatabaseServer);
     getLinkedItems(linkedSearchId: string): Iterable<string>;
-    private buildLinkedItemTable;
-    private getFilters;
+    protected buildLinkedItemTable(): void;
+    protected getFilters(item: ITemplateItem, slot: string): string[];
 }

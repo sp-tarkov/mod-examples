@@ -1,15 +1,15 @@
 import { InsuredItem, IPmcData } from "../models/eft/common/IPmcData";
 import { Item } from "../models/eft/common/tables/IItem";
-import { ITemplateItem, StackSlot } from "../models/eft/common/tables/ITemplateItem";
+import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 declare class ItemHelper {
-    private logger;
-    private hashUtil;
-    private jsonUtil;
-    private databaseServer;
+    protected logger: ILogger;
+    protected hashUtil: HashUtil;
+    protected jsonUtil: JsonUtil;
+    protected databaseServer: DatabaseServer;
     constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer);
     /**
      * Checks if a id is a valid item. Valid meaning that it's an item that be stored in stash
@@ -82,7 +82,7 @@ declare class ItemHelper {
      * @param {string}      parentId        The id of the AmmoBox instance these StackSlotItems should be children of
      * @returns {array}                     The array of StackSlotItems
      */
-    generateStackSlotItems(item: ITemplateItem, parentId: string): StackSlot[];
+    generateItemsFromStackSlot(item: ITemplateItem, parentId: string): Item[];
     getItem(tpl: string): [boolean, ITemplateItem];
     getItemQualityModifier(item: Item): number;
     findAndReturnChildrenByItems(items: Item[], itemID: string): string[];

@@ -5,13 +5,13 @@ import { ProfileHelper } from "../helpers/ProfileHelper";
 import { ItemEventRouterDefinition } from "../di/Router";
 import { ILogger } from "../models/spt/utils/ILogger";
 export declare class ItemEventRouter {
-    private logger;
-    private jsonUtil;
-    private profileHelper;
-    private itemEventRouters;
+    protected logger: ILogger;
+    protected jsonUtil: JsonUtil;
+    protected profileHelper: ProfileHelper;
+    protected itemEventRouters: ItemEventRouterDefinition[];
     constructor(logger: ILogger, jsonUtil: JsonUtil, profileHelper: ProfileHelper, itemEventRouters: ItemEventRouterDefinition[]);
-    private output;
+    protected output: IItemEventRouterResponse;
     handleEvents(info: IItemEventRouterRequest, sessionID: string): IItemEventRouterResponse;
     getOutput(sessionID: string): IItemEventRouterResponse;
-    private resetOutput;
+    protected resetOutput(sessionID: string): void;
 }

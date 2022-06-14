@@ -2,10 +2,10 @@ import { ILogger } from "../models/spt/utils/ILogger";
 import { HashUtil } from "./HashUtil";
 import { VFS } from "./VFS";
 export declare class JsonUtil {
-    private vfs;
-    private hashUtil;
-    private logger;
-    private fileHashes;
+    protected vfs: VFS;
+    protected hashUtil: HashUtil;
+    protected logger: ILogger;
+    protected fileHashes: any;
     constructor(vfs: VFS, hashUtil: HashUtil, logger: ILogger);
     /**
      * From object to string

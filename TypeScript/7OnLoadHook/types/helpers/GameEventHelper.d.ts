@@ -1,6 +1,6 @@
 import { DatabaseServer } from "../servers/DatabaseServer";
 export declare class GameEventHelper {
-    private databaseServer;
+    protected databaseServer: DatabaseServer;
     constructor(databaseServer: DatabaseServer);
     get EVENT(): Record<string, string>;
     get christmasEventItems(): string[];

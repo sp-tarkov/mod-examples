@@ -2,7 +2,7 @@
 import crypto from "crypto";
 import { TimeUtil } from "./TimeUtil";
 export declare class HashUtil {
-    private timeUtil;
+    protected timeUtil: TimeUtil;
     constructor(timeUtil: TimeUtil);
     generate(): string;
     generateMd5ForData(data: string): string;

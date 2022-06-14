@@ -11,12 +11,12 @@ import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRout
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { ILogger } from "../models/spt/utils/ILogger";
 export declare class HealthController {
-    private logger;
-    private itemEventRouter;
-    private itemHelper;
-    private paymentService;
-    private inventoryHelper;
-    private healthHelper;
+    protected logger: ILogger;
+    protected itemEventRouter: ItemEventRouter;
+    protected itemHelper: ItemHelper;
+    protected paymentService: PaymentService;
+    protected inventoryHelper: InventoryHelper;
+    protected healthHelper: HealthHelper;
     constructor(logger: ILogger, itemEventRouter: ItemEventRouter, itemHelper: ItemHelper, paymentService: PaymentService, inventoryHelper: InventoryHelper, healthHelper: HealthHelper);
     saveVitality(pmcData: IPmcData, info: ISyncHealthRequestData, sessionID: string): void;
     offraidHeal(pmcData: IPmcData, body: IOffraidHealRequestData, sessionID: string): IItemEventRouterResponse;

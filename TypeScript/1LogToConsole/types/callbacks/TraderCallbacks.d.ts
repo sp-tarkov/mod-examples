@@ -5,8 +5,8 @@ import { IBarterScheme, ITraderAssort, ITraderBase } from "../models/eft/common/
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class TraderCallbacks extends OnLoadOnUpdate {
-    private httpResponse;
-    private traderController;
+    protected httpResponse: HttpResponseUtil;
+    protected traderController: TraderController;
     constructor(httpResponse: HttpResponseUtil, traderController: TraderController);
     onLoad(): void;
     getRoute(): string;

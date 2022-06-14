@@ -6,8 +6,8 @@ import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyRespons
 import { IGetLocationRequestData } from "../models/eft/location/IGetLocationRequestData";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class LocationCallbacks {
-    private httpResponse;
-    private locationController;
+    protected httpResponse: HttpResponseUtil;
+    protected locationController: LocationController;
     constructor(httpResponse: HttpResponseUtil, locationController: LocationController);
     getLocationData(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ILocationsGenerateAllResponse>;
     getLocation(url: string, info: IGetLocationRequestData, sessionID: string): IGetBodyResponseData<ILocationBase>;

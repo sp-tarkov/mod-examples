@@ -8,9 +8,9 @@ import { INullResponseData } from "../models/eft/httpResponse/INullResponseData"
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { Watermark } from "../utils/Watermark";
 declare class GameCallbacks {
-    private httpResponse;
-    private watermark;
-    private gameController;
+    protected httpResponse: HttpResponseUtil;
+    protected watermark: Watermark;
+    protected gameController: GameController;
     constructor(httpResponse: HttpResponseUtil, watermark: Watermark, gameController: GameController);
     versionValidate(url: string, info: IVersionValidateRequestData, sessionID: string): INullResponseData;
     gameStart(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;

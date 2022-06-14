@@ -4,7 +4,7 @@ import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRout
 import { IRepairActionDataRequest } from "../models/eft/repair/IRepairActionDataRequest";
 import { ITraderRepairActionDataRequest } from "../models/eft/repair/ITraderRepairActionDataRequest";
 export declare class RepairCallbacks {
-    private repairController;
+    protected repairController: RepairController;
     constructor(repairController: RepairController);
     traderRepair(pmcData: IPmcData, body: ITraderRepairActionDataRequest, sessionID: string): IItemEventRouterResponse;
     repair(pmcData: IPmcData, body: IRepairActionDataRequest, sessionID: string): IItemEventRouterResponse;

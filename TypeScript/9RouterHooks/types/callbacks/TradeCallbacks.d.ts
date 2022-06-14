@@ -4,7 +4,7 @@ import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRout
 import { IProcessBaseTradeRequestData } from "../models/eft/trade/IProcessBaseTradeRequestData";
 import { IProcessRagfairTradeRequestData } from "../models/eft/trade/IProcessRagfairTradeRequestData";
 export declare class TradeCallbacks {
-    private tradeController;
+    protected tradeController: TradeController;
     constructor(tradeController: TradeController);
     processTrade(pmcData: IPmcData, body: IProcessBaseTradeRequestData, sessionID: string): IItemEventRouterResponse;
     processRagfairTrade(pmcData: IPmcData, body: IProcessRagfairTradeRequestData, sessionID: string): IItemEventRouterResponse;

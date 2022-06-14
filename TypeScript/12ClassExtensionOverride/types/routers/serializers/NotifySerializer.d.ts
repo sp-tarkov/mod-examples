@@ -3,9 +3,9 @@ import { Serializer } from "../../di/Serializer";
 import { HttpServerHelper } from "../../helpers/HttpServerHelper";
 import { IHttpServer } from "../../models/spt/server/IHttpServer";
 export declare class NotifySerializer extends Serializer {
-    private notifierController;
-    private httpServerHelper;
+    protected notifierController: NotifierController;
+    protected httpServerHelper: HttpServerHelper;
     constructor(notifierController: NotifierController, httpServerHelper: HttpServerHelper);
-    serialize(sessionID: string, req: any, resp: any, body: any, httpServer: IHttpServer): void;
+    serialize(_sessionID: string, req: any, resp: any, body: any, httpServer: IHttpServer): void;
     canHandle(route: string): boolean;
 }
