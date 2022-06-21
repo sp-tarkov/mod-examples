@@ -55,7 +55,7 @@ export declare class InitialModLoader implements IModLoader {
     protected executeMods(container: DependencyContainer): void;
     sortModsLoadOrder(): string[];
     protected addMod(mod: string): Promise<void>;
-    protected areModDependenciesFulfilled(mod: IPackageJsonData, loadedMods: Record<string, IPackageJsonData>): boolean;
+    protected areModDependenciesFulfilled(pkg: IPackageJsonData, loadedMods: Record<string, IPackageJsonData>): boolean;
     protected isModCompatible(mod: IPackageJsonData, loadedMods: Record<string, IPackageJsonData>): boolean;
     protected validMod(mod: string): boolean;
     protected getLoadOrderRecursive(mod: string, result: Record<string, string>, visited: Record<string, string>): void;

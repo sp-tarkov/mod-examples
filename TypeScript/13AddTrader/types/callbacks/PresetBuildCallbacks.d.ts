@@ -6,8 +6,8 @@ import { IPresetBuildActionRequestData } from "../models/eft/presetBuild/IPreset
 import { WeaponBuild } from "../models/eft/profile/IAkiProfile";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class PresetBuildCallbacks {
-    private httpResponse;
-    private presetBuildController;
+    protected httpResponse: HttpResponseUtil;
+    protected presetBuildController: PresetBuildController;
     constructor(httpResponse: HttpResponseUtil, presetBuildController: PresetBuildController);
     getHandbookUserlist(url: string, info: any, sessionID: string): IGetBodyResponseData<WeaponBuild[]>;
     saveBuild(pmcData: IPmcData, body: IPresetBuildActionRequestData, sessionID: string): IItemEventRouterResponse;

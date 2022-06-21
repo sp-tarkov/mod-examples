@@ -3,7 +3,7 @@ import { IItemEventRouterResponse } from "../../models/eft/itemEvent/IItemEventR
 import { CustomizationCallbacks } from "../../callbacks/CustomizationCallbacks";
 import { HandledRoute, ItemEventRouterDefinition } from "../../di/Router";
 export declare class CustomizationItemEventRouter extends ItemEventRouterDefinition {
-    private customizationCallbacks;
+    protected customizationCallbacks: CustomizationCallbacks;
     constructor(customizationCallbacks: CustomizationCallbacks);
     getHandledRoutes(): HandledRoute[];
     handleItemEvent(url: string, pmcData: IPmcData, body: any, sessionID: string): IItemEventRouterResponse;

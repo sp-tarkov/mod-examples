@@ -27,15 +27,15 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 export declare class InventoryController {
-    private logger;
-    private hashUtil;
-    private jsonUtil;
-    private databaseServer;
-    private presetHelper;
-    private inventoryHelper;
-    private profileHelper;
-    private paymentHelper;
-    private itemEventRouter;
+    protected logger: ILogger;
+    protected hashUtil: HashUtil;
+    protected jsonUtil: JsonUtil;
+    protected databaseServer: DatabaseServer;
+    protected presetHelper: PresetHelper;
+    protected inventoryHelper: InventoryHelper;
+    protected profileHelper: ProfileHelper;
+    protected paymentHelper: PaymentHelper;
+    protected itemEventRouter: ItemEventRouter;
     constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, presetHelper: PresetHelper, inventoryHelper: InventoryHelper, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, itemEventRouter: ItemEventRouter);
     /**
     * Move Item
