@@ -1,0 +1,52 @@
+import { DependencyContainer } from "tsyringe";
+
+import { IAfterDBLoadMod } from "@spt-aki/models/external/IAfterDBLoadMod";
+import { IMod } from "@spt-aki/models/external/mod";
+import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
+import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
+import { LogTextColor } from "@spt-aki/models/spt/logging/LogTextColor";
+import { LogBackgroundColor } from "@spt-aki/models/spt/logging/LogBackgroundColor";
+
+
+class Mod implements IMod, IAfterDBLoadMod
+{    
+    public load(container: DependencyContainer): void
+    {
+        // Database will be empty in here
+        const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
+        const logger = container.resolve<ILogger>("WinstonLogger");
+        logger.logWithColor(`Database item table state: ${databaseServer.getTables().templates} (<<< should be undefined)`, LogTextColor.red, LogBackgroundColor.yellow);
+    }
+
+    public loadAfterDbInit(container: DependencyContainer): void 
+    {
+        // Database will be loaded, this is the fresh state of the DB so NOTHING from the AKI
+        // logic has modified anything yet. This is the DB loaded straight from the JSON files
+        const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
+        const logger = container.resolve<ILogger>("WinstonLogger");
+        logger.logWithColor(`Database item size: ${Object.entries(databaseServer.getTables().templates.items).length}`, LogTextColor.red, LogBackgroundColor.yellow);
+        // lets do a quick modification and see how this reflect later on, on the delayedLoad()
+        
+        // find the nvgs item by its Id
+        const nvgs = databaseServer.getTables().templates.items["5c0558060db834001b735271"];
+        // Lets log the state before the modification:
+        logger.logWithColor(`NVGs default CanSellOnRagfair: ${nvgs._props.CanSellOnRagfair}`, LogTextColor.red, LogBackgroundColor.yellow);
+        // update one of its properties to be true
+        nvgs._props.CanSellOnRagfair = true;
+    }
+
+    public delayedLoad(container: DependencyContainer): void
+    {
+        // The modification we made above would have been processed by now by AKI, so any values we changed had
+        // already been passed through the initial lifecycles (OnLoad) of AKI.
+        const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
+        const logger = container.resolve<ILogger>("WinstonLogger");
+
+        // find the nvgs item again by its Id
+        const nvgs = databaseServer.getTables().templates.items["5c0558060db834001b735271"];
+        // Lets log the state, this value should be true:
+        logger.logWithColor(`NVGs modified CanSellOnRagfair: ${nvgs._props.CanSellOnRagfair}`, LogTextColor.red, LogBackgroundColor.yellow);
+    }
+}
+
+module.exports = { mod: new Mod() }

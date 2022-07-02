@@ -1,0 +1,31 @@
+import { ExtendedProfileHelper } from "../helpers/ExtendedProfileHelper";
+import { HealthHelper } from "../helpers/HealthHelper";
+import { InRaidHelper } from "../helpers/InRaidHelper";
+import { ItemHelper } from "../helpers/ItemHelper";
+import { QuestHelper } from "../helpers/QuestHelper";
+import { TraderHelper } from "../helpers/TraderHelper";
+import { IRegisterPlayerRequestData } from "../models/eft/inRaid/IRegisterPlayerRequestData";
+import { ISaveProgressRequestData } from "../models/eft/inRaid/ISaveProgressRequestData";
+import { IInRaidConfig } from "../models/spt/config/IInRaidConfig";
+import { ConfigServer } from "../servers/ConfigServer";
+import { DatabaseServer } from "../servers/DatabaseServer";
+import { SaveServer } from "../servers/SaveServer";
+import { InsuranceService } from "../services/InsuranceService";
+import { JsonUtil } from "../utils/JsonUtil";
+export declare class InraidController {
+    protected saveServer: SaveServer;
+    protected jsonUtil: JsonUtil;
+    protected databaseServer: DatabaseServer;
+    protected questHelper: QuestHelper;
+    protected itemHelper: ItemHelper;
+    protected extendedProfileHelper: ExtendedProfileHelper;
+    protected healthHelper: HealthHelper;
+    protected traderHelper: TraderHelper;
+    protected insuranceService: InsuranceService;
+    protected inRaidHelper: InRaidHelper;
+    protected configServer: ConfigServer;
+    protected inraidConfig: IInRaidConfig;
+    constructor(saveServer: SaveServer, jsonUtil: JsonUtil, databaseServer: DatabaseServer, questHelper: QuestHelper, itemHelper: ItemHelper, extendedProfileHelper: ExtendedProfileHelper, healthHelper: HealthHelper, traderHelper: TraderHelper, insuranceService: InsuranceService, inRaidHelper: InRaidHelper, configServer: ConfigServer);
+    addPlayer(sessionID: string, info: IRegisterPlayerRequestData): void;
+    saveProgress(offraidData: ISaveProgressRequestData, sessionID: string): void;
+}
