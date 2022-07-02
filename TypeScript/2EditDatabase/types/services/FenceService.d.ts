@@ -29,8 +29,8 @@ export declare class FenceService {
     hasExpiredCache(refreshAssort: boolean): boolean;
     generateFenceAssortCache(pmcData: IPmcData): void;
     /**
-     *
-     * @param pmcData Get the fence level the passed in profile has
+     * Get the fence level the passed in profile has
+     * @param pmcData Player profile
      * @returns FenceLevel
      */
     getFenceInfo(pmcData: IPmcData): FenceLevel;

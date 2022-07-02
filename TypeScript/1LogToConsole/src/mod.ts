@@ -13,6 +13,7 @@ class Mod implements IMod
         logger.info("I am logging info!");
         logger.warning("I am logging a warning!");
         logger.error("I am logging an error!");
+		logger.logWithColor("I am logging with color!", red, yellow);
     }
 
     // Code added here will be run AFTER the server has started

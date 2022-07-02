@@ -1,17 +1,13 @@
 /// <reference types="node" />
-import { Daum } from "../models/eft/itemEvent/IItemEventRouterRequest";
-import { ILogger } from "../models/spt/utils/ILogger";
-import winston from "winston";
-import { IAsyncQueue } from "../models/spt/utils/IAsyncQueue";
-import { IUUidGenerator } from "../models/spt/utils/IUuidGenerator";
 import fs from "fs";
-interface SptLogger {
-    error: (msg: string | Record<string, unknown>) => void;
-    warn: (msg: string | Record<string, unknown>) => void;
-    succ?: (msg: string | Record<string, unknown>) => void;
-    info: (msg: string | Record<string, unknown>) => void;
-    debug: (msg: string | Record<string, unknown>) => void;
-}
+import winston from "winston";
+import { Daum } from "../models/eft/itemEvent/IItemEventRouterRequest";
+import { LogBackgroundColor } from "../models/spt/logging/LogBackgroundColor";
+import { LogTextColor } from "../models/spt/logging/LogTextColor";
+import { SptLogger } from "../models/spt/logging/SptLogger";
+import { IAsyncQueue } from "../models/spt/utils/IAsyncQueue";
+import { ILogger } from "../models/spt/utils/ILogger";
+import { IUUidGenerator } from "../models/spt/utils/IUuidGenerator";
 export declare class WinstonLogger implements ILogger {
     protected asyncQueue: IAsyncQueue;
     protected uuidGenerator: IUUidGenerator;
@@ -36,16 +32,27 @@ export declare class WinstonLogger implements ILogger {
             custom: string;
             debug: string;
         };
+        bgColors: {
+            default: string;
+            blackBG: string;
+            redBG: string;
+            greenBG: string;
+            yellowBG: string;
+            blueBG: string;
+            magentaBG: string;
+            cyanBG: string;
+            whiteBG: string;
+        };
     };
     protected logger: winston.Logger & SptLogger;
-    writeFilePromisify: (path: fs.PathLike, data: string, options?: any) => Promise<void>;
+    protected writeFilePromisify: (path: fs.PathLike, data: string, options?: any) => Promise<void>;
     constructor(asyncQueue: IAsyncQueue, uuidGenerator: IUUidGenerator);
     writeToLogFile(data: string | Daum): Promise<void>;
-    log(data: string | Error | Record<string, unknown>, color: string): Promise<void>;
+    log(data: string | Error | Record<string, unknown>, color: string, backgroundColor?: string): Promise<void>;
     error(data: string | Record<string, unknown>): Promise<void>;
     warning(data: string | Record<string, unknown>): Promise<void>;
     success(data: string | Record<string, unknown>): Promise<void>;
     info(data: string | Record<string, unknown>): Promise<void>;
+    logWithColor(data: string | Record<string, unknown>, textColor: LogTextColor, backgroundColor?: LogBackgroundColor): Promise<void>;
     debug(data: string | Record<string, unknown>, onlyShowInConsole?: boolean): Promise<void>;
 }
-export {};

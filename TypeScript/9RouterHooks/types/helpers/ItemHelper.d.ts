@@ -84,6 +84,11 @@ declare class ItemHelper {
      */
     generateItemsFromStackSlot(item: ITemplateItem, parentId: string): Item[];
     getItem(tpl: string): [boolean, ITemplateItem];
+    /**
+     * get normalized value (0-1) based on item condition
+     * @param item
+     * @returns number between 0 and 1
+     */
     getItemQualityModifier(item: Item): number;
     findAndReturnChildrenByItems(items: Item[], itemID: string): string[];
     /**

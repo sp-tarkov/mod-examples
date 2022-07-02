@@ -5,7 +5,7 @@ import { ImageRouter } from "../routers/ImageRouter";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { CustomHandbookItemService } from "../services/CustomHandbookItemService";
 import { CustomItemService } from "../services/CustomItemService";
-import { CustomPresetService } from "../services/customPresetService";
+import { CustomPresetService } from "../services/CustomPresetService";
 import { CustomTraderAssortService } from "../services/CustomTraderAssortService";
 import { JsonUtil } from "./JsonUtil";
 import { VFS } from "./VFS";

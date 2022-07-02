@@ -8,6 +8,7 @@ export declare enum ConfigTypes {
     IN_RAID = "aki-inraid",
     INSURANCE = "aki-insurance",
     INVENTORY = "aki-inventory",
+    LOCALE = "aki-locale",
     LOCATION = "aki-location",
     MATCH = "aki-match",
     QUEST = "aki-quest",
