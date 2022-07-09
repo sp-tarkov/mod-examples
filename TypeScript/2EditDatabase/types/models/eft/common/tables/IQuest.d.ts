@@ -23,6 +23,7 @@ export interface IQuest {
     status: string;
     KeyQuest: boolean;
     changeQuestMessageText: string;
+    side: string;
 }
 export interface Conditions {
     Started: AvailableForConditions[];
@@ -56,6 +57,7 @@ export interface AvailableForProps {
     plantTime?: number;
     zoneId?: string;
     type?: boolean;
+    countInRaid?: boolean;
 }
 export interface AvailableForCounter {
     id: string;

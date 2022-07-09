@@ -1,13 +1,12 @@
 import { DependencyContainer } from "tsyringe";
-import type { IMod } from "@spt-aki/models/external/mod";
+import type { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
 import type { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 import type {DynamicRouterModService} from "@spt-aki/services/mod/dynamicRouter/DynamicRouterModService";
 import type {StaticRouterModService} from "@spt-aki/services/mod/staticRouter/StaticRouterModService";
 
-class Mod implements IMod
+class Mod implements IPreAkiLoadMod
 {
-    public load(container: DependencyContainer): void
-    {
+    public preAkiLoad(container: DependencyContainer): void {
         const logger = container.resolve<ILogger>("WinstonLogger");
         const dynamicRouterModService = container.resolve<DynamicRouterModService>("DynamicRouterModService");
         const staticRouterModService = container.resolve<StaticRouterModService>("StaticRouterModService");
@@ -76,12 +75,6 @@ class Mod implements IMod
             "aki"
         );
         
-    }
-
-	// not used in this example
-    public delayedLoad(container: DependencyContainer): void
-    {
-        return;
     }
 }
 module.exports = {mod: new Mod()}

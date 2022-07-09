@@ -1,18 +1,17 @@
 import { DependencyContainer } from "tsyringe";
-import {IMod} from "@spt-aki/models/external/mod"
+import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod"
 import { MyCustomLauncherCallbacks } from "./MyCustomLauncherCallbacks";
 
-class Mod implements IMod
+class Mod implements IPreAkiLoadMod
 {
     // This example will show you how to override and register your own components and use them
     // The container will by default register all AKI dependencies, but you can inject into it
     // you own custom implementations the server will then use.
     // In this example we will take the LauncherCallbacks class and override the ping() method
     // for our own custom method that will return "Lets dance" instead of "pong!"
-
+    
     // Perform these actions before server fully loads
-    public load(container: DependencyContainer): void
-    {
+    public preAkiLoad(container: DependencyContainer): void {
         // Here we register our override for the component and we NEED to use the same
         // token the server is using to register it.
         // You can find this tokens here:
@@ -27,12 +26,6 @@ class Mod implements IMod
         
         // Now that its registered, the server will automatically find this dependency and use it where ever its needed
 
-    }
-
-    // Nothing to do here
-    public delayedLoad(container: DependencyContainer): void
-    {
-        return;
     }
 }
 

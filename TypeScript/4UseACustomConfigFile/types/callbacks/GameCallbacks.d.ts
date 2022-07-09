@@ -2,6 +2,7 @@ import { GameController } from "../controllers/GameController";
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { IGameConfigResponse } from "../models/eft/game/IGameConfigResponse";
 import { IGameEmptyCrcRequestData } from "../models/eft/game/IGameEmptyCrcRequestData";
+import { IReportNicknameRequestData } from "../models/eft/game/IReportNicknameRequestData";
 import { IVersionValidateRequestData } from "../models/eft/game/IVersionValidateRequestData";
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
 import { INullResponseData } from "../models/eft/httpResponse/INullResponseData";
@@ -20,5 +21,6 @@ declare class GameCallbacks {
     validateGameVersion(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
     gameKeepalive(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
     getVersion(url: string, info: IEmptyRequestData, sessionID: string): string;
+    reportNickname(url: string, info: IReportNicknameRequestData, sessionID: string): INullResponseData;
 }
 export { GameCallbacks };

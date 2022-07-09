@@ -1,20 +1,20 @@
 import { DependencyContainer } from "tsyringe";
-import { IMod } from "@spt-aki/models/external/mod";
+import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
 import { LauncherController } from "@spt-aki/controllers/LauncherController";
 import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 import { ILoginRequestData } from "@spt-aki/models/eft/launcher/ILoginRequestData";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 import { SaveServer } from "@spt-aki/servers/SaveServer";
 
-class Mod implements IMod
+class Mod implements IPreAkiLoadMod
 {
     // DO NOT leave static references to ANY resolved dependency.
     // ALWAYS use the container to resolve dependencies
     // ****** ALWAYS *******
     private static container: DependencyContainer;
-
+    
     // Perform these actions before server fully loads
-    public load(container: DependencyContainer): void 
+    public preAkiLoad(container: DependencyContainer): void 
     {
         // We will save a reference to the dependency container to resolve dependencies
         // that we may need down the line
@@ -33,12 +33,6 @@ class Mod implements IMod
             }
             // The modifier Always makes sure this replacement method is ALWAYS replaced
         }, {frequency: "Always"});
-    }
-
-    // not used for this example
-    public delayedLoad(container: DependencyContainer): void 
-    {
-        return 
     }
 
     // our new replacement function, ready to be used

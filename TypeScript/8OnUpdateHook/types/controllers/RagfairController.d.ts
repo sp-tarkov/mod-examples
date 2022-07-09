@@ -60,6 +60,8 @@ export declare class RagfairController {
     protected ragfairConfig: IRagfairConfig;
     constructor(logger: ILogger, timeUtil: TimeUtil, httpResponse: HttpResponseUtil, itemEventRouter: ItemEventRouter, ragfairServer: RagfairServer, ragfairPriceService: RagfairPriceService, databaseServer: DatabaseServer, itemHelper: ItemHelper, saveServer: SaveServer, ragfairSellHelper: RagfairSellHelper, ragfairTaxHelper: RagfairTaxHelper, ragfairSortHelper: RagfairSortHelper, ragfairOfferHelper: RagfairOfferHelper, profileHelper: ProfileHelper, paymentService: PaymentService, handbookHelper: HandbookHelper, paymentHelper: PaymentHelper, inventoryHelper: InventoryHelper, ragfairHelper: RagfairHelper, ragfairOfferService: RagfairOfferService, ragfairRequiredItemsService: RagfairRequiredItemsService, ragfairOfferGenerator: RagfairOfferGenerator, configServer: ConfigServer);
     getOffers(sessionID: string, info: ISearchRequestData): IGetOffersResult;
+    protected isLinkedSearch(info: ISearchRequestData): boolean;
+    protected isRequiredSearch(info: ISearchRequestData): boolean;
     update(): void;
     getItemPrice(info: IGetMarketPriceRequestData): IGetItemPriceResult;
     addPlayerOffer(pmcData: IPmcData, info: IAddOfferRequestData, sessionID: string): IItemEventRouterResponse;

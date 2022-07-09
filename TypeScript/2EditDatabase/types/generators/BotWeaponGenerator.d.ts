@@ -42,6 +42,13 @@ export declare class BotWeaponGenerator {
      */
     protected generateExtraMagazines(weaponMods: Item[], weaponTemplate: ITemplateItem, magCounts: MinMax, ammoTpl: string, inventory: PmcInventory): void;
     /**
+     * Get a randomised number of bullets for a specific magazine
+     * @param magCounts min and max count of magazines
+     * @param magTemplate magazine to generate bullet count for
+     * @returns bullet count number
+     */
+    protected getRandomisedBulletCount(magCounts: MinMax, magTemplate: ITemplateItem): number;
+    /**
      * Get a randomised count of magazines
      * @param magCounts min and max value returned value can be between
      * @returns numberical value of magazine count

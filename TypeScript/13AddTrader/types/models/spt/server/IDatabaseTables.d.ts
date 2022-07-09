@@ -6,6 +6,7 @@ import { ICustomizationItem } from "../../eft/common/tables/ICustomizationItem";
 import { IHandbookBase } from "../../eft/common/tables/IHandbookBase";
 import { ILootBase } from "../../eft/common/tables/ILootBase";
 import { IMatch } from "../../eft/common/tables/IMatch";
+import { IProfileTemplates } from "../../eft/common/tables/IProfileTemplate";
 import { IQuest } from "../../eft/common/tables/IQuest";
 import { IRepeatableQuestDatabase } from "../../eft/common/tables/IRepeatableQuests";
 import { ITemplateItem } from "../../eft/common/tables/ITemplateItem";
@@ -39,10 +40,13 @@ export interface IDatabaseTables {
         items: Record<string, ITemplateItem>;
         quests: IQuest[];
         repeatableQuests: IRepeatableQuestDatabase;
+        /** DEPRECATED - Items file found in the client, massivly out of date compared to templates.items, try not to use this, remove ASAP*/
         clientItems: Record<string, ITemplateItem>;
         handbook: IHandbookBase;
         customization: Record<string, ICustomizationItem>;
-        profiles: any;
+        /** The profile templates listed in the launcher on profile creation, split by account type (e.g. Standard) then side (e.g. bear/usec) */
+        profiles: IProfileTemplates;
+        /** Flea prices of items - gathered from online flea market dump */
         prices: Record<string, number>;
     };
     traders?: Record<string, ITrader>;

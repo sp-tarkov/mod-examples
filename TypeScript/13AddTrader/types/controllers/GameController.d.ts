@@ -28,6 +28,11 @@ export declare class GameController {
     protected addMissingRepeatableQuestsProperty(pmcProfile: IPmcData): void;
     protected addMissingWeaponRepairSkill(pmcProfile: IPmcData): void;
     protected addMissingAkiVersionTagToProfile(fullProfile: IAkiProfile): void;
+    /**
+     * In 18876 bsg changed the pockets tplid to be one that has 3 additional special slots
+     * @param pmcProfile
+     */
+    protected updateProfilePocketsToNewId(pmcProfile: IPmcData): void;
     protected addMissingArmorRepairSkill(pmcProfile: IPmcData): void;
     protected fixNullTraderSalesSums(pmcProfile: IPmcData): void;
     protected removeDanglingBackendCounters(pmcProfile: IPmcData): void;
