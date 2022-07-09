@@ -1,9 +1,10 @@
 import { DependencyContainer } from "tsyringe";
 
 // SPT types
-import { IMod } from "@spt-aki/models/external/mod";
+import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
+import { IPostAkiLoadMod } from "@spt-aki/models/external/IPostAkiLoadMod";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
-import { InitialModLoader } from "@spt-aki/loaders/InitialModLoader";
+import { PreAkiModLoader } from "@spt-aki/loaders/PreAkiModLoader";
 import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 import { ImageRouter } from "@spt-aki/routers/ImageRouter";
 import { ConfigServer } from "@spt-aki/servers/ConfigServer";
@@ -17,27 +18,25 @@ import { ILocaleGlobalBase } from "@spt-aki/models/spt/server/ILocaleBase";
 // The new trader config
 import * as baseJson from "../db/base.json";
 
-class SampleTrader implements IMod {
+class SampleTrader implements IPreAkiLoadMod, IPostAkiLoadMod {
     mod: string
     logger: ILogger
 
     constructor() {
         this.mod = "13AddTrader";
     }
-
-    // Perform these actions before server fully loads
-    public load(container: DependencyContainer): void {
+    public preAkiLoad(container: DependencyContainer): void {
         this.logger = container.resolve<ILogger>("WinstonLogger");
         this.logger.debug(`[${this.mod}] Loading... `);
-
+        
         this.registerProfileImage(container);
-
+        
         this.setupTraderUpdateTime(container);
-
+        
         this.logger.debug(`[${this.mod}] Loaded`);
     }
-
-    public delayedLoad(container: DependencyContainer): void {
+    
+    public postAkiLoad(container: DependencyContainer): void {
         this.logger.debug(`[${this.mod}] Delayed Loading... `);
 
         const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
@@ -69,8 +68,8 @@ class SampleTrader implements IMod {
 
     private registerProfileImage(container: DependencyContainer): void {
         // Reference the mod "res" folder
-        const initialModLoader = container.resolve<InitialModLoader>("InitialModLoader");
-        const imageFilepath = `./${initialModLoader.getModPath(this.mod)}res`;
+        const preAkiModLoader = container.resolve<PreAkiModLoader>("PreAkiModLoader");
+        const imageFilepath = `./${preAkiModLoader.getModPath(this.mod)}res`;
 
         // Register route pointing to the profile picture
         const imageRouter = container.resolve<ImageRouter>("ImageRouter");

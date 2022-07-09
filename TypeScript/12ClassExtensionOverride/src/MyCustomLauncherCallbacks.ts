@@ -1,5 +1,5 @@
-import {LauncherCallbacks} from "@spt-aki/callbacks/LauncherCallbacks";
-import {LauncherController} from "@spt-aki/controllers/LauncherController";
+import { LauncherCallbacks } from "@spt-aki/callbacks/LauncherCallbacks";
+import { LauncherController } from "@spt-aki/controllers/LauncherController";
 import { IEmptyRequestData } from "@spt-aki/models/eft/common/IEmptyRequestData";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 import { SaveServer } from "@spt-aki/servers/SaveServer";

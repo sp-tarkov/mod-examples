@@ -1,11 +1,11 @@
 import { DependencyContainer } from "tsyringe";
-import { IMod } from "@spt-aki/models/external/mod"
+import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod"
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger"
 import { OnLoadModService } from "@spt-aki/services/mod/onLoad/OnLoadModService"
 
-class Mod implements IMod
+class Mod implements IPreAkiLoadMod
 {
-    public load(container: DependencyContainer): void
+    public preAkiLoad(container: DependencyContainer): void 
     {
         const logger = container.resolve<ILogger>("WinstonLogger");
         const onLoadModService = container.resolve<OnLoadModService>("OnLoadModService");
@@ -16,15 +16,9 @@ class Mod implements IMod
         )
     }
 
-    customFunctionThatRunsOnLoad(logger: ILogger): void
+    public customFunctionThatRunsOnLoad(logger: ILogger): void
     {
         logger.info("MyCustomMod custom function is loading right now")
-    }
-
-    // Not used in this example
-    public delayedLoad(container: DependencyContainer): void
-    {
-        return;
     }
 }
 module.exports = {mod: new Mod()}

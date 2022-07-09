@@ -18,6 +18,7 @@ import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 import { RagfairAssortGenerator } from "./RagfairAssortGenerator";
+import { RagfairCategoriesService } from "../services/RagfairCategoriesService";
 export declare class RagfairOfferGenerator {
     protected logger: ILogger;
     protected jsonUtil: JsonUtil;
@@ -31,11 +32,12 @@ export declare class RagfairOfferGenerator {
     protected ragfairAssortGenerator: RagfairAssortGenerator;
     protected ragfairOfferService: RagfairOfferService;
     protected ragfairPriceService: RagfairPriceService;
+    protected ragfairCategoriesService: RagfairCategoriesService;
     protected fenceService: FenceService;
     protected itemHelper: ItemHelper;
     protected configServer: ConfigServer;
     protected ragfairConfig: IRagfairConfig;
-    constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, ragfairServerHelper: RagfairServerHelper, saveServer: SaveServer, presetHelper: PresetHelper, ragfairAssortGenerator: RagfairAssortGenerator, ragfairOfferService: RagfairOfferService, ragfairPriceService: RagfairPriceService, fenceService: FenceService, itemHelper: ItemHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, ragfairServerHelper: RagfairServerHelper, saveServer: SaveServer, presetHelper: PresetHelper, ragfairAssortGenerator: RagfairAssortGenerator, ragfairOfferService: RagfairOfferService, ragfairPriceService: RagfairPriceService, ragfairCategoriesService: RagfairCategoriesService, fenceService: FenceService, itemHelper: ItemHelper, configServer: ConfigServer);
     createOffer(userID: string, time: number, items: Item[], barterScheme: IBarterScheme[], loyalLevel: number, price: number, sellInOnePiece?: boolean): IRagfairOffer;
     protected getTraderId(userID: string): string;
     protected getRating(userID: string): number;

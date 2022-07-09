@@ -1,6 +1,5 @@
 export interface IStartOfflineRaidRequestData {
     locationName: string;
-    entryPoint: string;
     startTime: number;
     dateTime: string;
     gameSettings: GameSettings;

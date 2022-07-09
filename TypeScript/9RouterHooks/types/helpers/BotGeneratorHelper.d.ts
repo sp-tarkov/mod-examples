@@ -30,6 +30,12 @@ export declare class BotGeneratorHelper {
     constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, probabilityHelper: ProbabilityHelper, databaseServer: DatabaseServer, durabilityLimitsHelper: DurabilityLimitsHelper, itemHelper: ItemHelper, inventoryHelper: InventoryHelper, containerHelper: ContainerHelper, configServer: ConfigServer);
     generateModsForItem(items: Item[], modPool: Mods, parentId: string, parentTemplate: ITemplateItem, modSpawnChances: ModsChances, isPmc?: boolean): Item[];
     /**
+     * Is this magazine cylinder related (revolvers and grenade launchers)
+     * @param magazineParentName the name of the magazines parent
+     * @returns true if it is cylinder related
+     */
+    magazineIsCylinderRelated(magazineParentName: string): boolean;
+    /**
      * Get a list of non black-listed cartridges from the PMC bot config
      * @param modSlot mod item slot
      * @param itemModPool
@@ -69,6 +75,12 @@ export declare class BotGeneratorHelper {
      * @param {object}      parentTemplate      The CylinderMagazine's template
      */
     protected fillCamora(items: Item[], modPool: Mods, parentId: string, parentTemplate: ITemplateItem): void;
+    /**
+     * Take a record of camoras and merge the compatable shells into one array
+     * @param camorasWithShells camoras we want to merge into one array
+     * @returns string array of shells fro luitple camora sources
+     */
+    protected mergeCamoraPoolsTogether(camorasWithShells: Record<string, string[]>): string[];
     generateExtraPropertiesForItem(itemTemplate: ITemplateItem, botRole?: any): {
         upd?: Upd;
     };

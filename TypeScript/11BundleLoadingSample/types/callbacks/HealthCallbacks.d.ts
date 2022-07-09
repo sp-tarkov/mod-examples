@@ -13,6 +13,13 @@ export declare class HealthCallbacks {
     protected profileHelper: ProfileHelper;
     protected healthController: HealthController;
     constructor(httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, healthController: HealthController);
+    /**
+     * Custom aki server request found in modules/HealthSynchronizer.cs
+     * @param url
+     * @param info HealthListener.Instance.CurrentHealth class
+     * @param sessionID session id
+     * @returns empty response, no data sent back to client
+     */
     syncHealth(url: string, info: ISyncHealthRequestData, sessionID: string): IGetBodyResponseData<string>;
     offraidEat(pmcData: IPmcData, body: IOffraidEatRequestData, sessionID: string): IItemEventRouterResponse;
     offraidHeal(pmcData: IPmcData, body: IOffraidHealRequestData, sessionID: string): IItemEventRouterResponse;

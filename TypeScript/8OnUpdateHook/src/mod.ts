@@ -1,12 +1,11 @@
 import { DependencyContainer } from "tsyringe";
-import { IMod } from "@spt-aki/models/external/mod"
+import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod"
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger"
 import { OnUpdateModService } from "@spt-aki/services/mod/onUpdate/OnUpdateModService"
 
-class Mod implements IMod
+class Mod implements IPreAkiLoadMod
 {
-    public load(container: DependencyContainer): void
-    {
+    public preAkiLoad(container: DependencyContainer): void {
         const logger = container.resolve<ILogger>("WinstonLogger");
         const onUpdateModService = container.resolve<OnUpdateModService>("OnUpdateModService");
 
@@ -17,7 +16,7 @@ class Mod implements IMod
         )
     }
 
-    customFunctionThatRunsOnLoad(timeSinceLastRun: number, logger: ILogger): boolean
+    public customFunctionThatRunsOnLoad(timeSinceLastRun: number, logger: ILogger): boolean
     {
         if (timeSinceLastRun > 30)
         {
@@ -26,12 +25,6 @@ class Mod implements IMod
         }
 
         return false; // we didnt do anything
-    }
-
-    // Not used in this example
-    public delayedLoad(container: DependencyContainer): void
-    {
-        return;
     }
 }
 module.exports = {mod: new Mod()}

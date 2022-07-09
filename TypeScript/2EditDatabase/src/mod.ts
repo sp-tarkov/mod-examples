@@ -1,12 +1,11 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IMod } from "@spt-aki/models/external/mod";
-import { IAfterDBLoadMod } from "@spt-aki/models/external/IAfterDBLoadMod";
+import { IPostDBLoadMod } from "@spt-aki/models/external/IPostDBLoadMod";
 import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 
-class Mod implements IMod, IAfterDBLoadMod
+class Mod implements IPostDBLoadMod
 {
-    public loadAfterDbInit(container: DependencyContainer): void
+    public postDBLoad(container: DependencyContainer): void 
     {
         // get database from server
         const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
@@ -25,14 +24,6 @@ class Mod implements IMod, IAfterDBLoadMod
         // get globals settings and set flea market min level to be 1
         tables.globals.config.RagFair.minUserLevel = 1;
     }
-
-    // not used for this example
-    public load(container: DependencyContainer): void
-    { return }
-
-    // not used for this example
-    public delayedLoad(container: DependencyContainer): void
-    { return }
 }
 
 module.exports = { mod: new Mod() }

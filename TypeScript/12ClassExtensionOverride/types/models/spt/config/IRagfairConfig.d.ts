@@ -30,6 +30,7 @@ export interface Dynamic {
     expiredOfferThreshold: number;
     offerItemCount: MinMax;
     price: MinMax;
+    presetPrice: MinMax;
     endTimeSeconds: MinMax;
     condition: Condition;
     stackablePercent: MinMax;

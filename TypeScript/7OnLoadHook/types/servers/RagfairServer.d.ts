@@ -17,7 +17,8 @@ export declare class RagfairServer {
     constructor(logger: ILogger, ragfairOfferGenerator: RagfairOfferGenerator, ragfairOfferService: RagfairOfferService, ragfairCategoriesService: RagfairCategoriesService, ragfairRequiredItemsService: RagfairRequiredItemsService, configServer: ConfigServer);
     load(): void;
     update(): void;
-    getCategories(): Record<string, number>;
+    getAllCategories(): Record<string, number>;
+    getBespokeCategories(offers: IRagfairOffer[]): Record<string, number>;
     /**
      * Disable/Hide an offer from flea
      * @param offerId

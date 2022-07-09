@@ -28,5 +28,19 @@ export declare class RagfairPriceService {
     getFleaPriceForItem(tplId: string): number;
     getBarterPrice(barterScheme: IBarterScheme[]): number;
     getDynamicOfferPrice(items: Item[], desiredCurrency: string): number;
+    /**
+     * Multiply the price by a randomised curve where n = 2, shift = 2
+     * @param existingPrice price to alter
+     * @param isPreset is the item we're multiplying a preset
+     * @returns multiplied price
+     */
+    protected randomisePrice(existingPrice: number, isPreset: boolean): number;
+    /**
+     * Calculate the cost of a weapon preset by adding together the price of its mods + base price of default weapon preset
+     * @param item base weapon
+     * @param items weapon plus mods
+     * @param existingPrice price of existing base weapon
+     * @returns
+     */
     getWeaponPresetPrice(item: Item, items: Item[], existingPrice: number): number;
 }

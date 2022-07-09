@@ -50,6 +50,7 @@ export interface Props {
     UnlootableFromSide?: string[];
     AnimationVariantsNumber?: number;
     DiscardingBlock?: boolean;
+    DropSoundType?: string;
     RagFairCommissionModifier?: number;
     IsAlwaysAvailableForInsurance?: boolean;
     DiscardLimit?: number;
@@ -89,7 +90,7 @@ export interface Props {
     SightModesCount?: number;
     OpticCalibrationDistances?: number[];
     ScopesCount?: number;
-    AimSensitivity: any;
+    AimSensitivity?: number | number[][];
     Zooms?: number[][];
     CalibrationDistances?: number[][];
     Intensity?: number;
@@ -200,6 +201,9 @@ export interface Props {
     MinRepairDegradation?: number;
     MaxRepairDegradation?: number;
     IronSightRange?: number;
+    IsFlareGun?: boolean;
+    IsGrenadeLauncher?: boolean;
+    IsOneoff?: boolean;
     MustBoltBeOpennedForExternalReload?: boolean;
     MustBoltBeOpennedForInternalReload?: boolean;
     BoltAction?: boolean;

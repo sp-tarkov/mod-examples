@@ -1,31 +1,30 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IAfterDBLoadMod } from "@spt-aki/models/external/IAfterDBLoadMod";
-import { IMod } from "@spt-aki/models/external/mod";
+import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
+import { IPostAkiLoadMod } from "@spt-aki/models/external/IPostAkiLoadMod";
+import { IPostDBLoadMod } from "@spt-aki/models/external/IPostDBLoadMod";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 import { LogTextColor } from "@spt-aki/models/spt/logging/LogTextColor";
 import { LogBackgroundColor } from "@spt-aki/models/spt/logging/LogBackgroundColor";
 
 
-class Mod implements IMod, IAfterDBLoadMod
-{    
-    public load(container: DependencyContainer): void
-    {
+class Mod implements IPreAkiLoadMod, IPostAkiLoadMod, IPostDBLoadMod
+{
+    public preAkiLoad(container: DependencyContainer): void {
         // Database will be empty in here
         const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
         const logger = container.resolve<ILogger>("WinstonLogger");
         logger.logWithColor(`Database item table state: ${databaseServer.getTables().templates} (<<< should be undefined)`, LogTextColor.red, LogBackgroundColor.yellow);
     }
-
-    public loadAfterDbInit(container: DependencyContainer): void 
-    {
+    
+    public postDBLoad(container: DependencyContainer): void {
         // Database will be loaded, this is the fresh state of the DB so NOTHING from the AKI
         // logic has modified anything yet. This is the DB loaded straight from the JSON files
         const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
         const logger = container.resolve<ILogger>("WinstonLogger");
         logger.logWithColor(`Database item size: ${Object.entries(databaseServer.getTables().templates.items).length}`, LogTextColor.red, LogBackgroundColor.yellow);
-        // lets do a quick modification and see how this reflect later on, on the delayedLoad()
+        // lets do a quick modification and see how this reflect later on, on the postAkiLoad()
         
         // find the nvgs item by its Id
         const nvgs = databaseServer.getTables().templates.items["5c0558060db834001b735271"];
@@ -35,8 +34,7 @@ class Mod implements IMod, IAfterDBLoadMod
         nvgs._props.CanSellOnRagfair = true;
     }
 
-    public delayedLoad(container: DependencyContainer): void
-    {
+    public postAkiLoad(container: DependencyContainer): void {
         // The modification we made above would have been processed by now by AKI, so any values we changed had
         // already been passed through the initial lifecycles (OnLoad) of AKI.
         const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");

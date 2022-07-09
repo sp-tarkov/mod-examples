@@ -18,6 +18,7 @@ export interface PresetBatch {
     bossKojaniy: number;
     bossSanitar: number;
     bossTagilla: number;
+    bossKnight: number;
     bossTest: number;
     cursedAssault: number;
     followerBully: number;
@@ -28,6 +29,8 @@ export interface PresetBatch {
     followerKojaniy: number;
     followerSanitar: number;
     followerTagilla: number;
+    followerBirdEye: number;
+    followerBigPipe: number;
     followerTest: number;
     marksman: number;
     pmcBot: number;

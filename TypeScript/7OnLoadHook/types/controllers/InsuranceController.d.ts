@@ -3,6 +3,7 @@ import { ItemHelper } from "../helpers/ItemHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { IGetInsuranceCostRequestData } from "../models/eft/insurance/IGetInsuranceCostRequestData";
+import { IGetInsuranceCostResponseData } from "../models/eft/insurance/IGetInsuranceCostResponseData";
 import { IInsureRequestData } from "../models/eft/insurance/IInsureRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IInsuranceConfig } from "../models/spt/config/IInsuranceConfig";
@@ -33,6 +34,12 @@ export declare class InsuranceController {
     insuranceService: InsuranceService, configServer: ConfigServer);
     processReturn(): void;
     insure(pmcData: IPmcData, body: IInsureRequestData, sessionID: string): IItemEventRouterResponse;
-    cost(info: IGetInsuranceCostRequestData, sessionID: string): any;
+    /**
+     * Calculate insurance cost
+     * @param info request object
+     * @param sessionID session id
+     * @returns response object to send to client
+     */
+    cost(info: IGetInsuranceCostRequestData, sessionID: string): IGetInsuranceCostResponseData;
     doAbsolutelyNothing(): void;
 }
