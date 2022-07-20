@@ -1,6 +1,7 @@
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
+import { ICreateGroupRequestData } from "../models/eft/match/ICreateGroupRequestData";
 import { IEndOfflineRaidRequestData } from "../models/eft/match/IEndOfflineRaidRequestData";
 import { IGetGroupStatusRequestData } from "../models/eft/match/IGetGroupStatusRequestData";
 import { IGetProfileRequestData } from "../models/eft/match/IGetProfileRequestData";
@@ -23,7 +24,7 @@ export declare class MatchController {
     constructor(saveServer: SaveServer, profileHelper: ProfileHelper, matchLocationService: MatchLocationService, traderHelper: TraderHelper, configServer: ConfigServer);
     getEnabled(): boolean;
     getProfile(info: IGetProfileRequestData): IPmcData[];
-    createGroup(sessionID: string, info: any): any;
+    createGroup(sessionID: string, info: ICreateGroupRequestData): any;
     deleteGroup(info: any): void;
     joinMatch(info: IJoinMatchRequestData, sessionID: string): IJoinMatchResult[];
     protected getMatch(location: string): any;

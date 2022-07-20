@@ -1,6 +1,7 @@
 import { HandbookHelper } from "../helpers/HandbookHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
 import { PresetHelper } from "../helpers/PresetHelper";
+import { Preset } from "../models/eft/common/IGlobals";
 import { Item } from "../models/eft/common/tables/IItem";
 import { IBarterScheme } from "../models/eft/common/tables/ITrader";
 import { IRagfairConfig } from "../models/spt/config/IRagfairConfig";
@@ -43,4 +44,11 @@ export declare class RagfairPriceService {
      * @returns
      */
     getWeaponPresetPrice(item: Item, items: Item[], existingPrice: number): number;
+    /**
+     * Attempt to get the default preset for a weapon, failing that get the first preset in the array
+     * (assumes default = has encyclopedia entry)
+     * @param presets weapon presets to choose from
+     * @returns Default preset object
+     */
+    protected getDefaultWeaponPreset(presets: Preset[], weapon: Item): Preset;
 }

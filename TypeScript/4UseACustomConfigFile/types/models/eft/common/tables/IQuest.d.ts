@@ -1,3 +1,4 @@
+import { QuestRewardType } from "../../../enums/QuestRewardType";
 import { Item } from "./IItem";
 export interface IQuest {
     QuestName: string;
@@ -99,9 +100,9 @@ export interface Rewards {
     Expired: Reward[];
 }
 export interface Reward {
-    value?: string;
+    value?: string | number;
     id: string;
-    type: string;
+    type: QuestRewardType;
     index: number;
     target?: string;
     items?: Item[];

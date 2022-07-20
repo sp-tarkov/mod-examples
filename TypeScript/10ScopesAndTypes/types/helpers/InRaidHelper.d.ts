@@ -28,6 +28,18 @@ export declare class InRaidHelper {
     markFoundItems(pmcData: IPmcData, profile: IPmcData, isPlayerScav: boolean): IPmcData;
     removeFoundInRaidStatusFromItems(profile: IPmcData): IPmcData;
     setInventory(sessionID: string, pmcData: IPmcData, profile: IPmcData): IPmcData;
+    /**
+     * Clear pmc inventory of all items except those that are exempt
+     * @param pmcData Player profile
+     * @param sessionID Session id
+     * @returns Player profile with pmc inventory cleared
+     */
     deleteInventory(pmcData: IPmcData, sessionID: string): IPmcData;
+    /**
+     * Does the provided items slotId mean its kept on the player after death
+     * @param slotId slotid of item to check
+     * @returns true if item is kept after death
+     */
+    isItemKeptAfterDeath(slotId: string): boolean;
     getPlayerGear(items: Item[]): Item[];
 }

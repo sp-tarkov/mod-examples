@@ -20,6 +20,12 @@ export declare class ProfileHelper {
     resetProfileQuestCondition(sessionID: string, conditionId: string): void;
     getCompleteProfile(sessionID: string): IPmcData[];
     isNicknameTaken(info: IValidateNicknameRequestData, sessionID: string): boolean;
+    /**
+     * Add experience to a PMC inside the players profile
+     * @param sessionID Session id
+     * @param experienceToAdd Experiecne to add to PMC character
+     */
+    addExperienceToPmc(sessionID: string, experienceToAdd: number): void;
     getProfileByPmcId(pmcId: string): IPmcData;
     getExperience(level: number): number;
     getMaxLevel(): number;

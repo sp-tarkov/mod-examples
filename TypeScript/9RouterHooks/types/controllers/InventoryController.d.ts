@@ -109,7 +109,7 @@ export declare class InventoryController {
      * @param body response request
      * @returns tplid
      */
-    protected getItemTpl(body: IInventoryExamineRequestData): string;
+    protected getExaminedItemTpl(body: IInventoryExamineRequestData): string;
     readEncyclopedia(pmcData: IPmcData, body: IInventoryReadEncyclopediaRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * Handles sorting of Inventory.

@@ -75,8 +75,22 @@ export declare class QuestHelper {
      */
     cleanQuestConditions(quest: IQuest): IQuest;
     failQuest(pmcData: IPmcData, body: any, sessionID: string): any;
+    /**
+     * Get quest by id from database
+     * @param questId questid to look for
+     * @param pmcData player profile
+     * @returns IQuest object
+     */
     getQuestFromDb(questId: string, pmcData: IPmcData): IQuest;
     getQuestLocaleIdFromDb(messageId: string): string;
+    /**
+     * Give player quest rewards - Skills/exp/trader standing/items/assort unlocks
+     * @param pmcData Player profile
+     * @param body complete quest request
+     * @param state State of the quest now its complete
+     * @param sessionID Seession id
+     * @returns array of reward objects
+     */
     applyQuestReward(pmcData: IPmcData, body: ICompleteQuestRequestData, state: string, sessionID: string): Reward[];
     /**
      * Get the intel center bonus a player has

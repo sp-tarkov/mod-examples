@@ -14,6 +14,7 @@ export interface RaidMenuSettings {
     bossEnabled: boolean;
     scavWars: boolean;
     taggedAndCursed: boolean;
+    enablePve: boolean;
 }
 export interface Save {
     loot: boolean;

@@ -35,7 +35,13 @@ export declare class TraderHelper {
      * @param traderID trader id to reset
      */
     resetTrader(sessionID: string, traderID: string): void;
-    changeTraderDisplay(traderID: string, status: boolean, sessionID: string): void;
+    /**
+     * Alter a traders unlocked status
+     * @param traderID Trader to alter
+     * @param status New status to use
+     * @param sessionID Session id
+     */
+    setTraderUnlockedState(traderID: string, status: boolean, sessionID: string): void;
     /**
      * Get a list of items and their prices from player inventory that can be sold to a trader
      * @param traderID trader id being traded with
@@ -79,7 +85,14 @@ export declare class TraderHelper {
     protected getRawItemPrice(pmcData: IPmcData, item: Item): number;
     protected getTraderDiscount(trader: ITraderBase, buyPriceCoefficient: number, fenceInfo: FenceLevel, traderID: string): number;
     /**
-     * Calculate traders level based on exp amount and increment level if over threshold
+     * Add standing to a trader and level them up if exp goes over level threshold
+     * @param sessionID Session id
+     * @param traderId traders id
+     * @param standingToAdd Standing value to add to trader
+     */
+    addStandingToTrader(sessionID: string, traderId: string, standingToAdd: number): void;
+    /**
+     * Calculate traders level based on exp amount and increments level if over threshold
      * @param traderID trader to process
      * @param sessionID session id
      */

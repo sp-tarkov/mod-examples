@@ -1,5 +1,5 @@
 import { InsuredItem, IPmcData } from "../models/eft/common/IPmcData";
-import { Item } from "../models/eft/common/tables/IItem";
+import { Item, Repairable } from "../models/eft/common/tables/IItem";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
@@ -18,7 +18,7 @@ declare class ItemHelper {
      */
     isValidItem(tpl: string, invalidBaseTypes?: string[]): boolean;
     /**
-     * Checks if a id is a valid item. Valid meaning that it's an item that may be a reward
+     * Checks if an id is a valid item. Valid meaning that it's an item that may be a reward
      * or content of bot loot. Items that are tested as valid may be in a player backpack or stash.
      * @param {*} tpl template id of item to check
      * @returns boolean: true if item is valid reward
@@ -83,6 +83,11 @@ declare class ItemHelper {
      * @returns {array}                     The array of StackSlotItems
      */
     generateItemsFromStackSlot(item: ITemplateItem, parentId: string): Item[];
+    /**
+     * Gets item data from items.json
+     * @param tpl items template id to look up
+     * @returns bool - is valid + template item object as array
+     */
     getItem(tpl: string): [boolean, ITemplateItem];
     /**
      * get normalized value (0-1) based on item condition
@@ -90,24 +95,64 @@ declare class ItemHelper {
      * @returns number between 0 and 1
      */
     getItemQualityModifier(item: Item): number;
+    /**
+     * Get a quality value based on a repairable items (weapon/armor) current state between current and max durability
+     * @param itemDetails
+     * @param repairable repairable object
+     * @param item
+     * @returns a number between 0 and 1
+     */
+    protected getRepairableItemQualityValue(itemDetails: ITemplateItem, repairable: Repairable, item: Item): number;
+    /**
+     * Recursive function that looks at every item from parameter and gets their childrens Ids
+     * @param items
+     * @param itemID
+     * @returns an array of strings
+     */
     findAndReturnChildrenByItems(items: Item[], itemID: string): string[];
     /**
      * A variant of findAndReturnChildren where the output is list of item objects instead of their ids.
+     * @param items
+     * @param baseItemId
+     * @returns An array of Item objects
      */
     findAndReturnChildrenAsItems(items: Item[], baseItemId: string): Item[];
     /**
-     * find children of the item in a given assort (weapons parts for example, need recursive loop function)
+     * Find children of the item in a given assort (weapons parts for example, need recursive loop function)
+     * @param itemIdToFind Template id of item to check for
+     * @param assort Array of items to check in
+     * @returns Array of children of requested item
      */
     findAndReturnChildrenByAssort(itemIdToFind: string, assort: Item[]): Item[];
+    /**
+     * Check if the passed in item has buy count restrictions
+     * @param itemToCheck Item to check
+     * @returns true if it has buy restrictions
+     */
     hasBuyRestrictions(itemToCheck: Item): boolean;
     /**
-     * Is Dogtag
-     * Checks if an item is a dogtag. Used under profile_f.js to modify preparePrice based
-     * on the level of the dogtag
+     * is the passed in template id a dog tag
+     * @param tpl Template id to check
+     * @returns true if it is a dogtag
      */
     isDogtag(tpl: string): boolean;
+    /**
+     * Can the item passed in be sold to a trader because it is raw money
+     * @param tpl Item template id to check
+     * @returns true if unsellable
+     */
     isNotSellable(tpl: string): boolean;
+    /**
+     * Gets the identifier for a child using slotId, locationX and locationY.
+     * @param item
+     * @returns "slotId OR slotid,locationX,locationY"
+     */
     getChildId(item: Item): string;
+    /**
+     * Can the pased in item be stacked
+     * @param tpl item to check
+     * @returns true if it can be stacked
+     */
     isItemTplStackable(tpl: string): boolean;
     /**
      * split item stack if it exceeds StackMaxSize
@@ -122,10 +167,12 @@ declare class ItemHelper {
      */
     findBarterItems(by: string, pmcData: IPmcData, barter_itemID: string): any[];
     /**
-     * @param {Object} pmcData
-     * @param {Array} items
-     * @param {Object} fastPanel
-     * @returns Array
+     *
+     * @param pmcData
+     * @param items
+     * @param insuredItems insured items to not replace ids for
+     * @param fastPanel
+     * @returns
      */
     replaceIDs(pmcData: IPmcData, items: Item[], insuredItems?: InsuredItem[], fastPanel?: any): any[];
     /**
@@ -141,6 +188,12 @@ declare class ItemHelper {
      * @returns boolean
      */
     isQuestItem(tpl: string): boolean;
+    /**
+     * Get the inventory size of an item
+     * @param items
+     * @param rootItemId
+     * @returns ItemSize object (width and height)
+     */
     getItemSize(items: Item[], rootItemId: string): ItemHelper.ItemSize;
 }
 declare namespace ItemHelper {

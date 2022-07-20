@@ -9,7 +9,9 @@ import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { HashUtil } from "../utils/HashUtil";
 import { RandomUtil } from "../utils/RandomUtil";
+import { JsonUtil } from "../utils/JsonUtil";
 export declare class BotWeaponGenerator {
+    protected jsonUtil: JsonUtil;
     protected logger: ILogger;
     protected hashUtil: HashUtil;
     protected databaseServer: DatabaseServer;
@@ -18,7 +20,7 @@ export declare class BotWeaponGenerator {
     protected botGeneratorHelper: BotGeneratorHelper;
     protected randomUtil: RandomUtil;
     private readonly modMagazineSlotId;
-    constructor(logger: ILogger, hashUtil: HashUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper, weightedRandomHelper: WeightedRandomHelper, botGeneratorHelper: BotGeneratorHelper, randomUtil: RandomUtil);
+    constructor(jsonUtil: JsonUtil, logger: ILogger, hashUtil: HashUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper, weightedRandomHelper: WeightedRandomHelper, botGeneratorHelper: BotGeneratorHelper, randomUtil: RandomUtil);
     generateWeapon(equipmentSlot: string, templateInventory: Inventory, modChances: ModsChances, magCounts: MinMax, botRole: string, isPmc: boolean, inventory: PmcInventory): void;
     /**
      * Get the mods necessary to kit out a weapon to its preset level

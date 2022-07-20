@@ -1,8 +1,9 @@
+import { RaidMode } from "../../enums/RaidMode";
 export interface IGetGroupStatusRequestData {
     location: string;
     savage: boolean;
     dt: string;
     keyId: string;
-    raidMode: string;
+    raidMode: RaidMode;
     startInGroup: boolean;
 }
