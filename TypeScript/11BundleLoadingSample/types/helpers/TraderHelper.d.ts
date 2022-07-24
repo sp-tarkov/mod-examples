@@ -29,7 +29,7 @@ export declare class TraderHelper {
     getTrader(traderID: string, sessionID: string): ITraderBase;
     getTraderAssortsById(traderId: string): ITraderAssort;
     /**
-     * Reset a trader back to its initial state as seen by a level 1 player
+     * Reset a profiles trader data back to its initial state as seen by a level 1 player
      * Does NOT take into account different profile levels
      * @param sessionID session id
      * @param traderID trader id to reset

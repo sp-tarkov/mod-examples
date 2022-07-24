@@ -45,5 +45,22 @@ export declare class PaymentService {
    * ancestor with slotId=hideout
    */
     protected isItemInStash(pmcData: IPmcData, item: Item): boolean;
+    /**
+     * Remove currency from player stash/inventory
+     * @param pmcData Player profile to find and remove currency from
+     * @param currencyTpl Type of currency to pay
+     * @param amountToPay money value to pay
+     * @param sessionID Sessino id
+     * @param output output object to send to client
+     * @returns IItemEventRouterResponse
+     */
     addPaymentToOutput(pmcData: IPmcData, currencyTpl: string, amountToPay: number, sessionID: string, output: IItemEventRouterResponse): IItemEventRouterResponse;
+    /**
+     * Prioritise player stash first over player inventory
+     * Post-raid healing would often take money out of the players pockets/secure container
+     * @param a Firsat money stack item
+     * @param b Second money stack item
+     * @returns sorted item
+     */
+    protected moneySort(a: Item, b: Item): number;
 }

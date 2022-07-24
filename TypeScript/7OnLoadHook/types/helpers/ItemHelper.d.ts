@@ -162,10 +162,10 @@ declare class ItemHelper {
      * Find Barter items in the inventory
      * @param {string} by
      * @param {Object} pmcData
-     * @param {string} barter_itemID
-     * @returns Array
+     * @param {string} barterItemId
+     * @returns Array of Item objects
      */
-    findBarterItems(by: string, pmcData: IPmcData, barter_itemID: string): any[];
+    findBarterItems(by: string, pmcData: IPmcData, barterItemId: string): Item[];
     /**
      *
      * @param pmcData

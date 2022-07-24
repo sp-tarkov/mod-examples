@@ -2,7 +2,7 @@ import { BotGeneratorHelper } from "../helpers/BotGeneratorHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
 import { WeightedRandomHelper } from "../helpers/WeightedRandomHelper";
 import { Inventory as PmcInventory } from "../models/eft/common/IPmcData";
-import { Inventory, MinMax, ModsChances } from "../models/eft/common/tables/IBotType";
+import { Inventory, MinMax, Mods, ModsChances } from "../models/eft/common/tables/IBotType";
 import { Item } from "../models/eft/common/tables/IItem";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { ILogger } from "../models/spt/utils/ILogger";
@@ -22,6 +22,35 @@ export declare class BotWeaponGenerator {
     private readonly modMagazineSlotId;
     constructor(jsonUtil: JsonUtil, logger: ILogger, hashUtil: HashUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper, weightedRandomHelper: WeightedRandomHelper, botGeneratorHelper: BotGeneratorHelper, randomUtil: RandomUtil);
     generateWeapon(equipmentSlot: string, templateInventory: Inventory, modChances: ModsChances, magCounts: MinMax, botRole: string, isPmc: boolean, inventory: PmcInventory): void;
+    /**
+     * Create a list of mods for a weapon defined by the weaponTpl parameter
+     * @param weaponTpl Weapon to generate mods for
+     */
+    protected getWeaponMods(weaponTpl: string): Mods;
+    /**
+     * Get a dictionary of items and their attachments
+     * @param itemTpl item to look up attachments for
+     * @param weaponModsResult Mods array to add to
+     */
+    protected getItemAttachmentsRecursive(itemTpl: string, weaponModsResult: Mods): void;
+    protected isTplAnOptic(tplToCheck: string): boolean;
+    /**
+     * Get a weapon tpl from a bot jsons inventory
+     * @param weaponSlot slot to get randomised tpl for
+     * @param templateInventory
+     * @returns
+     */
+    protected getRandomisedWeaponTplForSlot(weaponSlot: string, templateInventory: Inventory): string;
+    /**
+     * Get an array with a single object being the the weapon as defined by the weaponTpl parameter
+     * @param weaponTpl weapon to generate array around
+     * @param equipmentId
+     * @param weaponSlot
+     * @param itemTemplate
+     * @param botRole bot we're generating for
+     * @returns Item array
+     */
+    protected getWeaponBase(weaponTpl: string, equipmentId: string, weaponSlot: string, itemTemplate: ITemplateItem, botRole: string): Item[];
     /**
      * Get the mods necessary to kit out a weapon to its preset level
      * @param weaponTpl weapon to find preset for

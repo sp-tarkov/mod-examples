@@ -18,6 +18,8 @@ export interface TemplateSide {
     trader: ProfileTraderTemplate;
 }
 export interface ProfileTraderTemplate {
+    initialLoyaltyLevel: number;
     initialStanding: number;
     initialSalesSum: number;
+    jaegerUnlocked: boolean;
 }

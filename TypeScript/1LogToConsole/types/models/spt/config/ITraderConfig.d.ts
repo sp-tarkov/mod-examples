@@ -3,13 +3,17 @@ export interface ITraderConfig extends IBaseConfig {
     kind: "aki-trader";
     updateTime: UpdateTime[];
     updateTimeDefault: number;
-    fenceAssortSize: number;
-    fenceMaxPresetsCount: number;
-    fencePresetPriceMult: number;
+    traderPriceMultipler: number;
     minDurabilityForSale: number;
-    fenceItemIgnoreList: string[];
+    fence: FenceConfig;
 }
 export interface UpdateTime {
     traderId: string;
     seconds: number;
+}
+export interface FenceConfig {
+    assortSize: number;
+    maxPresetsCount: number;
+    presetPriceMult: number;
+    blacklist: string[];
 }

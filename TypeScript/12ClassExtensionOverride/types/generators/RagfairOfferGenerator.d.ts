@@ -11,6 +11,7 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
 import { FenceService } from "../services/FenceService";
+import { RagfairCategoriesService } from "../services/RagfairCategoriesService";
 import { RagfairOfferService } from "../services/RagfairOfferService";
 import { RagfairPriceService } from "../services/RagfairPriceService";
 import { HashUtil } from "../utils/HashUtil";
@@ -18,7 +19,6 @@ import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 import { RagfairAssortGenerator } from "./RagfairAssortGenerator";
-import { RagfairCategoriesService } from "../services/RagfairCategoriesService";
 export declare class RagfairOfferGenerator {
     protected logger: ILogger;
     protected jsonUtil: JsonUtil;
