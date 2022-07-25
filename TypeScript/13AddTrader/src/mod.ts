@@ -2,7 +2,7 @@ import { DependencyContainer } from "tsyringe";
 
 // SPT types
 import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
-import { IPostAkiLoadMod } from "@spt-aki/models/external/IPostAkiLoadMod";
+import { IPostDBLoadMod } from "@spt-aki/models/external/IPostDBLoadMod";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 import { PreAkiModLoader } from "@spt-aki/loaders/PreAkiModLoader";
 import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
@@ -18,13 +18,14 @@ import { ILocaleGlobalBase } from "@spt-aki/models/spt/server/ILocaleBase";
 // The new trader config
 import * as baseJson from "../db/base.json";
 
-class SampleTrader implements IPreAkiLoadMod, IPostAkiLoadMod {
+class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
     mod: string
     logger: ILogger
 
     constructor() {
         this.mod = "13AddTrader";
     }
+
     public preAkiLoad(container: DependencyContainer): void {
         this.logger = container.resolve<ILogger>("WinstonLogger");
         this.logger.debug(`[${this.mod}] Loading... `);
@@ -36,7 +37,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostAkiLoadMod {
         this.logger.debug(`[${this.mod}] Loaded`);
     }
     
-    public postAkiLoad(container: DependencyContainer): void {
+    public postDBLoad(container: DependencyContainer): void {
         this.logger.debug(`[${this.mod}] Delayed Loading... `);
 
         const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
