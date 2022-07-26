@@ -1,6 +1,8 @@
 import { DependencyContainer } from "tsyringe";
 import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
+import { LogTextColor } from "@spt-aki/models/spt/logging/LogTextColor";
+import { LogBackgroundColor } from "@spt-aki/models/spt/logging/LogBackgroundColor";
 
 class Mod implements IPreAkiLoadMod
 {
@@ -12,7 +14,7 @@ class Mod implements IPreAkiLoadMod
         logger.info("I am logging info!");
         logger.warning("I am logging a warning!");
         logger.error("I am logging an error!");
-		logger.logWithColor("I am logging with color!", red, yellow);
+		logger.logWithColor("I am logging with color!", LogTextColor.yellow, LogBackgroundColor.red);
     }
 }
 
