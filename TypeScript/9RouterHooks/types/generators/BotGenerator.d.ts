@@ -1,13 +1,14 @@
 import { BotHelper } from "../helpers/BotHelper";
 import { GameEventHelper } from "../helpers/GameEventHelper";
+import { ProfileHelper } from "../helpers/ProfileHelper";
 import { IGenerateBotsRequestData } from "../models/eft/bot/IGenerateBotsRequestData";
-import { Health as PmcHealth } from "../models/eft/common/IPmcData";
-import { IBotBase } from "../models/eft/common/tables/IBotBase";
-import { Health, Inventory, Skills } from "../models/eft/common/tables/IBotType";
+import { Health as PmcHealth, IBotBase, Skills } from "../models/eft/common/tables/IBotBase";
+import { Health, IBotType, Inventory } from "../models/eft/common/tables/IBotType";
 import { IBotConfig } from "../models/spt/config/IBotConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { BotEquipmentFilterService } from "../services/BotEquipmentFilterService";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
@@ -23,19 +24,30 @@ export declare class BotGenerator {
     protected hashUtil: HashUtil;
     protected randomUtil: RandomUtil;
     protected jsonUtil: JsonUtil;
+    protected profileHelper: ProfileHelper;
     protected databaseServer: DatabaseServer;
     protected botInventoryGenerator: BotInventoryGenerator;
+    protected botEquipmentFilterService: BotEquipmentFilterService;
     protected botHelper: BotHelper;
     protected gameEventHelper: GameEventHelper;
     protected configServer: ConfigServer;
     protected botConfig: IBotConfig;
-    constructor(logger: ILogger, hashUtil: HashUtil, randomUtil: RandomUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, botInventoryGenerator: BotInventoryGenerator, botHelper: BotHelper, gameEventHelper: GameEventHelper, configServer: ConfigServer);
-    generate(info: IGenerateBotsRequestData, playerScav?: boolean): IBotBase[];
+    constructor(logger: ILogger, hashUtil: HashUtil, randomUtil: RandomUtil, jsonUtil: JsonUtil, profileHelper: ProfileHelper, databaseServer: DatabaseServer, botInventoryGenerator: BotInventoryGenerator, botEquipmentFilterService: BotEquipmentFilterService, botHelper: BotHelper, gameEventHelper: GameEventHelper, configServer: ConfigServer);
     /**
-     * Choose if a bot should become a Pmc by checking if bot type is allowed to become a Pmc in bot config
-     * @param isPlayerScav is a player scav being generated, forces choice returned to never be a pmc
+     * Generate a player scav bot object
+     * @param role e.g. assault / pmcbot
+     * @param difficulty easy/normal/hard/impossible
+     * @param botTemplate base bot template to use  (e.g. assault/pmcbot)
+     * @returns
      */
-    protected shouldBotBePmc(isPlayerScav: boolean, role: string): boolean;
+    generatePlayerScav(role: string, difficulty: string, botTemplate: IBotType): IBotBase;
+    generate(sessionId: string, info: IGenerateBotsRequestData): IBotBase[];
+    /**
+     * Choose if a bot should become a PMC by checking if bot type is allowed to become a Pmc in botConfig.convertFromChances and doing a random int check
+     * @param botRole the bot role to check if should be a pmc
+     * @returns true if should be a pmc
+     */
+    protected shouldBotBePmc(botRole: string): boolean;
     /**
      * Get a randomised PMC side based on bot config value 'isUsec'
      * @returns pmc side as string
@@ -46,7 +58,7 @@ export declare class BotGenerator {
      * @returns IBotBase object
      */
     protected getCloneOfBotBase(): IBotBase;
-    protected generateBot(bot: IBotBase, role: string, isPmc: boolean): IBotBase;
+    protected generateBot(bot: IBotBase, role: string, node: IBotType, isPmc: boolean, isPlayerScav?: boolean): IBotBase;
     /**
      * Log the number of PMCs generated to the debug console
      */

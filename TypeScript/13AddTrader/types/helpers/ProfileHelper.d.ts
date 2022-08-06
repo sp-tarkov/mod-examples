@@ -1,4 +1,5 @@
-import { IPmcData, Stats } from "../models/eft/common/IPmcData";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { Stats } from "../models/eft/common/tables/IBotBase";
 import { IAkiProfile } from "../models/eft/profile/IAkiProfile";
 import { IValidateNicknameRequestData } from "../models/eft/profile/IValidateNicknameRequestData";
 import { DatabaseServer } from "../servers/DatabaseServer";
@@ -36,4 +37,10 @@ export declare class ProfileHelper {
     getDefaultCounters(): Stats;
     protected isWiped(sessionID: string): boolean;
     protected getServerVersion(): string;
+    /**
+     * Iterate over player profile inventory items and find the secure container and remove it
+     * @param profile Profile to remove secure container from
+     * @returns profile without secure container
+     */
+    removeSecureContainer(profile: IPmcData): IPmcData;
 }

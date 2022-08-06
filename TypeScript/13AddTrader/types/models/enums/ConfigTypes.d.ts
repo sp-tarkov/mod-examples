@@ -11,9 +11,11 @@ export declare enum ConfigTypes {
     LOCALE = "aki-locale",
     LOCATION = "aki-location",
     MATCH = "aki-match",
+    PLAYERSCAV = "aki-playerscav",
     QUEST = "aki-quest",
     RAGFAIR = "aki-ragfair",
     REPAIR = "aki-repair",
+    SCAVCASE = "aki-scavcase",
     TRADER = "aki-trader",
     WEATHER = "aki-weather"
 }

@@ -1,4 +1,4 @@
-import { Skills } from "../common/IPmcData";
+import { Skills } from "../common/tables/IBotBase";
 import { Item, Upd } from "../common/tables/IItem";
 import { IQuest } from "../common/tables/IQuest";
 import { IPmcDataRepeatableQuest } from "../common/tables/IRepeatableQuests";

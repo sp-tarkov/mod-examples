@@ -1,6 +1,7 @@
 /// <reference types="node" />
 /// <reference types="node" />
 import http, { ServerResponse } from "http";
+import { ApplicationContext } from "../context/ApplicationContext";
 import { Serializer } from "../di/Serializer";
 import { HttpServerHelper } from "../helpers/HttpServerHelper";
 import { NotifierHelper } from "../helpers/NotifierHelper";
@@ -25,8 +26,9 @@ export declare class HttpServer implements IHttpServer {
     protected httpServerHelper: HttpServerHelper;
     protected serializers: Serializer[];
     protected configServer: ConfigServer;
+    protected applicationContext: ApplicationContext;
     constructor(httpRouter: HttpRouter, // TODO: delay required
-    logger: ILogger, randomUtil: RandomUtil, jsonUtil: JsonUtil, httpResponse: HttpResponseUtil, databaseServer: DatabaseServer, notifierHelper: NotifierHelper, httpServerHelper: HttpServerHelper, serializers: Serializer[], configServer: ConfigServer);
+    logger: ILogger, randomUtil: RandomUtil, jsonUtil: JsonUtil, httpResponse: HttpResponseUtil, databaseServer: DatabaseServer, notifierHelper: NotifierHelper, httpServerHelper: HttpServerHelper, serializers: Serializer[], configServer: ConfigServer, applicationContext: ApplicationContext);
     protected buffers: {};
     protected onReceive: {};
     protected onRespond: {};

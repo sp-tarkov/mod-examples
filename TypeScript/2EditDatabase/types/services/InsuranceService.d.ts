@@ -34,7 +34,13 @@ export declare class InsuranceService {
     addInsuranceItemToArray(sessionId: string, traderId: string, itemToAdd: any): void;
     getItemPrice(_tpl: string): number;
     generateTemplatesById(): void;
-    sendInsuredItems(pmcData: IPmcData, sessionID: string): void;
+    /**
+     * Sends stored insured items as message to player
+     * @param pmcData profile to modify
+     * @param sessionID SessionId of current player
+     * @param mapId Id of the map player died/exited that caused the insurance to be issued on
+     */
+    sendInsuredItems(pmcData: IPmcData, sessionID: string, mapId: string): void;
     storeLostGear(pmcData: IPmcData, offraidData: ISaveProgressRequestData, preRaidGear: Item[], sessionID: string): void;
     storeInsuredItemsForReturn(pmcData: IPmcData, offraidData: ISaveProgressRequestData, preRaidGear: Item[], sessionID: string): void;
     protected addGearToSend(pmcData: IPmcData, insuredItem: any, actualItem: any, sessionID: string): any;

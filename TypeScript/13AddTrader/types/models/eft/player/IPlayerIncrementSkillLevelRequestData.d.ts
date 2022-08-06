@@ -1,4 +1,4 @@
-import { Skills } from "../common/IPmcData";
+import { Skills } from "../common/tables/IBotBase";
 export interface IPlayerIncrementSkillLevelRequestData {
     _id: string;
     experience: number;

@@ -1,4 +1,5 @@
-import { InsuredItem, IPmcData } from "../models/eft/common/IPmcData";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { InsuredItem } from "../models/eft/common/tables/IBotBase";
 import { Item, Repairable } from "../models/eft/common/tables/IItem";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { ILogger } from "../models/spt/utils/ILogger";
@@ -36,7 +37,7 @@ declare class ItemHelper {
      * @param   {string}    baseclassTpl    the baseclass to check for
      * @return  {boolean}                   is the tpl a descendent?
      */
-    isOfBaseclass(tpl: string, baseclassTpl: string): any;
+    isOfBaseclass(tpl: string, baseclassTpl: string): boolean;
     /**
      * Returns the item price based on the handbook or as a fallback from the prices.json if the item is not
      * found in the handbook. If the price can't be found at all return 0

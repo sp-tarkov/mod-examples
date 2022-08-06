@@ -11,4 +11,5 @@ export declare class App {
     constructor(logger: ILogger, timeUtil: TimeUtil, onLoadComponents: OnLoad[], onUpdateComponents: OnUpdate[]);
     load(): void;
     protected update(onUpdateComponents: OnUpdate[]): void;
+    protected logUpdateException(err: any, updateable: OnUpdate): void;
 }

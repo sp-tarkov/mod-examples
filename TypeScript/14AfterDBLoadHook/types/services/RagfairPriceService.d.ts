@@ -27,6 +27,7 @@ export declare class RagfairPriceService {
     getDynamicPrice(itemTpl: string): number;
     getAllFleaPrices(): Record<string, number>;
     getFleaPriceForItem(tplId: string): number;
+    getStaticPriceForItem(tplId: string): number;
     getBarterPrice(barterScheme: IBarterScheme[]): number;
     getDynamicOfferPrice(items: Item[], desiredCurrency: string): number;
     /**

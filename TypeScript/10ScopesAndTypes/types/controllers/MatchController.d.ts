@@ -1,3 +1,4 @@
+import { ApplicationContext } from "../context/ApplicationContext";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
@@ -21,9 +22,10 @@ export declare class MatchController {
     protected traderHelper: TraderHelper;
     protected botLootCacheService: BotLootCacheService;
     protected configServer: ConfigServer;
+    protected applicationContext: ApplicationContext;
     protected matchConfig: IMatchConfig;
     protected inraidConfig: IInRaidConfig;
-    constructor(saveServer: SaveServer, profileHelper: ProfileHelper, matchLocationService: MatchLocationService, traderHelper: TraderHelper, botLootCacheService: BotLootCacheService, configServer: ConfigServer);
+    constructor(saveServer: SaveServer, profileHelper: ProfileHelper, matchLocationService: MatchLocationService, traderHelper: TraderHelper, botLootCacheService: BotLootCacheService, configServer: ConfigServer, applicationContext: ApplicationContext);
     getEnabled(): boolean;
     getProfile(info: IGetProfileRequestData): IPmcData[];
     createGroup(sessionID: string, info: ICreateGroupRequestData): any;

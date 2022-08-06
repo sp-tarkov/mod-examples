@@ -1,3 +1,5 @@
+import { MinMax } from "../../../common/MinMax";
+import { Skills } from "./IBotBase";
 export interface IBotType {
     appearance: Appearance;
     chances: Chances;
@@ -121,12 +123,9 @@ export interface BodyPart {
     RightLeg: MinMax;
     Stomach: MinMax;
 }
-export interface MinMax {
-    max: number;
-    min: number;
-}
 export interface Inventory {
     equipment: Equipment;
+    Ammo: Record<string, Record<string, number>>;
     items: Items;
     mods: Mods;
 }
@@ -154,23 +153,3 @@ export interface Items {
     TacticalVest: string[];
 }
 export declare type Mods = Record<string, Record<string, string[]>>;
-export interface Skills {
-    Common: Common[];
-    Bonuses?: any;
-    Mastering: Mastering[];
-    Points: number;
-}
-export interface Mastering {
-    Id: string;
-    Progress: number;
-    max?: number;
-    min?: number;
-}
-export interface Common {
-    Id: string;
-    Progress: number;
-    PointsEarnedDuringSession?: number;
-    LastAccess?: number;
-    max?: number;
-    min?: number;
-}

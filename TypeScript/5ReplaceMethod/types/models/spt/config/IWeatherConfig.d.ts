@@ -1,3 +1,4 @@
+import { MinMax } from "../../common/MinMax";
 import { IBaseConfig } from "./IBaseConfig";
 export interface IWeatherConfig extends IBaseConfig {
     kind: "aki-weather";
@@ -14,8 +15,4 @@ export interface Weather {
     fog: MinMax;
     temp: MinMax;
     pressure: MinMax;
-}
-export interface MinMax {
-    min: number;
-    max: number;
 }

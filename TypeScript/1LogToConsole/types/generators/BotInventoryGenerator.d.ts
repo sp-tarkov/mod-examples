@@ -1,4 +1,4 @@
-import { Inventory as PmcInventory } from "../models/eft/common/IPmcData";
+import { Inventory as PmcInventory } from "../models/eft/common/tables/IBotBase";
 import { Inventory, Chances, Generation, Mods } from "../models/eft/common/tables/IBotType";
 import { HashUtil } from "../utils/HashUtil";
 import { RandomUtil } from "../utils/RandomUtil";

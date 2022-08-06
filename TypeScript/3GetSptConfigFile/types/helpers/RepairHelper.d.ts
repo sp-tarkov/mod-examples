@@ -14,7 +14,7 @@ export declare class RepairHelper {
     protected configServer: ConfigServer;
     protected repairConfig: IRepairConfig;
     constructor(logger: ILogger, jsonUtil: JsonUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, configServer: ConfigServer);
-    updateItemDurability(itemToRepair: Item, itemToRepairDetails: ITemplateItem, isArmor: boolean, amountToRepair: number, useRepairKit?: boolean): Item;
+    updateItemDurability(itemToRepair: Item, itemToRepairDetails: ITemplateItem, isArmor: boolean, amountToRepair: number, useRepairKit?: boolean, applyRandomDegradation?: boolean): Item;
     protected getRandomisedArmorRepairDegredationValue(armorMaterial: string, isRepairKit: boolean, armorMax: number): number;
     protected getRandomisedWeaponRepairDegredationValue(itemProps: Props, isRepairKit: boolean, armorMax: number): number;
     isWeaponTemplate(tpl: string): boolean;

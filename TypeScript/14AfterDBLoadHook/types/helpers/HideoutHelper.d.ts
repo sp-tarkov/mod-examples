@@ -1,6 +1,6 @@
-import { Common, HideoutArea, IPmcData, Production, Productive } from "../models/eft/common/IPmcData";
+import { IPmcData } from "../models/eft/common/IPmcData";
+import { Common, HideoutArea, Production, Productive } from "../models/eft/common/tables/IBotBase";
 import { Upd } from "../models/eft/common/tables/IItem";
-import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { StageBonus } from "../models/eft/hideout/IHideoutArea";
 import { IHideoutContinousProductionStartRequestData } from "../models/eft/hideout/IHideoutContinousProductionStartRequestData";
 import { IHideoutSingleProductionStartRequestData } from "../models/eft/hideout/IHideoutSingleProductionStartRequestData";
@@ -64,5 +64,4 @@ export declare class HideoutHelper {
     protected getHideoutManagementConsumptionBonus(pmcData: IPmcData): number;
     isProduction(productive: Productive): productive is Production;
     getBTC(pmcData: IPmcData, body: IHideoutTakeProductionRequestData, sessionID: string): IItemEventRouterResponse;
-    getRandomAmountRewardForScavCase(itemToCalculate: ITemplateItem): number;
 }

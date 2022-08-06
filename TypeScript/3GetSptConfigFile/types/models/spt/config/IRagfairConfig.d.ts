@@ -1,3 +1,4 @@
+import { MinMax } from "../../common/MinMax";
 import { IBaseConfig } from "./IBaseConfig";
 export interface IRagfairConfig extends IBaseConfig {
     kind: "aki-ragfair";
@@ -39,10 +40,6 @@ export interface Dynamic {
     currencies: Record<string, number>;
     showAsSingleStack: string[];
     blacklist: Blacklist;
-}
-export interface MinMax {
-    min: number;
-    max: number;
 }
 export interface Condition {
     conditionChance: number;

@@ -1,8 +1,8 @@
 import { INotification } from "../models/eft/notifier/INotifier";
 export declare class NotificationService {
-    protected messageQueue: {};
-    getMessageQueue(): {};
-    getMessageFromQueue(sessionId: string): any;
+    protected messageQueue: Record<string, any[]>;
+    getMessageQueue(): Record<string, any[]>;
+    getMessageFromQueue(sessionId: string): any[];
     updateMessageOnQueue(sessionId: string, value: any[]): void;
     has(sessionID: string): boolean;
     /**
@@ -17,5 +17,5 @@ export declare class NotificationService {
      * Get message queue for session
      * @param sessionID
      */
-    get(sessionID: string): any;
+    get(sessionID: string): any[];
 }

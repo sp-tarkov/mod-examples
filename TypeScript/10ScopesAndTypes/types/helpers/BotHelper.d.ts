@@ -1,4 +1,4 @@
-import { Difficulty } from "../models/eft/common/tables/IBotType";
+import { Difficulty, IBotType } from "../models/eft/common/tables/IBotType";
 import { IBotConfig } from "../models/spt/config/IBotConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
@@ -14,6 +14,7 @@ export declare class BotHelper {
     protected botConfig: IBotConfig;
     constructor(logger: ILogger, jsonUtil: JsonUtil, databaseServer: DatabaseServer, randomUtil: RandomUtil, configServer: ConfigServer);
     getBotDifficultySettings(type: string, difficulty: string): Difficulty;
+    getBotTemplate(role: string): IBotType;
     getPmcDifficultySettings(type: string, difficulty: string): Difficulty;
     /**
      * Randomise the chance the PMC will attack their own side

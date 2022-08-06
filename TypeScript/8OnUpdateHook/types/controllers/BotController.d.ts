@@ -30,6 +30,6 @@ export declare class BotController {
      */
     getBotDifficulty(type: string, difficulty: string): Difficulty;
     protected getPmcDifficultySettings(pmcType: "bear" | "usec", difficulty: string): Difficulty;
-    generate(info: IGenerateBotsRequestData, playerScav?: boolean): IBotBase[];
+    generate(sessionId: string, info: IGenerateBotsRequestData): IBotBase[];
     getBotCap(): number;
 }

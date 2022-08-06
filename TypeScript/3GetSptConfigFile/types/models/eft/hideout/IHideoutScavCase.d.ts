@@ -1,3 +1,4 @@
+import { MinMax } from "../../common/MinMax";
 export interface IHideoutScavCase {
     _id: string;
     ProductionTime: number;
@@ -14,8 +15,4 @@ export interface EndProducts {
     Common: MinMax;
     Rare: MinMax;
     Superrare: MinMax;
-}
-export interface MinMax {
-    min: string;
-    max: string;
 }
