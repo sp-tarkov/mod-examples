@@ -41,5 +41,4 @@ export declare class InsuranceController {
      * @returns response object to send to client
      */
     cost(info: IGetInsuranceCostRequestData, sessionID: string): IGetInsuranceCostResponseData;
-    doAbsolutelyNothing(): void;
 }

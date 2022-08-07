@@ -22,7 +22,6 @@ export declare class InsuranceService {
     protected dialogueHelper: DialogueHelper;
     protected configServer: ConfigServer;
     protected insured: Record<string, Record<string, Item[]>>;
-    protected templatesById: {};
     protected insuranceConfig: IInsuranceConfig;
     constructor(logger: ILogger, databaseServer: DatabaseServer, secureContainerHelper: SecureContainerHelper, randomUtil: RandomUtil, timeUtil: TimeUtil, saveServer: SaveServer, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, configServer: ConfigServer);
     insuranceExists(sessionId: string): boolean;
@@ -32,8 +31,12 @@ export declare class InsuranceService {
     resetInsurance(sessionId: string): void;
     resetInsuranceTraderArray(sessionId: string, traderId: string): void;
     addInsuranceItemToArray(sessionId: string, traderId: string, itemToAdd: any): void;
-    getItemPrice(_tpl: string): number;
-    generateTemplatesById(): void;
+    /**
+     * Get the rouble price for an item by templateId
+     * @param itemTpl item tpl to get handbook price for
+     * @returns handbook price in roubles, Return 0 if not found
+     */
+    getItemPrice(itemTpl: string): number;
     /**
      * Sends stored insured items as message to player
      * @param pmcData profile to modify
