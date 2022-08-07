@@ -114,10 +114,11 @@ export interface PmcDynamicLoot {
     moneyStackLimits: Record<string, number>;
 }
 export interface Equipment {
-    blacklist: EquipmentBlacklistDetails[];
+    blacklist: EquipmentFilterDetails[];
+    whitelist: EquipmentFilterDetails[];
 }
-export interface EquipmentBlacklistDetails {
+export interface EquipmentFilterDetails {
     levelRange: MinMax;
-    equipment: string[];
-    cartridge: string[];
+    equipment: Record<string, string[]>;
+    cartridge: Record<string, string[]>;
 }
