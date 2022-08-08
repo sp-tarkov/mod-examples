@@ -16,7 +16,7 @@ export declare class NotifierCallbacks {
      * until we actually have something to send because otherwise we'd spam the client
      * and the client would abort the connection due to spam.
      */
-    sendNotification(_sessionID: string, req: any, resp: any, _data: any): void;
+    sendNotification(sessionID: string, req: any, resp: any, data: any): void;
     getNotifier(url: string, info: any, sessionID: string): IGetBodyResponseData<any[]>;
     createNotifierChannel(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<INotifierChannel>;
     selectProfile(url: string, info: ISelectProfileRequestData, sessionID: string): IGetBodyResponseData<any>;

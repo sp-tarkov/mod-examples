@@ -26,7 +26,7 @@ export declare class RagfairServerHelper {
     protected configServer: ConfigServer;
     protected ragfairConfig: IRagfairConfig;
     protected questConfig: IQuestConfig;
-    protected static TPL_GOODS_RETURNED: string;
+    protected static goodsReturnedTemplate: string;
     constructor(randomUtil: RandomUtil, hashUtil: HashUtil, saveServer: SaveServer, databaseServer: DatabaseServer, profileHelper: ProfileHelper, itemHelper: ItemHelper, localeService: LocaleService, dialogueHelper: DialogueHelper, jsonUtil: JsonUtil, configServer: ConfigServer);
     /**
      * Is item valid / on blacklist / quest item

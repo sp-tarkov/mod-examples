@@ -21,7 +21,6 @@ export declare class RepairController {
     protected repairHelper: RepairHelper;
     protected configServer: ConfigServer;
     protected repairConfig: IRepairConfig;
-    protected readonly WEAPON_SKILL_REPAIR_GAIN: number;
     constructor(logger: ILogger, itemEventRouter: ItemEventRouter, databaseServer: DatabaseServer, questHelper: QuestHelper, traderHelper: TraderHelper, paymentService: PaymentService, repairHelper: RepairHelper, configServer: ConfigServer);
     /**
      * Repair with trader

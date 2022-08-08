@@ -30,14 +30,10 @@ export declare class HideoutHelper {
     protected inventoryHelper: InventoryHelper;
     protected playerService: PlayerService;
     protected configServer: ConfigServer;
-    static BITCOIN_FARM: string;
-    protected WATER_COLLECTOR: string;
-    protected BITCOIN: string;
-    protected EXPEDITIONARY_FUEL_TANK: string;
-    static NAME_BACKENDCOUNTERS_CRAFTING: string;
-    static SKILL_NAME_HIDEOUT: string;
-    static HOUR_FOR_SKILL_CRAFTING: number;
-    static SKILL_NAME_CRAFITING: string;
+    static bitcoinFarm: string;
+    static waterCollector: string;
+    static bitcoin: string;
+    static expeditionaryFuelTank: string;
     protected hideoutConfig: IHideoutConfig;
     constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, itemEventRouter: ItemEventRouter, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, inventoryHelper: InventoryHelper, playerService: PlayerService, configServer: ConfigServer);
     registerProduction(pmcData: IPmcData, body: IHideoutSingleProductionStartRequestData | IHideoutContinousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;

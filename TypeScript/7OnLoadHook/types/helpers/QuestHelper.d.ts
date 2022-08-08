@@ -48,7 +48,7 @@ export declare class QuestHelper {
      * Debug Routine for showing some information on the
      * quest list in question.
      */
-    dumpQuests(quests: any, label?: any): void;
+    dumpQuests(quests: any): void;
     loyaltyRequirementCheck(loyaltyRequirementProperties: AvailableForProps, profile: IPmcData): boolean;
     protected processReward(reward: Reward): any[];
     getQuestRewardItems(quest: IQuest, state: QuestStatus): Reward[];
