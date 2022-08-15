@@ -42,7 +42,15 @@ export declare class QuestHelper {
      */
     evaluateLevel(pmcProfile: IPmcData, cond: AvailableForConditions): boolean;
     getDeltaQuests(before: IQuest[], after: IQuest[]): IQuest[];
-    rewardSkillPoints(sessionID: string, pmcData: IPmcData, output: IItemEventRouterResponse, skillName: string, progress: number): void;
+    /**
+     * Increase skill points of a skill on player profile
+     * @param sessionID Session id
+     * @param pmcData Player profile
+     * @param output output object to send back to client
+     * @param skillName Name of skill to increase skill points of
+     * @param progressAmount Amount of skill points to add to skill
+     */
+    rewardSkillPoints(sessionID: string, pmcData: IPmcData, output: IItemEventRouterResponse, skillName: string, progressAmount: number): void;
     getQuestLocale(questId: string): any;
     /**
      * Debug Routine for showing some information on the

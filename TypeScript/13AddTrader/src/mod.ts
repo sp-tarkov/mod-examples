@@ -88,6 +88,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
     private createAssortTable(): ITraderAssort {
         // Assort table
         const assortTable: ITraderAssort = {
+            nextResupply: 0,
             items: [],
             barter_scheme: {},
             loyal_level_items: {}

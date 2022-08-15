@@ -1,4 +1,6 @@
 import { RagfairOfferGenerator } from "../generators/RagfairOfferGenerator";
+import { TraderAssortHelper } from "../helpers/TraderAssortHelper";
+import { TraderHelper } from "../helpers/TraderHelper";
 import { IRagfairOffer } from "../models/eft/ragfair/IRagfairOffer";
 import { IRagfairConfig } from "../models/spt/config/IRagfairConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
@@ -12,11 +14,18 @@ export declare class RagfairServer {
     protected ragfairOfferService: RagfairOfferService;
     protected ragfairCategoriesService: RagfairCategoriesService;
     protected ragfairRequiredItemsService: RagfairRequiredItemsService;
+    protected traderHelper: TraderHelper;
+    protected traderAssortHelper: TraderAssortHelper;
     protected configServer: ConfigServer;
     protected ragfairConfig: IRagfairConfig;
-    constructor(logger: ILogger, ragfairOfferGenerator: RagfairOfferGenerator, ragfairOfferService: RagfairOfferService, ragfairCategoriesService: RagfairCategoriesService, ragfairRequiredItemsService: RagfairRequiredItemsService, configServer: ConfigServer);
+    constructor(logger: ILogger, ragfairOfferGenerator: RagfairOfferGenerator, ragfairOfferService: RagfairOfferService, ragfairCategoriesService: RagfairCategoriesService, ragfairRequiredItemsService: RagfairRequiredItemsService, traderHelper: TraderHelper, traderAssortHelper: TraderAssortHelper, configServer: ConfigServer);
     load(): void;
     update(): void;
+    /**
+     * Get traders who need to be periodically refreshed
+     * @returns string array of traders
+     */
+    protected getUpdateableTraders(): string[];
     getAllCategories(): Record<string, number>;
     getBespokeCategories(offers: IRagfairOffer[]): Record<string, number>;
     /**

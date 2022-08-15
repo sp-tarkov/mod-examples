@@ -1,5 +1,5 @@
 export declare enum Effect {
-    Fracture = "Fracture",
-    LightBleeding = "LightBleeding",
-    HeavyBleeding = "HeavyBleeding"
+    FRACTURE = "Fracture",
+    LIGHT_BLEEDING = "LightBleeding",
+    HEAVY_BLEEDING = "HeavyBleeding"
 }

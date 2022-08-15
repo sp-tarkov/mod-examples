@@ -24,7 +24,6 @@ export declare class RagfairOfferService {
     protected httpResponse: HttpResponseUtil;
     protected configServer: ConfigServer;
     protected playerOffersLoaded: boolean;
-    protected toUpdate: Record<string, boolean>;
     protected expiredOffers: Item[];
     protected offers: IRagfairOffer[];
     protected ragfairConfig: IRagfairConfig;
@@ -38,8 +37,6 @@ export declare class RagfairOfferService {
     getOffersOfType(templateId: string): IRagfairOffer[];
     addOffer(offer: IRagfairOffer): void;
     addOfferToExpired(staleOffer: IRagfairOffer): void;
-    setTraderUpdateStatus(traderId: string, shouldUpdate: boolean): void;
-    shouldTraderBeUpdated(traderID: string): boolean;
     getExpiredOfferCount(): number;
     /**
      * Get an array of expired items not yet processed into new offers
@@ -53,12 +50,15 @@ export declare class RagfairOfferService {
      * @returns offer exists - true
      */
     doesOfferExist(offerId: string): boolean;
-    getTraders(): Record<string, boolean>;
-    flagTraderForUpdate(expiredOfferUserId: string): void;
     removeOfferById(offerId: string): void;
     removeOfferStack(offerID: string, amount: number): void;
     removeAllOffersByTrader(traderId: string): void;
-    addTradersToUpdateList(): void;
+    /**
+     * Do the trader offers on flea need to be refreshed
+     * @param traderID Trader to check
+     * @returns true if they do
+     */
+    traderOffersNeedRefreshing(traderID: string): boolean;
     addPlayerOffers(): void;
     expireStaleOffers(): void;
     /**

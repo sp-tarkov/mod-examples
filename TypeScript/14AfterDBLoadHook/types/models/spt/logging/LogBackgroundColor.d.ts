@@ -1,11 +1,11 @@
 export declare enum LogBackgroundColor {
-    default = "",
-    black = "blackBG",
-    red = "redBG",
-    green = "greenBG",
-    yellow = "yellowBG",
-    blue = "blueBG",
-    magenta = "magentaBG",
-    cyan = "cyanBG",
-    white = "whiteBG"
+    DEFAULT = "",
+    BLACK = "blackBG",
+    RED = "redBG",
+    GREEN = "greenBG",
+    YELLOW = "yellowBG",
+    BLUE = "blueBG",
+    MAGENTA = "magentaBG",
+    CYAN = "cyanBG",
+    WHITE = "whiteBG"
 }

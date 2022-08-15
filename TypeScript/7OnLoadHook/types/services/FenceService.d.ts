@@ -11,10 +11,12 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
+import { TimeUtil } from "../utils/TimeUtil";
 export declare class FenceService {
     protected logger: ILogger;
     protected hashUtil: HashUtil;
     protected jsonUtil: JsonUtil;
+    protected timeUtil: TimeUtil;
     protected randomUtil: RandomUtil;
     protected databaseServer: DatabaseServer;
     protected handbookHelper: HandbookHelper;
@@ -23,11 +25,24 @@ export declare class FenceService {
     protected configServer: ConfigServer;
     protected fenceAssort: ITraderAssort;
     protected traderConfig: ITraderConfig;
-    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, itemHelper: ItemHelper, presetHelper: PresetHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, itemHelper: ItemHelper, presetHelper: PresetHelper, configServer: ConfigServer);
     protected setFenceAssort(fenceAssort: ITraderAssort): void;
     getFenceAssorts(): ITraderAssort;
-    hasExpiredCache(refreshAssort: boolean): boolean;
+    /**
+     * Get the count of items fence offers
+     * @returns number
+     */
+    getOfferCount(): number;
     generateFenceAssortCache(pmcData: IPmcData): void;
+    /**
+     * Get the next update timestamp for fence
+     * @returns future timestamp
+     */
+    getNextFenceUpdateTimestamp(): number;
+    /**
+     * Get fence refresh time in seconds
+     */
+    protected getFenceRefreshTime(): number;
     /**
      * Get the fence level the passed in profile has
      * @param pmcData Player profile

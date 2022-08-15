@@ -17,10 +17,25 @@ export declare class TraderController {
     protected traderAssortService: TraderAssortService;
     protected jsonUtil: JsonUtil;
     constructor(logger: ILogger, databaseServer: DatabaseServer, traderAssortHelper: TraderAssortHelper, profileHelper: ProfileHelper, traderHelper: TraderHelper, timeUtil: TimeUtil, traderAssortService: TraderAssortService, jsonUtil: JsonUtil);
+    /**
+     * Runs when onLoad event is fired
+     * Iterate over traders, ensure an unmolested copy of their assorts is stored in traderAssortService
+     * Store timestamp of next assort refresh in nextResupply property of traders .base object
+     */
     load(): void;
-    getTrader(traderID: string, sessionID: string): ITraderBase;
+    /**
+     * Runs when onUpdate is fired
+     * If current time is > nextResupply(expire) time of trader, refresh traders assorts and
+     * @returns has run
+     */
+    update(): boolean;
+    /**
+     * Return an array of all traders
+     * @param sessionID Session id
+     * @returns array if ITraderBase objects
+     */
     getAllTraders(sessionID: string): ITraderBase[];
-    updateTraders(): boolean;
+    getTrader(sessionID: string, traderID: string): ITraderBase;
     getAssort(sessionId: string, traderId: string): ITraderAssort;
-    getPurchasesData(traderID: string, sessionID: string): Record<string, IBarterScheme[][]>;
+    getPurchasesData(sessionID: string, traderID: string): Record<string, IBarterScheme[][]>;
 }

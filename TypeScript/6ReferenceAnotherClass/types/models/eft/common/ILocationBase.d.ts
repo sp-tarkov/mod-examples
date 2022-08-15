@@ -137,7 +137,7 @@ export interface BotLocationModifier {
     VisibleDistance: number;
 }
 export interface MinMaxBot {
-    WildSpawnType: string;
+    WildSpawnType: WildSpawnType;
     max: number;
     min: number;
 }
@@ -195,11 +195,15 @@ export interface Wave {
     BotPreset: string;
     BotSide: string;
     SpawnPoints: string;
-    WildSpawnType: string;
+    WildSpawnType: WildSpawnType;
     isPlayers: boolean;
     number: number;
     slots_max: number;
     slots_min: number;
     time_max: number;
     time_min: number;
+}
+export declare enum WildSpawnType {
+    ASSAULT = "assault",
+    MARKSMAN = "marksman"
 }

@@ -5,6 +5,7 @@ import { ISaveProgressRequestData } from "../models/eft/inRaid/ISaveProgressRequ
 import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
+import { ProfileFixerService } from "../services/ProfileFixerService";
 import { JsonUtil } from "../utils/JsonUtil";
 import { InventoryHelper } from "./InventoryHelper";
 import { PaymentHelper } from "./PaymentHelper";
@@ -15,7 +16,8 @@ export declare class InRaidHelper {
     protected databaseServer: DatabaseServer;
     protected inventoryHelper: InventoryHelper;
     protected paymentHelper: PaymentHelper;
-    constructor(logger: ILogger, saveServer: SaveServer, jsonUtil: JsonUtil, databaseServer: DatabaseServer, inventoryHelper: InventoryHelper, paymentHelper: PaymentHelper);
+    protected profileFixerService: ProfileFixerService;
+    constructor(logger: ILogger, saveServer: SaveServer, jsonUtil: JsonUtil, databaseServer: DatabaseServer, inventoryHelper: InventoryHelper, paymentHelper: PaymentHelper, profileFixerService: ProfileFixerService);
     /**
      * Reset the SPT inraid property stored in a profile to 'none'
      * @param sessionID Session id
