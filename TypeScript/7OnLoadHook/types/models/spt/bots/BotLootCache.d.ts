@@ -11,13 +11,13 @@ export declare class BotLootCache {
     grenadeItems: ITemplateItem[];
 }
 export declare enum LootCacheType {
-    Special = "Special",
-    Backpack = "Backpack",
-    Pocket = "Pocket",
-    Vest = "Vest",
-    Combined = "Combined",
-    HealingItems = "HealingItems",
-    DrugItems = "DrugItems",
-    StimItems = "StimItems",
-    GrenadeItems = "GrenadeItems"
+    SPECIAL = "Special",
+    BACKPACK = "Backpack",
+    POCKET = "Pocket",
+    VEST = "Vest",
+    COMBINED = "Combined",
+    HEALING_ITEMS = "HealingItems",
+    DRUG_ITEMS = "DrugItems",
+    STIM_ITEMS = "StimItems",
+    GRENADE_ITEMS = "GrenadeItems"
 }

@@ -7,7 +7,7 @@ export interface ITrader {
     suits?: ISuit[];
 }
 export interface ITraderBase {
-    refreshAssort: boolean;
+    refreshTraderRagfairOffers: boolean;
     _id: string;
     avatar: string;
     balance_dol: number;
@@ -58,7 +58,7 @@ export interface Repair {
     quality: string;
 }
 export interface ITraderAssort {
-    nextResupply?: number;
+    nextResupply: number;
     items: Item[];
     barter_scheme: Record<string, IBarterScheme[][]>;
     loyal_level_items: Record<string, number>;

@@ -15,7 +15,7 @@ class Mod implements IPreAkiLoadMod, IPostAkiLoadMod, IPostDBLoadMod
         // Database will be empty in here
         const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
         const logger = container.resolve<ILogger>("WinstonLogger");
-        logger.logWithColor(`Database item table state: ${databaseServer.getTables().templates} (<<< should be undefined)`, LogTextColor.red, LogBackgroundColor.yellow);
+        logger.logWithColor(`Database item table state: ${databaseServer.getTables().templates} (<<< should be undefined)`, LogTextColor.RED, LogBackgroundColor.YELLOW);
     }
     
     public postDBLoad(container: DependencyContainer): void {
@@ -23,13 +23,13 @@ class Mod implements IPreAkiLoadMod, IPostAkiLoadMod, IPostDBLoadMod
         // logic has modified anything yet. This is the DB loaded straight from the JSON files
         const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
         const logger = container.resolve<ILogger>("WinstonLogger");
-        logger.logWithColor(`Database item size: ${Object.entries(databaseServer.getTables().templates.items).length}`, LogTextColor.red, LogBackgroundColor.yellow);
+        logger.logWithColor(`Database item size: ${Object.entries(databaseServer.getTables().templates.items).length}`, LogTextColor.RED, LogBackgroundColor.YELLOW);
         // lets do a quick modification and see how this reflect later on, on the postAkiLoad()
         
         // find the nvgs item by its Id
         const nvgs = databaseServer.getTables().templates.items["5c0558060db834001b735271"];
         // Lets log the state before the modification:
-        logger.logWithColor(`NVGs default CanSellOnRagfair: ${nvgs._props.CanSellOnRagfair}`, LogTextColor.red, LogBackgroundColor.yellow);
+        logger.logWithColor(`NVGs default CanSellOnRagfair: ${nvgs._props.CanSellOnRagfair}`, LogTextColor.RED, LogBackgroundColor.YELLOW);
         // update one of its properties to be true
         nvgs._props.CanSellOnRagfair = true;
     }
@@ -43,7 +43,7 @@ class Mod implements IPreAkiLoadMod, IPostAkiLoadMod, IPostDBLoadMod
         // find the nvgs item again by its Id
         const nvgs = databaseServer.getTables().templates.items["5c0558060db834001b735271"];
         // Lets log the state, this value should be true:
-        logger.logWithColor(`NVGs modified CanSellOnRagfair: ${nvgs._props.CanSellOnRagfair}`, LogTextColor.red, LogBackgroundColor.yellow);
+        logger.logWithColor(`NVGs modified CanSellOnRagfair: ${nvgs._props.CanSellOnRagfair}`, LogTextColor.RED, LogBackgroundColor.YELLOW);
     }
 }
 

@@ -13,10 +13,10 @@ export interface ILocaleGlobalBase {
     season: Record<string, string>;
     customization: Record<string, ILocaleProps>;
     repeatableQuest: Record<string, string>;
-    templates: ILocaleTemplateBase;
-    locations: ILocaleLocationsBase;
-    banners: ILocaleBannersBase;
-    trading: ILocaleTradingBase;
+    templates: Record<string, ILocaleProps>;
+    locations: Record<string, ILocaleProps>;
+    banners: Record<string, ILocaleProps>;
+    trading: Record<string, ILocaleTradingProps>;
 }
 export interface ILocaleQuest {
     name: string;
@@ -31,22 +31,10 @@ export interface ILocaleQuest {
 export interface ILocalePreset {
     Name: string;
 }
-export interface ILocaleTemplateBase {
-    templates: Record<string, ILocaleProps>;
-}
-export interface ILocaleLocationsBase {
-    locations: Record<string, ILocaleProps>;
-}
-export interface ILocaleBannersBase {
-    locations: Record<string, ILocaleProps>;
-}
 export interface ILocaleProps {
     Name: string;
     ShortName: string;
     Description: string;
-}
-export interface ILocaleTradingBase {
-    locations: Record<string, ILocaleTradingProps>;
 }
 export interface ILocaleTradingProps {
     FullName: string;

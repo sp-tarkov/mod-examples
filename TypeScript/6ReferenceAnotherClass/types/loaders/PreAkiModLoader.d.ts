@@ -33,6 +33,17 @@ export declare class PreAkiModLoader implements IModLoader {
     protected importClass(name: string, filepath: string, container: DependencyContainer): void;
     protected importMods(): Promise<void>;
     /**
+     * Check for duplciate mods loaded, show error if duplicate mod found
+     * @param modPackageData dictionary of mod package.json data
+     */
+    protected checkForDuplicateMods(modPackageData: Record<string, IPackageJsonData>): void;
+    /**
+     * Check for and return duplicate strings inside an array
+     * @param stringArray Array to check for duplicates
+     * @returns string array of duplicates, empty if none found
+     */
+    protected getDuplicates(stringArray: string[]): string[];
+    /**
      *
      * @param mods Get an array of broken/invalid mods by name
      * @returns Mod names array

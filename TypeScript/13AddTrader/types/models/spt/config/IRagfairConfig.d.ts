@@ -27,7 +27,13 @@ export interface Reputation {
     gain: number;
     loss: number;
 }
+export declare class OfferAdjustment {
+    maxPriceDifferenceBelowHandbookPercent: number;
+    handbookPriceMultipier: number;
+    priceThreshholdRub: number;
+}
 export interface Dynamic {
+    offerAdjustment: OfferAdjustment;
     expiredOfferThreshold: number;
     offerItemCount: MinMax;
     price: MinMax;

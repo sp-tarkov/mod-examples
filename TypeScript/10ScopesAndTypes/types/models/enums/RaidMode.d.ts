@@ -1,5 +1,5 @@
 export declare enum RaidMode {
-    Online = "Online",
-    Local = "Local",
-    Coop = "Coop"
+    ONLINE = "Online",
+    LOCAL = "Local",
+    COOP = "Coop"
 }

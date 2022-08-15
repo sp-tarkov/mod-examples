@@ -27,6 +27,20 @@ export declare class RagfairPriceService {
     getDynamicPrice(itemTpl: string): number;
     getAllFleaPrices(): Record<string, number>;
     getFleaPriceForItem(tplId: string): number;
+    /**
+     * Check to see if an items price is below its handbook price and adjust accoring to values set to config/ragfair.json
+     * @param itemPrice price of item
+     * @param itemTpl item template Id being checked
+     * @returns adjusted price value in roubles
+     */
+    protected adjustPriceIfBelowHandbook(itemPrice: number, itemTpl: string): number;
+    /**
+     * Get the percentage difference between two values
+     * @param a numerical value a
+     * @param b numerical value b
+     * @returns different in percent
+     */
+    protected getPriceDifference(a: number, b: number): number;
     getStaticPriceForItem(tplId: string): number;
     getBarterPrice(barterScheme: IBarterScheme[]): number;
     getDynamicOfferPrice(items: Item[], desiredCurrency: string): number;

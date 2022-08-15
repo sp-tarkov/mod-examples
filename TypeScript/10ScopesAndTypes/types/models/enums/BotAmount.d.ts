@@ -1,7 +1,7 @@
 export declare enum BotAmount {
-    AsOnline = "AsOnline",
-    Low = "Low",
-    Medium = "Medium",
-    High = "High",
-    Horde = "Horde"
+    AS_ONLINE = "AsOnline",
+    LOW = "Low",
+    MEDIUM = "Medium",
+    HIGH = "High",
+    HORDE = "Horde"
 }

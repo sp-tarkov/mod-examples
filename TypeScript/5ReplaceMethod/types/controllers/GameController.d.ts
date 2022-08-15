@@ -25,4 +25,5 @@ export declare class GameController {
     protected logProfileDetails(fullProfile: IAkiProfile): void;
     getGameConfig(sessionID: string): IGameConfigResponse;
     getServer(): any[];
+    getValidGameVersion(): any;
 }

@@ -4,6 +4,10 @@ export declare class TimeUtil {
     formatDate(date: Date): string;
     getDate(): string;
     getTime(): string;
+    /**
+     * Get timestamp in seconds
+     * @returns
+     */
     getTimestamp(): number;
     /**
      * mail in eft requires time be in a specific format

@@ -1,8 +1,8 @@
 export declare enum BotDifficulty {
-    AsOnline = "AsOnline",
-    Easy = "Easy",
-    Medium = "Medium",
-    Hard = "Hard",
-    Impossible = "Impossible",
-    Random = "Random"
+    AS_ONLINE = "AsOnline",
+    EASY = "Easy",
+    MEDIUM = "Medium",
+    HARD = "Hard",
+    IMPOSSIBLE = "Impossible",
+    RANDOM = "Random"
 }
