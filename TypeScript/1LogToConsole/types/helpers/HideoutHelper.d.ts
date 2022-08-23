@@ -49,6 +49,15 @@ export declare class HideoutHelper {
     protected updateWaterCollector(sessionId: string, pmcData: IPmcData, area: HideoutArea, isGeneratorOn: boolean): void;
     protected doesWaterCollectorHaveFilter(waterCollector: HideoutArea): boolean;
     protected updateFuel(generatorArea: HideoutArea, pmcData: IPmcData): HideoutArea;
+    /**
+     *
+     * Filters are deleted when reaching 0 resourceValue
+     * @param waterFilterArea
+     * @param pwProd
+     * @param isGeneratorOn
+     * @param pmcData
+     * @returns
+     */
     protected updateWaterFilters(waterFilterArea: HideoutArea, pwProd: Production, isGeneratorOn: boolean, pmcData: IPmcData): HideoutArea;
     protected getAreaUpdObject(stackCount: number, resourceValue: number, resourceUnitsConsumed: number): Upd;
     protected updateAirFilters(airFilterArea: HideoutArea, pmcData: IPmcData): HideoutArea;

@@ -20,7 +20,22 @@ export declare class ProfileCallbacks {
     createProfile(url: string, info: IProfileCreateRequestData, sessionID: string): IGetBodyResponseData<any>;
     getProfileData(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
     regenerateScav(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
+    /**
+     * Handle client/game/profile/voice/change event
+     * @param url
+     * @param info Change voice request object
+     * @param sessionID Session id
+     * @returns Client response
+     */
     changeVoice(url: string, info: IProfileChangeVoiceRequestData, sessionID: string): INullResponseData;
+    /**
+     * Handle client/game/profile/nickname/change event
+     * Client allows player to adjust their profile name
+     * @param url
+     * @param info Change nickname request object
+     * @param sessionID Session id
+     * @returns client response
+     */
     changeNickname(url: string, info: IProfileChangeNicknameRequestData, sessionID: string): IGetBodyResponseData<any>;
     validateNickname(url: string, info: IValidateNicknameRequestData, sessionID: string): IGetBodyResponseData<any>;
     getReservedNickname(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<string>;

@@ -114,8 +114,15 @@ export interface PmcDynamicLoot {
     moneyStackLimits: Record<string, number>;
 }
 export interface Equipment {
+    /** How many scopes are allowed on a weapon - hard coded to work with OPTIC_SCOPE, ASSAULT_SCOPE, COLLIMATOR, COMPACT_COLLIMATOR */
+    weaponModLimits: ModLimits;
+    randomisedWeaponModSlots?: string[];
     blacklist: EquipmentFilterDetails[];
     whitelist: EquipmentFilterDetails[];
+}
+export interface ModLimits {
+    scopeLimit?: number;
+    lightLaserLimit?: number;
 }
 export interface EquipmentFilterDetails {
     levelRange: MinMax;

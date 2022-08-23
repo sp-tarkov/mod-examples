@@ -19,18 +19,6 @@ declare class ItemHelper {
      */
     isValidItem(tpl: string, invalidBaseTypes?: string[]): boolean;
     /**
-     * Checks if an id is a valid item. Valid meaning that it's an item that may be a reward
-     * or content of bot loot. Items that are tested as valid may be in a player backpack or stash.
-     * @param {*} tpl template id of item to check
-     * @returns boolean: true if item is valid reward
-     */
-    isValidRewardItem(tpl: string): boolean;
-    /**
-     * Picks rewardable items from items.json. This means they need to fit into the inventory and they shouldn't be keys (debatable)
-     * @returns     a list of rewardable items [[_tpl, itemTemplate],...]
-     */
-    getRewardableItems(): [string, ITemplateItem][];
-    /**
      * Check if the tpl / template Id provided is a descendent of the baseclass
      *
      * @param   {string}    tpl             the item template id to check

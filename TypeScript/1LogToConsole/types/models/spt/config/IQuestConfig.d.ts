@@ -15,6 +15,10 @@ export interface IRepeatableQuestConfig {
     locations: Record<ELocationName, string[]>;
     traderWhitelist: ITraderWhitelist[];
     questConfig: IQuestConfig;
+    /** Item base types to block when generating rewards */
+    rewardBaseTypeBlacklist: string[];
+    /** Item tplIds to ignore when generating rewards */
+    rewardBlacklist: string[];
 }
 export interface IRewardScaling {
     levels: number[];

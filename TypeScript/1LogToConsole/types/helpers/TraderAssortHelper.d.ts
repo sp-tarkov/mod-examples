@@ -41,7 +41,7 @@ export declare class TraderAssortHelper {
      * @param traderId traders id
      * @returns a traders' assorts
      */
-    getAssort(sessionId: string, traderId: string): ITraderAssort;
+    getAssort(sessionId: string, traderId: string, flea?: boolean): ITraderAssort;
     /**
      * if the fence assorts have expired, re-generate them
      * @param pmcProfile Players profile
