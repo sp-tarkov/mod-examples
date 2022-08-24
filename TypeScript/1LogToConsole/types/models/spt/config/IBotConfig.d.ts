@@ -95,6 +95,7 @@ export interface LootNvalue {
 }
 export interface PmcConfig {
     dynamicLoot: PmcDynamicLoot;
+    useDifficultyOverride: boolean;
     difficulty: string;
     looseWeaponInBackpackChancePercent: number;
     looseWeaponInBackpackLootMinMax: MinMax;
