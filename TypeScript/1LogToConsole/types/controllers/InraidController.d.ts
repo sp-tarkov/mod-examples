@@ -42,10 +42,11 @@ export declare class InraidController {
      */
     protected savePmcProgress(sessionID: string, offraidData: ISaveProgressRequestData): void;
     /**
-     * Reduce body part hp to 10% of max
+     * Reduce body part hp to % of max
      * @param pmcData profile to edit
+     * @param multipler multipler to apply to max health
      */
-    protected reducePmcHealthTo10Percent(pmcData: IPmcData): void;
+    protected reducePmcHealthToPercent(pmcData: IPmcData, multipler: number): void;
     /**
      * Handle updating the profile post-pscav raid
      * @param sessionID session id
@@ -53,7 +54,7 @@ export declare class InraidController {
      */
     protected savePlayerScavProgress(sessionID: string, offraidData: ISaveProgressRequestData): void;
     /**
-     * Is the player dead after a raid
+     * Is the player dead after a raid - dead is anything other than "survived" / "runner"
      * @param statusOnExit exit value from offraidData object
      * @returns true if dead
      */

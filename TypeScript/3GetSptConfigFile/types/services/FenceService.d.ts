@@ -12,6 +12,11 @@ import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
 import { TimeUtil } from "../utils/TimeUtil";
+import { ItemFilterService } from "./ItemFilterService";
+/**
+ * Handle actions surrounding Fence
+ * e.g. generating or refreshing assorts / get next refresh time
+ */
 export declare class FenceService {
     protected logger: ILogger;
     protected hashUtil: HashUtil;
@@ -22,18 +27,64 @@ export declare class FenceService {
     protected handbookHelper: HandbookHelper;
     protected itemHelper: ItemHelper;
     protected presetHelper: PresetHelper;
+    protected itemFilterService: ItemFilterService;
     protected configServer: ConfigServer;
     protected fenceAssort: ITraderAssort;
     protected traderConfig: ITraderConfig;
-    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, itemHelper: ItemHelper, presetHelper: PresetHelper, configServer: ConfigServer);
+    protected nextMiniRefreshTimestamp: number;
+    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, itemHelper: ItemHelper, presetHelper: PresetHelper, itemFilterService: ItemFilterService, configServer: ConfigServer);
     protected setFenceAssort(fenceAssort: ITraderAssort): void;
-    getFenceAssorts(): ITraderAssort;
+    /**
+     * Get assorts player can purchase
+     * Adjust prices based on fence level of player
+     * @param pmcProfile Player profile
+     * @returns ITraderAssort
+     */
+    getFenceAssorts(pmcProfile: IPmcData): ITraderAssort;
+    /**
+     * Get fence assorts with no price adjustments based on fence rep
+     * @returns ITraderAssort
+     */
+    getRawFenceAssorts(): ITraderAssort;
+    /**
+     * Does fence need to perform a partial refresh because its passed the refresh timer defined in trader.json
+     * @returns true if it needs a partial refresh
+     */
+    needsPartialRefresh(): boolean;
+    /**
+     * Replace a percentage of fence assorts with freshly generated items
+     */
+    performPartialRefresh(): void;
+    /**
+     * Choose an item (not mod) at random and remove from assorts
+     */
+    protected removeRandomItemFromAssorts(): void;
+    /**
+     * Get an integer rounded count of items to replace based on percentrage from traderConfig value
+     * @param totalItemCount total item count
+     * @returns rounded int of items to replace
+     */
+    protected getCountOfItemsToReplace(totalItemCount: number): number;
     /**
      * Get the count of items fence offers
      * @returns number
      */
     getOfferCount(): number;
-    generateFenceAssortCache(pmcData: IPmcData): void;
+    /**
+     * Create a trader assort for fence
+     */
+    generateFenceAssortCache(): void;
+    /**
+     * Create skeleton to hold assort items
+     * @returns ITraderAssort object
+     */
+    protected createBaseTraderAssortItem(): ITraderAssort;
+    /**
+     * Hydrate result parameter object with generated assorts
+     * @param assortCount Number of assorts to generate
+     * @param assorts object to add assorts to
+     */
+    protected createAssorts(assortCount: number, assorts: ITraderAssort): void;
     /**
      * Get the next update timestamp for fence
      * @returns future timestamp
@@ -44,11 +95,14 @@ export declare class FenceService {
      */
     protected getFenceRefreshTime(): number;
     /**
-     * Get the fence level the passed in profile has
+     * Get fence level the passed in profile has
      * @param pmcData Player profile
-     * @returns FenceLevel
+     * @returns FenceLevel object
      */
     getFenceInfo(pmcData: IPmcData): FenceLevel;
+    /**
+     * Remove an assort from fence by id
+     * @param assortIdToRemove assort id to remove from fence assorts
+     */
     removeFenceOffer(assortIdToRemove: string): void;
-    updateFenceOffers(pmcData: IPmcData): void;
 }

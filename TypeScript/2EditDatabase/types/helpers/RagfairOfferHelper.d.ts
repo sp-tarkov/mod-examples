@@ -46,7 +46,7 @@ export declare class RagfairOfferHelper {
     constructor(logger: ILogger, timeUtil: TimeUtil, hashUtil: HashUtil, itemEventRouter: ItemEventRouter, databaseServer: DatabaseServer, saveServer: SaveServer, dialogueHelper: DialogueHelper, itemHelper: ItemHelper, paymentHelper: PaymentHelper, presetHelper: PresetHelper, profileHelper: ProfileHelper, ragfairServerHelper: RagfairServerHelper, ragfairSortHelper: RagfairSortHelper, ragfairHelper: RagfairHelper, ragfairOfferService: RagfairOfferService, localeService: LocaleService, configServer: ConfigServer);
     getValidOffers(info: ISearchRequestData, itemsToAdd: string[], assorts: Record<string, ITraderAssort>, pmcProfile: IPmcData): IRagfairOffer[];
     getOffersForBuild(info: ISearchRequestData, itemsToAdd: string[], assorts: Record<string, ITraderAssort>, pmcProfile: IPmcData): IRagfairOffer[];
-    processOffers(sessionID: string): boolean;
+    processOffersOnProfile(sessionID: string): boolean;
     protected getProfileOffers(sessionID: string): IRagfairOffer[];
     protected deleteOfferByOfferId(sessionID: string, offerId: string): void;
     protected completeOffer(sessionID: string, offer: IRagfairOffer, boughtAmount: number): IItemEventRouterResponse;

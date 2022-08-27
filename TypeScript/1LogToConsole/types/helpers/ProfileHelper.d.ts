@@ -36,7 +36,7 @@ export declare class ProfileHelper {
      * @param scavProfile post-raid scav profile
      * @returns updated profile array
      */
-    postRaidXpWorkaroundFix(sessionId: string, output: IPmcData[], pmcProfile: IPmcData, scavProfile: IPmcData): IPmcData[];
+    protected postRaidXpWorkaroundFix(sessionId: string, output: IPmcData[], pmcProfile: IPmcData, scavProfile: IPmcData): IPmcData[];
     isNicknameTaken(info: IValidateNicknameRequestData, sessionID: string): boolean;
     /**
      * Add experience to a PMC inside the players profile

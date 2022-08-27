@@ -4,6 +4,8 @@ export interface IQuestConfig extends IBaseConfig {
     kind: "aki-quest";
     redeemTime: number;
     repeatableQuests: IRepeatableQuestConfig[];
+    bearOnlyQuests: string[];
+    usecOnlyQuests: string[];
 }
 export interface IRepeatableQuestConfig {
     name: string;

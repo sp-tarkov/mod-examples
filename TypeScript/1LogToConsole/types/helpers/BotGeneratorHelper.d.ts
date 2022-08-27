@@ -55,7 +55,7 @@ export declare class BotGeneratorHelper {
      * @param modSpawnChances
      * @param ammoTpl ammo tpl to use when generating magazines/cartridges
      * @param botRole role of bot weapon is generated for
-     * @returns Weapon with mods array
+     * @returns Weapon with mods
      */
     generateModsForWeapon(sessionId: string, weapon: Item[], modPool: Mods, weaponParentId: string, parentTemplate: ITemplateItem, modSpawnChances: ModsChances, ammoTpl: string, botRole: string): Item[];
     /**
@@ -70,12 +70,13 @@ export declare class BotGeneratorHelper {
      * Check if the specific item type on the weapon has reached the set limit
      * @param modTpl item to check is limited
      * @param currentCount current number of this item on gun
+     * @param maxLimit mod limit allowed
      * @param botRole role of bot we're checking weapon of
-     * @returns true if at limit
+     * @returns true if limit reached
      */
     protected weaponModLimitReached(modTpl: string, currentCount: {
         count: number;
-    }, baseTypes: string[], maxLimit: number, botRole: string): boolean;
+    }, maxLimit: number, botRole: string): boolean;
     /**
      * log errors if mod is not valid for a slot
      * @param modTpl

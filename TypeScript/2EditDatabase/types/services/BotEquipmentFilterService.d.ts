@@ -22,7 +22,7 @@ export declare class BotEquipmentFilterService {
      * @param playerLevel Level of the player
      * @returns EquipmentBlacklistDetails object
      */
-    protected getBotEquipmentBlacklist(botRole: string, playerLevel: number): EquipmentFilterDetails;
+    getBotEquipmentBlacklist(botRole: string, playerLevel: number): EquipmentFilterDetails;
     /**
      * Get the whitelist for a specific bot type that's within the players level
      * @param botRole Bot type

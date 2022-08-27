@@ -68,6 +68,7 @@ export declare enum BaseClasses {
     ASSAULT_SCOPE = "55818add4bdc2d5b648b456f",
     REFLEX_SIGHT = "55818ad54bdc2ddc698b4569",
     TACTICAL_COMBO = "55818b164bdc2ddc698b456c",
+    FLASHLIGHT = "55818b084bdc2d5b648b4571",
     MAGAZINE = "5448bc234bdc2d3c308b4569",
     LIGHT_LASER = "55818b0e4bdc2dde698b456e",
     FLASH_HIDER = "550aa4bf4bdc2dd6348b456b",

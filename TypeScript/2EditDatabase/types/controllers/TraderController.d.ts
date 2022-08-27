@@ -4,6 +4,7 @@ import { TraderHelper } from "../helpers/TraderHelper";
 import { IBarterScheme, ITraderAssort, ITraderBase } from "../models/eft/common/tables/ITrader";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { FenceService } from "../services/FenceService";
 import { TraderAssortService } from "../services/TraderAssortService";
 import { JsonUtil } from "../utils/JsonUtil";
 import { TimeUtil } from "../utils/TimeUtil";
@@ -15,8 +16,9 @@ export declare class TraderController {
     protected traderHelper: TraderHelper;
     protected timeUtil: TimeUtil;
     protected traderAssortService: TraderAssortService;
+    protected fenceService: FenceService;
     protected jsonUtil: JsonUtil;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, traderAssortHelper: TraderAssortHelper, profileHelper: ProfileHelper, traderHelper: TraderHelper, timeUtil: TimeUtil, traderAssortService: TraderAssortService, jsonUtil: JsonUtil);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, traderAssortHelper: TraderAssortHelper, profileHelper: ProfileHelper, traderHelper: TraderHelper, timeUtil: TimeUtil, traderAssortService: TraderAssortService, fenceService: FenceService, jsonUtil: JsonUtil);
     /**
      * Runs when onLoad event is fired
      * Iterate over traders, ensure an unmolested copy of their assorts is stored in traderAssortService
@@ -26,6 +28,7 @@ export declare class TraderController {
     /**
      * Runs when onUpdate is fired
      * If current time is > nextResupply(expire) time of trader, refresh traders assorts and
+     * Fence is handled slightly differently
      * @returns has run
      */
     update(): boolean;
