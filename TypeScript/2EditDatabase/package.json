@@ -7,10 +7,10 @@
     "akiVersion": "3.2.2",
     "scripts": {
         "setup:environment": "npm i",
-        "build:unzipped": "copyfiles -e \"./node_modules/**/*.*\" -e \"./dist/**/*.*\" -e \"./package-lock.json\" -e \"./tsconfig.json\" -e \"./README.txt\" -e \"./mod.code-workspace\" \"./**/*.*\" ./dist",
-        "zip:files": "cd dist/ && bestzip ../mod.zip *",
+        "build:unzipped": "copyfiles -e \"./node_modules/**/*.*\" -e \"./types/**/*.*\" -e \"./%npm_package_name%-%npm_package_version%/**/*.*\" -e \"./package-lock.json\" -e \"./tsconfig.json\" -e \"./README.txt\" -e \"./mod.code-workspace\" \"./**/*.*\" ./%npm_package_name%-%npm_package_version%",
+        "zip:files": "bestzip %npm_package_name%-%npm_package_version%.zip %npm_package_name%-%npm_package_version%",
         "build:zip": "npm run clean:environment && npm run build:unzipped && npm run zip:files",
-        "clean:environment": "node -e \"require('fs').rm('mod.zip', ()=>{})\" && node -e \"require('fs').rmdir('./dist/',{recursive:true},()=>{})\""
+        "clean:environment": "node -e \"require('fs').rm('%npm_package_name%-%npm_package_version%.zip', ()=>{})\" && node -e \"require('fs').rmdir('./dist/',{recursive:true},()=>{})\""
     },
     "devDependencies": {
         "@types/node": "^14.15.3",
