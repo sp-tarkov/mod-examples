@@ -7,6 +7,7 @@ import { Exit } from "../models/eft/common/ILocationBase";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { TraderInfo } from "../models/eft/common/tables/IBotBase";
 import { ICompletion, ICompletionAvailableFor, IElimination, IEliminationCondition, IExploration, IExplorationCondition, IPmcDataRepeatableQuest, IRepeatableQuest, IReward, IRewards } from "../models/eft/common/tables/IRepeatableQuests";
+import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IRepeatableQuestChangeRequest } from "../models/eft/quests/IRepeatableQuestChangeRequest";
 import { ELocationName } from "../models/enums/ELocationName";
@@ -15,6 +16,7 @@ import { ILogger } from "../models/spt/utils/ILogger";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { ItemFilterService } from "../services/ItemFilterService";
 import { PaymentService } from "../services/PaymentService";
 import { ProfileFixerService } from "../services/ProfileFixerService";
 import { JsonUtil } from "../utils/JsonUtil";
@@ -64,9 +66,10 @@ export declare class RepeatableQuestController {
     protected itemEventRouter: ItemEventRouter;
     protected paymentService: PaymentService;
     protected objectId: ObjectId;
+    protected itemFilterService: ItemFilterService;
     protected configServer: ConfigServer;
     protected questConfig: IQuestConfig;
-    constructor(timeUtil: TimeUtil, logger: ILogger, randomUtil: RandomUtil, mathUtil: MathUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper, presetHelper: PresetHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, ragfairServerHelper: RagfairServerHelper, itemEventRouter: ItemEventRouter, paymentService: PaymentService, objectId: ObjectId, configServer: ConfigServer);
+    constructor(timeUtil: TimeUtil, logger: ILogger, randomUtil: RandomUtil, mathUtil: MathUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper, presetHelper: PresetHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, ragfairServerHelper: RagfairServerHelper, itemEventRouter: ItemEventRouter, paymentService: PaymentService, objectId: ObjectId, itemFilterService: ItemFilterService, configServer: ConfigServer);
     /**
      * This is the method reached by the /client/repeatalbeQuests/activityPeriods endpoint
      * Returns an array of objects in the format of repeatable quests to the client.
@@ -217,4 +220,16 @@ export declare class RepeatableQuestController {
     debugLogRepeatableQuestIds(pmcData: IPmcData): void;
     probabilityObjectArray<K, V>(configArrayInput: ProbabilityObject<K, V>[]): ProbabilityObjectArray<K, V>;
     changeRepeatableQuest(pmcDataIn: IPmcData, body: IRepeatableQuestChangeRequest, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Picks rewardable items from items.json. This means they need to fit into the inventory and they shouldn't be keys (debatable)
+     * @returns     a list of rewardable items [[_tpl, itemTemplate],...]
+     */
+    protected getRewardableItems(repeatableQuestConfig: IRepeatableQuestConfig): [string, ITemplateItem][];
+    /**
+     * Checks if an id is a valid item. Valid meaning that it's an item that may be a reward
+     * or content of bot loot. Items that are tested as valid may be in a player backpack or stash.
+     * @param {*} tpl template id of item to check
+     * @returns boolean: true if item is valid reward
+     */
+    isValidRewardItem(tpl: string, repeatableQuestConfig: IRepeatableQuestConfig): boolean;
 }

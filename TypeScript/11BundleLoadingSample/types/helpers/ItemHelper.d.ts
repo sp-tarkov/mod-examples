@@ -1,35 +1,30 @@
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { InsuredItem } from "../models/eft/common/tables/IBotBase";
 import { Item, Repairable } from "../models/eft/common/tables/IItem";
+import { IStaticAmmoDetails } from "../models/eft/common/tables/ILootBase";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
+import { MathUtil } from "../utils/MathUtil";
+import { ObjectId } from "../utils/ObjectId";
+import { RandomUtil } from "../utils/RandomUtil";
 declare class ItemHelper {
     protected logger: ILogger;
     protected hashUtil: HashUtil;
     protected jsonUtil: JsonUtil;
+    protected randomUtil: RandomUtil;
+    protected objectId: ObjectId;
+    protected mathUtil: MathUtil;
     protected databaseServer: DatabaseServer;
-    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer);
+    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, randomUtil: RandomUtil, objectId: ObjectId, mathUtil: MathUtil, databaseServer: DatabaseServer);
     /**
      * Checks if a id is a valid item. Valid meaning that it's an item that be stored in stash
      * @param       {string}    tpl       the template id / tpl
      * @returns                             boolean; true for items that may be in player posession and not quest items
      */
     isValidItem(tpl: string, invalidBaseTypes?: string[]): boolean;
-    /**
-     * Checks if an id is a valid item. Valid meaning that it's an item that may be a reward
-     * or content of bot loot. Items that are tested as valid may be in a player backpack or stash.
-     * @param {*} tpl template id of item to check
-     * @returns boolean: true if item is valid reward
-     */
-    isValidRewardItem(tpl: string): boolean;
-    /**
-     * Picks rewardable items from items.json. This means they need to fit into the inventory and they shouldn't be keys (debatable)
-     * @returns     a list of rewardable items [[_tpl, itemTemplate],...]
-     */
-    getRewardableItems(): [string, ITemplateItem][];
     /**
      * Check if the tpl / template Id provided is a descendent of the baseclass
      *
@@ -196,6 +191,22 @@ declare class ItemHelper {
      * @returns ItemSize object (width and height)
      */
     getItemSize(items: Item[], rootItemId: string): ItemHelper.ItemSize;
+    /**
+     * Get a random cartridge from an items Filter property
+     * @param item
+     * @returns
+     */
+    getRandomCompatibleCaliberTemplateId(item: ITemplateItem): string;
+    createRandomMagCartridges(magTemplate: ITemplateItem, parentId: string, staticAmmoDist: Record<string, IStaticAmmoDetails[]>, caliber?: string): Item;
+    protected getRandomValidCaliber(magTemplate: ITemplateItem): string;
+    protected drawAmmoTpl(caliber: string, staticAmmoDist: Record<string, IStaticAmmoDetails[]>): string;
+    createCartidges(parentId: string, ammoTpl: string, stackCount: number): Item;
+    /**
+     * Get the size of a stack, return 1 if no stack object count property found
+     * @param item Item to get stack size of
+     * @returns size of stack
+     */
+    getItemStackSize(item: Item): number;
 }
 declare namespace ItemHelper {
     interface ItemSize {

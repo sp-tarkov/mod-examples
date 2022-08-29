@@ -67,6 +67,7 @@ export interface IBarterScheme {
     count: number;
     _tpl: string;
     onlyFunctional?: boolean;
+    sptQuestLocked?: boolean;
 }
 export interface ISuit {
     _id: string;

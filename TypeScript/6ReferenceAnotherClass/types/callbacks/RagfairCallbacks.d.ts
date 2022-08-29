@@ -19,6 +19,9 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { RagfairServer } from "../servers/RagfairServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { JsonUtil } from "../utils/JsonUtil";
+/**
+ * Handle ragfair related callback events
+ */
 export declare class RagfairCallbacks extends OnLoadOnUpdate {
     protected httpResponse: HttpResponseUtil;
     protected logger: ILogger;

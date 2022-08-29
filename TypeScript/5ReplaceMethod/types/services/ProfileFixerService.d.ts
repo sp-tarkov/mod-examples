@@ -46,6 +46,11 @@ export declare class ProfileFixerService {
      */
     protected removeResourcesFromSlotsInHideoutWithoutLocationIndexValue(pmcProfile: IPmcData): void;
     /**
+     * Hideout slots need to be in a specific order, locationIndex in ascending order
+     * @param pmcProfile profile to edit
+     */
+    protected reorderHideoutAreasWithResouceInputs(pmcProfile: IPmcData): void;
+    /**
      * add in objects equal to the number of slots
      * @param areaType area to check
      * @param pmcProfile profile to update

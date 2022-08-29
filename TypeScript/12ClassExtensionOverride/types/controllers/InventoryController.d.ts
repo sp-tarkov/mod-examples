@@ -92,7 +92,11 @@ export declare class InventoryController {
      */
     toggleItem(pmcData: IPmcData, body: IInventoryToggleRequestData, sessionID: string): IItemEventRouterResponse;
     /**
-     * Handles Tagging of items (primary Containers).
+     * Add a tag to an inventory item
+     * @param pmcData profile with item to add tag to
+     * @param body tag request data
+     * @param sessionID session id
+     * @returns client response object
      */
     tagItem(pmcData: IPmcData, body: IInventoryTagRequestData, sessionID: string): IItemEventRouterResponse;
     bindItem(pmcData: IPmcData, body: IInventoryBindRequestData, sessionID: string): IItemEventRouterResponse;

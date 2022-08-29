@@ -17,7 +17,7 @@ export declare class AssortHelper {
      * @param assort assort items from a trader
      * @returns assort items minus locked quest assorts
      */
-    stripLockedQuestAssort(pmcProfile: IPmcData, traderId: string, assort: ITraderAssort): ITraderAssort;
+    stripLockedQuestAssort(pmcProfile: IPmcData, traderId: string, assort: ITraderAssort, flea?: boolean): ITraderAssort;
     /**
      * Remove assorts from a trader that have not been unlocked yet
      * @param pmcProfile player profile
@@ -32,5 +32,5 @@ export declare class AssortHelper {
      * @param itemID item id to remove from asort
      * @returns Modified assort
      */
-    removeItemFromAssort(assort: ITraderAssort, itemID: string): ITraderAssort;
+    removeItemFromAssort(assort: ITraderAssort, itemID: string, flea?: boolean): ITraderAssort;
 }

@@ -150,4 +150,10 @@ export declare class RandomUtil {
      */
     drawRandomFromDict(dict: any, count?: number, replacement?: boolean): any[];
     getBiasedRandomNumber(min: number, max: number, shift: number, n: number): number;
+    /**
+     * Fisher-Yates shuffle an array
+     * @param array Array to shuffle
+     * @returns Shuffled array
+     */
+    shuffle<T>(array: Array<T>): Array<T>;
 }

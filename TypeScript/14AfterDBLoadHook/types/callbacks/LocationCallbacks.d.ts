@@ -11,4 +11,5 @@ export declare class LocationCallbacks {
     constructor(httpResponse: HttpResponseUtil, locationController: LocationController);
     getLocationData(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ILocationsGenerateAllResponse>;
     getLocation(url: string, info: IGetLocationRequestData, sessionID: string): IGetBodyResponseData<ILocationBase>;
+    getAirdropLoot(url: string, info: IEmptyRequestData, sessionID: string): string;
 }

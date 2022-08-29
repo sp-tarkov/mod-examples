@@ -12,8 +12,10 @@ export interface UpdateTime {
     seconds: number;
 }
 export interface FenceConfig {
+    partialRefreshTimeSeconds: number;
+    partialRefreshChangePercent: number;
     assortSize: number;
-    maxPresetsCount: number;
+    maxPresetsPercent: number;
     presetPriceMult: number;
     blacklist: string[];
 }

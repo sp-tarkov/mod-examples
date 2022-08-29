@@ -6,6 +6,7 @@ import { IRagfairConfig } from "../models/spt/config/IRagfairConfig";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
+import { ItemFilterService } from "../services/ItemFilterService";
 import { LocaleService } from "../services/LocaleService";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
@@ -13,6 +14,9 @@ import { RandomUtil } from "../utils/RandomUtil";
 import { DialogueHelper } from "./DialogueHelper";
 import { ItemHelper } from "./ItemHelper";
 import { ProfileHelper } from "./ProfileHelper";
+/**
+ * Helper class for common ragfair server actions
+ */
 export declare class RagfairServerHelper {
     protected randomUtil: RandomUtil;
     protected hashUtil: HashUtil;
@@ -23,11 +27,12 @@ export declare class RagfairServerHelper {
     protected localeService: LocaleService;
     protected dialogueHelper: DialogueHelper;
     protected jsonUtil: JsonUtil;
+    protected itemFilterService: ItemFilterService;
     protected configServer: ConfigServer;
     protected ragfairConfig: IRagfairConfig;
     protected questConfig: IQuestConfig;
     protected static goodsReturnedTemplate: string;
-    constructor(randomUtil: RandomUtil, hashUtil: HashUtil, saveServer: SaveServer, databaseServer: DatabaseServer, profileHelper: ProfileHelper, itemHelper: ItemHelper, localeService: LocaleService, dialogueHelper: DialogueHelper, jsonUtil: JsonUtil, configServer: ConfigServer);
+    constructor(randomUtil: RandomUtil, hashUtil: HashUtil, saveServer: SaveServer, databaseServer: DatabaseServer, profileHelper: ProfileHelper, itemHelper: ItemHelper, localeService: LocaleService, dialogueHelper: DialogueHelper, jsonUtil: JsonUtil, itemFilterService: ItemFilterService, configServer: ConfigServer);
     /**
      * Is item valid / on blacklist / quest item
      * @param itemDetails

@@ -65,7 +65,7 @@ export declare class TraderHelper {
      * @param item
      * @returns boolean
      */
-    protected isWeaponAndBelowTraderBuyDurability(traderID: string, item: Item): boolean;
+    protected isWeaponBelowTraderBuyDurability(traderID: string, item: Item): boolean;
     /**
      * Get the price of an item and all of its attached children
      * Take into account bonuses/adjsutments e.g. discounts

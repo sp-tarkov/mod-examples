@@ -24,7 +24,7 @@ export declare class BotLootGenerator {
     protected configServer: ConfigServer;
     protected botConfig: IBotConfig;
     constructor(logger: ILogger, hashUtil: HashUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, botGeneratorHelper: BotGeneratorHelper, botWeaponGenerator: BotWeaponGenerator, botLootCacheService: BotLootCacheService, configServer: ConfigServer);
-    generateLoot(templateInventory: Inventory, itemCounts: ItemMinMax, isPmc: boolean, botRole: string, botInventory: PmcInventory, equipmentChances: Chances): void;
+    generateLoot(sessionId: string, templateInventory: Inventory, itemCounts: ItemMinMax, isPmc: boolean, botRole: string, botInventory: PmcInventory, equipmentChances: Chances): void;
     protected getRandomisedCount(min: number, max: number, nValue: number): number;
     /**
      * Take random items from a pool and add to an inventory until totalItemCount or totalValueLimit is reached
@@ -47,7 +47,7 @@ export declare class BotLootGenerator {
      * @param botRole bots role, .e.g. pmcBot
      * @param isPmc are we generating for a pmc
      */
-    protected addLooseWeaponsToInventorySlot(botInventory: PmcInventory, equipmentSlot: string, templateInventory: Inventory, modChances: ModsChances, botRole: string, isPmc: boolean): void;
+    protected addLooseWeaponsToInventorySlot(sessionId: string, botInventory: PmcInventory, equipmentSlot: string, templateInventory: Inventory, modChances: ModsChances, botRole: string, isPmc: boolean): void;
     /**
      * Get a random item from the pool parameter using the biasedRandomNumber system
      * @param pool pool of items to pick an item from

@@ -1,3 +1,6 @@
+/**
+ * Utility class to handle time related problems
+ */
 export declare class TimeUtil {
     static readonly oneHourAsSeconds = 3600;
     formatTime(date: Date): string;
@@ -19,4 +22,10 @@ export declare class TimeUtil {
      * @returns current date in format: 00.00.0000 (dd.mm.yyyy)
      */
     getDateMailFormat(): string;
+    /**
+     * Convert hours into seconds
+     * @param hours hours to convert to seconds
+     * @returns number
+     */
+    getHoursAsSeconds(hours: number): number;
 }

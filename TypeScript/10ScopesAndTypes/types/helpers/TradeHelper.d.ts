@@ -39,6 +39,12 @@ export declare class TradeHelper {
      * @returns
      */
     sellItem(pmcData: IPmcData, body: IProcessSellTradeRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Increment the assorts buy count by number of items purchased
+     * Show error on screen if player attepts to buy more than what the buy max allows
+     * @param assortBeingPurchased assort being bought
+     * @param itemsPurchasedCount number of items being bought
+     */
     protected incrementAssortBuyCount(assortBeingPurchased: Item, itemsPurchasedCount: number): void;
     protected checkPurchaseIsWithinTraderItemLimit(assortBeingPurchased: Item, assortId: string, count: number): void;
 }

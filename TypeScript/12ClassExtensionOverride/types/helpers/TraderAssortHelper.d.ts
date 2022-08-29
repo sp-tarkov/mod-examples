@@ -1,6 +1,5 @@
 import { RagfairAssortGenerator } from "../generators/RagfairAssortGenerator";
 import { RagfairOfferGenerator } from "../generators/RagfairOfferGenerator";
-import { IPmcData } from "../models/eft/common/IPmcData";
 import { Item } from "../models/eft/common/tables/IItem";
 import { ITrader, ITraderAssort } from "../models/eft/common/tables/ITrader";
 import { ITraderConfig } from "../models/spt/config/ITraderConfig";
@@ -41,12 +40,7 @@ export declare class TraderAssortHelper {
      * @param traderId traders id
      * @returns a traders' assorts
      */
-    getAssort(sessionId: string, traderId: string): ITraderAssort;
-    /**
-     * if the fence assorts have expired, re-generate them
-     * @param pmcProfile Players profile
-     */
-    refreshFenceAssortIfExpired(pmcProfile: IPmcData): void;
+    getAssort(sessionId: string, traderId: string, flea?: boolean): ITraderAssort;
     /**
      * Reset a traders assorts and move nextResupply value to future
      * Flag trader as needing a flea offer reset to be picked up by flea update() function

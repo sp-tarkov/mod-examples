@@ -11,6 +11,12 @@ export declare class RagfairSellHelper {
     protected configServer: ConfigServer;
     protected ragfairConfig: IRagfairConfig;
     constructor(logger: ILogger, randomUtil: RandomUtil, timeUtil: TimeUtil, configServer: ConfigServer);
-    calculateSellChance(baseChance: number, offerPrice: number, requirementsPriceInRub: number): number;
-    rollForSale(sellChance: number, count: number): SellResult[];
+    calculateSellChance(baseChancePercent: number, offerPriceRub: number, playerListedPriceRub: number): number;
+    /**
+     * Determine if the offer being listed will be sold
+     * @param sellChancePercent chance item will sell
+     * @param itemSellCount count of items to sell
+     * @returns Array of purchases of item(s) lsited
+     */
+    rollForSale(sellChancePercent: number, itemSellCount: number): SellResult[];
 }

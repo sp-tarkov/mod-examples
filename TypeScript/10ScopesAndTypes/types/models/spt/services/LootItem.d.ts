@@ -1,5 +1,4 @@
-export declare class AirDropLootItem {
-    id: string;
+export declare class LootItem {
     tpl: string;
     isPreset: boolean;
     stackCount: number;

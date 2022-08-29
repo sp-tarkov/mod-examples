@@ -1,12 +1,12 @@
 import { IBotType } from "../models/eft/common/tables/IBotType";
-import { Equipment, EquipmentFilterDetails, IBotConfig } from "../models/spt/config/IBotConfig";
+import { EquipmentFilters, EquipmentFilterDetails, IBotConfig } from "../models/spt/config/IBotConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 export declare class BotEquipmentFilterService {
     protected logger: ILogger;
     protected configServer: ConfigServer;
     protected botConfig: IBotConfig;
-    protected botEquipmentFilterlists: Record<string, Equipment>;
+    protected botEquipmentFilterlists: Record<string, EquipmentFilters>;
     constructor(logger: ILogger, configServer: ConfigServer);
     /**
      * Filter a bots data to exclude equipment and cartridges defines in the botConfig
@@ -22,7 +22,7 @@ export declare class BotEquipmentFilterService {
      * @param playerLevel Level of the player
      * @returns EquipmentBlacklistDetails object
      */
-    protected getBotEquipmentBlacklist(botRole: string, playerLevel: number): EquipmentFilterDetails;
+    getBotEquipmentBlacklist(botRole: string, playerLevel: number): EquipmentFilterDetails;
     /**
      * Get the whitelist for a specific bot type that's within the players level
      * @param botRole Bot type

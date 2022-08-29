@@ -36,11 +36,20 @@ export declare class QuestHelper {
     protected configServer: ConfigServer;
     protected questConfig: IQuestConfig;
     constructor(logger: ILogger, jsonUtil: JsonUtil, timeUtil: TimeUtil, hashUtil: HashUtil, itemHelper: ItemHelper, itemEventRouter: ItemEventRouter, databaseServer: DatabaseServer, localeService: LocaleService, ragfairServerHelper: RagfairServerHelper, dialogueHelper: DialogueHelper, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, traderHelper: TraderHelper, configServer: ConfigServer);
-    questStatus(pmcData: IPmcData, questID: string): QuestStatus;
     /**
-     * returns true is the condition is satisfied
+    * Get status of a quest by quest id
+    * @param pmcData Profile to search
+    * @param questID Quest id to look up
+    * @returns QuestStauts enum
+    */
+    getQuestStatus(pmcData: IPmcData, questID: string): QuestStatus;
+    /**
+     * returns true is the level condition is satisfied
+     * @param playerLevel Players level
+     * @param condition Quest condition
+     * @returns true if player level is greater than or equal to quest
      */
-    evaluateLevel(pmcProfile: IPmcData, cond: AvailableForConditions): boolean;
+    doesPlayerLevelFulfilCondition(playerLevel: number, condition: AvailableForConditions): boolean;
     getDeltaQuests(before: IQuest[], after: IQuest[]): IQuest[];
     /**
      * Increase skill points of a skill on player profile

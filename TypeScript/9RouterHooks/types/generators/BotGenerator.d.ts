@@ -40,7 +40,7 @@ export declare class BotGenerator {
      * @param botTemplate base bot template to use  (e.g. assault/pmcbot)
      * @returns
      */
-    generatePlayerScav(role: string, difficulty: string, botTemplate: IBotType): IBotBase;
+    generatePlayerScav(sessionId: string, role: string, difficulty: string, botTemplate: IBotType): IBotBase;
     generate(sessionId: string, info: IGenerateBotsRequestData): IBotBase[];
     /**
      * Choose if a bot should become a PMC by checking if bot type is allowed to become a Pmc in botConfig.convertFromChances and doing a random int check
@@ -58,7 +58,7 @@ export declare class BotGenerator {
      * @returns IBotBase object
      */
     protected getCloneOfBotBase(): IBotBase;
-    protected generateBot(bot: IBotBase, role: string, node: IBotType, isPmc: boolean, isPlayerScav?: boolean): IBotBase;
+    protected generateBot(sessionId: string, bot: IBotBase, role: string, node: IBotType, isPmc: boolean, isPlayerScav?: boolean): IBotBase;
     /**
      * Log the number of PMCs generated to the debug console
      */

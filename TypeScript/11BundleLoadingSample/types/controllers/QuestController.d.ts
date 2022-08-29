@@ -39,16 +39,31 @@ export declare class QuestController {
      * @returns array of IQuest
      */
     getClientQuests(sessionID: string): IQuest[];
+    /**
+     * Is the quest for the opposite side the player is on
+     * @param side player side (usec/bear)
+     * @param questId questId to check
+     */
+    protected questIsForOtherSide(side: string, questId: string): boolean;
+    /**
+     * Handle the client accepting a quest and starting it
+     * Send starting rewards if any to player and
+     * Send start notification if any to player
+     * @param pmcData Profile to update
+     * @param acceptedQuest Quest accepted
+     * @param sessionID Session id
+     * @returns client response
+     */
     acceptQuest(pmcData: IPmcData, acceptedQuest: IAcceptQuestRequestData, sessionID: string): IItemEventRouterResponse;
     acceptRepeatableQuest(pmcData: IPmcData, acceptedQuest: IAcceptQuestRequestData, sessionID: string): IItemEventRouterResponse;
     /**
-     * Remove completed quest from profile
+     * Update completed quest in profile
      * Add newly unlocked quests to profile
      * Also recalculate thier level due to exp rewards
      * @param pmcData Player profile
-     * @param body completed quest request
-     * @param sessionID session id
-     * @returns ItemEvent response
+     * @param body Completed quest request
+     * @param sessionID Session id
+     * @returns ItemEvent client response
      */
     completeQuest(pmcData: IPmcData, body: ICompleteQuestRequestData, sessionID: string): IItemEventRouterResponse;
     /**
@@ -67,10 +82,20 @@ export declare class QuestController {
     protected getQuestsFailedByCompletingQuest(completedQuestId: string): IQuest[];
     /**
      * Fail the quests provided
+     * Update quest in profile, otherwise add fresh quest object with failed status
      * @param sessionID session id
      * @param pmcData player profile
      * @param questsToFail quests to fail
      */
     protected failQuests(sessionID: string, pmcData: IPmcData, questsToFail: IQuest[]): void;
     handoverQuest(pmcData: IPmcData, body: IHandoverQuestRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Increment a backend counter stored value by an amount,
+     * Create counter if it does not exist
+     * @param pmcData Profile to find backend counter in
+     * @param conditionId backend counter id to update
+     * @param questId quest id counter is associated with
+     * @param counterValue value to increment the backend counter with
+     */
+    protected updateProfileBackendCounterValue(pmcData: IPmcData, conditionId: string, questId: string, counterValue: number): void;
 }

@@ -36,6 +36,30 @@ export declare class InraidController {
     addPlayer(sessionID: string, info: IRegisterPlayerRequestData): void;
     saveProgress(offraidData: ISaveProgressRequestData, sessionID: string): void;
     /**
+     * Handle updating the profile post-pmc raid
+     * @param sessionID session id
+     * @param offraidData post-raid data of raid
+     */
+    protected savePmcProgress(sessionID: string, offraidData: ISaveProgressRequestData): void;
+    /**
+     * Reduce body part hp to % of max
+     * @param pmcData profile to edit
+     * @param multipler multipler to apply to max health
+     */
+    protected reducePmcHealthToPercent(pmcData: IPmcData, multipler: number): void;
+    /**
+     * Handle updating the profile post-pscav raid
+     * @param sessionID session id
+     * @param offraidData post-raid data of raid
+     */
+    protected savePlayerScavProgress(sessionID: string, offraidData: ISaveProgressRequestData): void;
+    /**
+     * Is the player dead after a raid - dead is anything other than "survived" / "runner"
+     * @param statusOnExit exit value from offraidData object
+     * @returns true if dead
+     */
+    protected isPlayerDead(statusOnExit: string): boolean;
+    /**
      * Mark inventory items as FiR if player survived raid, otherwise remove FiR from them
      * @param offraidData Save Progress Request
      * @param pmcData player profile

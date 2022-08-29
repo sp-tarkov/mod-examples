@@ -12,6 +12,7 @@ export interface Sell {
     chance: Chance;
     time: Time;
     reputation: Reputation;
+    simulatedSellHours: number;
 }
 export interface Chance {
     base: number;

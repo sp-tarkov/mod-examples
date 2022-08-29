@@ -23,7 +23,7 @@ export declare enum Ammo762x54 {
     BT_GZH = "5e023d34e8a400319a28ed44",
     BS_GZH = "5e023d48186a883be655e551"
 }
-export declare enum Ammo338Lapua {
+export declare enum Ammo86x70 {
     TAC_X = "5fc382b6d6fa9c00c571bbc3",
     UCW = "5fc382c1016cce60e8341b20",
     AP = "5fc382a9d724d907e2077dab",
@@ -85,13 +85,13 @@ export declare enum Ammo9x21 {
     PE_GZH = "5a26ac06c4a282000c5a90a8",
     BT_GZH = "5a26ac0ec4a28200741e1e18"
 }
-export declare enum Ammo357Mag {
+export declare enum Ammo9x33R {
     FMJ = "62330b3ed4dc74626d570b95",
     HOLLOW_POINT = "62330bfadc5883093563729b",
     SOFT_POINT = "62330c40bdd19b369e1e53d1",
     JACKET_HP = "62330c18744e5e31df12f516"
 }
-export declare enum Ammo45ACP {
+export declare enum Ammo1143x23ACP {
     MATCH_FMJ = "5e81f423763d9f754677bf2e",
     HYDRA_SHOK = "5efb0fc6aeb21837e749c801",
     LASERMATCH_FMJ = "5efb0d4f4bc50b58e81710f3",
@@ -126,7 +126,7 @@ export declare enum Ammo556x45 {
     MK_318_MOD_0_SOST = "60194943740c5d77f6705eea",
     SSA_AP = "601949593ae8f707c4608daa"
 }
-export declare enum Ammo300Blackout {
+export declare enum Ammo762x35 {
     M62_TRACER = "619636be6db0f2477964e710",
     BCP_FMJ = "5fbe3ffdf8b6a877a729ea82",
     AP = "5fd20ff893a8961fc660a954",
