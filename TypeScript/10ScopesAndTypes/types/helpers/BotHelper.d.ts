@@ -13,11 +13,34 @@ export declare class BotHelper {
     protected configServer: ConfigServer;
     protected botConfig: IBotConfig;
     constructor(logger: ILogger, jsonUtil: JsonUtil, databaseServer: DatabaseServer, randomUtil: RandomUtil, configServer: ConfigServer);
+    /**
+     * Get difficulty settings for desired bot type, if not found use assault bot types
+     * @param type bot type to retreive difficulty of
+     * @param difficulty difficulty to get settings for (easy/normal etc)
+     * @returns Difficulty object
+     */
     getBotDifficultySettings(type: string, difficulty: string): Difficulty;
+    /**
+     * Get a template object for the specified botRole from bots.types db
+     * @param role botRole to get template for
+     * @returns IBotType object
+     */
     getBotTemplate(role: string): IBotType;
+    /**
+     * Get difficulty settings for a PMC
+     * @param type "usec" / "bear"
+     * @param difficulty what difficulty to retrieve
+     * @returns Difficulty object
+     */
     getPmcDifficultySettings(type: string, difficulty: string): Difficulty;
     /**
+     * Choose a random difficulty from - easy/normal/hard/impossible
+     * @returns random difficulty
+     */
+    chooseRandomDifficulty(): string;
+    /**
      * Randomise the chance the PMC will attack their own side
+     * Look up value in bot.json/chanceSameSideIsHostilePercent
      * @param difficultySettings pmc difficulty settings
      */
     randomisePmcHostility(difficultySettings: Difficulty): void;
@@ -31,7 +54,7 @@ export declare class BotHelper {
      */
     addBotToFriendlyList(difficultySettings: Difficulty, typeToAdd: string): void;
     /**
-     * Add a bot to the ENEMY_BOT_TYPES array
+     * Add a bot to the ENEMY_BOT_TYPES array, do not add itself if its on the enemy list
      * @param difficultySettings bot settings to alter
      * @param typesToAdd bot type to add to enemy list
      */
@@ -42,4 +65,10 @@ export declare class BotHelper {
      * @param typesToAdd bot type to add to revenge list
      */
     addBotToRevengeList(difficultySettings: Difficulty, typesToAdd: string[]): void;
+    /**
+     * Choose if a bot should become a PMC by checking if bot type is allowed to become a Pmc in botConfig.convertFromChances and doing a random int check
+     * @param botRole the bot role to check if should be a pmc
+     * @returns true if should be a pmc
+     */
+    shouldBotBePmc(botRole: string): boolean;
 }

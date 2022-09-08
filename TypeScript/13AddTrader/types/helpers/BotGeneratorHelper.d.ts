@@ -17,6 +17,17 @@ import { InventoryHelper } from "./InventoryHelper";
 import { ItemHelper } from "./ItemHelper";
 import { ProbabilityHelper } from "./ProbabilityHelper";
 import { ProfileHelper } from "./ProfileHelper";
+export declare class BotModLimits {
+    scope: ItemCount;
+    scopeMax: number;
+    scopeBaseTypes: string[];
+    flashlightLaser: ItemCount;
+    flashlightLaserMax: number;
+    flashlgihtLaserBaseTypes: string[];
+}
+export declare class ItemCount {
+    count: number;
+}
 export declare class BotGeneratorHelper {
     protected logger: ILogger;
     protected jsonUtil: JsonUtil;
@@ -59,13 +70,48 @@ export declare class BotGeneratorHelper {
      */
     generateModsForWeapon(sessionId: string, weapon: Item[], modPool: Mods, weaponParentId: string, parentTemplate: ITemplateItem, modSpawnChances: ModsChances, ammoTpl: string, botRole: string): Item[];
     /**
+     * Find mod tpls of a provided type and add to modPool
+     * @param desiredSlotName slot to look up and add we are adding tpls for (e.g mod_scope)
+     * @param modTemplate db object for modItem we get compatible mods from
+     * @param modPool Pool of mods we are adding to
+     */
+    protected addCompatibleModsForProvidedMod(desiredSlotName: string, modTemplate: ITemplateItem, modPool: Mods, botEquipBlacklist: EquipmentFilterDetails): void;
+    /**
+     * Check if mod item is on limited list + has surpassed the limit set for it
+     * @param botRole role the bot has e.g. assault
+     * @param modTpl mods tpl
+     * @param modLimits limits set for weapon being generated for this bot
+     * @returns true if over item limit
+     */
+    protected modHasReachedItemLimit(botRole: string, modTpl: string, modLimits: BotModLimits): boolean;
+    /**
+     * Initalise mod limits to be used when generating the weapon
+     * @param botRole "assault", "bossTagilla" or "pmc"
+     * @returns
+     */
+    protected initModLimits(botRole: string): BotModLimits;
+    /**
      * Generate a pool of mods for this bots mod type if bot has values inside `randomisedWeaponModSlots` array found in bot.json/equipment[botrole]
      * @param allowedMods Mods to be added to mod pool
      * @param botEquipBlacklist blacklist of items not allowed to be added to mod pool
      * @param modSlot Slot to generate mods for
      * @param itemModPool base mod pool to replace values of
      */
-    protected generateDynamicModPool(allowedMods: string[], botEquipBlacklist: EquipmentFilterDetails, modSlot: string, itemModPool: Record<string, string[]>): void;
+    protected generateDynamicWeaponModPool(allowedMods: string[], botEquipBlacklist: EquipmentFilterDetails, modSlot: string, itemModPool: Record<string, string[]>): void;
+    /**
+     * Find all compatible mods for equipment item and add to modPool
+     * @param itemDetails item to find mods for
+     * @param modPool ModPool to add mods to
+     */
+    generateDynamicModPool(itemDetails: ITemplateItem, modPool: Mods): void;
+    /**
+     * Take a list of tpls and filter out blacklisted values using itemFilterService + botEquipmentBlacklist
+     * @param allowedMods base mods to filter
+     * @param botEquipBlacklist equipment blacklist
+     * @param modSlot slot mods belong to
+     * @returns Filtered array of mod tpls
+     */
+    protected filterWeaponModsByBlacklist(allowedMods: string[], botEquipBlacklist: EquipmentFilterDetails, modSlot: string): string[];
     /**
      * Check if the specific item type on the weapon has reached the set limit
      * @param modTpl item to check is limited

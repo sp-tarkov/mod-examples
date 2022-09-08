@@ -65,6 +65,7 @@ export interface LootNvalue {
 export interface EquipmentFilters {
     weaponModLimits: ModLimits;
     randomisedWeaponModSlots?: string[];
+    randomisedArmorSlots?: string[];
     blacklist: EquipmentFilterDetails[];
     whitelist: EquipmentFilterDetails[];
 }

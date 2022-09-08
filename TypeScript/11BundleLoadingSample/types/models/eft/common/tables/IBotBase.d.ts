@@ -28,6 +28,8 @@ export interface IBotBase {
     CarExtractCounts: CarExtractCounts;
     SurvivorClass: SurvivorClass;
     WishList: string[];
+    /** SPT specific property used during bot generation in raid */
+    sptIsPmc?: boolean;
 }
 export interface Info {
     EntryPoint: string;

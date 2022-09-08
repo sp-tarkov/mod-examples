@@ -35,6 +35,17 @@ export declare class BotLootCacheService {
      */
     protected addLootToCache(botRole: string, isPmc: boolean, lootPool: Items): void;
     /**
+     * Sort a pool of item objects by its flea price
+     * @param poolToSort pool of items to sort
+     */
+    protected sortPoolByRagfairPrice(poolToSort: ITemplateItem[]): void;
+    /**
+     * Add unique items into combined pool
+     * @param combinedItemPool Pool of items to add to
+     * @param itemsToAdd items to add to combined pool if unique
+     */
+    protected addUniqueItemsToPool(combinedItemPool: ITemplateItem[], itemsToAdd: ITemplateItem[]): void;
+    /**
      * Ammo/grenades have this property
      * @param props
      * @returns

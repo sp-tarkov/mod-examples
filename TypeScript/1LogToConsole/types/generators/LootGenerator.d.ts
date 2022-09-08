@@ -6,14 +6,16 @@ import { LootRequest } from "../models/spt/services/LootRequest";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { ItemFilterService } from "../services/ItemFilterService";
+import { HashUtil } from "../utils/HashUtil";
 import { RandomUtil } from "../utils/RandomUtil";
 export declare class LootGenerator {
     protected logger: ILogger;
+    protected hashUtil: HashUtil;
     protected databaseServer: DatabaseServer;
     protected randomUtil: RandomUtil;
     protected itemHelper: ItemHelper;
     protected itemFilterService: ItemFilterService;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, randomUtil: RandomUtil, itemHelper: ItemHelper, itemFilterService: ItemFilterService);
+    constructor(logger: ILogger, hashUtil: HashUtil, databaseServer: DatabaseServer, randomUtil: RandomUtil, itemHelper: ItemHelper, itemFilterService: ItemFilterService);
     /**
      * Generate a list of items based on options passed in
      * @param options parameters to adjust what loot is generated
