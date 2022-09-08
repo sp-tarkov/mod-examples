@@ -56,6 +56,17 @@ export declare class FenceService {
      */
     performPartialRefresh(): void;
     /**
+     * Increment fence next refresh timestamp by current timestamp + partialRefreshTimeSeconds from config
+     */
+    protected incrementPartialRefreshTime(): void;
+    /**
+     * Compare the current fence offer count to what the config wants it to be,
+     * If value is lower add extra count to value to generate more items to fill gap
+     * @param existingItemCountToReplace count of items to generate
+     * @returns number of items to generate
+     */
+    protected getCountOfItemsToGenerate(existingItemCountToReplace: number): number;
+    /**
      * Choose an item (not mod) at random and remove from assorts
      */
     protected removeRandomItemFromAssorts(): void;

@@ -4,7 +4,7 @@ export declare class ContextVariable {
     private timestamp;
     private type;
     constructor(value: any, type: ContextVariableType);
-    getValue(): any;
+    getValue<T>(): T;
     getTimestamp(): Date;
     getType(): ContextVariableType;
 }

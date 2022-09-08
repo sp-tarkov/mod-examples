@@ -67,7 +67,7 @@ export declare class BotWeaponGenerator {
      * @param botRole for durability values
      * @returns Base weapon item in array
      */
-    constructWeaponBaseArray(weaponTpl: string, weaponParentId: string, equipmentSlot: string, weaponItemTemplate: ITemplateItem, botRole: string): Item[];
+    protected constructWeaponBaseArray(weaponTpl: string, weaponParentId: string, equipmentSlot: string, weaponItemTemplate: ITemplateItem, botRole: string): Item[];
     /**
      * Get the mods necessary to kit out a weapon to its preset level
      * @param weaponTpl weapon to find preset for

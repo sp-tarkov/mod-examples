@@ -80,7 +80,7 @@ export interface Props {
     HasShoulderContact?: boolean;
     SightingRange?: number;
     DoubleActionAccuracyPenaltyMult?: number;
-    ModesCount: any;
+    ModesCount?: any;
     DurabilityBurnModificator?: number;
     HeatFactor?: number;
     CoolFactor?: number;
@@ -156,7 +156,7 @@ export interface Props {
     RigLayoutName?: string;
     MaxDurability?: number;
     armorZone?: string[];
-    armorClass: any;
+    armorClass?: any;
     mousePenalty?: number;
     weaponErgonomicPenalty?: number;
     BluntThroughput?: number;
@@ -254,8 +254,8 @@ export interface Props {
     foodUseTime?: number;
     foodEffectType?: string;
     StimulatorBuffs?: string;
-    effects_health: any;
-    effects_damage: any;
+    effects_health?: any;
+    effects_damage?: any;
     MaximumNumberOfUsage?: number;
     knifeHitDelay?: number;
     knifeHitSlashRate?: number;

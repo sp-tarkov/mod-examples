@@ -39,6 +39,7 @@ export interface Dynamic {
     offerItemCount: MinMax;
     price: MinMax;
     presetPrice: MinMax;
+    showDefaultPresetsOnly: boolean;
     endTimeSeconds: MinMax;
     condition: Condition;
     stackablePercent: MinMax;

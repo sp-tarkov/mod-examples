@@ -20,7 +20,7 @@ declare class ItemHelper {
     protected databaseServer: DatabaseServer;
     constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, randomUtil: RandomUtil, objectId: ObjectId, mathUtil: MathUtil, databaseServer: DatabaseServer);
     /**
-     * Checks if a id is a valid item. Valid meaning that it's an item that be stored in stash
+     * Checks if an id is a valid item. Valid meaning that it's an item that be stored in stash
      * @param       {string}    tpl       the template id / tpl
      * @returns                             boolean; true for items that may be in player posession and not quest items
      */
@@ -79,6 +79,11 @@ declare class ItemHelper {
      * @returns {array}                     The array of StackSlotItems
      */
     generateItemsFromStackSlot(item: ITemplateItem, parentId: string): Item[];
+    /**
+     * Get cloned copy of all item data from items.json
+     * @returns array of ITemplateItem objects
+     */
+    getItems(): ITemplateItem[];
     /**
      * Gets item data from items.json
      * @param tpl items template id to look up
