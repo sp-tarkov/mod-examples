@@ -1,4 +1,5 @@
 import { BotGeneratorHelper } from "../helpers/BotGeneratorHelper";
+import { BotWeaponGeneratorHelper } from "../helpers/BotWeaponGeneratorHelper";
 import { HandbookHelper } from "../helpers/HandbookHelper";
 import { Inventory as PmcInventory } from "../models/eft/common/tables/IBotBase";
 import { Chances, Inventory, ItemMinMax, ModsChances } from "../models/eft/common/tables/IBotType";
@@ -20,10 +21,11 @@ export declare class BotLootGenerator {
     protected handbookHelper: HandbookHelper;
     protected botGeneratorHelper: BotGeneratorHelper;
     protected botWeaponGenerator: BotWeaponGenerator;
+    protected botWeaponGeneratorHelper: BotWeaponGeneratorHelper;
     protected botLootCacheService: BotLootCacheService;
     protected configServer: ConfigServer;
     protected botConfig: IBotConfig;
-    constructor(logger: ILogger, hashUtil: HashUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, botGeneratorHelper: BotGeneratorHelper, botWeaponGenerator: BotWeaponGenerator, botLootCacheService: BotLootCacheService, configServer: ConfigServer);
+    constructor(logger: ILogger, hashUtil: HashUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, botGeneratorHelper: BotGeneratorHelper, botWeaponGenerator: BotWeaponGenerator, botWeaponGeneratorHelper: BotWeaponGeneratorHelper, botLootCacheService: BotLootCacheService, configServer: ConfigServer);
     generateLoot(sessionId: string, templateInventory: Inventory, itemCounts: ItemMinMax, isPmc: boolean, botRole: string, botInventory: PmcInventory, equipmentChances: Chances): void;
     protected getRandomisedCount(min: number, max: number, nValue: number): number;
     /**

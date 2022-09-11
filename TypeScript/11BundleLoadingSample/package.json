@@ -4,7 +4,7 @@
 	"author": "Chomp",
 	"license": "MIT",
 	"main": "src/mod.js",
-	"akiVersion": "3.2.2",
+	"akiVersion": "3.2.3",
 	"isBundleMod": true,
     "scripts": {
         "setup": "npm i",

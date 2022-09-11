@@ -1,8 +1,7 @@
 import { DurabilityLimitsHelper } from "../helpers/DurabilityLimitsHelper";
-import { Inventory as PmcInventory } from "../models/eft/common/tables/IBotBase";
 import { Mods, ModsChances } from "../models/eft/common/tables/IBotType";
 import { Item, Repairable, Upd } from "../models/eft/common/tables/IItem";
-import { Grid, ITemplateItem, Slot } from "../models/eft/common/tables/ITemplateItem";
+import { ITemplateItem, Slot } from "../models/eft/common/tables/ITemplateItem";
 import { EquipmentFilterDetails, IBotConfig } from "../models/spt/config/IBotConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
@@ -12,6 +11,7 @@ import { ItemFilterService } from "../services/ItemFilterService";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
+import { BotWeaponGeneratorHelper } from "./BotWeaponGeneratorHelper";
 import { ContainerHelper } from "./ContainerHelper";
 import { InventoryHelper } from "./InventoryHelper";
 import { ItemHelper } from "./ItemHelper";
@@ -42,11 +42,11 @@ export declare class BotGeneratorHelper {
     protected botEquipmentFilterService: BotEquipmentFilterService;
     protected itemFilterService: ItemFilterService;
     protected profileHelper: ProfileHelper;
+    protected botWeaponGeneratorHelper: BotWeaponGeneratorHelper;
     protected configServer: ConfigServer;
     protected botConfig: IBotConfig;
-    constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, probabilityHelper: ProbabilityHelper, databaseServer: DatabaseServer, durabilityLimitsHelper: DurabilityLimitsHelper, itemHelper: ItemHelper, inventoryHelper: InventoryHelper, containerHelper: ContainerHelper, botEquipmentFilterService: BotEquipmentFilterService, itemFilterService: ItemFilterService, profileHelper: ProfileHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, probabilityHelper: ProbabilityHelper, databaseServer: DatabaseServer, durabilityLimitsHelper: DurabilityLimitsHelper, itemHelper: ItemHelper, inventoryHelper: InventoryHelper, containerHelper: ContainerHelper, botEquipmentFilterService: BotEquipmentFilterService, itemFilterService: ItemFilterService, profileHelper: ProfileHelper, botWeaponGeneratorHelper: BotWeaponGeneratorHelper, configServer: ConfigServer);
     /**
-     * TODO - very similar to generateModsForWeapon
      * Check mods are compatible and add to array
      * @param equipment Equipment item to add mods to
      * @param modPool Mod list to choose frm
@@ -57,18 +57,30 @@ export declare class BotGeneratorHelper {
      */
     generateModsForEquipment(equipment: Item[], modPool: Mods, parentId: string, parentTemplate: ITemplateItem, modSpawnChances: ModsChances): Item[];
     /**
-     * TODO - very similar to generateModsForEquipment
      * @param sessionId session id
      * @param weapon Weapon to add mods to
-     * @param modPool pool of compatible mods to attach to gun
+     * @param modPool Pool of compatible mods to attach to weapon
      * @param weaponParentId parentId of weapon
-     * @param parentTemplate
-     * @param modSpawnChances
-     * @param ammoTpl ammo tpl to use when generating magazines/cartridges
-     * @param botRole role of bot weapon is generated for
-     * @returns Weapon with mods
+     * @param parentWeaponTemplate Weapon which mods will be generated on
+     * @param modSpawnChances Mod spawn chances
+     * @param ammoTpl Ammo tpl to use when generating magazines/cartridges
+     * @param botRole Role of bot weapon is generated for
+     * @returns Weapon + mods array
      */
-    generateModsForWeapon(sessionId: string, weapon: Item[], modPool: Mods, weaponParentId: string, parentTemplate: ITemplateItem, modSpawnChances: ModsChances, ammoTpl: string, botRole: string): Item[];
+    generateModsForWeapon(sessionId: string, weapon: Item[], modPool: Mods, weaponParentId: string, parentWeaponTemplate: ITemplateItem, modSpawnChances: ModsChances, ammoTpl: string, botRole: string): Item[];
+    /**
+     *
+     * @param modSlot
+     * @param isRandomisableSlot
+     * @param modsParent
+     * @param botEquipBlacklist
+     * @param itemModPool
+     * @param weapon array with only weapon tpl in it, ready for mods to be added
+     * @param ammoTpl ammo tpl to use if slot requires a cartridge to be added (e.g. mod_magazine)
+     * @param parentTemplate
+     * @returns
+     */
+    protected chooseModToPutIntoSlot(modSlot: string, isRandomisableSlot: boolean, modsParent: Slot, botEquipBlacklist: EquipmentFilterDetails, itemModPool: Record<string, string[]>, weapon: Item[], ammoTpl: string, parentTemplate: ITemplateItem): [boolean, ITemplateItem];
     /**
      * Find mod tpls of a provided type and add to modPool
      * @param desiredSlotName slot to look up and add we are adding tpls for (e.g mod_scope)
@@ -79,15 +91,15 @@ export declare class BotGeneratorHelper {
     /**
      * Check if mod item is on limited list + has surpassed the limit set for it
      * @param botRole role the bot has e.g. assault
-     * @param modTpl mods tpl
+     * @param modTemplate mods template data
      * @param modLimits limits set for weapon being generated for this bot
      * @returns true if over item limit
      */
-    protected modHasReachedItemLimit(botRole: string, modTpl: string, modLimits: BotModLimits): boolean;
+    protected modHasReachedItemLimit(botRole: string, modTemplate: ITemplateItem, modLimits: BotModLimits): boolean;
     /**
-     * Initalise mod limits to be used when generating the weapon
+     * Initalise mod limits to be used when generating a weapon
      * @param botRole "assault", "bossTagilla" or "pmc"
-     * @returns
+     * @returns BotModLimits object
      */
     protected initModLimits(botRole: string): BotModLimits;
     /**
@@ -114,7 +126,7 @@ export declare class BotGeneratorHelper {
     protected filterWeaponModsByBlacklist(allowedMods: string[], botEquipBlacklist: EquipmentFilterDetails, modSlot: string): string[];
     /**
      * Check if the specific item type on the weapon has reached the set limit
-     * @param modTpl item to check is limited
+     * @param modTpl log mod tpl if over type limit
      * @param currentCount current number of this item on gun
      * @param maxLimit mod limit allowed
      * @param botRole role of bot we're checking weapon of
@@ -124,16 +136,14 @@ export declare class BotGeneratorHelper {
         count: number;
     }, maxLimit: number, botRole: string): boolean;
     /**
-     * log errors if mod is not valid for a slot
-     * @param modTpl
-     * @param found
-     * @param itemSlot
-     * @param modTemplate
-     * @param modSlot
-     * @param parentTemplate
+     * Log errors if mod is not compatible with slot
+     * @param modToAdd template of mod to check
+     * @param itemSlot slot the item will be placed in
+     * @param modSlot slot the mod will fill
+     * @param parentTemplate tempalte of the mods parent item
      * @returns true if valid
      */
-    protected isModValidForSlot(modTpl: string, found: boolean, itemSlot: Slot, modTemplate: ITemplateItem, modSlot: string, parentTemplate: ITemplateItem): boolean;
+    protected isModValidForSlot(modToAdd: [boolean, ITemplateItem], itemSlot: Slot, modSlot: string, parentTemplate: ITemplateItem): boolean;
     /**
      * Create a mod item with parameters as properties
      * @param modId _id
@@ -145,12 +155,6 @@ export declare class BotGeneratorHelper {
      */
     protected createModItem(modId: string, modTpl: string, parentId: string, modSlot: string, modTemplate: ITemplateItem): Item;
     /**
-     * Is this magazine cylinder related (revolvers and grenade launchers)
-     * @param magazineParentName the name of the magazines parent
-     * @returns true if it is cylinder related
-     */
-    magazineIsCylinderRelated(magazineParentName: string): boolean;
-    /**
      * randomly choose if a mod should be spawned, 100% for required mods OR mod is ammo slot
      * never return true for an item that has 0% spawn chance
      * @param itemSlot slot the item sits in
@@ -161,7 +165,7 @@ export declare class BotGeneratorHelper {
     protected shouldModBeSpawned(itemSlot: Slot, modSlot: string, modSpawnChances: ModsChances): boolean;
     /**
      * Get a list of containers that hold ammo
-     * e.g. mod_magazine
+     * e.g. mod_magazine / patron_in_weapon_000
      * @returns string array
      */
     protected getAmmoContainers(): string[];
@@ -214,6 +218,14 @@ export declare class BotGeneratorHelper {
      * @returns Repairable object
      */
     protected generateArmorRepairableProperties(itemTemplate: ITemplateItem, botRole: string): Repairable;
+    /**
+     * Get a random mod from an items compatible mods Filter array
+     * @param modTpl
+     * @param parentSlot
+     * @param modSlot
+     * @param items
+     * @returns item tpl
+     */
     protected getModTplFromItemDb(modTpl: string, parentSlot: Slot, modSlot: string, items: Item[]): string;
     /**
      * Can an item be added to an item without issue
@@ -223,23 +235,6 @@ export declare class BotGeneratorHelper {
      * @returns true if possible
      */
     isItemIncompatibleWithCurrentItems(items: Item[], tplToCheck: string, equipmentSlot: string): boolean;
-    /**
-     * Adds an item with all its childern into specified equipmentSlots, wherever it fits.
-     * @param equipmentSlots
-     * @param parentId
-     * @param parentTpl
-     * @param itemWithChildren
-     * @param inventory
-     * @returns a `boolean` indicating item was added
-     */
-    addItemWithChildrenToEquipmentSlot(equipmentSlots: string[], parentId: string, parentTpl: string, itemWithChildren: Item[], inventory: PmcInventory): boolean;
-    /**
-     * is the provided item allowed inside a container
-     * @param slot location item wants to be placed in
-     * @param itemTpl item being placed
-     * @returns true if allowed
-     */
-    protected itemAllowedInContainer(slot: Grid, itemTpl: string): boolean;
 }
 /** TODO - move into own class */
 export declare class ExhaustableArray<T> {
