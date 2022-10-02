@@ -1,10 +1,10 @@
 import { INotification } from "../models/eft/notifier/INotifier";
-import { IHttpServer } from "../models/spt/server/IHttpServer";
+import { HttpServer } from "../servers/HttpServer";
 import { NotificationService } from "../services/NotificationService";
 export declare class NotificationSendHelper {
-    protected httpServer: IHttpServer;
+    protected httpServer: HttpServer;
     protected notificationService: NotificationService;
-    constructor(httpServer: IHttpServer, notificationService: NotificationService);
+    constructor(httpServer: HttpServer, notificationService: NotificationService);
     /**
      * Send notification message to the appropiate channel
      */

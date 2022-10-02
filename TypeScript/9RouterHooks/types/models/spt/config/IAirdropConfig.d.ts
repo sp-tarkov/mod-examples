@@ -25,4 +25,6 @@ export interface AirdropLoot {
     itemTypeWhitelist: string[];
     /** key: item base type: value: max count */
     itemLimits: Record<string, number>;
+    armorLevelWhitelist: number[];
+    moneyStackLimits: Record<string, MinMax>;
 }

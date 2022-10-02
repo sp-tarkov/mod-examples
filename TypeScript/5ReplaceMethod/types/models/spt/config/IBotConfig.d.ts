@@ -24,7 +24,7 @@ export interface IBotConfig extends IBaseConfig {
     /** Show a bots botType value after their name */
     showTypeInNickname: boolean;
     /** Max number of bots that can be spawned in a raid at any one time */
-    maxBotCap: number;
+    maxBotCap: Record<string, number>;
     /** How many stacks of secret ammo should a bot have in its bot secure container */
     secureContainerAmmoStackCount: number;
 }

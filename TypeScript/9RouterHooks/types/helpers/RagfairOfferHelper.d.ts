@@ -48,6 +48,12 @@ export declare class RagfairOfferHelper {
     constructor(logger: ILogger, timeUtil: TimeUtil, hashUtil: HashUtil, itemEventRouter: ItemEventRouter, databaseServer: DatabaseServer, traderHelper: TraderHelper, saveServer: SaveServer, dialogueHelper: DialogueHelper, itemHelper: ItemHelper, paymentHelper: PaymentHelper, presetHelper: PresetHelper, profileHelper: ProfileHelper, ragfairServerHelper: RagfairServerHelper, ragfairSortHelper: RagfairSortHelper, ragfairHelper: RagfairHelper, ragfairOfferService: RagfairOfferService, localeService: LocaleService, configServer: ConfigServer);
     getValidOffers(info: ISearchRequestData, itemsToAdd: string[], assorts: Record<string, ITraderAssort>, pmcProfile: IPmcData): IRagfairOffer[];
     getOffersForBuild(info: ISearchRequestData, itemsToAdd: string[], assorts: Record<string, ITraderAssort>, pmcProfile: IPmcData): IRagfairOffer[];
+    /**
+     * Get an array of flea offers that are inaccessible to player due to their inadequate loyalty level
+     * @param offers Offers to check
+     * @param pmcProfile Players profile with trader loyalty levels
+     */
+    protected getLoyaltyLockedOffers(offers: IRagfairOffer[], pmcProfile: IPmcData): string[];
     processOffersOnProfile(sessionID: string): boolean;
     protected getProfileOffers(sessionID: string): IRagfairOffer[];
     protected deleteOfferByOfferId(sessionID: string, offerId: string): void;

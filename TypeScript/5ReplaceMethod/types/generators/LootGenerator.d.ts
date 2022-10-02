@@ -35,23 +35,25 @@ export declare class LootGenerator {
      * Find a random item in items.json and add to result array
      * @param items items to choose from
      * @param itemTypeCounts item limit counts
+     * @param options item filters
      * @param result array to add found item to
      * @returns true if item was valid and added to pool
      */
     protected findAndAddRandomItemToLoot(items: [string, ITemplateItem][], itemTypeCounts: Record<string, {
         current: number;
         max: number;
-    }>, result: LootItem[]): boolean;
+    }>, options: LootRequest, result: LootItem[]): boolean;
     /**
      *
      * Find a random item in items.json and add to result array
      * @param globalDefaultPresets presets to choose from
      * @param itemTypeCounts item limit counts
+     * @param itemBlacklist items to skip
      * @param result array to add found preset to
      * @returns true if preset was valid and added to pool
      */
     protected findAndAddRandomPresetToLoot(globalDefaultPresets: [string, Preset][], itemTypeCounts: Record<string, {
         current: number;
         max: number;
-    }>, result: LootItem[]): boolean;
+    }>, itemBlacklist: string[], result: LootItem[]): boolean;
 }

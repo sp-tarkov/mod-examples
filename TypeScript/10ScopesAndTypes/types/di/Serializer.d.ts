@@ -1,5 +1,6 @@
-import { IHttpServer } from "../models/spt/server/IHttpServer";
+/// <reference types="node" />
+import { IncomingMessage, ServerResponse } from "http";
 export declare class Serializer {
-    serialize(sessionID: string, req: any, resp: any, body: any, httpServer: IHttpServer): void;
+    serialize(sessionID: string, req: IncomingMessage, resp: ServerResponse, body: any): void;
     canHandle(something: string): boolean;
 }

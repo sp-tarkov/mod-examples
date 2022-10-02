@@ -39,6 +39,13 @@ export declare class RagfairOfferGenerator {
     protected ragfairConfig: IRagfairConfig;
     constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, ragfairServerHelper: RagfairServerHelper, saveServer: SaveServer, presetHelper: PresetHelper, ragfairAssortGenerator: RagfairAssortGenerator, ragfairOfferService: RagfairOfferService, ragfairPriceService: RagfairPriceService, ragfairCategoriesService: RagfairCategoriesService, fenceService: FenceService, itemHelper: ItemHelper, configServer: ConfigServer);
     createOffer(userID: string, time: number, items: Item[], barterScheme: IBarterScheme[], loyalLevel: number, price: number, sellInOnePiece?: boolean): IRagfairOffer;
+    /**
+     * Convert a count of currency into roubles
+     * @param currencyCount amount of currency to convert into roubles
+     * @param currencyType Type of currency (euro/dollar/rouble)
+     * @returns count of roubles
+     */
+    protected calculateRoublePrice(currencyCount: number, currencyType: string): number;
     protected getTraderId(userID: string): string;
     protected getRating(userID: string): number;
     /**

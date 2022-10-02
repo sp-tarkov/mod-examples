@@ -1175,5 +1175,6 @@ export interface Preset {
     _name: string;
     _parent: string;
     _items: Item[];
+    /** Default presets have this property */
     _encyclopedia?: string;
 }

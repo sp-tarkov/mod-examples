@@ -341,6 +341,7 @@ export interface RagfairInfo {
     offers: IRagfairOffer[];
 }
 export interface Bonus {
+    id?: string;
     type: string;
     templateId?: string;
     passive?: boolean;
@@ -348,6 +349,8 @@ export interface Bonus {
     visible?: boolean;
     value?: number;
     icon?: string;
+    filter?: string[];
+    skillType?: string;
 }
 export interface Note {
     Time: number;

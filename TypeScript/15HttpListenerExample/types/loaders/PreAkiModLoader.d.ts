@@ -9,6 +9,9 @@ import { ModCompilerService } from "../services/ModCompilerService";
 import { JsonUtil } from "../utils/JsonUtil";
 import { VFS } from "../utils/VFS";
 import { BundleLoader } from "./BundleLoader";
+import { IPostAkiLoadMod } from "../models/external/IPostAkiLoadMod";
+import { IPreAkiLoadMod } from "../models/external/IPreAkiLoadMod";
+import { IPostDBLoadMod } from "../models/external/IPostDBLoadMod";
 export declare class PreAkiModLoader implements IModLoader {
     protected logger: ILogger;
     protected vfs: VFS;
@@ -56,12 +59,26 @@ export declare class PreAkiModLoader implements IModLoader {
      */
     protected getModsPackageData(mods: string[]): Record<string, IPackageJsonData>;
     /**
-     * Does mod have "delayedLoad(" string in its entry class
-     * @param modFolderName folder name
-     * @param modToValidate package.json details
+     * Use defined safe guard to check if the mod is a IPreAkiLoadMod
      * @returns boolean
      */
-    protected isModSpt3XXCompatible(modFolderName: string, modToValidate: IPackageJsonData): boolean;
+    protected isPreAkiLoad(mod: any): mod is IPreAkiLoadMod;
+    /**
+     * Use defined safe guard to check if the mod is a IPostAkiLoadMod
+     * @returns boolean
+     */
+    protected isPostAkiLoad(mod: any): mod is IPostAkiLoadMod;
+    /**
+     * Use defined safe guard to check if the mod is a IPostDBLoadMod
+     * @returns boolean
+     */
+    protected isPostDBAkiLoad(mod: any): mod is IPostDBLoadMod;
+    /**
+     * Check that the mod is compatible with SPT 3.X.X
+     * @param mod the mod to check
+     * @returns boolean
+     */
+    protected isModSpt3XXCompatible(mod: any): boolean;
     protected isModCombatibleWithAki(mod: IPackageJsonData): boolean;
     protected executeMods(container: DependencyContainer): void;
     sortModsLoadOrder(): string[];

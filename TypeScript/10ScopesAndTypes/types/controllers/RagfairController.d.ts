@@ -12,6 +12,7 @@ import { RagfairTaxHelper } from "../helpers/RagfairTaxHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { Item } from "../models/eft/common/tables/IItem";
+import { ITraderAssort } from "../models/eft/common/tables/ITrader";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IAkiProfile } from "../models/eft/profile/IAkiProfile";
 import { IAddOfferRequestData, Requirement } from "../models/eft/ragfair/IAddOfferRequestData";
@@ -65,6 +66,35 @@ export declare class RagfairController {
     protected ragfairConfig: IRagfairConfig;
     constructor(logger: ILogger, timeUtil: TimeUtil, httpResponse: HttpResponseUtil, itemEventRouter: ItemEventRouter, ragfairServer: RagfairServer, ragfairPriceService: RagfairPriceService, databaseServer: DatabaseServer, itemHelper: ItemHelper, saveServer: SaveServer, ragfairSellHelper: RagfairSellHelper, ragfairTaxHelper: RagfairTaxHelper, ragfairSortHelper: RagfairSortHelper, ragfairOfferHelper: RagfairOfferHelper, profileHelper: ProfileHelper, paymentService: PaymentService, handbookHelper: HandbookHelper, paymentHelper: PaymentHelper, inventoryHelper: InventoryHelper, traderHelper: TraderHelper, ragfairHelper: RagfairHelper, ragfairOfferService: RagfairOfferService, ragfairRequiredItemsService: RagfairRequiredItemsService, ragfairOfferGenerator: RagfairOfferGenerator, configServer: ConfigServer);
     getOffers(sessionID: string, info: ISearchRequestData): IGetOffersResult;
+    /**
+     * Get offers for the client based on type of search being performed
+     * @param searchRequest Client search request data
+     * @param itemsToAdd
+     * @param assorts
+     * @param pmcProfile Player profile
+     * @returns array of offers
+     */
+    protected getOffersForSearchType(searchRequest: ISearchRequestData, itemsToAdd: string[], assorts: Record<string, ITraderAssort>, pmcProfile: IPmcData): IRagfairOffer[];
+    /**
+     * Get categories for the type of search being performed, linked/required/all
+     * @param searchRequest Client search request data
+     * @param offers ragfair offers to get categories for
+     * @returns record with tpls + counts
+     */
+    protected getSpecificCategories(searchRequest: ISearchRequestData, offers: IRagfairOffer[]): Record<string, number>;
+    /**
+     * Add Required offers to offers result
+     * @param searchRequest Client search request data
+     * @param assorts
+     * @param pmcProfile Player profile
+     * @param result Result object being sent back to client
+     */
+    protected addRequiredOffersToResult(searchRequest: ISearchRequestData, assorts: Record<string, ITraderAssort>, pmcProfile: IPmcData, result: IGetOffersResult): void;
+    /**
+     * Add index to all offers passed in (0-indexed)
+     * @param offers Offers to add index value to
+     */
+    protected addIndexValueToOffers(offers: IRagfairOffer[]): void;
     /**
      * Update a trader flea offer with buy restrictions stored in the traders assort
      * @param offer flea offer to update

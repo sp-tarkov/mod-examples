@@ -18,5 +18,6 @@ export declare enum ConfigTypes {
     REPAIR = "aki-repair",
     SCAVCASE = "aki-scavcase",
     TRADER = "aki-trader",
-    WEATHER = "aki-weather"
+    WEATHER = "aki-weather",
+    SEASONAL_EVENT = "aki-seasonalevents"
 }

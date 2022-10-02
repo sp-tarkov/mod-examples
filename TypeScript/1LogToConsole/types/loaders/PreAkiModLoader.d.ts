@@ -9,6 +9,9 @@ import { ModCompilerService } from "../services/ModCompilerService";
 import { JsonUtil } from "../utils/JsonUtil";
 import { VFS } from "../utils/VFS";
 import { BundleLoader } from "./BundleLoader";
+import { IPostAkiLoadMod } from "../models/external/IPostAkiLoadMod";
+import { IPreAkiLoadMod } from "../models/external/IPreAkiLoadMod";
+import { IPostDBLoadMod } from "../models/external/IPostDBLoadMod";
 export declare class PreAkiModLoader implements IModLoader {
     protected logger: ILogger;
     protected vfs: VFS;
@@ -44,9 +47,9 @@ export declare class PreAkiModLoader implements IModLoader {
      */
     protected getDuplicates(stringArray: string[]): string[];
     /**
-     *
-     * @param mods Get an array of broken/invalid mods by name
-     * @returns Mod names array
+     * Get an array of mods with errors that prevent them from working with SPT
+     * @param mods mods to validate
+     * @returns Mod names as array
      */
     protected getBrokenMods(mods: string[]): string[];
     /**
@@ -56,19 +59,38 @@ export declare class PreAkiModLoader implements IModLoader {
      */
     protected getModsPackageData(mods: string[]): Record<string, IPackageJsonData>;
     /**
-     * Does mod have "delayedLoad(" string in its entry class
-     * @param modFolderName folder name
-     * @param modToValidate package.json details
+     * Use defined safe guard to check if the mod is a IPreAkiLoadMod
      * @returns boolean
      */
-    protected isModSpt3XXCompatible(modFolderName: string, modToValidate: IPackageJsonData): boolean;
+    protected isPreAkiLoad(mod: any): mod is IPreAkiLoadMod;
+    /**
+     * Use defined safe guard to check if the mod is a IPostAkiLoadMod
+     * @returns boolean
+     */
+    protected isPostAkiLoad(mod: any): mod is IPostAkiLoadMod;
+    /**
+     * Use defined safe guard to check if the mod is a IPostDBLoadMod
+     * @returns boolean
+     */
+    protected isPostDBAkiLoad(mod: any): mod is IPostDBLoadMod;
+    /**
+     * Check that the mod is compatible with SPT 3.X.X
+     * @param mod the mod to check
+     * @returns boolean
+     */
+    protected isModSpt3XXCompatible(mod: any): boolean;
     protected isModCombatibleWithAki(mod: IPackageJsonData): boolean;
     protected executeMods(container: DependencyContainer): void;
     sortModsLoadOrder(): string[];
     protected addMod(mod: string): Promise<void>;
     protected areModDependenciesFulfilled(pkg: IPackageJsonData, loadedMods: Record<string, IPackageJsonData>): boolean;
     protected isModCompatible(mod: IPackageJsonData, loadedMods: Record<string, IPackageJsonData>): boolean;
-    protected validMod(mod: string): boolean;
+    /**
+     * Validate a mod passes a number of checks
+     * @param modName name of mod in /mods/ to validate
+     * @returns true if valid
+     */
+    protected validMod(modName: string): boolean;
     protected getLoadOrderRecursive(mod: string, result: Record<string, string>, visited: Record<string, string>): void;
     protected getLoadOrder(mods: Record<string, ModLoader.IMod>): Record<string, string>;
     getContainer(): DependencyContainer;

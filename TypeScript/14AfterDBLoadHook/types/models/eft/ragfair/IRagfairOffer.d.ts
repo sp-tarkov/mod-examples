@@ -9,6 +9,7 @@ export interface IRagfairOffer {
     intId: number;
     itemsCost: number;
     requirementsCost: number;
+    sptRequirementsCostRouble: number;
     startTime: number;
     endTime: number;
     sellInOnePiece: boolean;

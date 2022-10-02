@@ -35,9 +35,9 @@ export declare class BotGenerationCacheService {
     protected removeBotFromCache(indexOfBotToReturn: number): void;
     /**
      * Get index of bot profile that matches criteria
-     * @param role role of bot we want
-     * @param getPmc is requested bot a pmc
-     * @returns index of found bot
+     * @param role Role of bot wanted
+     * @param getPmc Requested bot a pmc
+     * @returns index of found bot, -1 if not found
      */
     protected getIndexOfBotToReturn(role: string, getPmc: boolean): number;
     /**

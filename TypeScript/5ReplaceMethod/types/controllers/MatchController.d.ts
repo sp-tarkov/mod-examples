@@ -9,6 +9,7 @@ import { IGetProfileRequestData } from "../models/eft/match/IGetProfileRequestDa
 import { IJoinMatchRequestData } from "../models/eft/match/IJoinMatchRequestData";
 import { IJoinMatchResult } from "../models/eft/match/IJoinMatchResult";
 import { IStartOfflineRaidRequestData } from "../models/eft/match/IStartOffineRaidRequestData";
+import { BotDifficulty } from "../models/enums/BotDifficulty";
 import { IBotConfig } from "../models/spt/config/IBotConfig";
 import { IInRaidConfig } from "../models/spt/config/IInRaidConfig";
 import { IMatchConfig } from "../models/spt/config/IMatchConfig";
@@ -44,5 +45,11 @@ export declare class MatchController {
     protected getMatch(location: string): any;
     getGroupStatus(info: IGetGroupStatusRequestData): any;
     startOfflineRaid(info: IStartOfflineRaidRequestData, sessionID: string): void;
+    /**
+     * Convert a difficulty value from pre-raid screen to a bot difficulty
+     * @param botDifficulty dropdown difficulty
+     * @returns bot difficulty
+     */
+    protected convertDifficultyDropdownIntoBotDifficulty(botDifficulty: BotDifficulty): string;
     endOfflineRaid(info: IEndOfflineRaidRequestData, sessionID: string): void;
 }

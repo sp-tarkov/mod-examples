@@ -34,6 +34,12 @@ export declare class BotHelper {
      */
     getPmcDifficultySettings(type: string, difficulty: string): Difficulty;
     /**
+     * Translate chosen value from pre-raid difficulty dropdown into bot difficulty value
+     * @param dropDownDifficulty Dropdown difficulty value to convert
+     * @returns bot difficulty
+     */
+    convertBotDifficultyDropdownToBotDifficulty(dropDownDifficulty: string): string;
+    /**
      * Choose a random difficulty from - easy/normal/hard/impossible
      * @returns random difficulty
      */

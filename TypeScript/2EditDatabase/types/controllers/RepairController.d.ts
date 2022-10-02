@@ -8,9 +8,9 @@ import { ITraderRepairActionDataRequest } from "../models/eft/repair/ITraderRepa
 import { IRepairConfig } from "../models/spt/config/IRepairConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ItemEventRouter } from "../routers/ItemEventRouter";
-import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { PaymentService } from "../services/PaymentService";
+import { RepairService } from "../services/RepairService";
 export declare class RepairController {
     protected logger: ILogger;
     protected itemEventRouter: ItemEventRouter;
@@ -19,23 +19,23 @@ export declare class RepairController {
     protected traderHelper: TraderHelper;
     protected paymentService: PaymentService;
     protected repairHelper: RepairHelper;
-    protected configServer: ConfigServer;
+    protected repairService: RepairService;
     protected repairConfig: IRepairConfig;
-    constructor(logger: ILogger, itemEventRouter: ItemEventRouter, databaseServer: DatabaseServer, questHelper: QuestHelper, traderHelper: TraderHelper, paymentService: PaymentService, repairHelper: RepairHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, itemEventRouter: ItemEventRouter, databaseServer: DatabaseServer, questHelper: QuestHelper, traderHelper: TraderHelper, paymentService: PaymentService, repairHelper: RepairHelper, repairService: RepairService);
     /**
      * Repair with trader
-     * @param pmcData player profile
-     * @param body endpoint request data
      * @param sessionID session id
+     * @param body endpoint request data
+     * @param pmcData player profile
      * @returns item event router action
      */
-    traderRepair(pmcData: IPmcData, body: ITraderRepairActionDataRequest, sessionID: string): IItemEventRouterResponse;
+    traderRepair(sessionID: string, body: ITraderRepairActionDataRequest, pmcData: IPmcData): IItemEventRouterResponse;
     /**
      * Repair with repair kit
-     * @param pmcData player profile
-     * @param body endpoint request data
      * @param sessionID session id
+     * @param body endpoint request data
+     * @param pmcData player profile
      * @returns item event router action
      */
-    repairWithKit(pmcData: IPmcData, body: IRepairActionDataRequest, sessionID: string): IItemEventRouterResponse;
+    repairWithKit(sessionID: string, body: IRepairActionDataRequest, pmcData: IPmcData): IItemEventRouterResponse;
 }

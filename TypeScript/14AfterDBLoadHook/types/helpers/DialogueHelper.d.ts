@@ -34,7 +34,8 @@ export declare class DialogueHelper {
      * Get the item contents for a particular message.
      * @param messageID
      * @param sessionID
+     * @param itemId Item being moved to inventory
      * @returns
      */
-    getMessageItemContents(messageID: string, sessionID: string): Item[];
+    getMessageItemContents(messageID: string, sessionID: string, itemId: string): Item[];
 }
