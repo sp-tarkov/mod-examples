@@ -7,7 +7,7 @@ The first step would be to install nodejs on your pc, the version you NEED is **
 
 That version is the one that has been used to test the mod templates and build scripts.
 
-It can be downloaded from here: https://nodejs.org/download/release/v14.15.3/
+It can be downloaded from here: https://nodejs.org/dist/v16.17.1/node-v16.17.1-x64.msi
 
 A system reboot may be needed after install.
 
