@@ -3,7 +3,7 @@ This project was created to automate most parts of building and setting up an en
 
 ## **NodeJS 14.15.3:**
 
-The first step would be to install nodejs on your pc, the version you NEED is **14.15.3**
+The first step would be to install nodejs on your pc, the version you NEED is **16.17.1**
 
 That version is the one that has been used to test the mod templates and build scripts.
 
