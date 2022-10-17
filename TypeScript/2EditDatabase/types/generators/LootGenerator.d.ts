@@ -17,8 +17,8 @@ export declare class LootGenerator {
     protected itemFilterService: ItemFilterService;
     constructor(logger: ILogger, hashUtil: HashUtil, databaseServer: DatabaseServer, randomUtil: RandomUtil, itemHelper: ItemHelper, itemFilterService: ItemFilterService);
     /**
-     * Generate a list of items based on options passed in
-     * @param options parameters to adjust what loot is generated
+     * Generate a list of items based on configuration options parameter
+     * @param options parameters to adjust how loot is generated
      * @returns An array of loot items
      */
     createRandomloot(options: LootRequest): LootItem[];
@@ -44,7 +44,13 @@ export declare class LootGenerator {
         max: number;
     }>, options: LootRequest, result: LootItem[]): boolean;
     /**
-     *
+     * Get a randomised stack count for an item between its StackMinRandom and StackMaxSize values
+     * @param item item to get stack count of
+     * @param options loot options
+     * @returns stack count
+     */
+    protected getRandomisedStackCount(item: ITemplateItem, options: LootRequest): number;
+    /**
      * Find a random item in items.json and add to result array
      * @param globalDefaultPresets presets to choose from
      * @param itemTypeCounts item limit counts

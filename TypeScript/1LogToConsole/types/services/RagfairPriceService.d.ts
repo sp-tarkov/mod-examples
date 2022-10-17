@@ -10,7 +10,8 @@ import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { RandomUtil } from "../utils/RandomUtil";
-export declare class RagfairPriceService {
+import { OnLoad } from "../di/OnLoad";
+export declare class RagfairPriceService implements OnLoad {
     protected handbookHelper: HandbookHelper;
     protected databaseServer: DatabaseServer;
     protected logger: ILogger;
@@ -19,21 +20,38 @@ export declare class RagfairPriceService {
     protected randomUtil: RandomUtil;
     protected configServer: ConfigServer;
     protected ragfairConfig: IRagfairConfig;
+    protected generatedDynamicPrices: boolean;
+    protected generatedStaticPrices: boolean;
     protected prices: IRagfairServerPrices;
     constructor(handbookHelper: HandbookHelper, databaseServer: DatabaseServer, logger: ILogger, itemHelper: ItemHelper, presetHelper: PresetHelper, randomUtil: RandomUtil, configServer: ConfigServer);
+    onLoad(): void;
+    getRoute(): string;
+    /**
+     * Iterate over all items of type "Item" in db and get template price, store in cache
+     */
     generateStaticPrices(): void;
-    generateDynamicPrices(): void;
-    hasDynamicPrices(): boolean;
-    getDynamicPrice(itemTpl: string): number;
-    getAllFleaPrices(): Record<string, number>;
+    protected generateDynamicPrices(): void;
+    /**
+     * Get the dynamic price for an item. If value doesn't exist, use static (handbook0) value.
+     * if no static value, return 1
+     * @param tplId Item tpl id to get price for
+     * @returns price in roubles
+     */
     getFleaPriceForItem(tplId: string): number;
     /**
-     * Check to see if an items price is below its handbook price and adjust accoring to values set to config/ragfair.json
-     * @param itemPrice price of item
-     * @param itemTpl item template Id being checked
-     * @returns adjusted price value in roubles
+     * get the dynamic (flea) price for an item
+     * Grabs prices from prices.json and stores in class if none currently exist
+     * @param itemTpl item template id to look up
+     * @returns price in roubles
      */
-    protected adjustPriceIfBelowHandbook(itemPrice: number, itemTpl: string): number;
+    getDynamicPriceForItem(itemTpl: string): number;
+    /**
+     * Grab the static (handbook) for an item by its tplId
+     * @param itemTpl item template id to look up
+     * @returns price in roubles
+     */
+    getStaticPriceForItem(itemTpl: string): number;
+    getAllFleaPrices(): Record<string, number>;
     /**
      * Get the percentage difference between two values
      * @param a numerical value a
@@ -41,9 +59,15 @@ export declare class RagfairPriceService {
      * @returns different in percent
      */
     protected getPriceDifference(a: number, b: number): number;
-    getStaticPriceForItem(tplId: string): number;
     getBarterPrice(barterScheme: IBarterScheme[]): number;
     getDynamicOfferPrice(items: Item[], desiredCurrency: string): number;
+    /**
+     * Check to see if an items price is below its handbook price and adjust accoring to values set to config/ragfair.json
+     * @param itemPrice price of item
+     * @param itemTpl item template Id being checked
+     * @returns adjusted price value in roubles
+     */
+    protected adjustPriceIfBelowHandbook(itemPrice: number, itemTpl: string): number;
     /**
      * Multiply the price by a randomised curve where n = 2, shift = 2
      * @param existingPrice price to alter
@@ -58,7 +82,7 @@ export declare class RagfairPriceService {
      * @param existingPrice price of existing base weapon
      * @returns
      */
-    getWeaponPresetPrice(item: Item, items: Item[], existingPrice: number): number;
+    protected getWeaponPresetPrice(item: Item, items: Item[], existingPrice: number): number;
     /**
      * Attempt to get the default preset for a weapon, failing that get the first preset in the array
      * (assumes default = has encyclopedia entry)

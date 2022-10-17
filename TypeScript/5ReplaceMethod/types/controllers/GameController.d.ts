@@ -3,7 +3,9 @@ import { HttpServerHelper } from "../helpers/HttpServerHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { Config } from "../models/eft/common/IGlobals";
+import { ICheckVersionResponse } from "../models/eft/game/ICheckVersionResponse";
 import { IGameConfigResponse } from "../models/eft/game/IGameConfigResponse";
+import { IServerDetails } from "../models/eft/game/IServerDetails";
 import { IAkiProfile } from "../models/eft/profile/IAkiProfile";
 import { ICoreConfig } from "../models/spt/config/ICoreConfig";
 import { IHttpConfig } from "../models/spt/config/IHttpConfig";
@@ -37,6 +39,6 @@ export declare class GameController {
     protected adjustLabsRaiderSpawnRate(): void;
     protected logProfileDetails(fullProfile: IAkiProfile): void;
     getGameConfig(sessionID: string): IGameConfigResponse;
-    getServer(): any[];
-    getValidGameVersion(): any;
+    getServer(): IServerDetails[];
+    getValidGameVersion(): ICheckVersionResponse;
 }

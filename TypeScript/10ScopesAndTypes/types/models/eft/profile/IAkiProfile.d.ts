@@ -37,12 +37,12 @@ export interface Dialogue {
     attachmentsNew: number;
 }
 export interface DialogueInfo {
-    _id: string;
-    type: MessageType;
-    message: MessagePreview;
-    pinned: boolean;
-    new: number;
     attachmentsNew: number;
+    new: number;
+    type: MessageType;
+    pinned: boolean;
+    message: MessagePreview;
+    _id: string;
 }
 export interface Message {
     _id: string;

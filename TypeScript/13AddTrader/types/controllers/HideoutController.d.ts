@@ -19,7 +19,7 @@ import { IHideoutUpgradeRequestData } from "../models/eft/hideout/IHideoutUpgrad
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IHideoutConfig } from "../models/spt/config/IHideoutConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
-import { ItemEventRouter } from "../routers/ItemEventRouter";
+import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
@@ -40,7 +40,7 @@ export declare class HideoutController {
     protected playerService: PlayerService;
     protected presetHelper: PresetHelper;
     protected paymentHelper: PaymentHelper;
-    protected itemEventRouter: ItemEventRouter;
+    protected eventOutputHolder: EventOutputHolder;
     protected httpResponse: HttpResponseUtil;
     protected profileHelper: ProfileHelper;
     protected hideoutHelper: HideoutHelper;
@@ -49,7 +49,7 @@ export declare class HideoutController {
     protected jsonUtil: JsonUtil;
     protected static nameBackendCountersCrafting: string;
     protected hideoutConfig: IHideoutConfig;
-    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, randomUtil: RandomUtil, inventoryHelper: InventoryHelper, saveServer: SaveServer, playerService: PlayerService, presetHelper: PresetHelper, paymentHelper: PaymentHelper, itemEventRouter: ItemEventRouter, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, hideoutHelper: HideoutHelper, scavCaseRewardGenerator: ScavCaseRewardGenerator, configServer: ConfigServer, jsonUtil: JsonUtil);
+    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, randomUtil: RandomUtil, inventoryHelper: InventoryHelper, saveServer: SaveServer, playerService: PlayerService, presetHelper: PresetHelper, paymentHelper: PaymentHelper, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, hideoutHelper: HideoutHelper, scavCaseRewardGenerator: ScavCaseRewardGenerator, configServer: ConfigServer, jsonUtil: JsonUtil);
     upgrade(pmcData: IPmcData, body: IHideoutUpgradeRequestData, sessionID: string): IItemEventRouterResponse;
     upgradeComplete(pmcData: IPmcData, body: HideoutUpgradeCompleteRequestData, sessionID: string): IItemEventRouterResponse;
     /**

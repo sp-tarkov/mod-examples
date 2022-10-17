@@ -4,6 +4,7 @@ export interface GetProfileStatusResponseData {
 }
 export interface ProfileData {
     profileid: string;
+    profileToken: string;
     status: string;
     sid: string;
     ip: string;

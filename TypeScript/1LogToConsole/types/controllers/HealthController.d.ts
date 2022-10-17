@@ -8,16 +8,16 @@ import { IOffraidEatRequestData } from "../models/eft/health/IOffraidEatRequestD
 import { IOffraidHealRequestData } from "../models/eft/health/IOffraidHealRequestData";
 import { ISyncHealthRequestData } from "../models/eft/health/ISyncHealthRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
-import { ItemEventRouter } from "../routers/ItemEventRouter";
+import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { ILogger } from "../models/spt/utils/ILogger";
 export declare class HealthController {
     protected logger: ILogger;
-    protected itemEventRouter: ItemEventRouter;
+    protected eventOutputHolder: EventOutputHolder;
     protected itemHelper: ItemHelper;
     protected paymentService: PaymentService;
     protected inventoryHelper: InventoryHelper;
     protected healthHelper: HealthHelper;
-    constructor(logger: ILogger, itemEventRouter: ItemEventRouter, itemHelper: ItemHelper, paymentService: PaymentService, inventoryHelper: InventoryHelper, healthHelper: HealthHelper);
+    constructor(logger: ILogger, eventOutputHolder: EventOutputHolder, itemHelper: ItemHelper, paymentService: PaymentService, inventoryHelper: InventoryHelper, healthHelper: HealthHelper);
     /**
      * stores in-raid player health
      * @param pmcData Player profile

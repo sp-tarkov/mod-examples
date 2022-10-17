@@ -1,10 +1,10 @@
 import { INotification } from "../models/eft/notifier/INotifier";
-import { HttpServer } from "../servers/HttpServer";
+import { WebSocketServer } from "../servers/WebSocketServer";
 import { NotificationService } from "../services/NotificationService";
 export declare class NotificationSendHelper {
-    protected httpServer: HttpServer;
+    protected webSocketServer: WebSocketServer;
     protected notificationService: NotificationService;
-    constructor(httpServer: HttpServer, notificationService: NotificationService);
+    constructor(webSocketServer: WebSocketServer, notificationService: NotificationService);
     /**
      * Send notification message to the appropiate channel
      */

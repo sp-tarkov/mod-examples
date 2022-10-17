@@ -1,6 +1,7 @@
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { IGlobals } from "../models/eft/common/IGlobals";
 import { ICustomizationItem } from "../models/eft/common/tables/ICustomizationItem";
+import { IHandbookBase } from "../models/eft/common/tables/IHandbookBase";
 import { IQuest } from "../models/eft/common/tables/IQuest";
 import { IHideoutArea } from "../models/eft/hideout/IHideoutArea";
 import { IHideoutProduction } from "../models/eft/hideout/IHideoutProduction";
@@ -18,7 +19,7 @@ export declare class DataCallbacks {
     getSettings(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ISettingsBase>;
     getGlobals(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IGlobals>;
     getTemplateItems(url: string, info: IEmptyRequestData, sessionID: string): string;
-    getTemplateHandbook(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
+    getTemplateHandbook(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IHandbookBase>;
     getTemplateSuits(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<Record<string, ICustomizationItem>>;
     getTemplateCharacter(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<string[]>;
     getTemplateQuests(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IQuest[]>;

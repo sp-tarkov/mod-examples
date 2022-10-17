@@ -6,7 +6,7 @@ import { ISearchRequestData } from "../models/eft/ragfair/ISearchRequestData";
 import { IQuestConfig } from "../models/spt/config/IQuestConfig";
 import { IRagfairConfig } from "../models/spt/config/IRagfairConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
-import { ItemEventRouter } from "../routers/ItemEventRouter";
+import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
@@ -27,7 +27,7 @@ export declare class RagfairOfferHelper {
     protected logger: ILogger;
     protected timeUtil: TimeUtil;
     protected hashUtil: HashUtil;
-    protected itemEventRouter: ItemEventRouter;
+    protected eventOutputHolder: EventOutputHolder;
     protected databaseServer: DatabaseServer;
     protected traderHelper: TraderHelper;
     protected saveServer: SaveServer;
@@ -45,9 +45,15 @@ export declare class RagfairOfferHelper {
     protected static goodSoldTemplate: string;
     protected ragfairConfig: IRagfairConfig;
     protected questConfig: IQuestConfig;
-    constructor(logger: ILogger, timeUtil: TimeUtil, hashUtil: HashUtil, itemEventRouter: ItemEventRouter, databaseServer: DatabaseServer, traderHelper: TraderHelper, saveServer: SaveServer, dialogueHelper: DialogueHelper, itemHelper: ItemHelper, paymentHelper: PaymentHelper, presetHelper: PresetHelper, profileHelper: ProfileHelper, ragfairServerHelper: RagfairServerHelper, ragfairSortHelper: RagfairSortHelper, ragfairHelper: RagfairHelper, ragfairOfferService: RagfairOfferService, localeService: LocaleService, configServer: ConfigServer);
+    constructor(logger: ILogger, timeUtil: TimeUtil, hashUtil: HashUtil, eventOutputHolder: EventOutputHolder, databaseServer: DatabaseServer, traderHelper: TraderHelper, saveServer: SaveServer, dialogueHelper: DialogueHelper, itemHelper: ItemHelper, paymentHelper: PaymentHelper, presetHelper: PresetHelper, profileHelper: ProfileHelper, ragfairServerHelper: RagfairServerHelper, ragfairSortHelper: RagfairSortHelper, ragfairHelper: RagfairHelper, ragfairOfferService: RagfairOfferService, localeService: LocaleService, configServer: ConfigServer);
     getValidOffers(info: ISearchRequestData, itemsToAdd: string[], assorts: Record<string, ITraderAssort>, pmcProfile: IPmcData): IRagfairOffer[];
     getOffersForBuild(info: ISearchRequestData, itemsToAdd: string[], assorts: Record<string, ITraderAssort>, pmcProfile: IPmcData): IRagfairOffer[];
+    /**
+     * Check if trader offers' BuyRestrictionMax value has been reached
+     * @param offer offer to check restriction properties of
+     * @returns true if restriction reached, false if no restrictions/not reached
+     */
+    protected traderBuyRestrictionReached(offer: IRagfairOffer): boolean;
     /**
      * Get an array of flea offers that are inaccessible to player due to their inadequate loyalty level
      * @param offers Offers to check

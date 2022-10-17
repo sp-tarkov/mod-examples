@@ -6,15 +6,15 @@ import { IProcessRagfairTradeRequestData } from "../models/eft/trade/IProcessRag
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { Upd } from "../models/eft/common/tables/IItem";
 import { IProcessBaseTradeRequestData } from "../models/eft/trade/IProcessBaseTradeRequestData";
-import { ItemEventRouter } from "../routers/ItemEventRouter";
+import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { ILogger } from "../models/spt/utils/ILogger";
 declare class TradeController {
     protected logger: ILogger;
-    protected itemEventRouter: ItemEventRouter;
+    protected eventOutputHolder: EventOutputHolder;
     protected tradeHelper: TradeHelper;
     protected profileHelper: ProfileHelper;
     protected ragfairServer: RagfairServer;
-    constructor(logger: ILogger, itemEventRouter: ItemEventRouter, tradeHelper: TradeHelper, profileHelper: ProfileHelper, ragfairServer: RagfairServer);
+    constructor(logger: ILogger, eventOutputHolder: EventOutputHolder, tradeHelper: TradeHelper, profileHelper: ProfileHelper, ragfairServer: RagfairServer);
     confirmTrading(pmcData: IPmcData, body: IProcessBaseTradeRequestData, sessionID: string, foundInRaid?: boolean, upd?: Upd): IItemEventRouterResponse;
     confirmRagfairTrading(pmcData: IPmcData, body: IProcessRagfairTradeRequestData, sessionID: string): IItemEventRouterResponse;
 }

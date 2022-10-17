@@ -1,3 +1,4 @@
+import { FenceBaseAssortGenerator } from "../generators/FenceBaseAssortGenerator";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { TraderAssortHelper } from "../helpers/TraderAssortHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
@@ -17,8 +18,9 @@ export declare class TraderController {
     protected timeUtil: TimeUtil;
     protected traderAssortService: TraderAssortService;
     protected fenceService: FenceService;
+    protected fenceBaseAssortGenerator: FenceBaseAssortGenerator;
     protected jsonUtil: JsonUtil;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, traderAssortHelper: TraderAssortHelper, profileHelper: ProfileHelper, traderHelper: TraderHelper, timeUtil: TimeUtil, traderAssortService: TraderAssortService, fenceService: FenceService, jsonUtil: JsonUtil);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, traderAssortHelper: TraderAssortHelper, profileHelper: ProfileHelper, traderHelper: TraderHelper, timeUtil: TimeUtil, traderAssortService: TraderAssortService, fenceService: FenceService, fenceBaseAssortGenerator: FenceBaseAssortGenerator, jsonUtil: JsonUtil);
     /**
      * Runs when onLoad event is fired
      * Iterate over traders, ensure an unmolested copy of their assorts is stored in traderAssortService

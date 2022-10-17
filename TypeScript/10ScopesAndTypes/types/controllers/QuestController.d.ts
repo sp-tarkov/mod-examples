@@ -11,7 +11,7 @@ import { ICompleteQuestRequestData } from "../models/eft/quests/ICompleteQuestRe
 import { IHandoverQuestRequestData } from "../models/eft/quests/IHandoverQuestRequestData";
 import { IQuestConfig } from "../models/spt/config/IQuestConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
-import { ItemEventRouter } from "../routers/ItemEventRouter";
+import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { LocaleService } from "../services/LocaleService";
@@ -20,7 +20,7 @@ import { TimeUtil } from "../utils/TimeUtil";
 export declare class QuestController {
     protected logger: ILogger;
     protected timeUtil: TimeUtil;
-    protected itemEventRouter: ItemEventRouter;
+    protected eventOutputHolder: EventOutputHolder;
     protected databaseServer: DatabaseServer;
     protected itemHelper: ItemHelper;
     protected dialogueHelper: DialogueHelper;
@@ -31,7 +31,7 @@ export declare class QuestController {
     protected localeService: LocaleService;
     protected configServer: ConfigServer;
     protected questConfig: IQuestConfig;
-    constructor(logger: ILogger, timeUtil: TimeUtil, itemEventRouter: ItemEventRouter, databaseServer: DatabaseServer, itemHelper: ItemHelper, dialogueHelper: DialogueHelper, profileHelper: ProfileHelper, questHelper: QuestHelper, questConditionHelper: QuestConditionHelper, playerService: PlayerService, localeService: LocaleService, configServer: ConfigServer);
+    constructor(logger: ILogger, timeUtil: TimeUtil, eventOutputHolder: EventOutputHolder, databaseServer: DatabaseServer, itemHelper: ItemHelper, dialogueHelper: DialogueHelper, profileHelper: ProfileHelper, questHelper: QuestHelper, questConditionHelper: QuestConditionHelper, playerService: PlayerService, localeService: LocaleService, configServer: ConfigServer);
     /**
      * Get all quests visible to player
      * Exclude quests with incomplete preconditions (level/loyalty)

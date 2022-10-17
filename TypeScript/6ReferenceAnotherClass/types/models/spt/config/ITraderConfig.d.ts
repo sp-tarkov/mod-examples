@@ -17,5 +17,8 @@ export interface FenceConfig {
     assortSize: number;
     maxPresetsPercent: number;
     presetPriceMult: number;
+    itemPriceMult: number;
+    regenerateAssortsOnRefresh: boolean;
+    itemTypeLimits: Record<string, number>;
     blacklist: string[];
 }

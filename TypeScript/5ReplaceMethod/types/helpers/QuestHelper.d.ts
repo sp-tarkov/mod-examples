@@ -6,7 +6,7 @@ import { ICompleteQuestRequestData } from "../models/eft/quests/ICompleteQuestRe
 import { QuestStatus } from "../models/enums/QuestStatus";
 import { IQuestConfig } from "../models/spt/config/IQuestConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
-import { ItemEventRouter } from "../routers/ItemEventRouter";
+import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { LocaleService } from "../services/LocaleService";
@@ -25,7 +25,7 @@ export declare class QuestHelper {
     protected timeUtil: TimeUtil;
     protected hashUtil: HashUtil;
     protected itemHelper: ItemHelper;
-    protected itemEventRouter: ItemEventRouter;
+    protected eventOutputHolder: EventOutputHolder;
     protected databaseServer: DatabaseServer;
     protected localeService: LocaleService;
     protected ragfairServerHelper: RagfairServerHelper;
@@ -35,7 +35,7 @@ export declare class QuestHelper {
     protected traderHelper: TraderHelper;
     protected configServer: ConfigServer;
     protected questConfig: IQuestConfig;
-    constructor(logger: ILogger, jsonUtil: JsonUtil, timeUtil: TimeUtil, hashUtil: HashUtil, itemHelper: ItemHelper, itemEventRouter: ItemEventRouter, databaseServer: DatabaseServer, localeService: LocaleService, ragfairServerHelper: RagfairServerHelper, dialogueHelper: DialogueHelper, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, traderHelper: TraderHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, jsonUtil: JsonUtil, timeUtil: TimeUtil, hashUtil: HashUtil, itemHelper: ItemHelper, eventOutputHolder: EventOutputHolder, databaseServer: DatabaseServer, localeService: LocaleService, ragfairServerHelper: RagfairServerHelper, dialogueHelper: DialogueHelper, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, traderHelper: TraderHelper, configServer: ConfigServer);
     /**
     * Get status of a quest by quest id
     * @param pmcData Profile to search

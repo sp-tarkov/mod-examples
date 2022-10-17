@@ -1,8 +1,10 @@
 import { GameController } from "../controllers/GameController";
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
+import { ICheckVersionResponse } from "../models/eft/game/ICheckVersionResponse";
 import { IGameConfigResponse } from "../models/eft/game/IGameConfigResponse";
 import { IGameEmptyCrcRequestData } from "../models/eft/game/IGameEmptyCrcRequestData";
 import { IReportNicknameRequestData } from "../models/eft/game/IReportNicknameRequestData";
+import { IServerDetails } from "../models/eft/game/IServerDetails";
 import { IVersionValidateRequestData } from "../models/eft/game/IVersionValidateRequestData";
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
 import { INullResponseData } from "../models/eft/httpResponse/INullResponseData";
@@ -17,8 +19,8 @@ declare class GameCallbacks {
     gameStart(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
     gameLogout(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
     getGameConfig(url: string, info: IGameEmptyCrcRequestData, sessionID: string): IGetBodyResponseData<IGameConfigResponse>;
-    getServer(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
-    validateGameVersion(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
+    getServer(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IServerDetails[]>;
+    validateGameVersion(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ICheckVersionResponse>;
     gameKeepalive(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
     getVersion(url: string, info: IEmptyRequestData, sessionID: string): string;
     reportNickname(url: string, info: IReportNicknameRequestData, sessionID: string): INullResponseData;

@@ -8,7 +8,7 @@ import { IHideoutTakeProductionRequestData } from "../models/eft/hideout/IHideou
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IHideoutConfig } from "../models/spt/config/IHideoutConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
-import { ItemEventRouter } from "../routers/ItemEventRouter";
+import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { PlayerService } from "../services/PlayerService";
@@ -24,7 +24,7 @@ export declare class HideoutHelper {
     protected timeUtil: TimeUtil;
     protected randomUtil: RandomUtil;
     protected databaseServer: DatabaseServer;
-    protected itemEventRouter: ItemEventRouter;
+    protected eventOutputHolder: EventOutputHolder;
     protected httpResponse: HttpResponseUtil;
     protected profileHelper: ProfileHelper;
     protected inventoryHelper: InventoryHelper;
@@ -35,7 +35,7 @@ export declare class HideoutHelper {
     static bitcoin: string;
     static expeditionaryFuelTank: string;
     protected hideoutConfig: IHideoutConfig;
-    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, itemEventRouter: ItemEventRouter, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, inventoryHelper: InventoryHelper, playerService: PlayerService, configServer: ConfigServer);
+    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, inventoryHelper: InventoryHelper, playerService: PlayerService, configServer: ConfigServer);
     registerProduction(pmcData: IPmcData, body: IHideoutSingleProductionStartRequestData | IHideoutContinousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * This convinience function intialies new Production Object

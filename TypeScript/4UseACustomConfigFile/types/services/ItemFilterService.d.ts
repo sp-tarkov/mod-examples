@@ -2,7 +2,7 @@ import { IItemConfig } from "../models/spt/config/IItemConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
-/** Centralise the handling of blacklisting items, uses blacklist found in config/item.json */
+/** Centralise the handling of blacklisting items, uses blacklist found in config/item.json, stores items that should not be used by players / broken items */
 export declare class ItemFilterService {
     protected logger: ILogger;
     protected databaseServer: DatabaseServer;

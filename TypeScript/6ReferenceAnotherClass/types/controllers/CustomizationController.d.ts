@@ -5,16 +5,16 @@ import { IBuyClothingRequestData } from "../models/eft/customization/IBuyClothin
 import { IWearClothingRequestData } from "../models/eft/customization/IWearClothingRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { ILogger } from "../models/spt/utils/ILogger";
-import { ItemEventRouter } from "../routers/ItemEventRouter";
+import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
 export declare class CustomizationController {
     protected logger: ILogger;
-    protected itemEventRouter: ItemEventRouter;
+    protected eventOutputHolder: EventOutputHolder;
     protected databaseServer: DatabaseServer;
     protected saveServer: SaveServer;
     protected profileHelper: ProfileHelper;
-    constructor(logger: ILogger, itemEventRouter: ItemEventRouter, databaseServer: DatabaseServer, saveServer: SaveServer, profileHelper: ProfileHelper);
+    constructor(logger: ILogger, eventOutputHolder: EventOutputHolder, databaseServer: DatabaseServer, saveServer: SaveServer, profileHelper: ProfileHelper);
     getTraderSuits(traderID: string, sessionID: string): ISuit[];
     wearClothing(pmcData: IPmcData, body: IWearClothingRequestData, sessionID: string): IItemEventRouterResponse;
     buyClothing(pmcData: IPmcData, body: IBuyClothingRequestData, sessionID: string): IItemEventRouterResponse;

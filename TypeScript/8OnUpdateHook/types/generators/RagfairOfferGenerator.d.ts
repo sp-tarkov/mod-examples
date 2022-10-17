@@ -40,6 +40,13 @@ export declare class RagfairOfferGenerator {
     constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, ragfairServerHelper: RagfairServerHelper, saveServer: SaveServer, presetHelper: PresetHelper, ragfairAssortGenerator: RagfairAssortGenerator, ragfairOfferService: RagfairOfferService, ragfairPriceService: RagfairPriceService, ragfairCategoriesService: RagfairCategoriesService, fenceService: FenceService, itemHelper: ItemHelper, configServer: ConfigServer);
     createOffer(userID: string, time: number, items: Item[], barterScheme: IBarterScheme[], loyalLevel: number, price: number, sellInOnePiece?: boolean): IRagfairOffer;
     /**
+     * Get avatar url from trader table in db
+     * @param isTrader Is user we're getting avatar for a trader
+     * @param userId persons id to get avatar of
+     * @returns url of avatar
+     */
+    protected getAvatarUrl(isTrader: boolean, userId: string): string;
+    /**
      * Convert a count of currency into roubles
      * @param currencyCount amount of currency to convert into roubles
      * @param currencyType Type of currency (euro/dollar/rouble)

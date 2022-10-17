@@ -1,3 +1,4 @@
+import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { InventoryHelper } from "../helpers/InventoryHelper";
 import { PaymentHelper } from "../helpers/PaymentHelper";
 import { PresetHelper } from "../helpers/PresetHelper";
@@ -22,7 +23,6 @@ import { IInventoryToggleRequestData } from "../models/eft/inventory/IInventoryT
 import { IInventoryTransferRequestData } from "../models/eft/inventory/IInventoryTransferRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { ILogger } from "../models/spt/utils/ILogger";
-import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { FenceService } from "../services/FenceService";
 import { RagfairOfferService } from "../services/RagfairOfferService";
@@ -39,8 +39,8 @@ export declare class InventoryController {
     protected ragfairOfferService: RagfairOfferService;
     protected profileHelper: ProfileHelper;
     protected paymentHelper: PaymentHelper;
-    protected itemEventRouter: ItemEventRouter;
-    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, fenceService: FenceService, presetHelper: PresetHelper, inventoryHelper: InventoryHelper, ragfairOfferService: RagfairOfferService, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, itemEventRouter: ItemEventRouter);
+    protected eventOutputHolder: EventOutputHolder;
+    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, fenceService: FenceService, presetHelper: PresetHelper, inventoryHelper: InventoryHelper, ragfairOfferService: RagfairOfferService, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, eventOutputHolder: EventOutputHolder);
     /**
     * Move Item
     * change location of item with parentId and slotId

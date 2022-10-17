@@ -5,7 +5,7 @@ import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRout
 import { IRagfairOffer } from "../models/eft/ragfair/IRagfairOffer";
 import { IRagfairConfig } from "../models/spt/config/IRagfairConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
-import { ItemEventRouter } from "../routers/ItemEventRouter";
+import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
@@ -20,14 +20,14 @@ export declare class RagfairOfferService {
     protected ragfairServerHelper: RagfairServerHelper;
     protected ragfairCategoriesService: RagfairCategoriesService;
     protected profileHelper: ProfileHelper;
-    protected itemEventRouter: ItemEventRouter;
+    protected eventOutputHolder: EventOutputHolder;
     protected httpResponse: HttpResponseUtil;
     protected configServer: ConfigServer;
     protected playerOffersLoaded: boolean;
     protected expiredOffers: Item[];
     protected offers: IRagfairOffer[];
     protected ragfairConfig: IRagfairConfig;
-    constructor(logger: ILogger, timeUtil: TimeUtil, databaseServer: DatabaseServer, saveServer: SaveServer, ragfairServerHelper: RagfairServerHelper, ragfairCategoriesService: RagfairCategoriesService, profileHelper: ProfileHelper, itemEventRouter: ItemEventRouter, httpResponse: HttpResponseUtil, configServer: ConfigServer);
+    constructor(logger: ILogger, timeUtil: TimeUtil, databaseServer: DatabaseServer, saveServer: SaveServer, ragfairServerHelper: RagfairServerHelper, ragfairCategoriesService: RagfairCategoriesService, profileHelper: ProfileHelper, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, configServer: ConfigServer);
     /**
      * Get all offers
      * @returns IRagfairOffer array

@@ -9,13 +9,11 @@ import { RepairKitsInfo } from "../models/eft/repair/IRepairActionDataRequest";
 import { RepairItem } from "../models/eft/repair/ITraderRepairActionDataRequest";
 import { IRepairConfig } from "../models/spt/config/IRepairConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
-import { ItemEventRouter } from "../routers/ItemEventRouter";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { PaymentService } from "./PaymentService";
 export declare class RepairService {
     protected logger: ILogger;
-    protected itemEventRouter: ItemEventRouter;
     protected databaseServer: DatabaseServer;
     protected questHelper: QuestHelper;
     protected traderHelper: TraderHelper;
@@ -23,7 +21,7 @@ export declare class RepairService {
     protected repairHelper: RepairHelper;
     protected configServer: ConfigServer;
     repairConfig: IRepairConfig;
-    constructor(logger: ILogger, itemEventRouter: ItemEventRouter, databaseServer: DatabaseServer, questHelper: QuestHelper, traderHelper: TraderHelper, paymentService: PaymentService, repairHelper: RepairHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, questHelper: QuestHelper, traderHelper: TraderHelper, paymentService: PaymentService, repairHelper: RepairHelper, configServer: ConfigServer);
     /**
      * Use trader to repair an items durability
      * @param sessionID Session id

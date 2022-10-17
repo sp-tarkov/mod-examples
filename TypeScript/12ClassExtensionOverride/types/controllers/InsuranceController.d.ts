@@ -8,7 +8,7 @@ import { IInsureRequestData } from "../models/eft/insurance/IInsureRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IInsuranceConfig } from "../models/spt/config/IInsuranceConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
-import { ItemEventRouter } from "../routers/ItemEventRouter";
+import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
@@ -19,7 +19,7 @@ import { TimeUtil } from "../utils/TimeUtil";
 export declare class InsuranceController {
     protected logger: ILogger;
     protected randomUtil: RandomUtil;
-    protected itemEventRouter: ItemEventRouter;
+    protected eventOutputHolder: EventOutputHolder;
     protected timeUtil: TimeUtil;
     protected saveServer: SaveServer;
     protected databaseServer: DatabaseServer;
@@ -30,7 +30,7 @@ export declare class InsuranceController {
     protected insuranceService: InsuranceService;
     protected configServer: ConfigServer;
     protected insuranceConfig: IInsuranceConfig;
-    constructor(logger: ILogger, randomUtil: RandomUtil, itemEventRouter: ItemEventRouter, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, itemHelper: ItemHelper, profileHelper: ProfileHelper, dialogueHelper: DialogueHelper, paymentService: PaymentService, // TODO: delay required
+    constructor(logger: ILogger, randomUtil: RandomUtil, eventOutputHolder: EventOutputHolder, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, itemHelper: ItemHelper, profileHelper: ProfileHelper, dialogueHelper: DialogueHelper, paymentService: PaymentService, // TODO: delay required
     insuranceService: InsuranceService, configServer: ConfigServer);
     processReturn(): void;
     insure(pmcData: IPmcData, body: IInsureRequestData, sessionID: string): IItemEventRouterResponse;

@@ -8,6 +8,7 @@ import { TraderHelper } from "../helpers/TraderHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { IRegisterPlayerRequestData } from "../models/eft/inRaid/IRegisterPlayerRequestData";
 import { ISaveProgressRequestData } from "../models/eft/inRaid/ISaveProgressRequestData";
+import { IAirdropConfig } from "../models/spt/config/IAirdropConfig";
 import { IInRaidConfig } from "../models/spt/config/IInRaidConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
@@ -31,6 +32,7 @@ export declare class InraidController {
     protected insuranceService: InsuranceService;
     protected inRaidHelper: InRaidHelper;
     protected configServer: ConfigServer;
+    protected airdropConfig: IAirdropConfig;
     protected inraidConfig: IInRaidConfig;
     constructor(logger: ILogger, saveServer: SaveServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, questHelper: QuestHelper, itemHelper: ItemHelper, profileHelper: ProfileHelper, playerScavGenerator: PlayerScavGenerator, healthHelper: HealthHelper, traderHelper: TraderHelper, insuranceService: InsuranceService, inRaidHelper: InRaidHelper, configServer: ConfigServer);
     addPlayer(sessionID: string, info: IRegisterPlayerRequestData): void;
@@ -68,4 +70,5 @@ export declare class InraidController {
     protected markOrRemoveFoundInRaidItems(offraidData: ISaveProgressRequestData, pmcData: IPmcData, isPlayerScav: boolean): void;
     protected handlePostRaidPlayerScavProcess(scavData: IPmcData, sessionID: string, offraidData: ISaveProgressRequestData, pmcData: IPmcData, isDead: boolean): void;
     protected handlePostRaidPlayerScavKarmaChanges(pmcData: IPmcData, offraidData: ISaveProgressRequestData, scavData: IPmcData, sessionID: string): void;
+    getAirdropConfig(): IAirdropConfig;
 }

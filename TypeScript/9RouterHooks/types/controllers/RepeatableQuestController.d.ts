@@ -13,7 +13,7 @@ import { IRepeatableQuestChangeRequest } from "../models/eft/quests/IRepeatableQ
 import { ELocationName } from "../models/enums/ELocationName";
 import { IQuestConfig, IRepeatableQuestConfig } from "../models/spt/config/IQuestConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
-import { ItemEventRouter } from "../routers/ItemEventRouter";
+import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { ItemFilterService } from "../services/ItemFilterService";
@@ -63,13 +63,13 @@ export declare class RepeatableQuestController {
     protected profileHelper: ProfileHelper;
     protected profileFixerService: ProfileFixerService;
     protected ragfairServerHelper: RagfairServerHelper;
-    protected itemEventRouter: ItemEventRouter;
+    protected eventOutputHolder: EventOutputHolder;
     protected paymentService: PaymentService;
     protected objectId: ObjectId;
     protected itemFilterService: ItemFilterService;
     protected configServer: ConfigServer;
     protected questConfig: IQuestConfig;
-    constructor(timeUtil: TimeUtil, logger: ILogger, randomUtil: RandomUtil, mathUtil: MathUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper, presetHelper: PresetHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, ragfairServerHelper: RagfairServerHelper, itemEventRouter: ItemEventRouter, paymentService: PaymentService, objectId: ObjectId, itemFilterService: ItemFilterService, configServer: ConfigServer);
+    constructor(timeUtil: TimeUtil, logger: ILogger, randomUtil: RandomUtil, mathUtil: MathUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper, presetHelper: PresetHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, ragfairServerHelper: RagfairServerHelper, eventOutputHolder: EventOutputHolder, paymentService: PaymentService, objectId: ObjectId, itemFilterService: ItemFilterService, configServer: ConfigServer);
     /**
      * This is the method reached by the /client/repeatalbeQuests/activityPeriods endpoint
      * Returns an array of objects in the format of repeatable quests to the client.
