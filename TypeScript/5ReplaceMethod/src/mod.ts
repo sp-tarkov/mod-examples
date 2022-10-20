@@ -20,8 +20,8 @@ class Mod implements IPreAkiLoadMod
         // that we may need down the line
         Mod.container = container;
 
-        // Wait until WatermarkLocale gets resolved by the server and run code afterwards to replace 
-        // the getDescription() function with the one below called 'replacementFunction()
+        // Wait until LauncherController gets resolved by the server and run code afterwards to replace 
+        // the login() function with the one below called 'replacementFunction()
         container.afterResolution("LauncherController", (_t, result: LauncherController) => 
         {
             // We want to replace the original method logic with something different
