@@ -11,6 +11,7 @@ import { IProcessSellTradeRequestData } from "../models/eft/trade/IProcessSellTr
 import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
+import { LocalisationService } from "./LocalisationService";
 export declare class PaymentService {
     protected logger: ILogger;
     protected httpResponse: HttpResponseUtil;
@@ -19,8 +20,9 @@ export declare class PaymentService {
     protected traderHelper: TraderHelper;
     protected itemHelper: ItemHelper;
     protected inventoryHelper: InventoryHelper;
+    protected localisationService: LocalisationService;
     protected paymentHelper: PaymentHelper;
-    constructor(logger: ILogger, httpResponse: HttpResponseUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, traderHelper: TraderHelper, itemHelper: ItemHelper, inventoryHelper: InventoryHelper, paymentHelper: PaymentHelper);
+    constructor(logger: ILogger, httpResponse: HttpResponseUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, traderHelper: TraderHelper, itemHelper: ItemHelper, inventoryHelper: InventoryHelper, localisationService: LocalisationService, paymentHelper: PaymentHelper);
     /**
      * Take money and insert items into return to server request
      * @param {Object} pmcData
@@ -50,7 +52,7 @@ export declare class PaymentService {
      * @param pmcData Player profile to find and remove currency from
      * @param currencyTpl Type of currency to pay
      * @param amountToPay money value to pay
-     * @param sessionID Sessino id
+     * @param sessionID Session id
      * @param output output object to send to client
      * @returns IItemEventRouterResponse
      */

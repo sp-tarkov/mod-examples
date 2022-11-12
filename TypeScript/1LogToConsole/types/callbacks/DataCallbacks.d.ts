@@ -12,6 +12,9 @@ import { ILanguageBase } from "../models/spt/server/ILocaleBase";
 import { ISettingsBase } from "../models/spt/server/ISettingsBase";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
+/**
+ * Handle client requests
+ */
 export declare class DataCallbacks {
     protected httpResponse: HttpResponseUtil;
     protected databaseServer: DatabaseServer;

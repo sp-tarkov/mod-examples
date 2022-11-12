@@ -3,6 +3,7 @@ import { IBotConfig } from "../models/spt/config/IBotConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { LocalisationService } from "../services/LocalisationService";
 import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
 export declare class BotHelper {
@@ -10,9 +11,10 @@ export declare class BotHelper {
     protected jsonUtil: JsonUtil;
     protected databaseServer: DatabaseServer;
     protected randomUtil: RandomUtil;
+    protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected botConfig: IBotConfig;
-    constructor(logger: ILogger, jsonUtil: JsonUtil, databaseServer: DatabaseServer, randomUtil: RandomUtil, configServer: ConfigServer);
+    constructor(logger: ILogger, jsonUtil: JsonUtil, databaseServer: DatabaseServer, randomUtil: RandomUtil, localisationService: LocalisationService, configServer: ConfigServer);
     /**
      * Get difficulty settings for desired bot type, if not found use assault bot types
      * @param type bot type to retreive difficulty of
@@ -50,6 +52,11 @@ export declare class BotHelper {
      * @param difficultySettings pmc difficulty settings
      */
     randomisePmcHostility(difficultySettings: Difficulty): void;
+    /**
+     * Is the passed in bot role a PMC (usec/bear/pmc)
+     * @param botRole bot role to check
+     * @returns true if is pmc
+     */
     isBotPmc(botRole: string): boolean;
     isBotBoss(botRole: string): boolean;
     isBotFollower(botRole: string): boolean;

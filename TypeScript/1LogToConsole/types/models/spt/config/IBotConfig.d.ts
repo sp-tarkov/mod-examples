@@ -66,8 +66,12 @@ export interface EquipmentFilters {
     weaponModLimits: ModLimits;
     randomisedWeaponModSlots?: string[];
     randomisedArmorSlots?: string[];
+    faceShieldIsActiveChancePercent?: number;
+    lightLaserIsActiveChancePercent?: number;
     blacklist: EquipmentFilterDetails[];
     whitelist: EquipmentFilterDetails[];
+    clothing: WeightingAdjustmentDetails[];
+    weightingAdjustments: WeightingAdjustmentDetails[];
 }
 export interface ModLimits {
     /** How many scopes are allowed on a weapon - hard coded to work with OPTIC_SCOPE, ASSAULT_SCOPE, COLLIMATOR, COMPACT_COLLIMATOR */
@@ -79,4 +83,9 @@ export interface EquipmentFilterDetails {
     levelRange: MinMax;
     equipment: Record<string, string[]>;
     cartridge: Record<string, string[]>;
+}
+export interface WeightingAdjustmentDetails {
+    levelRange: MinMax;
+    add: Record<string, Record<string, number>>;
+    edit: Record<string, Record<string, number>>;
 }
