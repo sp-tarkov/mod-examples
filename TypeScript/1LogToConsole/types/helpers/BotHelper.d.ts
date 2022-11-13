@@ -16,36 +16,11 @@ export declare class BotHelper {
     protected botConfig: IBotConfig;
     constructor(logger: ILogger, jsonUtil: JsonUtil, databaseServer: DatabaseServer, randomUtil: RandomUtil, localisationService: LocalisationService, configServer: ConfigServer);
     /**
-     * Get difficulty settings for desired bot type, if not found use assault bot types
-     * @param type bot type to retreive difficulty of
-     * @param difficulty difficulty to get settings for (easy/normal etc)
-     * @returns Difficulty object
-     */
-    getBotDifficultySettings(type: string, difficulty: string): Difficulty;
-    /**
      * Get a template object for the specified botRole from bots.types db
      * @param role botRole to get template for
      * @returns IBotType object
      */
     getBotTemplate(role: string): IBotType;
-    /**
-     * Get difficulty settings for a PMC
-     * @param type "usec" / "bear"
-     * @param difficulty what difficulty to retrieve
-     * @returns Difficulty object
-     */
-    getPmcDifficultySettings(type: string, difficulty: string): Difficulty;
-    /**
-     * Translate chosen value from pre-raid difficulty dropdown into bot difficulty value
-     * @param dropDownDifficulty Dropdown difficulty value to convert
-     * @returns bot difficulty
-     */
-    convertBotDifficultyDropdownToBotDifficulty(dropDownDifficulty: string): string;
-    /**
-     * Choose a random difficulty from - easy/normal/hard/impossible
-     * @returns random difficulty
-     */
-    chooseRandomDifficulty(): string;
     /**
      * Randomise the chance the PMC will attack their own side
      * Look up value in bot.json/chanceSameSideIsHostilePercent

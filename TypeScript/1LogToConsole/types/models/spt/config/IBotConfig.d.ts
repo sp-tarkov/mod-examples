@@ -27,6 +27,8 @@ export interface IBotConfig extends IBaseConfig {
     maxBotCap: Record<string, number>;
     /** How many stacks of secret ammo should a bot have in its bot secure container */
     secureContainerAmmoStackCount: number;
+    /** Batch generation size when type not available in cache */
+    botGenerationBatchSizePerType: number;
 }
 export interface PresetBatch {
     assault: number;

@@ -1,8 +1,8 @@
+import { BotDifficultyHelper } from "../helpers/BotDifficultyHelper";
 import { BotHelper } from "../helpers/BotHelper";
 import { GameEventHelper } from "../helpers/GameEventHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { WeightedRandomHelper } from "../helpers/WeightedRandomHelper";
-import { IGenerateBotsRequestData } from "../models/eft/bot/IGenerateBotsRequestData";
 import { Health as PmcHealth, IBotBase, Skills } from "../models/eft/common/tables/IBotBase";
 import { Health, IBotType, Inventory } from "../models/eft/common/tables/IBotType";
 import { IBotConfig } from "../models/spt/config/IBotConfig";
@@ -31,10 +31,11 @@ export declare class BotGenerator {
     protected botEquipmentFilterService: BotEquipmentFilterService;
     protected weightedRandomHelper: WeightedRandomHelper;
     protected botHelper: BotHelper;
+    protected botDifficultyHelper: BotDifficultyHelper;
     protected gameEventHelper: GameEventHelper;
     protected configServer: ConfigServer;
     protected botConfig: IBotConfig;
-    constructor(logger: ILogger, hashUtil: HashUtil, randomUtil: RandomUtil, jsonUtil: JsonUtil, profileHelper: ProfileHelper, databaseServer: DatabaseServer, botInventoryGenerator: BotInventoryGenerator, botEquipmentFilterService: BotEquipmentFilterService, weightedRandomHelper: WeightedRandomHelper, botHelper: BotHelper, gameEventHelper: GameEventHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, hashUtil: HashUtil, randomUtil: RandomUtil, jsonUtil: JsonUtil, profileHelper: ProfileHelper, databaseServer: DatabaseServer, botInventoryGenerator: BotInventoryGenerator, botEquipmentFilterService: BotEquipmentFilterService, weightedRandomHelper: WeightedRandomHelper, botHelper: BotHelper, botDifficultyHelper: BotDifficultyHelper, gameEventHelper: GameEventHelper, configServer: ConfigServer);
     /**
      * Generate a player scav bot object
      * @param role e.g. assault / pmcbot
@@ -44,12 +45,12 @@ export declare class BotGenerator {
      */
     generatePlayerScav(sessionId: string, role: string, difficulty: string, botTemplate: IBotType): IBotBase;
     /**
-     * Generate an array of bot objects for populate a raid with
+     * Generate an array of bot objects based on a condition for a raid with
      * @param sessionId session id
-     * @param info request object
+     * @param condition request condition
      * @returns bot array
      */
-    generate(sessionId: string, info: IGenerateBotsRequestData): IBotBase[];
+    generateByCondition(sessionId: string, botCountToGenerate: number, difficulty: string, role: string, isPmc: boolean): IBotBase[];
     /**
      * Get the PMCs wildSpawnType value
      * @param role "usec" / "bear"
