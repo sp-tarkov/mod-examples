@@ -12,7 +12,7 @@ export declare class BotGenerationCacheService {
     constructor(logger: ILogger, randomUtil: RandomUtil, jsonUtil: JsonUtil, botHelper: BotHelper);
     /**
      * Store array of bots in cache, shuffle results before storage
-     * @param botsToStore
+     * @param botsToStore Bots we want to store in the cache
      */
     storeBots(botsToStore: IBotBase[]): void;
     /**

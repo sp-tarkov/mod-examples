@@ -77,12 +77,12 @@ export declare class BotGeneratorHelper {
      * @param modSlot Slot mod will fit into
      * @param isRandomisableSlot Will generate a randomised mod pool if true
      * @param modsParent Parent slot the item will be a part of
-     * @param botEquipBlacklist
-     * @param itemModPool
+     * @param botEquipBlacklist Blacklist to prevent mods from being picked
+     * @param itemModPool Pool of items to pick from
      * @param weapon array with only weapon tpl in it, ready for mods to be added
      * @param ammoTpl ammo tpl to use if slot requires a cartridge to be added (e.g. mod_magazine)
      * @param parentTemplate Parent item the mod will go into
-     * @returns
+     * @returns ITemplateItem
      */
     protected chooseModToPutIntoSlot(modSlot: string, isRandomisableSlot: boolean, modsParent: Slot, botEquipBlacklist: EquipmentFilterDetails, itemModPool: Record<string, string[]>, weapon: Item[], ammoTpl: string, parentTemplate: ITemplateItem): [boolean, ITemplateItem];
     /**
@@ -176,10 +176,10 @@ export declare class BotGeneratorHelper {
      */
     protected getAmmoContainers(): string[];
     /**
-     * Get the slot details for an item (chamber/cartridge/slot)
+     * Get a Slot property for an item (chamber/cartridge/slot)
      * @param modSlot e.g patron_in_weapon
      * @param parentTemplate item template
-     * @returns
+     * @returns Slot item
      */
     protected getModItemSlot(modSlot: string, parentTemplate: ITemplateItem): Slot;
     /**
@@ -191,7 +191,6 @@ export declare class BotGeneratorHelper {
      * @param modPool modPool which should include available cartrigdes
      * @param parentId The CylinderMagazine's UID
      * @param parentTemplate The CylinderMagazine's template
-     * @returns
      */
     protected fillCamora(items: Item[], modPool: Mods, parentId: string, parentTemplate: ITemplateItem): void;
     /**
@@ -226,16 +225,16 @@ export declare class BotGeneratorHelper {
     protected generateArmorRepairableProperties(itemTemplate: ITemplateItem, botRole: string): Repairable;
     /**
      * Get a random mod from an items compatible mods Filter array
-     * @param modTpl
-     * @param parentSlot
-     * @param modSlot
-     * @param items
+     * @param modTpl ????
+     * @param parentSlot item mod will go into, used to get combatible items
+     * @param modSlot Slot to get mod to fill
+     * @param items items to ensure picked mod is compatible with
      * @returns item tpl
      */
     protected getModTplFromItemDb(modTpl: string, parentSlot: Slot, modSlot: string, items: Item[]): string;
     /**
      * Can an item be added to an item without issue
-     * @param items
+     * @param items items to check compatiblilities with
      * @param tplToCheck tpl of the item to check for incompatibilities
      * @param equipmentSlot Slot the item will be placed into
      * @returns false if no incompatibilties

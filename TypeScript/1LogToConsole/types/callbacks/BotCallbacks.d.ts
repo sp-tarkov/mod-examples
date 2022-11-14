@@ -28,5 +28,9 @@ export declare class BotCallbacks {
      * @returns string
      */
     getBotCap(): string;
+    /**
+     * Handle singleplayer/settings/bot/getBotBehaviours
+     * @returns string
+     */
     getBotBehaviours(): string;
 }
