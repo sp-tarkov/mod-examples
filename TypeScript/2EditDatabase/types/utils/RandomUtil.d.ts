@@ -110,6 +110,12 @@ export declare class RandomUtil {
     getIntEx(max: number): number;
     getFloat(min: number, max: number): number;
     getBool(): boolean;
+    /**
+     * Check if number passes a check out of 100
+     * @param chancePercent value check needs to be above
+     * @returns true if value passes check
+     */
+    getChance100(chancePercent: number): boolean;
     getStringArrayValue(arr: string[]): string;
     getArrayValue<T>(arr: T[]): T;
     getKey(node: any): string;

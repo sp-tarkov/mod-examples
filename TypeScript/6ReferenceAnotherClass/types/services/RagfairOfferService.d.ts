@@ -11,6 +11,7 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { TimeUtil } from "../utils/TimeUtil";
+import { LocalisationService } from "./LocalisationService";
 import { RagfairCategoriesService } from "./RagfairCategoriesService";
 export declare class RagfairOfferService {
     protected logger: ILogger;
@@ -22,12 +23,14 @@ export declare class RagfairOfferService {
     protected profileHelper: ProfileHelper;
     protected eventOutputHolder: EventOutputHolder;
     protected httpResponse: HttpResponseUtil;
+    protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected playerOffersLoaded: boolean;
     protected expiredOffers: Item[];
-    protected offers: IRagfairOffer[];
+    /** offerId, offer */
+    protected offers: Record<string, IRagfairOffer>;
     protected ragfairConfig: IRagfairConfig;
-    constructor(logger: ILogger, timeUtil: TimeUtil, databaseServer: DatabaseServer, saveServer: SaveServer, ragfairServerHelper: RagfairServerHelper, ragfairCategoriesService: RagfairCategoriesService, profileHelper: ProfileHelper, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, configServer: ConfigServer);
+    constructor(logger: ILogger, timeUtil: TimeUtil, databaseServer: DatabaseServer, saveServer: SaveServer, ragfairServerHelper: RagfairServerHelper, ragfairCategoriesService: RagfairCategoriesService, profileHelper: ProfileHelper, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, localisationService: LocalisationService, configServer: ConfigServer);
     /**
      * Get all offers
      * @returns IRagfairOffer array

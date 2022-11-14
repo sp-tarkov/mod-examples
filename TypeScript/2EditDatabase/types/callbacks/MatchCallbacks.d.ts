@@ -34,6 +34,10 @@ export declare class MatchCallbacks {
     serverAvailable(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any> | IGetBodyResponseData<true>;
     joinMatch(url: string, info: IJoinMatchRequestData, sessionID: string): IGetBodyResponseData<IJoinMatchResult[]>;
     getMetrics(url: string, info: any, sessionID: string): IGetBodyResponseData<string>;
+    /**
+     * Handle client/match/group/status
+     * @returns
+     */
     getGroupStatus(url: string, info: IGetGroupStatusRequestData, sessionID: string): IGetBodyResponseData<any>;
     createGroup(url: string, info: ICreateGroupRequestData, sessionID: string): IGetBodyResponseData<any>;
     deleteGroup(url: string, info: any, sessionID: string): INullResponseData;

@@ -16,6 +16,7 @@ import { IInventorySwapRequestData } from "../models/eft/inventory/IInventorySwa
 import { IInventoryTagRequestData } from "../models/eft/inventory/IInventoryTagRequestData";
 import { IInventoryToggleRequestData } from "../models/eft/inventory/IInventoryToggleRequestData";
 import { IInventoryTransferRequestData } from "../models/eft/inventory/IInventoryTransferRequestData";
+import { IOpenRandomLootContainerRequestData } from "../models/eft/inventory/IOpenRandomLootContainerRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 export declare class InventoryCallbacks {
     protected inventoryController: InventoryController;
@@ -36,4 +37,5 @@ export declare class InventoryCallbacks {
     createMapMarker(pmcData: IPmcData, body: IInventoryCreateMarkerRequestData, sessionID: string): IItemEventRouterResponse;
     deleteMapMarker(pmcData: IPmcData, body: IInventoryDeleteMarkerRequestData, sessionID: string): IItemEventRouterResponse;
     editMapMarker(pmcData: IPmcData, body: IInventoryEditMarkerRequestData, sessionID: string): IItemEventRouterResponse;
+    openRandomLootContainer(pmcData: IPmcData, body: IOpenRandomLootContainerRequestData, sessionID: string): IItemEventRouterResponse;
 }

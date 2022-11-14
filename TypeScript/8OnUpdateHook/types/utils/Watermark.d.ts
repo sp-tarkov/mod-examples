@@ -1,20 +1,15 @@
 import { ICoreConfig } from "../models/spt/config/ICoreConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
+import { LocalisationService } from "../services/LocalisationService";
 export declare class WatermarkLocale {
-    protected locales: {
-        "en-US": {
-            description: string[];
-            warning: string[];
-            modding: string[];
-        };
-        "zh-CN": {
-            description: string[];
-            warning: string[];
-            modding: string[];
-        };
+    protected localisationService: LocalisationService;
+    constructor(localisationService: LocalisationService);
+    protected watermark: {
+        description: string[];
+        warning: string[];
+        modding: string[];
     };
-    getLocale(): string;
     getDescription(): string[];
     getWarning(): string[];
     getModding(): string[];
@@ -22,9 +17,10 @@ export declare class WatermarkLocale {
 export declare class Watermark {
     protected logger: ILogger;
     protected configServer: ConfigServer;
+    protected localisationService: LocalisationService;
     protected watermarkLocale?: WatermarkLocale;
     protected akiConfig: ICoreConfig;
-    constructor(logger: ILogger, configServer: ConfigServer, watermarkLocale?: WatermarkLocale);
+    constructor(logger: ILogger, configServer: ConfigServer, localisationService: LocalisationService, watermarkLocale?: WatermarkLocale);
     protected text: string[];
     protected versionLabel: string;
     initialize(): void;

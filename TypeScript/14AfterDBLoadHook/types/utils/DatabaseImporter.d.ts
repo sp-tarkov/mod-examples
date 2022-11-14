@@ -3,15 +3,17 @@ import { IDatabaseTables } from "../models/spt/server/IDatabaseTables";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ImageRouter } from "../routers/ImageRouter";
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { LocalisationService } from "../services/LocalisationService";
 import { JsonUtil } from "./JsonUtil";
 import { VFS } from "./VFS";
 export declare class DatabaseImporter extends OnLoad {
     protected logger: ILogger;
     protected vfs: VFS;
     protected jsonUtil: JsonUtil;
+    protected localisationService: LocalisationService;
     protected databaseServer: DatabaseServer;
     protected imageRouter: ImageRouter;
-    constructor(logger: ILogger, vfs: VFS, jsonUtil: JsonUtil, databaseServer: DatabaseServer, imageRouter: ImageRouter);
+    constructor(logger: ILogger, vfs: VFS, jsonUtil: JsonUtil, localisationService: LocalisationService, databaseServer: DatabaseServer, imageRouter: ImageRouter);
     onLoad(): void;
     /**
      * Read all json files in database folder and map into a json object

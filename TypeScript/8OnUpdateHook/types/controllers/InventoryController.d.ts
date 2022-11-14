@@ -1,8 +1,8 @@
-import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { InventoryHelper } from "../helpers/InventoryHelper";
 import { PaymentHelper } from "../helpers/PaymentHelper";
 import { PresetHelper } from "../helpers/PresetHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
+import { WeightedRandomHelper } from "../helpers/WeightedRandomHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { IAddItemRequestData } from "../models/eft/inventory/IAddItemRequestData";
 import { IInventoryBindRequestData } from "../models/eft/inventory/IInventoryBindRequestData";
@@ -21,33 +21,46 @@ import { IInventorySwapRequestData } from "../models/eft/inventory/IInventorySwa
 import { IInventoryTagRequestData } from "../models/eft/inventory/IInventoryTagRequestData";
 import { IInventoryToggleRequestData } from "../models/eft/inventory/IInventoryToggleRequestData";
 import { IInventoryTransferRequestData } from "../models/eft/inventory/IInventoryTransferRequestData";
+import { IOpenRandomLootContainerRequestData } from "../models/eft/inventory/IOpenRandomLootContainerRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { ILogger } from "../models/spt/utils/ILogger";
+import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { FenceService } from "../services/FenceService";
+import { LocalisationService } from "../services/LocalisationService";
 import { RagfairOfferService } from "../services/RagfairOfferService";
 import { HashUtil } from "../utils/HashUtil";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { JsonUtil } from "../utils/JsonUtil";
+import { RandomUtil } from "../utils/RandomUtil";
 export declare class InventoryController {
     protected logger: ILogger;
     protected hashUtil: HashUtil;
     protected jsonUtil: JsonUtil;
+    protected randomUtil: RandomUtil;
     protected databaseServer: DatabaseServer;
     protected fenceService: FenceService;
     protected presetHelper: PresetHelper;
     protected inventoryHelper: InventoryHelper;
     protected ragfairOfferService: RagfairOfferService;
     protected profileHelper: ProfileHelper;
+    protected weightedRandomHelper: WeightedRandomHelper;
     protected paymentHelper: PaymentHelper;
+    protected localisationService: LocalisationService;
     protected eventOutputHolder: EventOutputHolder;
-    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, fenceService: FenceService, presetHelper: PresetHelper, inventoryHelper: InventoryHelper, ragfairOfferService: RagfairOfferService, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, eventOutputHolder: EventOutputHolder);
+    protected httpResponseUtil: HttpResponseUtil;
+    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, fenceService: FenceService, presetHelper: PresetHelper, inventoryHelper: InventoryHelper, ragfairOfferService: RagfairOfferService, profileHelper: ProfileHelper, weightedRandomHelper: WeightedRandomHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, eventOutputHolder: EventOutputHolder, httpResponseUtil: HttpResponseUtil);
     /**
     * Move Item
     * change location of item with parentId and slotId
     * transfers items from one profile to another if fromOwner/toOwner is set in the body.
     * otherwise, move is contained within the same profile_f.
-    */
-    moveItem(pmcData: IPmcData, body: IInventoryMoveRequestData, sessionID: string): IItemEventRouterResponse;
+     * @param pmcData Profile
+     * @param moveRequest Move request data
+     * @param sessionID Session id
+     * @returns IItemEventRouterResponse
+     */
+    moveItem(pmcData: IPmcData, moveRequest: IInventoryMoveRequestData, sessionID: string): IItemEventRouterResponse;
     /**
     * Remove Item from Profile
     * Deep tree item deletion, also removes items from insurance list
@@ -122,4 +135,12 @@ export declare class InventoryController {
     createMapMarker(pmcData: IPmcData, body: IInventoryCreateMarkerRequestData, sessionID: string): IItemEventRouterResponse;
     deleteMapMarker(pmcData: IPmcData, body: IInventoryDeleteMarkerRequestData, sessionID: string): IItemEventRouterResponse;
     editMapMarker(pmcData: IPmcData, body: IInventoryEditMarkerRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Handle event fired when a container is unpacked (currently only the halloween pumpkin)
+     * @param pmcData Profile data
+     * @param body open loot container request data
+     * @param sessionID Session id
+     * @returns IItemEventRouterResponse
+     */
+    openRandomLootContainer(pmcData: IPmcData, body: IOpenRandomLootContainerRequestData, sessionID: string): IItemEventRouterResponse;
 }

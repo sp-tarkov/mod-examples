@@ -12,6 +12,10 @@ export declare class TraderCallbacks extends OnLoadOnUpdate {
     onUpdate(): boolean;
     getRoute(): string;
     getTraderSettings(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ITraderBase[]>;
+    /**
+     * Handle client/trading/api/getUserAssortPrice/trader
+     * @returns
+     */
     getProfilePurchases(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<Record<string, IBarterScheme[][]>>;
     getTrader(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ITraderBase>;
     getAssort(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ITraderAssort>;

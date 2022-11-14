@@ -591,6 +591,7 @@ export interface HealPrice {
 export interface ProfileHealthSettings {
     BodyPartsSettings: BodyPartsSettings;
     HealthFactorsSettings: HealthFactorsSettings;
+    DefaultStimulatorBuff: string;
 }
 export interface BodyPartsSettings {
     Head: BodyPartsSetting;

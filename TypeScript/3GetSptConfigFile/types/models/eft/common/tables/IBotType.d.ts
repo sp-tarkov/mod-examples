@@ -13,8 +13,8 @@ export interface IBotType {
     skills: Skills;
 }
 export interface Appearance {
-    body: string[];
-    feet: string[];
+    body: Record<string, number>;
+    feet: Record<string, number>;
     hands: string[];
     head: string[];
     voice: string[];

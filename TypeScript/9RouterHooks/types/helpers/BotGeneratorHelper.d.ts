@@ -8,6 +8,7 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { BotEquipmentFilterService } from "../services/BotEquipmentFilterService";
 import { ItemFilterService } from "../services/ItemFilterService";
+import { LocalisationService } from "../services/LocalisationService";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
@@ -43,9 +44,10 @@ export declare class BotGeneratorHelper {
     protected itemFilterService: ItemFilterService;
     protected profileHelper: ProfileHelper;
     protected botWeaponGeneratorHelper: BotWeaponGeneratorHelper;
+    protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected botConfig: IBotConfig;
-    constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, probabilityHelper: ProbabilityHelper, databaseServer: DatabaseServer, durabilityLimitsHelper: DurabilityLimitsHelper, itemHelper: ItemHelper, inventoryHelper: InventoryHelper, containerHelper: ContainerHelper, botEquipmentFilterService: BotEquipmentFilterService, itemFilterService: ItemFilterService, profileHelper: ProfileHelper, botWeaponGeneratorHelper: BotWeaponGeneratorHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, probabilityHelper: ProbabilityHelper, databaseServer: DatabaseServer, durabilityLimitsHelper: DurabilityLimitsHelper, itemHelper: ItemHelper, inventoryHelper: InventoryHelper, containerHelper: ContainerHelper, botEquipmentFilterService: BotEquipmentFilterService, itemFilterService: ItemFilterService, profileHelper: ProfileHelper, botWeaponGeneratorHelper: BotWeaponGeneratorHelper, localisationService: LocalisationService, configServer: ConfigServer);
     /**
      * Check mods are compatible and add to array
      * @param equipment Equipment item to add mods to
@@ -53,9 +55,11 @@ export declare class BotGeneratorHelper {
      * @param parentId parentid of item to add mod to
      * @param parentTemplate template objet of item to add mods to
      * @param modSpawnChances dictionary of mod items and their chance to spawn for this bot type
+     * @param botRole the bot role being generated for
+     * @param forceSpawn should this mod be forced to spawn
      * @returns Item + compatible mods as an array
      */
-    generateModsForEquipment(equipment: Item[], modPool: Mods, parentId: string, parentTemplate: ITemplateItem, modSpawnChances: ModsChances): Item[];
+    generateModsForEquipment(equipment: Item[], modPool: Mods, parentId: string, parentTemplate: ITemplateItem, modSpawnChances: ModsChances, botRole: string, forceSpawn?: boolean): Item[];
     /**
      * @param sessionId session id
      * @param weapon Weapon to add mods to
@@ -70,15 +74,15 @@ export declare class BotGeneratorHelper {
     generateModsForWeapon(sessionId: string, weapon: Item[], modPool: Mods, weaponParentId: string, parentWeaponTemplate: ITemplateItem, modSpawnChances: ModsChances, ammoTpl: string, botRole: string): Item[];
     /**
      *
-     * @param modSlot
-     * @param isRandomisableSlot
-     * @param modsParent
-     * @param botEquipBlacklist
-     * @param itemModPool
+     * @param modSlot Slot mod will fit into
+     * @param isRandomisableSlot Will generate a randomised mod pool if true
+     * @param modsParent Parent slot the item will be a part of
+     * @param botEquipBlacklist Blacklist to prevent mods from being picked
+     * @param itemModPool Pool of items to pick from
      * @param weapon array with only weapon tpl in it, ready for mods to be added
      * @param ammoTpl ammo tpl to use if slot requires a cartridge to be added (e.g. mod_magazine)
-     * @param parentTemplate
-     * @returns
+     * @param parentTemplate Parent item the mod will go into
+     * @returns ITemplateItem
      */
     protected chooseModToPutIntoSlot(modSlot: string, isRandomisableSlot: boolean, modsParent: Slot, botEquipBlacklist: EquipmentFilterDetails, itemModPool: Record<string, string[]>, weapon: Item[], ammoTpl: string, parentTemplate: ITemplateItem): [boolean, ITemplateItem];
     /**
@@ -114,8 +118,10 @@ export declare class BotGeneratorHelper {
      * Find all compatible mods for equipment item and add to modPool
      * @param itemDetails item to find mods for
      * @param modPool ModPool to add mods to
+     * @param equipmentBlacklist equipment not allowed to be used by the bot
+     * @param botEquipmentRole bot type to generate pool for (e.g. assault, pmcBot, pmc for usec/bear)
      */
-    generateDynamicModPool(itemDetails: ITemplateItem, modPool: Mods): void;
+    generateDynamicModPool(itemDetails: ITemplateItem, modPool: Mods, equipmentBlacklist: EquipmentFilterDetails[], botEquipmentRole: string): void;
     /**
      * Take a list of tpls and filter out blacklisted values using itemFilterService + botEquipmentBlacklist
      * @param allowedMods base mods to filter
@@ -153,7 +159,7 @@ export declare class BotGeneratorHelper {
      * @param modTemplate Used to add additional properites in the upd object
      * @returns Item object
      */
-    protected createModItem(modId: string, modTpl: string, parentId: string, modSlot: string, modTemplate: ITemplateItem): Item;
+    protected createModItem(modId: string, modTpl: string, parentId: string, modSlot: string, modTemplate: ITemplateItem, botRole: string): Item;
     /**
      * randomly choose if a mod should be spawned, 100% for required mods OR mod is ammo slot
      * never return true for an item that has 0% spawn chance
@@ -170,10 +176,10 @@ export declare class BotGeneratorHelper {
      */
     protected getAmmoContainers(): string[];
     /**
-     * Get the slot details for an item (chamber/cartridge/slot)
+     * Get a Slot property for an item (chamber/cartridge/slot)
      * @param modSlot e.g patron_in_weapon
      * @param parentTemplate item template
-     * @returns
+     * @returns Slot item
      */
     protected getModItemSlot(modSlot: string, parentTemplate: ITemplateItem): Slot;
     /**
@@ -185,7 +191,6 @@ export declare class BotGeneratorHelper {
      * @param modPool modPool which should include available cartrigdes
      * @param parentId The CylinderMagazine's UID
      * @param parentTemplate The CylinderMagazine's template
-     * @returns
      */
     protected fillCamora(items: Item[], modPool: Mods, parentId: string, parentTemplate: ITemplateItem): void;
     /**
@@ -197,11 +202,11 @@ export declare class BotGeneratorHelper {
     /**
      * Adds properties to an item
      * e.g. Repairable / HasHinge / Foldable / MaxDurability
-     * @param itemTemplate
-     * @param botRole Used by weapons to randomise the durability values
+     * @param itemTemplate Item extra properties are being generated for
+     * @param botRole Used by weapons to randomise the durability values. Null for non-equipped items
      * @returns Item Upd object with extra properties
      */
-    generateExtraPropertiesForItem(itemTemplate: ITemplateItem, botRole?: any): {
+    generateExtraPropertiesForItem(itemTemplate: ITemplateItem, botRole?: string): {
         upd?: Upd;
     };
     /**
@@ -220,21 +225,27 @@ export declare class BotGeneratorHelper {
     protected generateArmorRepairableProperties(itemTemplate: ITemplateItem, botRole: string): Repairable;
     /**
      * Get a random mod from an items compatible mods Filter array
-     * @param modTpl
-     * @param parentSlot
-     * @param modSlot
-     * @param items
+     * @param modTpl ????
+     * @param parentSlot item mod will go into, used to get combatible items
+     * @param modSlot Slot to get mod to fill
+     * @param items items to ensure picked mod is compatible with
      * @returns item tpl
      */
     protected getModTplFromItemDb(modTpl: string, parentSlot: Slot, modSlot: string, items: Item[]): string;
     /**
      * Can an item be added to an item without issue
-     * @param items
-     * @param tplToCheck
-     * @param equipmentSlot
-     * @returns true if possible
+     * @param items items to check compatiblilities with
+     * @param tplToCheck tpl of the item to check for incompatibilities
+     * @param equipmentSlot Slot the item will be placed into
+     * @returns false if no incompatibilties
      */
     isItemIncompatibleWithCurrentItems(items: Item[], tplToCheck: string, equipmentSlot: string): boolean;
+    /**
+     * Convert a bots role to the equipment role used in config/bot.json
+     * @param botRole Role to convert
+     * @returns Equipment role (e.g. pmc / assault / bossTagilla)
+     */
+    getBotEquipmentRole(botRole: string): string;
 }
 /** TODO - move into own class */
 export declare class ExhaustableArray<T> {

@@ -1,3 +1,4 @@
+import { WindDirection } from "../../../models/enums/WindDirection";
 import { MinMax } from "../../common/MinMax";
 import { IBaseConfig } from "./IBaseConfig";
 export interface IWeatherConfig extends IBaseConfig {
@@ -7,12 +8,16 @@ export interface IWeatherConfig extends IBaseConfig {
 }
 export interface Weather {
     clouds: MinMax;
-    windSpeed: MinMax;
-    windDirection: MinMax;
+    windSpeed: WeatherSettings<number>;
+    windDirection: WeatherSettings<WindDirection>;
     windGustiness: MinMax;
-    rain: MinMax;
+    rain: WeatherSettings<number>;
     rainIntensity: MinMax;
-    fog: MinMax;
+    fog: WeatherSettings<string>;
     temp: MinMax;
     pressure: MinMax;
+}
+export interface WeatherSettings<T> {
+    values: T[];
+    weights: number[];
 }

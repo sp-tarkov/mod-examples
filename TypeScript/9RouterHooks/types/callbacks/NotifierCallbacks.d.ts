@@ -4,6 +4,7 @@ import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
 import { INotifierChannel } from "../models/eft/notifier/INotifier";
 import { ISelectProfileRequestData } from "../models/eft/notifier/ISelectProfileRequestData";
+import { ISelectProfileResponse } from "../models/eft/notifier/ISelectProfileResponse";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class NotifierCallbacks {
     protected httpServerHelper: HttpServerHelper;
@@ -19,6 +20,10 @@ export declare class NotifierCallbacks {
     sendNotification(sessionID: string, req: any, resp: any, data: any): void;
     getNotifier(url: string, info: any, sessionID: string): IGetBodyResponseData<any[]>;
     createNotifierChannel(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<INotifierChannel>;
-    selectProfile(url: string, info: ISelectProfileRequestData, sessionID: string): IGetBodyResponseData<any>;
+    /**
+     * Handle client/game/profile/select
+     * @returns ISelectProfileResponse
+     */
+    selectProfile(url: string, info: ISelectProfileRequestData, sessionID: string): IGetBodyResponseData<ISelectProfileResponse>;
     notify(url: string, info: any, sessionID: string): string;
 }

@@ -1,18 +1,20 @@
 /// <reference types="node" />
-import { HttpServerHelper } from "../helpers/HttpServerHelper";
-import WebSocket from "ws";
 import http, { IncomingMessage } from "http";
-import { ILogger } from "../models/spt/utils/ILogger";
-import { RandomUtil } from "../utils/RandomUtil";
+import WebSocket from "ws";
+import { HttpServerHelper } from "../helpers/HttpServerHelper";
 import { INotification } from "../models/eft/notifier/INotifier";
-import { ConfigServer } from "./ConfigServer";
 import { IHttpConfig } from "../models/spt/config/IHttpConfig";
+import { ILogger } from "../models/spt/utils/ILogger";
+import { LocalisationService } from "../services/LocalisationService";
+import { RandomUtil } from "../utils/RandomUtil";
+import { ConfigServer } from "./ConfigServer";
 export declare class WebSocketServer {
     protected logger: ILogger;
     protected randomUtil: RandomUtil;
     protected configServer: ConfigServer;
+    protected localisationService: LocalisationService;
     protected httpServerHelper: HttpServerHelper;
-    constructor(logger: ILogger, randomUtil: RandomUtil, configServer: ConfigServer, httpServerHelper: HttpServerHelper);
+    constructor(logger: ILogger, randomUtil: RandomUtil, configServer: ConfigServer, localisationService: LocalisationService, httpServerHelper: HttpServerHelper);
     protected httpConfig: IHttpConfig;
     protected defaultNotification: INotification;
     protected webSockets: Record<string, WebSocket.WebSocket>;

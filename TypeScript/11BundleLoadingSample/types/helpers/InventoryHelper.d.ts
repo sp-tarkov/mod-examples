@@ -5,11 +5,12 @@ import { IInventoryMergeRequestData } from "../models/eft/inventory/IInventoryMe
 import { IInventoryMoveRequestData } from "../models/eft/inventory/IInventoryMoveRequestData";
 import { IInventorySplitRequestData } from "../models/eft/inventory/IInventorySplitRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
-import { IInventoryConfig } from "../models/spt/config/IInventoryConfig";
+import { IInventoryConfig, RewardDetails } from "../models/spt/config/IInventoryConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { FenceService } from "../services/FenceService";
+import { LocalisationService } from "../services/LocalisationService";
 import { HashUtil } from "../utils/HashUtil";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { JsonUtil } from "../utils/JsonUtil";
@@ -38,9 +39,10 @@ export declare class InventoryHelper {
     protected itemHelper: ItemHelper;
     protected containerHelper: ContainerHelper;
     protected profileHelper: ProfileHelper;
+    protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected inventoryConfig: IInventoryConfig;
-    constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, httpResponse: HttpResponseUtil, fenceService: FenceService, databaseServer: DatabaseServer, paymentHelper: PaymentHelper, traderAssortHelper: TraderAssortHelper, dialogueHelper: DialogueHelper, itemHelper: ItemHelper, containerHelper: ContainerHelper, profileHelper: ProfileHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, httpResponse: HttpResponseUtil, fenceService: FenceService, databaseServer: DatabaseServer, paymentHelper: PaymentHelper, traderAssortHelper: TraderAssortHelper, dialogueHelper: DialogueHelper, itemHelper: ItemHelper, containerHelper: ContainerHelper, profileHelper: ProfileHelper, localisationService: LocalisationService, configServer: ConfigServer);
     addItem(pmcData: IPmcData, body: IAddItemRequestData, output: IItemEventRouterResponse, sessionID: string, callback: any, foundInRaid?: boolean, addUpd?: any): IItemEventRouterResponse;
     removeItem(pmcData: IPmcData, itemId: string, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
     removeItemByCount(pmcData: IPmcData, itemId: string, count: number, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
@@ -76,6 +78,12 @@ export declare class InventoryHelper {
     * Internal helper function to handle cartridges in inventory if any of them exist.
     */
     protected handleCartridges(items: Item[], body: IInventoryMoveRequestData): void;
+    /**
+     * Get details for how a random loot container should be handled, max rewards, possible reward tpls
+     * @param itemTpl Container being opened
+     * @returns Reward details
+     */
+    getRandomLootContainerRewardDetails(itemTpl: string): RewardDetails;
 }
 declare namespace InventoryHelper {
     interface InventoryItemHash {

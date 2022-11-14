@@ -30,8 +30,7 @@ export declare class InsuranceController {
     protected insuranceService: InsuranceService;
     protected configServer: ConfigServer;
     protected insuranceConfig: IInsuranceConfig;
-    constructor(logger: ILogger, randomUtil: RandomUtil, eventOutputHolder: EventOutputHolder, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, itemHelper: ItemHelper, profileHelper: ProfileHelper, dialogueHelper: DialogueHelper, paymentService: PaymentService, // TODO: delay required
-    insuranceService: InsuranceService, configServer: ConfigServer);
+    constructor(logger: ILogger, randomUtil: RandomUtil, eventOutputHolder: EventOutputHolder, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, itemHelper: ItemHelper, profileHelper: ProfileHelper, dialogueHelper: DialogueHelper, paymentService: PaymentService, insuranceService: InsuranceService, configServer: ConfigServer);
     processReturn(): void;
     insure(pmcData: IPmcData, body: IInsureRequestData, sessionID: string): IItemEventRouterResponse;
     /**

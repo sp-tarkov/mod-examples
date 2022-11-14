@@ -28,12 +28,8 @@ export interface Reputation {
     gain: number;
     loss: number;
 }
-export declare class OfferAdjustment {
-    maxPriceDifferenceBelowHandbookPercent: number;
-    handbookPriceMultipier: number;
-    priceThreshholdRub: number;
-}
 export interface Dynamic {
+    barter: Barter;
     offerAdjustment: OfferAdjustment;
     expiredOfferThreshold: number;
     offerItemCount: MinMax;
@@ -48,6 +44,20 @@ export interface Dynamic {
     currencies: Record<string, number>;
     showAsSingleStack: string[];
     blacklist: Blacklist;
+}
+export declare class Barter {
+    enable: boolean;
+    chancePercent: number;
+    itemCountMin: number;
+    itemCountMax: number;
+    priceRangeVariancePercent: number;
+    minRoubleCostToBecomeBarter: number;
+    itemTypeBlacklist: string[];
+}
+export declare class OfferAdjustment {
+    maxPriceDifferenceBelowHandbookPercent: number;
+    handbookPriceMultipier: number;
+    priceThreshholdRub: number;
 }
 export interface Condition {
     conditionChance: number;

@@ -23,7 +23,7 @@ export declare class DialogueController {
      * Get the content of a dialogue
      * @param dialogueID Dialog id
      * @param sessionID Session Id
-     * @returns
+     * @returns DialogueInfo
      */
     getDialogueInfo(dialogueID: string, sessionID: string): DialogueInfo;
     /**

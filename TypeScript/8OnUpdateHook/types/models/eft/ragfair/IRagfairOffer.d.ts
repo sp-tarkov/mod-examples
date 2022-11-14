@@ -7,19 +7,19 @@ export interface IRagfairOffer {
     requirements: OfferRequirement[];
     root: string;
     intId: number;
+    /** Handbook price */
     itemsCost: number;
+    /** Rouble price */
     requirementsCost: number;
-    sptRequirementsCostRouble: number;
     startTime: number;
     endTime: number;
     sellInOnePiece: boolean;
-    name?: string;
-    shortName?: string;
     loyaltyLevel: number;
     buyRestrictionMax?: number;
     buyRestrictionCurrent?: number;
     locked: boolean;
     unlimitedCount: boolean;
+    /** Rouble price */
     summaryCost: number;
     user: IRagfairOfferUser;
     notAvailable: boolean;
@@ -33,11 +33,11 @@ export interface OfferRequirement {
 }
 export interface IRagfairOfferUser {
     id: string;
-    nickname: string;
-    rating: number;
+    nickname?: string;
+    rating?: number;
     memberType: MemberCategory;
-    avatar: string;
-    isRatingGrowing: boolean;
+    avatar?: string;
+    isRatingGrowing?: boolean;
 }
 export interface SellResult {
     sellTime: number;

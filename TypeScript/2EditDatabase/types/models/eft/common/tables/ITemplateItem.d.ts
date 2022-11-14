@@ -254,7 +254,7 @@ export interface Props {
     foodUseTime?: number;
     foodEffectType?: string;
     StimulatorBuffs?: string;
-    effects_health?: any;
+    effects_health?: IHealthEffect[] | Record<string, Record<string, number>>;
     effects_damage?: any;
     MaximumNumberOfUsage?: number;
     knifeHitDelay?: number;
@@ -365,6 +365,10 @@ export interface Props {
     CanBeHiddenDuringThrow?: boolean;
     MinTimeToContactExplode?: number;
     ExplosionEffectType?: string;
+}
+export interface IHealthEffect {
+    type: string;
+    value: number;
 }
 export interface Prefab {
     path: string;

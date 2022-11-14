@@ -15,4 +15,15 @@ export declare class GameEventHelper {
      * @returns Record with event name + start/end date
      */
     getEventDetails(): ISeasonalEvent[];
+    /**
+     * Is detection of seasonal events enabled (halloween / christmas)
+     * @returns true if seasonal events should be checked for
+     */
+    isAutomaticEventDetectionEnabled(): boolean;
+    /**
+     * Get a dictionary of gear changes to apply to bots for a specific event e.g. Christmas/Halloween
+     * @param eventName Name of event to get gear changes for
+     * @returns bots with equipment changes
+     */
+    getEventBotGear(eventName: string): Record<string, Record<string, Record<string, number>>>;
 }

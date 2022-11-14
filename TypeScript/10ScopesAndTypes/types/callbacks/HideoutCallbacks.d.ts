@@ -19,14 +19,77 @@ export declare class HideoutCallbacks extends OnUpdate {
     protected hideoutConfig: IHideoutConfig;
     constructor(hideoutController: HideoutController, // TODO: delay needed
     configServer: ConfigServer);
+    /**
+     * Handle HideoutUpgrade
+     * @param pmcData
+     * @param body
+     * @param sessionID
+     * @returns
+     */
     upgrade(pmcData: IPmcData, body: IHideoutUpgradeRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Handle HideoutUpgradeComplete
+     * @param pmcData
+     * @param body
+     * @param sessionID
+     * @returns
+     */
     upgradeComplete(pmcData: IPmcData, body: IHideoutUpgradeCompleteRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Handle HideoutPutItemsInAreaSlots
+     * @param pmcData
+     * @param body
+     * @param sessionID
+     * @returns
+     */
     putItemsInAreaSlots(pmcData: IPmcData, body: IHideoutPutItemInRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Handle HideoutTakeItemsFromAreaSlots
+     * @param pmcData
+     * @param body
+     * @param sessionID
+     * @returns
+     */
     takeItemsFromAreaSlots(pmcData: IPmcData, body: IHideoutTakeItemOutRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Handle HideoutToggleArea
+     * @param pmcData
+     * @param body
+     * @param sessionID
+     * @returns
+     */
     toggleArea(pmcData: IPmcData, body: IHideoutToggleAreaRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Handle HideoutSingleProductionStart
+     * @param pmcData
+     * @param body
+     * @param sessionID
+     * @returns
+     */
     singleProductionStart(pmcData: IPmcData, body: IHideoutSingleProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Handle HideoutScavCaseProductionStart
+     * @param pmcData
+     * @param body
+     * @param sessionID
+     * @returns
+     */
     scavCaseProductionStart(pmcData: IPmcData, body: IHideoutScavCaseStartRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Handle HideoutContinuousProductionStart
+     * @param pmcData
+     * @param body
+     * @param sessionID
+     * @returns
+     */
     continuousProductionStart(pmcData: IPmcData, body: IHideoutContinousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Handle HideoutTakeProduction
+     * @param pmcData
+     * @param body
+     * @param sessionID
+     * @returns
+     */
     takeProduction(pmcData: IPmcData, body: IHideoutTakeProductionRequestData, sessionID: string): IItemEventRouterResponse;
     onUpdate(timeSinceLastRun: number): boolean;
     getRoute(): string;

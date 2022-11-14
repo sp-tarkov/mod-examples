@@ -10,8 +10,9 @@ export interface IItemEventRouterBase {
 export declare type TProfileChanges = Record<string, ProfileChange>;
 export interface Warning {
     index: number;
-    err: string;
     errmsg: string;
+    code?: string;
+    data?: any;
 }
 export interface ProfileChange {
     _id: string;

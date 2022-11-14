@@ -11,6 +11,7 @@ import { ILogger } from "../models/spt/utils/ILogger";
 import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { LocalisationService } from "../services/LocalisationService";
 import { PlayerService } from "../services/PlayerService";
 import { HashUtil } from "../utils/HashUtil";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
@@ -29,13 +30,14 @@ export declare class HideoutHelper {
     protected profileHelper: ProfileHelper;
     protected inventoryHelper: InventoryHelper;
     protected playerService: PlayerService;
+    protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     static bitcoinFarm: string;
     static waterCollector: string;
     static bitcoin: string;
     static expeditionaryFuelTank: string;
     protected hideoutConfig: IHideoutConfig;
-    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, inventoryHelper: InventoryHelper, playerService: PlayerService, configServer: ConfigServer);
+    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, inventoryHelper: InventoryHelper, playerService: PlayerService, localisationService: LocalisationService, configServer: ConfigServer);
     registerProduction(pmcData: IPmcData, body: IHideoutSingleProductionStartRequestData | IHideoutContinousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * This convinience function intialies new Production Object

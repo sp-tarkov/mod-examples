@@ -18,7 +18,7 @@ export declare class RagfairSortHelper {
     protected sortOffersByRating(a: IRagfairOffer, b: IRagfairOffer): number;
     protected sortOffersByName(a: IRagfairOffer, b: IRagfairOffer): number;
     /**
-     * Order two offers by price value
+     * Order two offers by rouble price value
      * @param a Offer a
      * @param b Offer b
      * @returns

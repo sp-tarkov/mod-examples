@@ -17,6 +17,7 @@ import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { ItemFilterService } from "../services/ItemFilterService";
+import { LocalisationService } from "../services/LocalisationService";
 import { PaymentService } from "../services/PaymentService";
 import { ProfileFixerService } from "../services/ProfileFixerService";
 import { JsonUtil } from "../utils/JsonUtil";
@@ -64,12 +65,13 @@ export declare class RepeatableQuestController {
     protected profileFixerService: ProfileFixerService;
     protected ragfairServerHelper: RagfairServerHelper;
     protected eventOutputHolder: EventOutputHolder;
+    protected localisationService: LocalisationService;
     protected paymentService: PaymentService;
     protected objectId: ObjectId;
     protected itemFilterService: ItemFilterService;
     protected configServer: ConfigServer;
     protected questConfig: IQuestConfig;
-    constructor(timeUtil: TimeUtil, logger: ILogger, randomUtil: RandomUtil, mathUtil: MathUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper, presetHelper: PresetHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, ragfairServerHelper: RagfairServerHelper, eventOutputHolder: EventOutputHolder, paymentService: PaymentService, objectId: ObjectId, itemFilterService: ItemFilterService, configServer: ConfigServer);
+    constructor(timeUtil: TimeUtil, logger: ILogger, randomUtil: RandomUtil, mathUtil: MathUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper, presetHelper: PresetHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, ragfairServerHelper: RagfairServerHelper, eventOutputHolder: EventOutputHolder, localisationService: LocalisationService, paymentService: PaymentService, objectId: ObjectId, itemFilterService: ItemFilterService, configServer: ConfigServer);
     /**
      * This is the method reached by the /client/repeatalbeQuests/activityPeriods endpoint
      * Returns an array of objects in the format of repeatable quests to the client.

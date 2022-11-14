@@ -8,12 +8,14 @@ import { HideoutAreas } from "../models/enums/HideoutAreas";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { Watermark } from "../utils/Watermark";
+import { LocalisationService } from "./LocalisationService";
 export declare class ProfileFixerService {
     protected logger: ILogger;
     protected watermark: Watermark;
     protected hideoutHelper: HideoutHelper;
+    protected localisationService: LocalisationService;
     protected databaseServer: DatabaseServer;
-    constructor(logger: ILogger, watermark: Watermark, hideoutHelper: HideoutHelper, databaseServer: DatabaseServer);
+    constructor(logger: ILogger, watermark: Watermark, hideoutHelper: HideoutHelper, localisationService: LocalisationService, databaseServer: DatabaseServer);
     /**
      * Find issues in the pmc profile data that may cause issues and fix them
      * @param pmcProfile profile to check and fix

@@ -12,15 +12,42 @@ import { ILanguageBase } from "../models/spt/server/ILocaleBase";
 import { ISettingsBase } from "../models/spt/server/ISettingsBase";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
+/**
+ * Handle client requests
+ */
 export declare class DataCallbacks {
     protected httpResponse: HttpResponseUtil;
     protected databaseServer: DatabaseServer;
     constructor(httpResponse: HttpResponseUtil, databaseServer: DatabaseServer);
+    /**
+     * Handles client/settings
+     * @returns ISettingsBase
+     */
     getSettings(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ISettingsBase>;
+    /**
+     * Handles client/globals
+     * @returns IGlobals
+     */
     getGlobals(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IGlobals>;
+    /**
+     * Handles client/items
+     * @returns string
+     */
     getTemplateItems(url: string, info: IEmptyRequestData, sessionID: string): string;
+    /**
+     * Handles client/handbook/templates
+     * @returns IHandbookBase
+     */
     getTemplateHandbook(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IHandbookBase>;
+    /**
+     * Handles client/customization
+     * @returns Record<string, ICustomizationItem
+     */
     getTemplateSuits(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<Record<string, ICustomizationItem>>;
+    /**
+     * Handles client/account/customization
+     * @returns string[]
+     */
     getTemplateCharacter(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<string[]>;
     getTemplateQuests(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IQuest[]>;
     getHideoutSettings(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IHideoutSettingsBase>;
@@ -28,6 +55,6 @@ export declare class DataCallbacks {
     gethideoutProduction(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IHideoutProduction[]>;
     getHideoutScavcase(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IHideoutScavCase[]>;
     getLocalesLanguages(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ILanguageBase[]>;
-    getLocalesMenu(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
+    getLocalesMenu(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<string>;
     getLocalesGlobal(url: string, info: IEmptyRequestData, sessionID: string): string;
 }

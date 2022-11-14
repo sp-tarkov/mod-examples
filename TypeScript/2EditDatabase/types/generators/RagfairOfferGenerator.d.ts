@@ -1,16 +1,19 @@
+import { HandbookHelper } from "../helpers/HandbookHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
+import { PaymentHelper } from "../helpers/PaymentHelper";
 import { PresetHelper } from "../helpers/PresetHelper";
 import { RagfairServerHelper } from "../helpers/RagfairServerHelper";
 import { Item } from "../models/eft/common/tables/IItem";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { IBarterScheme } from "../models/eft/common/tables/ITrader";
-import { IRagfairOffer } from "../models/eft/ragfair/IRagfairOffer";
+import { IRagfairOffer, OfferRequirement } from "../models/eft/ragfair/IRagfairOffer";
 import { IRagfairConfig } from "../models/spt/config/IRagfairConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
 import { FenceService } from "../services/FenceService";
+import { LocalisationService } from "../services/LocalisationService";
 import { RagfairCategoriesService } from "../services/RagfairCategoriesService";
 import { RagfairOfferService } from "../services/RagfairOfferService";
 import { RagfairPriceService } from "../services/RagfairPriceService";
@@ -27,18 +30,31 @@ export declare class RagfairOfferGenerator {
     protected timeUtil: TimeUtil;
     protected databaseServer: DatabaseServer;
     protected ragfairServerHelper: RagfairServerHelper;
+    protected handbookHelper: HandbookHelper;
     protected saveServer: SaveServer;
     protected presetHelper: PresetHelper;
     protected ragfairAssortGenerator: RagfairAssortGenerator;
     protected ragfairOfferService: RagfairOfferService;
     protected ragfairPriceService: RagfairPriceService;
+    protected localisationService: LocalisationService;
+    protected paymentHelper: PaymentHelper;
     protected ragfairCategoriesService: RagfairCategoriesService;
     protected fenceService: FenceService;
     protected itemHelper: ItemHelper;
     protected configServer: ConfigServer;
     protected ragfairConfig: IRagfairConfig;
-    constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, ragfairServerHelper: RagfairServerHelper, saveServer: SaveServer, presetHelper: PresetHelper, ragfairAssortGenerator: RagfairAssortGenerator, ragfairOfferService: RagfairOfferService, ragfairPriceService: RagfairPriceService, ragfairCategoriesService: RagfairCategoriesService, fenceService: FenceService, itemHelper: ItemHelper, configServer: ConfigServer);
+    protected allowedFleaPriceItemsForBarter: {
+        tpl: string;
+        price: number;
+    }[];
+    constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, ragfairServerHelper: RagfairServerHelper, handbookHelper: HandbookHelper, saveServer: SaveServer, presetHelper: PresetHelper, ragfairAssortGenerator: RagfairAssortGenerator, ragfairOfferService: RagfairOfferService, ragfairPriceService: RagfairPriceService, localisationService: LocalisationService, paymentHelper: PaymentHelper, ragfairCategoriesService: RagfairCategoriesService, fenceService: FenceService, itemHelper: ItemHelper, configServer: ConfigServer);
     createOffer(userID: string, time: number, items: Item[], barterScheme: IBarterScheme[], loyalLevel: number, price: number, sellInOnePiece?: boolean): IRagfairOffer;
+    /**
+     * Calculate the offer price that's listed on the flea listing
+     * @param offerRequirements barter requirements for offer
+     * @returns rouble cost of offer
+     */
+    protected calculateOfferListingPrice(offerRequirements: OfferRequirement[]): number;
     /**
      * Get avatar url from trader table in db
      * @param isTrader Is user we're getting avatar for a trader
@@ -87,20 +103,36 @@ export declare class RagfairOfferGenerator {
      * @returns Item with conditions added
      */
     protected addMissingCondition(item: Item): Item;
-    protected getOfferRequirements(items: Item[]): {
-        count: number;
-        _tpl: string;
+    /**
+     * Create a barter-based barter scheme, if not possible, fall back to making barter scheme currency based
+     * @param offerItems Items for sale in offer
+     * @returns barter scheme
+     */
+    protected createBarterRequirement(offerItems: Item[]): IBarterScheme[];
+    /**
+     * Get an array of flea prices + item tpl, cached in generator class
+     * @returns array with tpl/price values
+     */
+    protected getFleaPricesAsArray(): {
+        tpl: string;
+        price: number;
     }[];
+    /**
+     * Create a random currency-based barter scheme for an array of items
+     * @param offerItems Items on offer
+     * @returns Barter scheme for offer
+     */
+    protected createCurrencyRequirement(offerItems: Item[]): IBarterScheme[];
     /**
      * Create a flea offer and store it in the Ragfair server offers array
      * @param userID owner of the offer
      * @param time time offer is put up
      * @param items items in the offer
-     * @param barterScheme
-     * @param loyalLevel
+     * @param barterScheme cost of item (currency or barter)
+     * @param loyalLevel Loyalty level needed to buy item
      * @param price price of offer
      * @param sellInOnePiece
-     * @returns
+     * @returns Ragfair offer
      */
     createFleaOffer(userID: string, time: number, items: Item[], barterScheme: IBarterScheme[], loyalLevel: number, price: number, sellInOnePiece?: boolean): IRagfairOffer;
 }

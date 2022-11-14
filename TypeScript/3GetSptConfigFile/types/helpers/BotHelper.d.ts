@@ -3,6 +3,7 @@ import { IBotConfig } from "../models/spt/config/IBotConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { LocalisationService } from "../services/LocalisationService";
 import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
 export declare class BotHelper {
@@ -10,16 +11,10 @@ export declare class BotHelper {
     protected jsonUtil: JsonUtil;
     protected databaseServer: DatabaseServer;
     protected randomUtil: RandomUtil;
+    protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected botConfig: IBotConfig;
-    constructor(logger: ILogger, jsonUtil: JsonUtil, databaseServer: DatabaseServer, randomUtil: RandomUtil, configServer: ConfigServer);
-    /**
-     * Get difficulty settings for desired bot type, if not found use assault bot types
-     * @param type bot type to retreive difficulty of
-     * @param difficulty difficulty to get settings for (easy/normal etc)
-     * @returns Difficulty object
-     */
-    getBotDifficultySettings(type: string, difficulty: string): Difficulty;
+    constructor(logger: ILogger, jsonUtil: JsonUtil, databaseServer: DatabaseServer, randomUtil: RandomUtil, localisationService: LocalisationService, configServer: ConfigServer);
     /**
      * Get a template object for the specified botRole from bots.types db
      * @param role botRole to get template for
@@ -27,29 +22,16 @@ export declare class BotHelper {
      */
     getBotTemplate(role: string): IBotType;
     /**
-     * Get difficulty settings for a PMC
-     * @param type "usec" / "bear"
-     * @param difficulty what difficulty to retrieve
-     * @returns Difficulty object
-     */
-    getPmcDifficultySettings(type: string, difficulty: string): Difficulty;
-    /**
-     * Translate chosen value from pre-raid difficulty dropdown into bot difficulty value
-     * @param dropDownDifficulty Dropdown difficulty value to convert
-     * @returns bot difficulty
-     */
-    convertBotDifficultyDropdownToBotDifficulty(dropDownDifficulty: string): string;
-    /**
-     * Choose a random difficulty from - easy/normal/hard/impossible
-     * @returns random difficulty
-     */
-    chooseRandomDifficulty(): string;
-    /**
      * Randomise the chance the PMC will attack their own side
      * Look up value in bot.json/chanceSameSideIsHostilePercent
      * @param difficultySettings pmc difficulty settings
      */
     randomisePmcHostility(difficultySettings: Difficulty): void;
+    /**
+     * Is the passed in bot role a PMC (usec/bear/pmc)
+     * @param botRole bot role to check
+     * @returns true if is pmc
+     */
     isBotPmc(botRole: string): boolean;
     isBotBoss(botRole: string): boolean;
     isBotFollower(botRole: string): boolean;

@@ -2,8 +2,10 @@ import { BotAmount } from "../../enums/BotAmount";
 import { BotDifficulty } from "../../enums/BotDifficulty";
 export interface IStartOfflineRaidRequestData {
     locationName: string;
+    /** Current time, not in-game time */
     startTime: number;
-    dateTime: string;
+    /** CURR = am, past = pm */
+    dateTime: "CURR" | "PAST";
     gameSettings: GameSettings;
 }
 export interface GameSettings {

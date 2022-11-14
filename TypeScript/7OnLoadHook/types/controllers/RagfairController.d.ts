@@ -29,6 +29,7 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { RagfairServer } from "../servers/RagfairServer";
 import { SaveServer } from "../servers/SaveServer";
+import { LocalisationService } from "../services/LocalisationService";
 import { PaymentService } from "../services/PaymentService";
 import { RagfairOfferService } from "../services/RagfairOfferService";
 import { RagfairPriceService } from "../services/RagfairPriceService";
@@ -62,9 +63,10 @@ export declare class RagfairController {
     protected ragfairOfferService: RagfairOfferService;
     protected ragfairRequiredItemsService: RagfairRequiredItemsService;
     protected ragfairOfferGenerator: RagfairOfferGenerator;
+    protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected ragfairConfig: IRagfairConfig;
-    constructor(logger: ILogger, timeUtil: TimeUtil, httpResponse: HttpResponseUtil, eventOutputHolder: EventOutputHolder, ragfairServer: RagfairServer, ragfairPriceService: RagfairPriceService, databaseServer: DatabaseServer, itemHelper: ItemHelper, saveServer: SaveServer, ragfairSellHelper: RagfairSellHelper, ragfairTaxHelper: RagfairTaxHelper, ragfairSortHelper: RagfairSortHelper, ragfairOfferHelper: RagfairOfferHelper, profileHelper: ProfileHelper, paymentService: PaymentService, handbookHelper: HandbookHelper, paymentHelper: PaymentHelper, inventoryHelper: InventoryHelper, traderHelper: TraderHelper, ragfairHelper: RagfairHelper, ragfairOfferService: RagfairOfferService, ragfairRequiredItemsService: RagfairRequiredItemsService, ragfairOfferGenerator: RagfairOfferGenerator, configServer: ConfigServer);
+    constructor(logger: ILogger, timeUtil: TimeUtil, httpResponse: HttpResponseUtil, eventOutputHolder: EventOutputHolder, ragfairServer: RagfairServer, ragfairPriceService: RagfairPriceService, databaseServer: DatabaseServer, itemHelper: ItemHelper, saveServer: SaveServer, ragfairSellHelper: RagfairSellHelper, ragfairTaxHelper: RagfairTaxHelper, ragfairSortHelper: RagfairSortHelper, ragfairOfferHelper: RagfairOfferHelper, profileHelper: ProfileHelper, paymentService: PaymentService, handbookHelper: HandbookHelper, paymentHelper: PaymentHelper, inventoryHelper: InventoryHelper, traderHelper: TraderHelper, ragfairHelper: RagfairHelper, ragfairOfferService: RagfairOfferService, ragfairRequiredItemsService: RagfairRequiredItemsService, ragfairOfferGenerator: RagfairOfferGenerator, localisationService: LocalisationService, configServer: ConfigServer);
     getOffers(sessionID: string, info: ISearchRequestData): IGetOffersResult;
     /**
      * Get offers for the client based on type of search being performed
@@ -103,7 +105,12 @@ export declare class RagfairController {
     protected isLinkedSearch(info: ISearchRequestData): boolean;
     protected isRequiredSearch(info: ISearchRequestData): boolean;
     update(): void;
-    getItemPrice(info: IGetMarketPriceRequestData): IGetItemPriceResult;
+    /**
+     * Called when creating an offer on flea, fills values in top right corner
+     * @param getPriceRequest
+     * @returns min/avg/max values for an item based on flea offers available
+     */
+    getItemMinAvgMaxFleaPriceValues(getPriceRequest: IGetMarketPriceRequestData): IGetItemPriceResult;
     addPlayerOffer(pmcData: IPmcData, info: IAddOfferRequestData, sessionID: string): IItemEventRouterResponse;
     createPlayerOffer(profile: IAkiProfile, requirements: Requirement[], items: Item[], sellInOnePiece: boolean, amountToSend: number): IRagfairOffer;
     getAllFleaPrices(): Record<string, number>;
