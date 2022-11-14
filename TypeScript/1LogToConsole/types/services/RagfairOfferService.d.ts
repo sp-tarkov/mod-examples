@@ -27,7 +27,8 @@ export declare class RagfairOfferService {
     protected configServer: ConfigServer;
     protected playerOffersLoaded: boolean;
     protected expiredOffers: Item[];
-    protected offers: IRagfairOffer[];
+    /** offerId, offer */
+    protected offers: Record<string, IRagfairOffer>;
     protected ragfairConfig: IRagfairConfig;
     constructor(logger: ILogger, timeUtil: TimeUtil, databaseServer: DatabaseServer, saveServer: SaveServer, ragfairServerHelper: RagfairServerHelper, ragfairCategoriesService: RagfairCategoriesService, profileHelper: ProfileHelper, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, localisationService: LocalisationService, configServer: ConfigServer);
     /**
