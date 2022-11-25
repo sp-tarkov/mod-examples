@@ -24,7 +24,7 @@ export declare class RagfairPriceService implements OnLoad {
     protected generatedStaticPrices: boolean;
     protected prices: IRagfairServerPrices;
     constructor(handbookHelper: HandbookHelper, databaseServer: DatabaseServer, logger: ILogger, itemHelper: ItemHelper, presetHelper: PresetHelper, randomUtil: RandomUtil, configServer: ConfigServer);
-    onLoad(): void;
+    onLoad(): Promise<void>;
     getRoute(): string;
     /**
      * Iterate over all items of type "Item" in db and get template price, store in cache

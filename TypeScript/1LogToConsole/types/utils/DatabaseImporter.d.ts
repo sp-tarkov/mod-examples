@@ -14,13 +14,13 @@ export declare class DatabaseImporter extends OnLoad {
     protected databaseServer: DatabaseServer;
     protected imageRouter: ImageRouter;
     constructor(logger: ILogger, vfs: VFS, jsonUtil: JsonUtil, localisationService: LocalisationService, databaseServer: DatabaseServer, imageRouter: ImageRouter);
-    onLoad(): void;
+    onLoad(): Promise<void>;
     /**
      * Read all json files in database folder and map into a json object
      * @param filepath path to database folder
      */
-    protected hydrateDatabase(filepath: string): void;
+    protected hydrateDatabase(filepath: string): Promise<void>;
     getRoute(): string;
-    loadRecursive(filepath: string): IDatabaseTables;
+    loadRecursive(filepath: string): Promise<IDatabaseTables>;
     loadImages(filepath: string): void;
 }

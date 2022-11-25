@@ -99,6 +99,13 @@ export declare class RepeatableQuestController {
      */
     getClientRepeatableQuests(_info: IEmptyRequestData, sessionID: string): IPmcDataRepeatableQuest[];
     /**
+     * Get repeatable quest data from profile from name (daily/weekly), creates base repeatable quest object if none exists
+     * @param repeatableConfig daily/weekly config
+     * @param pmcData Profile to search
+     * @returns IPmcDataRepeatableQuest
+     */
+    protected getRepeatableQuestSubTypeFromProfile(repeatableConfig: IRepeatableQuestConfig, pmcData: IPmcData): IPmcDataRepeatableQuest;
+    /**
      * This method is called by GetClientRepeatableQuests and creates one element of quest type format (see assets/database/templates/repeatableQuests.json).
      * It randomly draws a quest type (currently Elimination, Completion or Exploration) as well as a trader who is providing the quest
      */

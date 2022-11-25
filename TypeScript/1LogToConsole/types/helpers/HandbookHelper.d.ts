@@ -11,6 +11,7 @@ export declare class LookupCollection {
 }
 export declare class HandbookHelper {
     protected databaseServer: DatabaseServer;
+    protected lookupCacheGenerated: boolean;
     protected handbookPriceCache: LookupCollection;
     constructor(databaseServer: DatabaseServer);
     hydrateLookup(): void;

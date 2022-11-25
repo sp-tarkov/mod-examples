@@ -43,7 +43,7 @@ export declare class BotWeaponGenerator {
      * @param isPmc Is weapon generated for a pmc
      * @returns GenerateWeaponResult object
      */
-    generateRandomWeapon(sessionId: string, equipmentSlot: string, botTemplateInventory: Inventory, weaponParentId: string, modChances: ModsChances, botRole: string, isPmc: boolean): GenerateWeaponResult;
+    generateRandomWeapon(sessionId: string, equipmentSlot: string, botTemplateInventory: Inventory, weaponParentId: string, modChances: ModsChances, botRole: string, isPmc: boolean, botLevel: number): GenerateWeaponResult;
     /**
      * Get a random weighted weapon from a bots pool of weapons
      * @param equipmentSlot Primary/secondary/holster
@@ -62,7 +62,7 @@ export declare class BotWeaponGenerator {
      * @param isPmc
      * @returns GenerateWeaponResult object
      */
-    generateWeaponByTpl(sessionId: string, weaponTpl: string, equipmentSlot: string, botTemplateInventory: Inventory, weaponParentId: string, modChances: ModsChances, botRole: string, isPmc: boolean): GenerateWeaponResult;
+    generateWeaponByTpl(sessionId: string, weaponTpl: string, equipmentSlot: string, botTemplateInventory: Inventory, weaponParentId: string, modChances: ModsChances, botRole: string, isPmc: boolean, botLevel: number): GenerateWeaponResult;
     /**
      * Create array with weapon base as only element and
      * add additional properties based on weapon type

@@ -7,7 +7,7 @@ import { Item } from "../models/eft/common/tables/IItem";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { IBarterScheme } from "../models/eft/common/tables/ITrader";
 import { IRagfairOffer, OfferRequirement } from "../models/eft/ragfair/IRagfairOffer";
-import { IRagfairConfig } from "../models/spt/config/IRagfairConfig";
+import { Dynamic, IRagfairConfig } from "../models/spt/config/IRagfairConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
@@ -88,7 +88,16 @@ export declare class RagfairOfferGenerator {
      * Create multiple offers for items by using a unique list of items we've generated previously
      * @param expiredOffers optional, expired offers to regenerate
      */
-    generateDynamicOffers(expiredOffers?: Item[]): void;
+    generateDynamicOffers(expiredOffers?: Item[]): Promise<void>;
+    protected createOffersForItems(assortItemIndex: string, assortItemsToProcess: Item[], expiredOffers: Item[], config: Dynamic): Promise<void>;
+    /**
+     * Create one flea offer for a specific item
+     * @param items Item to create offer for
+     * @param isPreset Is item a weapon preset
+     * @param itemDetails raw db item details
+     * @returns
+     */
+    protected createSingleOfferForItem(items: Item[], isPreset: boolean, itemDetails: [boolean, ITemplateItem]): Promise<Item[]>;
     /**
      * Generate trader offers on flea using the traders assort data
      * @param traderID Trader to generate offers for

@@ -35,6 +35,10 @@ export declare class GameController {
     constructor(logger: ILogger, databaseServer: DatabaseServer, watermark: Watermark, httpServerHelper: HttpServerHelper, localeService: LocaleService, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, gameEventHelper: GameEventHelper, applicationContext: ApplicationContext, configServer: ConfigServer);
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
     /**
+     * Blank out the "test" mail message from prapor
+     */
+    protected removePraporTestMessage(): void;
+    /**
      * Check if current date falls inside any of the seasons events pased in, if so, handle them
      * @param seasonalEvents events to check for
      */

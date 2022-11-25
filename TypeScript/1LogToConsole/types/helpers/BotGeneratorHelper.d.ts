@@ -12,6 +12,7 @@ import { LocalisationService } from "../services/LocalisationService";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
+import { BotHelper } from "./BotHelper";
 import { BotWeaponGeneratorHelper } from "./BotWeaponGeneratorHelper";
 import { ContainerHelper } from "./ContainerHelper";
 import { InventoryHelper } from "./InventoryHelper";
@@ -44,10 +45,11 @@ export declare class BotGeneratorHelper {
     protected itemFilterService: ItemFilterService;
     protected profileHelper: ProfileHelper;
     protected botWeaponGeneratorHelper: BotWeaponGeneratorHelper;
+    protected botHelper: BotHelper;
     protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected botConfig: IBotConfig;
-    constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, probabilityHelper: ProbabilityHelper, databaseServer: DatabaseServer, durabilityLimitsHelper: DurabilityLimitsHelper, itemHelper: ItemHelper, inventoryHelper: InventoryHelper, containerHelper: ContainerHelper, botEquipmentFilterService: BotEquipmentFilterService, itemFilterService: ItemFilterService, profileHelper: ProfileHelper, botWeaponGeneratorHelper: BotWeaponGeneratorHelper, localisationService: LocalisationService, configServer: ConfigServer);
+    constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, probabilityHelper: ProbabilityHelper, databaseServer: DatabaseServer, durabilityLimitsHelper: DurabilityLimitsHelper, itemHelper: ItemHelper, inventoryHelper: InventoryHelper, containerHelper: ContainerHelper, botEquipmentFilterService: BotEquipmentFilterService, itemFilterService: ItemFilterService, profileHelper: ProfileHelper, botWeaponGeneratorHelper: BotWeaponGeneratorHelper, botHelper: BotHelper, localisationService: LocalisationService, configServer: ConfigServer);
     /**
      * Check mods are compatible and add to array
      * @param equipment Equipment item to add mods to
@@ -61,6 +63,7 @@ export declare class BotGeneratorHelper {
      */
     generateModsForEquipment(equipment: Item[], modPool: Mods, parentId: string, parentTemplate: ITemplateItem, modSpawnChances: ModsChances, botRole: string, forceSpawn?: boolean): Item[];
     /**
+     * Add mods to a weapon using the provided mod pool
      * @param sessionId session id
      * @param weapon Weapon to add mods to
      * @param modPool Pool of compatible mods to attach to weapon
@@ -71,7 +74,7 @@ export declare class BotGeneratorHelper {
      * @param botRole Role of bot weapon is generated for
      * @returns Weapon + mods array
      */
-    generateModsForWeapon(sessionId: string, weapon: Item[], modPool: Mods, weaponParentId: string, parentWeaponTemplate: ITemplateItem, modSpawnChances: ModsChances, ammoTpl: string, botRole: string): Item[];
+    generateModsForWeapon(sessionId: string, weapon: Item[], modPool: Mods, weaponParentId: string, parentWeaponTemplate: ITemplateItem, modSpawnChances: ModsChances, ammoTpl: string, botRole: string, botLevel: number): Item[];
     /**
      *
      * @param modSlot Slot mod will fit into
@@ -209,6 +212,18 @@ export declare class BotGeneratorHelper {
     generateExtraPropertiesForItem(itemTemplate: ITemplateItem, botRole?: string): {
         upd?: Upd;
     };
+    /**
+     * Get the chance for the light or laser to be set as active on weapon, default to 50% if no bot/equip settings found
+     * @param botRole role of bot with weapon
+     * @returns Percent chance to be active
+     */
+    protected getLightLaserActiveChance(botRole: string): number;
+    /**
+     * Get the chance for the faceshield to be set as enabled, default to 75% if no bot/equip settings found
+     * @param botRole role of bot with faceshield
+     * @returns Percent chance to be active
+     */
+    protected getFaceShieldActiveChance(botRole: string): number;
     /**
      * Create a repairable object for a weapon that containers durability + max durability properties
      * @param itemTemplate weapon object being generated for

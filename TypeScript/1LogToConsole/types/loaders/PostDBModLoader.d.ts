@@ -4,7 +4,7 @@ import { PreAkiModLoader } from "./PreAkiModLoader";
 export declare class PostDBModLoader implements OnLoad {
     protected preAkiModLoader: PreAkiModLoader;
     constructor(preAkiModLoader: PreAkiModLoader);
-    onLoad(): void;
+    onLoad(): Promise<void>;
     getRoute(): string;
     getModPath(mod: string): string;
     protected executeMods(container: DependencyContainer): void;

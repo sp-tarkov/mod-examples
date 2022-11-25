@@ -15,6 +15,7 @@ import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 import { ItemFilterService } from "./ItemFilterService";
+import { LocalisationService } from "./LocalisationService";
 /**
  * Handle actions surrounding Fence
  * e.g. generating or refreshing assorts / get next refresh time
@@ -30,11 +31,12 @@ export declare class FenceService {
     protected itemHelper: ItemHelper;
     protected presetHelper: PresetHelper;
     protected itemFilterService: ItemFilterService;
+    protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected fenceAssort: ITraderAssort;
     protected traderConfig: ITraderConfig;
     protected nextMiniRefreshTimestamp: number;
-    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, itemHelper: ItemHelper, presetHelper: PresetHelper, itemFilterService: ItemFilterService, configServer: ConfigServer);
+    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, itemHelper: ItemHelper, presetHelper: PresetHelper, itemFilterService: ItemFilterService, localisationService: LocalisationService, configServer: ConfigServer);
     protected setFenceAssort(fenceAssort: ITraderAssort): void;
     /**
      * Get assorts player can purchase

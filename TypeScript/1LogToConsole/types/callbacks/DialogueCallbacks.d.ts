@@ -52,6 +52,6 @@ export declare class DialogueCallbacks extends OnUpdate {
     listInbox(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any[]>;
     friendRequest(url: string, request: IFriendRequestData, sessionID: string): INullResponseData;
     sendMessage(url: string, request: ISendMessageRequest, sessionID: string): IGetBodyResponseData<number>;
-    onUpdate(timeSinceLastRun: number): boolean;
+    onUpdate(timeSinceLastRun: number): Promise<boolean>;
     getRoute(): string;
 }

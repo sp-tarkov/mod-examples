@@ -67,16 +67,16 @@ export declare class RagfairController {
     protected configServer: ConfigServer;
     protected ragfairConfig: IRagfairConfig;
     constructor(logger: ILogger, timeUtil: TimeUtil, httpResponse: HttpResponseUtil, eventOutputHolder: EventOutputHolder, ragfairServer: RagfairServer, ragfairPriceService: RagfairPriceService, databaseServer: DatabaseServer, itemHelper: ItemHelper, saveServer: SaveServer, ragfairSellHelper: RagfairSellHelper, ragfairTaxHelper: RagfairTaxHelper, ragfairSortHelper: RagfairSortHelper, ragfairOfferHelper: RagfairOfferHelper, profileHelper: ProfileHelper, paymentService: PaymentService, handbookHelper: HandbookHelper, paymentHelper: PaymentHelper, inventoryHelper: InventoryHelper, traderHelper: TraderHelper, ragfairHelper: RagfairHelper, ragfairOfferService: RagfairOfferService, ragfairRequiredItemsService: RagfairRequiredItemsService, ragfairOfferGenerator: RagfairOfferGenerator, localisationService: LocalisationService, configServer: ConfigServer);
-    getOffers(sessionID: string, info: ISearchRequestData): IGetOffersResult;
+    getOffers(sessionID: string, searchRequest: ISearchRequestData): IGetOffersResult;
     /**
      * Get offers for the client based on type of search being performed
      * @param searchRequest Client search request data
      * @param itemsToAdd
-     * @param assorts
+     * @param traderAssorts Trader assorts
      * @param pmcProfile Player profile
      * @returns array of offers
      */
-    protected getOffersForSearchType(searchRequest: ISearchRequestData, itemsToAdd: string[], assorts: Record<string, ITraderAssort>, pmcProfile: IPmcData): IRagfairOffer[];
+    protected getOffersForSearchType(searchRequest: ISearchRequestData, itemsToAdd: string[], traderAssorts: Record<string, ITraderAssort>, pmcProfile: IPmcData): IRagfairOffer[];
     /**
      * Get categories for the type of search being performed, linked/required/all
      * @param searchRequest Client search request data

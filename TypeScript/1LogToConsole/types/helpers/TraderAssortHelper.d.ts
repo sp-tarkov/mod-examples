@@ -7,6 +7,7 @@ import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { FenceService } from "../services/FenceService";
+import { LocalisationService } from "../services/LocalisationService";
 import { TraderAssortService } from "../services/TraderAssortService";
 import { JsonUtil } from "../utils/JsonUtil";
 import { MathUtil } from "../utils/MathUtil";
@@ -27,11 +28,12 @@ export declare class TraderAssortHelper {
     protected ragfairAssortGenerator: RagfairAssortGenerator;
     protected ragfairOfferGenerator: RagfairOfferGenerator;
     protected traderAssortService: TraderAssortService;
+    protected localisationService: LocalisationService;
     protected traderHelper: TraderHelper;
     protected fenceService: FenceService;
     protected configServer: ConfigServer;
     protected traderConfig: ITraderConfig;
-    constructor(logger: ILogger, jsonUtil: JsonUtil, mathUtil: MathUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, profileHelper: ProfileHelper, assortHelper: AssortHelper, paymentHelper: PaymentHelper, ragfairAssortGenerator: RagfairAssortGenerator, ragfairOfferGenerator: RagfairOfferGenerator, traderAssortService: TraderAssortService, traderHelper: TraderHelper, fenceService: FenceService, configServer: ConfigServer);
+    constructor(logger: ILogger, jsonUtil: JsonUtil, mathUtil: MathUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, profileHelper: ProfileHelper, assortHelper: AssortHelper, paymentHelper: PaymentHelper, ragfairAssortGenerator: RagfairAssortGenerator, ragfairOfferGenerator: RagfairOfferGenerator, traderAssortService: TraderAssortService, localisationService: LocalisationService, traderHelper: TraderHelper, fenceService: FenceService, configServer: ConfigServer);
     /**
      * Get a traders assorts
      * Can be used for returning ragfair / fence assorts

@@ -5,12 +5,15 @@ import { IStaticAmmoDetails } from "../models/eft/common/tables/ILootBase";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { ItemBaseClassService } from "../services/ItemBaseClassService";
 import { LocaleService } from "../services/LocaleService";
+import { LocalisationService } from "../services/LocalisationService";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { MathUtil } from "../utils/MathUtil";
 import { ObjectId } from "../utils/ObjectId";
 import { RandomUtil } from "../utils/RandomUtil";
+import { HandbookHelper } from "./HandbookHelper";
 declare class ItemHelper {
     protected logger: ILogger;
     protected hashUtil: HashUtil;
@@ -19,8 +22,11 @@ declare class ItemHelper {
     protected objectId: ObjectId;
     protected mathUtil: MathUtil;
     protected databaseServer: DatabaseServer;
+    protected handbookHelper: HandbookHelper;
+    protected itemBaseClassService: ItemBaseClassService;
+    protected localisationService: LocalisationService;
     protected localeService: LocaleService;
-    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, randomUtil: RandomUtil, objectId: ObjectId, mathUtil: MathUtil, databaseServer: DatabaseServer, localeService: LocaleService);
+    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, randomUtil: RandomUtil, objectId: ObjectId, mathUtil: MathUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, itemBaseClassService: ItemBaseClassService, localisationService: LocalisationService, localeService: LocaleService);
     /**
      * Checks if an id is a valid item. Valid meaning that it's an item that be stored in stash
      * @param       {string}    tpl       the template id / tpl

@@ -1,4 +1,5 @@
 import { DialogueHelper } from "../helpers/DialogueHelper";
+import { HandbookHelper } from "../helpers/HandbookHelper";
 import { SecureContainerHelper } from "../helpers/SecureContainerHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
@@ -21,10 +22,11 @@ export declare class InsuranceService {
     protected saveServer: SaveServer;
     protected traderHelper: TraderHelper;
     protected dialogueHelper: DialogueHelper;
+    protected handbookHelper: HandbookHelper;
     protected configServer: ConfigServer;
     protected insured: Record<string, Record<string, Item[]>>;
     protected insuranceConfig: IInsuranceConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, secureContainerHelper: SecureContainerHelper, randomUtil: RandomUtil, timeUtil: TimeUtil, saveServer: SaveServer, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, secureContainerHelper: SecureContainerHelper, randomUtil: RandomUtil, timeUtil: TimeUtil, saveServer: SaveServer, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, handbookHelper: HandbookHelper, configServer: ConfigServer);
     insuranceExists(sessionId: string): boolean;
     insuranceTraderArrayExists(sessionId: string, traderId: string): boolean;
     getInsurance(sessionId: string): Record<string, Item[]>;
