@@ -66,6 +66,7 @@ export interface LootNvalue {
 }
 export interface EquipmentFilters {
     weaponModLimits: ModLimits;
+    weaponSightWhitelist: Record<string, string[]>;
     faceShieldIsActiveChancePercent?: number;
     lightLaserIsActiveChancePercent?: number;
     randomisation: RandomisationDetails[];

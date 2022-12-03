@@ -25,6 +25,18 @@ export declare class BotEquipmentFilterService {
      */
     protected adjustChances(equipmentChanges: Record<string, number>, baseValues: EquipmentChances | ModsChances): void;
     /**
+     * Get equipment settings for bot
+     * @param botEquipmentRole equipment role to return
+     * @returns EquipmentFilters object
+     */
+    getBotEquipmentSettings(botEquipmentRole: string): EquipmentFilters;
+    /**
+     * Get weapon sight whitelist for a specific bot type
+     * @param botEquipmentRole equipment role of bot to look up
+     * @returns Dictionary of weapon type and their whitelisted scope types
+     */
+    getBotWeaponSightWhitelist(botEquipmentRole: string): Record<string, string[]>;
+    /**
      * Get an object that contains equipment and cartridge blacklists for a specified bot type
      * @param botRole Role of the bot we want the blacklist for
      * @param playerLevel Level of the player

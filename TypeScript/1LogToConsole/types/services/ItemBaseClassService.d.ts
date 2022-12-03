@@ -27,7 +27,7 @@ export declare class ItemBaseClassService {
      * @param baseClass base class to check for
      * @returns true if item inherits from base class passed in
      */
-    itemHasBaseClass(itemTpl: string, baseClass: string): boolean;
+    itemHasBaseClass(itemTpl: string, baseClasses: string[]): boolean;
     /**
      * Get base classes item inherits from
      * @param itemTpl item to get base classes for

@@ -37,10 +37,17 @@ declare class ItemHelper {
      * Check if the tpl / template Id provided is a descendent of the baseclass
      *
      * @param   {string}    tpl             the item template id to check
-     * @param   {string}    baseclassTpl    the baseclass to check for
+     * @param   {string}    baseClassTpl    the baseclass to check for
      * @return  {boolean}                   is the tpl a descendent?
      */
-    isOfBaseclass(tpl: string, baseclassTpl: string): boolean;
+    isOfBaseclass(tpl: string, baseClassTpl: string): boolean;
+    /**
+     * Check if item has any of the supplied base clases
+     * @param tpl Item to check base classes of
+     * @param baseClassTpls base classes to check for
+     * @returns true if any supplied base classes match
+     */
+    isOfBaseclasses(tpl: string, baseClassTpls: string[]): boolean;
     /**
      * Returns the item price based on the handbook or as a fallback from the prices.json if the item is not
      * found in the handbook. If the price can't be found at all return 0

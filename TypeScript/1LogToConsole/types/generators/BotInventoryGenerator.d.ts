@@ -4,13 +4,15 @@ import { WeightedRandomHelper } from "../helpers/WeightedRandomHelper";
 import { Inventory as PmcInventory } from "../models/eft/common/tables/IBotBase";
 import { Chances, Generation, IBotType, Inventory, Mods } from "../models/eft/common/tables/IBotType";
 import { EquipmentSlots } from "../models/enums/EquipmentSlots";
-import { IBotConfig, RandomisationDetails } from "../models/spt/config/IBotConfig";
+import { EquipmentFilterDetails, IBotConfig, RandomisationDetails } from "../models/spt/config/IBotConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { BotEquipmentModPoolService } from "../services/BotEquipmentModPoolService";
 import { LocalisationService } from "../services/LocalisationService";
 import { HashUtil } from "../utils/HashUtil";
 import { RandomUtil } from "../utils/RandomUtil";
+import { BotEquipmentModGenerator } from "./BotEquipmentModGenerator";
 import { BotLootGenerator } from "./BotLootGenerator";
 import { BotWeaponGenerator } from "./BotWeaponGenerator";
 export declare class BotInventoryGenerator {
@@ -24,9 +26,11 @@ export declare class BotInventoryGenerator {
     protected botHelper: BotHelper;
     protected weightedRandomHelper: WeightedRandomHelper;
     protected localisationService: LocalisationService;
+    protected botEquipmentModPoolService: BotEquipmentModPoolService;
+    protected botEquipmentModGenerator: BotEquipmentModGenerator;
     protected configServer: ConfigServer;
     protected botConfig: IBotConfig;
-    constructor(logger: ILogger, hashUtil: HashUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, botWeaponGenerator: BotWeaponGenerator, botLootGenerator: BotLootGenerator, botGeneratorHelper: BotGeneratorHelper, botHelper: BotHelper, weightedRandomHelper: WeightedRandomHelper, localisationService: LocalisationService, configServer: ConfigServer);
+    constructor(logger: ILogger, hashUtil: HashUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, botWeaponGenerator: BotWeaponGenerator, botLootGenerator: BotLootGenerator, botGeneratorHelper: BotGeneratorHelper, botHelper: BotHelper, weightedRandomHelper: WeightedRandomHelper, localisationService: LocalisationService, botEquipmentModPoolService: BotEquipmentModPoolService, botEquipmentModGenerator: BotEquipmentModGenerator, configServer: ConfigServer);
     /**
      * Add equipment/weapons/loot to bot
      * @param sessionId Session id
@@ -62,6 +66,13 @@ export declare class BotInventoryGenerator {
      * @param randomisationDetails settings from bot.json to adjust how item is generated
      */
     protected generateEquipment(equipmentSlot: string, equipmentPool: Record<string, number>, modPool: Mods, spawnChances: Chances, botRole: string, inventory: PmcInventory, randomisationDetails: RandomisationDetails): void;
+    /**
+     * Get all possible mods for item and filter down based on equipment blacklist from bot.json config
+     * @param itemTpl Item mod pool is being retreived and filtered
+     * @param equipmentBlacklist blacklist to filter mod pool with
+     * @returns Filtered pool of mods
+     */
+    protected getFilteredDynamicModsForItem(itemTpl: string, equipmentBlacklist: EquipmentFilterDetails[]): Record<string, string[]>;
     /**
      * Work out what weapons bot should have equipped and add them to bot inventory
      * @param templateInventory bot/x.json data from db

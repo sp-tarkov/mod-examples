@@ -1,16 +1,16 @@
 import { BotDifficultyHelper } from "../helpers/BotDifficultyHelper";
 import { BotHelper } from "../helpers/BotHelper";
-import { GameEventHelper } from "../helpers/GameEventHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { WeightedRandomHelper } from "../helpers/WeightedRandomHelper";
 import { Health as PmcHealth, IBotBase, Skills } from "../models/eft/common/tables/IBotBase";
-import { Health, IBotType, Inventory } from "../models/eft/common/tables/IBotType";
+import { Health, IBotType } from "../models/eft/common/tables/IBotType";
 import { BotGenerationDetails } from "../models/spt/bots/BotGenerationDetails";
 import { IBotConfig } from "../models/spt/config/IBotConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { BotEquipmentFilterService } from "../services/BotEquipmentFilterService";
+import { SeasonalEventService } from "../services/SeasonalEventService";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
@@ -29,10 +29,10 @@ export declare class BotGenerator {
     protected weightedRandomHelper: WeightedRandomHelper;
     protected botHelper: BotHelper;
     protected botDifficultyHelper: BotDifficultyHelper;
-    protected gameEventHelper: GameEventHelper;
+    protected seasonalEventService: SeasonalEventService;
     protected configServer: ConfigServer;
     protected botConfig: IBotConfig;
-    constructor(logger: ILogger, hashUtil: HashUtil, randomUtil: RandomUtil, jsonUtil: JsonUtil, profileHelper: ProfileHelper, databaseServer: DatabaseServer, botInventoryGenerator: BotInventoryGenerator, botLevelGenerator: BotLevelGenerator, botEquipmentFilterService: BotEquipmentFilterService, weightedRandomHelper: WeightedRandomHelper, botHelper: BotHelper, botDifficultyHelper: BotDifficultyHelper, gameEventHelper: GameEventHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, hashUtil: HashUtil, randomUtil: RandomUtil, jsonUtil: JsonUtil, profileHelper: ProfileHelper, databaseServer: DatabaseServer, botInventoryGenerator: BotInventoryGenerator, botLevelGenerator: BotLevelGenerator, botEquipmentFilterService: BotEquipmentFilterService, weightedRandomHelper: WeightedRandomHelper, botHelper: BotHelper, botDifficultyHelper: BotDifficultyHelper, seasonalEventService: SeasonalEventService, configServer: ConfigServer);
     /**
      * Generate a player scav bot object
      * @param role e.g. assault / pmcbot
@@ -83,11 +83,6 @@ export declare class BotGenerator {
      */
     protected generateHealth(healthObj: Health, playerScav?: boolean): PmcHealth;
     protected generateSkills(skillsObj: Skills): Skills;
-    /**
-     * Iterate through bots inventory and loot to find and remove christmas items (as defined in GameEventHelper)
-     * @param nodeInventory Bots inventory to iterate over
-     */
-    protected removeChristmasItemsFromBotInventory(nodeInventory: Inventory): void;
     /**
      * Generate a random Id for a bot and apply to bots _id and aid value
      * @param bot bot to update
