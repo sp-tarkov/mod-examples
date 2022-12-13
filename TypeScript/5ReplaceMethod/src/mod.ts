@@ -27,8 +27,6 @@ class Mod implements IPreAkiLoadMod
             // We want to replace the original method logic with something different
             result.login = (info: ILoginRequestData) => 
             {
-                // We are calling a replacement function, technically you could also do:
-                // result.login = this.replacementFunction;
                 return this.replacementFunction(info);
             }
             // The modifier Always makes sure this replacement method is ALWAYS replaced
