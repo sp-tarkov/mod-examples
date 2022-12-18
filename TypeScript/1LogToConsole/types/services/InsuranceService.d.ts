@@ -13,6 +13,7 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
 import { RandomUtil } from "../utils/RandomUtil";
 import { TimeUtil } from "../utils/TimeUtil";
+import { LocalisationService } from "./LocalisationService";
 export declare class InsuranceService {
     protected logger: ILogger;
     protected databaseServer: DatabaseServer;
@@ -23,10 +24,11 @@ export declare class InsuranceService {
     protected traderHelper: TraderHelper;
     protected dialogueHelper: DialogueHelper;
     protected handbookHelper: HandbookHelper;
+    protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected insured: Record<string, Record<string, Item[]>>;
     protected insuranceConfig: IInsuranceConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, secureContainerHelper: SecureContainerHelper, randomUtil: RandomUtil, timeUtil: TimeUtil, saveServer: SaveServer, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, handbookHelper: HandbookHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, secureContainerHelper: SecureContainerHelper, randomUtil: RandomUtil, timeUtil: TimeUtil, saveServer: SaveServer, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, handbookHelper: HandbookHelper, localisationService: LocalisationService, configServer: ConfigServer);
     insuranceExists(sessionId: string): boolean;
     insuranceTraderArrayExists(sessionId: string, traderId: string): boolean;
     getInsurance(sessionId: string): Record<string, Item[]>;

@@ -156,4 +156,4 @@ export interface Items {
     SpecialLoot: string[];
     TacticalVest: string[];
 }
-export declare type Mods = Record<string, Record<string, string[]>>;
+export type Mods = Record<string, Record<string, string[]>>;

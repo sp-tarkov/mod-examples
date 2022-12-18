@@ -1,15 +1,17 @@
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { LocalisationService } from "./LocalisationService";
 /**
  * Cache the baseids for each item in the tiems db inside a dictionary
  */
 export declare class ItemBaseClassService {
     protected logger: ILogger;
+    protected localisationService: LocalisationService;
     protected databaseServer: DatabaseServer;
     protected itemBaseClassesCache: Record<string, string[]>;
     protected cacheGenerated: boolean;
-    constructor(logger: ILogger, databaseServer: DatabaseServer);
+    constructor(logger: ILogger, localisationService: LocalisationService, databaseServer: DatabaseServer);
     /**
      * Create cache and store inside ItemBaseClassService
      */

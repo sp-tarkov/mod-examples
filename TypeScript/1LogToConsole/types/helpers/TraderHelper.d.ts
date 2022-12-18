@@ -8,6 +8,7 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
 import { FenceService } from "../services/FenceService";
+import { LocalisationService } from "../services/LocalisationService";
 import { PlayerService } from "../services/PlayerService";
 import { TimeUtil } from "../utils/TimeUtil";
 import { HandbookHelper } from "./HandbookHelper";
@@ -23,11 +24,12 @@ export declare class TraderHelper {
     protected itemHelper: ItemHelper;
     protected handbookHelper: HandbookHelper;
     protected playerService: PlayerService;
+    protected localisationService: LocalisationService;
     protected fenceService: FenceService;
     protected timeUtil: TimeUtil;
     protected configServer: ConfigServer;
     protected traderConfig: ITraderConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, saveServer: SaveServer, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, itemHelper: ItemHelper, handbookHelper: HandbookHelper, playerService: PlayerService, fenceService: FenceService, timeUtil: TimeUtil, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, saveServer: SaveServer, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, itemHelper: ItemHelper, handbookHelper: HandbookHelper, playerService: PlayerService, localisationService: LocalisationService, fenceService: FenceService, timeUtil: TimeUtil, configServer: ConfigServer);
     getTrader(traderID: string, sessionID: string): ITraderBase;
     getTraderAssortsById(traderId: string): ITraderAssort;
     /**
