@@ -6,8 +6,10 @@ import { Item, Upd } from "../models/eft/common/tables/IItem";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IProcessBuyTradeRequestData } from "../models/eft/trade/IProcessBuyTradeRequestData";
 import { IProcessSellTradeRequestData } from "../models/eft/trade/IProcessSellTradeRequestData";
+import { ITraderConfig } from "../models/spt/config/ITraderConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { EventOutputHolder } from "../routers/EventOutputHolder";
+import { ConfigServer } from "../servers/ConfigServer";
 import { RagfairServer } from "../servers/RagfairServer";
 import { FenceService } from "../services/FenceService";
 import { PaymentService } from "../services/PaymentService";
@@ -20,7 +22,9 @@ export declare class TradeHelper {
     protected fenceService: FenceService;
     protected inventoryHelper: InventoryHelper;
     protected ragfairServer: RagfairServer;
-    constructor(logger: ILogger, eventOutputHolder: EventOutputHolder, traderHelper: TraderHelper, itemHelper: ItemHelper, paymentService: PaymentService, fenceService: FenceService, inventoryHelper: InventoryHelper, ragfairServer: RagfairServer);
+    protected configServer: ConfigServer;
+    protected traderConfig: ITraderConfig;
+    constructor(logger: ILogger, eventOutputHolder: EventOutputHolder, traderHelper: TraderHelper, itemHelper: ItemHelper, paymentService: PaymentService, fenceService: FenceService, inventoryHelper: InventoryHelper, ragfairServer: RagfairServer, configServer: ConfigServer);
     /**
      * Buy item from flea or trader
      * @param pmcData

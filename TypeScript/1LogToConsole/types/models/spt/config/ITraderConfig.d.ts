@@ -3,8 +3,10 @@ export interface ITraderConfig extends IBaseConfig {
     kind: "aki-trader";
     updateTime: UpdateTime[];
     updateTimeDefault: number;
+    /** What % of max durability an item needs to sell to a trader*/
+    durabilityPurchaseThreshhold: Record<string, number>;
     traderPriceMultipler: number;
-    minDurabilityForSale: number;
+    persistPurchaseDataInProfile: boolean;
     fence: FenceConfig;
 }
 export interface UpdateTime {

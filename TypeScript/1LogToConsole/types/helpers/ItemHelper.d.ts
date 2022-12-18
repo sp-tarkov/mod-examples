@@ -192,7 +192,7 @@ declare class ItemHelper {
      */
     replaceIDs(pmcData: IPmcData, items: Item[], insuredItems?: InsuredItem[], fastPanel?: any): any[];
     /**
-     * Recursivly loop down through an items hierarchy to see if any of the ids match the supplied list, return true if any do
+     * WARNING, SLOW. Recursivly loop down through an items hierarchy to see if any of the ids match the supplied list, return true if any do
      * @param {string} tpl
      * @param {Array} tplsToCheck
      * @returns boolean

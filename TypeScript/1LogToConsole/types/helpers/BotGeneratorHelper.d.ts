@@ -1,7 +1,7 @@
 import { DurabilityLimitsHelper } from "../helpers/DurabilityLimitsHelper";
 import { Item, Repairable, Upd } from "../models/eft/common/tables/IItem";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
-import { IBotConfig } from "../models/spt/config/IBotConfig";
+import { EquipmentFilters, IBotConfig } from "../models/spt/config/IBotConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
@@ -30,17 +30,13 @@ export declare class BotGeneratorHelper {
         upd?: Upd;
     };
     /**
-     * Get the chance for the light or laser to be set as active on weapon, default to 50% if no bot/equip settings found
-     * @param botRole role of bot with weapon
+     * Get the chance for the weapon attachment or helmet equipment to be set as activated
+     * @param botRole role of bot with weapon/helmet
+     * @param setting the setting of the weapon attachment/helmet equipment to be activated
+     * @param defaultValue default value for the chance of activation if the botrole or bot equipment role is null
      * @returns Percent chance to be active
      */
-    protected getLightLaserActiveChance(botRole: string): number;
-    /**
-     * Get the chance for the faceshield to be set as enabled, default to 75% if no bot/equip settings found
-     * @param botRole role of bot with faceshield
-     * @returns Percent chance to be active
-     */
-    protected getFaceShieldActiveChance(botRole: string): number;
+    protected getBotEquipmentSettingFromConfig(botRole: string, setting: keyof EquipmentFilters, defaultValue: number): number;
     /**
      * Create a repairable object for a weapon that containers durability + max durability properties
      * @param itemTemplate weapon object being generated for

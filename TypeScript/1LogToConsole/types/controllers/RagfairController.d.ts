@@ -100,8 +100,9 @@ export declare class RagfairController {
     /**
      * Update a trader flea offer with buy restrictions stored in the traders assort
      * @param offer flea offer to update
+     * @param profile full profile of player
      */
-    protected setTraderOfferPurchaseLimits(offer: IRagfairOffer): void;
+    protected setTraderOfferPurchaseLimits(offer: IRagfairOffer, profile: IAkiProfile): void;
     protected isLinkedSearch(info: ISearchRequestData): boolean;
     protected isRequiredSearch(info: ISearchRequestData): boolean;
     update(): void;

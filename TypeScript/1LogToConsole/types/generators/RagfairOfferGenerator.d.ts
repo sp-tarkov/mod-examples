@@ -119,7 +119,7 @@ export declare class RagfairOfferGenerator {
      */
     protected createBarterRequirement(offerItems: Item[]): IBarterScheme[];
     /**
-     * Get an array of flea prices + item tpl, cached in generator class
+     * Get an array of flea prices + item tpl, cached in generator class inside `allowedFleaPriceItemsForBarter`
      * @returns array with tpl/price values
      */
     protected getFleaPricesAsArray(): {

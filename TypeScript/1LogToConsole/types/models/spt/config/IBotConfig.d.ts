@@ -69,6 +69,7 @@ export interface EquipmentFilters {
     weaponSightWhitelist: Record<string, string[]>;
     faceShieldIsActiveChancePercent?: number;
     lightLaserIsActiveChancePercent?: number;
+    nvgIsActiveChancePercent?: number;
     randomisation: RandomisationDetails[];
     blacklist: EquipmentFilterDetails[];
     whitelist: EquipmentFilterDetails[];

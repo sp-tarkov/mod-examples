@@ -1,7 +1,9 @@
 import { ApplicationContext } from "../context/ApplicationContext";
 import { HttpServerHelper } from "../helpers/HttpServerHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
+import { PreAkiModLoader } from "../loaders/PreAkiModLoader";
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
+import { IPmcData } from "../models/eft/common/IPmcData";
 import { ICheckVersionResponse } from "../models/eft/game/ICheckVersionResponse";
 import { IGameConfigResponse } from "../models/eft/game/IGameConfigResponse";
 import { IServerDetails } from "../models/eft/game/IServerDetails";
@@ -17,6 +19,7 @@ import { SeasonalEventService } from "../services/SeasonalEventService";
 export declare class GameController {
     protected logger: ILogger;
     protected databaseServer: DatabaseServer;
+    protected preAkiModLoader: PreAkiModLoader;
     protected httpServerHelper: HttpServerHelper;
     protected profileHelper: ProfileHelper;
     protected profileFixerService: ProfileFixerService;
@@ -26,8 +29,18 @@ export declare class GameController {
     protected configServer: ConfigServer;
     protected httpConfig: IHttpConfig;
     protected coreConfig: ICoreConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, httpServerHelper: HttpServerHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, seasonalEventService: SeasonalEventService, applicationContext: ApplicationContext, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, preAkiModLoader: PreAkiModLoader, httpServerHelper: HttpServerHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, seasonalEventService: SeasonalEventService, applicationContext: ApplicationContext, configServer: ConfigServer);
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
+    /**
+     * Get a list of installed mods and save their details to the profile being used
+     * @param fullProfile Profile to add mod details to
+     */
+    protected saveActiveModsToProfile(fullProfile: IAkiProfile): void;
+    /**
+     * Add the logged in players name to PMC name pool
+     * @param pmcProfile
+     */
+    protected addPlayerToPMCNames(pmcProfile: IPmcData): void;
     /**
      * Blank out the "test" mail message from prapor
      */

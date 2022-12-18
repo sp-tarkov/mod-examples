@@ -21,6 +21,17 @@ export declare class DatabaseImporter extends OnLoad {
      */
     protected hydrateDatabase(filepath: string): Promise<void>;
     getRoute(): string;
-    loadRecursive(filepath: string): Promise<IDatabaseTables>;
+    /**
+     * Load files into js objects recursively (asynchronous)
+     * @param filepath Path to folder with files
+     * @returns
+     */
+    loadRecursiveAsync(filepath: string): Promise<IDatabaseTables>;
+    /**
+     * Load files into js objects recursively (synchronous)
+     * @param filepath Path to folder with files
+     * @returns
+     */
+    loadRecursive(filepath: string): IDatabaseTables;
     loadImages(filepath: string): void;
 }

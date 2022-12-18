@@ -1,6 +1,7 @@
 import { DialogueController } from "../controllers/DialogueController";
 import { OnUpdate } from "../di/OnUpdate";
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
+import { IChatServer } from "../models/eft/dialog/IChatServer";
 import { IFriendRequestData } from "../models/eft/dialog/IFriendRequestData";
 import { IGetAllAttachmentsRequestData } from "../models/eft/dialog/IGetAllAttachmentsRequestData";
 import { IGetAllAttachmentsResponse } from "../models/eft/dialog/IGetAllAttachmentsResponse";
@@ -35,7 +36,7 @@ export declare class DialogueCallbacks extends OnUpdate {
      * Handles client/chatServer/list
      * @returns
      */
-    getChatServerList(url: string, info: IGetChatServerListRequestData, sessionID: string): IGetBodyResponseData<any[]>;
+    getChatServerList(url: string, info: IGetChatServerListRequestData, sessionID: string): IGetBodyResponseData<IChatServer[]>;
     getMailDialogList(url: string, info: IGetMailDialogListRequestData, sessionID: string): IGetBodyResponseData<DialogueInfo[]>;
     getMailDialogView(url: string, info: IGetMailDialogViewRequestData, sessionID: string): IGetBodyResponseData<IGetMailDialogViewResponseData>;
     getMailDialogInfo(url: string, info: IGetMailDialogInfoRequestData, sessionID: string): IGetBodyResponseData<DialogueInfo>;

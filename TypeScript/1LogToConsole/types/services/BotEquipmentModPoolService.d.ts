@@ -47,7 +47,7 @@ export declare class BotEquipmentModPoolService {
      * @param itemTpl items tpl to look up mods for
      * @returns Dictionary of mods (keys are mod slot names) with array of compatible mod tpls as value
      */
-    getModsFoGearSlot(itemTpl: string): Record<string, string[]>;
+    getModsForGearSlot(itemTpl: string): Record<string, string[]>;
     /**
      * Get mods for a weapon by its tpl
      * @param itemTpl Weapons tpl to look up mods for

@@ -53,19 +53,26 @@ export declare class TraderHelper {
     getPurchasesData(traderID: string, sessionID: string): Record<string, IBarterScheme[][]>;
     /**
      * Should item be skipped when selling to trader according to its sell categories and other checks
-     * @param pmcData
-     * @param item
-     * @param sellCategory
+     * @param pmcData Profile
+     * @param item Item to be checked is sellable to trader
+     * @param sellCategory categories trader will buy
+     * @param traderId Trader item is being checked can be sold to
      * @returns true if should NOT be sold to trader
      */
-    protected isItemUnSellableToTrader(pmcData: IPmcData, item: Item, sellCategory: string[]): boolean;
+    protected isItemUnSellableToTrader(pmcData: IPmcData, item: Item, sellCategory: string[], traderId: string): boolean;
     /**
-     * Can this weapon be sold to a trader with its current durabiltiy level
-     * @param traderID
-     * @param item
-     * @returns boolean
+     * Check if item has durability so low it precludes it from being sold to the trader (inclusive)
+     * @param item Item to check durability of
+     * @param traderId Trader item is sold to
+     * @returns
      */
-    protected isWeaponBelowTraderBuyDurability(traderID: string, item: Item): boolean;
+    protected itemIsBelowSellableDurabilityThreshhold(item: Item, traderId: string): boolean;
+    /**
+     * Get the percentage threshold value a trader will buy armor/weapons above
+     * @param traderId Trader to look up
+     * @returns percentage
+     */
+    protected getTraderDurabiltyPurchaseThreshold(traderId: string): number;
     /**
      * Get the price of an item and all of its attached children
      * Take into account bonuses/adjsutments e.g. discounts
@@ -113,10 +120,22 @@ export declare class TraderHelper {
     getTraderUpdateSeconds(traderId: string): number;
     /**
     * check if an item is allowed to be sold to a trader
-    * @param traderFilters array of allowed categories
+    * @param categoriesTraderBuys array of allowed categories
     * @param tplToCheck itemTpl of inventory
-    * @returns boolean
+    * @returns boolean if item can be sold to trader
     */
-    traderFilter(traderFilters: string[], tplToCheck: string): boolean;
+    doesTraderBuyItem(categoriesTraderBuys: string[], tplToCheck: string): boolean;
     getLoyaltyLevel(traderID: string, pmcData: IPmcData): LoyaltyLevel;
+    /**
+     * Store the purchase of an assort from a trader in the player profile
+     * @param sessionID Session id
+     * @param newPurchaseDetails New item assort id + count
+     */
+    addTraderPurchasesToPlayerProfile(sessionID: string, newPurchaseDetails: {
+        items: {
+            item_id: string;
+            count: number;
+        }[];
+        tid: string;
+    }): void;
 }

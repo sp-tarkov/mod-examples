@@ -68,12 +68,12 @@ export declare class QuestHelper {
      * @param progressAmount Amount of skill points to add to skill
      */
     rewardSkillPoints(sessionID: string, pmcData: IPmcData, output: IItemEventRouterResponse, skillName: string, progressAmount: number): void;
-    getQuestLocale(questId: string): any;
     /**
-     * Debug Routine for showing some information on the
-     * quest list in question.
+     * Get quest name by quest id
+     * @param questId id to get
+     * @returns
      */
-    dumpQuests(quests: any): void;
+    getQuestNameFromLocale(questId: string): string;
     /**
      * Check if trader has sufficient loyalty to fullfill quest requirement
      * @param questProperties Quest props

@@ -1,3 +1,4 @@
+import { BotHelper } from "../helpers/BotHelper";
 import { Config } from "../models/eft/common/IGlobals";
 import { Inventory } from "../models/eft/common/tables/IBotType";
 import { ISeasonalEvent, ISeasonalEventConfig } from "../models/spt/config/ISeasonalEventConfig";
@@ -9,11 +10,12 @@ export declare class SeasonalEventService {
     protected logger: ILogger;
     protected databaseServer: DatabaseServer;
     protected localisationService: LocalisationService;
+    protected botHelper: BotHelper;
     protected configServer: ConfigServer;
     protected seasonalEventConfig: ISeasonalEventConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, localisationService: LocalisationService, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, localisationService: LocalisationService, botHelper: BotHelper, configServer: ConfigServer);
     protected get events(): Record<string, string>;
-    get christmasEventItems(): string[];
+    protected get christmasEventItems(): string[];
     /**
      * Get an array of christmas items found in bots inventories as loot
      * @returns array
@@ -37,7 +39,7 @@ export declare class SeasonalEventService {
      */
     protected getEventBotGear(eventName: string): Record<string, Record<string, Record<string, number>>>;
     /**
-     * Get the dates each seasonal event starts and ends
+     * Get the dates each seasonal event starts and ends at
      * @returns Record with event name + start/end date
      */
     getEventDetails(): ISeasonalEvent[];
@@ -48,8 +50,9 @@ export declare class SeasonalEventService {
     /**
      * Iterate through bots inventory and loot to find and remove christmas items (as defined in SeasonalEventService)
      * @param nodeInventory Bots inventory to iterate over
+     * @param botRole the role of the bot being processed
      */
-    removeChristmasItemsFromBotInventory(nodeInventory: Inventory): void;
+    removeChristmasItemsFromBotInventory(nodeInventory: Inventory, botRole: string): void;
     /**
      * Make adjusted to server code based on the name of the event passed in
      * @param globalConfig globals.json

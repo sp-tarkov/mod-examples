@@ -93,9 +93,9 @@ export declare class FenceService {
      */
     getOfferCount(): number;
     /**
-     * Create a trader assort for fence
+     * Create trader assorts for fence and store in fenceService cache
      */
-    generateFenceAssortCache(): void;
+    generateFenceAssorts(): void;
     /**
      * Create skeleton to hold assort items
      * @returns ITraderAssort object

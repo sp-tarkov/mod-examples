@@ -30,7 +30,7 @@ export declare class InsuranceService {
     insuranceExists(sessionId: string): boolean;
     insuranceTraderArrayExists(sessionId: string, traderId: string): boolean;
     getInsurance(sessionId: string): Record<string, Item[]>;
-    getInsuranceItems(sessionId: string, traderId: string): any[];
+    getInsuranceItems(sessionId: string, traderId: string): Item[];
     resetInsurance(sessionId: string): void;
     resetInsuranceTraderArray(sessionId: string, traderId: string): void;
     addInsuranceItemToArray(sessionId: string, traderId: string, itemToAdd: any): void;

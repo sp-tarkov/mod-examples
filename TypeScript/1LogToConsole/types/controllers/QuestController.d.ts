@@ -18,10 +18,12 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { LocaleService } from "../services/LocaleService";
 import { LocalisationService } from "../services/LocalisationService";
 import { PlayerService } from "../services/PlayerService";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 export declare class QuestController {
     protected logger: ILogger;
     protected timeUtil: TimeUtil;
+    protected httpResponseUtil: HttpResponseUtil;
     protected eventOutputHolder: EventOutputHolder;
     protected databaseServer: DatabaseServer;
     protected itemHelper: ItemHelper;
@@ -34,7 +36,7 @@ export declare class QuestController {
     protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected questConfig: IQuestConfig;
-    constructor(logger: ILogger, timeUtil: TimeUtil, eventOutputHolder: EventOutputHolder, databaseServer: DatabaseServer, itemHelper: ItemHelper, dialogueHelper: DialogueHelper, profileHelper: ProfileHelper, questHelper: QuestHelper, questConditionHelper: QuestConditionHelper, playerService: PlayerService, localeService: LocaleService, localisationService: LocalisationService, configServer: ConfigServer);
+    constructor(logger: ILogger, timeUtil: TimeUtil, httpResponseUtil: HttpResponseUtil, eventOutputHolder: EventOutputHolder, databaseServer: DatabaseServer, itemHelper: ItemHelper, dialogueHelper: DialogueHelper, profileHelper: ProfileHelper, questHelper: QuestHelper, questConditionHelper: QuestConditionHelper, playerService: PlayerService, localeService: LocaleService, localisationService: LocalisationService, configServer: ConfigServer);
     /**
      * Get all quests visible to player
      * Exclude quests with incomplete preconditions (level/loyalty)
@@ -58,6 +60,22 @@ export declare class QuestController {
      * @returns client response
      */
     acceptQuest(pmcData: IPmcData, acceptedQuest: IAcceptQuestRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Get a quests startedMessageText key from db, if no startedMessageText key found, use description key instead
+     * @param startedMessageTextId startedMessageText property from IQuest
+     * @param questDescriptionId description property from IQuest
+     * @returns message id
+     */
+    protected getMessageIdForQuestStart(startedMessageTextId: string, questDescriptionId: string): string;
+    /**
+     * Handle the client accepting a repeatable quest and starting it
+     * Send starting rewards if any to player and
+     * Send start notification if any to player
+     * @param pmcData Profile to update with new quest
+     * @param acceptedQuest Quest being accepted
+     * @param sessionID Session id
+     * @returns IItemEventRouterResponse
+     */
     acceptRepeatableQuest(pmcData: IPmcData, acceptedQuest: IAcceptQuestRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * Look for an accepted quest inside player profile, return matching

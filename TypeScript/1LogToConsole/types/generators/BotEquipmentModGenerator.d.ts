@@ -57,7 +57,7 @@ export declare class BotEquipmentModGenerator {
      * @param weapon Weapon to add mods to
      * @param modPool Pool of compatible mods to attach to weapon
      * @param weaponParentId parentId of weapon
-     * @param parentWeaponTemplate Weapon which mods will be generated on
+     * @param parentTemplate Weapon which mods will be generated on
      * @param modSpawnChances Mod spawn chances
      * @param ammoTpl Ammo tpl to use when generating magazines/cartridges
      * @param botRole Role of bot weapon is generated for
@@ -66,7 +66,26 @@ export declare class BotEquipmentModGenerator {
      * @param botEquipmentRole role of bot when accessing bot.json equipment config settings
      * @returns Weapon + mods array
      */
-    generateModsForWeapon(sessionId: string, weapon: Item[], modPool: Mods, weaponParentId: string, parentWeaponTemplate: ITemplateItem, modSpawnChances: ModsChances, ammoTpl: string, botRole: string, botLevel: number, modLimits: BotModLimits, botEquipmentRole: string): Item[];
+    generateModsForWeapon(sessionId: string, weapon: Item[], modPool: Mods, weaponParentId: string, parentTemplate: ITemplateItem, modSpawnChances: ModsChances, ammoTpl: string, botRole: string, botLevel: number, modLimits: BotModLimits, botEquipmentRole: string): Item[];
+    /**
+     * Is this modslot a front or rear sight
+     * @param modSlot Slot to check
+     * @returns true if it's a front/rear sight
+     */
+    protected modIsFrontOrRearSight(modSlot: string): boolean;
+    /**
+     * Does the provided mod details show the mod can hold a scope
+     * @param modSlot e.g. mod_scope, mod_mount
+     * @param modsParentId Parent id of mod item
+     * @returns true if it can hold a scope
+     */
+    protected modSlotCanHoldScope(modSlot: string, modsParentId: string): boolean;
+    /**
+     * Set all scope mod chances to 100%
+     * @param modSpawnChances Chances objet to update
+     */
+    protected setScopeSpawnChancesToFull(modSpawnChances: ModsChances): void;
+    protected sortModKeys(unsortedKeys: string[]): string[];
     /**
      * Get a Slot property for an item (chamber/cartridge/slot)
      * @param modSlot e.g patron_in_weapon
