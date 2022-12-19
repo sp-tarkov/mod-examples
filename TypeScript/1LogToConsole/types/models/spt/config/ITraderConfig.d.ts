@@ -1,3 +1,4 @@
+import { MinMax } from "../../../models/common/MinMax";
 import { IBaseConfig } from "./IBaseConfig";
 export interface ITraderConfig extends IBaseConfig {
     kind: "aki-trader";
@@ -19,6 +20,8 @@ export interface FenceConfig {
     assortSize: number;
     maxPresetsPercent: number;
     presetPriceMult: number;
+    armorMaxDurabilityPercentMinMax: MinMax;
+    presetMaxDurabilityPercentMinMax: MinMax;
     itemPriceMult: number;
     regenerateAssortsOnRefresh: boolean;
     itemTypeLimits: Record<string, number>;

@@ -37,7 +37,7 @@ export declare class TradeHelper {
     buyItem(pmcData: IPmcData, buyRequestData: IProcessBuyTradeRequestData, sessionID: string, foundInRaid: boolean, upd: Upd): IItemEventRouterResponse;
     /**
      * Sell item to trader
-     * @param pmcData
+     * @param pmcData Profile to update
      * @param body
      * @param sessionID
      * @returns
