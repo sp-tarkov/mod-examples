@@ -8,7 +8,6 @@ import { IHideoutProduction } from "../models/eft/hideout/IHideoutProduction";
 import { IHideoutScavCase } from "../models/eft/hideout/IHideoutScavCase";
 import { IHideoutSettingsBase } from "../models/eft/hideout/IHideoutSettingsBase";
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
-import { ILanguageBase } from "../models/spt/server/ILocaleBase";
 import { ISettingsBase } from "../models/spt/server/ISettingsBase";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
@@ -54,7 +53,7 @@ export declare class DataCallbacks {
     getHideoutAreas(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IHideoutArea[]>;
     gethideoutProduction(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IHideoutProduction[]>;
     getHideoutScavcase(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IHideoutScavCase[]>;
-    getLocalesLanguages(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ILanguageBase[]>;
+    getLocalesLanguages(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<Record<string, string>>;
     getLocalesMenu(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<string>;
     getLocalesGlobal(url: string, info: IEmptyRequestData, sessionID: string): string;
 }

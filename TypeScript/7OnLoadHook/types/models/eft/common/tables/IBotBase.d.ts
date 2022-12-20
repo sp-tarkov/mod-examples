@@ -107,7 +107,6 @@ export interface CurrentMax {
     Maximum: number;
 }
 export interface Inventory {
-    discardLimits: Record<string, number>;
     items: Item[];
     equipment: string;
     stash: string;

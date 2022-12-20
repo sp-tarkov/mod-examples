@@ -16,7 +16,7 @@ export interface ToLocation {
 export interface Container {
     id: string;
     container: string;
-    location: Location | number;
+    location?: Location | number;
 }
 export interface Location {
     x: number;

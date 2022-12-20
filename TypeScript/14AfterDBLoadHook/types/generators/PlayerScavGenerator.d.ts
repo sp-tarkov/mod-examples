@@ -10,6 +10,7 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
 import { BotLootCacheService } from "../services/BotLootCacheService";
 import { FenceService } from "../services/FenceService";
+import { LocalisationService } from "../services/LocalisationService";
 import { JsonUtil } from "../utils/JsonUtil";
 import { BotGenerator } from "./BotGenerator";
 export declare class PlayerScavGenerator {
@@ -21,10 +22,11 @@ export declare class PlayerScavGenerator {
     protected jsonUtil: JsonUtil;
     protected fenceService: FenceService;
     protected botLootCacheService: BotLootCacheService;
+    protected localisationService: LocalisationService;
     protected botGenerator: BotGenerator;
     protected configServer: ConfigServer;
     protected playerScavConfig: IPlayerScavConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, saveServer: SaveServer, profileHelper: ProfileHelper, botHelper: BotHelper, jsonUtil: JsonUtil, fenceService: FenceService, botLootCacheService: BotLootCacheService, botGenerator: BotGenerator, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, saveServer: SaveServer, profileHelper: ProfileHelper, botHelper: BotHelper, jsonUtil: JsonUtil, fenceService: FenceService, botLootCacheService: BotLootCacheService, localisationService: LocalisationService, botGenerator: BotGenerator, configServer: ConfigServer);
     /**
      * Update a player profile to include a new player scav profile
      * @param sessionID session id to specify what profile is updated

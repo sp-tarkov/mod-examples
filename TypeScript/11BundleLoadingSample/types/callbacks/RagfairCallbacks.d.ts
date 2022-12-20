@@ -14,7 +14,6 @@ import { IRemoveOfferRequestData } from "../models/eft/ragfair/IRemoveOfferReque
 import { ISearchRequestData } from "../models/eft/ragfair/ISearchRequestData";
 import { ISendRagfairReportRequestData } from "../models/eft/ragfair/ISendRagfairReportRequestData";
 import { IRagfairConfig } from "../models/spt/config/IRagfairConfig";
-import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { RagfairServer } from "../servers/RagfairServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
@@ -24,14 +23,13 @@ import { JsonUtil } from "../utils/JsonUtil";
  */
 export declare class RagfairCallbacks extends OnLoadOnUpdate {
     protected httpResponse: HttpResponseUtil;
-    protected logger: ILogger;
     protected jsonUtil: JsonUtil;
     protected ragfairServer: RagfairServer;
     protected ragfairController: RagfairController;
     protected configServer: ConfigServer;
     protected ragfairConfig: IRagfairConfig;
-    constructor(httpResponse: HttpResponseUtil, logger: ILogger, jsonUtil: JsonUtil, ragfairServer: RagfairServer, ragfairController: RagfairController, configServer: ConfigServer);
-    onLoad(): void;
+    constructor(httpResponse: HttpResponseUtil, jsonUtil: JsonUtil, ragfairServer: RagfairServer, ragfairController: RagfairController, configServer: ConfigServer);
+    onLoad(): Promise<void>;
     getRoute(): string;
     search(url: string, info: ISearchRequestData, sessionID: string): IGetBodyResponseData<IGetOffersResult>;
     getMarketPrice(url: string, info: IGetMarketPriceRequestData, sessionID: string): IGetBodyResponseData<IGetItemPriceResult>;
@@ -39,6 +37,6 @@ export declare class RagfairCallbacks extends OnLoadOnUpdate {
     addOffer(pmcData: IPmcData, info: IAddOfferRequestData, sessionID: string): IItemEventRouterResponse;
     removeOffer(pmcData: IPmcData, info: IRemoveOfferRequestData, sessionID: string): IItemEventRouterResponse;
     extendOffer(pmcData: IPmcData, info: IExtendOfferRequestData, sessionID: string): IItemEventRouterResponse;
-    onUpdate(timeSinceLastRun: number): boolean;
+    onUpdate(timeSinceLastRun: number): Promise<boolean>;
     sendReport(url: string, info: ISendRagfairReportRequestData, sessionID: string): INullResponseData;
 }

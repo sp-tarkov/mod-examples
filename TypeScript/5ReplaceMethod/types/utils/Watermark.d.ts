@@ -30,7 +30,11 @@ export declare class Watermark {
      * @returns string
      */
     getVersionTag(withEftVersion?: boolean): string;
-    getVersionLabel(): string;
+    /**
+     * Get text shown in game on screen, can't be translated as it breaks bsgs client when certian characters are used
+     * @returns string
+     */
+    getInGameVersionLabel(): string;
     /** Set window title */
     setTitle(): void;
     /** Reset console cursor to top */

@@ -1,4 +1,5 @@
 import { IPmcData } from "../models/eft/common/IPmcData";
+import { Effect } from "../models/eft/health/Effect";
 import { ISyncHealthRequestData } from "../models/eft/health/ISyncHealthRequestData";
 import { IAkiProfile } from "../models/eft/profile/IAkiProfile";
 import { IHealthConfig } from "../models/spt/config/IHealthConfig";
@@ -46,6 +47,6 @@ export declare class HealthHelper {
      * @param effectBodyPart body part to edit
      * @param effectType Effect to add to body part
      */
-    protected addEffect(pmcData: IPmcData, effectBodyPart: string, effectType: string): void;
+    protected addEffect(pmcData: IPmcData, effectBodyPart: string, effectType: Effect): void;
     protected isEmpty(map: any): boolean;
 }

@@ -10,6 +10,7 @@ import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { LocaleService } from "../services/LocaleService";
+import { LocalisationService } from "../services/LocalisationService";
 import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { TimeUtil } from "../utils/TimeUtil";
@@ -32,10 +33,11 @@ export declare class QuestHelper {
     protected dialogueHelper: DialogueHelper;
     protected profileHelper: ProfileHelper;
     protected paymentHelper: PaymentHelper;
+    protected localisationService: LocalisationService;
     protected traderHelper: TraderHelper;
     protected configServer: ConfigServer;
     protected questConfig: IQuestConfig;
-    constructor(logger: ILogger, jsonUtil: JsonUtil, timeUtil: TimeUtil, hashUtil: HashUtil, itemHelper: ItemHelper, eventOutputHolder: EventOutputHolder, databaseServer: DatabaseServer, localeService: LocaleService, ragfairServerHelper: RagfairServerHelper, dialogueHelper: DialogueHelper, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, traderHelper: TraderHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, jsonUtil: JsonUtil, timeUtil: TimeUtil, hashUtil: HashUtil, itemHelper: ItemHelper, eventOutputHolder: EventOutputHolder, databaseServer: DatabaseServer, localeService: LocaleService, ragfairServerHelper: RagfairServerHelper, dialogueHelper: DialogueHelper, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, traderHelper: TraderHelper, configServer: ConfigServer);
     /**
     * Get status of a quest by quest id
     * @param pmcData Profile to search
@@ -66,12 +68,12 @@ export declare class QuestHelper {
      * @param progressAmount Amount of skill points to add to skill
      */
     rewardSkillPoints(sessionID: string, pmcData: IPmcData, output: IItemEventRouterResponse, skillName: string, progressAmount: number): void;
-    getQuestLocale(questId: string): any;
     /**
-     * Debug Routine for showing some information on the
-     * quest list in question.
+     * Get quest name by quest id
+     * @param questId id to get
+     * @returns
      */
-    dumpQuests(quests: any): void;
+    getQuestNameFromLocale(questId: string): string;
     /**
      * Check if trader has sufficient loyalty to fullfill quest requirement
      * @param questProperties Quest props

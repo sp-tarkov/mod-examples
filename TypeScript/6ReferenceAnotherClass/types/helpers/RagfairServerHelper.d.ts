@@ -42,7 +42,7 @@ export declare class RagfairServerHelper {
     protected isItemBlacklisted(itemTemplateId: string): boolean;
     isTrader(userID: string): boolean;
     isPlayer(userID: string): boolean;
-    returnItems(sessionID: string, items: any[]): void;
+    returnItems(sessionID: string, items: Item[]): void;
     calculateDynamicStackCount(tplId: string, isWeaponPreset: boolean): number;
     /**
      * Choose a currency at random with bias

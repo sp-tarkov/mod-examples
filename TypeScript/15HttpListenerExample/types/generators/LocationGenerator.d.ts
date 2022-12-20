@@ -1,5 +1,4 @@
 import { ContainerHelper } from "../helpers/ContainerHelper";
-import { GameEventHelper } from "../helpers/GameEventHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
 import { PresetHelper } from "../helpers/PresetHelper";
 import { RagfairServerHelper } from "../helpers/RagfairServerHelper";
@@ -9,6 +8,8 @@ import { IStaticAmmoDetails, IStaticContainerProps, IStaticForcedProps, IStaticL
 import { ILocationConfig } from "../models/spt/config/ILocationConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
+import { LocalisationService } from "../services/LocalisationService";
+import { SeasonalEventService } from "../services/SeasonalEventService";
 import { JsonUtil } from "../utils/JsonUtil";
 import { MathUtil } from "../utils/MathUtil";
 import { ObjectId } from "../utils/ObjectId";
@@ -26,12 +27,13 @@ export declare class LocationGenerator {
     protected ragfairServerHelper: RagfairServerHelper;
     protected itemHelper: ItemHelper;
     protected mathUtil: MathUtil;
-    protected gameEventHelper: GameEventHelper;
+    protected seasonalEventService: SeasonalEventService;
     protected containerHelper: ContainerHelper;
     protected presetHelper: PresetHelper;
+    protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected locationConfig: ILocationConfig;
-    constructor(logger: ILogger, jsonUtil: JsonUtil, objectId: ObjectId, randomUtil: RandomUtil, ragfairServerHelper: RagfairServerHelper, itemHelper: ItemHelper, mathUtil: MathUtil, gameEventHelper: GameEventHelper, containerHelper: ContainerHelper, presetHelper: PresetHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, jsonUtil: JsonUtil, objectId: ObjectId, randomUtil: RandomUtil, ragfairServerHelper: RagfairServerHelper, itemHelper: ItemHelper, mathUtil: MathUtil, seasonalEventService: SeasonalEventService, containerHelper: ContainerHelper, presetHelper: PresetHelper, localisationService: LocalisationService, configServer: ConfigServer);
     generateContainerLoot(containerIn: IStaticContainerProps, staticForced: IStaticForcedProps[], staticLootDist: Record<string, IStaticLootDetails>, staticAmmoDist: Record<string, IStaticAmmoDetails[]>, locationName: string): IStaticContainerProps;
     protected getLooseLootMultiplerForLocation(location: string): number;
     protected getStaticLootMultiplerForLocation(location: string): number;

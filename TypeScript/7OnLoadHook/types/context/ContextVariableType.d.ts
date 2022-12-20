@@ -4,5 +4,7 @@ export declare enum ContextVariableType {
     /** Currently acive raid information */
     MATCH_INFO = 1,
     /** Timestamp when client first connected */
-    CLIENT_START_TIMESTAMP = 2
+    CLIENT_START_TIMESTAMP = 2,
+    /** When player is loading into map and loot is requested */
+    REGISTER_PLAYER_REQUEST = 3
 }

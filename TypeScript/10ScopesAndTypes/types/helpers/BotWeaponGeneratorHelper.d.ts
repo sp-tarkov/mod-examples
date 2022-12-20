@@ -4,6 +4,7 @@ import { Item } from "../models/eft/common/tables/IItem";
 import { Grid, ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { LocalisationService } from "../services/LocalisationService";
 import { HashUtil } from "../utils/HashUtil";
 import { RandomUtil } from "../utils/RandomUtil";
 import { ContainerHelper } from "./ContainerHelper";
@@ -16,8 +17,9 @@ export declare class BotWeaponGeneratorHelper {
     protected randomUtil: RandomUtil;
     protected hashUtil: HashUtil;
     protected inventoryHelper: InventoryHelper;
+    protected localisationService: LocalisationService;
     protected containerHelper: ContainerHelper;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, itemHelper: ItemHelper, randomUtil: RandomUtil, hashUtil: HashUtil, inventoryHelper: InventoryHelper, containerHelper: ContainerHelper);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, itemHelper: ItemHelper, randomUtil: RandomUtil, hashUtil: HashUtil, inventoryHelper: InventoryHelper, localisationService: LocalisationService, containerHelper: ContainerHelper);
     /**
      * Get a randomised number of bullets for a specific magazine
      * @param magCounts min and max count of magazines

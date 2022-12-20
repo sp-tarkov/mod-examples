@@ -57,6 +57,10 @@ export interface ModsChances {
     mod_pistol_grip: number;
     mod_reciever: number;
     mod_scope: number;
+    mod_scope_000: number;
+    mod_scope_001: number;
+    mod_scope_002: number;
+    mod_scope_003: number;
     mod_sight_front: number;
     mod_sight_rear: number;
     mod_stock: number;
@@ -152,4 +156,4 @@ export interface Items {
     SpecialLoot: string[];
     TacticalVest: string[];
 }
-export declare type Mods = Record<string, Record<string, string[]>>;
+export type Mods = Record<string, Record<string, string[]>>;

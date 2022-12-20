@@ -3,6 +3,6 @@ import { OnLoad } from "../di/OnLoad";
 export declare class PresetCallbacks extends OnLoad {
     protected presetController: PresetController;
     constructor(presetController: PresetController);
-    onLoad(): void;
+    onLoad(): Promise<void>;
     getRoute(): string;
 }

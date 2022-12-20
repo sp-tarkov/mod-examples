@@ -11,7 +11,7 @@ export declare class App {
     protected onUpdateComponents: OnUpdate[];
     protected onUpdateLastRun: {};
     constructor(logger: ILogger, timeUtil: TimeUtil, localisationService: LocalisationService, onLoadComponents: OnLoad[], onUpdateComponents: OnUpdate[]);
-    load(): void;
-    protected update(onUpdateComponents: OnUpdate[]): void;
+    load(): Promise<void>;
+    protected update(onUpdateComponents: OnUpdate[]): Promise<void>;
     protected logUpdateException(err: any, updateable: OnUpdate): void;
 }

@@ -11,6 +11,7 @@ export declare class LookupCollection {
 }
 export declare class HandbookHelper {
     protected databaseServer: DatabaseServer;
+    protected lookupCacheGenerated: boolean;
     protected handbookPriceCache: LookupCollection;
     constructor(databaseServer: DatabaseServer);
     hydrateLookup(): void;
@@ -35,18 +36,18 @@ export declare class HandbookHelper {
     isCategory(category: string): boolean;
     childrenCategories(x: string): string[];
     /**
-    * Convert currency into roubles
-    * @param {number} value
-    * @param {string} currencyFrom
-    * @returns get rouble value of inputted currency
-    */
-    inRUB(value: number, currencyFrom: string): number;
-    /**
-     * Gets Ruble to Currency conversion Value
-     * @param {number} value
-     * @param {string} currencyTo
-     * @returns number
+     * Convert non-roubles into roubles
+     * @param nonRoubleCurrencyCount Currency count to convert
+     * @param currencyTypeFrom What current currency is
+     * @returns Count in roubles
      */
-    fromRUB(value: number, currencyTo: string): number;
+    inRUB(nonRoubleCurrencyCount: number, currencyTypeFrom: string): number;
+    /**
+     * Convert roubles into another currency
+     * @param roubleCurrencyCount roubles to convert
+     * @param currencyTypeTo Currency to convert roubles into
+     * @returns currency count in desired type
+     */
+    fromRUB(roubleCurrencyCount: number, currencyTypeTo: string): number;
 }
 export {};

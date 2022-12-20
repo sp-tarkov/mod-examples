@@ -5,7 +5,6 @@ import { IValidateNicknameRequestData } from "../models/eft/profile/IValidateNic
 import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
-import { FenceService } from "../services/FenceService";
 import { ProfileSnapshotService } from "../services/ProfileSnapshotService";
 import { JsonUtil } from "../utils/JsonUtil";
 import { TimeUtil } from "../utils/TimeUtil";
@@ -20,9 +19,13 @@ export declare class ProfileHelper {
     protected databaseServer: DatabaseServer;
     protected itemHelper: ItemHelper;
     protected profileSnapshotService: ProfileSnapshotService;
-    protected fenceService: FenceService;
-    constructor(logger: ILogger, jsonUtil: JsonUtil, watermark: Watermark, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, itemHelper: ItemHelper, profileSnapshotService: ProfileSnapshotService, fenceService: FenceService);
+    constructor(logger: ILogger, jsonUtil: JsonUtil, watermark: Watermark, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, itemHelper: ItemHelper, profileSnapshotService: ProfileSnapshotService);
     resetProfileQuestCondition(sessionID: string, conditionId: string): void;
+    /**
+     * Get all profiles from server
+     * @returns Dictionary of profiles
+     */
+    getProfiles(): Record<string, IAkiProfile>;
     getCompleteProfile(sessionID: string): IPmcData[];
     /**
      * Fix xp doubling on post-raid xp reward screen by sending a 'dummy' profile to the post-raid screen

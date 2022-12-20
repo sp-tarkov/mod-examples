@@ -1,5 +1,4 @@
 import { ILocaleConfig } from "../models/spt/config/ILocaleConfig";
-import { ILocaleGlobalBase } from "../models/spt/server/ILocaleBase";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
@@ -14,9 +13,9 @@ export declare class LocaleService {
     constructor(logger: ILogger, databaseServer: DatabaseServer, configServer: ConfigServer);
     /**
      * Get the eft globals db file based on the configured locale in config/locale.json, if not found, fall back to 'en'
-     * @returns ILocaleGlobalBase
+     * @returns dictionary
      */
-    getLocaleDb(): ILocaleGlobalBase;
+    getLocaleDb(): Record<string, string>;
     /**
      * Gets the game locale key from the locale.json file,
      * if value is 'system' get system locale

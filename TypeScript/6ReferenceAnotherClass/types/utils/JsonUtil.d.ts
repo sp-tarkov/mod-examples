@@ -6,6 +6,7 @@ export declare class JsonUtil {
     protected hashUtil: HashUtil;
     protected logger: ILogger;
     protected fileHashes: any;
+    protected jsonCacheExists: boolean;
     constructor(vfs: VFS, hashUtil: HashUtil, logger: ILogger);
     /**
      * From object to string

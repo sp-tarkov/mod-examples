@@ -2,6 +2,7 @@ import { ApplicationContext } from "../context/ApplicationContext";
 import { BotGenerator } from "../generators/BotGenerator";
 import { BotDifficultyHelper } from "../helpers/BotDifficultyHelper";
 import { BotHelper } from "../helpers/BotHelper";
+import { ProfileHelper } from "../helpers/ProfileHelper";
 import { WeightedRandomHelper } from "../helpers/WeightedRandomHelper";
 import { IGenerateBotsRequestData } from "../models/eft/bot/IGenerateBotsRequestData";
 import { IBotBase } from "../models/eft/common/tables/IBotBase";
@@ -23,18 +24,23 @@ export declare class BotController {
     protected botGenerationCacheService: BotGenerationCacheService;
     protected localisationService: LocalisationService;
     protected weightedRandomHelper: WeightedRandomHelper;
+    protected profileHelper: ProfileHelper;
     protected configServer: ConfigServer;
     protected applicationContext: ApplicationContext;
     protected jsonUtil: JsonUtil;
     protected botConfig: IBotConfig;
     static readonly pmcTypeLabel = "PMC";
-    constructor(logger: ILogger, databaseServer: DatabaseServer, botGenerator: BotGenerator, botHelper: BotHelper, botDifficultyHelper: BotDifficultyHelper, botGenerationCacheService: BotGenerationCacheService, localisationService: LocalisationService, weightedRandomHelper: WeightedRandomHelper, configServer: ConfigServer, applicationContext: ApplicationContext, jsonUtil: JsonUtil);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, botGenerator: BotGenerator, botHelper: BotHelper, botDifficultyHelper: BotDifficultyHelper, botGenerationCacheService: BotGenerationCacheService, localisationService: LocalisationService, weightedRandomHelper: WeightedRandomHelper, profileHelper: ProfileHelper, configServer: ConfigServer, applicationContext: ApplicationContext, jsonUtil: JsonUtil);
     /**
      * Return the number of bot loadout varieties to be generated
      * @param type bot Type we want the loadout gen count for
-     * @returns
+     * @returns number of bots to generate
      */
     getBotPresetGenerationLimit(type: string): number;
+    /**
+     * Get the core.json difficulty settings from database\bots
+     * @returns IBotCore
+     */
     getBotCoreDifficulty(): IBotCore;
     /**
      * Get bot difficulty settings
@@ -51,6 +57,12 @@ export declare class BotController {
      * @returns IBotBase array
      */
     generate(sessionId: string, info: IGenerateBotsRequestData): IBotBase[];
+    /**
+     * Get the difficulty passed in, if its not "asoline", get selected difficulty from config
+     * @param requestedDifficulty
+     * @returns
+     */
+    getPMCDifficulty(requestedDifficulty: string): string;
     /**
      * Get the max number of bots allowed on a map
      * Looks up location player is entering when getting cap value

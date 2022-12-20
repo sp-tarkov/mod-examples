@@ -60,9 +60,9 @@ export declare class PaymentService {
     /**
      * Prioritise player stash first over player inventory
      * Post-raid healing would often take money out of the players pockets/secure container
-     * @param a Firsat money stack item
+     * @param a First money stack item
      * @param b Second money stack item
-     * @returns sorted item
+     * @returns sort order
      */
-    protected moneySort(a: Item, b: Item): number;
+    protected prioritiseStashSort(a: Item, b: Item): number;
 }

@@ -15,7 +15,7 @@ export declare class RepairHelper {
     protected repairConfig: IRepairConfig;
     constructor(logger: ILogger, jsonUtil: JsonUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, configServer: ConfigServer);
     /**
-     *
+     * Alter an items durability after a repair by trader/repair kit
      * @param itemToRepair item to update durability details
      * @param itemToRepairDetails db details of item to repair
      * @param isArmor Is item being repaired a piece of armor

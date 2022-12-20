@@ -4,6 +4,7 @@ import { MessageType } from "../models/enums/MessageType";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
+import { LocalisationService } from "../services/LocalisationService";
 import { HashUtil } from "../utils/HashUtil";
 import { ItemHelper } from "./ItemHelper";
 import { NotificationSendHelper } from "./NotificationSendHelper";
@@ -15,8 +16,9 @@ export declare class DialogueHelper {
     protected databaseServer: DatabaseServer;
     protected notifierHelper: NotifierHelper;
     protected notificationSendHelper: NotificationSendHelper;
+    protected localisationService: LocalisationService;
     protected itemHelper: ItemHelper;
-    constructor(logger: ILogger, hashUtil: HashUtil, saveServer: SaveServer, databaseServer: DatabaseServer, notifierHelper: NotifierHelper, notificationSendHelper: NotificationSendHelper, itemHelper: ItemHelper);
+    constructor(logger: ILogger, hashUtil: HashUtil, saveServer: SaveServer, databaseServer: DatabaseServer, notifierHelper: NotifierHelper, notificationSendHelper: NotificationSendHelper, localisationService: LocalisationService, itemHelper: ItemHelper);
     createMessageContext(templateId: string, messageType: MessageType, maxStoreTime: number): MessageContent;
     /**
      * Add a templated message to the dialogue.

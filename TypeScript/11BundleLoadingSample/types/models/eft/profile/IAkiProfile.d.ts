@@ -11,6 +11,12 @@ export interface IAkiProfile {
     vitality: Vitality;
     inraid: Inraid;
     insurance: Insurance[];
+    /** Assort purchases made by player since last trader refresh */
+    traderPurchases?: Record<string, Record<string, TraderPurchaseData>>;
+}
+export declare class TraderPurchaseData {
+    count: number;
+    purchaseTimestamp: number;
 }
 export interface Info {
     id: string;
@@ -93,6 +99,13 @@ export interface DateTime {
 }
 export interface Aki {
     version: string;
+    mods?: ModDetails[];
+}
+export interface ModDetails {
+    name: string;
+    version: string;
+    author: string;
+    dateAdded: number;
 }
 export interface Vitality {
     health: Health;

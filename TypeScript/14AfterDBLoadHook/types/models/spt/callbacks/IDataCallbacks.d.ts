@@ -6,7 +6,6 @@ import { IHideoutProduction } from "../../eft/hideout/IHideoutProduction";
 import { IHideoutScavCase } from "../../eft/hideout/IHideoutScavCase";
 import { IHideoutSettingsBase } from "../../eft/hideout/IHideoutSettingsBase";
 import { IGetBodyResponseData } from "../../eft/httpResponse/IGetBodyResponseData";
-import { ILanguageBase } from "../server/ILocaleBase";
 import { ISettingsBase } from "../server/ISettingsBase";
 export interface IDataCallbacks {
     getSettings(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ISettingsBase>;
@@ -20,7 +19,7 @@ export interface IDataCallbacks {
     getHideoutAreas(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IHideoutArea[]>;
     gethideoutProduction(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IHideoutProduction[]>;
     getHideoutScavcase(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IHideoutScavCase[]>;
-    getLocalesLanguages(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ILanguageBase[]>;
+    getLocalesLanguages(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<Record<string, string>>;
     getLocalesMenu(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any>;
     getLocalesGlobal(url: string, info: IEmptyRequestData, sessionID: string): string;
 }

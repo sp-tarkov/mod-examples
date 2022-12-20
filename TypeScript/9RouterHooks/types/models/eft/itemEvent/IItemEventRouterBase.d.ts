@@ -7,7 +7,7 @@ export interface IItemEventRouterBase {
     warnings: Warning[];
     profileChanges: TProfileChanges | "";
 }
-export declare type TProfileChanges = Record<string, ProfileChange>;
+export type TProfileChanges = Record<string, ProfileChange>;
 export interface Warning {
     index: number;
     errmsg: string;

@@ -18,7 +18,9 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { SaveServer } from "../servers/SaveServer";
 import { BotGenerationCacheService } from "../services/BotGenerationCacheService";
 import { BotLootCacheService } from "../services/BotLootCacheService";
+import { CustomLocationWaveService } from "../services/CustomLocationWaveService";
 import { MatchLocationService } from "../services/MatchLocationService";
+import { OpenZoneService } from "../services/OpenZoneService";
 import { ProfileSnapshotService } from "../services/ProfileSnapshotService";
 export declare class MatchController {
     protected logger: ILogger;
@@ -29,12 +31,14 @@ export declare class MatchController {
     protected botLootCacheService: BotLootCacheService;
     protected configServer: ConfigServer;
     protected profileSnapshotService: ProfileSnapshotService;
+    protected customLocationWaveService: CustomLocationWaveService;
+    protected openZoneService: OpenZoneService;
     protected botGenerationCacheService: BotGenerationCacheService;
     protected applicationContext: ApplicationContext;
     protected matchConfig: IMatchConfig;
     protected inraidConfig: IInRaidConfig;
     protected botConfig: IBotConfig;
-    constructor(logger: ILogger, saveServer: SaveServer, profileHelper: ProfileHelper, matchLocationService: MatchLocationService, traderHelper: TraderHelper, botLootCacheService: BotLootCacheService, configServer: ConfigServer, profileSnapshotService: ProfileSnapshotService, botGenerationCacheService: BotGenerationCacheService, applicationContext: ApplicationContext);
+    constructor(logger: ILogger, saveServer: SaveServer, profileHelper: ProfileHelper, matchLocationService: MatchLocationService, traderHelper: TraderHelper, botLootCacheService: BotLootCacheService, configServer: ConfigServer, profileSnapshotService: ProfileSnapshotService, customLocationWaveService: CustomLocationWaveService, openZoneService: OpenZoneService, botGenerationCacheService: BotGenerationCacheService, applicationContext: ApplicationContext);
     getEnabled(): boolean;
     getProfile(info: IGetProfileRequestData): IPmcData[];
     createGroup(sessionID: string, info: ICreateGroupRequestData): any;

@@ -1,4 +1,4 @@
 export declare class OnUpdate {
-    onUpdate(timeSinceLastRun: number): boolean;
+    onUpdate(timeSinceLastRun: number): Promise<boolean>;
     getRoute(): string;
 }

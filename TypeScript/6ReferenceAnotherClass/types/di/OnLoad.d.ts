@@ -1,4 +1,4 @@
 export declare class OnLoad {
-    onLoad(): void;
+    onLoad(): Promise<void>;
     getRoute(): string;
 }

@@ -91,6 +91,6 @@ export declare class HideoutCallbacks extends OnUpdate {
      * @returns
      */
     takeProduction(pmcData: IPmcData, body: IHideoutTakeProductionRequestData, sessionID: string): IItemEventRouterResponse;
-    onUpdate(timeSinceLastRun: number): boolean;
+    onUpdate(timeSinceLastRun: number): Promise<boolean>;
     getRoute(): string;
 }

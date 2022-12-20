@@ -3,7 +3,7 @@ export interface IHideoutProduction {
     areaType: number;
     requirements: Requirement[];
     productionTime: number;
-    boosters: any;
+    boosters?: any;
     endProduct: string;
     continuous: boolean;
     count: number;

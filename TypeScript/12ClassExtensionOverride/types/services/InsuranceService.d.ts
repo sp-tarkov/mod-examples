@@ -1,4 +1,5 @@
 import { DialogueHelper } from "../helpers/DialogueHelper";
+import { HandbookHelper } from "../helpers/HandbookHelper";
 import { SecureContainerHelper } from "../helpers/SecureContainerHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
@@ -12,6 +13,7 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
 import { RandomUtil } from "../utils/RandomUtil";
 import { TimeUtil } from "../utils/TimeUtil";
+import { LocalisationService } from "./LocalisationService";
 export declare class InsuranceService {
     protected logger: ILogger;
     protected databaseServer: DatabaseServer;
@@ -21,14 +23,16 @@ export declare class InsuranceService {
     protected saveServer: SaveServer;
     protected traderHelper: TraderHelper;
     protected dialogueHelper: DialogueHelper;
+    protected handbookHelper: HandbookHelper;
+    protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected insured: Record<string, Record<string, Item[]>>;
     protected insuranceConfig: IInsuranceConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, secureContainerHelper: SecureContainerHelper, randomUtil: RandomUtil, timeUtil: TimeUtil, saveServer: SaveServer, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, secureContainerHelper: SecureContainerHelper, randomUtil: RandomUtil, timeUtil: TimeUtil, saveServer: SaveServer, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, handbookHelper: HandbookHelper, localisationService: LocalisationService, configServer: ConfigServer);
     insuranceExists(sessionId: string): boolean;
     insuranceTraderArrayExists(sessionId: string, traderId: string): boolean;
     getInsurance(sessionId: string): Record<string, Item[]>;
-    getInsuranceItems(sessionId: string, traderId: string): any[];
+    getInsuranceItems(sessionId: string, traderId: string): Item[];
     resetInsurance(sessionId: string): void;
     resetInsuranceTraderArray(sessionId: string, traderId: string): void;
     addInsuranceItemToArray(sessionId: string, traderId: string, itemToAdd: any): void;

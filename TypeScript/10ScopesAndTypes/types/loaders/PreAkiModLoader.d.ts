@@ -34,6 +34,7 @@ export declare class PreAkiModLoader implements IModLoader {
      * @returns Array of mod names in load order
      */
     getImportedModsNames(): string[];
+    getImportedModDetails(): Record<string, ModLoader.IMod>;
     getModPath(mod: string): string;
     protected importClass(name: string, filepath: string, container: DependencyContainer): void;
     protected importMods(): Promise<void>;

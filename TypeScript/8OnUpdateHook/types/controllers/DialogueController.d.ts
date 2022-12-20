@@ -27,6 +27,7 @@ export declare class DialogueController {
      */
     getDialogueInfo(dialogueID: string, sessionID: string): DialogueInfo;
     /**
+     * Handle player clicking 'messenger' and seeing all the messages they've recieved
      * Set the content of the dialogue on the details panel, showing all the messages
      * for the specified dialogue.
      * @param dialogueID Dialog id

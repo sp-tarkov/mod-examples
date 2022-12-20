@@ -5,6 +5,7 @@ import { ISaveProgressRequestData } from "../models/eft/inRaid/ISaveProgressRequ
 import { ILogger } from "../models/spt/utils/ILogger";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
+import { LocalisationService } from "../services/LocalisationService";
 import { ProfileFixerService } from "../services/ProfileFixerService";
 import { JsonUtil } from "../utils/JsonUtil";
 import { InventoryHelper } from "./InventoryHelper";
@@ -16,8 +17,9 @@ export declare class InRaidHelper {
     protected databaseServer: DatabaseServer;
     protected inventoryHelper: InventoryHelper;
     protected paymentHelper: PaymentHelper;
+    protected localisationService: LocalisationService;
     protected profileFixerService: ProfileFixerService;
-    constructor(logger: ILogger, saveServer: SaveServer, jsonUtil: JsonUtil, databaseServer: DatabaseServer, inventoryHelper: InventoryHelper, paymentHelper: PaymentHelper, profileFixerService: ProfileFixerService);
+    constructor(logger: ILogger, saveServer: SaveServer, jsonUtil: JsonUtil, databaseServer: DatabaseServer, inventoryHelper: InventoryHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, profileFixerService: ProfileFixerService);
     /**
      * Check an array of items and add an upd object to money items with a stack count of 1
      * Single stack money items have no upd object and thus no StackObjectsCount, causing issues

@@ -1,4 +1,4 @@
-import { ISeasonalEvent, ISeasonalEventConfig } from "../models/spt/config/ISeasonalEventConfig";
+import { ISeasonalEventConfig } from "../models/spt/config/ISeasonalEventConfig";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 export declare class GameEventHelper {
@@ -6,24 +6,4 @@ export declare class GameEventHelper {
     protected configServer: ConfigServer;
     protected seasonalEventConfig: ISeasonalEventConfig;
     constructor(databaseServer: DatabaseServer, configServer: ConfigServer);
-    get events(): Record<string, string>;
-    get christmasEventItems(): string[];
-    itemIsChristmasRelated(itemId: string): boolean;
-    christmasEventEnabled(): boolean;
-    /**
-     * Get the dates each seasonal event starts and ends
-     * @returns Record with event name + start/end date
-     */
-    getEventDetails(): ISeasonalEvent[];
-    /**
-     * Is detection of seasonal events enabled (halloween / christmas)
-     * @returns true if seasonal events should be checked for
-     */
-    isAutomaticEventDetectionEnabled(): boolean;
-    /**
-     * Get a dictionary of gear changes to apply to bots for a specific event e.g. Christmas/Halloween
-     * @param eventName Name of event to get gear changes for
-     * @returns bots with equipment changes
-     */
-    getEventBotGear(eventName: string): Record<string, Record<string, Record<string, number>>>;
 }

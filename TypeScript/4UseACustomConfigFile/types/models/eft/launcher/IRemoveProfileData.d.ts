@@ -1,2 +1,2 @@
 import { ILoginRequestData } from "./ILoginRequestData";
-export declare type IRemoveProfileData = ILoginRequestData;
+export type IRemoveProfileData = ILoginRequestData;

@@ -20,6 +20,7 @@ import { ItemFilterService } from "../services/ItemFilterService";
 import { LocalisationService } from "../services/LocalisationService";
 import { PaymentService } from "../services/PaymentService";
 import { ProfileFixerService } from "../services/ProfileFixerService";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { MathUtil } from "../utils/MathUtil";
 import { ObjectId } from "../utils/ObjectId";
@@ -56,6 +57,7 @@ export declare class RepeatableQuestController {
     protected timeUtil: TimeUtil;
     protected logger: ILogger;
     protected randomUtil: RandomUtil;
+    protected httpResponse: HttpResponseUtil;
     protected mathUtil: MathUtil;
     protected jsonUtil: JsonUtil;
     protected databaseServer: DatabaseServer;
@@ -71,7 +73,7 @@ export declare class RepeatableQuestController {
     protected itemFilterService: ItemFilterService;
     protected configServer: ConfigServer;
     protected questConfig: IQuestConfig;
-    constructor(timeUtil: TimeUtil, logger: ILogger, randomUtil: RandomUtil, mathUtil: MathUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper, presetHelper: PresetHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, ragfairServerHelper: RagfairServerHelper, eventOutputHolder: EventOutputHolder, localisationService: LocalisationService, paymentService: PaymentService, objectId: ObjectId, itemFilterService: ItemFilterService, configServer: ConfigServer);
+    constructor(timeUtil: TimeUtil, logger: ILogger, randomUtil: RandomUtil, httpResponse: HttpResponseUtil, mathUtil: MathUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper, presetHelper: PresetHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, ragfairServerHelper: RagfairServerHelper, eventOutputHolder: EventOutputHolder, localisationService: LocalisationService, paymentService: PaymentService, objectId: ObjectId, itemFilterService: ItemFilterService, configServer: ConfigServer);
     /**
      * This is the method reached by the /client/repeatalbeQuests/activityPeriods endpoint
      * Returns an array of objects in the format of repeatable quests to the client.
@@ -98,6 +100,13 @@ export declare class RepeatableQuestController {
      * @returns  {array}                    array of "repeatableQuestObjects" as descibed above
      */
     getClientRepeatableQuests(_info: IEmptyRequestData, sessionID: string): IPmcDataRepeatableQuest[];
+    /**
+     * Get repeatable quest data from profile from name (daily/weekly), creates base repeatable quest object if none exists
+     * @param repeatableConfig daily/weekly config
+     * @param pmcData Profile to search
+     * @returns IPmcDataRepeatableQuest
+     */
+    protected getRepeatableQuestSubTypeFromProfile(repeatableConfig: IRepeatableQuestConfig, pmcData: IPmcData): IPmcDataRepeatableQuest;
     /**
      * This method is called by GetClientRepeatableQuests and creates one element of quest type format (see assets/database/templates/repeatableQuests.json).
      * It randomly draws a quest type (currently Elimination, Completion or Exploration) as well as a trader who is providing the quest
@@ -146,6 +155,12 @@ export declare class RepeatableQuestController {
      * @returns {object}                        object of quest type format for "Elimination" (see assets/database/templates/repeatableQuests.json)
      */
     generateEliminationQuest(pmcLevel: number, traderId: string, questTypePool: IQuestTypePool, repeatableConfig: IRepeatableQuestConfig): IElimination;
+    /**
+     * Cpnvert a location into an quest code can read (e.g. factory4_day into 55f2d3fd4bdc2d5f408b4567)
+     * @param locationKey e.g factory4_day
+     * @returns guid
+     */
+    protected getQuestLocationByMapId(locationKey: string): string;
     /**
      * Exploration repeatable quests can specify a required extraction point.
      * This method creates the according object which will be appended to the conditions array

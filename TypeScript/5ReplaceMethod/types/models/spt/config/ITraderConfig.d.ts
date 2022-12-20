@@ -1,10 +1,13 @@
+import { MinMax } from "../../../models/common/MinMax";
 import { IBaseConfig } from "./IBaseConfig";
 export interface ITraderConfig extends IBaseConfig {
     kind: "aki-trader";
     updateTime: UpdateTime[];
     updateTimeDefault: number;
+    /** What % of max durability an item needs to sell to a trader*/
+    durabilityPurchaseThreshhold: Record<string, number>;
     traderPriceMultipler: number;
-    minDurabilityForSale: number;
+    persistPurchaseDataInProfile: boolean;
     fence: FenceConfig;
 }
 export interface UpdateTime {
@@ -17,6 +20,8 @@ export interface FenceConfig {
     assortSize: number;
     maxPresetsPercent: number;
     presetPriceMult: number;
+    armorMaxDurabilityPercentMinMax: MinMax;
+    presetMaxDurabilityPercentMinMax: MinMax;
     itemPriceMult: number;
     regenerateAssortsOnRefresh: boolean;
     itemTypeLimits: Record<string, number>;

@@ -1,3 +1,4 @@
+import { ApplicationContext } from "../context/ApplicationContext";
 import { PlayerScavGenerator } from "../generators/PlayerScavGenerator";
 import { HealthHelper } from "../helpers/HealthHelper";
 import { InRaidHelper } from "../helpers/InRaidHelper";
@@ -35,12 +36,13 @@ export declare class InraidController {
     protected traderHelper: TraderHelper;
     protected insuranceService: InsuranceService;
     protected inRaidHelper: InRaidHelper;
+    protected applicationContext: ApplicationContext;
     protected configServer: ConfigServer;
     protected airdropConfig: IAirdropConfig;
     protected inraidConfig: IInRaidConfig;
-    constructor(logger: ILogger, saveServer: SaveServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, questHelper: QuestHelper, itemHelper: ItemHelper, profileHelper: ProfileHelper, playerScavGenerator: PlayerScavGenerator, healthHelper: HealthHelper, traderHelper: TraderHelper, insuranceService: InsuranceService, inRaidHelper: InRaidHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, saveServer: SaveServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, questHelper: QuestHelper, itemHelper: ItemHelper, profileHelper: ProfileHelper, playerScavGenerator: PlayerScavGenerator, healthHelper: HealthHelper, traderHelper: TraderHelper, insuranceService: InsuranceService, inRaidHelper: InRaidHelper, applicationContext: ApplicationContext, configServer: ConfigServer);
     /**
-     * Save locationid to active profiles inraid object
+     * Save locationId to active profiles inraid object AND app context
      * @param sessionID Session id
      * @param info Register player request
      */

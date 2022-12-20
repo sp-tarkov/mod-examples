@@ -11,6 +11,9 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { RandomUtil } from "../utils/RandomUtil";
 import { OnLoad } from "../di/OnLoad";
+/**
+ * Stores flea prices for items as well as methods to interact with them
+ */
 export declare class RagfairPriceService implements OnLoad {
     protected handbookHelper: HandbookHelper;
     protected databaseServer: DatabaseServer;
@@ -24,12 +27,18 @@ export declare class RagfairPriceService implements OnLoad {
     protected generatedStaticPrices: boolean;
     protected prices: IRagfairServerPrices;
     constructor(handbookHelper: HandbookHelper, databaseServer: DatabaseServer, logger: ILogger, itemHelper: ItemHelper, presetHelper: PresetHelper, randomUtil: RandomUtil, configServer: ConfigServer);
-    onLoad(): void;
+    /**
+     * Generate static (handbook) and dynamic (prices.json) flea prices, store inside class as dictionaries
+     */
+    onLoad(): Promise<void>;
     getRoute(): string;
     /**
      * Iterate over all items of type "Item" in db and get template price, store in cache
      */
     generateStaticPrices(): void;
+    /**
+     * Create a dictionary and store prices from prices.json in it
+     */
     protected generateDynamicPrices(): void;
     /**
      * Get the dynamic price for an item. If value doesn't exist, use static (handbook0) value.
@@ -51,6 +60,10 @@ export declare class RagfairPriceService implements OnLoad {
      * @returns price in roubles
      */
     getStaticPriceForItem(itemTpl: string): number;
+    /**
+     * Get prices for all items on flea, priorities dynamic prices from prices.json, use handbook prices if missing
+     * @returns Dictionary of item tpls and rouble cost
+     */
     getAllFleaPrices(): Record<string, number>;
     /**
      * Get the percentage difference between two values
@@ -59,7 +72,18 @@ export declare class RagfairPriceService implements OnLoad {
      * @returns different in percent
      */
     protected getPriceDifference(a: number, b: number): number;
+    /**
+     * Get the rouble price for an assorts barter scheme
+     * @param barterScheme
+     * @returns Rouble price
+     */
     getBarterPrice(barterScheme: IBarterScheme[]): number;
+    /**
+     * Generate a currency cost for an item and its mods
+     * @param items Item with mods to get price for
+     * @param desiredCurrency Currency price desired in
+     * @returns cost of item in desired currency
+     */
     getDynamicOfferPrice(items: Item[], desiredCurrency: string): number;
     /**
      * Check to see if an items price is below its handbook price and adjust accoring to values set to config/ragfair.json

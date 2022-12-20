@@ -53,6 +53,12 @@ export declare class WinstonLogger implements ILogger {
     warning(data: string | Record<string, unknown>): Promise<void>;
     success(data: string | Record<string, unknown>): Promise<void>;
     info(data: string | Record<string, unknown>): Promise<void>;
+    /**
+     * Log to console text with a customisable text and background color. Background defaults to black
+     * @param data text to log
+     * @param textColor color of text
+     * @param backgroundColor color of background
+     */
     logWithColor(data: string | Record<string, unknown>, textColor: LogTextColor, backgroundColor?: LogBackgroundColor): Promise<void>;
     debug(data: string | Record<string, unknown>, onlyShowInConsole?: boolean): Promise<void>;
 }

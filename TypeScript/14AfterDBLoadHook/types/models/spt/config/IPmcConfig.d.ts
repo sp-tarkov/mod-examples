@@ -16,6 +16,7 @@ export interface IPmcConfig {
     maxVestLootTotalRub: number;
     convertIntoPmcChance: Record<string, MinMax>;
     enemyTypes: string[];
+    botRelativeLevelDeltaMax: number;
 }
 export interface PmcTypes {
     usec: string;

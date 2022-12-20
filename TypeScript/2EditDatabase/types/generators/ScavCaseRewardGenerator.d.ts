@@ -38,12 +38,6 @@ export declare class ScavCaseRewardGenerator {
      */
     protected getDbItems(): ITemplateItem[];
     /**
-     * Check if a template id has a blacklisted parent id
-     * @param tplid template id to check
-     * @returns true if item is blacklisted
-     */
-    protected itemHasBlacklistedParent(tplid: string): boolean;
-    /**
      * Pick a number of items to be rewards, the count is defined by the values in
      * @param items item pool to pick rewards from
      * @param itemFilters how the rewards should be filtered down (by item count)

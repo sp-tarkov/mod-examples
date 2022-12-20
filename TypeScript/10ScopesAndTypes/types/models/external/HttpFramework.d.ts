@@ -1,6 +1,6 @@
 /// <reference types="node" />
 import { IncomingMessage, ServerResponse } from "http";
-export declare type HandleFn = (_: string, req: IncomingMessage, resp: ServerResponse) => void;
+export type HandleFn = (_: string, req: IncomingMessage, resp: ServerResponse) => void;
 /**
  *  Associates handlers, HTTP methods and a base url to a listener using a proxy
  *  @param basePath The base path

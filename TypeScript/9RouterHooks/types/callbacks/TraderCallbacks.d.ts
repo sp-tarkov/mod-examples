@@ -8,8 +8,8 @@ export declare class TraderCallbacks extends OnLoadOnUpdate {
     protected httpResponse: HttpResponseUtil;
     protected traderController: TraderController;
     constructor(httpResponse: HttpResponseUtil, traderController: TraderController);
-    onLoad(): void;
-    onUpdate(): boolean;
+    onLoad(): Promise<void>;
+    onUpdate(): Promise<boolean>;
     getRoute(): string;
     getTraderSettings(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ITraderBase[]>;
     /**

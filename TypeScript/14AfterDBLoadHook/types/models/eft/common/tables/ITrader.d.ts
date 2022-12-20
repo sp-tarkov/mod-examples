@@ -54,8 +54,9 @@ export interface Repair {
     currency: string;
     currency_coefficient: number;
     excluded_category: string[];
+    /** Doesn't exist in client object */
     excluded_id_list: any[];
-    quality: string;
+    quality: number;
 }
 export interface ITraderAssort {
     nextResupply: number;
