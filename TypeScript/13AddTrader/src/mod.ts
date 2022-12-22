@@ -14,6 +14,7 @@ import { ITraderConfig, UpdateTime } from "@spt-aki/models/spt/config/ITraderCon
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 import { Item } from "@spt-aki/models/eft/common/tables/IItem";
 import { IDatabaseTables } from "@spt-aki/models/spt/server/IDatabaseTables";
+import { Money } from "@spt-aki/models/enums/Money";
 
 // The new trader config
 import * as baseJson from "../db/base.json";
@@ -85,37 +86,48 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
             loyal_level_items: {}
         }
 
-        // Keep reference of a few IDs
         const MILK_ID = "575146b724597720a27126d5";
-        const ROUBLE_ID = "5449016a4bdc2d6f028b456f";
+        this.addItemToAssort(assortTable, MILK_ID, true, 9999999, 1, Money.ROUBLES, 1);
 
+        return assortTable;
+    }
+
+    /**
+     * Add item to assortTable + barter scheme + loyalty level objects
+     * @param assortTable trader assorts to add to
+     * @param itemTpl items tpl to add
+     * @param unlimitedCount Can item be purchased without limit
+     * @param stackCount size of stack trader sells
+     * @param loyaltyLevel loyalty level item can be purchased at
+     * @param currencyType What currency does item sell for
+     * @param currencyValue Amount of currency item can be purchased for
+     */
+    private addItemToAssort(assortTable: ITraderAssort, itemTpl: string, unlimitedCount: boolean, stackCount: number, loyaltyLevel: number, currencyType: Money, currencyValue: number) {
         // Define item in the table
-        const newMilkItem: Item = {
-            _id: MILK_ID,
-            _tpl: MILK_ID,
+        const newItem: Item = {
+            _id: itemTpl,
+            _tpl: itemTpl,
             parentId: "hideout",
             slotId: "hideout",
             upd: {
-                UnlimitedCount: true,
-                StackObjectsCount: 999999999
+                UnlimitedCount: unlimitedCount,
+                StackObjectsCount: stackCount
             }
         };
-        assortTable.items.push(newMilkItem);
+        assortTable.items.push(newItem);
 
         // Define the item price to be 1 RUB
-        assortTable.barter_scheme[MILK_ID] = [
+        assortTable.barter_scheme[itemTpl] = [
             [
                 {
-                    count: 1,
-                    _tpl: ROUBLE_ID
+                    count: currencyValue,
+                    _tpl: currencyType
                 }
             ]
         ];
 
         // Unlockable at level 1 (from the start)
-        assortTable.loyal_level_items[MILK_ID] = 1;
-
-        return assortTable;
+        assortTable.loyal_level_items[itemTpl] = loyaltyLevel;
     }
 
     private addTraderToLocales(tables: IDatabaseTables, fullName: string, firstName: string, nickName: string, location: string, description: string)
