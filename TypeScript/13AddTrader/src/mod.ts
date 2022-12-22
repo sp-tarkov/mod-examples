@@ -13,6 +13,7 @@ import { ITraderAssort, ITraderBase } from "@spt-aki/models/eft/common/tables/IT
 import { ITraderConfig, UpdateTime } from "@spt-aki/models/spt/config/ITraderConfig";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 import { Item } from "@spt-aki/models/eft/common/tables/IItem";
+import { IDatabaseTables } from "@spt-aki/models/spt/server/IDatabaseTables";
 
 // The new trader config
 import * as baseJson from "../db/base.json";
@@ -39,7 +40,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
     public postDBLoad(container: DependencyContainer): void {
         this.logger.debug(`[${this.mod}] Delayed Loading... `);
 
-        const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
+        const databaseServer: DatabaseServer = container.resolve<DatabaseServer>("DatabaseServer");
         const jsonUtil = container.resolve<JsonUtil>("JsonUtil");
 
         // Keep a reference to the tables
@@ -52,16 +53,8 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
             questassort: undefined
         };
 
-        // For each language, add locale for the new trader
-        const locales = Object.values(tables.locales.global) as Record<string, string>[];
-        for (const locale of locales) {
-            locale[`${baseJson._id} FullName`] = baseJson.name;
-            locale[`${baseJson._id} FirstName`] = "Cat";
-            locale[`${baseJson._id} Nickname`] = baseJson.nickname;
-            locale[`${baseJson._id} Nickname`] = baseJson.nickname;
-            locale[`${baseJson._id} Location`] = baseJson.location;
-            locale[`${baseJson._id} Description`] = "This is the cat shop";
-        }
+        this.addTraderToLocales(tables, baseJson.name, "Cat", baseJson.nickname, baseJson.location, "This is the cat shop");
+
         this.logger.debug(`[${this.mod}] Delayed Loaded`);
     }
 
@@ -123,6 +116,19 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
         assortTable.loyal_level_items[MILK_ID] = 1;
 
         return assortTable;
+    }
+
+    private addTraderToLocales(tables: IDatabaseTables, fullName: string, firstName: string, nickName: string, location: string, description: string)
+    {
+        // For each language, add locale for the new trader
+        const locales = Object.values(tables.locales.global) as Record<string, string>[];
+        for (const locale of locales) {
+            locale[`${baseJson._id} FullName`] = fullName;
+            locale[`${baseJson._id} FirstName`] = firstName;
+            locale[`${baseJson._id} Nickname`] = nickName;
+            locale[`${baseJson._id} Location`] = location;
+            locale[`${baseJson._id} Description`] = description;
+        }
     }
 }
 
