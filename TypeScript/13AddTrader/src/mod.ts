@@ -42,6 +42,8 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
         this.logger.debug(`[${this.mod}] Delayed Loading... `);
 
         const databaseServer: DatabaseServer = container.resolve<DatabaseServer>("DatabaseServer");
+        const configServer: ConfigServer = container.resolve<ConfigServer>("ConfigServer");
+        const traderConfig: ITraderConfig = configServer.getConfig(ConfigTypes.TRADER);
         const jsonUtil = container.resolve<JsonUtil>("JsonUtil");
 
         // Keep a reference to the tables
@@ -51,10 +53,13 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
         tables.traders[baseJson._id] = {
             assort: this.createAssortTable(),
             base: jsonUtil.deserialize(jsonUtil.serialize(baseJson)) as ITraderBase,
-            questassort: undefined
+            questassort: {} // Empty object as trader has no assorts unlocked by quests
         };
 
         this.addTraderToLocales(tables, baseJson.name, "Cat", baseJson.nickname, baseJson.location, "This is the cat shop");
+
+        // Add item purchase threshold value (what % durability does trader stop buying items at)
+        traderConfig.durabilityPurchaseThreshhold[baseJson._id] = 60;
 
         this.logger.debug(`[${this.mod}] Delayed Loaded`);
     }
@@ -140,6 +145,17 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
             locale[`${baseJson._id} Nickname`] = nickName;
             locale[`${baseJson._id} Location`] = location;
             locale[`${baseJson._id} Description`] = description;
+        }
+    }
+
+    private addItemToLocales(tables: IDatabaseTables, itemTpl: string, name: string, shortName: string, Description: string)
+    {
+        // For each language, add locale for the new trader
+        const locales = Object.values(tables.locales.global) as Record<string, string>[];
+        for (const locale of locales) {
+            locale[`${itemTpl} Name`] = name;
+            locale[`${itemTpl} ShortName`] = shortName;
+            locale[`${itemTpl} Description`] = Description;
         }
     }
 }
