@@ -109,19 +109,23 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
     {
         // Add trader to trader table, key is the traders id
         tables.traders[traderDetailsToAdd._id] = {
-            assort: this.createAssortTable(), // assorts are the 'offers' trader sells, can be a single item (e.g. carton of milk) or multiple items as a collection (e.g. a gun)
+            assort: this.createAssortTable(tables, jsonUtil), // assorts are the 'offers' trader sells, can be a single item (e.g. carton of milk) or multiple items as a collection (e.g. a gun)
             base: jsonUtil.deserialize(jsonUtil.serialize(traderDetailsToAdd)) as ITraderBase,
-            questassort: {} // Empty object as trader has no assorts unlocked by quests
+            questassort: {
+                started: {},
+                success: {},
+                fail: {}
+            } // Empty object as trader has no assorts unlocked by quests
         };
     }
 
     /**
-     * Create assorts for trader and add milk to it
+     * Create assorts for trader and add milk and a gun to it
      * @returns ITraderAssort
      */
-    private createAssortTable(): ITraderAssort
+    private createAssortTable(tables: IDatabaseTables, jsonUtil: JsonUtil): ITraderAssort
     {
-        // Assort table
+        // Create a blank assort object, ready to have items added
         const assortTable: ITraderAssort = {
             nextResupply: 0,
             items: [],
@@ -130,18 +134,23 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
         }
 
         const MILK_ID = "575146b724597720a27126d5"; // Can find item ids in `database\templates\items.json`
+        // View function documentation for what all the parameters are
         this.addSingleItemToAssort(assortTable, MILK_ID, true, 9999999, 1, Money.ROUBLES, 1);
+
+        // Get the mp133 preset and add to the traders assort (Could make your own Items[] array, doesnt have to be presets)
+        const mp133GunPreset = tables.globals.ItemPresets["584148f2245977598f1ad387"]._items;
+        this.addCollectionToAssort(jsonUtil, assortTable, mp133GunPreset, false, 5, 1, Money.ROUBLES, 500);
 
         return assortTable;
     }
 
     /**
      * Add item to assortTable + barter scheme + loyalty level objects
-     * @param assortTable trader assorts to add to
-     * @param itemTpl items tpl to add
-     * @param unlimitedCount Can item be purchased without limit
-     * @param stackCount size of stack trader sells
-     * @param loyaltyLevel loyalty level item can be purchased at
+     * @param assortTable trader assorts to add item to
+     * @param itemTpl Items tpl to add to traders assort
+     * @param unlimitedCount Can an unlimited number of this item be purchased from trader
+     * @param stackCount Total size of item stack trader sells
+     * @param loyaltyLevel Loyalty level item can be purchased at
      * @param currencyType What currency does item sell for
      * @param currencyValue Amount of currency item can be purchased for
      */
@@ -160,7 +169,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
         };
         assortTable.items.push(newItem);
 
-        // Define the item price to be 1 RUB
+        // Barter scheme holds the cost of the item + the currency needed (doesnt need to be currency, can be any item, this is how barter traders are made)
         assortTable.barter_scheme[itemTpl] = [
             [
                 {
@@ -170,8 +179,49 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
             ]
         ];
 
-        // Unlockable at level 1 (from the start)
+        // Set loyalty level needed to unlock item
         assortTable.loyal_level_items[itemTpl] = loyaltyLevel;
+    }
+
+    /**
+     * Add a complex item to trader assort (item with child items)
+     * @param assortTable trader assorts to add items to
+     * @param jsonUtil JSON utility class
+     * @param items Items array to add to assort
+     * @param unlimitedCount Can an unlimited number of this item be purchased from trader
+     * @param stackCount Total size of item stack trader sells
+     * @param loyaltyLevel Loyalty level item can be purchased at
+     * @param currencyType What currency does item sell for
+     * @param currencyValue Amount of currency item can be purchased for
+     */
+    private addCollectionToAssort(jsonUtil: JsonUtil, assortTable: ITraderAssort, items: Item[], unlimitedCount: boolean, stackCount: number, loyaltyLevel: number, currencyType: Money, currencyValue: number): void
+    {
+        // Deserialize and serialize to ensure we dont alter the original data
+        const collectionToAdd = jsonUtil.deserialize(jsonUtil.serialize(items));
+
+        // Update item base with values needed to make item sellable by trader
+        collectionToAdd[0].upd = {
+            UnlimitedCount: unlimitedCount,
+            StackObjectsCount: stackCount
+        }
+        collectionToAdd[0].parentId = "hideout";
+        collectionToAdd[0].slotId = "hideout";
+
+        // Push all the items into the traders assort table
+        assortTable.items.push(...collectionToAdd);
+
+        // Barter scheme holds the cost of the item + the currency needed (doesnt need to be currency, can be any item, this is how barter traders are made)
+        assortTable.barter_scheme[collectionToAdd[0]._id] = [
+            [
+                {
+                    count: currencyValue,
+                    _tpl: currencyType
+                }
+            ]
+        ];
+
+        // Set loyalty level needed to unlock item
+        assortTable.loyal_level_items[collectionToAdd[0]._id] = loyaltyLevel;
     }
 
     /**
