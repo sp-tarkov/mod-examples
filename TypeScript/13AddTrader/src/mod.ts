@@ -16,7 +16,7 @@ import { Item } from "@spt-aki/models/eft/common/tables/IItem";
 import { IDatabaseTables } from "@spt-aki/models/spt/server/IDatabaseTables";
 import { Money } from "@spt-aki/models/enums/Money";
 
-// The new trader config
+// New trader settings
 import * as baseJson from "../db/base.json";
 
 class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
@@ -24,65 +24,103 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
     logger: ILogger
 
     constructor() {
-        this.mod = "13AddTrader";
+        this.mod = "13AddTrader"; // Set name of mod so we can log it to console later
     }
 
+    /**
+     * Some work needs to be done prior to SPT code being loaded, registering the profile image + setting trader update time inside the trader config json
+     * @param container Dependency container
+     */
     public preAkiLoad(container: DependencyContainer): void {
         this.logger = container.resolve<ILogger>("WinstonLogger");
-        this.logger.debug(`[${this.mod}] Loading... `);
+        this.logger.debug(`[${this.mod}] preAki Loading... `);
+
+        const preAkiModLoader: PreAkiModLoader = container.resolve<PreAkiModLoader>("PreAkiModLoader");
+        const imageRouter: ImageRouter = container.resolve<ImageRouter>("ImageRouter");
+        const configServer = container.resolve<ConfigServer>("ConfigServer");
+        const traderConfig: ITraderConfig = configServer.getConfig<ITraderConfig>(ConfigTypes.TRADER);
         
-        this.registerProfileImage(container);
+        this.registerProfileImage(preAkiModLoader, imageRouter);
         
-        this.setupTraderUpdateTime(container);
+        this.setupTraderUpdateTime(traderConfig);
         
-        this.logger.debug(`[${this.mod}] Loaded`);
+        this.logger.debug(`[${this.mod}] preAki Loaded`);
     }
     
+    /**
+     * Majority of trader-related work occurs after the aki database has been loaded but prior to SPT code being run
+     * @param container Dependency container
+     */
     public postDBLoad(container: DependencyContainer): void {
-        this.logger.debug(`[${this.mod}] Delayed Loading... `);
+        this.logger.debug(`[${this.mod}] postDb Loading... `);
 
+        // Resolve SPT classes we'll use
         const databaseServer: DatabaseServer = container.resolve<DatabaseServer>("DatabaseServer");
         const configServer: ConfigServer = container.resolve<ConfigServer>("ConfigServer");
         const traderConfig: ITraderConfig = configServer.getConfig(ConfigTypes.TRADER);
-        const jsonUtil = container.resolve<JsonUtil>("JsonUtil");
+        const jsonUtil: JsonUtil = container.resolve<JsonUtil>("JsonUtil");
 
-        // Keep a reference to the tables
+        // Get a reference to the database tables
         const tables = databaseServer.getTables();
 
-        // Add the new trader to the trader lists in DatabaseServer
-        tables.traders[baseJson._id] = {
-            assort: this.createAssortTable(),
-            base: jsonUtil.deserialize(jsonUtil.serialize(baseJson)) as ITraderBase,
-            questassort: {} // Empty object as trader has no assorts unlocked by quests
-        };
+        // Add new trader to the trader dictionary in DatabaseServer
+        this.addTraderToDb(baseJson, tables, jsonUtil);
 
         this.addTraderToLocales(tables, baseJson.name, "Cat", baseJson.nickname, baseJson.location, "This is the cat shop");
 
         // Add item purchase threshold value (what % durability does trader stop buying items at)
         traderConfig.durabilityPurchaseThreshhold[baseJson._id] = 60;
 
-        this.logger.debug(`[${this.mod}] Delayed Loaded`);
+        this.logger.debug(`[${this.mod}] postDb Loaded`);
     }
 
-    private registerProfileImage(container: DependencyContainer): void {
+    /**
+     * Add profile picture to our trader
+     * @param preAkiModLoader mod loader class - used to get the mods file path
+     * @param imageRouter image router class - used to register the trader image path so we see their image on trader page
+     */
+    private registerProfileImage(preAkiModLoader: PreAkiModLoader, imageRouter: ImageRouter): void
+    {
         // Reference the mod "res" folder
-        const preAkiModLoader = container.resolve<PreAkiModLoader>("PreAkiModLoader");
         const imageFilepath = `./${preAkiModLoader.getModPath(this.mod)}res`;
 
-        // Register route pointing to the profile picture
-        const imageRouter = container.resolve<ImageRouter>("ImageRouter");
+        // Register a route to point to the profile picture
         imageRouter.addRoute(baseJson.avatar.replace(".jpg", ""), `${imageFilepath}/cat.jpg`);
     }
 
-    private setupTraderUpdateTime(container: DependencyContainer): void {
-        // Add refresh time in seconds when Config server allows to set configs
-        const configServer = container.resolve<ConfigServer>("ConfigServer");
-        const traderConfig = configServer.getConfig<ITraderConfig>(ConfigTypes.TRADER);
-        const traderRefreshConfig: UpdateTime = { traderId: baseJson._id, seconds: 3600 }
-        traderConfig.updateTime.push(traderRefreshConfig);
+    /**
+     * Add record to trader config to set the refresh time of trader in seconds (default is 60 minutes)
+     * @param traderConfig trader config to add our trader to
+     */
+    private setupTraderUpdateTime(traderConfig: ITraderConfig): void
+    {
+        // Add refresh time in seconds to config
+        const traderRefreshRecord: UpdateTime = { traderId: baseJson._id, seconds: 3600 }
+        traderConfig.updateTime.push(traderRefreshRecord);
     }
 
-    private createAssortTable(): ITraderAssort {
+    /**
+     * Add our new trader to the database
+     * @param traderDetailsToAdd trader details
+     * @param tables database
+     * @param jsonUtil json utility class
+     */
+    private addTraderToDb(traderDetailsToAdd: any, tables: IDatabaseTables, jsonUtil: JsonUtil): void
+    {
+        // Add trader to trader table, key is the traders id
+        tables.traders[traderDetailsToAdd._id] = {
+            assort: this.createAssortTable(), // assorts are the 'offers' trader sells, can be a single item (e.g. carton of milk) or multiple items as a collection (e.g. a gun)
+            base: jsonUtil.deserialize(jsonUtil.serialize(traderDetailsToAdd)) as ITraderBase,
+            questassort: {} // Empty object as trader has no assorts unlocked by quests
+        };
+    }
+
+    /**
+     * Create assorts for trader and add milk to it
+     * @returns ITraderAssort
+     */
+    private createAssortTable(): ITraderAssort
+    {
         // Assort table
         const assortTable: ITraderAssort = {
             nextResupply: 0,
@@ -91,8 +129,8 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
             loyal_level_items: {}
         }
 
-        const MILK_ID = "575146b724597720a27126d5";
-        this.addItemToAssort(assortTable, MILK_ID, true, 9999999, 1, Money.ROUBLES, 1);
+        const MILK_ID = "575146b724597720a27126d5"; // Can find item ids in `database\templates\items.json`
+        this.addSingleItemToAssort(assortTable, MILK_ID, true, 9999999, 1, Money.ROUBLES, 1);
 
         return assortTable;
     }
@@ -107,7 +145,8 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
      * @param currencyType What currency does item sell for
      * @param currencyValue Amount of currency item can be purchased for
      */
-    private addItemToAssort(assortTable: ITraderAssort, itemTpl: string, unlimitedCount: boolean, stackCount: number, loyaltyLevel: number, currencyType: Money, currencyValue: number) {
+    private addSingleItemToAssort(assortTable: ITraderAssort, itemTpl: string, unlimitedCount: boolean, stackCount: number, loyaltyLevel: number, currencyType: Money, currencyValue: number)
+    {
         // Define item in the table
         const newItem: Item = {
             _id: itemTpl,
@@ -135,6 +174,15 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
         assortTable.loyal_level_items[itemTpl] = loyaltyLevel;
     }
 
+    /**
+     * Add traders name/location/description to the locale table
+     * @param tables database tables
+     * @param fullName fullname of trader
+     * @param firstName first name of trader
+     * @param nickName nickname of trader
+     * @param location location of trader
+     * @param description description of trader
+     */
     private addTraderToLocales(tables: IDatabaseTables, fullName: string, firstName: string, nickName: string, location: string, description: string)
     {
         // For each language, add locale for the new trader
