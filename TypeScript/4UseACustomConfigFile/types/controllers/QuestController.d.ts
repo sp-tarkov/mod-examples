@@ -95,13 +95,13 @@ export declare class QuestController {
      */
     completeQuest(pmcData: IPmcData, body: ICompleteQuestRequestData, sessionID: string): IItemEventRouterResponse;
     /**
-     * Send a popup to player on completion of a quest
+     * Send a popup to player on successful completion of a quest
      * @param sessionID session id
-     * @param pmcData player profile
-     * @param completedQuestId completed quest id
-     * @param questRewards rewards given to player
+     * @param pmcData Player profile
+     * @param completedQuestId Completed quest id
+     * @param questRewards Rewards given to player
      */
-    protected sendDialogMessageOnQuestComplete(sessionID: string, pmcData: IPmcData, completedQuestId: string, questRewards: Reward[]): void;
+    protected sendSuccessDialogMessageOnQuestComplete(sessionID: string, pmcData: IPmcData, completedQuestId: string, questRewards: Reward[]): void;
     /**
      * Returns a list of quests that should be failed when a quest is completed
      * @param completedQuestId quest completed id

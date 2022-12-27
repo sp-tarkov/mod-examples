@@ -44,6 +44,7 @@ export declare class InRaidHelper {
      * @returns Reset profile object
      */
     updateProfileBaseStats(profileData: IPmcData, saveProgressRequest: ISaveProgressRequestData, sessionID: string): IPmcData;
+    protected transferPostRaidLimbEffectsToProfile(saveProgressRequest: ISaveProgressRequestData, profileData: IPmcData): void;
     /**
      * Some maps have one-time-use keys (e.g. Labs
      * Remove the relevant key from an inventory based on the post-raid request data passed in

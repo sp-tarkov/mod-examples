@@ -27,7 +27,7 @@ export declare class HealthController {
      * @param sessionID
      * @param addEffects Should effects found be added or removed from profile
      */
-    saveVitality(pmcData: IPmcData, info: ISyncHealthRequestData, sessionID: string, addEffects?: boolean): void;
+    saveVitality(pmcData: IPmcData, info: ISyncHealthRequestData, sessionID: string, addEffects?: boolean, deleteExistingEffects?: boolean): void;
     /**
      * When healing in menu
      * @param pmcData
@@ -40,9 +40,16 @@ export declare class HealthController {
     /**
      * Occurs on post-raid healing page
      * @param pmcData player profile
-     * @param info Request data from client
+     * @param healthTreatmentRequest Request data from client
      * @param sessionID Session id
      * @returns
      */
-    healthTreatment(pmcData: IPmcData, info: IHealthTreatmentRequestData, sessionID: string): IItemEventRouterResponse;
+    healthTreatment(pmcData: IPmcData, healthTreatmentRequest: IHealthTreatmentRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * iterate over treatment request diff and find effects to remove from player limbs
+     * @param sessionId
+     * @param profile Profile to update
+     * @param treatmentRequest client request
+     */
+    protected removeEffectsAfterPostRaidHeal(sessionId: string, profile: IPmcData, treatmentRequest: IHealthTreatmentRequestData): void;
 }

@@ -43,6 +43,17 @@ export declare class InventoryHelper {
     protected configServer: ConfigServer;
     protected inventoryConfig: IInventoryConfig;
     constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, httpResponse: HttpResponseUtil, fenceService: FenceService, databaseServer: DatabaseServer, paymentHelper: PaymentHelper, traderAssortHelper: TraderAssortHelper, dialogueHelper: DialogueHelper, itemHelper: ItemHelper, containerHelper: ContainerHelper, profileHelper: ProfileHelper, localisationService: LocalisationService, configServer: ConfigServer);
+    /**
+     * BUG: Passing the same item multiple times with a count of 1 will cause multiples of that item to be added (e.g. x3 separate objects of tar cola with count of 1 = 9 tarcolas being added to inventory)
+     * @param pmcData Profile to add items to
+     * @param body request data to add items
+     * @param output response to send back to client
+     * @param sessionID Session id
+     * @param callback
+     * @param foundInRaid Will results added to inventory be set as found in raid
+     * @param addUpd Additional upd propertys for items being added to inventory
+     * @returns IItemEventRouterResponse
+     */
     addItem(pmcData: IPmcData, body: IAddItemRequestData, output: IItemEventRouterResponse, sessionID: string, callback: any, foundInRaid?: boolean, addUpd?: any): IItemEventRouterResponse;
     removeItem(pmcData: IPmcData, itemId: string, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
     removeItemByCount(pmcData: IPmcData, itemId: string, count: number, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
