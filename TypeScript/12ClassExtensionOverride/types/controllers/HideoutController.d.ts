@@ -16,6 +16,7 @@ import { IHideoutTakeItemOutRequestData } from "../models/eft/hideout/IHideoutTa
 import { IHideoutTakeProductionRequestData } from "../models/eft/hideout/IHideoutTakeProductionRequestData";
 import { IHideoutToggleAreaRequestData } from "../models/eft/hideout/IHideoutToggleAreaRequestData";
 import { IHideoutUpgradeRequestData } from "../models/eft/hideout/IHideoutUpgradeRequestData";
+import { IQteData } from "../models/eft/hideout/IQteData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IHideoutConfig } from "../models/spt/config/IHideoutConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
@@ -102,5 +103,12 @@ export declare class HideoutController {
      */
     protected handleScavCase(sessionID: string, pmcData: IPmcData, body: IHideoutTakeProductionRequestData, output: IItemEventRouterResponse): IItemEventRouterResponse;
     registerProduction(pmcData: IPmcData, body: IHideoutSingleProductionStartRequestData | IHideoutContinousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Get quick time event list for hideout
+     * // TODO - implement this
+     * @param sessionId Session id
+     * @returns IQteData array
+    */
+    getQteList(sessionId: string): IQteData[];
     update(): void;
 }

@@ -33,10 +33,14 @@ export declare class RagfairCallbacks extends OnLoadOnUpdate {
     getRoute(): string;
     search(url: string, info: ISearchRequestData, sessionID: string): IGetBodyResponseData<IGetOffersResult>;
     getMarketPrice(url: string, info: IGetMarketPriceRequestData, sessionID: string): IGetBodyResponseData<IGetItemPriceResult>;
-    getItemPrices(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<Record<string, number>>;
     addOffer(pmcData: IPmcData, info: IAddOfferRequestData, sessionID: string): IItemEventRouterResponse;
     removeOffer(pmcData: IPmcData, info: IRemoveOfferRequestData, sessionID: string): IItemEventRouterResponse;
     extendOffer(pmcData: IPmcData, info: IExtendOfferRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Handle /client/items/prices
+     * Called when clicking an item to list on flea
+     */
+    getFleaPrices(url: string, request: IEmptyRequestData, sessionID: string): IGetBodyResponseData<Record<string, number>>;
     onUpdate(timeSinceLastRun: number): Promise<boolean>;
     sendReport(url: string, info: ISendRagfairReportRequestData, sessionID: string): INullResponseData;
 }

@@ -98,7 +98,8 @@ export interface Location {
     y: number;
     r: string | number;
     isSearched?: boolean;
-    rotation?: string;
+    /** SPT property? */
+    rotation?: string | boolean;
 }
 export interface SideEffect {
     Value: number;

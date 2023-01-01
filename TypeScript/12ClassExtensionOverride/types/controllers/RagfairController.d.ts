@@ -115,6 +115,7 @@ export declare class RagfairController {
     addPlayerOffer(pmcData: IPmcData, info: IAddOfferRequestData, sessionID: string): IItemEventRouterResponse;
     createPlayerOffer(profile: IAkiProfile, requirements: Requirement[], items: Item[], sellInOnePiece: boolean, amountToSend: number): IRagfairOffer;
     getAllFleaPrices(): Record<string, number>;
+    getStaticPrices(): Record<string, number>;
     removeOffer(offerId: string, sessionID: string): IItemEventRouterResponse;
     extendOffer(info: IExtendOfferRequestData, sessionID: string): IItemEventRouterResponse;
 }

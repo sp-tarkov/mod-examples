@@ -65,6 +65,7 @@ export declare class RagfairPriceService implements OnLoad {
      * @returns Dictionary of item tpls and rouble cost
      */
     getAllFleaPrices(): Record<string, number>;
+    getAllStaticPrices(): Record<string, number>;
     /**
      * Get the percentage difference between two values
      * @param a numerical value a
