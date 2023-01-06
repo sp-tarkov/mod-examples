@@ -89,9 +89,10 @@ export declare class BotWeaponGenerator {
     /**
      * Checks if all required slots are occupied on a weapon and all it's mods
      * @param weaponItemArray Weapon + mods
+     * @param botRole role of bot weapon is for
      * @returns true if valid
      */
-    protected isWeaponValid(weaponItemArray: Item[]): boolean;
+    protected isWeaponValid(weaponItemArray: Item[], botRole: string): boolean;
     /**
      * Generates extra magazines or bullets (if magazine is internal) and adds them to TacticalVest and Pockets.
      * Additionally, adds extra bullets to SecuredContainer

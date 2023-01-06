@@ -120,4 +120,14 @@ export declare class HideoutHelper {
     protected getHideoutManagementConsumptionBonus(pmcData: IPmcData): number;
     isProduction(productive: Productive): productive is Production;
     getBTC(pmcData: IPmcData, body: IHideoutTakeProductionRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Upgrade hideout wall from starting level to interactable level if enough time has passed
+     * @param pmcProfile Profile to upgrade wall in
+     */
+    unlockHideoutWallInProfile(pmcProfile: IPmcData): void;
+    /**
+     * Iterate over hideout improvements not completed and check if they need to be adjusted
+     * @param pmcProfile Profile to adjust
+     */
+    setHideoutImprovementsToCompleted(pmcProfile: IPmcData): void;
 }

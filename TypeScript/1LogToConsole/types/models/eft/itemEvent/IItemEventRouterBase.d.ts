@@ -22,6 +22,8 @@ export interface ProfileChange {
     builds: BuildChange[];
     items: ItemChanges;
     production: Record<string, Production>;
+    /** Hideout area improvement id */
+    improvements: Record<string, Improvement>;
     skills: Skills;
     traderRelations: Record<string, TraderRelations>;
     repeatableQuests?: IPmcDataRepeatableQuest[];
@@ -44,6 +46,10 @@ export interface Production {
     inProgress: boolean;
     RecipeId: string;
     Products: Product[];
+}
+export interface Improvement {
+    completed: boolean;
+    improveCompleteTimestamp: number;
 }
 export interface Product {
     _id: string;

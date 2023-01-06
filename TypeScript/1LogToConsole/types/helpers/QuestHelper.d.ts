@@ -194,4 +194,10 @@ export declare class QuestHelper {
      * @returns 'FindItem' condition id
      */
     getFindItemIdForQuestHandIn(itemTpl: string): string;
+    /**
+     * Add All quests to a profile with the provided statuses
+     * @param pmcProfile profile to update
+     * @param statuses statuses quests should have
+     */
+    addAllQuestsToProfile(pmcProfile: IPmcData, statuses: QuestStatus[]): void;
 }

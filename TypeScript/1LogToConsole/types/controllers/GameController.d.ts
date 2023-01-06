@@ -1,4 +1,5 @@
 import { ApplicationContext } from "../context/ApplicationContext";
+import { HideoutHelper } from "../helpers/HideoutHelper";
 import { HttpServerHelper } from "../helpers/HttpServerHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { PreAkiModLoader } from "../loaders/PreAkiModLoader";
@@ -16,11 +17,14 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { LocalisationService } from "../services/LocalisationService";
 import { ProfileFixerService } from "../services/ProfileFixerService";
 import { SeasonalEventService } from "../services/SeasonalEventService";
+import { TimeUtil } from "../utils/TimeUtil";
 export declare class GameController {
     protected logger: ILogger;
     protected databaseServer: DatabaseServer;
+    protected timeUtil: TimeUtil;
     protected preAkiModLoader: PreAkiModLoader;
     protected httpServerHelper: HttpServerHelper;
+    protected hideoutHelper: HideoutHelper;
     protected profileHelper: ProfileHelper;
     protected profileFixerService: ProfileFixerService;
     protected localisationService: LocalisationService;
@@ -29,7 +33,7 @@ export declare class GameController {
     protected configServer: ConfigServer;
     protected httpConfig: IHttpConfig;
     protected coreConfig: ICoreConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, preAkiModLoader: PreAkiModLoader, httpServerHelper: HttpServerHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, seasonalEventService: SeasonalEventService, applicationContext: ApplicationContext, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, timeUtil: TimeUtil, preAkiModLoader: PreAkiModLoader, httpServerHelper: HttpServerHelper, hideoutHelper: HideoutHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, seasonalEventService: SeasonalEventService, applicationContext: ApplicationContext, configServer: ConfigServer);
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
     /**
      * Get a list of installed mods and save their details to the profile being used

@@ -15,6 +15,7 @@ export interface IQuest {
     image: string;
     type: string;
     isKey: boolean;
+    questStatus: any;
     restartable: boolean;
     instantComplete: boolean;
     secretQuest: boolean;
@@ -43,6 +44,7 @@ export interface AvailableForProps {
     id: string;
     index: number;
     parentId: string;
+    isEncoded: boolean;
     dynamicLocale: boolean;
     value?: number;
     compareMethod?: string;

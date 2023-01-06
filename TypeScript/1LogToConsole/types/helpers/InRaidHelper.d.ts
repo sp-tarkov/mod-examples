@@ -44,6 +44,11 @@ export declare class InRaidHelper {
      * @returns Reset profile object
      */
     updateProfileBaseStats(profileData: IPmcData, saveProgressRequest: ISaveProgressRequestData, sessionID: string): IPmcData;
+    /**
+     * Take body part effects from client profile and apply to server profile
+     * @param saveProgressRequest post-raid request
+     * @param profileData player profile on server
+     */
     protected transferPostRaidLimbEffectsToProfile(saveProgressRequest: ISaveProgressRequestData, profileData: IPmcData): void;
     /**
      * Some maps have one-time-use keys (e.g. Labs

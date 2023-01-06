@@ -7,7 +7,9 @@ import { ProfileHelper } from "../helpers/ProfileHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { HideoutArea, Product } from "../models/eft/common/tables/IBotBase";
 import { HideoutUpgradeCompleteRequestData } from "../models/eft/hideout/HideoutUpgradeCompleteRequestData";
+import { IHandleQTEEventRequestData } from "../models/eft/hideout/IHandleQTEEventRequestData";
 import { IHideoutContinousProductionStartRequestData } from "../models/eft/hideout/IHideoutContinousProductionStartRequestData";
+import { IHideoutImproveAreaRequestData } from "../models/eft/hideout/IHideoutImproveAreaRequestData";
 import { IHideoutProduction } from "../models/eft/hideout/IHideoutProduction";
 import { IHideoutPutItemInRequestData } from "../models/eft/hideout/IHideoutPutItemInRequestData";
 import { IHideoutScavCaseStartRequestData } from "../models/eft/hideout/IHideoutScavCaseStartRequestData";
@@ -16,6 +18,8 @@ import { IHideoutTakeItemOutRequestData } from "../models/eft/hideout/IHideoutTa
 import { IHideoutTakeProductionRequestData } from "../models/eft/hideout/IHideoutTakeProductionRequestData";
 import { IHideoutToggleAreaRequestData } from "../models/eft/hideout/IHideoutToggleAreaRequestData";
 import { IHideoutUpgradeRequestData } from "../models/eft/hideout/IHideoutUpgradeRequestData";
+import { IQteData } from "../models/eft/hideout/IQteData";
+import { IRecordShootingRangePoints } from "../models/eft/hideout/IRecordShootingRangePoints";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IHideoutConfig } from "../models/spt/config/IHideoutConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
@@ -102,5 +106,35 @@ export declare class HideoutController {
      */
     protected handleScavCase(sessionID: string, pmcData: IPmcData, body: IHideoutTakeProductionRequestData, output: IItemEventRouterResponse): IItemEventRouterResponse;
     registerProduction(pmcData: IPmcData, body: IHideoutSingleProductionStartRequestData | IHideoutContinousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Get quick time event list for hideout
+     * // TODO - implement this
+     * @param sessionId Session id
+     * @returns IQteData array
+    */
+    getQteList(sessionId: string): IQteData[];
+    /**
+     * Handle HideoutQuickTimeEvent on client/game/profile/items/moving
+     * Called after completing workout at gym
+     * @param sessionId Session id
+     * @param pmcData Profile to adjust
+     * @param request QTE result object
+     */
+    handleQTEEventOutcome(sessionId: string, pmcData: IPmcData, request: IHandleQTEEventRequestData): IItemEventRouterResponse;
+    /**
+     * Record a high score from the shooting range into a player profiles overallcounters
+     * @param sessionId Session id
+     * @param pmcData Profile to update
+     * @param request shooting range score request
+     * @returns IItemEventRouterResponse
+     */
+    recordShootingRangePoints(sessionId: string, pmcData: IPmcData, request: IRecordShootingRangePoints): IItemEventRouterResponse;
+    /**
+     * Handle client/game/profile/items/moving - HideoutImproveArea
+     * @param sessionId Session id
+     * @param pmcData profile to improve area in
+     * @param request improve area request data
+     */
+    improveArea(sessionId: string, pmcData: IPmcData, request: IHideoutImproveAreaRequestData): IItemEventRouterResponse;
     update(): void;
 }
