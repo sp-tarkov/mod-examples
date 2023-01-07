@@ -59,6 +59,9 @@ export declare class SeasonalEventService {
      * @param eventName Name of the event to enable. e.g. Christmas
      */
     protected updateGlobalEvents(globalConfig: Config, eventName: string): void;
+    /**
+     * Add lootble items from backpack into patrol.ITEMS_TO_DROP difficulty property
+     */
     protected addLootItemsToGifterDropItemsList(): void;
     /**
      * Read in data from seasonalEvents.json and add found equipment items to bots
