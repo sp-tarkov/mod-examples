@@ -238,14 +238,15 @@ export declare class RepeatableQuestController {
     probabilityObjectArray<K, V>(configArrayInput: ProbabilityObject<K, V>[]): ProbabilityObjectArray<K, V>;
     changeRepeatableQuest(pmcDataIn: IPmcData, body: IRepeatableQuestChangeRequest, sessionID: string): IItemEventRouterResponse;
     /**
-     * Picks rewardable items from items.json. This means they need to fit into the inventory and they shouldn't be keys (debatable)
-     * @returns     a list of rewardable items [[_tpl, itemTemplate],...]
+    * Picks rewardable items from items.json. This means they need to fit into the inventory and they shouldn't be keys (debatable)
+     * @param repeatableQuestConfig config file
+     * @returns a list of rewardable items [[_tpl, itemTemplate],...]
      */
     protected getRewardableItems(repeatableQuestConfig: IRepeatableQuestConfig): [string, ITemplateItem][];
     /**
      * Checks if an id is a valid item. Valid meaning that it's an item that may be a reward
      * or content of bot loot. Items that are tested as valid may be in a player backpack or stash.
-     * @param {*} tpl template id of item to check
+     * @param {string} tpl template id of item to check
      * @returns boolean: true if item is valid reward
      */
     isValidRewardItem(tpl: string, repeatableQuestConfig: IRepeatableQuestConfig): boolean;

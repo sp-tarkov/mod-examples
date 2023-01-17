@@ -7,6 +7,8 @@ export interface ILocationConfig extends IBaseConfig {
     customWaves: CustomWaves;
     /** Open zones to add to map */
     openZones: Record<string, string[]>;
+    /** Key = map id, value = item tpls that should only have one forced loot spawn position */
+    forcedLootSingleSpawnById: Record<string, string[]>;
 }
 export interface CustomWaves {
     boss: Record<string, BossLocationSpawn[]>;

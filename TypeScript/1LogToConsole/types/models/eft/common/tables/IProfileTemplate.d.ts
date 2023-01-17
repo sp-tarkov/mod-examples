@@ -20,6 +20,7 @@ export interface TemplateSide {
 export interface ProfileTraderTemplate {
     initialLoyaltyLevel: number;
     setQuestsAvailableForStart?: boolean;
+    setQuestsAvailableForFinish?: boolean;
     initialStanding: number;
     initialSalesSum: number;
     jaegerUnlocked: boolean;

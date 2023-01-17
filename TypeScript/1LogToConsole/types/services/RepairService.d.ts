@@ -1,3 +1,4 @@
+import { ItemHelper } from "../helpers/ItemHelper";
 import { QuestHelper } from "../helpers/QuestHelper";
 import { RepairHelper } from "../helpers/RepairHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
@@ -16,12 +17,13 @@ export declare class RepairService {
     protected logger: ILogger;
     protected databaseServer: DatabaseServer;
     protected questHelper: QuestHelper;
+    protected itemHelper: ItemHelper;
     protected traderHelper: TraderHelper;
     protected paymentService: PaymentService;
     protected repairHelper: RepairHelper;
     protected configServer: ConfigServer;
     repairConfig: IRepairConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, questHelper: QuestHelper, traderHelper: TraderHelper, paymentService: PaymentService, repairHelper: RepairHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, questHelper: QuestHelper, itemHelper: ItemHelper, traderHelper: TraderHelper, paymentService: PaymentService, repairHelper: RepairHelper, configServer: ConfigServer);
     /**
      * Use trader to repair an items durability
      * @param sessionID Session id
@@ -70,4 +72,6 @@ export declare class RepairDetails {
     repairCost?: number;
     repairedItem: Item;
     repairedItemIsArmor: boolean;
+    repairAmount: number;
+    repairedByKit: boolean;
 }

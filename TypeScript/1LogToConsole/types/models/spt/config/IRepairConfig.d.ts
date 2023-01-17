@@ -4,4 +4,5 @@ export interface IRepairConfig extends IBaseConfig {
     priceMultiplier: number;
     applyRandomizeDurabilityLoss: boolean;
     weaponSkillRepairGain: number;
+    armorKitSkillPointGainPerRepairPointMultiplier: number;
 }

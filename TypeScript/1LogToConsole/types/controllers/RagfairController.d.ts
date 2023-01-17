@@ -103,6 +103,11 @@ export declare class RagfairController {
      * @param profile full profile of player
      */
     protected setTraderOfferPurchaseLimits(offer: IRagfairOffer, profile: IAkiProfile): void;
+    /**
+     * Adjust ragfair offer stack count to match same value as traders assort stack count
+     * @param offer Flea offer to adjust
+     */
+    protected setTraderOfferStackSize(offer: IRagfairOffer): void;
     protected isLinkedSearch(info: ISearchRequestData): boolean;
     protected isRequiredSearch(info: ISearchRequestData): boolean;
     update(): void;

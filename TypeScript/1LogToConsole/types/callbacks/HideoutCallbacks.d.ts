@@ -24,34 +24,18 @@ export declare class HideoutCallbacks extends OnUpdate {
     configServer: ConfigServer);
     /**
      * Handle HideoutUpgrade
-     * @param pmcData
-     * @param body
-     * @param sessionID
-     * @returns
      */
     upgrade(pmcData: IPmcData, body: IHideoutUpgradeRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * Handle HideoutUpgradeComplete
-     * @param pmcData
-     * @param body
-     * @param sessionID
-     * @returns
      */
     upgradeComplete(pmcData: IPmcData, body: IHideoutUpgradeCompleteRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * Handle HideoutPutItemsInAreaSlots
-     * @param pmcData
-     * @param body
-     * @param sessionID
-     * @returns
      */
     putItemsInAreaSlots(pmcData: IPmcData, body: IHideoutPutItemInRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * Handle HideoutTakeItemsFromAreaSlots
-     * @param pmcData
-     * @param body
-     * @param sessionID
-     * @returns
      */
     takeItemsFromAreaSlots(pmcData: IPmcData, body: IHideoutTakeItemOutRequestData, sessionID: string): IItemEventRouterResponse;
     /**

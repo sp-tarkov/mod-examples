@@ -27,10 +27,10 @@ export declare class TradeHelper {
     constructor(logger: ILogger, eventOutputHolder: EventOutputHolder, traderHelper: TraderHelper, itemHelper: ItemHelper, paymentService: PaymentService, fenceService: FenceService, inventoryHelper: InventoryHelper, ragfairServer: RagfairServer, configServer: ConfigServer);
     /**
      * Buy item from flea or trader
-     * @param pmcData
+     * @param pmcData Player profile
      * @param buyRequestData data from client
-     * @param sessionID
-     * @param foundInRaid
+     * @param sessionID Session id
+     * @param foundInRaid Should item be found in raid
      * @param upd optional item details used when buying from flea
      * @returns
      */
