@@ -7,6 +7,7 @@ export interface Item {
     upd?: Upd;
 }
 export interface Upd {
+    Buff?: Buff;
     OriginalStackObjectsCount?: number;
     Togglable?: Togglable;
     Map?: Map;
@@ -30,6 +31,12 @@ export interface Upd {
     Foldable?: Foldable;
     SideEffect?: SideEffect;
     RepairKit?: RepairKit;
+}
+export interface Buff {
+    rarity: string;
+    buffType: string;
+    value: number;
+    thresholdDurability?: number;
 }
 export interface Togglable {
     On: boolean;
@@ -98,7 +105,8 @@ export interface Location {
     y: number;
     r: string | number;
     isSearched?: boolean;
-    rotation?: string;
+    /** SPT property? */
+    rotation?: string | boolean;
 }
 export interface SideEffect {
     Value: number;

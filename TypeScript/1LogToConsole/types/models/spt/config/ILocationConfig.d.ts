@@ -2,6 +2,9 @@ import { BossLocationSpawn, Wave } from "../../../models/eft/common/ILocationBas
 import { IBaseConfig } from "./IBaseConfig";
 export interface ILocationConfig extends IBaseConfig {
     kind: "aki-location";
+    fixEmptyBotWaves: boolean;
+    fixRoguesTakingAllSpawnsOnLighthouse: boolean;
+    lighthouseRogueSpawnTimeSeconds: number;
     looseLootMultiplier: LootMultiplier;
     staticLootMultiplier: LootMultiplier;
     customWaves: CustomWaves;

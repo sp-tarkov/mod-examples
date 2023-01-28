@@ -76,7 +76,7 @@ export declare class TraderHelper {
      */
     protected getTraderDurabiltyPurchaseThreshold(traderId: string): number;
     /**
-     * Get the price of an item and all of its attached children
+     * Get the price of passed in item and all of its attached children (mods)
      * Take into account bonuses/adjsutments e.g. discounts
      * @param pmcData profile data
      * @param item item to calculate price of
@@ -94,7 +94,14 @@ export declare class TraderHelper {
      * @returns price as number
      */
     protected getRawItemPrice(pmcData: IPmcData, item: Item): number;
-    protected getTraderDiscount(trader: ITraderBase, buyPriceCoefficient: number, fenceInfo: FenceLevel, traderID: string): number;
+    /**
+     * Get discount modifier for desired trader
+     * @param trader Trader to get discount for
+     * @param buyPriceCoefficient
+     * @param fenceInfo fence info, needed if getting fence modifier value
+     * @returns discount modifier value
+     */
+    protected getTraderDiscount(trader: ITraderBase, buyPriceCoefficient: number, fenceInfo: FenceLevel): number;
     /**
      * Add standing to a trader and level them up if exp goes over level threshold
      * @param sessionID Session id

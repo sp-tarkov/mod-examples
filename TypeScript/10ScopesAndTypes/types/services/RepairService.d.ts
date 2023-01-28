@@ -1,27 +1,33 @@
+import { ItemHelper } from "../helpers/ItemHelper";
 import { QuestHelper } from "../helpers/QuestHelper";
 import { RepairHelper } from "../helpers/RepairHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
+import { WeightedRandomHelper } from "../helpers/WeightedRandomHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { Item } from "../models/eft/common/tables/IItem";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { RepairKitsInfo } from "../models/eft/repair/IRepairActionDataRequest";
 import { RepairItem } from "../models/eft/repair/ITraderRepairActionDataRequest";
-import { IRepairConfig } from "../models/spt/config/IRepairConfig";
+import { BonusSettings, IRepairConfig } from "../models/spt/config/IRepairConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { RandomUtil } from "../utils/RandomUtil";
 import { PaymentService } from "./PaymentService";
 export declare class RepairService {
     protected logger: ILogger;
     protected databaseServer: DatabaseServer;
     protected questHelper: QuestHelper;
+    protected randomUtil: RandomUtil;
+    protected itemHelper: ItemHelper;
     protected traderHelper: TraderHelper;
+    protected weightedRandomHelper: WeightedRandomHelper;
     protected paymentService: PaymentService;
     protected repairHelper: RepairHelper;
     protected configServer: ConfigServer;
     repairConfig: IRepairConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, questHelper: QuestHelper, traderHelper: TraderHelper, paymentService: PaymentService, repairHelper: RepairHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, questHelper: QuestHelper, randomUtil: RandomUtil, itemHelper: ItemHelper, traderHelper: TraderHelper, weightedRandomHelper: WeightedRandomHelper, paymentService: PaymentService, repairHelper: RepairHelper, configServer: ConfigServer);
     /**
      * Use trader to repair an items durability
      * @param sessionID Session id
@@ -65,9 +71,22 @@ export declare class RepairService {
      * @param repairKitInInventory Repair kit to update
      */
     protected addMaxResourceToKitIfMissing(repairKitDetails: ITemplateItem, repairKitInInventory: Item): void;
+    /**
+     * Chance to apply buff to an item (Armor/weapon) if repaired by armor kit
+     * @param repairDetails repair details of item
+     */
+    addBuffToItem(repairDetails: RepairDetails): void;
+    /**
+     * Add buff to item
+     * @param itemConfig weapon/armor config
+     * @param repairDetails Details for item to repair
+     */
+    protected addBuff(itemConfig: BonusSettings, repairDetails: RepairDetails): void;
 }
 export declare class RepairDetails {
     repairCost?: number;
     repairedItem: Item;
     repairedItemIsArmor: boolean;
+    repairAmount: number;
+    repairedByKit: boolean;
 }

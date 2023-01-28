@@ -236,7 +236,7 @@ export declare class RepeatableQuestController {
     generateRewardItem(tpl: string, value: number, index: number, preset?: any): IReward;
     debugLogRepeatableQuestIds(pmcData: IPmcData): void;
     probabilityObjectArray<K, V>(configArrayInput: ProbabilityObject<K, V>[]): ProbabilityObjectArray<K, V>;
-    changeRepeatableQuest(pmcDataIn: IPmcData, body: IRepeatableQuestChangeRequest, sessionID: string): IItemEventRouterResponse;
+    changeRepeatableQuest(pmcData: IPmcData, body: IRepeatableQuestChangeRequest, sessionID: string): IItemEventRouterResponse;
     /**
     * Picks rewardable items from items.json. This means they need to fit into the inventory and they shouldn't be keys (debatable)
      * @param repeatableQuestConfig config file

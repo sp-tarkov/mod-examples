@@ -1,5 +1,6 @@
 export declare enum BaseClasses {
     WEAPON = "5422acb9af1c889c16000029",
+    UBGL = "55818b014bdc2ddc698b456b",
     ARMOR = "5448e54d4bdc2dcc718b4568",
     ARMOREDEQUIPMENT = "57bef4c42459772e8d35a53b",
     HEADWEAR = "5a341c4086f77401f2541505",

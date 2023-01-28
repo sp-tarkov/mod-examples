@@ -1,5 +1,5 @@
 import { IPmcData } from "../models/eft/common/IPmcData";
-import { Common, HideoutArea, Production, Productive } from "../models/eft/common/tables/IBotBase";
+import { Common, HideoutArea, IHideoutImprovement, Production, Productive } from "../models/eft/common/tables/IBotBase";
 import { Upd } from "../models/eft/common/tables/IItem";
 import { StageBonus } from "../models/eft/hideout/IHideoutArea";
 import { IHideoutContinousProductionStartRequestData } from "../models/eft/hideout/IHideoutContinousProductionStartRequestData";
@@ -36,6 +36,7 @@ export declare class HideoutHelper {
     static waterCollector: string;
     static bitcoin: string;
     static expeditionaryFuelTank: string;
+    static maxSkillPoint: number;
     protected hideoutConfig: IHideoutConfig;
     constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, inventoryHelper: InventoryHelper, playerService: PlayerService, localisationService: LocalisationService, configServer: ConfigServer);
     registerProduction(pmcData: IPmcData, body: IHideoutSingleProductionStartRequestData | IHideoutContinousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
@@ -118,6 +119,35 @@ export declare class HideoutHelper {
     protected hasManagementSkillSlots(pmcData: IPmcData): boolean;
     protected getHideoutManagementSkill(pmcData: IPmcData): Common;
     protected getHideoutManagementConsumptionBonus(pmcData: IPmcData): number;
+    /**
+     * Get the crafting skill details from player profile
+     * @param pmcData Player profile
+     * @returns crafting skill, null if not found
+     */
+    protected getCraftingSkill(pmcData: IPmcData): Common;
+    /**
+     * Adjust craft time based on crafting skill level found in player profile
+     * @param pmcData Player profile
+     * @param productionTime Time to complete hideout craft in seconds
+     * @returns Adjusted craft time in seconds
+     */
+    protected getCraftingSkillProductionTimeReduction(pmcData: IPmcData, productionTime: number): number;
     isProduction(productive: Productive): productive is Production;
     getBTC(pmcData: IPmcData, body: IHideoutTakeProductionRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Upgrade hideout wall from starting level to interactable level if enough time has passed
+     * @param pmcProfile Profile to upgrade wall in
+     */
+    unlockHideoutWallInProfile(pmcProfile: IPmcData): void;
+    /**
+     * Hideout improvement is flagged as complete
+     * @param improvement hideout improvement object
+     * @returns true if complete
+     */
+    protected hideoutImprovementIsComplete(improvement: IHideoutImprovement): boolean;
+    /**
+     * Iterate over hideout improvements not completed and check if they need to be adjusted
+     * @param pmcProfile Profile to adjust
+     */
+    setHideoutImprovementsToCompleted(pmcProfile: IPmcData): void;
 }

@@ -84,6 +84,7 @@ export interface ModLimits {
 }
 export interface RandomisationDetails {
     levelRange: MinMax;
+    generation?: Record<string, MinMax>;
     randomisedWeaponModSlots?: string[];
     randomisedArmorSlots?: string[];
     /** Equipment chances */

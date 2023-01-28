@@ -103,6 +103,13 @@ export declare class BotWeaponGenerator {
      */
     addExtraMagazinesToInventory(generatedWeaponResult: GenerateWeaponResult, magCounts: MinMax, inventory: PmcInventory, botRole: string): void;
     /**
+     * Add Grendaes for UBGL to bots vest and secure container
+     * @param weaponMods Weapon array with mods
+     * @param generatedWeaponResult result of weapon generation
+     * @param inventory bot inventory to add grenades to
+     */
+    protected addUbglGrenadesToBotInventory(weaponMods: Item[], generatedWeaponResult: GenerateWeaponResult, inventory: PmcInventory): void;
+    /**
      * Add ammo to the secure container
      * @param stackCount How many stacks of ammo to add
      * @param ammoTpl Ammo type to add
@@ -138,6 +145,13 @@ export declare class BotWeaponGenerator {
      * @param ammoTpl
      */
     protected fillExistingMagazines(weaponMods: Item[], magazine: Item, ammoTpl: string): void;
+    /**
+     * Add desired ammo tpl as item to weaponmods array, placed as child to UBGL
+     * @param weaponMods
+     * @param ubglMod
+     * @param ubglAmmoTpl
+     */
+    protected fillUbgl(weaponMods: Item[], ubglMod: Item, ubglAmmoTpl: string): void;
     /**
      * Add cartridge item to weapon Item array, if it already exists, update
      * @param weaponMods Weapon items array to amend

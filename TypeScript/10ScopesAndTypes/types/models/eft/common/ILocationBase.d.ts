@@ -118,6 +118,7 @@ export interface BossLocationSpawn {
     TriggerName: string;
     Delay?: number;
     Supports?: BossSupport[];
+    sptId?: string;
 }
 export interface BossSupport {
     BossEscortAmount: string;
@@ -202,6 +203,7 @@ export interface Wave {
     slots_min: number;
     time_max: number;
     time_min: number;
+    sptId?: string;
 }
 export declare enum WildSpawnType {
     ASSAULT = "assault",

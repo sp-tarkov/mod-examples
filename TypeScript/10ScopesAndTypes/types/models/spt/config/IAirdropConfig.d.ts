@@ -6,6 +6,8 @@ export interface IAirdropConfig extends IBaseConfig {
     planeMinFlyHeight: number;
     planeMaxFlyHeight: number;
     planeVolume: number;
+    planeSpeed: number;
+    crateFallSpeed: number;
     airdropMinStartTimeSeconds: number;
     airdropMaxStartTimeSeconds: number;
     loot: AirdropLoot;
@@ -17,6 +19,7 @@ export interface AirdropChancePercent {
     shoreline: number;
     interchange: number;
     reserve: number;
+    tarkovStreets: number;
 }
 export interface AirdropLoot {
     presetCount: MinMax;

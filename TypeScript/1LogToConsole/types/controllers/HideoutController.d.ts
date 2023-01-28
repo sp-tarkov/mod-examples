@@ -27,6 +27,7 @@ import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
+import { FenceService } from "../services/FenceService";
 import { LocalisationService } from "../services/LocalisationService";
 import { PlayerService } from "../services/PlayerService";
 import { HashUtil } from "../utils/HashUtil";
@@ -53,9 +54,10 @@ export declare class HideoutController {
     protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected jsonUtil: JsonUtil;
+    protected fenceService: FenceService;
     protected static nameBackendCountersCrafting: string;
     protected hideoutConfig: IHideoutConfig;
-    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, randomUtil: RandomUtil, inventoryHelper: InventoryHelper, saveServer: SaveServer, playerService: PlayerService, presetHelper: PresetHelper, paymentHelper: PaymentHelper, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, hideoutHelper: HideoutHelper, scavCaseRewardGenerator: ScavCaseRewardGenerator, localisationService: LocalisationService, configServer: ConfigServer, jsonUtil: JsonUtil);
+    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, randomUtil: RandomUtil, inventoryHelper: InventoryHelper, saveServer: SaveServer, playerService: PlayerService, presetHelper: PresetHelper, paymentHelper: PaymentHelper, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, hideoutHelper: HideoutHelper, scavCaseRewardGenerator: ScavCaseRewardGenerator, localisationService: LocalisationService, configServer: ConfigServer, jsonUtil: JsonUtil, fenceService: FenceService);
     /**
      * Start a hideout area upgrade
      * @param pmcData Player profile
@@ -123,6 +125,14 @@ export declare class HideoutController {
      */
     scavCaseProductionStart(pmcData: IPmcData, body: IHideoutScavCaseStartRequestData, sessionID: string): IItemEventRouterResponse;
     /**
+     * Adjust scav case time based on fence standing
+     *
+     * @param pmcData Player profile
+     * @param productionTime Time to complete scav case in seconds
+     * @returns Adjusted scav case time in seconds
+     */
+    protected getScavCaseTime(pmcData: IPmcData, productionTime: number): number;
+    /**
      * Add generated scav case rewards to player profile
      * @param pmcData player profile to add rewards to
      * @param rewards reward items to add to profile
@@ -159,11 +169,11 @@ export declare class HideoutController {
      * Handles giving rewards stored in player profile to player after clicking 'get rewards'
      * @param sessionID Session id
      * @param pmcData Player profile
-     * @param body Remove production from scavcase area request
+     * @param request Get rewards from scavcase craft request
      * @param output Output object to update
      * @returns IItemEventRouterResponse
      */
-    protected handleScavCase(sessionID: string, pmcData: IPmcData, body: IHideoutTakeProductionRequestData, output: IItemEventRouterResponse): IItemEventRouterResponse;
+    protected handleScavCase(sessionID: string, pmcData: IPmcData, request: IHideoutTakeProductionRequestData, output: IItemEventRouterResponse): IItemEventRouterResponse;
     /**
      * Start area production for item
      * @param pmcData Player profile

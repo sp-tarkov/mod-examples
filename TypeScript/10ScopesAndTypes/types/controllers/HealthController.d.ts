@@ -2,6 +2,7 @@ import { HealthHelper } from "../helpers/HealthHelper";
 import { InventoryHelper } from "../helpers/InventoryHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
+import { IWorkoutData } from "../models/eft/health/IWorkoutData";
 import { IHealthTreatmentRequestData } from "../models/eft/health/IHealthTreatmentRequestData";
 import { IOffraidEatRequestData } from "../models/eft/health/IOffraidEatRequestData";
 import { IOffraidHealRequestData } from "../models/eft/health/IOffraidHealRequestData";
@@ -36,6 +37,13 @@ export declare class HealthController {
      * @returns
      */
     offraidHeal(pmcData: IPmcData, body: IOffraidHealRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Consume food/water outside of a raid
+     * @param pmcData Player profile
+     * @param body request Object
+     * @param sessionID Session id
+     * @returns IItemEventRouterResponse
+     */
     offraidEat(pmcData: IPmcData, body: IOffraidEatRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * Occurs on post-raid healing page
@@ -45,6 +53,13 @@ export declare class HealthController {
      * @returns
      */
     healthTreatment(pmcData: IPmcData, healthTreatmentRequest: IHealthTreatmentRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * applies skills from hideout workout.
+     * @param pmcData Player profile
+     * @param info Request data
+     * @param sessionID
+     */
+    applyWorkoutChanges(pmcData: IPmcData, info: IWorkoutData, sessionId: string): void;
     /**
      * iterate over treatment request diff and find effects to remove from player limbs
      * @param sessionId

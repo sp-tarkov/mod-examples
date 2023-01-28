@@ -21,6 +21,7 @@ export interface IBotBase {
     Hideout: Hideout;
     Quests: Quest[];
     TradersInfo: Record<string, TraderInfo>;
+    UnlockedInfo: IUnlockedInfo;
     RagfairInfo: RagfairInfo;
     RepeatableQuests: IPmcDataRepeatableQuest[];
     Bonuses: Bonus[];
@@ -30,6 +31,9 @@ export interface IBotBase {
     WishList: string[];
     /** SPT specific property used during bot generation in raid */
     sptIsPmc?: boolean;
+}
+export interface IUnlockedInfo {
+    unlockedProductionRecipe: string[];
 }
 export interface Info {
     EntryPoint: string;
@@ -265,12 +269,19 @@ export interface InsuredItem {
 export interface Hideout {
     Production: Record<string, Productive>;
     Areas: HideoutArea[];
+    Improvements: Record<string, IHideoutImprovement>;
+}
+export interface IHideoutImprovement {
+    completed: boolean;
+    improveCompleteTimestamp: number;
 }
 export interface Productive {
     Products: Product[];
     Progress?: number;
     inProgress?: boolean;
     StartTimestamp?: number;
+    SkipTime?: number;
+    ProductionTime?: number;
 }
 export interface Production extends Productive {
     RecipeId: string;
@@ -327,10 +338,12 @@ export interface Quest {
     statusTimers?: Record<string, number>;
     /** SPT specific property */
     completedConditions?: string[];
+    availableAfter?: number;
 }
 export interface TraderInfo {
     loyaltyLevel: number;
     salesSum: number;
+    disabled: boolean;
     standing: number;
     nextResupply: number;
     unlocked: boolean;

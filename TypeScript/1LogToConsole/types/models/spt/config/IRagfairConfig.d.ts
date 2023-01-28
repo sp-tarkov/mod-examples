@@ -16,7 +16,7 @@ export interface Sell {
 }
 export interface Chance {
     base: number;
-    overprices: number;
+    overpriced: number;
     underpriced: number;
 }
 export interface Time {
@@ -43,6 +43,7 @@ export interface Dynamic {
     rating: MinMax;
     currencies: Record<string, number>;
     showAsSingleStack: string[];
+    removeSeasonalItemsWhenNotInEvent: boolean;
     blacklist: Blacklist;
 }
 export declare class Barter {

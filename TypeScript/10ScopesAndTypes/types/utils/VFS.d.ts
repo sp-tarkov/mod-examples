@@ -32,7 +32,7 @@ export declare class VFS {
     createDirAsync(filepath: string): Promise<void>;
     copyDir(filepath: string, target: string, fileExtensions?: string | string[]): void;
     copyDirAsync(filepath: string, target: string, fileExtensions: string | string[]): Promise<void>;
-    readFile(filepath: string): any;
+    readFile(...args: Parameters<typeof fs.readFileSync>): any;
     readFileAsync(filepath: string): Promise<any>;
     writeFile(filepath: any, data?: string, append?: boolean, atomic?: boolean): void;
     writeFileAsync(filepath: any, data?: string, append?: boolean, atomic?: boolean): Promise<void>;

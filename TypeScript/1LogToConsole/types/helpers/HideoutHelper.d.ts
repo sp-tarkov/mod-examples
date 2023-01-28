@@ -1,8 +1,9 @@
 import { IPmcData } from "../models/eft/common/IPmcData";
-import { Common, HideoutArea, Production, Productive } from "../models/eft/common/tables/IBotBase";
+import { Common, HideoutArea, IHideoutImprovement, Production, Productive } from "../models/eft/common/tables/IBotBase";
 import { Upd } from "../models/eft/common/tables/IItem";
 import { StageBonus } from "../models/eft/hideout/IHideoutArea";
 import { IHideoutContinousProductionStartRequestData } from "../models/eft/hideout/IHideoutContinousProductionStartRequestData";
+import { IHideoutProduction } from "../models/eft/hideout/IHideoutProduction";
 import { IHideoutSingleProductionStartRequestData } from "../models/eft/hideout/IHideoutSingleProductionStartRequestData";
 import { IHideoutTakeProductionRequestData } from "../models/eft/hideout/IHideoutTakeProductionRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
@@ -83,6 +84,33 @@ export declare class HideoutHelper {
         waterCollectorHasFilter: boolean;
     }): void;
     /**
+     * Update a productions progress value based on the amount of time that has passed
+     * @param pmcData Player profile
+     * @param prodId Production id being crafted
+     * @param recipe Recipe data being crafted
+     * @param hideoutProperties
+     */
+    protected updateProductionProgress(pmcData: IPmcData, prodId: string, recipe: IHideoutProduction, hideoutProperties: {
+        btcFarmCGs?: number;
+        isGeneratorOn: any;
+        waterCollectorHasFilter?: boolean;
+    }): void;
+    /**
+     * Set productions sptProductionComplete to true if progress value matches craft time
+     * @param pmcData Player profile
+     * @param prodId Production id
+     * @param recipe Recipe being crafted
+     */
+    protected flagCompleteProductionAsReadyToInformClient(pmcData: IPmcData, prodId: string): void;
+    /**
+     * Check if a productions progress value matches its corrisponding recipes production time value
+     * @param pmcData Player profile
+     * @param prodId Production id
+     * @param recipe Recipe being crafted
+     * @returns progress matches productionTime from recipe
+     */
+    protected doesProgressMatchProductionTime(pmcData: IPmcData, prodId: string): boolean;
+    /**
      * Update progress timer for scav case
      * @param pmcData Profile to update
      * @param productionId Id of scav case production to update
@@ -139,6 +167,12 @@ export declare class HideoutHelper {
      * @param pmcProfile Profile to upgrade wall in
      */
     unlockHideoutWallInProfile(pmcProfile: IPmcData): void;
+    /**
+     * Hideout improvement is flagged as complete
+     * @param improvement hideout improvement object
+     * @returns true if complete
+     */
+    protected hideoutImprovementIsComplete(improvement: IHideoutImprovement): boolean;
     /**
      * Iterate over hideout improvements not completed and check if they need to be adjusted
      * @param pmcProfile Profile to adjust

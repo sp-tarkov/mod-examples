@@ -60,6 +60,10 @@ export declare class SeasonalEventService {
      */
     protected updateGlobalEvents(globalConfig: Config, eventName: string): void;
     /**
+     * Add lootble items from backpack into patrol.ITEMS_TO_DROP difficulty property
+     */
+    protected addLootItemsToGifterDropItemsList(): void;
+    /**
      * Read in data from seasonalEvents.json and add found equipment items to bots
      * @param eventName Name of the event to read equipment in from config
      */
@@ -69,4 +73,8 @@ export declare class SeasonalEventService {
      * Set Khorovod(dancing tree) chance to 100% on all maps that support it
      */
     protected enableDancingTree(): void;
+    /**
+     * Add santa to maps
+     */
+    protected addGifterBotToMaps(): void;
 }

@@ -8,4 +8,5 @@ export interface IHideoutConfig extends IBaseConfig {
     airFilterUnitFlowRate: number;
     /** SEE HIDEOUTHELPER BEFORE CHANGING CONFIG */
     gpuBoostRate: number;
+    hideoutWallAppearTimeSeconds: number;
 }

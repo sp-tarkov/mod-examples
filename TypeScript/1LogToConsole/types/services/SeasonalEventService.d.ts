@@ -16,17 +16,46 @@ export declare class SeasonalEventService {
     constructor(logger: ILogger, databaseServer: DatabaseServer, localisationService: LocalisationService, botHelper: BotHelper, configServer: ConfigServer);
     protected get events(): Record<string, string>;
     protected get christmasEventItems(): string[];
+    protected get halloweenEventItems(): string[];
     /**
      * Get an array of christmas items found in bots inventories as loot
      * @returns array
      */
     getChristmasEventItems(): string[];
-    itemIsChristmasRelated(itemId: string): boolean;
+    /**
+     * Get an array of halloween items found in bots inventories as loot
+     * @returns array
+     */
+    getHalloweenEventItems(): string[];
+    itemIsChristmasRelated(itemTpl: string): boolean;
+    itemIsHalloweenRelated(itemTpl: string): boolean;
+    /**
+     * Check if item id exists in christmas or halloween event arrays
+     * @param itemTpl item tpl to check for
+     * @returns
+     */
+    itemIsSeasonalRelated(itemTpl: string): boolean;
+    /**
+     * Get an array of items that appear during a seasonal event
+     * returns multiple seasonal event items if they are both active
+     * @returns array of tpl strings
+     */
+    getSeasonalEventItems(): string[];
+    /**
+     * Is a seasonal event currently active
+     * @returns true if event is active
+     */
+    seasonalEventEnabled(): boolean;
     /**
      * is christmas event active
      * @returns true if active
      */
     christmasEventEnabled(): boolean;
+    /**
+     * is christmas event active
+     * @returns true if active
+     */
+    halloweenEventEnabled(): boolean;
     /**
      * Is detection of seasonal events enabled (halloween / christmas)
      * @returns true if seasonal events should be checked for

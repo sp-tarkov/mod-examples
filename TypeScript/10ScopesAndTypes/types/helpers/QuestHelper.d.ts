@@ -1,8 +1,9 @@
 import { IPmcData } from "../models/eft/common/IPmcData";
+import { Quest } from "../models/eft/common/tables/IBotBase";
 import { AvailableForConditions, AvailableForProps, IQuest, Reward } from "../models/eft/common/tables/IQuest";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IAcceptQuestRequestData } from "../models/eft/quests/IAcceptQuestRequestData";
-import { ICompleteQuestRequestData } from "../models/eft/quests/ICompleteQuestRequestData";
+import { IFailQuestRequestData } from "../models/eft/quests/IFailQuestRequestData";
 import { QuestStatus } from "../models/enums/QuestStatus";
 import { IQuestConfig } from "../models/spt/config/IQuestConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
@@ -54,7 +55,7 @@ export declare class QuestHelper {
     doesPlayerLevelFulfilCondition(playerLevel: number, condition: AvailableForConditions): boolean;
     /**
      * Get the quests found in both arrays (inner join)
-     * @param before Array of qeusts #1
+     * @param before Array of quests #1
      * @param after Array of quests #2
      * @returns Reduction of cartesian product between two quest arrays
      */
@@ -90,12 +91,12 @@ export declare class QuestHelper {
      */
     getQuestRewardItems(quest: IQuest, state: QuestStatus): Reward[];
     /**
-     * Update player profile with quest status (e.g. Fail/Success)
-     * @param pmcData profile to add quest to
-     * @param newState state the new quest should be in when added
-     * @param acceptedQuest Details of quest being added
+     * Look up quest in db by accepted quest id and construct a profile-ready object ready to store in profile
+     * @param pmcData Player profile
+     * @param newState State the new quest should be in when returned
+     * @param acceptedQuest Details of accepted quest from client
      */
-    addQuestToPMCData(pmcData: IPmcData, newState: QuestStatus, acceptedQuest: IAcceptQuestRequestData): void;
+    getQuestReadyForProfile(pmcData: IPmcData, newState: QuestStatus, acceptedQuest: IAcceptQuestRequestData): Quest;
     /**
      * TODO: what is going on here
      * @param acceptedQuestId Quest to add to profile
@@ -147,16 +148,16 @@ export declare class QuestHelper {
     getQuestWithOnlyLevelRequirementStartCondition(quest: IQuest): IQuest;
     /**
      * Fail a quest in a player profile
-     * @param pmcData Profile
-     * @param failRequest fail quest request data
+     * @param pmcData Player profile
+     * @param failRequest Fail quest request data
      * @param sessionID Session id
      * @returns Item event router response
      */
-    failQuest(pmcData: IPmcData, failRequest: any, sessionID: string): IItemEventRouterResponse;
+    failQuest(pmcData: IPmcData, failRequest: IFailQuestRequestData, sessionID: string): IItemEventRouterResponse;
     /**
-     * Get quest by id from database
-     * @param questId questid to look for
-     * @param pmcData player profile
+     * Get quest by id from database (repeatables are stored in profile, check there if questId not found)
+     * @param questId Id of quest to find
+     * @param pmcData Player profile
      * @returns IQuest object
      */
     getQuestFromDb(questId: string, pmcData: IPmcData): IQuest;
@@ -167,25 +168,36 @@ export declare class QuestHelper {
      */
     getQuestLocaleIdFromDb(questMessageId: string): string;
     /**
-     * Alter a quests state + Add a record to tis status timers object
+     * Alter a quests state + Add a record to its status timers object
      * @param pmcData Profile to update
-     * @param newQuestState new state the qeust should be in
-     * @param questId id of the quest to alter the status of
+     * @param newQuestState New state the qeust should be in
+     * @param questId Id of the quest to alter the status of
      */
     updateQuestState(pmcData: IPmcData, newQuestState: QuestStatus, questId: string): void;
     /**
-     * Give player quest rewards - Skills/exp/trader standing/items/assort unlocks
+     * Give player quest rewards - Skills/exp/trader standing/items/assort unlocks - Returns reward items player earned
      * @param pmcData Player profile
-     * @param body complete quest request
-     * @param state State of the quest now its complete
-     * @param sessionID Seession id
-     * @returns array of reward objects
+     * @param questId questId of quest to get rewards for
+     * @param state State of the quest to get rewards for
+     * @param sessionId Session id
+     * @param questResponse Response to send back to client
+     * @returns Array of reward objects
      */
-    applyQuestReward(pmcData: IPmcData, body: ICompleteQuestRequestData, state: QuestStatus, sessionID: string): Reward[];
+    applyQuestReward(pmcData: IPmcData, questId: string, state: QuestStatus, sessionId: string, questResponse: IItemEventRouterResponse): Reward[];
     /**
-     * Get the intel center bonus a player has
+     * WIP - Find hideout craft id and add to unlockedProductionRecipe array in player profile
+     * also update client response recipeUnlocked array with craft id
+     * @param pmcData Player profile
+     * @param craftUnlockReward Reward item from quest with craft unlock details
+     * @param questDetails Quest with craft unlock reward
+     * @param sessionID Session id
+     * @param response Response to send back to client
+     */
+    protected findAndAddHideoutProductionIdToProfile(pmcData: IPmcData, craftUnlockReward: Reward, questDetails: IQuest, sessionID: string, response: IItemEventRouterResponse): void;
+    /**
+     * Get players intel center bonus from profile
      * @param pmcData player profile
-     * @returns bonus in percent
+     * @returns bonus as a percent
      */
     protected getIntelCenterRewardBonus(pmcData: IPmcData): number;
     /**
@@ -194,4 +206,10 @@ export declare class QuestHelper {
      * @returns 'FindItem' condition id
      */
     getFindItemIdForQuestHandIn(itemTpl: string): string;
+    /**
+     * Add all quests to a profile with the provided statuses
+     * @param pmcProfile profile to update
+     * @param statuses statuses quests should have
+     */
+    addAllQuestsToProfile(pmcProfile: IPmcData, statuses: QuestStatus[]): void;
 }

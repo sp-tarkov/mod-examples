@@ -104,7 +104,10 @@ export interface BodyPartsHealth {
 }
 export interface BodyPartHealth {
     Health: CurrentMax;
-    Effects?: Record<string, number>;
+    Effects?: Record<string, BodyPartEffectProperties>;
+}
+export interface BodyPartEffectProperties {
+    Time: number;
 }
 export interface CurrentMax {
     Current: number;
@@ -124,7 +127,6 @@ export interface FastPanel {
 export interface Skills {
     Common: Common[];
     Mastering: Mastering[];
-    Bonuses?: any[];
     Points: number;
 }
 export interface Common {
@@ -277,9 +279,16 @@ export interface IHideoutImprovement {
 }
 export interface Productive {
     Products: Product[];
+    /** Seconds passed of production */
     Progress?: number;
+    /** Is production being crafted right now */
     inProgress?: boolean;
     StartTimestamp?: number;
+    SkipTime?: number;
+    /** Seconds needed to fully craft */
+    ProductionTime?: number;
+    /** False = client needs to be informed of production on client ui, true = client informed of completed production */
+    sptClientInformedOfCompletion?: boolean;
 }
 export interface Production extends Productive {
     RecipeId: string;

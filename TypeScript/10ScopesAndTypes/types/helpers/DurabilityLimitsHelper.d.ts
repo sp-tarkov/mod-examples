@@ -23,4 +23,6 @@ export declare class DurabilityLimitsHelper {
     protected getMaxWeaponDeltaFromConfig(botRole: string): number;
     protected getMinArmorDeltaFromConfig(botRole: string): number;
     protected getMaxArmorDeltaFromConfig(botRole: string): number;
+    protected getMinArmorLimitPercentFromConfig(botRole: string): number;
+    protected getMinWeaponLimitPercentFromConfig(botRole: string): number;
 }

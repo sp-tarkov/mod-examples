@@ -1,3 +1,4 @@
+import { QuestStatus } from "../../../models/enums/QuestStatus";
 import { Skills } from "../common/tables/IBotBase";
 import { Item, Upd } from "../common/tables/IItem";
 import { IQuest } from "../common/tables/IQuest";
@@ -22,9 +23,21 @@ export interface ProfileChange {
     builds: BuildChange[];
     items: ItemChanges;
     production: Record<string, Production>;
+    /** Hideout area improvement id */
+    improvements: Record<string, Improvement>;
     skills: Skills;
     traderRelations: Record<string, TraderRelations>;
     repeatableQuests?: IPmcDataRepeatableQuest[];
+    recipeUnlocked: Record<string, boolean>;
+    questsStatus: QuestStatusChange[];
+}
+export interface QuestStatusChange {
+    qid: string;
+    startTime: number;
+    status: QuestStatus;
+    statusTimers: Record<QuestStatus, number>;
+    completedConditions: string[];
+    availableAfter: number;
 }
 export interface BuildChange {
     id: string;
@@ -44,6 +57,10 @@ export interface Production {
     inProgress: boolean;
     RecipeId: string;
     Products: Product[];
+}
+export interface Improvement {
+    completed: boolean;
+    improveCompleteTimestamp: number;
 }
 export interface Product {
     _id: string;

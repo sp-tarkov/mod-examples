@@ -20,7 +20,7 @@ export declare class JsonUtil {
      * @param jsonString json string to turn into object
      * @returns object
      */
-    deserialize(jsonString: string): any;
+    deserialize(jsonString: string, filename?: string): any;
     deserializeWithCacheCheck(jsonString: string, filePath: string): string;
     clone<T>(data: T): T;
 }
