@@ -29,6 +29,8 @@ export declare class TraderHelper {
     protected timeUtil: TimeUtil;
     protected configServer: ConfigServer;
     protected traderConfig: ITraderConfig;
+    /** Dictionary of item tpl and the highest trader rouble price */
+    protected highestTraderPriceItems: Record<string, number>;
     constructor(logger: ILogger, databaseServer: DatabaseServer, saveServer: SaveServer, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, itemHelper: ItemHelper, handbookHelper: HandbookHelper, playerService: PlayerService, localisationService: LocalisationService, fenceService: FenceService, timeUtil: TimeUtil, configServer: ConfigServer);
     getTrader(traderID: string, sessionID: string): ITraderBase;
     getTraderAssortsById(traderId: string): ITraderAssort;
@@ -41,11 +43,11 @@ export declare class TraderHelper {
     resetTrader(sessionID: string, traderID: string): void;
     /**
      * Alter a traders unlocked status
-     * @param traderID Trader to alter
+     * @param traderId Trader to alter
      * @param status New status to use
-     * @param sessionID Session id
+     * @param sessionId Session id
      */
-    setTraderUnlockedState(traderID: string, status: boolean, sessionID: string): void;
+    setTraderUnlockedState(traderId: string, status: boolean, sessionId: string): void;
     /**
      * Get a list of items and their prices from player inventory that can be sold to a trader
      * @param traderID trader id being traded with
@@ -77,7 +79,7 @@ export declare class TraderHelper {
     protected getTraderDurabiltyPurchaseThreshold(traderId: string): number;
     /**
      * Get the price of passed in item and all of its attached children (mods)
-     * Take into account bonuses/adjsutments e.g. discounts
+     * Take into account bonuses/adjustments e.g. discounts
      * @param pmcData profile data
      * @param item item to calculate price of
      * @param buyPriceCoefficient
@@ -104,11 +106,11 @@ export declare class TraderHelper {
     protected getTraderDiscount(trader: ITraderBase, buyPriceCoefficient: number, fenceInfo: FenceLevel): number;
     /**
      * Add standing to a trader and level them up if exp goes over level threshold
-     * @param sessionID Session id
-     * @param traderId traders id
+     * @param sessionId Session id
+     * @param traderId Traders id
      * @param standingToAdd Standing value to add to trader
      */
-    addStandingToTrader(sessionID: string, traderId: string, standingToAdd: number): void;
+    addStandingToTrader(sessionId: string, traderId: string, standingToAdd: number): void;
     /**
      * Calculate traders level based on exp amount and increments level if over threshold
      * @param traderID trader to process
@@ -147,4 +149,10 @@ export declare class TraderHelper {
         }[];
         tid: string;
     }): void;
+    /**
+     * Get the highest rouble price for an item from traders
+     * @param tpl Item to look up highest pride for
+     * @returns highest rouble cost for item
+     */
+    getHighestTraderPriceRouble(tpl: string): number;
 }

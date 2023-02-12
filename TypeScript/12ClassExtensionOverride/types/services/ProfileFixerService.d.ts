@@ -35,6 +35,7 @@ export declare class ProfileFixerService {
      */
     removeDanglingConditionCounters(pmcProfile: IPmcData): void;
     addLighthouseKeeperIfMissing(pmcProfile: IPmcData): void;
+    protected addUnlockedInfoObjectIfMissing(pmcProfile: IPmcData): void;
     protected removeDanglingBackendCounters(pmcProfile: IPmcData): void;
     protected getActiveRepeatableQuests(repeatableQuests: IPmcDataRepeatableQuest[]): IRepeatableQuest[];
     protected fixNullTraderSalesSums(pmcProfile: IPmcData): void;
@@ -48,6 +49,11 @@ export declare class ProfileFixerService {
     protected updateProfileQuestDataValues(pmcProfile: IPmcData): void;
     protected addMissingRepeatableQuestsProperty(pmcProfile: IPmcData): void;
     protected addMissingWorkbenchWeaponSkills(pmcProfile: IPmcData): void;
+    /**
+     * Some profiles have hideout maxed and therefore no improvements
+     * @param pmcProfile Profile to add improvement data to
+     */
+    protected addMissingWallImprovements(pmcProfile: IPmcData): void;
     /**
      * A new property was added to slot items "locationIndex", if this is missing, the hideout slot item must be removed
      * @param pmcProfile Profile to find and remove slots from
@@ -98,4 +104,9 @@ export declare class ProfileFixerService {
      * @param fullProfile Profile to update
      */
     addMissingHideoutAreasToProfile(fullProfile: IAkiProfile): void;
+    /**
+     * These used to be used for storing scav case rewards, rewards are now generated on pickup
+     * @param pmcProfile Profile to update
+     */
+    removeLegacyScavCaseProductionCrafts(pmcProfile: IPmcData): void;
 }

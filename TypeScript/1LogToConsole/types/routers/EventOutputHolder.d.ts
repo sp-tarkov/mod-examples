@@ -8,6 +8,10 @@ export declare class EventOutputHolder {
     protected jsonUtil: JsonUtil;
     protected profileHelper: ProfileHelper;
     protected timeUtil: TimeUtil;
+    /** What has client been informed of this game session */
+    protected clientActiveSessionStorage: Record<string, {
+        clientInformed: boolean;
+    }>;
     constructor(jsonUtil: JsonUtil, profileHelper: ProfileHelper, timeUtil: TimeUtil);
     protected output: IItemEventRouterResponse;
     getOutput(sessionID: string): IItemEventRouterResponse;
@@ -29,9 +33,9 @@ export declare class EventOutputHolder {
      */
     protected getImprovementsFromProfileAndFlagComplete(pmcData: IPmcData): Record<string, IHideoutImprovement>;
     /**
-     * Return all productions from player profile, adjust completed productions' sptClientInformedOfCompletion property to true
+     * Return  productions from player profile except those completed crafts the client has already seen
      * @param pmcData Player profile
      * @returns dictionary of hideout productions
      */
-    protected getProductionsFromProfileAndFlagComplete(pmcData: IPmcData): Record<string, Productive>;
+    protected getProductionsFromProfileAndFlagComplete(productions: Record<string, Productive>): Record<string, Productive>;
 }

@@ -25,6 +25,7 @@ export interface IBotConfig extends IBaseConfig {
     showTypeInNickname: boolean;
     /** Max number of bots that can be spawned in a raid at any one time */
     maxBotCap: Record<string, number>;
+    chanceAssaultScavHasPlayerScavName: number;
     /** How many stacks of secret ammo should a bot have in its bot secure container */
     secureContainerAmmoStackCount: number;
     /** Batch generation size when type not available in cache */
@@ -84,6 +85,7 @@ export interface ModLimits {
 }
 export interface RandomisationDetails {
     levelRange: MinMax;
+    generation?: Record<string, MinMax>;
     randomisedWeaponModSlots?: string[];
     randomisedArmorSlots?: string[];
     /** Equipment chances */

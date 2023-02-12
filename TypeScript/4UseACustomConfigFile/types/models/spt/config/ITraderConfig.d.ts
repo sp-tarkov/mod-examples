@@ -15,15 +15,21 @@ export interface UpdateTime {
     seconds: number;
 }
 export interface FenceConfig {
+    discountOptions: DiscountOptions;
     partialRefreshTimeSeconds: number;
     partialRefreshChangePercent: number;
     assortSize: number;
     maxPresetsPercent: number;
+    itemPriceMult: number;
     presetPriceMult: number;
     armorMaxDurabilityPercentMinMax: MinMax;
     presetMaxDurabilityPercentMinMax: MinMax;
-    itemPriceMult: number;
-    regenerateAssortsOnRefresh: boolean;
     itemTypeLimits: Record<string, number>;
+    regenerateAssortsOnRefresh: boolean;
     blacklist: string[];
+}
+export interface DiscountOptions {
+    assortSize: number;
+    itemPriceMult: number;
+    presetPriceMult: number;
 }

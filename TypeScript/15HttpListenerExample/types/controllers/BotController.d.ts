@@ -3,7 +3,6 @@ import { BotGenerator } from "../generators/BotGenerator";
 import { BotDifficultyHelper } from "../helpers/BotDifficultyHelper";
 import { BotHelper } from "../helpers/BotHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
-import { WeightedRandomHelper } from "../helpers/WeightedRandomHelper";
 import { IGenerateBotsRequestData } from "../models/eft/bot/IGenerateBotsRequestData";
 import { IBotBase } from "../models/eft/common/tables/IBotBase";
 import { IBotCore } from "../models/eft/common/tables/IBotCore";
@@ -23,14 +22,13 @@ export declare class BotController {
     protected botDifficultyHelper: BotDifficultyHelper;
     protected botGenerationCacheService: BotGenerationCacheService;
     protected localisationService: LocalisationService;
-    protected weightedRandomHelper: WeightedRandomHelper;
     protected profileHelper: ProfileHelper;
     protected configServer: ConfigServer;
     protected applicationContext: ApplicationContext;
     protected jsonUtil: JsonUtil;
     protected botConfig: IBotConfig;
     static readonly pmcTypeLabel = "PMC";
-    constructor(logger: ILogger, databaseServer: DatabaseServer, botGenerator: BotGenerator, botHelper: BotHelper, botDifficultyHelper: BotDifficultyHelper, botGenerationCacheService: BotGenerationCacheService, localisationService: LocalisationService, weightedRandomHelper: WeightedRandomHelper, profileHelper: ProfileHelper, configServer: ConfigServer, applicationContext: ApplicationContext, jsonUtil: JsonUtil);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, botGenerator: BotGenerator, botHelper: BotHelper, botDifficultyHelper: BotDifficultyHelper, botGenerationCacheService: BotGenerationCacheService, localisationService: LocalisationService, profileHelper: ProfileHelper, configServer: ConfigServer, applicationContext: ApplicationContext, jsonUtil: JsonUtil);
     /**
      * Return the number of bot loadout varieties to be generated
      * @param type bot Type we want the loadout gen count for

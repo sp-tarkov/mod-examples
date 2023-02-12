@@ -4,4 +4,5 @@ export interface ICoreConfig extends IBaseConfig {
     akiVersion: string;
     projectName: string;
     compatibleTarkovVersion: string;
+    commit: string;
 }

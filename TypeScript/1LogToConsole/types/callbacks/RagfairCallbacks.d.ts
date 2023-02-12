@@ -1,5 +1,6 @@
+import { OnLoad } from "../di/OnLoad";
+import { OnUpdate } from "../di/OnUpdate";
 import { RagfairController } from "../controllers/RagfairController";
-import { OnLoadOnUpdate } from "../di/OnLoadOnUpdate";
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
@@ -21,7 +22,7 @@ import { JsonUtil } from "../utils/JsonUtil";
 /**
  * Handle ragfair related callback events
  */
-export declare class RagfairCallbacks extends OnLoadOnUpdate {
+export declare class RagfairCallbacks implements OnLoad, OnUpdate {
     protected httpResponse: HttpResponseUtil;
     protected jsonUtil: JsonUtil;
     protected ragfairServer: RagfairServer;

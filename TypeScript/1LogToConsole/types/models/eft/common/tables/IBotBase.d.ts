@@ -272,6 +272,7 @@ export interface Hideout {
     Production: Record<string, Productive>;
     Areas: HideoutArea[];
     Improvements: Record<string, IHideoutImprovement>;
+    sptUpdateLastRunTimestamp: number;
 }
 export interface IHideoutImprovement {
     completed: boolean;
@@ -281,14 +282,13 @@ export interface Productive {
     Products: Product[];
     /** Seconds passed of production */
     Progress?: number;
-    /** Is production being crafted right now */
+    /** Is craft in some state of being worked on by client (crafting/ready to pick up) */
     inProgress?: boolean;
     StartTimestamp?: number;
     SkipTime?: number;
     /** Seconds needed to fully craft */
     ProductionTime?: number;
-    /** False = client needs to be informed of production on client ui, true = client informed of completed production */
-    sptClientInformedOfCompletion?: boolean;
+    sptIsScavCase?: boolean;
 }
 export interface Production extends Productive {
     RecipeId: string;

@@ -8,7 +8,7 @@ import { IPmcData } from "../models/eft/common/IPmcData";
 import { HideoutArea, Product } from "../models/eft/common/tables/IBotBase";
 import { HideoutUpgradeCompleteRequestData } from "../models/eft/hideout/HideoutUpgradeCompleteRequestData";
 import { IHandleQTEEventRequestData } from "../models/eft/hideout/IHandleQTEEventRequestData";
-import { IHideoutContinousProductionStartRequestData } from "../models/eft/hideout/IHideoutContinousProductionStartRequestData";
+import { IHideoutContinuousProductionStartRequestData } from "../models/eft/hideout/IHideoutContinuousProductionStartRequestData";
 import { IHideoutImproveAreaRequestData } from "../models/eft/hideout/IHideoutImproveAreaRequestData";
 import { IHideoutProduction } from "../models/eft/hideout/IHideoutProduction";
 import { IHideoutPutItemInRequestData } from "../models/eft/hideout/IHideoutPutItemInRequestData";
@@ -27,6 +27,7 @@ import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
+import { FenceService } from "../services/FenceService";
 import { LocalisationService } from "../services/LocalisationService";
 import { PlayerService } from "../services/PlayerService";
 import { HashUtil } from "../utils/HashUtil";
@@ -53,9 +54,10 @@ export declare class HideoutController {
     protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected jsonUtil: JsonUtil;
+    protected fenceService: FenceService;
     protected static nameBackendCountersCrafting: string;
     protected hideoutConfig: IHideoutConfig;
-    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, randomUtil: RandomUtil, inventoryHelper: InventoryHelper, saveServer: SaveServer, playerService: PlayerService, presetHelper: PresetHelper, paymentHelper: PaymentHelper, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, hideoutHelper: HideoutHelper, scavCaseRewardGenerator: ScavCaseRewardGenerator, localisationService: LocalisationService, configServer: ConfigServer, jsonUtil: JsonUtil);
+    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, randomUtil: RandomUtil, inventoryHelper: InventoryHelper, saveServer: SaveServer, playerService: PlayerService, presetHelper: PresetHelper, paymentHelper: PaymentHelper, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, hideoutHelper: HideoutHelper, scavCaseRewardGenerator: ScavCaseRewardGenerator, localisationService: LocalisationService, configServer: ConfigServer, jsonUtil: JsonUtil, fenceService: FenceService);
     /**
      * Start a hideout area upgrade
      * @param pmcData Player profile
@@ -73,6 +75,7 @@ export declare class HideoutController {
      */
     upgradeComplete(pmcData: IPmcData, request: HideoutUpgradeCompleteRequestData, sessionID: string): IItemEventRouterResponse;
     /**
+     * Handle HideoutPutItemsInAreaSlots
      * Create item in hideout slot item array, remove item from player inventory
      * @param pmcData Profile data
      * @param addItemToHideoutRequest reqeust from client to place item in area slot
@@ -123,6 +126,14 @@ export declare class HideoutController {
      */
     scavCaseProductionStart(pmcData: IPmcData, body: IHideoutScavCaseStartRequestData, sessionID: string): IItemEventRouterResponse;
     /**
+     * Adjust scav case time based on fence standing
+     *
+     * @param pmcData Player profile
+     * @param productionTime Time to complete scav case in seconds
+     * @returns Adjusted scav case time in seconds
+     */
+    protected getScavCaseTime(pmcData: IPmcData, productionTime: number): number;
+    /**
      * Add generated scav case rewards to player profile
      * @param pmcData player profile to add rewards to
      * @param rewards reward items to add to profile
@@ -136,7 +147,7 @@ export declare class HideoutController {
      * @param sessionID Session id
      * @returns IItemEventRouterResponse
      */
-    continuousProductionStart(pmcData: IPmcData, request: IHideoutContinousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
+    continuousProductionStart(pmcData: IPmcData, request: IHideoutContinuousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * Take completed item out of hideout area and place into player inventory
      * @param pmcData Player profile
@@ -171,7 +182,7 @@ export declare class HideoutController {
      * @param sessionID Session id
      * @returns IItemEventRouterResponse
      */
-    registerProduction(pmcData: IPmcData, request: IHideoutSingleProductionStartRequestData | IHideoutContinousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
+    registerProduction(pmcData: IPmcData, request: IHideoutSingleProductionStartRequestData | IHideoutContinuousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * Get quick time event list for hideout
      * // TODO - implement this

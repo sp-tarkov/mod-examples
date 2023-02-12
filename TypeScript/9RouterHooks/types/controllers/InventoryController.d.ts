@@ -129,9 +129,14 @@ export declare class InventoryController {
     protected getExaminedItemTpl(body: IInventoryExamineRequestData): string;
     readEncyclopedia(pmcData: IPmcData, body: IInventoryReadEncyclopediaRequestData, sessionID: string): IItemEventRouterResponse;
     /**
-     * Handles sorting of Inventory.
+     * Handle ApplyInventoryChanges
+     * Sorts supplied items.
+     * @param pmcData Player profile
+     * @param request sort request
+     * @param sessionID Session id
+     * @returns IItemEventRouterResponse
      */
-    sortInventory(pmcData: IPmcData, body: IInventorySortRequestData, sessionID: string): IItemEventRouterResponse;
+    sortInventory(pmcData: IPmcData, request: IInventorySortRequestData, sessionID: string): IItemEventRouterResponse;
     createMapMarker(pmcData: IPmcData, body: IInventoryCreateMarkerRequestData, sessionID: string): IItemEventRouterResponse;
     deleteMapMarker(pmcData: IPmcData, body: IInventoryDeleteMarkerRequestData, sessionID: string): IItemEventRouterResponse;
     editMapMarker(pmcData: IPmcData, body: IInventoryEditMarkerRequestData, sessionID: string): IItemEventRouterResponse;

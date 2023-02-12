@@ -43,7 +43,7 @@ export declare class QuestHelper {
     * Get status of a quest by quest id
     * @param pmcData Profile to search
     * @param questID Quest id to look up
-    * @returns QuestStauts enum
+    * @returns QuestStatus enum
     */
     getQuestStatus(pmcData: IPmcData, questID: string): QuestStatus;
     /**
@@ -75,10 +75,10 @@ export declare class QuestHelper {
      */
     getQuestNameFromLocale(questId: string): string;
     /**
-     * Check if trader has sufficient loyalty to fullfill quest requirement
+     * Check if trader has sufficient loyalty to fulfill quest requirement
      * @param questProperties Quest props
      * @param profile Player profile
-     * @returns true if loyalty is high enough to fulfil quest requirement
+     * @returns true if loyalty is high enough to fulfill quest requirement
      */
     traderStandingRequirementCheck(questProperties: AvailableForProps, profile: IPmcData): boolean;
     protected processReward(reward: Reward): Reward[];
@@ -111,12 +111,12 @@ export declare class QuestHelper {
      */
     failedUnlocked(failedQuestId: string, sessionID: string): IQuest[];
     /**
-     * Adjust quest money rewards by passed in multipler
+     * Adjust quest money rewards by passed in multiplier
      * @param quest Quest to multiple money rewards
-     * @param multipler Value to adjust money rewards by
+     * @param multiplier Value to adjust money rewards by
      * @returns Updated quest
      */
-    applyMoneyBoost(quest: IQuest, multipler: number): IQuest;
+    applyMoneyBoost(quest: IQuest, multiplier: number): IQuest;
     /**
      * Sets the item stack to new value, or delete the item if value <= 0
      * // TODO maybe merge this function and the one from customization
@@ -127,12 +127,6 @@ export declare class QuestHelper {
      * @param output ItemEvent router response
      */
     changeItemStack(pmcData: IPmcData, itemId: string, newStackSize: number, sessionID: string, output: IItemEventRouterResponse): void;
-    /**
-     * Get List of All Quests from db
-     * NOT CLONED
-     * @returns Array of IQuest objects
-     */
-    getQuestsFromDb(): IQuest[];
     /**
      * Get quests, strip all requirement conditions except level
      * @param quests quests to process
@@ -154,6 +148,12 @@ export declare class QuestHelper {
      */
     failQuest(pmcData: IPmcData, failRequest: IFailQuestRequestData, sessionID: string): IItemEventRouterResponse;
     /**
+     * Get List of All Quests from db
+     * NOT CLONED
+     * @returns Array of IQuest objects
+     */
+    getQuestsFromDb(): IQuest[];
+    /**
      * Get quest by id from database (repeatables are stored in profile, check there if questId not found)
      * @param questId Id of quest to find
      * @param pmcData Player profile
@@ -162,14 +162,14 @@ export declare class QuestHelper {
     getQuestFromDb(questId: string, pmcData: IPmcData): IQuest;
     /**
      * Get the locale Id from locale db for a quest message
-     * @param questMessageId Quest mesage id to look up
+     * @param questMessageId Quest message id to look up
      * @returns Locale Id from locale db
      */
     getQuestLocaleIdFromDb(questMessageId: string): string;
     /**
      * Alter a quests state + Add a record to its status timers object
      * @param pmcData Profile to update
-     * @param newQuestState New state the qeust should be in
+     * @param newQuestState New state the quest should be in
      * @param questId Id of the quest to alter the status of
      */
     updateQuestState(pmcData: IPmcData, newQuestState: QuestStatus, questId: string): void;

@@ -9,8 +9,6 @@ export interface IRepairConfig extends IBaseConfig {
     repairKit: RepairKit;
 }
 export interface RepairKit {
-    armorChancePercent: number;
-    weaponChancePercent: number;
     armor: BonusSettings;
     weapon: BonusSettings;
 }

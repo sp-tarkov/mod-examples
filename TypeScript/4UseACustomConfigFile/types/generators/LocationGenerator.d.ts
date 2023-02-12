@@ -49,7 +49,8 @@ export declare class LocationGenerator {
      * Add forced spawn point loot into loot parameter array
      * @param loot array to add forced loot to
      * @param forcedSpawnPoints forced loot to add
+     * @param name of map currently generating forced loot for
      */
-    protected addForcedLoot(loot: SpawnpointTemplate[], forcedSpawnPoints: SpawnpointsForced[]): void;
+    protected addForcedLoot(loot: SpawnpointTemplate[], forcedSpawnPoints: SpawnpointsForced[], locationName: string): void;
     protected createItem(tpl: string, staticAmmoDist: Record<string, IStaticAmmoDetails[]>, parentId?: string): IContainerItem;
 }

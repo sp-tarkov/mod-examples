@@ -1,4 +1,4 @@
-import { ITraderBase } from "@spt-aki/models/eft/common/tables/ITrader";
+import { ITraderBase } from "../models/eft/common/tables/ITrader";
 import { DialogueHelper } from "../helpers/DialogueHelper";
 import { HandbookHelper } from "../helpers/HandbookHelper";
 import { SecureContainerHelper } from "../helpers/SecureContainerHelper";

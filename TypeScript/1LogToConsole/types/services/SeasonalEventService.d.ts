@@ -40,7 +40,12 @@ export declare class SeasonalEventService {
      * returns multiple seasonal event items if they are both active
      * @returns array of tpl strings
      */
-    getSeasonalEventItems(): string[];
+    getAllSeasonalEventItems(): string[];
+    /**
+     * Get an array of seasonal items that should be blocked as seasonal is not active
+     * @returns Array of tpl strings
+     */
+    getSeasonalEventItemsToBlock(): string[];
     /**
      * Is a seasonal event currently active
      * @returns true if event is active
@@ -96,7 +101,7 @@ export declare class SeasonalEventService {
      * Read in data from seasonalEvents.json and add found equipment items to bots
      * @param eventName Name of the event to read equipment in from config
      */
-    protected addEventGearToScavs(eventName: string): void;
+    protected addEventGearToBots(eventName: string): void;
     protected addPumpkinsToScavBackpacks(): void;
     /**
      * Set Khorovod(dancing tree) chance to 100% on all maps that support it

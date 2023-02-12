@@ -43,6 +43,7 @@ export declare class GameController {
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
     /**
      * When player logs in, iterate over all active effects and reduce timer
+     * TODO - add body part HP regen
      * @param pmcProfile
      */
     protected updateProfileHealthValues(pmcProfile: IPmcData): void;

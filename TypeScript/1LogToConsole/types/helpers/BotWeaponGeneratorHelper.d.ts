@@ -63,6 +63,7 @@ export declare class BotWeaponGeneratorHelper {
      */
     getWeaponsDefaultMagazineTpl(weaponTemplate: ITemplateItem): string;
     /**
+     * TODO - move into BotGeneratorHelper, this is not the class for it
      * Adds an item with all its children into specified equipmentSlots, wherever it fits.
      * @param equipmentSlots
      * @param parentId

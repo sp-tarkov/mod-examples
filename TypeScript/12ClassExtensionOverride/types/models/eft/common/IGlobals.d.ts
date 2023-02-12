@@ -31,6 +31,7 @@ export interface Config {
     TimeBeforeDeployLocal: number;
     TradingSetting: number;
     TradingSettings: ITradingSettings;
+    ItemsCommonSettings: IItemsCommonSettings;
     LoadTimeSpeedProgress: number;
     BaseLoadTime: number;
     BaseUnloadTime: number;
@@ -84,11 +85,15 @@ export interface Config {
     TestValue: number;
     Inertia: Inertia;
     Ballistic: Ballistic;
+    RepairSettings: RepairSettings;
 }
 export interface IBufferZone {
     CustomerAccessTime: number;
     CustomerCriticalTimeStart: number;
     CustomerKickNotifTime: number;
+}
+export interface IItemsCommonSettings {
+    ItemRemoveAfterInterruptionTime: number;
 }
 export interface ITradingSettings {
     BuyoutRestrictions: IBuyoutRestrictions;

@@ -8,7 +8,7 @@ import { IPmcData } from "../models/eft/common/IPmcData";
 import { HideoutArea, Product } from "../models/eft/common/tables/IBotBase";
 import { HideoutUpgradeCompleteRequestData } from "../models/eft/hideout/HideoutUpgradeCompleteRequestData";
 import { IHandleQTEEventRequestData } from "../models/eft/hideout/IHandleQTEEventRequestData";
-import { IHideoutContinousProductionStartRequestData } from "../models/eft/hideout/IHideoutContinousProductionStartRequestData";
+import { IHideoutContinuousProductionStartRequestData } from "../models/eft/hideout/IHideoutContinuousProductionStartRequestData";
 import { IHideoutImproveAreaRequestData } from "../models/eft/hideout/IHideoutImproveAreaRequestData";
 import { IHideoutProduction } from "../models/eft/hideout/IHideoutProduction";
 import { IHideoutPutItemInRequestData } from "../models/eft/hideout/IHideoutPutItemInRequestData";
@@ -75,6 +75,7 @@ export declare class HideoutController {
      */
     upgradeComplete(pmcData: IPmcData, request: HideoutUpgradeCompleteRequestData, sessionID: string): IItemEventRouterResponse;
     /**
+     * Handle HideoutPutItemsInAreaSlots
      * Create item in hideout slot item array, remove item from player inventory
      * @param pmcData Profile data
      * @param addItemToHideoutRequest reqeust from client to place item in area slot
@@ -146,7 +147,7 @@ export declare class HideoutController {
      * @param sessionID Session id
      * @returns IItemEventRouterResponse
      */
-    continuousProductionStart(pmcData: IPmcData, request: IHideoutContinousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
+    continuousProductionStart(pmcData: IPmcData, request: IHideoutContinuousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * Take completed item out of hideout area and place into player inventory
      * @param pmcData Player profile
@@ -181,7 +182,7 @@ export declare class HideoutController {
      * @param sessionID Session id
      * @returns IItemEventRouterResponse
      */
-    registerProduction(pmcData: IPmcData, request: IHideoutSingleProductionStartRequestData | IHideoutContinousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
+    registerProduction(pmcData: IPmcData, request: IHideoutSingleProductionStartRequestData | IHideoutContinuousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * Get quick time event list for hideout
      * // TODO - implement this

@@ -2,7 +2,7 @@ import { HideoutController } from "../controllers/HideoutController";
 import { OnUpdate } from "../di/OnUpdate";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { IHandleQTEEventRequestData } from "../models/eft/hideout/IHandleQTEEventRequestData";
-import { IHideoutContinousProductionStartRequestData } from "../models/eft/hideout/IHideoutContinousProductionStartRequestData";
+import { IHideoutContinuousProductionStartRequestData } from "../models/eft/hideout/IHideoutContinuousProductionStartRequestData";
 import { IHideoutImproveAreaRequestData } from "../models/eft/hideout/IHideoutImproveAreaRequestData";
 import { IHideoutPutItemInRequestData } from "../models/eft/hideout/IHideoutPutItemInRequestData";
 import { IHideoutScavCaseStartRequestData } from "../models/eft/hideout/IHideoutScavCaseStartRequestData";
@@ -16,7 +16,7 @@ import { IRecordShootingRangePoints } from "../models/eft/hideout/IRecordShootin
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IHideoutConfig } from "../models/spt/config/IHideoutConfig";
 import { ConfigServer } from "../servers/ConfigServer";
-export declare class HideoutCallbacks extends OnUpdate {
+export declare class HideoutCallbacks implements OnUpdate {
     protected hideoutController: HideoutController;
     protected configServer: ConfigServer;
     protected hideoutConfig: IHideoutConfig;
@@ -53,7 +53,7 @@ export declare class HideoutCallbacks extends OnUpdate {
     /**
      * Handle HideoutContinuousProductionStart
      */
-    continuousProductionStart(pmcData: IPmcData, body: IHideoutContinousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
+    continuousProductionStart(pmcData: IPmcData, body: IHideoutContinuousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * Handle HideoutTakeProduction
      */

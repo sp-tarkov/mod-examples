@@ -16,7 +16,7 @@ export declare class HealthHelper {
     protected healthConfig: IHealthConfig;
     constructor(jsonUtil: JsonUtil, logger: ILogger, timeUtil: TimeUtil, saveServer: SaveServer, configServer: ConfigServer);
     /**
-     * Resets the profiles vitality/healh and vitality/effects properties to their defaults
+     * Resets the profiles vitality/health and vitality/effects properties to their defaults
      * @param sessionID Session Id
      * @returns updated profile
      */
@@ -30,7 +30,7 @@ export declare class HealthHelper {
      */
     saveVitality(pmcData: IPmcData, request: ISyncHealthRequestData, sessionID: string, addEffects?: boolean, deleteExistingEffects?: boolean): void;
     /**
-     * Adjust hydration/energy/temprate and body part hp values in player profile
+     * Adjust hydration/energy/temperate and body part hp values in player profile to values in profile.vitality
      * @param pmcData Profile to update
      * @param sessionId Session id
      */

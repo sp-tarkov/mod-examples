@@ -1,8 +1,9 @@
 import { IPmcData } from "../models/eft/common/IPmcData";
-import { Common, HideoutArea, Production, Productive } from "../models/eft/common/tables/IBotBase";
+import { Common, HideoutArea, IHideoutImprovement, Production, Productive } from "../models/eft/common/tables/IBotBase";
 import { Upd } from "../models/eft/common/tables/IItem";
 import { StageBonus } from "../models/eft/hideout/IHideoutArea";
-import { IHideoutContinousProductionStartRequestData } from "../models/eft/hideout/IHideoutContinousProductionStartRequestData";
+import { IHideoutContinuousProductionStartRequestData } from "../models/eft/hideout/IHideoutContinuousProductionStartRequestData";
+import { IHideoutProduction } from "../models/eft/hideout/IHideoutProduction";
 import { IHideoutSingleProductionStartRequestData } from "../models/eft/hideout/IHideoutSingleProductionStartRequestData";
 import { IHideoutTakeProductionRequestData } from "../models/eft/hideout/IHideoutTakeProductionRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
@@ -15,7 +16,6 @@ import { LocalisationService } from "../services/LocalisationService";
 import { PlayerService } from "../services/PlayerService";
 import { HashUtil } from "../utils/HashUtil";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
-import { RandomUtil } from "../utils/RandomUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 import { InventoryHelper } from "./InventoryHelper";
 import { ProfileHelper } from "./ProfileHelper";
@@ -23,7 +23,6 @@ export declare class HideoutHelper {
     protected logger: ILogger;
     protected hashUtil: HashUtil;
     protected timeUtil: TimeUtil;
-    protected randomUtil: RandomUtil;
     protected databaseServer: DatabaseServer;
     protected eventOutputHolder: EventOutputHolder;
     protected httpResponse: HttpResponseUtil;
@@ -36,11 +35,13 @@ export declare class HideoutHelper {
     static waterCollector: string;
     static bitcoin: string;
     static expeditionaryFuelTank: string;
+    static maxSkillPoint: number;
+    private static generatorOffMultipler;
     protected hideoutConfig: IHideoutConfig;
-    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, inventoryHelper: InventoryHelper, playerService: PlayerService, localisationService: LocalisationService, configServer: ConfigServer);
-    registerProduction(pmcData: IPmcData, body: IHideoutSingleProductionStartRequestData | IHideoutContinousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
+    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, inventoryHelper: InventoryHelper, playerService: PlayerService, localisationService: LocalisationService, configServer: ConfigServer);
+    registerProduction(pmcData: IPmcData, body: IHideoutSingleProductionStartRequestData | IHideoutContinuousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
     /**
-     * This convinience function intialies new Production Object
+     * This convenience function initializes new Production Object
      * with all the constants.
      */
     initProduction(recipeId: string, productionTime: number): Production;
@@ -82,6 +83,26 @@ export declare class HideoutHelper {
         waterCollectorHasFilter: boolean;
     }): void;
     /**
+     * Update a productions progress value based on the amount of time that has passed
+     * @param pmcData Player profile
+     * @param prodId Production id being crafted
+     * @param recipe Recipe data being crafted
+     * @param hideoutProperties
+     */
+    protected updateProductionProgress(pmcData: IPmcData, prodId: string, recipe: IHideoutProduction, hideoutProperties: {
+        btcFarmCGs?: number;
+        isGeneratorOn: boolean;
+        waterCollectorHasFilter?: boolean;
+    }): void;
+    /**
+     * Check if a productions progress value matches its corresponding recipes production time value
+     * @param pmcData Player profile
+     * @param prodId Production id
+     * @param recipe Recipe being crafted
+     * @returns progress matches productionTime from recipe
+     */
+    protected doesProgressMatchProductionTime(pmcData: IPmcData, prodId: string): boolean;
+    /**
      * Update progress timer for scav case
      * @param pmcData Profile to update
      * @param productionId Id of scav case production to update
@@ -105,7 +126,7 @@ export declare class HideoutHelper {
      * Adjust water filter objects resourceValue or delete when they reach 0 resource
      * @param waterFilterArea water filter area to update
      * @param production production object
-     * @param isGeneratorOn is generatory enabled
+     * @param isGeneratorOn is generator enabled
      * @param pmcData Player profile
      * @returns Updated HideoutArea object
      */
@@ -113,11 +134,53 @@ export declare class HideoutHelper {
     protected getAreaUpdObject(stackCount: number, resourceValue: number, resourceUnitsConsumed: number): Upd;
     protected updateAirFilters(airFilterArea: HideoutArea, pmcData: IPmcData): void;
     protected updateBitcoinFarm(pmcData: IPmcData, btcFarmCGs: number, isGeneratorOn: boolean): Production;
+    /**
+     * Get a count of how many BTC can be gathered by the profile
+     * @param pmcData Profile to look up
+     * @returns coin slot count
+     */
     protected getBTCSlots(pmcData: IPmcData): number;
     protected getManagementSkillsSlots(): number;
     protected hasManagementSkillSlots(pmcData: IPmcData): boolean;
     protected getHideoutManagementSkill(pmcData: IPmcData): Common;
     protected getHideoutManagementConsumptionBonus(pmcData: IPmcData): number;
+    /**
+     * Get the crafting skill details from player profile
+     * @param pmcData Player profile
+     * @returns crafting skill, null if not found
+     */
+    protected getCraftingSkill(pmcData: IPmcData): Common;
+    /**
+     * Adjust craft time based on crafting skill level found in player profile
+     * @param pmcData Player profile
+     * @param productionTime Time to complete hideout craft in seconds
+     * @returns Adjusted craft time in seconds
+     */
+    protected getCraftingSkillProductionTimeReduction(pmcData: IPmcData, productionTime: number): number;
     isProduction(productive: Productive): productive is Production;
-    getBTC(pmcData: IPmcData, body: IHideoutTakeProductionRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Gather crafted BTC from hideout area and add to inventory
+     * Reset production start timestamp if hideout area at full coin capacity
+     * @param pmcData Player profile
+     * @param request Take production request
+     * @param sessionId Session id
+     * @returns IItemEventRouterResponse
+     */
+    getBTC(pmcData: IPmcData, request: IHideoutTakeProductionRequestData, sessionId: string): IItemEventRouterResponse;
+    /**
+     * Upgrade hideout wall from starting level to interactable level if enough time has passed
+     * @param pmcProfile Profile to upgrade wall in
+     */
+    unlockHideoutWallInProfile(pmcProfile: IPmcData): void;
+    /**
+     * Hideout improvement is flagged as complete
+     * @param improvement hideout improvement object
+     * @returns true if complete
+     */
+    protected hideoutImprovementIsComplete(improvement: IHideoutImprovement): boolean;
+    /**
+     * Iterate over hideout improvements not completed and check if they need to be adjusted
+     * @param pmcProfile Profile to adjust
+     */
+    setHideoutImprovementsToCompleted(pmcProfile: IPmcData): void;
 }

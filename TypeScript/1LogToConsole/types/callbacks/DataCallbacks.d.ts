@@ -65,5 +65,10 @@ export declare class DataCallbacks {
      * Handle client/hideout/qte/list
      */
     getQteList(url: string, info: IEmptyRequestData, sessionID: string): string;
+    /**
+     * Handle client/items/prices/
+     * Called when viewing a traders assorts
+     * TODO -  fully implement this
+     */
     getItemPrices(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IGetItemPricesResponse>;
 }

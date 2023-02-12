@@ -21,7 +21,7 @@ import { DialogueInfo } from "../models/eft/profile/IAkiProfile";
 import { HashUtil } from "../utils/HashUtil";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { TimeUtil } from "../utils/TimeUtil";
-export declare class DialogueCallbacks extends OnUpdate {
+export declare class DialogueCallbacks implements OnUpdate {
     protected hashUtil: HashUtil;
     protected timeUtil: TimeUtil;
     protected httpResponse: HttpResponseUtil;

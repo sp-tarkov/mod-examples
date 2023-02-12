@@ -29,8 +29,11 @@ export interface Props {
     IsUnsaleable?: boolean;
     IsUnbuyable?: boolean;
     IsUngivable?: boolean;
+    IsUnremovable?: boolean;
     IsLockedafterEquip?: boolean;
+    IsSpecialSlotOnly?: boolean;
     QuestItem?: boolean;
+    QuestStashMaxCount?: number;
     LootExperience?: number;
     ExamineExperience?: number;
     HideEntrails?: boolean;
@@ -156,11 +159,12 @@ export interface Props {
     RigLayoutName?: string;
     MaxDurability?: number;
     armorZone?: string[];
-    armorClass?: any;
+    armorClass?: string | number;
     mousePenalty?: number;
     weaponErgonomicPenalty?: number;
     BluntThroughput?: number;
     ArmorMaterial?: string;
+    ArmorType?: string;
     weapClass?: string;
     weapUseType?: string;
     ammoCaliber?: string;
@@ -365,6 +369,8 @@ export interface Props {
     CanBeHiddenDuringThrow?: boolean;
     MinTimeToContactExplode?: number;
     ExplosionEffectType?: string;
+    LinkedWeapon?: string;
+    UseAmmoWithoutShell?: boolean;
 }
 export interface IHealthEffect {
     type: string;

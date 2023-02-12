@@ -17,6 +17,7 @@ export interface Upd {
     StackObjectsCount?: number;
     UnlimitedCount?: boolean;
     Repairable?: Repairable;
+    RecodableComponent?: RecodableComponent;
     FireMode?: FireMode;
     SpawnedInSession?: boolean;
     Light?: Light;
@@ -58,6 +59,9 @@ export interface FaceShield {
 export interface Repairable {
     Durability: number;
     MaxDurability: number;
+}
+export interface RecodableComponent {
+    IsEncoded: boolean;
 }
 export interface MedKit {
     HpResource: number;

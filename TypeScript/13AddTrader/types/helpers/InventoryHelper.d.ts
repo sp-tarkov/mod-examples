@@ -1,6 +1,7 @@
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { Item } from "../models/eft/common/tables/IItem";
-import { IAddItemRequestData } from "../models/eft/inventory/IAddItemRequestData";
+import { AddItem, IAddItemRequestData } from "../models/eft/inventory/IAddItemRequestData";
+import { IAddItemTempObject } from "../models/eft/inventory/IAddItemTempObject";
 import { IInventoryMergeRequestData } from "../models/eft/inventory/IInventoryMergeRequestData";
 import { IInventoryMoveRequestData } from "../models/eft/inventory/IInventoryMoveRequestData";
 import { IInventorySplitRequestData } from "../models/eft/inventory/IInventorySplitRequestData";
@@ -46,15 +47,41 @@ export declare class InventoryHelper {
     /**
      * BUG: Passing the same item multiple times with a count of 1 will cause multiples of that item to be added (e.g. x3 separate objects of tar cola with count of 1 = 9 tarcolas being added to inventory)
      * @param pmcData Profile to add items to
-     * @param body request data to add items
+     * @param request request data to add items
      * @param output response to send back to client
      * @param sessionID Session id
-     * @param callback
+     * @param callback Code to execute later (function)
      * @param foundInRaid Will results added to inventory be set as found in raid
-     * @param addUpd Additional upd propertys for items being added to inventory
+     * @param addUpd Additional upd properties for items being added to inventory
      * @returns IItemEventRouterResponse
      */
-    addItem(pmcData: IPmcData, body: IAddItemRequestData, output: IItemEventRouterResponse, sessionID: string, callback: any, foundInRaid?: boolean, addUpd?: any): IItemEventRouterResponse;
+    addItem(pmcData: IPmcData, request: IAddItemRequestData, output: IItemEventRouterResponse, sessionID: string, callback: {
+        (): void;
+    }, foundInRaid?: boolean, addUpd?: any): IItemEventRouterResponse;
+    /**
+     * Add ammo to ammo boxes
+     * @param itemToAdd Item to check is ammo box
+     * @param toDo
+     * @param output IItemEventRouterResponse object
+     * @param sessionID Session id
+     * @param pmcData Profile to add ammobox to
+     */
+    protected hydrateAmmoBoxWithAmmo(pmcData: IPmcData, itemToAdd: IAddItemTempObject, toDo: string[][], sessionID: string, output: IItemEventRouterResponse): void;
+    /**
+     *
+     * @param assortItems Items to add to inventory
+     * @param requestItem Details of purchased item to add to inventory
+     * @param result Array split stacks are added to
+     */
+    protected splitStackIntoSmallerStacks(assortItems: Item[], requestItem: AddItem, result: IAddItemTempObject[]): void;
+    /**
+     * Remove item from player inventory
+     * @param pmcData Profile to remove item from
+     * @param itemId Items id to remove
+     * @param sessionID Session id
+     * @param output Existing IItemEventRouterResponse object to append data to, creates new one by default if not supplied
+     * @returns IItemEventRouterResponse
+     */
     removeItem(pmcData: IPmcData, itemId: string, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
     removeItemByCount(pmcData: IPmcData, itemId: string, count: number, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
     getItemSize(itemTpl: string, itemID: string, inventoryItem: Item[]): Record<number, number>;

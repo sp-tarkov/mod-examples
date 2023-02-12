@@ -1,6 +1,7 @@
 import { PlayerScavGenerator } from "../generators/PlayerScavGenerator";
 import { ItemHelper } from "../helpers/ItemHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
+import { QuestHelper } from "../helpers/QuestHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { IMiniProfile } from "../models/eft/launcher/IMiniProfile";
@@ -24,8 +25,9 @@ export declare class ProfileController {
     protected profileFixerService: ProfileFixerService;
     protected playerScavGenerator: PlayerScavGenerator;
     protected traderHelper: TraderHelper;
+    protected questHelper: QuestHelper;
     protected profileHelper: ProfileHelper;
-    constructor(hashUtil: HashUtil, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, itemHelper: ItemHelper, profileFixerService: ProfileFixerService, playerScavGenerator: PlayerScavGenerator, traderHelper: TraderHelper, profileHelper: ProfileHelper);
+    constructor(hashUtil: HashUtil, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, itemHelper: ItemHelper, profileFixerService: ProfileFixerService, playerScavGenerator: PlayerScavGenerator, traderHelper: TraderHelper, questHelper: QuestHelper, profileHelper: ProfileHelper);
     getMiniProfiles(): IMiniProfile[];
     getMiniProfile(sessionID: string): any;
     getCompleteProfile(sessionID: string): IPmcData[];

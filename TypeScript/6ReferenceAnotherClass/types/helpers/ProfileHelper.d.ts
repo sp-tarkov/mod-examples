@@ -44,7 +44,7 @@ export declare class ProfileHelper {
     /**
      * Add experience to a PMC inside the players profile
      * @param sessionID Session id
-     * @param experienceToAdd Experiecne to add to PMC character
+     * @param experienceToAdd Experience to add to PMC character
      */
     addExperienceToPmc(sessionID: string, experienceToAdd: number): void;
     getProfileByPmcId(pmcId: string): IPmcData;

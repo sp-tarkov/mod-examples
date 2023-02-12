@@ -1,5 +1,5 @@
 import { QuestStatus } from "../../../models/enums/QuestStatus";
-import { Skills } from "../common/tables/IBotBase";
+import { Health, Productive, Skills, TraderInfo } from "../common/tables/IBotBase";
 import { Item, Upd } from "../common/tables/IItem";
 import { IQuest } from "../common/tables/IQuest";
 import { IPmcDataRepeatableQuest } from "../common/tables/IRepeatableQuests";
@@ -22,11 +22,12 @@ export interface ProfileChange {
     ragFairOffers: IRagfairOffer[];
     builds: BuildChange[];
     items: ItemChanges;
-    production: Record<string, Production>;
+    production: Record<string, Productive>;
     /** Hideout area improvement id */
     improvements: Record<string, Improvement>;
     skills: Skills;
-    traderRelations: Record<string, TraderRelations>;
+    health: Health;
+    traderRelations: Record<string, TraderInfo>;
     repeatableQuests?: IPmcDataRepeatableQuest[];
     recipeUnlocked: Record<string, boolean>;
     questsStatus: QuestStatusChange[];
@@ -50,14 +51,6 @@ export interface ItemChanges {
     change: Product[];
     del: Product[];
 }
-export interface Production {
-    Progress: number;
-    StartTimestamp: number;
-    ProductionTime: number;
-    inProgress: boolean;
-    RecipeId: string;
-    Products: Product[];
-}
 export interface Improvement {
     completed: boolean;
     improveCompleteTimestamp: number;
@@ -75,11 +68,4 @@ export interface ItemChangeLocation {
     y: number;
     r: number;
     isSearched?: boolean;
-}
-export interface TraderRelations {
-    salesSum?: number;
-    standing?: number;
-    loyalty?: number;
-    unlocked?: boolean;
-    disabled?: boolean;
 }

@@ -7,10 +7,10 @@ import { ICreateGroupRequestData } from "../models/eft/match/ICreateGroupRequest
 import { IEndOfflineRaidRequestData } from "../models/eft/match/IEndOfflineRaidRequestData";
 import { IGetGroupStatusRequestData } from "../models/eft/match/IGetGroupStatusRequestData";
 import { IGetProfileRequestData } from "../models/eft/match/IGetProfileRequestData";
+import { IGetRaidConfigurationRequestData } from "../models/eft/match/IGetRaidConfigurationRequestData";
 import { IJoinMatchRequestData } from "../models/eft/match/IJoinMatchRequestData";
 import { IJoinMatchResult } from "../models/eft/match/IJoinMatchResult";
 import { IPutMetricsRequestData } from "../models/eft/match/IPutMetricsRequestData";
-import { IStartOfflineRaidRequestData } from "../models/eft/match/IStartOffineRaidRequestData";
 import { IUpdatePingRequestData } from "../models/eft/match/IUpdatePingRequestData";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
@@ -41,6 +41,6 @@ export declare class MatchCallbacks {
     getGroupStatus(url: string, info: IGetGroupStatusRequestData, sessionID: string): IGetBodyResponseData<any>;
     createGroup(url: string, info: ICreateGroupRequestData, sessionID: string): IGetBodyResponseData<any>;
     deleteGroup(url: string, info: any, sessionID: string): INullResponseData;
-    startOfflineRaid(url: string, info: IStartOfflineRaidRequestData, sessionID: string): INullResponseData;
     endOfflineRaid(url: string, info: IEndOfflineRaidRequestData, sessionID: string): INullResponseData;
+    getRaidConfiguration(url: string, info: IGetRaidConfigurationRequestData, sessionID: string): INullResponseData;
 }

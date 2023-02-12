@@ -2,7 +2,7 @@ import { BotDifficultyHelper } from "../helpers/BotDifficultyHelper";
 import { BotHelper } from "../helpers/BotHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { WeightedRandomHelper } from "../helpers/WeightedRandomHelper";
-import { Health as PmcHealth, IBotBase, Skills } from "../models/eft/common/tables/IBotBase";
+import { Health as PmcHealth, IBotBase, Info, Skills } from "../models/eft/common/tables/IBotBase";
 import { Health, IBotType } from "../models/eft/common/tables/IBotType";
 import { BotGenerationDetails } from "../models/spt/bots/BotGenerationDetails";
 import { IBotConfig } from "../models/spt/config/IBotConfig";
@@ -90,6 +90,13 @@ export declare class BotGenerator {
      */
     protected generateId(bot: IBotBase): IBotBase;
     protected generateInventoryID(profile: IBotBase): IBotBase;
+    /**
+     * Randomise a bots game version and account category
+     * Chooses from all the game versions (standard, eod etc)
+     * Chooses account type (default, Sherpa, etc)
+     * @param botInfo bot info object to update
+     */
+    protected getRandomisedGameVersionAndCategory(botInfo: Info): void;
     /**
      * Add a side-specific (usec/bear) dogtag item to a bots inventory
      * @param bot bot to add dogtag to

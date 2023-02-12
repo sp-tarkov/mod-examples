@@ -1,6 +1,7 @@
-import { OnLoadOnUpdate } from "../di/OnLoadOnUpdate";
+import { OnLoad } from "../di/OnLoad";
+import { OnUpdate } from "../di/OnUpdate";
 import { SaveServer } from "../servers/SaveServer";
-export declare class SaveCallbacks extends OnLoadOnUpdate {
+export declare class SaveCallbacks implements OnLoad, OnUpdate {
     protected saveServer: SaveServer;
     constructor(saveServer: SaveServer);
     onLoad(): Promise<void>;

@@ -29,6 +29,8 @@ export declare class TraderHelper {
     protected timeUtil: TimeUtil;
     protected configServer: ConfigServer;
     protected traderConfig: ITraderConfig;
+    /** Dictionary of item tpl and the highest trader rouble price */
+    protected highestTraderPriceItems: Record<string, number>;
     constructor(logger: ILogger, databaseServer: DatabaseServer, saveServer: SaveServer, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, itemHelper: ItemHelper, handbookHelper: HandbookHelper, playerService: PlayerService, localisationService: LocalisationService, fenceService: FenceService, timeUtil: TimeUtil, configServer: ConfigServer);
     getTrader(traderID: string, sessionID: string): ITraderBase;
     getTraderAssortsById(traderId: string): ITraderAssort;
@@ -147,4 +149,10 @@ export declare class TraderHelper {
         }[];
         tid: string;
     }): void;
+    /**
+     * Get the highest rouble price for an item from traders
+     * @param tpl Item to look up highest pride for
+     * @returns highest rouble cost for item
+     */
+    getHighestTraderPriceRouble(tpl: string): number;
 }

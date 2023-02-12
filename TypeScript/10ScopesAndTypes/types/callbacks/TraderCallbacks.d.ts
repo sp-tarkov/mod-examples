@@ -1,10 +1,11 @@
+import { OnLoad } from "../di/OnLoad";
+import { OnUpdate } from "../di/OnUpdate";
 import { TraderController } from "../controllers/TraderController";
-import { OnLoadOnUpdate } from "../di/OnLoadOnUpdate";
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { IBarterScheme, ITraderAssort, ITraderBase } from "../models/eft/common/tables/ITrader";
 import { IGetBodyResponseData } from "../models/eft/httpResponse/IGetBodyResponseData";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
-export declare class TraderCallbacks extends OnLoadOnUpdate {
+export declare class TraderCallbacks implements OnLoad, OnUpdate {
     protected httpResponse: HttpResponseUtil;
     protected traderController: TraderController;
     constructor(httpResponse: HttpResponseUtil, traderController: TraderController);

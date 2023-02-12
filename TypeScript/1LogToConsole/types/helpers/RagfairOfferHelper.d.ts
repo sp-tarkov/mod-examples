@@ -49,6 +49,12 @@ export declare class RagfairOfferHelper {
     getValidOffers(searchRequest: ISearchRequestData, itemsToAdd: string[], traderAssorts: Record<string, ITraderAssort>, pmcProfile: IPmcData): IRagfairOffer[];
     getOffersForBuild(info: ISearchRequestData, itemsToAdd: string[], assorts: Record<string, ITraderAssort>, pmcProfile: IPmcData): IRagfairOffer[];
     /**
+     * Has a traders offer ran out of stock to sell to player
+     * @param offer Offer to check stock of
+     * @returns true if out of stock
+     */
+    protected traderOutOfStock(offer: IRagfairOffer): boolean;
+    /**
      * Check if trader offers' BuyRestrictionMax value has been reached
      * @param offer offer to check restriction properties of
      * @returns true if restriction reached, false if no restrictions/not reached

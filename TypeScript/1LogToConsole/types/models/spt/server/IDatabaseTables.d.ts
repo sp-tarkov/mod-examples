@@ -42,8 +42,6 @@ export interface IDatabaseTables {
         items: Record<string, ITemplateItem>;
         quests: Record<string, IQuest>;
         repeatableQuests: IRepeatableQuestDatabase;
-        /** DEPRECATED - Items file found in the client, massivly out of date compared to templates.items, try not to use this, remove ASAP*/
-        clientItems: Record<string, ITemplateItem>;
         handbook: IHandbookBase;
         customization: Record<string, ICustomizationItem>;
         /** The profile templates listed in the launcher on profile creation, split by account type (e.g. Standard) then side (e.g. bear/usec) */

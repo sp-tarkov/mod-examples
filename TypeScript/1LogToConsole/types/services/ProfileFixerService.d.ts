@@ -104,4 +104,9 @@ export declare class ProfileFixerService {
      * @param fullProfile Profile to update
      */
     addMissingHideoutAreasToProfile(fullProfile: IAkiProfile): void;
+    /**
+     * These used to be used for storing scav case rewards, rewards are now generated on pickup
+     * @param pmcProfile Profile to update
+     */
+    removeLegacyScavCaseProductionCrafts(pmcProfile: IPmcData): void;
 }

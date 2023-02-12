@@ -6,7 +6,7 @@ export declare class NotificationSendHelper {
     protected notificationService: NotificationService;
     constructor(webSocketServer: WebSocketServer, notificationService: NotificationService);
     /**
-     * Send notification message to the appropiate channel
+     * Send notification message to the appropriate channel
      */
     sendMessage(sessionID: string, notificationMessage: INotification): void;
 }

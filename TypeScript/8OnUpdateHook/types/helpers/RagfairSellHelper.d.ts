@@ -30,7 +30,7 @@ export declare class RagfairSellHelper {
      * Determine if the offer being listed will be sold
      * @param sellChancePercent chance item will sell
      * @param itemSellCount count of items to sell
-     * @returns Array of purchases of item(s) lsited
+     * @returns Array of purchases of item(s) listed
      */
     rollForSale(sellChancePercent: number, itemSellCount: number): SellResult[];
 }

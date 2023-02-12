@@ -6,6 +6,8 @@ export interface IJoinMatchResult {
     port: number;
     version: string;
     location: string;
-    gamemode: string;
+    raidMode: string;
+    mode: string;
     shortid: string;
+    additional_info: any[];
 }

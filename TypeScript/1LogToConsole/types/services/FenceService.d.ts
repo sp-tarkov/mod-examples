@@ -33,12 +33,22 @@ export declare class FenceService {
     protected itemFilterService: ItemFilterService;
     protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
+    /** Main assorts you see at all rep levels */
     protected fenceAssort: ITraderAssort;
+    /** Assorts shown on a separte tab when you max out fence rep */
     protected fenceDiscountAssort: ITraderAssort;
     protected traderConfig: ITraderConfig;
     protected nextMiniRefreshTimestamp: number;
     constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, itemHelper: ItemHelper, presetHelper: PresetHelper, itemFilterService: ItemFilterService, localisationService: LocalisationService, configServer: ConfigServer);
+    /**
+     * Replace main fence assort with new assort
+     * @param assort New assorts to replace old with
+     */
     protected setFenceAssort(assort: ITraderAssort): void;
+    /**
+     * Replace high rep level fence assort with new assort
+     * @param assort New assorts to replace old with
+     */
     protected setFenceDiscountAssort(assort: ITraderAssort): void;
     /**
      * Get assorts player can purchase
@@ -131,9 +141,9 @@ export declare class FenceService {
     /**
      * Add preset weapons to fence presets
      * @param assortCount how many assorts to add to assorts
-     * @param defaultWeaponPresets
+     * @param defaultWeaponPresets a dictionary of default weapon presets
      * @param assorts object to add presets to
-     * @param loyaltyLevel
+     * @param loyaltyLevel loyalty level to requre item at
      */
     protected addPresets(desiredPresetCount: number, defaultWeaponPresets: Record<string, Preset>, assorts: ITraderAssort, loyaltyLevel: number): void;
     /**

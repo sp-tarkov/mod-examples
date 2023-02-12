@@ -52,7 +52,7 @@ export declare class InventoryHelper {
      * @param sessionID Session id
      * @param callback Code to execute later (function)
      * @param foundInRaid Will results added to inventory be set as found in raid
-     * @param addUpd Additional upd propertys for items being added to inventory
+     * @param addUpd Additional upd properties for items being added to inventory
      * @returns IItemEventRouterResponse
      */
     addItem(pmcData: IPmcData, request: IAddItemRequestData, output: IItemEventRouterResponse, sessionID: string, callback: {

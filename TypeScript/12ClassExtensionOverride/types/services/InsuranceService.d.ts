@@ -1,3 +1,4 @@
+import { ITraderBase } from "../models/eft/common/tables/ITrader";
 import { DialogueHelper } from "../helpers/DialogueHelper";
 import { HandbookHelper } from "../helpers/HandbookHelper";
 import { SecureContainerHelper } from "../helpers/SecureContainerHelper";
@@ -49,6 +50,13 @@ export declare class InsuranceService {
      * @param mapId Id of the map player died/exited that caused the insurance to be issued on
      */
     sendInsuredItems(pmcData: IPmcData, sessionID: string, mapId: string): void;
+    /**
+     * Get a timestamp of what insurance items should be sent to player based on the type of trader used to insure
+     * @param pmcData Player profile
+     * @param trader Trader used to insure items
+     * @returns Timestamp to return items to player in seconds
+     */
+    protected getInsuranceReturnTimestamp(pmcData: IPmcData, trader: ITraderBase): number;
     /**
      * Store lost gear post-raid inside profile
      * @param pmcData player profile to store gear in

@@ -40,10 +40,15 @@ export declare class InRaidHelper {
      * Remove Labs keycard
      * @param profileData Profile to update
      * @param saveProgressRequest post raid save data request data
-     * @param sessionID Sessino id
+     * @param sessionID Session id
      * @returns Reset profile object
      */
     updateProfileBaseStats(profileData: IPmcData, saveProgressRequest: ISaveProgressRequestData, sessionID: string): IPmcData;
+    /**
+     * Take body part effects from client profile and apply to server profile
+     * @param saveProgressRequest post-raid request
+     * @param profileData player profile on server
+     */
     protected transferPostRaidLimbEffectsToProfile(saveProgressRequest: ISaveProgressRequestData, profileData: IPmcData): void;
     /**
      * Some maps have one-time-use keys (e.g. Labs
@@ -61,7 +66,7 @@ export declare class InRaidHelper {
      * Adds SpawnedInSession property to items found in a raid
      * Removes SpawnedInSession for non-scav players if item was taken into raid with SpawnedInSession = true
      * @param preRaidProfile profile to update
-     * @param postRaidProfile profile to upate inventory contents of
+     * @param postRaidProfile profile to update inventory contents of
      * @param isPlayerScav Was this a p scav raid
      * @returns
      */

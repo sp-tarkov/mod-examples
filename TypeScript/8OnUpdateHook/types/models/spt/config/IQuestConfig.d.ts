@@ -3,13 +3,24 @@ import { IBaseConfig } from "./IBaseConfig";
 export interface IQuestConfig extends IBaseConfig {
     kind: "aki-quest";
     redeemTime: number;
+    questTemplateIds: IPlayerTypeQuestIds;
     repeatableQuests: IRepeatableQuestConfig[];
     locationIdMap: Record<string, string>;
     bearOnlyQuests: string[];
     usecOnlyQuests: string[];
 }
+export interface IPlayerTypeQuestIds {
+    pmc: IQuestTypeIds;
+    scav: IQuestTypeIds;
+}
+export interface IQuestTypeIds {
+    Elimination: string;
+    Completion: string;
+    Exploration: string;
+}
 export interface IRepeatableQuestConfig {
     name: string;
+    side: string;
     types: string[];
     resetTime: number;
     numQuests: number;
@@ -17,11 +28,12 @@ export interface IRepeatableQuestConfig {
     rewardScaling: IRewardScaling;
     locations: Record<ELocationName, string[]>;
     traderWhitelist: ITraderWhitelist[];
-    questConfig: IQuestConfig;
+    questConfig: IRepeatableQuestTypesConfig;
     /** Item base types to block when generating rewards */
     rewardBaseTypeBlacklist: string[];
     /** Item tplIds to ignore when generating rewards */
     rewardBlacklist: string[];
+    rewardAmmoStackMinSize: number;
 }
 export interface IRewardScaling {
     levels: number[];
@@ -35,7 +47,7 @@ export interface ITraderWhitelist {
     traderId: string;
     questTypes: string[];
 }
-export interface IQuestConfig {
+export interface IRepeatableQuestTypesConfig {
     Exploration: IExploration;
     Completion: ICompletion;
     Elimination: IElimination;

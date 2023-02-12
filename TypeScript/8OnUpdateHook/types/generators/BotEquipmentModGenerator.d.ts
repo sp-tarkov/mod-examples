@@ -145,7 +145,7 @@ export declare class BotEquipmentModGenerator {
      * @param modToAdd template of mod to check
      * @param itemSlot slot the item will be placed in
      * @param modSlot slot the mod will fill
-     * @param parentTemplate tempalte of the mods parent item
+     * @param parentTemplate template of the mods parent item
      * @returns true if valid
      */
     protected isModValidForSlot(modToAdd: [boolean, ITemplateItem], itemSlot: Slot, modSlot: string, parentTemplate: ITemplateItem): boolean;

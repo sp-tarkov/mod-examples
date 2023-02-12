@@ -180,6 +180,7 @@ export interface Exit {
     EntryPoints: string;
     ExfiltrationTime: number;
     ExfiltrationType: string;
+    RequiredSlot?: string;
     Id: string;
     MaxTime: number;
     MinTime: number;

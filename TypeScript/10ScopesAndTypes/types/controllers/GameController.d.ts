@@ -42,6 +42,12 @@ export declare class GameController {
     constructor(logger: ILogger, databaseServer: DatabaseServer, timeUtil: TimeUtil, preAkiModLoader: PreAkiModLoader, httpServerHelper: HttpServerHelper, hideoutHelper: HideoutHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, customLocationWaveService: CustomLocationWaveService, openZoneService: OpenZoneService, seasonalEventService: SeasonalEventService, applicationContext: ApplicationContext, configServer: ConfigServer);
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
     /**
+     * When player logs in, iterate over all active effects and reduce timer
+     * TODO - add body part HP regen
+     * @param pmcProfile
+     */
+    protected updateProfileHealthValues(pmcProfile: IPmcData): void;
+    /**
      * Waves with an identical min/max values spawn nothing, the number of bots that spawn is the difference between min and max
      */
     protected fixBrokenOfflineMapWaves(): void;

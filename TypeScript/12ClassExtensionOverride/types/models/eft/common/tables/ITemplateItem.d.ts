@@ -159,7 +159,7 @@ export interface Props {
     RigLayoutName?: string;
     MaxDurability?: number;
     armorZone?: string[];
-    armorClass?: any;
+    armorClass?: string | number;
     mousePenalty?: number;
     weaponErgonomicPenalty?: number;
     BluntThroughput?: number;

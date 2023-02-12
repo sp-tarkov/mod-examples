@@ -24,7 +24,7 @@ export declare class AkiHttpListener implements IHttpListener {
     handle(sessionId: string, req: IncomingMessage, resp: ServerResponse): void;
     sendResponse(sessionID: string, req: IncomingMessage, resp: ServerResponse, body: Buffer, output: string): void;
     getResponse(sessionID: string, req: IncomingMessage, body: Buffer): string;
-    protected getBodyInfo(body: Buffer): string;
-    sendJson(resp: ServerResponse, output: any, sessionID: string): void;
-    sendZlibJson(resp: ServerResponse, output: any, sessionID: string): void;
+    protected getBodyInfo(body: Buffer): any;
+    sendJson(resp: ServerResponse, output: string, sessionID: string): void;
+    sendZlibJson(resp: ServerResponse, output: string, sessionID: string): void;
 }

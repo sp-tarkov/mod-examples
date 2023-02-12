@@ -31,13 +31,23 @@ export declare class InsuranceController {
     protected configServer: ConfigServer;
     protected insuranceConfig: IInsuranceConfig;
     constructor(logger: ILogger, randomUtil: RandomUtil, eventOutputHolder: EventOutputHolder, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, itemHelper: ItemHelper, profileHelper: ProfileHelper, dialogueHelper: DialogueHelper, paymentService: PaymentService, insuranceService: InsuranceService, configServer: ConfigServer);
+    /**
+     * Process insurance items prior to being given to player in mail
+     */
     processReturn(): void;
+    /**
+     * Add insurance to an item
+     * @param pmcData Player profile
+     * @param body Insurance request
+     * @param sessionID Session id
+     * @returns IItemEventRouterResponse object to send to client
+     */
     insure(pmcData: IPmcData, body: IInsureRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * Calculate insurance cost
      * @param info request object
      * @param sessionID session id
-     * @returns response object to send to client
+     * @returns IGetInsuranceCostResponseData object to send to client
      */
     cost(info: IGetInsuranceCostRequestData, sessionID: string): IGetInsuranceCostResponseData;
 }
