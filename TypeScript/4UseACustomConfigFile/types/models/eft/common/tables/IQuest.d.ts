@@ -46,7 +46,7 @@ export interface AvailableForProps {
     parentId: string;
     isEncoded: boolean;
     dynamicLocale: boolean;
-    value?: number;
+    value?: string | number;
     compareMethod?: string;
     visibilityConditions?: VisibilityCondition[];
     target?: string | string[];

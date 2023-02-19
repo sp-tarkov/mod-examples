@@ -12,7 +12,7 @@ import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IRepeatableQuestChangeRequest } from "../models/eft/quests/IRepeatableQuestChangeRequest";
 import { ELocationName } from "../models/enums/ELocationName";
-import { IQuestConfig, IRepeatableQuestConfig } from "../models/spt/config/IQuestConfig";
+import { IEliminationConfig, IQuestConfig, IRepeatableQuestConfig } from "../models/spt/config/IQuestConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { ConfigServer } from "../servers/ConfigServer";
@@ -159,7 +159,14 @@ export declare class RepeatableQuestController {
      */
     generateEliminationQuest(pmcLevel: number, traderId: string, questTypePool: IQuestTypePool, repeatableConfig: IRepeatableQuestConfig): IElimination;
     /**
-     * Cpnvert a location into an quest code can read (e.g. factory4_day into 55f2d3fd4bdc2d5f408b4567)
+     * Get the relevant elimination config based on the current players PMC level
+     * @param pmcLevel Level of PMC character
+     * @param repeatableConfig Main repeatable config
+     * @returns IEliminationConfig
+     */
+    protected getEliminationConfigByPmcLevel(pmcLevel: number, repeatableConfig: IRepeatableQuestConfig): IEliminationConfig;
+    /**
+     * Convert a location into an quest code can read (e.g. factory4_day into 55f2d3fd4bdc2d5f408b4567)
      * @param locationKey e.g factory4_day
      * @returns guid
      */
@@ -203,10 +210,11 @@ export declare class RepeatableQuestController {
      * Used to create a quest pool during each cycle of repeatable quest generation. The pool will be subsequently
      * narrowed down during quest generation to avoid duplicate quests. Like duplicate extractions or elimination quests
      * where you have to e.g. kill scavs in same locations.
-     *
-     * @returns {object}                    the quest pool
+     * @param repeatableConfig main repeatable quest config
+     * @param pmcLevel level of pmc generating quest pool
+     * @returns IQuestTypePool
      */
-    generateQuestPool(repeatableConfig: IRepeatableQuestConfig): IQuestTypePool;
+    generateQuestPool(repeatableConfig: IRepeatableQuestConfig, pmcLevel: number): IQuestTypePool;
     /**
      * Generate the reward for a mission. A reward can consist of
      * - Experience

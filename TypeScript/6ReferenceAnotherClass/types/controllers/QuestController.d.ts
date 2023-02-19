@@ -61,13 +61,6 @@ export declare class QuestController {
      */
     acceptQuest(pmcData: IPmcData, acceptedQuest: IAcceptQuestRequestData, sessionID: string): IItemEventRouterResponse;
     /**
-     * Get a quests startedMessageText key from db, if no startedMessageText key found, use description key instead
-     * @param startedMessageTextId startedMessageText property from IQuest
-     * @param questDescriptionId description property from IQuest
-     * @returns message id
-     */
-    protected getMessageIdForQuestStart(startedMessageTextId: string, questDescriptionId: string): string;
-    /**
      * Handle the client accepting a repeatable quest and starting it
      * Send starting rewards if any to player and
      * Send start notification if any to player
@@ -123,7 +116,14 @@ export declare class QuestController {
      * @param questsToFail quests to fail
      */
     protected failQuests(sessionID: string, pmcData: IPmcData, questsToFail: IQuest[]): void;
-    handoverQuest(pmcData: IPmcData, body: IHandoverQuestRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     *
+     * @param pmcData Player profile
+     * @param handoverQuestRequest handover item request
+     * @param sessionID Session id
+     * @returns IItemEventRouterResponse
+     */
+    handoverQuest(pmcData: IPmcData, handoverQuestRequest: IHandoverQuestRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * Increment a backend counter stored value by an amount,
      * Create counter if it does not exist

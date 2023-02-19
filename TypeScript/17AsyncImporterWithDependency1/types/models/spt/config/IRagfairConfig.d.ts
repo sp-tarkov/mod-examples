@@ -30,6 +30,8 @@ export interface Reputation {
 }
 export interface Dynamic {
     purchasesAreFoundInRaid: boolean;
+    /** Use the highest trader price for an offer if its greater than the price in templates/prices.json */
+    useTraderPriceForOffersIfHigher: boolean;
     barter: Barter;
     offerAdjustment: OfferAdjustment;
     expiredOfferThreshold: number;

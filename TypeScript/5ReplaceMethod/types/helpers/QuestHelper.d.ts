@@ -40,7 +40,7 @@ export declare class QuestHelper {
     protected questConfig: IQuestConfig;
     constructor(logger: ILogger, jsonUtil: JsonUtil, timeUtil: TimeUtil, hashUtil: HashUtil, itemHelper: ItemHelper, eventOutputHolder: EventOutputHolder, databaseServer: DatabaseServer, localeService: LocaleService, ragfairServerHelper: RagfairServerHelper, dialogueHelper: DialogueHelper, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, traderHelper: TraderHelper, configServer: ConfigServer);
     /**
-    * Get status of a quest by quest id
+    * Get status of a quest in player profile by its id
     * @param pmcData Profile to search
     * @param questID Quest id to look up
     * @returns QuestStatus enum
@@ -160,6 +160,13 @@ export declare class QuestHelper {
      * @returns IQuest object
      */
     getQuestFromDb(questId: string, pmcData: IPmcData): IQuest;
+    /**
+     * Get a quests startedMessageText key from db, if no startedMessageText key found, use description key instead
+     * @param startedMessageTextId startedMessageText property from IQuest
+     * @param questDescriptionId description property from IQuest
+     * @returns message id
+     */
+    getMessageIdForQuestStart(startedMessageTextId: string, questDescriptionId: string): string;
     /**
      * Get the locale Id from locale db for a quest message
      * @param questMessageId Quest message id to look up

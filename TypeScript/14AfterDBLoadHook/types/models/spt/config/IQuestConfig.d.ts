@@ -1,3 +1,4 @@
+import { MinMax } from "../../../models/common/MinMax";
 import { ELocationName } from "../../enums/ELocationName";
 import { IBaseConfig } from "./IBaseConfig";
 export interface IQuestConfig extends IBaseConfig {
@@ -50,7 +51,7 @@ export interface ITraderWhitelist {
 export interface IRepeatableQuestTypesConfig {
     Exploration: IExploration;
     Completion: ICompletion;
-    Elimination: IElimination;
+    Elimination: IEliminationConfig[];
 }
 export interface IExploration {
     maxExtracts: number;
@@ -68,7 +69,8 @@ export interface ICompletion {
     useWhitelist: boolean;
     useBlacklist: boolean;
 }
-export interface IElimination {
+export interface IEliminationConfig {
+    levelRange: MinMax;
     targets: ITarget[];
     bodyPartProb: number;
     bodyParts: IBodyPart[];
@@ -80,11 +82,6 @@ export interface IElimination {
     maxKills: number;
     minKills: number;
 }
-export interface IProbabilityObject {
-    key: string;
-    relativeProbability: number;
-    data?: any;
-}
 export interface ITarget extends IProbabilityObject {
     data: IBossInfo;
 }
@@ -93,4 +90,9 @@ export interface IBossInfo {
 }
 export interface IBodyPart extends IProbabilityObject {
     data: string[];
+}
+export interface IProbabilityObject {
+    key: string;
+    relativeProbability: number;
+    data?: any;
 }

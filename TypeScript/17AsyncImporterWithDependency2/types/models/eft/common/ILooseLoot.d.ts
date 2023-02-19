@@ -1,3 +1,4 @@
+import { Item } from "./tables/IItem";
 export interface ILooseLoot {
     spawnpointCount: SpawnpointCount;
     spawnpointsForced: SpawnpointsForced[];
@@ -23,10 +24,6 @@ export interface SpawnpointTemplate {
     GroupPositions: any[];
     Root: any;
     Items: Item[];
-}
-export interface Item {
-    _id: string;
-    _tpl?: string;
 }
 export interface Spawnpoint {
     locationId: string;
