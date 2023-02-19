@@ -68,9 +68,6 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
 
         this.addTraderToLocales(tables, baseJson.name, "Cat", baseJson.nickname, baseJson.location, "This is the cat shop");
 
-        // Add item purchase threshold value (what % durability does trader stop buying items at)
-        traderConfig.durabilityPurchaseThreshhold[baseJson._id] = 60;
-
         this.logger.debug(`[${this.mod}] postDb Loaded`);
     }
 
@@ -105,7 +102,9 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
      * @param tables database
      * @param jsonUtil json utility class
      */
-    private addTraderToDb(traderDetailsToAdd: any, tables: IDatabaseTables, jsonUtil: JsonUtil): void
+    
+// rome-ignore lint/suspicious/noExplicitAny: traderDetailsToAdd comes from base.json, so no type
+private  addTraderToDb(traderDetailsToAdd: any, tables: IDatabaseTables, jsonUtil: JsonUtil): void
     {
         // Add trader to trader table, key is the traders id
         tables.traders[traderDetailsToAdd._id] = {
@@ -197,7 +196,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod {
     private addCollectionToAssort(jsonUtil: JsonUtil, assortTable: ITraderAssort, items: Item[], unlimitedCount: boolean, stackCount: number, loyaltyLevel: number, currencyType: Money, currencyValue: number): void
     {
         // Deserialize and serialize to ensure we dont alter the original data
-        const collectionToAdd = jsonUtil.deserialize(jsonUtil.serialize(items));
+        const collectionToAdd: Item[] = jsonUtil.deserialize(jsonUtil.serialize(items));
 
         // Update item base with values needed to make item sellable by trader
         collectionToAdd[0].upd = {
