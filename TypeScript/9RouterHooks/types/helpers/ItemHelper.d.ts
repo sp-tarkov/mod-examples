@@ -193,31 +193,53 @@ declare class ItemHelper {
     replaceIDs(pmcData: IPmcData, items: Item[], insuredItems?: InsuredItem[], fastPanel?: any): any[];
     /**
      * WARNING, SLOW. Recursively loop down through an items hierarchy to see if any of the ids match the supplied list, return true if any do
-     * @param {string} tpl
-     * @param {Array} tplsToCheck
-     * @returns boolean
+     * @param {string} tpl Items tpl to check parents of
+     * @param {Array} tplsToCheck Tpl values to check if parents of item match
+     * @returns boolean Match found
      */
     doesItemOrParentsIdMatch(tpl: string, tplsToCheck: string[]): boolean;
     /**
-     * Return true if item is a quest item
-     * @param {string} tpl
-     * @returns boolean
+     * Check if item is quest item
+     * @param tpl Items tpl to check quest status of
+     * @returns true if item is flagged as quest item
      */
     isQuestItem(tpl: string): boolean;
     /**
      * Get the inventory size of an item
-     * @param items
+     * @param items Item with children
      * @param rootItemId
      * @returns ItemSize object (width and height)
      */
     getItemSize(items: Item[], rootItemId: string): ItemHelper.ItemSize;
     /**
      * Get a random cartridge from an items Filter property
-     * @param item
-     * @returns
+     * @param item Db item template to look up Cartridge filter values from
+     * @returns Caliber of cartridge
      */
     getRandomCompatibleCaliberTemplateId(item: ITemplateItem): string;
-    createRandomMagCartridges(magTemplate: ITemplateItem, parentId: string, staticAmmoDist: Record<string, IStaticAmmoDetails[]>, caliber?: string): Item;
+    /**
+     * Add cartridges to the ammo box with correct max stack sizes
+     * @param ammoBox Box to add cartridges to
+     * @param ammoBoxDetails Item template from items db
+     */
+    addCartridgesToAmmoBox(ammoBox: Item[], ammoBoxDetails: ITemplateItem): void;
+    /**
+     * Add child items (cartridges) to a magazine
+     * @param magazine Magazine to add child items to
+     * @param magTemplate Db template of magazine
+     * @param staticAmmoDist Cartridge distribution
+     * @param caliber Caliber of cartridge to add to magazine
+     * @param minSizePercent % the magazine must be filled to
+     */
+    fillMagazineWithRandomCartridge(magazine: Item[], magTemplate: ITemplateItem, staticAmmoDist: Record<string, IStaticAmmoDetails[]>, caliber?: string, minSizePercent?: number): void;
+    /**
+     * Add child items to a magazine of a specific cartridge
+     * @param magazine Magazine to add child items to
+     * @param magTemplate Db template of magazine
+     * @param cartridgeTpl Cartridge to add to magazine
+     * @param minSizePercent % the magazine must be filled to
+     */
+    fillMagazineWithCartridge(magazine: Item[], magTemplate: ITemplateItem, cartridgeTpl: string, minSizePercent?: number): void;
     protected getRandomValidCaliber(magTemplate: ITemplateItem): string;
     protected drawAmmoTpl(caliber: string, staticAmmoDist: Record<string, IStaticAmmoDetails[]>): string;
     /**

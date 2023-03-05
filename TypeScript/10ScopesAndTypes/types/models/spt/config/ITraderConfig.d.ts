@@ -3,6 +3,7 @@ import { IBaseConfig } from "./IBaseConfig";
 export interface ITraderConfig extends IBaseConfig {
     kind: "aki-trader";
     updateTime: UpdateTime[];
+    purchasesAreFoundInRaid: boolean;
     updateTimeDefault: number;
     traderPriceMultipler: number;
     persistPurchaseDataInProfile: boolean;

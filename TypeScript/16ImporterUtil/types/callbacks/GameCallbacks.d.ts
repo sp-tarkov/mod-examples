@@ -39,6 +39,7 @@ declare class GameCallbacks {
      */
     getGameConfig(url: string, info: IGameEmptyCrcRequestData, sessionID: string): IGetBodyResponseData<IGameConfigResponse>;
     getServer(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IServerDetails[]>;
+    getCurrentGroup(url: string, info: IEmptyRequestData, sessionID: string): any;
     validateGameVersion(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ICheckVersionResponse>;
     /**
      * Handle client/game/keepalive

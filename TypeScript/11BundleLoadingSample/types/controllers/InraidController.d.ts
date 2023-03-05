@@ -61,18 +61,18 @@ export declare class InraidController {
      */
     protected savePmcProgress(sessionID: string, offraidData: ISaveProgressRequestData): void;
     /**
-     * Make changes to pmc profile after they left raid dead,
-     * alter bodypart hp, handle insurance, delete inventory items, remove carried quest items
-     * @param postRaidSaveRequest post-raid save request
-     * @param pmcData pmc profile
-     * @param insuranceEnabled is insurance enabled
-     * @param preRaidGear gear player had before raid
+     * Make changes to pmc profile after they've died in raid,
+     * Alter bodypart hp, handle insurance, delete inventory items, remove carried quest items
+     * @param postRaidSaveRequest Post-raid save request
+     * @param pmcData Pmc profile
+     * @param insuranceEnabled Is insurance enabled
+     * @param preRaidGear Gear player had before raid
      * @param sessionID Session id
      * @returns Updated profile object
      */
     protected performPostRaidActionsWhenDead(postRaidSaveRequest: ISaveProgressRequestData, pmcData: IPmcData, insuranceEnabled: boolean, preRaidGear: Item[], sessionID: string): IPmcData;
     /**
-     * Adjust player characters bodypart hp if they left raid early
+     * Adjust player characters bodypart hp post-raid
      * @param postRaidSaveRequest post raid data
      * @param pmcData player profile
      */

@@ -65,11 +65,11 @@ export declare class BotWeaponGeneratorHelper {
     /**
      * TODO - move into BotGeneratorHelper, this is not the class for it
      * Adds an item with all its children into specified equipmentSlots, wherever it fits.
-     * @param equipmentSlots
+     * @param equipmentSlots Slot to add item+children into
      * @param parentId
      * @param parentTpl
-     * @param itemWithChildren
-     * @param inventory
+     * @param itemWithChildren Item to add
+     * @param inventory Inventory to add item+children into
      * @returns a `boolean` indicating item was added
      */
     addItemWithChildrenToEquipmentSlot(equipmentSlots: string[], parentId: string, parentTpl: string, itemWithChildren: Item[], inventory: Inventory): boolean;

@@ -63,8 +63,16 @@ export declare class InsuranceService {
      * @param offraidData post-raid request object
      * @param preRaidGear gear player wore prior to raid
      * @param sessionID Session id
+     * @param playerDied did the player die in raid
      */
-    storeLostGear(pmcData: IPmcData, offraidData: ISaveProgressRequestData, preRaidGear: Item[], sessionID: string): void;
+    storeLostGear(pmcData: IPmcData, offraidData: ISaveProgressRequestData, preRaidGear: Item[], sessionID: string, playerDied: boolean): void;
+    /**
+     * Store insured items on pmc death inside insurance array in player profile
+     * @param pmcData Player profile
+     * @param offraidData Player gear post-raid
+     * @param preRaidGear Player gear before raid
+     * @param sessionID Session id
+     */
     storeInsuredItemsForReturn(pmcData: IPmcData, offraidData: ISaveProgressRequestData, preRaidGear: Item[], sessionID: string): void;
     /**
      * Add gear item to InsuredItems array in player profile

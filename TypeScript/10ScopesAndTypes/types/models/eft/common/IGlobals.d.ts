@@ -70,6 +70,7 @@ export interface Config {
     EventType: string[];
     WalkSpeed: xyz;
     SprintSpeed: xyz;
+    SquadSettings: ISquadSettings;
     SkillEnduranceWeightThreshold: number;
     TeamSearchingTimeout: number;
     Insurance: Insurance;
@@ -802,6 +803,11 @@ export interface Alpinist {
 export interface RestrictionsInRaid {
     TemplateId: string;
     Value: number;
+}
+export interface ISquadSettings {
+    CountOfRequestsToOnePlayer: number;
+    SecondsForExpiredRequest: number;
+    SendRequestDelaySeconds: number;
 }
 export interface Insurance {
     MaxStorageTimeInHour: number;

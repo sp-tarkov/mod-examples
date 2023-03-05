@@ -37,6 +37,9 @@ export interface Xyz {
     z: number;
 }
 export interface ItemDistribution {
-    tpl: string;
+    composedKey: ComposedKey;
     relativeProbability: number;
+}
+export interface ComposedKey {
+    key: string;
 }

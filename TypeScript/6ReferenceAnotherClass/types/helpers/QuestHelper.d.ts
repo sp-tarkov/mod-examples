@@ -211,7 +211,7 @@ export declare class QuestHelper {
      * @param itemTpl item tpl to look for
      * @returns 'FindItem' condition id
      */
-    getFindItemIdForQuestHandIn(itemTpl: string): string;
+    getFindItemIdForQuestHandIn(itemTpl: string): string[];
     /**
      * Add all quests to a profile with the provided statuses
      * @param pmcProfile profile to update

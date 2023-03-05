@@ -120,9 +120,7 @@ export interface Inventory {
     sortingTable: string;
     questRaidItems: string;
     questStashItems: string;
-    fastPanel: FastPanel;
-}
-export interface FastPanel {
+    fastPanel: Record<string, string>;
 }
 export interface Skills {
     Common: Common[];

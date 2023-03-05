@@ -5,7 +5,7 @@ import { ItemHelper } from "../helpers/ItemHelper";
 import { Inventory as PmcInventory } from "../models/eft/common/tables/IBotBase";
 import { Chances, Inventory, ItemMinMax, ModsChances } from "../models/eft/common/tables/IBotType";
 import { Item } from "../models/eft/common/tables/IItem";
-import { ITemplateItem, Props } from "../models/eft/common/tables/ITemplateItem";
+import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { IBotConfig } from "../models/spt/config/IBotConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
@@ -96,19 +96,6 @@ export declare class BotLootGenerator {
      * @returns true if item has reached spawn limit
      */
     protected itemHasReachedSpawnLimit(itemTemplate: ITemplateItem, botRole: string, isPmc: boolean, limitCount: Record<string, number>, itemSpawnLimits: Record<string, number>): boolean;
-    /**
-     * Is the item an ammo box
-     * @param props props of the item to check
-     * @returns true if item is an ammo box
-     */
-    protected isAmmoBox(props: Props): boolean;
-    /**
-     * Create an object that contains the ammo stack for an ammo box
-     * @param parentId ammo box id
-     * @param props ammo box props
-     * @returns Item object
-     */
-    protected createAmmoForAmmoBox(parentId: string, props: Props): Item;
     /**
      * Randomise the stack size of a money object, uses different values for pmc or scavs
      * @param isPmc is this a PMC

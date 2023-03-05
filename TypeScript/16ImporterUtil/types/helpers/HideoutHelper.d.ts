@@ -140,8 +140,21 @@ export declare class HideoutHelper {
      * @returns coin slot count
      */
     protected getBTCSlots(pmcData: IPmcData): number;
+    /**
+     * Get a count of bitcoins player miner can hold
+     */
     protected getManagementSkillsSlots(): number;
-    protected hasManagementSkillSlots(pmcData: IPmcData): boolean;
+    /**
+     * Does profile have elite hideout management skill
+     * @param pmcData Profile to look at
+     * @returns True if profile has skill
+     */
+    protected hasEliteHideoutManagementSkill(pmcData: IPmcData): boolean;
+    /**
+     * Get the hideout management skill from player profile
+     * @param pmcData Profile to look at
+     * @returns Hideout management skill object
+     */
     protected getHideoutManagementSkill(pmcData: IPmcData): Common;
     protected getHideoutManagementConsumptionBonus(pmcData: IPmcData): number;
     /**
