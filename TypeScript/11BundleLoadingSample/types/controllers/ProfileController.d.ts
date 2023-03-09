@@ -5,7 +5,9 @@ import { ProfileHelper } from "../helpers/ProfileHelper";
 import { QuestHelper } from "../helpers/QuestHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
+import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IMiniProfile } from "../models/eft/launcher/IMiniProfile";
+import { IAkiProfile } from "../models/eft/profile/IAkiProfile";
 import { IProfileChangeNicknameRequestData } from "../models/eft/profile/IProfileChangeNicknameRequestData";
 import { IProfileChangeVoiceRequestData } from "../models/eft/profile/IProfileChangeVoiceRequestData";
 import { IProfileCreateRequestData } from "../models/eft/profile/IProfileCreateRequestData";
@@ -36,6 +38,7 @@ export declare class ProfileController {
     getMiniProfile(sessionID: string): any;
     getCompleteProfile(sessionID: string): IPmcData[];
     createProfile(info: IProfileCreateRequestData, sessionID: string): void;
+    protected givePlayerStartingQuestRewards(profileDetails: IAkiProfile, sessionID: string, response: IItemEventRouterResponse): void;
     /**
      * Generate a player scav object
      * pmc profile MUST exist first before pscav can be generated

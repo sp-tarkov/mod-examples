@@ -18,4 +18,9 @@ export declare class LocalisationService {
      * @returns Localised string
      */
     getText(key: string, args?: any): string;
+    /**
+     * Get all locale keys
+     * @returns string array of keys
+     */
+    getKeys(): string[];
 }

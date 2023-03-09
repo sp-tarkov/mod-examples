@@ -31,7 +31,7 @@ export declare class DialogueHelper {
     /**
      * Get the preview contents of the last message in a dialogue.
      * @param dialogue
-     * @returns
+     * @returns MessagePreview
      */
     getMessagePreview(dialogue: Dialogue): MessagePreview;
     /**

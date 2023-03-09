@@ -2,7 +2,7 @@ import { DialogueHelper } from "../helpers/DialogueHelper";
 import { IGetAllAttachmentsResponse } from "../models/eft/dialog/IGetAllAttachmentsResponse";
 import { IGetFriendListDataResponse } from "../models/eft/dialog/IGetFriendListDataResponse";
 import { IGetMailDialogViewResponseData } from "../models/eft/dialog/IGetMailDialogViewResponseData";
-import { DialogueInfo, Message } from "../models/eft/profile/IAkiProfile";
+import { DialogueInfo, IAkiProfile, IUserDialogInfo, Message } from "../models/eft/profile/IAkiProfile";
 import { SaveServer } from "../servers/SaveServer";
 import { TimeUtil } from "../utils/TimeUtil";
 export declare class DialogueController {
@@ -35,6 +35,7 @@ export declare class DialogueController {
      * @returns IGetMailDialogViewResponseData object
      */
     generateDialogueView(dialogueID: string, sessionID: string): IGetMailDialogViewResponseData;
+    protected getProfilesForMail(pmcProfile: IAkiProfile, dialogUsers: IUserDialogInfo[]): IUserDialogInfo[];
     /**
      * Get a count of messages with attachments from a particular dialog
      * @param sessionID Session id
