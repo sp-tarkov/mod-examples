@@ -16,7 +16,7 @@ export declare class PmcChatResponseService {
     protected pmcResponsesConfig: IPmcChatResponse;
     constructor(randomUtil: RandomUtil, notificationSendHelper: NotificationSendHelper, localisationService: LocalisationService, weightedRandomHelper: WeightedRandomHelper, configServer: ConfigServer);
     /**
-     * Chooses a random victim from those provided and sends a message to the player, can be positive or negative
+     * For each PMC victim of the player, have a chance to send a message to the player, can be positive or negative
      * @param sessionId Session id
      * @param pmcVictims Array of bots killed by player
      */
@@ -46,11 +46,11 @@ export declare class PmcChatResponseService {
      */
     protected allCaps(isVictim: boolean): boolean;
     /**
-     * Should the word 'bro' be appended to the message being sent to player
+     * Should a suffix be appended to the end of the message being sent to player
      * @param isVictim Was responder a victim of player
      * @returns true = should be stripped
      */
-    appendBroToMessageEnd(isVictim: boolean): boolean;
+    appendSuffixToMessageEnd(isVictim: boolean): boolean;
     /**
      * Choose a type of response based on the weightings in pmc response config
      * @param isVictim Was responder killed by player
@@ -65,9 +65,20 @@ export declare class PmcChatResponseService {
      */
     protected getResponseLocaleKeys(keyType: string, isVictim?: boolean): string[];
     /**
+     * Get all locale keys that start with `pmcresponse-suffix`
+     * @returns array of keys
+     */
+    protected getResponseSuffixLocaleKeys(): string[];
+    /**
      * Randomly draw a victim of the the array and return thier details
      * @param pmcVictims Possible victims to choose from
      * @returns IUserDialogInfo
      */
     protected chooseRandomVictim(pmcVictims: Victim[]): IUserDialogInfo;
+    /**
+     * Convert a victim object into a IUserDialogInfo object
+     * @param pmcVictim victim to convert
+     * @returns IUserDialogInfo
+     */
+    protected getVictimDetails(pmcVictim: Victim): IUserDialogInfo;
 }
