@@ -47,10 +47,10 @@ export declare class QuestController {
     getClientQuests(sessionID: string): IQuest[];
     /**
      * Is the quest for the opposite side the player is on
-     * @param side player side (usec/bear)
-     * @param questId questId to check
+     * @param playerSide Player side (usec/bear)
+     * @param questId QuestId to check
      */
-    protected questIsForOtherSide(side: string, questId: string): boolean;
+    protected questIsForOtherSide(playerSide: string, questId: string): boolean;
     /**
      * Handle the client accepting a quest and starting it
      * Send starting rewards if any to player and

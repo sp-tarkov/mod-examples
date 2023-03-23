@@ -8,8 +8,10 @@ import { SaveServer } from "../servers/SaveServer";
 import { FenceService } from "../services/FenceService";
 import { LocalisationService } from "../services/LocalisationService";
 import { PlayerService } from "../services/PlayerService";
+import { RandomUtil } from "../utils/RandomUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 import { HandbookHelper } from "./HandbookHelper";
+import { ItemHelper } from "./ItemHelper";
 import { ProfileHelper } from "./ProfileHelper";
 export declare class TraderHelper {
     protected logger: ILogger;
@@ -17,15 +19,19 @@ export declare class TraderHelper {
     protected saveServer: SaveServer;
     protected profileHelper: ProfileHelper;
     protected handbookHelper: HandbookHelper;
+    protected itemHelper: ItemHelper;
     protected playerService: PlayerService;
     protected localisationService: LocalisationService;
     protected fenceService: FenceService;
     protected timeUtil: TimeUtil;
+    protected randomUtil: RandomUtil;
     protected configServer: ConfigServer;
     protected traderConfig: ITraderConfig;
-    /** Dictionary of item tpl and the highest trader rouble price */
+    /** Dictionary of item tpl and the highest trader sell rouble price */
     protected highestTraderPriceItems: Record<string, number>;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, saveServer: SaveServer, profileHelper: ProfileHelper, handbookHelper: HandbookHelper, playerService: PlayerService, localisationService: LocalisationService, fenceService: FenceService, timeUtil: TimeUtil, configServer: ConfigServer);
+    /** Dictionary of item tpl and the highest trader buy back rouble price */
+    protected highestTraderBuyPriceItems: Record<string, number>;
+    constructor(logger: ILogger, databaseServer: DatabaseServer, saveServer: SaveServer, profileHelper: ProfileHelper, handbookHelper: HandbookHelper, itemHelper: ItemHelper, playerService: PlayerService, localisationService: LocalisationService, fenceService: FenceService, timeUtil: TimeUtil, randomUtil: RandomUtil, configServer: ConfigServer);
     getTrader(traderID: string, sessionID: string): ITraderBase;
     getTraderAssortsById(traderId: string): ITraderAssort;
     /**
@@ -82,8 +88,15 @@ export declare class TraderHelper {
     }): void;
     /**
      * Get the highest rouble price for an item from traders
+     * UNUSED
      * @param tpl Item to look up highest pride for
      * @returns highest rouble cost for item
      */
     getHighestTraderPriceRouble(tpl: string): number;
+    /**
+     * Get the highest price item can be sold to trader for (roubles)
+     * @param tpl Item to look up best trader sell-to price
+     * @returns Rouble price
+     */
+    getHighestSellToTraderPrice(tpl: string): number;
 }

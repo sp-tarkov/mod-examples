@@ -23,7 +23,7 @@ export declare class LootGenerator {
      * @param options parameters to adjust how loot is generated
      * @returns An array of loot items
      */
-    createRandomloot(options: LootRequest): LootItem[];
+    createRandomLoot(options: LootRequest): LootItem[];
     /**
      * Construct item limit record to hold max and current item count
      * @param limits limits as defined in config

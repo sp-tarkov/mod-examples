@@ -96,7 +96,7 @@ export declare class BotEquipmentModGenerator {
      */
     protected getModItemSlot(modSlot: string, parentTemplate: ITemplateItem): Slot;
     /**
-     * randomly choose if a mod should be spawned, 100% for required mods OR mod is ammo slot
+     * Randomly choose if a mod should be spawned, 100% for required mods OR mod is ammo slot
      * never return true for an item that has 0% spawn chance
      * @param itemSlot slot the item sits in
      * @param modSlot slot the mod sits in

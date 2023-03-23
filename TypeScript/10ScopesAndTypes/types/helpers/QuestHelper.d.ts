@@ -1,5 +1,6 @@
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { Quest } from "../models/eft/common/tables/IBotBase";
+import { Item } from "../models/eft/common/tables/IItem";
 import { AvailableForConditions, AvailableForProps, IQuest, Reward } from "../models/eft/common/tables/IQuest";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IAcceptQuestRequestData } from "../models/eft/quests/IAcceptQuestRequestData";
@@ -42,10 +43,10 @@ export declare class QuestHelper {
     /**
     * Get status of a quest in player profile by its id
     * @param pmcData Profile to search
-    * @param questID Quest id to look up
+    * @param questId Quest id to look up
     * @returns QuestStatus enum
     */
-    getQuestStatus(pmcData: IPmcData, questID: string): QuestStatus;
+    getQuestStatus(pmcData: IPmcData, questId: string): QuestStatus;
     /**
      * returns true is the level condition is satisfied
      * @param playerLevel Players level
@@ -81,14 +82,19 @@ export declare class QuestHelper {
      * @returns true if loyalty is high enough to fulfill quest requirement
      */
     traderStandingRequirementCheck(questProperties: AvailableForProps, profile: IPmcData): boolean;
+    /**
+     * take reward item from quest and set FiR status + fix stack sizes + fix mod Ids
+     * @param reward Reward item to fix
+     * @returns Fixed rewards
+     */
     protected processReward(reward: Reward): Reward[];
     /**
      * Gets a flat list of reward items for the given quest at a specific state (e.g. Fail/Success)
      * @param quest quest to get rewards for
-     * @param state Quest status that holds the items (Started, Success, Fail)
+     * @param status Quest status that holds the items (Started, Success, Fail)
      * @returns array of items with the correct maxStack
      */
-    getQuestRewardItems(quest: IQuest, state: QuestStatus): Reward[];
+    getQuestRewardItems(quest: IQuest, status: QuestStatus): Reward[];
     /**
      * Look up quest in db by accepted quest id and construct a profile-ready object ready to store in profile
      * @param pmcData Player profile
@@ -97,19 +103,19 @@ export declare class QuestHelper {
      */
     getQuestReadyForProfile(pmcData: IPmcData, newState: QuestStatus, acceptedQuest: IAcceptQuestRequestData): Quest;
     /**
-     * TODO: what is going on here
-     * @param acceptedQuestId Quest to add to profile
+     * Get quests that can be shown to player after starting a quest
+     * @param startedQuestId Quest started by player
      * @param sessionID Session id
-     * @returns Array of quests in profile + quest passed in as param
+     * @returns Quests accessible to player incuding newly unlocked quests now quest (startedQuestId) was started
      */
-    acceptedUnlocked(acceptedQuestId: string, sessionID: string): IQuest[];
+    acceptedUnlocked(startedQuestId: string, sessionID: string): IQuest[];
     /**
-     * TODO: what is going on here
-     * @param failedQuestId
-     * @param sessionID Session id
+     * Get quests that can be shown to player after failing a quest
+     * @param failedQuestId Id of the quest failed by player
+     * @param sessionId Session id
      * @returns
      */
-    failedUnlocked(failedQuestId: string, sessionID: string): IQuest[];
+    failedUnlocked(failedQuestId: string, sessionId: string): IQuest[];
     /**
      * Adjust quest money rewards by passed in multiplier
      * @param quest Quest to multiple money rewards
@@ -127,6 +133,13 @@ export declare class QuestHelper {
      * @param output ItemEvent router response
      */
     changeItemStack(pmcData: IPmcData, itemId: string, newStackSize: number, sessionID: string, output: IItemEventRouterResponse): void;
+    /**
+     * Add item stack change object into output route event response
+     * @param output Response to add item change event into
+     * @param sessionId Session id
+     * @param item Item that was adjusted
+     */
+    protected addItemStackSizeChangeIntoEventResponse(output: IItemEventRouterResponse, sessionId: string, item: Item): void;
     /**
      * Get quests, strip all requirement conditions except level
      * @param quests quests to process

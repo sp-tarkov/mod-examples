@@ -1,6 +1,5 @@
 import { BotHelper } from "../helpers/BotHelper";
-import { MinMax } from "../models/common/MinMax";
-import { EquipmentChances, Generation, IBotType, ModsChances } from "../models/eft/common/tables/IBotType";
+import { EquipmentChances, Generation, IBotType, MinMaxWithWhitelist, ModsChances } from "../models/eft/common/tables/IBotType";
 import { BotGenerationDetails } from "../models/spt/bots/BotGenerationDetails";
 import { AdjustmentDetails, EquipmentFilterDetails, EquipmentFilters, IBotConfig, WeightingAdjustmentDetails } from "../models/spt/config/IBotConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
@@ -30,7 +29,7 @@ export declare class BotEquipmentFilterService {
      * @param generationChanges Changes to apply
      * @param baseBotGeneration dictionary to update
      */
-    protected adjustGenerationChances(generationChanges: Record<string, MinMax>, baseBotGeneration: Generation): void;
+    protected adjustGenerationChances(generationChanges: Record<string, MinMaxWithWhitelist>, baseBotGeneration: Generation): void;
     /**
      * Get equipment settings for bot
      * @param botEquipmentRole equipment role to return

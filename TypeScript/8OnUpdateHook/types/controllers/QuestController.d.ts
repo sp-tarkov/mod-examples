@@ -4,7 +4,8 @@ import { ProfileHelper } from "../helpers/ProfileHelper";
 import { QuestConditionHelper } from "../helpers/QuestConditionHelper";
 import { QuestHelper } from "../helpers/QuestHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
-import { IQuest, Reward } from "../models/eft/common/tables/IQuest";
+import { Item } from "../models/eft/common/tables/IItem";
+import { AvailableForConditions, IQuest, Reward } from "../models/eft/common/tables/IQuest";
 import { IRepeatableQuest } from "../models/eft/common/tables/IRepeatableQuests";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IAcceptQuestRequestData } from "../models/eft/quests/IAcceptQuestRequestData";
@@ -46,10 +47,10 @@ export declare class QuestController {
     getClientQuests(sessionID: string): IQuest[];
     /**
      * Is the quest for the opposite side the player is on
-     * @param side player side (usec/bear)
-     * @param questId questId to check
+     * @param playerSide Player side (usec/bear)
+     * @param questId QuestId to check
      */
-    protected questIsForOtherSide(side: string, questId: string): boolean;
+    protected questIsForOtherSide(playerSide: string, questId: string): boolean;
     /**
      * Handle the client accepting a quest and starting it
      * Send starting rewards if any to player and
@@ -124,6 +125,22 @@ export declare class QuestController {
      * @returns IItemEventRouterResponse
      */
     handoverQuest(pmcData: IPmcData, handoverQuestRequest: IHandoverQuestRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Show warning to user and write to log that repeatable quest failed a condition check
+     * @param handoverQuestRequest Quest request
+     * @param output Response to send to user
+     * @returns IItemEventRouterResponse
+     */
+    protected showRepeatableQuestInvalidConditionError(handoverQuestRequest: IHandoverQuestRequestData, output: IItemEventRouterResponse): IItemEventRouterResponse;
+    /**
+     * Show warning to user and write to log quest item handed over did not match what is required
+     * @param handoverQuestRequest Quest request
+     * @param itemHandedOver Non-matching item found
+     * @param handoverRequirements Quest handover requirements
+     * @param output Response to send to user
+     * @returns IItemEventRouterResponse
+     */
+    protected showQuestItemHandoverMatchError(handoverQuestRequest: IHandoverQuestRequestData, itemHandedOver: Item, handoverRequirements: AvailableForConditions, output: IItemEventRouterResponse): IItemEventRouterResponse;
     /**
      * Increment a backend counter stored value by an amount,
      * Create counter if it does not exist

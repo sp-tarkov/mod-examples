@@ -3,7 +3,7 @@ import { BotWeaponGeneratorHelper } from "../helpers/BotWeaponGeneratorHelper";
 import { HandbookHelper } from "../helpers/HandbookHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
 import { Inventory as PmcInventory } from "../models/eft/common/tables/IBotBase";
-import { Chances, Inventory, ItemMinMax, ModsChances } from "../models/eft/common/tables/IBotType";
+import { IBotType, Inventory, ModsChances } from "../models/eft/common/tables/IBotType";
 import { Item } from "../models/eft/common/tables/IItem";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { IBotConfig } from "../models/spt/config/IBotConfig";
@@ -33,15 +33,13 @@ export declare class BotLootGenerator {
     /**
      * Add loot to bots containers
      * @param sessionId Session id
-     * @param templateInventory x.json from database/bots
-     * @param itemCounts Liits on item types to be added as loot
+     * @param botJsonTemplate Base json db file for the bot having its loot generated
      * @param isPmc Will bot be a pmc
      * @param botRole Role of bot, e.g. asssult
      * @param botInventory Inventory to add loot to
-     * @param equipmentChances
      * @param botLevel Level of bot
      */
-    generateLoot(sessionId: string, templateInventory: Inventory, itemCounts: ItemMinMax, isPmc: boolean, botRole: string, botInventory: PmcInventory, equipmentChances: Chances, botLevel: number): void;
+    generateLoot(sessionId: string, botJsonTemplate: IBotType, isPmc: boolean, botRole: string, botInventory: PmcInventory, botLevel: number): void;
     protected getRandomisedCount(min: number, max: number, nValue: number): number;
     /**
      * Take random items from a pool and add to an inventory until totalItemCount or totalValueLimit is reached

@@ -2,7 +2,7 @@ import { BotDifficultyHelper } from "../helpers/BotDifficultyHelper";
 import { BotHelper } from "../helpers/BotHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { WeightedRandomHelper } from "../helpers/WeightedRandomHelper";
-import { Health as PmcHealth, IBotBase, Info, Skills } from "../models/eft/common/tables/IBotBase";
+import { Health as PmcHealth, IBaseJsonSkills, IBaseSkill, IBotBase, Info, Skills as botSkills } from "../models/eft/common/tables/IBotBase";
 import { Health, IBotType } from "../models/eft/common/tables/IBotType";
 import { BotGenerationDetails } from "../models/spt/bots/BotGenerationDetails";
 import { IBotConfig } from "../models/spt/config/IBotConfig";
@@ -84,7 +84,18 @@ export declare class BotGenerator {
      * @returns PmcHealth object
      */
     protected generateHealth(healthObj: Health, playerScav?: boolean): PmcHealth;
-    protected generateSkills(skillsObj: Skills): Skills;
+    /**
+     * Get a bots skills with randomsied progress value between the min and max values
+     * @param botSkills Skills that should have their progress value randomised
+     * @returns
+     */
+    protected generateSkills(botSkills: IBaseJsonSkills): botSkills;
+    /**
+     * Randomise the progress value of passed in skills based on the min/max value
+     * @param skills Skills to randomise
+     * @returns Skills with randomised progress values as an array
+     */
+    protected getSkillsWithRandomisedProgressValue(skills: IBaseSkill[]): IBaseSkill[];
     /**
      * Generate a random Id for a bot and apply to bots _id and aid value
      * @param bot bot to update

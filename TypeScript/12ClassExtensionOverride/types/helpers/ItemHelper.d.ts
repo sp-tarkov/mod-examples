@@ -171,17 +171,19 @@ declare class ItemHelper {
      */
     isItemTplStackable(tpl: string): boolean;
     /**
-     * split item stack if it exceeds StackMaxSize
+     * split item stack if it exceeds its StackMaxSize property
+     * @param itemToSplit item being split into smaller stacks
+     * @returns Array of split items
      */
-    splitStack(item: Item): Item[];
+    splitStack(itemToSplit: Item): Item[];
     /**
      * Find Barter items in the inventory
-     * @param {string} by
+     * @param {string} by tpl or id
      * @param {Object} pmcData
      * @param {string} barterItemId
      * @returns Array of Item objects
      */
-    findBarterItems(by: string, pmcData: IPmcData, barterItemId: string): Item[];
+    findBarterItems(by: "tpl" | "id", pmcData: IPmcData, barterItemId: string): Item[];
     /**
      *
      * @param pmcData

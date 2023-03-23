@@ -122,24 +122,27 @@ export interface Inventory {
     questStashItems: string;
     fastPanel: Record<string, string>;
 }
+export interface IBaseJsonSkills {
+    Common: Record<string, Common>;
+    Mastering: Record<string, Mastering>;
+    Points: number;
+}
 export interface Skills {
     Common: Common[];
     Mastering: Mastering[];
     Points: number;
 }
-export interface Common {
+export interface IBaseSkill {
     Id: string;
     Progress: number;
-    PointsEarnedDuringSession?: number;
-    LastAccess?: number;
     max?: number;
     min?: number;
 }
-export interface Mastering {
-    Id: string;
-    Progress: number;
-    max?: number;
-    min?: number;
+export interface Common extends IBaseSkill {
+    PointsEarnedDuringSession?: number;
+    LastAccess?: number;
+}
+export interface Mastering extends IBaseSkill {
 }
 export interface Stats {
     CarriedQuestItems: string[];

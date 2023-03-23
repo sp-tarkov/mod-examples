@@ -19,6 +19,7 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
 import { InsuranceService } from "../services/InsuranceService";
 import { LocaleService } from "../services/LocaleService";
+import { MatchBotDetailsCacheService } from "../services/MatchBotDetailsCacheService";
 import { PmcChatResponseService } from "../services/PmcChatResponseService";
 import { JsonUtil } from "../utils/JsonUtil";
 import { TimeUtil } from "../utils/TimeUtil";
@@ -33,6 +34,7 @@ export declare class InraidController {
     protected databaseServer: DatabaseServer;
     protected localeService: LocaleService;
     protected pmcChatResponseService: PmcChatResponseService;
+    protected matchBotDetailsCacheService: MatchBotDetailsCacheService;
     protected questHelper: QuestHelper;
     protected itemHelper: ItemHelper;
     protected profileHelper: ProfileHelper;
@@ -46,7 +48,7 @@ export declare class InraidController {
     protected configServer: ConfigServer;
     protected airdropConfig: IAirdropConfig;
     protected inraidConfig: IInRaidConfig;
-    constructor(logger: ILogger, saveServer: SaveServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, localeService: LocaleService, pmcChatResponseService: PmcChatResponseService, questHelper: QuestHelper, itemHelper: ItemHelper, profileHelper: ProfileHelper, playerScavGenerator: PlayerScavGenerator, notificationSendHelper: NotificationSendHelper, healthHelper: HealthHelper, traderHelper: TraderHelper, insuranceService: InsuranceService, inRaidHelper: InRaidHelper, applicationContext: ApplicationContext, configServer: ConfigServer);
+    constructor(logger: ILogger, saveServer: SaveServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, localeService: LocaleService, pmcChatResponseService: PmcChatResponseService, matchBotDetailsCacheService: MatchBotDetailsCacheService, questHelper: QuestHelper, itemHelper: ItemHelper, profileHelper: ProfileHelper, playerScavGenerator: PlayerScavGenerator, notificationSendHelper: NotificationSendHelper, healthHelper: HealthHelper, traderHelper: TraderHelper, insuranceService: InsuranceService, inRaidHelper: InRaidHelper, applicationContext: ApplicationContext, configServer: ConfigServer);
     /**
      * Save locationId to active profiles inraid object AND app context
      * @param sessionID Session id

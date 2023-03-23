@@ -13,6 +13,7 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { BotGenerationCacheService } from "../services/BotGenerationCacheService";
 import { LocalisationService } from "../services/LocalisationService";
+import { MatchBotDetailsCacheService } from "../services/MatchBotDetailsCacheService";
 import { JsonUtil } from "../utils/JsonUtil";
 export declare class BotController {
     protected logger: ILogger;
@@ -21,6 +22,7 @@ export declare class BotController {
     protected botHelper: BotHelper;
     protected botDifficultyHelper: BotDifficultyHelper;
     protected botGenerationCacheService: BotGenerationCacheService;
+    protected matchBotDetailsCacheService: MatchBotDetailsCacheService;
     protected localisationService: LocalisationService;
     protected profileHelper: ProfileHelper;
     protected configServer: ConfigServer;
@@ -28,7 +30,7 @@ export declare class BotController {
     protected jsonUtil: JsonUtil;
     protected botConfig: IBotConfig;
     static readonly pmcTypeLabel = "PMC";
-    constructor(logger: ILogger, databaseServer: DatabaseServer, botGenerator: BotGenerator, botHelper: BotHelper, botDifficultyHelper: BotDifficultyHelper, botGenerationCacheService: BotGenerationCacheService, localisationService: LocalisationService, profileHelper: ProfileHelper, configServer: ConfigServer, applicationContext: ApplicationContext, jsonUtil: JsonUtil);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, botGenerator: BotGenerator, botHelper: BotHelper, botDifficultyHelper: BotDifficultyHelper, botGenerationCacheService: BotGenerationCacheService, matchBotDetailsCacheService: MatchBotDetailsCacheService, localisationService: LocalisationService, profileHelper: ProfileHelper, configServer: ConfigServer, applicationContext: ApplicationContext, jsonUtil: JsonUtil);
     /**
      * Return the number of bot loadout varieties to be generated
      * @param type bot Type we want the loadout gen count for

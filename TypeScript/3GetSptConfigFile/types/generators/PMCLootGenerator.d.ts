@@ -31,7 +31,7 @@ export declare class PMCLootGenerator {
      */
     generatePMCVestLootPool(): string[];
     /**
-     * Check if item has a width/hide that lets it fit into a 1x2 slot
+     * Check if item has a width/height that lets it fit into a 1x2/2x1 slot
      * 1x1 / 1x2 / 2x1
      * @param item Item to check size of
      * @returns true if it fits
