@@ -5,5 +5,6 @@ export interface ICoreConfig extends IBaseConfig {
     projectName: string;
     compatibleTarkovVersion: string;
     serverName: string;
+    profileSaveIntervalSeconds: number;
     commit: string;
 }
