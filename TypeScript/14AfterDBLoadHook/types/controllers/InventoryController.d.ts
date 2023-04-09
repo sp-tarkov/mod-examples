@@ -102,6 +102,10 @@ export declare class InventoryController {
     foldItem(pmcData: IPmcData, body: IInventoryFoldRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * Toggles "Toggleable" items like night vision goggles and face shields.
+     * @param pmcData player profile
+     * @param body Toggle request
+     * @param sessionID Session id
+     * @returns IItemEventRouterResponse
      */
     toggleItem(pmcData: IPmcData, body: IInventoryToggleRequestData, sessionID: string): IItemEventRouterResponse;
     /**

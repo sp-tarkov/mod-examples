@@ -1,3 +1,4 @@
+import { ApplicationContext } from "../context/ApplicationContext";
 import { DurabilityLimitsHelper } from "../helpers/DurabilityLimitsHelper";
 import { Item, Repairable, Upd } from "../models/eft/common/tables/IItem";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
@@ -15,10 +16,11 @@ export declare class BotGeneratorHelper {
     protected databaseServer: DatabaseServer;
     protected durabilityLimitsHelper: DurabilityLimitsHelper;
     protected itemHelper: ItemHelper;
+    protected applicationContext: ApplicationContext;
     protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected botConfig: IBotConfig;
-    constructor(logger: ILogger, randomUtil: RandomUtil, databaseServer: DatabaseServer, durabilityLimitsHelper: DurabilityLimitsHelper, itemHelper: ItemHelper, localisationService: LocalisationService, configServer: ConfigServer);
+    constructor(logger: ILogger, randomUtil: RandomUtil, databaseServer: DatabaseServer, durabilityLimitsHelper: DurabilityLimitsHelper, itemHelper: ItemHelper, applicationContext: ApplicationContext, localisationService: LocalisationService, configServer: ConfigServer);
     /**
      * Adds properties to an item
      * e.g. Repairable / HasHinge / Foldable / MaxDurability

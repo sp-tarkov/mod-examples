@@ -44,6 +44,10 @@ export declare class GameController {
     constructor(logger: ILogger, databaseServer: DatabaseServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, preAkiModLoader: PreAkiModLoader, httpServerHelper: HttpServerHelper, hideoutHelper: HideoutHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, customLocationWaveService: CustomLocationWaveService, openZoneService: OpenZoneService, seasonalEventService: SeasonalEventService, applicationContext: ApplicationContext, configServer: ConfigServer);
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
     /**
+     * BSG have two values for shotgun dispersion, we make sure both have the same value
+     */
+    protected fixShotgunDispersions(): void;
+    /**
      * Players set botReload to a high value and don't expect the crazy fast reload speeds, give them a warn about it
      * @param pmcProfile Player profile
      */
