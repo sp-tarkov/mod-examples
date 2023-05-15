@@ -73,8 +73,20 @@ export declare class DialogueController {
      */
     protected getMessagesWithAttachments(messages: Message[]): Message[];
     /**
-     * Delete expired items. triggers when updating traders.
-     * @param sessionID Session id
+     * Delete expired items from all messages in player profile. triggers when updating traders.
+     * @param sessionId Session id
      */
-    protected removeExpiredItems(sessionID: string): void;
+    protected removeExpiredItemsFromMessages(sessionId: string): void;
+    /**
+     * Removes expired items from a message in player profile
+     * @param sessionId Session id
+     * @param dialogueId Dialog id
+     */
+    protected removeExpiredItemsFromMessage(sessionId: string, dialogueId: string): void;
+    /**
+     * Has a dialog message expired
+     * @param message Message to check expiry of
+     * @returns true or false
+     */
+    protected messageHasExpired(message: Message): boolean;
 }

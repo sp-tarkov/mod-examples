@@ -18,6 +18,7 @@ export declare class BundleLoader {
     getBundles(local: boolean): BundleInfo[];
     getBundle(key: string, local: boolean): BundleInfo;
     addBundles(modpath: string): void;
+    addBundle(key: string, b: BundleInfo): void;
 }
 export interface BundleManifest {
     manifest: Array<BundleManifestEntry>;

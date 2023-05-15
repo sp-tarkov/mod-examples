@@ -56,6 +56,13 @@ export declare class TraderHelper {
      */
     addStandingToTrader(sessionId: string, traderId: string, standingToAdd: number): void;
     /**
+     * Add standing to current standing and clamp value if it goes too low
+     * @param currentStanding current trader standing
+     * @param standingToAdd stansding to add to trader standing
+     * @returns current standing + added standing (clamped if needed)
+     */
+    protected addStandingValuesTogether(currentStanding: number, standingToAdd: number): number;
+    /**
      * Calculate traders level based on exp amount and increments level if over threshold
      * @param traderID trader to process
      * @param sessionID session id

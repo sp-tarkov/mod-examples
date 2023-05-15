@@ -1,6 +1,8 @@
 import { OnLoad } from "../di/OnLoad";
+import { IHttpConfig } from "../models/spt/config/IHttpConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ImageRouter } from "../routers/ImageRouter";
+import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { LocalisationService } from "../services/LocalisationService";
 import { EncodingUtil } from "./EncodingUtil";
@@ -18,10 +20,12 @@ export declare class DatabaseImporter implements OnLoad {
     protected encodingUtil: EncodingUtil;
     protected hashUtil: HashUtil;
     protected importerUtil: ImporterUtil;
+    protected configServer: ConfigServer;
     private hashedFile;
     private valid;
     private filepath;
-    constructor(logger: ILogger, vfs: VFS, jsonUtil: JsonUtil, localisationService: LocalisationService, databaseServer: DatabaseServer, imageRouter: ImageRouter, encodingUtil: EncodingUtil, hashUtil: HashUtil, importerUtil: ImporterUtil);
+    protected httpConfig: IHttpConfig;
+    constructor(logger: ILogger, vfs: VFS, jsonUtil: JsonUtil, localisationService: LocalisationService, databaseServer: DatabaseServer, imageRouter: ImageRouter, encodingUtil: EncodingUtil, hashUtil: HashUtil, importerUtil: ImporterUtil, configServer: ConfigServer);
     onLoad(): Promise<void>;
     /**
      * Read all json files in database folder and map into a json object
@@ -31,5 +35,15 @@ export declare class DatabaseImporter implements OnLoad {
     private onReadValidate;
     getRoute(): string;
     private validateFile;
-    loadImages(filepath: string): void;
+    /**
+     * Find and map files with image router inside a designated path
+     * @param filepath Path to find files in
+     */
+    loadImages(filepath: string, routes: string[]): void;
+    /**
+     * Check for a path override in the http json config file
+     * @param imagePath Key
+     * @returns override for key
+     */
+    protected getImagePathOverride(imagePath: string): string;
 }

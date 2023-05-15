@@ -45,7 +45,16 @@ export declare class ProfileHelper {
      * @returns updated profile array
      */
     protected postRaidXpWorkaroundFix(sessionId: string, output: IPmcData[], pmcProfile: IPmcData, scavProfile: IPmcData): IPmcData[];
-    isNicknameTaken(info: IValidateNicknameRequestData, sessionID: string): boolean;
+    /**
+     * Check if a nickname is used by another profile loaded by the server
+     * @param nicknameRequest
+     * @param sessionID Session id
+     * @returns True if already used
+     */
+    isNicknameTaken(nicknameRequest: IValidateNicknameRequestData, sessionID: string): boolean;
+    protected profileHasInfoProperty(profile: IAkiProfile): boolean;
+    protected nicknameMatches(profileName: string, nicknameRequest: string): boolean;
+    protected sessionIdMatchesProfileId(profileId: string, sessionId: string): boolean;
     /**
      * Add experience to a PMC inside the players profile
      * @param sessionID Session id

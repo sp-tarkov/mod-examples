@@ -50,6 +50,7 @@ export declare class InsuranceService {
      * @param mapId Id of the map player died/exited that caused the insurance to be issued on
      */
     sendInsuredItems(pmcData: IPmcData, sessionID: string, mapId: string): void;
+    protected removeLocationProperty(sessionId: string, traderId: string): void;
     /**
      * Get a timestamp of what insurance items should be sent to player based on the type of trader used to insure
      * @param pmcData Player profile
@@ -66,6 +67,12 @@ export declare class InsuranceService {
      * @param playerDied did the player die in raid
      */
     storeLostGear(pmcData: IPmcData, offraidData: ISaveProgressRequestData, preRaidGear: Item[], sessionID: string, playerDied: boolean): void;
+    /**
+     * Create a hash table for an array of items, keyed by items _id
+     * @param items Items to hash
+     * @returns Hashtable
+     */
+    protected createItemHashTable(items: Item[]): Record<string, Item>;
     /**
      * Store insured items on pmc death inside insurance array in player profile
      * @param pmcData Player profile

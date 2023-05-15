@@ -45,6 +45,12 @@ export declare class InRaidHelper {
      */
     calculateFenceStandingChangeFromKills(existingFenceStanding: number, victims: Victim[]): number;
     /**
+     * Get the standing gain/loss for killing an npc
+     * @param victim Who was killed by player
+     * @returns a numerical standing gain or loss
+     */
+    protected getStandingChangeForKill(victim: Victim): number;
+    /**
      * Reset a profile to a baseline, used post-raid
      * Reset points earned during session property
      * Increment exp
@@ -79,7 +85,7 @@ export declare class InRaidHelper {
      * @param preRaidProfile profile to update
      * @param postRaidProfile profile to update inventory contents of
      * @param isPlayerScav Was this a p scav raid
-     * @returns
+     * @returns profile with FiR items properly tagged
      */
     addSpawnedInSessionPropertyToItems(preRaidProfile: IPmcData, postRaidProfile: IPmcData, isPlayerScav: boolean): IPmcData;
     /**
@@ -107,6 +113,12 @@ export declare class InRaidHelper {
      * @param sessionID Session id
      */
     deleteInventory(pmcData: IPmcData, sessionID: string): void;
+    /**
+     * Get an array of items from a profile that will be lost on death
+     * @param pmcProfile Profile to get items from
+     * @returns Array of items lost on death
+     */
+    protected getInventoryItemsLostOnDeath(pmcProfile: IPmcData): Item[];
     /**
      * Get items in vest/pocket/backpack inventory containers (excluding children)
      * @param pmcData Player profile

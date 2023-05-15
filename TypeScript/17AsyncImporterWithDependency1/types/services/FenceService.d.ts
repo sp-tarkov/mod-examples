@@ -106,6 +106,7 @@ export declare class FenceService {
     protected getCountOfItemsToGenerate(existingItemCountToReplace: number): number;
     /**
      * Choose an item (not mod) at random and remove from assorts
+     * @param assort Items to remove from
      */
     protected removeRandomItemFromAssorts(assort: ITraderAssort): void;
     /**

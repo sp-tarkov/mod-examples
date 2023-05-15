@@ -137,9 +137,9 @@ export declare class HideoutController {
      * Add generated scav case rewards to player profile
      * @param pmcData player profile to add rewards to
      * @param rewards reward items to add to profile
-     * @param recipieId recipie id to save into Production dict
+     * @param recipeId recipe id to save into Production dict
      */
-    protected addScavCaseRewardsToProfile(pmcData: IPmcData, rewards: Product[], recipieId: string): void;
+    protected addScavCaseRewardsToProfile(pmcData: IPmcData, rewards: Product[], recipeId: string): void;
     /**
      * Start production of continuously created item
      * @param pmcData Player profile
@@ -157,15 +157,15 @@ export declare class HideoutController {
      */
     takeProduction(pmcData: IPmcData, request: IHideoutTakeProductionRequestData, sessionID: string): IItemEventRouterResponse;
     /**
-     * Take recipie-type production out of hideout area and place into player inventory
+     * Take recipe-type production out of hideout area and place into player inventory
      * @param sessionID Session id
-     * @param recipe Completed recipie of item
+     * @param recipe Completed recipe of item
      * @param pmcData Player profile
      * @param request Remove production from area request
      * @param output Output object to update
      * @returns IItemEventRouterResponse
      */
-    protected handleRecipie(sessionID: string, recipe: IHideoutProduction, pmcData: IPmcData, request: IHideoutTakeProductionRequestData, output: IItemEventRouterResponse): IItemEventRouterResponse;
+    protected handleRecipe(sessionID: string, recipe: IHideoutProduction, pmcData: IPmcData, request: IHideoutTakeProductionRequestData, output: IItemEventRouterResponse): IItemEventRouterResponse;
     /**
      * Handles giving rewards stored in player profile to player after clicking 'get rewards'
      * @param sessionID Session id

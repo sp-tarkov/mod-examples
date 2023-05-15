@@ -53,5 +53,25 @@ export declare class MatchController {
      * @returns bot difficulty
      */
     protected convertDifficultyDropdownIntoBotDifficulty(botDifficulty: string): string;
-    endOfflineRaid(info: IEndOfflineRaidRequestData, sessionID: string): void;
+    endOfflineRaid(info: IEndOfflineRaidRequestData, sessionId: string): void;
+    /**
+     * Is extract by car
+     * @param extractName name of extract
+     * @returns true if car extract
+     */
+    protected extractWasViaCar(extractName: string): boolean;
+    /**
+     * Handle when a player extracts using a car - Add rep to fence
+     * @param extractName name of the extract used
+     * @param pmcData Player profile
+     * @param sessionId Session id
+     */
+    protected handleCarExtract(extractName: string, pmcData: IPmcData, sessionId: string): void;
+    /**
+     * Update players fence trader standing value in profile
+     * @param pmcData Player profile
+     * @param fenceId Id of fence trader
+     * @param extractName Name of extract used
+     */
+    protected updateFenceStandingInProfile(pmcData: IPmcData, fenceId: string, extractName: string): void;
 }

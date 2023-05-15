@@ -19,7 +19,7 @@ export declare class BotLootCacheService {
     protected lootCache: Record<string, IBotLootCache>;
     constructor(logger: ILogger, jsonUtil: JsonUtil, itemHelper: ItemHelper, databaseServer: DatabaseServer, pmcLootGenerator: PMCLootGenerator, localisationService: LocalisationService, ragfairPriceService: RagfairPriceService);
     /**
-     * Remove all cached bot loot data
+     * Remove cached bot loot data
      */
     clearCache(): void;
     /**

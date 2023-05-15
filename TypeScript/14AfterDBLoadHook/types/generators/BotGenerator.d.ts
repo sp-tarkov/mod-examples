@@ -2,7 +2,7 @@ import { BotDifficultyHelper } from "../helpers/BotDifficultyHelper";
 import { BotHelper } from "../helpers/BotHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { WeightedRandomHelper } from "../helpers/WeightedRandomHelper";
-import { Health as PmcHealth, IBaseJsonSkills, IBaseSkill, IBotBase, Info, Skills as botSkills } from "../models/eft/common/tables/IBotBase";
+import { IBaseJsonSkills, IBaseSkill, IBotBase, Info, Health as PmcHealth, Skills as botSkills } from "../models/eft/common/tables/IBotBase";
 import { Health, IBotType } from "../models/eft/common/tables/IBotType";
 import { BotGenerationDetails } from "../models/spt/bots/BotGenerationDetails";
 import { IBotConfig } from "../models/spt/config/IBotConfig";
@@ -93,9 +93,10 @@ export declare class BotGenerator {
     /**
      * Randomise the progress value of passed in skills based on the min/max value
      * @param skills Skills to randomise
+     * @param isCommonSkills Are the skills 'common' skills
      * @returns Skills with randomised progress values as an array
      */
-    protected getSkillsWithRandomisedProgressValue(skills: IBaseSkill[]): IBaseSkill[];
+    protected getSkillsWithRandomisedProgressValue(skills: Record<string, IBaseSkill>, isCommonSkills: boolean): IBaseSkill[];
     /**
      * Generate a random Id for a bot and apply to bots _id and aid value
      * @param bot bot to update

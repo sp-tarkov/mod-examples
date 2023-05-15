@@ -56,7 +56,7 @@ export declare enum BaseClasses {
     AMMO = "5485a8684bdc2da71d8b4567",
     AMMO_BOX = "543be5cb4bdc2deb348b4568",
     LOOT_CONTAINER = "566965d44bdc2d814c8b4571",
-    MOD_CONTAINER = "5448bf274bdc2dfc2f8b456a",
+    MOB_CONTAINER = "5448bf274bdc2dfc2f8b456a",
     SEARCHABLE_ITEM = "566168634bdc2d144c8b456c",
     STASH = "566abbb64bdc2d144c8b457d",
     SORTING_TABLE = "6050cac987d3f925bf016837",

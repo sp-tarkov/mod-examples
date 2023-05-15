@@ -58,6 +58,13 @@ export declare class PaymentService {
      */
     addPaymentToOutput(pmcData: IPmcData, currencyTpl: string, amountToPay: number, sessionID: string, output: IItemEventRouterResponse): IItemEventRouterResponse;
     /**
+     * Get all money stacks in inventory and prioritse items in stash
+     * @param pmcData
+     * @param currencyTpl
+     * @returns Sorting money items
+     */
+    protected getSortedMoneyItemsInInventory(pmcData: IPmcData, currencyTpl: string): Item[];
+    /**
      * Prioritise player stash first over player inventory
      * Post-raid healing would often take money out of the players pockets/secure container
      * @param a First money stack item

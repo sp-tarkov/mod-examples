@@ -84,8 +84,8 @@ export declare class InventoryHelper {
      */
     removeItem(pmcData: IPmcData, itemId: string, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
     removeItemByCount(pmcData: IPmcData, itemId: string, count: number, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
-    getItemSize(itemTpl: string, itemID: string, inventoryItem: Item[]): Record<number, number>;
-    protected getSizeByInventoryItemHash(itemTpl: string, itemID: string, inventoryItemHash: InventoryHelper.InventoryItemHash): Record<number, number>;
+    getItemSize(itemTpl: string, itemID: string, inventoryItem: Item[]): number[];
+    protected getSizeByInventoryItemHash(itemTpl: string, itemID: string, inventoryItemHash: InventoryHelper.InventoryItemHash): number[];
     protected getInventoryItemHash(inventoryItem: Item[]): InventoryHelper.InventoryItemHash;
     getContainerMap(containerW: number, containerH: number, itemList: Item[], containerId: string): number[][];
     /**
