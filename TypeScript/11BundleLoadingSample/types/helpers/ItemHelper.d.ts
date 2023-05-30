@@ -105,6 +105,7 @@ declare class ItemHelper {
      * @returns bool - is valid + template item object as array
      */
     getItem(tpl: string): [boolean, ITemplateItem];
+    isItemInDb(tpl: string): boolean;
     /**
      * get normalized value (0-1) based on item condition
      * @param item

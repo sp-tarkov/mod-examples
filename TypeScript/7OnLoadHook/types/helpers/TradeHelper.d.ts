@@ -13,6 +13,7 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { RagfairServer } from "../servers/RagfairServer";
 import { FenceService } from "../services/FenceService";
 import { PaymentService } from "../services/PaymentService";
+import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 export declare class TradeHelper {
     protected logger: ILogger;
     protected eventOutputHolder: EventOutputHolder;
@@ -20,11 +21,12 @@ export declare class TradeHelper {
     protected itemHelper: ItemHelper;
     protected paymentService: PaymentService;
     protected fenceService: FenceService;
+    protected httpResponse: HttpResponseUtil;
     protected inventoryHelper: InventoryHelper;
     protected ragfairServer: RagfairServer;
     protected configServer: ConfigServer;
     protected traderConfig: ITraderConfig;
-    constructor(logger: ILogger, eventOutputHolder: EventOutputHolder, traderHelper: TraderHelper, itemHelper: ItemHelper, paymentService: PaymentService, fenceService: FenceService, inventoryHelper: InventoryHelper, ragfairServer: RagfairServer, configServer: ConfigServer);
+    constructor(logger: ILogger, eventOutputHolder: EventOutputHolder, traderHelper: TraderHelper, itemHelper: ItemHelper, paymentService: PaymentService, fenceService: FenceService, httpResponse: HttpResponseUtil, inventoryHelper: InventoryHelper, ragfairServer: RagfairServer, configServer: ConfigServer);
     /**
      * Buy item from flea or trader
      * @param pmcData Player profile
@@ -38,7 +40,7 @@ export declare class TradeHelper {
     /**
      * Sell item to trader
      * @param pmcData Profile to update
-     * @param sellRequest request data
+     * @param sellRequest Request data
      * @param sessionID Session id
      * @returns IItemEventRouterResponse
      */

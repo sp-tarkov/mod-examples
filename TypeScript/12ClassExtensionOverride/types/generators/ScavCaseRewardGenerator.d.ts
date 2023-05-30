@@ -88,7 +88,7 @@ export declare class ScavCaseRewardGenerator {
      */
     protected getFilteredItemsByPrice(dbItems: ITemplateItem[], itemFilters: RewardCountAndPriceDetails): ITemplateItem[];
     /**
-     * Gathers the reward options from config and scavcase.json into a single object
+     * Gathers the reward min and max count params for each reward quality level from config and scavcase.json into a single object
      * @param scavCaseDetails scavcase.json values
      * @returns ScavCaseRewardCountsAndPrices object
      */

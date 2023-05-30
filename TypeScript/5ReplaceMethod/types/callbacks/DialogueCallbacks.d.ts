@@ -1,6 +1,7 @@
 import { DialogueController } from "../controllers/DialogueController";
 import { OnUpdate } from "../di/OnUpdate";
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
+import { IAcceptFriendRequestData } from "../models/eft/dialog/IAcceptFriendRequestData";
 import { IChatServer } from "../models/eft/dialog/IChatServer";
 import { IClearMailMessageRequest } from "../models/eft/dialog/IClearMailMessageRequest";
 import { IDeleteFriendRequest } from "../models/eft/dialog/IDeleteFriendRequest";
@@ -61,6 +62,7 @@ export declare class DialogueCallbacks implements OnUpdate {
     listOutbox(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any[]>;
     listInbox(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any[]>;
     sendFriendRequest(url: string, request: IFriendRequestData, sessionID: string): IGetBodyResponseData<IFriendRequestSendResponse>;
+    acceptFriendRequest(url: string, request: IAcceptFriendRequestData, sessionID: string): IGetBodyResponseData<boolean>;
     deleteFriend(url: string, request: IDeleteFriendRequest, sessionID: string): INullResponseData;
     sendMessage(url: string, request: ISendMessageRequest, sessionID: string): IGetBodyResponseData<number>;
     clearMail(url: string, request: IClearMailMessageRequest, sessionID: string): IGetBodyResponseData<any[]>;

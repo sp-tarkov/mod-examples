@@ -256,9 +256,11 @@ export interface Props {
     CompressorGain?: number;
     CutoffFreq?: number;
     Resonance?: number;
+    RolloffMultiplier?: number;
     CompressorVolume?: number;
     AmbientVolume?: number;
     DryVolume?: number;
+    HighFrequenciesGain?: number;
     foodUseTime?: number;
     foodEffectType?: string;
     StimulatorBuffs?: string;
@@ -375,6 +377,7 @@ export interface Props {
     ExplosionEffectType?: string;
     LinkedWeapon?: string;
     UseAmmoWithoutShell?: boolean;
+    RandomLootSettings: IRandomLootSettings;
 }
 export interface IHealthEffect {
     type: string;
@@ -438,6 +441,21 @@ export interface StackSlot {
 }
 export interface StackSlotProps {
     filters: SlotFilter[];
+}
+export interface IRandomLootSettings {
+    allowToSpawnIdenticalItems: boolean;
+    allowToSpawnQuestItems: boolean;
+    countByRarity: any[];
+    excluded: IRandomLootExcluded;
+    filters: any[];
+    findInRaid: boolean;
+    maxCount: number;
+    minCount: number;
+}
+export interface IRandomLootExcluded {
+    categoryTemplates: any[];
+    rarity: string[];
+    templates: any[];
 }
 export interface EffectsHealth {
     Energy: EffectsHealthProps;

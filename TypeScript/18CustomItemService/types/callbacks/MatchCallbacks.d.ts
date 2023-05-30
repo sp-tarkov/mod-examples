@@ -16,6 +16,7 @@ import { IJoinMatchResult } from "../models/eft/match/IJoinMatchResult";
 import { IPutMetricsRequestData } from "../models/eft/match/IPutMetricsRequestData";
 import { IRemovePlayerFromGroupRequest } from "../models/eft/match/IRemovePlayerFromGroupRequest";
 import { ISendGroupInviteRequest } from "../models/eft/match/ISendGroupInviteRequest";
+import { ITransferGroupRequest } from "../models/eft/match/ITransferGroupRequest";
 import { IUpdatePingRequestData } from "../models/eft/match/IUpdatePingRequestData";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
@@ -36,11 +37,13 @@ export declare class MatchCallbacks {
     acceptGroupInvite(url: string, info: IAcceptGroupInviteRequest, sessionID: string): IGetBodyResponseData<IAcceptGroupInviteResponse[]>;
     /** Handle client/match/group/invite/cancel */
     cancelGroupInvite(url: string, info: ICancelGroupInviteRequest, sessionID: string): IGetBodyResponseData<boolean>;
+    /** Handle client/match/group/transfer */
+    transferGroup(url: string, info: ITransferGroupRequest, sessionID: string): IGetBodyResponseData<boolean>;
     cancelAllGroupInvite(url: string, info: any, sessionID: string): INullResponseData;
     putMetrics(url: string, info: IPutMetricsRequestData, sessionID: string): INullResponseData;
     getProfile(url: string, info: IGetProfileRequestData, sessionID: string): IGetBodyResponseData<IPmcData[]>;
-    serverAvailable(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any> | IGetBodyResponseData<true>;
-    joinMatch(url: string, info: IJoinMatchRequestData, sessionID: string): IGetBodyResponseData<IJoinMatchResult[]>;
+    serverAvailable(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<boolean>;
+    joinMatch(url: string, info: IJoinMatchRequestData, sessionID: string): IGetBodyResponseData<IJoinMatchResult>;
     getMetrics(url: string, info: any, sessionID: string): IGetBodyResponseData<string>;
     /**
      * Handle client/match/group/status
@@ -49,6 +52,7 @@ export declare class MatchCallbacks {
     getGroupStatus(url: string, info: IGetGroupStatusRequestData, sessionID: string): IGetBodyResponseData<any>;
     createGroup(url: string, info: ICreateGroupRequestData, sessionID: string): IGetBodyResponseData<any>;
     deleteGroup(url: string, info: any, sessionID: string): INullResponseData;
+    leaveGroup(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<boolean>;
     removePlayerFromGroup(url: string, info: IRemovePlayerFromGroupRequest, sessionID: string): INullResponseData;
     endOfflineRaid(url: string, info: IEndOfflineRaidRequestData, sessionID: string): INullResponseData;
     getRaidConfiguration(url: string, info: IGetRaidConfigurationRequestData, sessionID: string): INullResponseData;

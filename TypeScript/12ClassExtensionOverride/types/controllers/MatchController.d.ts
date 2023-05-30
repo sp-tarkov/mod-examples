@@ -38,8 +38,7 @@ export declare class MatchController {
     getProfile(info: IGetProfileRequestData): IPmcData[];
     createGroup(sessionID: string, info: ICreateGroupRequestData): any;
     deleteGroup(info: any): void;
-    joinMatch(info: IJoinMatchRequestData, sessionID: string): IJoinMatchResult[];
-    protected getMatch(location: string): any;
+    joinMatch(info: IJoinMatchRequestData, sessionId: string): IJoinMatchResult;
     getGroupStatus(info: IGetGroupStatusRequestData): any;
     /**
      * Handle /client/raid/configuration

@@ -6,6 +6,7 @@ import { PreAkiModLoader } from "../loaders/PreAkiModLoader";
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { ICheckVersionResponse } from "../models/eft/game/ICheckVersionResponse";
+import { ICurrentGroupResponse } from "../models/eft/game/ICurrentGroupResponse";
 import { IGameConfigResponse } from "../models/eft/game/IGameConfigResponse";
 import { IServerDetails } from "../models/eft/game/IServerDetails";
 import { IAkiProfile } from "../models/eft/profile/IAkiProfile";
@@ -20,6 +21,7 @@ import { LocalisationService } from "../services/LocalisationService";
 import { OpenZoneService } from "../services/OpenZoneService";
 import { ProfileFixerService } from "../services/ProfileFixerService";
 import { SeasonalEventService } from "../services/SeasonalEventService";
+import { EncodingUtil } from "../utils/EncodingUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 export declare class GameController {
@@ -29,6 +31,7 @@ export declare class GameController {
     protected timeUtil: TimeUtil;
     protected preAkiModLoader: PreAkiModLoader;
     protected httpServerHelper: HttpServerHelper;
+    protected encodingUtil: EncodingUtil;
     protected hideoutHelper: HideoutHelper;
     protected profileHelper: ProfileHelper;
     protected profileFixerService: ProfileFixerService;
@@ -38,10 +41,11 @@ export declare class GameController {
     protected seasonalEventService: SeasonalEventService;
     protected applicationContext: ApplicationContext;
     protected configServer: ConfigServer;
+    protected os: any;
     protected httpConfig: IHttpConfig;
     protected coreConfig: ICoreConfig;
     protected locationConfig: ILocationConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, preAkiModLoader: PreAkiModLoader, httpServerHelper: HttpServerHelper, hideoutHelper: HideoutHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, customLocationWaveService: CustomLocationWaveService, openZoneService: OpenZoneService, seasonalEventService: SeasonalEventService, applicationContext: ApplicationContext, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, preAkiModLoader: PreAkiModLoader, httpServerHelper: HttpServerHelper, encodingUtil: EncodingUtil, hideoutHelper: HideoutHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, customLocationWaveService: CustomLocationWaveService, openZoneService: OpenZoneService, seasonalEventService: SeasonalEventService, applicationContext: ApplicationContext, configServer: ConfigServer);
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
     /**
      * BSG have two values for shotgun dispersion, we make sure both have the same value
@@ -91,6 +95,6 @@ export declare class GameController {
     protected logProfileDetails(fullProfile: IAkiProfile): void;
     getGameConfig(sessionID: string): IGameConfigResponse;
     getServer(): IServerDetails[];
-    getCurrentGroup(sessionId: any): any;
+    getCurrentGroup(sessionId: string): ICurrentGroupResponse;
     getValidGameVersion(): ICheckVersionResponse;
 }

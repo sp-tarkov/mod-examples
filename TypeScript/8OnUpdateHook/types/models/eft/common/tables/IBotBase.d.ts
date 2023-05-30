@@ -258,7 +258,7 @@ export interface LastPlayerStateInfo {
     Nickname: string;
     Side: string;
     Level: number;
-    MemberCategory: string;
+    MemberCategory: MemberCategory;
 }
 export interface BackendCounter {
     id: string;
@@ -273,6 +273,7 @@ export interface Hideout {
     Production: Record<string, Productive>;
     Areas: HideoutArea[];
     Improvements: Record<string, IHideoutImprovement>;
+    Seed: number;
     sptUpdateLastRunTimestamp: number;
 }
 export interface IHideoutImprovement {

@@ -2,6 +2,7 @@ import { DialogueHelper } from "../helpers/DialogueHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
+import { Item } from "../models/eft/common/tables/IItem";
 import { IGetInsuranceCostRequestData } from "../models/eft/insurance/IGetInsuranceCostRequestData";
 import { IGetInsuranceCostResponseData } from "../models/eft/insurance/IGetInsuranceCostResponseData";
 import { IInsureRequestData } from "../models/eft/insurance/IInsureRequestData";
@@ -35,6 +36,14 @@ export declare class InsuranceController {
      * Process insurance items prior to being given to player in mail
      */
     processReturn(): void;
+    /**
+     * Should the passed in item be removed from player inventory
+     * @param insuredItem Insurued item to roll to lose
+     * @param traderId Trader the item was insured by
+     * @param itemsBeingDeleted All items to remove from player
+     * @returns True if item should be removed
+     */
+    protected itemShouldBeLost(insuredItem: Item, traderId: string, itemsBeingDeleted: string[]): boolean;
     /**
      * Add insurance to an item
      * @param pmcData Player profile

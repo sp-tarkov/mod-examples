@@ -74,14 +74,6 @@ export declare class InsuranceService {
      */
     protected createItemHashTable(items: Item[]): Record<string, Item>;
     /**
-     * Store insured items on pmc death inside insurance array in player profile
-     * @param pmcData Player profile
-     * @param offraidData Player gear post-raid
-     * @param preRaidGear Player gear before raid
-     * @param sessionID Session id
-     */
-    storeInsuredItemsForReturn(pmcData: IPmcData, offraidData: ISaveProgressRequestData, preRaidGear: Item[], sessionID: string): void;
-    /**
      * Add gear item to InsuredItems array in player profile
      * @param pmcData profile to store item in
      * @param insuredItem Item to store in profile
