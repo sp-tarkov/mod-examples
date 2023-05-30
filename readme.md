@@ -1,4 +1,4 @@
-# Mod examples for 3.5.6
+# Mod examples for 3.5.7
 
 A collection of example mods that perform typical actions in SPT
 
