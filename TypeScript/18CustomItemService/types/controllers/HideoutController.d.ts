@@ -176,7 +176,7 @@ export declare class HideoutController {
      */
     protected handleScavCase(sessionID: string, pmcData: IPmcData, request: IHideoutTakeProductionRequestData, output: IItemEventRouterResponse): IItemEventRouterResponse;
     /**
-     * Start area production for item
+     * Start area production for item by adding production to profiles' Hideout.Production array
      * @param pmcData Player profile
      * @param request Start production request
      * @param sessionID Session id

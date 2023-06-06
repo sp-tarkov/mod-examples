@@ -377,7 +377,7 @@ export interface Props {
     ExplosionEffectType?: string;
     LinkedWeapon?: string;
     UseAmmoWithoutShell?: boolean;
-    RandomLootSettings: IRandomLootSettings;
+    RandomLootSettings?: IRandomLootSettings;
 }
 export interface IHealthEffect {
     type: string;
