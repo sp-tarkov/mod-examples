@@ -128,6 +128,7 @@ export declare class InventoryHelper {
      * @returns Reward details
      */
     getRandomLootContainerRewardDetails(itemTpl: string): RewardDetails;
+    getInventoryConfig(): IInventoryConfig;
 }
 declare namespace InventoryHelper {
     interface InventoryItemHash {

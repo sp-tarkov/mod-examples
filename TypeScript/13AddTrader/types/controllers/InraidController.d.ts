@@ -3,7 +3,6 @@ import { PlayerScavGenerator } from "../generators/PlayerScavGenerator";
 import { HealthHelper } from "../helpers/HealthHelper";
 import { InRaidHelper } from "../helpers/InRaidHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
-import { NotificationSendHelper } from "../helpers/NotificationSendHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { QuestHelper } from "../helpers/QuestHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
@@ -18,7 +17,6 @@ import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
 import { InsuranceService } from "../services/InsuranceService";
-import { LocaleService } from "../services/LocaleService";
 import { MatchBotDetailsCacheService } from "../services/MatchBotDetailsCacheService";
 import { PmcChatResponseService } from "../services/PmcChatResponseService";
 import { JsonUtil } from "../utils/JsonUtil";
@@ -32,14 +30,12 @@ export declare class InraidController {
     protected jsonUtil: JsonUtil;
     protected timeUtil: TimeUtil;
     protected databaseServer: DatabaseServer;
-    protected localeService: LocaleService;
     protected pmcChatResponseService: PmcChatResponseService;
     protected matchBotDetailsCacheService: MatchBotDetailsCacheService;
     protected questHelper: QuestHelper;
     protected itemHelper: ItemHelper;
     protected profileHelper: ProfileHelper;
     protected playerScavGenerator: PlayerScavGenerator;
-    protected notificationSendHelper: NotificationSendHelper;
     protected healthHelper: HealthHelper;
     protected traderHelper: TraderHelper;
     protected insuranceService: InsuranceService;
@@ -48,7 +44,7 @@ export declare class InraidController {
     protected configServer: ConfigServer;
     protected airdropConfig: IAirdropConfig;
     protected inraidConfig: IInRaidConfig;
-    constructor(logger: ILogger, saveServer: SaveServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, localeService: LocaleService, pmcChatResponseService: PmcChatResponseService, matchBotDetailsCacheService: MatchBotDetailsCacheService, questHelper: QuestHelper, itemHelper: ItemHelper, profileHelper: ProfileHelper, playerScavGenerator: PlayerScavGenerator, notificationSendHelper: NotificationSendHelper, healthHelper: HealthHelper, traderHelper: TraderHelper, insuranceService: InsuranceService, inRaidHelper: InRaidHelper, applicationContext: ApplicationContext, configServer: ConfigServer);
+    constructor(logger: ILogger, saveServer: SaveServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, pmcChatResponseService: PmcChatResponseService, matchBotDetailsCacheService: MatchBotDetailsCacheService, questHelper: QuestHelper, itemHelper: ItemHelper, profileHelper: ProfileHelper, playerScavGenerator: PlayerScavGenerator, healthHelper: HealthHelper, traderHelper: TraderHelper, insuranceService: InsuranceService, inRaidHelper: InRaidHelper, applicationContext: ApplicationContext, configServer: ConfigServer);
     /**
      * Save locationId to active profiles inraid object AND app context
      * @param sessionID Session id
@@ -97,7 +93,6 @@ export declare class InraidController {
      * @param offraidData post-raid data of raid
      */
     protected savePlayerScavProgress(sessionID: string, offraidData: ISaveProgressRequestData): void;
-    protected sendLostInsuranceMessage(sessionID: string): void;
     /**
      * Is the player dead after a raid - dead is anything other than "survived" / "runner"
      * @param statusOnExit exit value from offraidData object

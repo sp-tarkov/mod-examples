@@ -33,6 +33,10 @@ export declare class RagfairPriceService implements OnLoad {
      * Generate static (handbook) and dynamic (prices.json) flea prices, store inside class as dictionaries
      */
     onLoad(): Promise<void>;
+    /**
+     * Add placeholder values for the new sealed weapon containers
+     */
+    protected addMissingHandbookPrices(): void;
     getRoute(): string;
     /**
      * Iterate over all items of type "Item" in db and get template price, store in cache

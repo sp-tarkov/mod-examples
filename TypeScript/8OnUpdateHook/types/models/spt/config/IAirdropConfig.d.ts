@@ -26,6 +26,7 @@ export interface AirdropChancePercent {
 export interface AirdropLoot {
     presetCount?: MinMax;
     itemCount: MinMax;
+    weaponCrateCount: MinMax;
     itemBlacklist: string[];
     itemTypeWhitelist: string[];
     /** key: item base type: value: max count */

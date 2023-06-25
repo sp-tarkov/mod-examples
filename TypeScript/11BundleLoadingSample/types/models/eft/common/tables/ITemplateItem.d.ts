@@ -377,7 +377,7 @@ export interface Props {
     ExplosionEffectType?: string;
     LinkedWeapon?: string;
     UseAmmoWithoutShell?: boolean;
-    RandomLootSettings: IRandomLootSettings;
+    RandomLootSettings?: IRandomLootSettings;
 }
 export interface IHealthEffect {
     type: string;
@@ -413,8 +413,8 @@ export interface Slot {
     _parent: string;
     _props: SlotProps;
     _max_count?: number;
-    _required: boolean;
-    _mergeSlotWithChildren: boolean;
+    _required?: boolean;
+    _mergeSlotWithChildren?: boolean;
     _proto: string;
 }
 export interface SlotProps {

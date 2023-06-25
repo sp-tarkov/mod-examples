@@ -39,6 +39,13 @@ export declare class HideoutHelper {
     static maxSkillPoint: number;
     protected hideoutConfig: IHideoutConfig;
     constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, inventoryHelper: InventoryHelper, playerService: PlayerService, localisationService: LocalisationService, configServer: ConfigServer);
+    /**
+     * Add production to profiles' Hideout.Production array
+     * @param pmcData Profile to add production to
+     * @param body Production request
+     * @param sessionID Session id
+     * @returns client response
+     */
     registerProduction(pmcData: IPmcData, body: IHideoutSingleProductionStartRequestData | IHideoutContinuousProductionStartRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * This convenience function initializes new Production Object
@@ -61,6 +68,16 @@ export declare class HideoutHelper {
      * @param sessionID Session id
      */
     updatePlayerHideout(sessionID: string): void;
+    /**
+     * Get various properties that will be passed to hideout update-related functions
+     * @param pmcData Player profile
+     * @returns Properties
+     */
+    protected getHideoutProperties(pmcData: IPmcData): {
+        btcFarmCGs: number;
+        isGeneratorOn: boolean;
+        waterCollectorHasFilter: boolean;
+    };
     /**
      * Update progress timer for water collector
      * @param pmcData profile to update
