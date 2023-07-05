@@ -34,7 +34,7 @@ export declare class RagfairPriceService implements OnLoad {
      */
     onLoad(): Promise<void>;
     /**
-     * Add placeholder values for the new sealed weapon containers
+     * Add placeholder values for items missing from handbook
      */
     protected addMissingHandbookPrices(): void;
     getRoute(): string;

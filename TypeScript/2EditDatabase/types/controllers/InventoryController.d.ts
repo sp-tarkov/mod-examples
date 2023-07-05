@@ -64,6 +64,12 @@ export declare class InventoryController {
      */
     moveItem(pmcData: IPmcData, moveRequest: IInventoryMoveRequestData, sessionID: string): IItemEventRouterResponse;
     /**
+     * Get a event router response with inventory trader message
+     * @param output Item event router response
+     * @returns Item event router response
+     */
+    protected getTraderExploitErrorResponse(output: IItemEventRouterResponse): IItemEventRouterResponse;
+    /**
     * Remove Item from Profile
     * Deep tree item deletion, also removes items from insurance list
     */
