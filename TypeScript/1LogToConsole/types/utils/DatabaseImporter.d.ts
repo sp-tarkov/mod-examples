@@ -26,6 +26,11 @@ export declare class DatabaseImporter implements OnLoad {
     private filepath;
     protected httpConfig: IHttpConfig;
     constructor(logger: ILogger, vfs: VFS, jsonUtil: JsonUtil, localisationService: LocalisationService, databaseServer: DatabaseServer, imageRouter: ImageRouter, encodingUtil: EncodingUtil, hashUtil: HashUtil, importerUtil: ImporterUtil, configServer: ConfigServer);
+    /**
+     * Get path to aki data
+     * @returns path to data
+     */
+    getSptDataPath(): string;
     onLoad(): Promise<void>;
     /**
      * Read all json files in database folder and map into a json object
@@ -39,7 +44,7 @@ export declare class DatabaseImporter implements OnLoad {
      * Find and map files with image router inside a designated path
      * @param filepath Path to find files in
      */
-    loadImages(filepath: string, routes: string[]): void;
+    loadImages(filepath: string, directories: string[], routes: string[]): void;
     /**
      * Check for a path override in the http json config file
      * @param imagePath Key

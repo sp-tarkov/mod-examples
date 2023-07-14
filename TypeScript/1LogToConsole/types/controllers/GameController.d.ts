@@ -47,6 +47,8 @@ export declare class GameController {
     protected locationConfig: ILocationConfig;
     constructor(logger: ILogger, databaseServer: DatabaseServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, preAkiModLoader: PreAkiModLoader, httpServerHelper: HttpServerHelper, encodingUtil: EncodingUtil, hideoutHelper: HideoutHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, customLocationWaveService: CustomLocationWaveService, openZoneService: OpenZoneService, seasonalEventService: SeasonalEventService, applicationContext: ApplicationContext, configServer: ConfigServer);
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
+    /** Check for any missing assorts inside each traders assort.json data, checking against traders qeustassort.json */
+    protected validateQuestAssortUnlocksExist(): void;
     /**
      * BSG have two values for shotgun dispersion, we make sure both have the same value
      */

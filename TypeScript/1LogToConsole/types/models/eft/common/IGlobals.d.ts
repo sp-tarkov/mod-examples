@@ -3,6 +3,7 @@ export interface IGlobals {
     time: number;
     config: Config;
     bot_presets: BotPreset[];
+    AudioSettings: IAudioSettings;
     BotWeaponScatterings: BotWeaponScattering[];
     ItemPresets: Record<string, Preset>;
 }
@@ -1298,6 +1299,20 @@ export interface BotPreset {
     MAX_AIMING_UPGRADE_BY_TIME: number;
     FIRST_CONTACT_ADD_SEC: number;
     COEF_IF_MOVE: number;
+}
+export interface IAudioSettings {
+    AudioGroupPresets: IAudioGroupPreset[];
+}
+export interface IAudioGroupPreset {
+    AngleToAllowBinaural: number;
+    DisabledBinauralByDistance: boolean;
+    DistanceToAllowBinaural: number;
+    GroupType: number;
+    HeightToAllowBinaural: number;
+    Name: string;
+    OcclusionEnabled: boolean;
+    OcclusionIntensity: number;
+    OverallVolume: number;
 }
 export interface BotWeaponScattering {
     Name: string;

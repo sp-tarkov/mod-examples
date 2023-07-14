@@ -19,6 +19,7 @@ import { DatabaseServer } from "../servers/DatabaseServer";
 import { LocaleService } from "../services/LocaleService";
 import { LocalisationService } from "../services/LocalisationService";
 import { PlayerService } from "../services/PlayerService";
+import { SeasonalEventService } from "../services/SeasonalEventService";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 export declare class QuestController {
@@ -34,10 +35,11 @@ export declare class QuestController {
     protected questConditionHelper: QuestConditionHelper;
     protected playerService: PlayerService;
     protected localeService: LocaleService;
+    protected seasonalEventService: SeasonalEventService;
     protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected questConfig: IQuestConfig;
-    constructor(logger: ILogger, timeUtil: TimeUtil, httpResponseUtil: HttpResponseUtil, eventOutputHolder: EventOutputHolder, databaseServer: DatabaseServer, itemHelper: ItemHelper, dialogueHelper: DialogueHelper, profileHelper: ProfileHelper, questHelper: QuestHelper, questConditionHelper: QuestConditionHelper, playerService: PlayerService, localeService: LocaleService, localisationService: LocalisationService, configServer: ConfigServer);
+    constructor(logger: ILogger, timeUtil: TimeUtil, httpResponseUtil: HttpResponseUtil, eventOutputHolder: EventOutputHolder, databaseServer: DatabaseServer, itemHelper: ItemHelper, dialogueHelper: DialogueHelper, profileHelper: ProfileHelper, questHelper: QuestHelper, questConditionHelper: QuestConditionHelper, playerService: PlayerService, localeService: LocaleService, seasonalEventService: SeasonalEventService, localisationService: LocalisationService, configServer: ConfigServer);
     /**
      * Get all quests visible to player
      * Exclude quests with incomplete preconditions (level/loyalty)
@@ -45,6 +47,19 @@ export declare class QuestController {
      * @returns array of IQuest
      */
     getClientQuests(sessionID: string): IQuest[];
+    /**
+     * Does a provided quest have a level requirement equal to or below defined level
+     * @param quest Quest to check
+     * @param playerLevel level of player to test against quest
+     * @returns true if quest can be seen/accepted by player of defined level
+     */
+    protected playerLevelFulfillsQuestRequrement(quest: IQuest, playerLevel: number): boolean;
+    /**
+     * Should a quest be shown to the player in trader quest screen
+     * @param questId Quest to check
+     * @returns true = show to player
+     */
+    protected showEventQuestToPlayer(questId: string): boolean;
     /**
      * Is the quest for the opposite side the player is on
      * @param playerSide Player side (usec/bear)

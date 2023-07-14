@@ -190,15 +190,15 @@ export declare class HideoutHelper {
      */
     protected getBTCSlots(pmcData: IPmcData): number;
     /**
-     * Get a count of bitcoins player miner can hold
-     */
-    protected getManagementSkillsSlots(): number;
-    /**
      * Does profile have elite hideout management skill
      * @param pmcData Profile to look at
      * @returns True if profile has skill
      */
     protected hasEliteHideoutManagementSkill(pmcData: IPmcData): boolean;
+    /**
+     * Get a count of bitcoins player miner can hold
+     */
+    protected getBitcoinMinerContainerSlotSize(): number;
     /**
      * Get the hideout management skill from player profile
      * @param pmcData Profile to look at
@@ -206,12 +206,6 @@ export declare class HideoutHelper {
      */
     protected getHideoutManagementSkill(pmcData: IPmcData): Common;
     protected getHideoutManagementConsumptionBonus(pmcData: IPmcData): number;
-    /**
-     * Get the crafting skill details from player profile
-     * @param pmcData Player profile
-     * @returns crafting skill, null if not found
-     */
-    protected getCraftingSkill(pmcData: IPmcData): Common;
     /**
      * Adjust craft time based on crafting skill level found in player profile
      * @param pmcData Player profile

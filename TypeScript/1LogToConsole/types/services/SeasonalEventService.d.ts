@@ -1,20 +1,26 @@
 import { BotHelper } from "../helpers/BotHelper";
 import { Config } from "../models/eft/common/IGlobals";
 import { Inventory } from "../models/eft/common/tables/IBotType";
+import { SeasonalEventType } from "../models/enums/SeasonalEventType";
+import { IHttpConfig } from "../models/spt/config/IHttpConfig";
+import { IQuestConfig } from "../models/spt/config/IQuestConfig";
 import { ISeasonalEvent, ISeasonalEventConfig } from "../models/spt/config/ISeasonalEventConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { DatabaseImporter } from "../utils/DatabaseImporter";
 import { LocalisationService } from "./LocalisationService";
 export declare class SeasonalEventService {
     protected logger: ILogger;
     protected databaseServer: DatabaseServer;
+    protected databaseImporter: DatabaseImporter;
     protected localisationService: LocalisationService;
     protected botHelper: BotHelper;
     protected configServer: ConfigServer;
     protected seasonalEventConfig: ISeasonalEventConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, localisationService: LocalisationService, botHelper: BotHelper, configServer: ConfigServer);
-    protected get events(): Record<string, string>;
+    protected questConfig: IQuestConfig;
+    protected httpConfig: IHttpConfig;
+    constructor(logger: ILogger, databaseServer: DatabaseServer, databaseImporter: DatabaseImporter, localisationService: LocalisationService, botHelper: BotHelper, configServer: ConfigServer);
     protected get christmasEventItems(): string[];
     protected get halloweenEventItems(): string[];
     /**
@@ -52,12 +58,12 @@ export declare class SeasonalEventService {
      */
     seasonalEventEnabled(): boolean;
     /**
-     * is christmas event active
+     * Is christmas event active (Globals eventtype array contains even name)
      * @returns true if active
      */
     christmasEventEnabled(): boolean;
     /**
-     * is christmas event active
+     * is halloween event active (Globals eventtype array contains even name)
      * @returns true if active
      */
     halloweenEventEnabled(): boolean;
@@ -71,12 +77,19 @@ export declare class SeasonalEventService {
      * @param eventName Name of event to get gear changes for
      * @returns bots with equipment changes
      */
-    protected getEventBotGear(eventName: string): Record<string, Record<string, Record<string, number>>>;
+    protected getEventBotGear(eventType: SeasonalEventType): Record<string, Record<string, Record<string, number>>>;
     /**
      * Get the dates each seasonal event starts and ends at
      * @returns Record with event name + start/end date
      */
     getEventDetails(): ISeasonalEvent[];
+    /**
+     * Look up quest in configs/quest.json
+     * @param questId Quest to look up
+     * @param event event type (Christmas/Halloween/None)
+     * @returns true if related
+     */
+    isQuestRelatedToEvent(questId: string, event: SeasonalEventType): boolean;
     /**
      * Check if current date falls inside any of the seasons events pased in, if so, handle them
      */
@@ -92,7 +105,12 @@ export declare class SeasonalEventService {
      * @param globalConfig globals.json
      * @param eventName Name of the event to enable. e.g. Christmas
      */
-    protected updateGlobalEvents(globalConfig: Config, eventName: string): void;
+    protected updateGlobalEvents(globalConfig: Config, eventType: SeasonalEventType): void;
+    /**
+     * Change trader icons to be more event themed (Halloween only so far)
+     * @param eventType What event is active
+     */
+    protected adjustTraderIcons(eventType: SeasonalEventType): void;
     /**
      * Add lootble items from backpack into patrol.ITEMS_TO_DROP difficulty property
      */
@@ -101,7 +119,7 @@ export declare class SeasonalEventService {
      * Read in data from seasonalEvents.json and add found equipment items to bots
      * @param eventName Name of the event to read equipment in from config
      */
-    protected addEventGearToBots(eventName: string): void;
+    protected addEventGearToBots(eventType: SeasonalEventType): void;
     protected addPumpkinsToScavBackpacks(): void;
     /**
      * Set Khorovod(dancing tree) chance to 100% on all maps that support it

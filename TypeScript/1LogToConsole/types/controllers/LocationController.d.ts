@@ -3,9 +3,9 @@ import { LootGenerator } from "../generators/LootGenerator";
 import { WeightedRandomHelper } from "../helpers/WeightedRandomHelper";
 import { ILocationBase } from "../models/eft/common/ILocationBase";
 import { ILocationsGenerateAllResponse } from "../models/eft/common/ILocationsSourceDestinationBase";
+import { IAirdropLootResult } from "../models/eft/location/IAirdropLootResult";
 import { AirdropTypeEnum } from "../models/enums/AirdropType";
 import { IAirdropConfig } from "../models/spt/config/IAirdropConfig";
-import { LootItem } from "../models/spt/services/LootItem";
 import { LootRequest } from "../models/spt/services/LootRequest";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
@@ -39,7 +39,7 @@ export declare class LocationController {
      * Generates it randomly based on config/airdrop.json values
      * @returns Array of LootItem objects
      */
-    getAirdropLoot(): LootItem[];
+    getAirdropLoot(): IAirdropLootResult;
     /**
      * Randomly pick a type of airdrop loot using weighted values from config
      * @returns airdrop type value
