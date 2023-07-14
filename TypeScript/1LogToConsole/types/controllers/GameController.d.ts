@@ -46,9 +46,26 @@ export declare class GameController {
     protected coreConfig: ICoreConfig;
     protected locationConfig: ILocationConfig;
     constructor(logger: ILogger, databaseServer: DatabaseServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, preAkiModLoader: PreAkiModLoader, httpServerHelper: HttpServerHelper, encodingUtil: EncodingUtil, hideoutHelper: HideoutHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, customLocationWaveService: CustomLocationWaveService, openZoneService: OpenZoneService, seasonalEventService: SeasonalEventService, applicationContext: ApplicationContext, configServer: ConfigServer);
+    /**
+     * Handle client/game/start
+     */
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
-    /** Check for any missing assorts inside each traders assort.json data, checking against traders qeustassort.json */
-    protected validateQuestAssortUnlocksExist(): void;
+    /**
+     * Handle client/game/config
+     */
+    getGameConfig(sessionID: string): IGameConfigResponse;
+    /**
+     * Handle client/server/list
+     */
+    getServer(sessionId: string): IServerDetails[];
+    /**
+     * Handle client/match/group/current
+     */
+    getCurrentGroup(sessionId: string): ICurrentGroupResponse;
+    /**
+     * Handle client/checkVersion
+     */
+    getValidGameVersion(sessionId: string): ICheckVersionResponse;
     /**
      * BSG have two values for shotgun dispersion, we make sure both have the same value
      */
@@ -82,6 +99,10 @@ export declare class GameController {
      */
     protected saveActiveModsToProfile(fullProfile: IAkiProfile): void;
     /**
+     * Check for any missing assorts inside each traders assort.json data, checking against traders qeustassort.json
+     */
+    protected validateQuestAssortUnlocksExist(): void;
+    /**
      * Add the logged in players name to PMC name pool
      * @param pmcProfile
      */
@@ -95,8 +116,4 @@ export declare class GameController {
      */
     protected adjustLabsRaiderSpawnRate(): void;
     protected logProfileDetails(fullProfile: IAkiProfile): void;
-    getGameConfig(sessionID: string): IGameConfigResponse;
-    getServer(): IServerDetails[];
-    getCurrentGroup(sessionId: string): ICurrentGroupResponse;
-    getValidGameVersion(): ICheckVersionResponse;
 }

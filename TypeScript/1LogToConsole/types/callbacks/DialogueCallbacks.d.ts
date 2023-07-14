@@ -1,7 +1,7 @@
 import { DialogueController } from "../controllers/DialogueController";
 import { OnUpdate } from "../di/OnUpdate";
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
-import { IAcceptFriendRequestData } from "../models/eft/dialog/IAcceptFriendRequestData";
+import { IAcceptFriendRequestData, ICancelFriendRequestData } from "../models/eft/dialog/IAcceptFriendRequestData";
 import { IChatServer } from "../models/eft/dialog/IChatServer";
 import { IClearMailMessageRequest } from "../models/eft/dialog/IClearMailMessageRequest";
 import { IDeleteFriendRequest } from "../models/eft/dialog/IDeleteFriendRequest";
@@ -60,9 +60,22 @@ export declare class DialogueCallbacks implements OnUpdate {
     getAllAttachments(url: string, info: IGetAllAttachmentsRequestData, sessionID: string): IGetBodyResponseData<IGetAllAttachmentsResponse>;
     /** Handle client/friend/request/list/outbox */
     listOutbox(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any[]>;
+    /**
+     * Handle client/friend/request/list/inbox
+     */
     listInbox(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any[]>;
+    /**
+     * Handle client/friend/request/send
+     */
     sendFriendRequest(url: string, request: IFriendRequestData, sessionID: string): IGetBodyResponseData<IFriendRequestSendResponse>;
+    /**
+     * Handle client/friend/request/accept
+     */
     acceptFriendRequest(url: string, request: IAcceptFriendRequestData, sessionID: string): IGetBodyResponseData<boolean>;
+    /**
+     * Handle client/friend/request/cancel
+     */
+    cancelFriendRequest(url: string, request: ICancelFriendRequestData, sessionID: string): IGetBodyResponseData<boolean>;
     deleteFriend(url: string, request: IDeleteFriendRequest, sessionID: string): INullResponseData;
     sendMessage(url: string, request: ISendMessageRequest, sessionID: string): IGetBodyResponseData<number>;
     clearMail(url: string, request: IClearMailMessageRequest, sessionID: string): IGetBodyResponseData<any[]>;
