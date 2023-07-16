@@ -1,7 +1,15 @@
+import { MemberCategory } from "../../../models/enums/MemberCategory";
 import { MinMax } from "../../common/MinMax";
 export interface IPmcConfig {
+    /** What game version should the PMC have */
+    gameVersionWeight: Record<string, number>;
+    /** What account type should the PMC have */
+    accountTypeWeight: Record<MemberCategory, number>;
+    /** Global whitelist/blacklist of vest loot for PMCs */
     vestLoot: SlotLootSettings;
+    /** Global whitelist/blacklist of pocket loot for PMCs */
     pocketLoot: SlotLootSettings;
+    /** Global whitelist/blacklist of backpack loot for PMCs */
     backpackLoot: SlotLootSettings;
     dynamicLoot: DynamicLoot;
     useDifficultyOverride: boolean;

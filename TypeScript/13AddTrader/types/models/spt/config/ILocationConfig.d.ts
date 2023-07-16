@@ -14,6 +14,10 @@ export interface ILocationConfig extends IBaseConfig {
     forcedLootSingleSpawnById: Record<string, string[]>;
     /** How many attempts should be taken to fit an item into a container before giving up */
     fitLootIntoContainerAttempts: number;
+    /** Add all possible zones to each maps `OpenZones` property */
+    addOpenZonesToAllMaps: boolean;
+    /** Allow addition of custom bot waves designed by SPT to be added to maps - defined in  configs/location.json.customWaves*/
+    addCustomBotWavesToMaps: boolean;
 }
 export interface IFixEmptyBotWavesSettings {
     enabled: boolean;

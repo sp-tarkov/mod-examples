@@ -61,6 +61,7 @@ export declare class InRaidHelper {
      * @returns Reset profile object
      */
     updateProfileBaseStats(profileData: IPmcData, saveProgressRequest: ISaveProgressRequestData, sessionID: string): IPmcData;
+    protected resetSkillPointsEarnedDuringRaid(profile: IPmcData): void;
     /**
      * Take body part effects from client profile and apply to server profile
      * @param saveProgressRequest post-raid request

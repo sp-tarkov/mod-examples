@@ -10,6 +10,7 @@ export interface IAirdropConfig extends IBaseConfig {
     planeVolume: number;
     planeSpeed: number;
     crateFallSpeed: number;
+    containerIds: Record<string, string>;
     airdropMinStartTimeSeconds: number;
     airdropMaxStartTimeSeconds: number;
     loot: Record<string, AirdropLoot>;

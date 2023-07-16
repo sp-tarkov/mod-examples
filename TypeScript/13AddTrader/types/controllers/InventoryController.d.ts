@@ -4,6 +4,7 @@ import { ItemHelper } from "../helpers/ItemHelper";
 import { PaymentHelper } from "../helpers/PaymentHelper";
 import { PresetHelper } from "../helpers/PresetHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
+import { QuestHelper } from "../helpers/QuestHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { IAddItemRequestData } from "../models/eft/inventory/IAddItemRequestData";
 import { IInventoryBindRequestData } from "../models/eft/inventory/IInventoryBindRequestData";
@@ -44,6 +45,7 @@ export declare class InventoryController {
     protected fenceService: FenceService;
     protected presetHelper: PresetHelper;
     protected inventoryHelper: InventoryHelper;
+    protected questHelper: QuestHelper;
     protected ragfairOfferService: RagfairOfferService;
     protected profileHelper: ProfileHelper;
     protected paymentHelper: PaymentHelper;
@@ -51,7 +53,7 @@ export declare class InventoryController {
     protected lootGenerator: LootGenerator;
     protected eventOutputHolder: EventOutputHolder;
     protected httpResponseUtil: HttpResponseUtil;
-    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, itemHelper: ItemHelper, randomUtil: RandomUtil, databaseServer: DatabaseServer, fenceService: FenceService, presetHelper: PresetHelper, inventoryHelper: InventoryHelper, ragfairOfferService: RagfairOfferService, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, lootGenerator: LootGenerator, eventOutputHolder: EventOutputHolder, httpResponseUtil: HttpResponseUtil);
+    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, itemHelper: ItemHelper, randomUtil: RandomUtil, databaseServer: DatabaseServer, fenceService: FenceService, presetHelper: PresetHelper, inventoryHelper: InventoryHelper, questHelper: QuestHelper, ragfairOfferService: RagfairOfferService, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, lootGenerator: LootGenerator, eventOutputHolder: EventOutputHolder, httpResponseUtil: HttpResponseUtil);
     /**
     * Move Item
     * change location of item with parentId and slotId
@@ -187,6 +189,7 @@ export declare class InventoryController {
      */
     protected sanitiseMapMarkerText(mapNoteText: string): string;
     /**
+     * Handle OpenRandomLootContainer event
      * Handle event fired when a container is unpacked (currently only the halloween pumpkin)
      * @param pmcData Profile data
      * @param body open loot container request data

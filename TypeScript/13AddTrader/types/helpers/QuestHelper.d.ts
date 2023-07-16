@@ -63,6 +63,7 @@ export declare class QuestHelper {
     getDeltaQuests(before: IQuest[], after: IQuest[]): IQuest[];
     /**
      * Increase skill points of a skill on player profile
+     * Dupe of PlayerService.incrementSkillLevel()
      * @param sessionID Session id
      * @param pmcData Player profile
      * @param skillName Name of skill to increase skill points of

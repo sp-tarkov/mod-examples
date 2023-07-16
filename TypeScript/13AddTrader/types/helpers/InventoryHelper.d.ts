@@ -75,7 +75,7 @@ export declare class InventoryHelper {
      */
     protected splitStackIntoSmallerStacks(assortItems: Item[], requestItem: AddItem, result: IAddItemTempObject[]): void;
     /**
-     * Remove item from player inventory
+     * Remove item from player inventory + insured items array
      * @param pmcData Profile to remove item from
      * @param itemId Items id to remove
      * @param sessionID Session id
