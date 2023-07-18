@@ -60,7 +60,7 @@ export declare class MatchController {
     /** Handle client/match/offline/end */
     endOfflineRaid(info: IEndOfflineRaidRequestData, sessionId: string): void;
     /**
-     * Is extract by car
+     * Was extract by car
      * @param extractName name of extract
      * @returns true if car extract
      */

@@ -44,6 +44,7 @@ export declare class MatchCallbacks {
     transferGroup(url: string, info: ITransferGroupRequest, sessionID: string): IGetBodyResponseData<boolean>;
     /** Handle client/match/group/invite/cancel-all */
     cancelAllGroupInvite(url: string, info: any, sessionID: string): INullResponseData;
+    /** @deprecated - not called on raid start/end or game start/exit */
     putMetrics(url: string, info: IPutMetricsRequestData, sessionID: string): INullResponseData;
     /** Handle raid/profile/list */
     getProfile(url: string, info: IGetProfileRequestData, sessionID: string): IGetBodyResponseData<IPmcData[]>;
@@ -53,6 +54,7 @@ export declare class MatchCallbacks {
     /** Handle client/getMetricsConfig */
     getMetrics(url: string, info: any, sessionID: string): IGetBodyResponseData<string>;
     /**
+     * @deprecated - not called on raid start/end or game start/exit
      * Handle client/match/group/status
      * @returns
      */

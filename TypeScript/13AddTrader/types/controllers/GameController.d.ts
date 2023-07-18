@@ -51,6 +51,7 @@ export declare class GameController {
      * Handle client/game/start
      */
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
+    protected adjustMapBotLimits(): void;
     /**
      * Handle client/game/config
      */

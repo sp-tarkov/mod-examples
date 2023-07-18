@@ -1,7 +1,7 @@
 import { HandbookHelper } from "../helpers/HandbookHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
 import { PresetHelper } from "../helpers/PresetHelper";
-import { FenceLevel, Preset } from "../models/eft/common/IGlobals";
+import { IFenceLevel, IPreset } from "../models/eft/common/IGlobals";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { Item } from "../models/eft/common/tables/IItem";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
@@ -146,7 +146,7 @@ export declare class FenceService {
      * @param assorts object to add presets to
      * @param loyaltyLevel loyalty level to requre item at
      */
-    protected addPresets(desiredPresetCount: number, defaultWeaponPresets: Record<string, Preset>, assorts: ITraderAssort, loyaltyLevel: number): void;
+    protected addPresets(desiredPresetCount: number, defaultWeaponPresets: Record<string, IPreset>, assorts: ITraderAssort, loyaltyLevel: number): void;
     /**
      * Randomise items' upd properties e.g. med packs/weapons/armor
      * @param itemDetails Item being randomised
@@ -176,7 +176,7 @@ export declare class FenceService {
      * @param pmcData Player profile
      * @returns FenceLevel object
      */
-    getFenceInfo(pmcData: IPmcData): FenceLevel;
+    getFenceInfo(pmcData: IPmcData): IFenceLevel;
     /**
      * Remove an assort from fence by id
      * @param assortIdToRemove assort id to remove from fence assorts

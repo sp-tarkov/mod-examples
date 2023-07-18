@@ -1,6 +1,7 @@
 import { GameController } from "../controllers/GameController";
 import { IEmptyRequestData } from "../models/eft/common/IEmptyRequestData";
 import { ICheckVersionResponse } from "../models/eft/game/ICheckVersionResponse";
+import { ICurrentGroupResponse } from "../models/eft/game/ICurrentGroupResponse";
 import { IGameConfigResponse } from "../models/eft/game/IGameConfigResponse";
 import { IGameEmptyCrcRequestData } from "../models/eft/game/IGameEmptyCrcRequestData";
 import { IGameKeepAliveResponse } from "../models/eft/game/IGameKeepAliveResponse";
@@ -48,7 +49,7 @@ declare class GameCallbacks {
     /**
      * Handle client/match/group/current
      */
-    getCurrentGroup(url: string, info: IEmptyRequestData, sessionID: string): any;
+    getCurrentGroup(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<ICurrentGroupResponse>;
     /**
      * Handle client/checkVersion
      */

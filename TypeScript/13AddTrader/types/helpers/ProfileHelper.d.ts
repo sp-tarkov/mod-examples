@@ -68,6 +68,10 @@ export declare class ProfileHelper {
     getFullProfile(sessionID: string): IAkiProfile;
     getPmcProfile(sessionID: string): IPmcData;
     getScavProfile(sessionID: string): IPmcData;
+    /**
+     * Get baseline counter values for a fresh profile
+     * @returns Stats
+     */
     getDefaultCounters(): Stats;
     protected isWiped(sessionID: string): boolean;
     protected getServerVersion(): string;

@@ -3,7 +3,7 @@ import { HandbookHelper } from "../helpers/HandbookHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
 import { PresetHelper } from "../helpers/PresetHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
-import { Preset } from "../models/eft/common/IGlobals";
+import { IPreset } from "../models/eft/common/IGlobals";
 import { Item } from "../models/eft/common/tables/IItem";
 import { IBarterScheme } from "../models/eft/common/tables/ITrader";
 import { IRagfairConfig } from "../models/spt/config/IRagfairConfig";
@@ -126,8 +126,8 @@ export declare class RagfairPriceService implements OnLoad {
      * @param presets weapon presets to choose from
      * @returns Default preset object
      */
-    protected getWeaponPreset(presets: Preset[], weapon: Item): {
+    protected getWeaponPreset(presets: IPreset[], weapon: Item): {
         isDefault: boolean;
-        preset: Preset;
+        preset: IPreset;
     };
 }
