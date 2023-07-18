@@ -1,5 +1,5 @@
 import { BotHelper } from "../helpers/BotHelper";
-import { Config } from "../models/eft/common/IGlobals";
+import { IConfig } from "../models/eft/common/IGlobals";
 import { Inventory } from "../models/eft/common/tables/IBotType";
 import { SeasonalEventType } from "../models/enums/SeasonalEventType";
 import { IHttpConfig } from "../models/spt/config/IHttpConfig";
@@ -105,7 +105,7 @@ export declare class SeasonalEventService {
      * @param globalConfig globals.json
      * @param eventName Name of the event to enable. e.g. Christmas
      */
-    protected updateGlobalEvents(globalConfig: Config, eventType: SeasonalEventType): void;
+    protected updateGlobalEvents(globalConfig: IConfig, eventType: SeasonalEventType): void;
     /**
      * Change trader icons to be more event themed (Halloween only so far)
      * @param eventType What event is active

@@ -33,13 +33,13 @@ export declare class DialogueCallbacks implements OnUpdate {
     protected dialogueController: DialogueController;
     constructor(hashUtil: HashUtil, timeUtil: TimeUtil, httpResponse: HttpResponseUtil, dialogueController: DialogueController);
     /**
-     * Handles client/friend/list
+     * Handle client/friend/list
      * @returns IGetFriendListDataResponse
      */
     getFriendList(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<IGetFriendListDataResponse>;
     /**
-     * Handles client/chatServer/list
-     * @returns
+     * Handle client/chatServer/list
+     * @returns IChatServer[]
      */
     getChatServerList(url: string, info: IGetChatServerListRequestData, sessionID: string): IGetBodyResponseData<IChatServer[]>;
     /** Handle client/mail/dialog/list */
@@ -50,14 +50,19 @@ export declare class DialogueCallbacks implements OnUpdate {
     getMailDialogInfo(url: string, info: IGetMailDialogInfoRequestData, sessionID: string): IGetBodyResponseData<DialogueInfo>;
     /** Handle client/mail/dialog/remove */
     removeDialog(url: string, info: IRemoveDialogRequestData, sessionID: string): IGetBodyResponseData<any[]>;
+    /** Handle client/mail/dialog/pin */
     pinDialog(url: string, info: IPinDialogRequestData, sessionID: string): IGetBodyResponseData<any[]>;
+    /** Handle client/mail/dialog/unpin */
     unpinDialog(url: string, info: IPinDialogRequestData, sessionID: string): IGetBodyResponseData<any[]>;
+    /** Handle client/mail/dialog/read */
     setRead(url: string, info: ISetDialogReadRequestData, sessionID: string): IGetBodyResponseData<any[]>;
     /**
-     * Handles client/mail/dialog/getAllAttachments
+     * Handle client/mail/dialog/getAllAttachments
      * @returns IGetAllAttachmentsResponse
      */
     getAllAttachments(url: string, info: IGetAllAttachmentsRequestData, sessionID: string): IGetBodyResponseData<IGetAllAttachmentsResponse>;
+    /** Handle client/mail/msg/send */
+    sendMessage(url: string, request: ISendMessageRequest, sessionID: string): IGetBodyResponseData<string>;
     /** Handle client/friend/request/list/outbox */
     listOutbox(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<any[]>;
     /**
@@ -76,8 +81,16 @@ export declare class DialogueCallbacks implements OnUpdate {
      * Handle client/friend/request/cancel
      */
     cancelFriendRequest(url: string, request: ICancelFriendRequestData, sessionID: string): IGetBodyResponseData<boolean>;
+    /** Handle client/friend/delete */
     deleteFriend(url: string, request: IDeleteFriendRequest, sessionID: string): INullResponseData;
-    sendMessage(url: string, request: ISendMessageRequest, sessionID: string): IGetBodyResponseData<number>;
+    /** Handle client/friend/ignore/set */
+    ignoreFriend(url: string, request: {
+        uid: string;
+    }, sessionID: string): any;
+    /** Handle client/friend/ignore/set */
+    unIgnoreFriend(url: string, request: {
+        uid: string;
+    }, sessionID: string): any;
     clearMail(url: string, request: IClearMailMessageRequest, sessionID: string): IGetBodyResponseData<any[]>;
     removeMail(url: string, request: IRemoveMailMessageRequest, sessionID: string): IGetBodyResponseData<any[]>;
     onUpdate(timeSinceLastRun: number): Promise<boolean>;

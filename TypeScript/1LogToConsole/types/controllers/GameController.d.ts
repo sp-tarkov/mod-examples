@@ -8,6 +8,7 @@ import { IPmcData } from "../models/eft/common/IPmcData";
 import { ICheckVersionResponse } from "../models/eft/game/ICheckVersionResponse";
 import { ICurrentGroupResponse } from "../models/eft/game/ICurrentGroupResponse";
 import { IGameConfigResponse } from "../models/eft/game/IGameConfigResponse";
+import { IGameKeepAliveResponse } from "../models/eft/game/IGameKeepAliveResponse";
 import { IServerDetails } from "../models/eft/game/IServerDetails";
 import { IAkiProfile } from "../models/eft/profile/IAkiProfile";
 import { ICoreConfig } from "../models/spt/config/ICoreConfig";
@@ -50,6 +51,7 @@ export declare class GameController {
      * Handle client/game/start
      */
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
+    protected adjustMapBotLimits(): void;
     /**
      * Handle client/game/config
      */
@@ -66,6 +68,10 @@ export declare class GameController {
      * Handle client/checkVersion
      */
     getValidGameVersion(sessionId: string): ICheckVersionResponse;
+    /**
+     * Handle client/game/keepalive
+     */
+    getKeepAlive(sessionId: string): IGameKeepAliveResponse;
     /**
      * BSG have two values for shotgun dispersion, we make sure both have the same value
      */

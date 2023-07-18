@@ -27,14 +27,22 @@ export declare class LocationController {
     protected configServer: ConfigServer;
     protected airdropConfig: IAirdropConfig;
     constructor(jsonUtil: JsonUtil, hashUtil: HashUtil, weightedRandomHelper: WeightedRandomHelper, logger: ILogger, locationGenerator: LocationGenerator, localisationService: LocalisationService, lootGenerator: LootGenerator, databaseServer: DatabaseServer, timeUtil: TimeUtil, configServer: ConfigServer);
-    get(location: string): ILocationBase;
-    generate(name: string): ILocationBase;
     /**
+     * Handle client/location/getLocalloot
+     * Get a location (map) with generated loot data
+     * @param location Map to generate loot for
+     * @returns ILocationBase
+     */
+    get(location: string): ILocationBase;
+    private generate;
+    /**
+     * Handle client/locations
      * Get all maps base location properties without loot data
      * @returns ILocationsGenerateAllResponse
      */
     generateAll(): ILocationsGenerateAllResponse;
     /**
+     * Handle client/location/getAirdropLoot
      * Get loot for an airdop container
      * Generates it randomly based on config/airdrop.json values
      * @returns Array of LootItem objects

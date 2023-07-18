@@ -37,9 +37,9 @@ export declare class DatabaseImporter implements OnLoad {
      * @param filepath path to database folder
      */
     protected hydrateDatabase(filepath: string): Promise<void>;
-    private onReadValidate;
+    protected onReadValidate(fileWithPath: string, data: string): void;
     getRoute(): string;
-    private validateFile;
+    protected validateFile(filePathAndName: string, fileData: any): boolean;
     /**
      * Find and map files with image router inside a designated path
      * @param filepath Path to find files in
