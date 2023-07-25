@@ -140,6 +140,12 @@ export declare class FenceService {
         max: number;
     }>, loyaltyLevel: number): void;
     /**
+     * Get stack size ofr a singular item (no mods)
+     * @param itemDbDetails item being added to fence
+     * @returns Stack size
+     */
+    protected getSingleItemStackCount(itemDbDetails: ITemplateItem): number;
+    /**
      * Add preset weapons to fence presets
      * @param assortCount how many assorts to add to assorts
      * @param defaultWeaponPresets a dictionary of default weapon presets

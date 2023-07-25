@@ -1,5 +1,5 @@
 import { IPmcData } from "../models/eft/common/IPmcData";
-import { Stats } from "../models/eft/common/tables/IBotBase";
+import { CounterKeyValue, Stats } from "../models/eft/common/tables/IBotBase";
 import { IAkiProfile } from "../models/eft/profile/IAkiProfile";
 import { IValidateNicknameRequestData } from "../models/eft/profile/IValidateNicknameRequestData";
 import { ILogger } from "../models/spt/utils/ILogger";
@@ -81,4 +81,24 @@ export declare class ProfileHelper {
      * @returns profile without secure container
      */
     removeSecureContainer(profile: IPmcData): IPmcData;
+    /**
+     *  Flag a profile as having received a gift
+     * Store giftid in profile aki object
+     * @param playerId Player to add gift flag to
+     * @param giftId Gift player received
+     */
+    addGiftReceivedFlagToProfile(playerId: string, giftId: string): void;
+    /**
+     * Check if profile has recieved a gift by id
+     * @param playerId Player profile to check for gift
+     * @param giftId Gift to check for
+     * @returns True if player has recieved gift previously
+     */
+    playerHasRecievedGift(playerId: string, giftId: string): boolean;
+    /**
+     * Find Stat in profile counters and increment by one
+     * @param counters Counters to search for key
+     * @param keyToIncrement Key
+     */
+    incrementStatCounter(counters: CounterKeyValue[], keyToIncrement: string): void;
 }

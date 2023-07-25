@@ -87,7 +87,7 @@ export declare class DialogueCallbacks implements OnUpdate {
     ignoreFriend(url: string, request: {
         uid: string;
     }, sessionID: string): any;
-    /** Handle client/friend/ignore/set */
+    /** Handle client/friend/ignore/remove */
     unIgnoreFriend(url: string, request: {
         uid: string;
     }, sessionID: string): any;

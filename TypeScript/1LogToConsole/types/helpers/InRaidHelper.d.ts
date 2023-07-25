@@ -27,7 +27,7 @@ export declare class InRaidHelper {
     protected lostOnDeathConfig: ILostOnDeathConfig;
     constructor(logger: ILogger, saveServer: SaveServer, jsonUtil: JsonUtil, itemHelper: ItemHelper, databaseServer: DatabaseServer, inventoryHelper: InventoryHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, profileFixerService: ProfileFixerService, configServer: ConfigServer);
     /**
-     * Should quest items be removed from player inventory on death
+     * Lookup quest item loss from lostOnDeath config
      * @returns True if items should be removed from inventory
      */
     removeQuestItemsOnDeath(): boolean;

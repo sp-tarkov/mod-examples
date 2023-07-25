@@ -661,7 +661,7 @@ export interface ICategories {
     kd: boolean;
     surviveRatio: boolean;
     avgEarnings: boolean;
-    kills: boolean;
+    pmcKills: boolean;
     raidCount: boolean;
     longestShot: boolean;
     timeOnline: boolean;

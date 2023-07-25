@@ -1,4 +1,5 @@
 import { BotHelper } from "../helpers/BotHelper";
+import { ProfileHelper } from "../helpers/ProfileHelper";
 import { IConfig } from "../models/eft/common/IGlobals";
 import { Inventory } from "../models/eft/common/tables/IBotType";
 import { SeasonalEventType } from "../models/enums/SeasonalEventType";
@@ -9,18 +10,21 @@ import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { DatabaseImporter } from "../utils/DatabaseImporter";
+import { GiftService } from "./GiftService";
 import { LocalisationService } from "./LocalisationService";
 export declare class SeasonalEventService {
     protected logger: ILogger;
     protected databaseServer: DatabaseServer;
     protected databaseImporter: DatabaseImporter;
+    protected giftService: GiftService;
     protected localisationService: LocalisationService;
     protected botHelper: BotHelper;
+    protected profileHelper: ProfileHelper;
     protected configServer: ConfigServer;
     protected seasonalEventConfig: ISeasonalEventConfig;
     protected questConfig: IQuestConfig;
     protected httpConfig: IHttpConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, databaseImporter: DatabaseImporter, localisationService: LocalisationService, botHelper: BotHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, databaseImporter: DatabaseImporter, giftService: GiftService, localisationService: LocalisationService, botHelper: BotHelper, profileHelper: ProfileHelper, configServer: ConfigServer);
     protected get christmasEventItems(): string[];
     protected get halloweenEventItems(): string[];
     /**
@@ -48,7 +52,7 @@ export declare class SeasonalEventService {
      */
     getAllSeasonalEventItems(): string[];
     /**
-     * Get an array of seasonal items that should be blocked as seasonal is not active
+     * Get an array of seasonal items that should be blocked as season is not currently active
      * @returns Array of tpl strings
      */
     getSeasonalEventItemsToBlock(): string[];
@@ -92,8 +96,9 @@ export declare class SeasonalEventService {
     isQuestRelatedToEvent(questId: string, event: SeasonalEventType): boolean;
     /**
      * Check if current date falls inside any of the seasons events pased in, if so, handle them
+     * @param sessionId Players id
      */
-    checkForAndEnableSeasonalEvents(): void;
+    checkForAndEnableSeasonalEvents(sessionId: string): void;
     /**
      * Iterate through bots inventory and loot to find and remove christmas items (as defined in SeasonalEventService)
      * @param nodeInventory Bots inventory to iterate over
@@ -102,10 +107,11 @@ export declare class SeasonalEventService {
     removeChristmasItemsFromBotInventory(nodeInventory: Inventory, botRole: string): void;
     /**
      * Make adjusted to server code based on the name of the event passed in
+     * @param sessionId Player id
      * @param globalConfig globals.json
      * @param eventName Name of the event to enable. e.g. Christmas
      */
-    protected updateGlobalEvents(globalConfig: IConfig, eventType: SeasonalEventType): void;
+    protected updateGlobalEvents(sessionId: string, globalConfig: IConfig, eventType: SeasonalEventType): void;
     /**
      * Change trader icons to be more event themed (Halloween only so far)
      * @param eventType What event is active
@@ -129,4 +135,10 @@ export declare class SeasonalEventService {
      * Add santa to maps
      */
     protected addGifterBotToMaps(): void;
+    /**
+     * Send gift to player if they'e not already received it
+     * @param playerId Player to send gift to
+     * @param giftkey Key of gift to give
+     */
+    protected giveGift(playerId: string, giftkey: string): void;
 }

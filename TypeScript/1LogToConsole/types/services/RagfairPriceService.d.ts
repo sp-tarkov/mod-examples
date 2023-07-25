@@ -12,6 +12,7 @@ import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { RandomUtil } from "../utils/RandomUtil";
+import { LocalisationService } from "./LocalisationService";
 /**
  * Stores flea prices for items as well as methods to interact with them
  */
@@ -23,12 +24,13 @@ export declare class RagfairPriceService implements OnLoad {
     protected presetHelper: PresetHelper;
     protected traderHelper: TraderHelper;
     protected randomUtil: RandomUtil;
+    protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected ragfairConfig: IRagfairConfig;
     protected generatedDynamicPrices: boolean;
     protected generatedStaticPrices: boolean;
     protected prices: IRagfairServerPrices;
-    constructor(handbookHelper: HandbookHelper, databaseServer: DatabaseServer, logger: ILogger, itemHelper: ItemHelper, presetHelper: PresetHelper, traderHelper: TraderHelper, randomUtil: RandomUtil, configServer: ConfigServer);
+    constructor(handbookHelper: HandbookHelper, databaseServer: DatabaseServer, logger: ILogger, itemHelper: ItemHelper, presetHelper: PresetHelper, traderHelper: TraderHelper, randomUtil: RandomUtil, localisationService: LocalisationService, configServer: ConfigServer);
     /**
      * Generate static (handbook) and dynamic (prices.json) flea prices, store inside class as dictionaries
      */
@@ -111,7 +113,7 @@ export declare class RagfairPriceService implements OnLoad {
      * @param item base weapon
      * @param items weapon plus mods
      * @param existingPrice price of existing base weapon
-     * @returns
+     * @returns price of weapon in roubles
      */
     protected getWeaponPresetPrice(item: Item, items: Item[], existingPrice: number): number;
     /**

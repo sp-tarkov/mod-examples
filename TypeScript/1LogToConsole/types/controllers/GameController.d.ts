@@ -18,6 +18,7 @@ import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { CustomLocationWaveService } from "../services/CustomLocationWaveService";
+import { GiftService } from "../services/GiftService";
 import { LocalisationService } from "../services/LocalisationService";
 import { OpenZoneService } from "../services/OpenZoneService";
 import { ProfileFixerService } from "../services/ProfileFixerService";
@@ -40,17 +41,19 @@ export declare class GameController {
     protected customLocationWaveService: CustomLocationWaveService;
     protected openZoneService: OpenZoneService;
     protected seasonalEventService: SeasonalEventService;
+    protected giftService: GiftService;
     protected applicationContext: ApplicationContext;
     protected configServer: ConfigServer;
     protected os: any;
     protected httpConfig: IHttpConfig;
     protected coreConfig: ICoreConfig;
     protected locationConfig: ILocationConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, preAkiModLoader: PreAkiModLoader, httpServerHelper: HttpServerHelper, encodingUtil: EncodingUtil, hideoutHelper: HideoutHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, customLocationWaveService: CustomLocationWaveService, openZoneService: OpenZoneService, seasonalEventService: SeasonalEventService, applicationContext: ApplicationContext, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, preAkiModLoader: PreAkiModLoader, httpServerHelper: HttpServerHelper, encodingUtil: EncodingUtil, hideoutHelper: HideoutHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, customLocationWaveService: CustomLocationWaveService, openZoneService: OpenZoneService, seasonalEventService: SeasonalEventService, giftService: GiftService, applicationContext: ApplicationContext, configServer: ConfigServer);
     /**
      * Handle client/game/start
      */
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
+    /** Apply custom limits on bot types as defined in configs/location.json/botTypeLimits */
     protected adjustMapBotLimits(): void;
     /**
      * Handle client/game/config
@@ -95,6 +98,11 @@ export declare class GameController {
      * Make Rogues spawn later to allow for scavs to spawn first instead of rogues filling up all spawn positions
      */
     protected fixRoguesSpawningInstantlyOnLighthouse(): void;
+    /**
+     * Send starting gifts to profile after x days
+     * @param pmcProfile Profile to add gifts to
+     */
+    protected sendPraporGiftsToNewProfiles(pmcProfile: IPmcData): void;
     /**
      * Find and split waves with large numbers of bots into smaller waves - BSG appears to reduce the size of these waves to one bot when they're waiting to spawn for too long
      */

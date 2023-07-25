@@ -24,8 +24,12 @@ export interface FenceConfig {
     presetPriceMult: number;
     armorMaxDurabilityPercentMinMax: MinMax;
     presetMaxDurabilityPercentMinMax: MinMax;
+    /** Key: item tpl */
+    itemStackSizeOverrideMinMax: Record<string, MinMax>;
     itemTypeLimits: Record<string, number>;
     regenerateAssortsOnRefresh: boolean;
+    /** Block seasonal items from appearing when season is inactive */
+    blacklistSeasonalItems: boolean;
     blacklist: string[];
 }
 export interface DiscountOptions {
