@@ -29,10 +29,8 @@ export interface Chance {
     overpriced: number;
     underpriced: number;
 }
-export interface Time {
+export interface Time extends MinMax {
     base: number;
-    min: number;
-    max: number;
 }
 export interface Reputation {
     gain: number;
@@ -100,11 +98,9 @@ export interface OfferAdjustment {
     /** What is the minimum rouble price to consider adjusting price of item */
     priceThreshholdRub: number;
 }
-export interface Condition {
+export interface Condition extends MinMax {
     /** Percentage change durability is altered */
     conditionChance: number;
-    min: number;
-    max: number;
 }
 export interface Blacklist {
     /** Damaged ammo packs */
