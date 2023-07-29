@@ -15,15 +15,15 @@ A system reboot may be needed after install.
 
 The second step is having an IDE ready. We've setup a VSCodium workspace file to help with this.
 
-You CAN use Visual Studio Code if you so desire, just keep in mind that our dev tests on the mod files was done using VSCode.
+You CAN use Visual Studio Code if you so desire, just keep in mind that our devs tests on the mod files was done using VSCode.
 
-You can get VSCOde here: https://code.visualstudio.com/
+You can get VSCode here: https://code.visualstudio.com/
 
 ## **Workspace:**
 
-Once you have NodeJS and VSCode/VSCodium ready, open the mod.code-workspace file with VSCodium (File->Open Workspace from File...).
+Once you have NodeJS and VSCode/VSCodium ready, open the mod.code-workspace file with VSCode (File->Open Workspace from File...).
 
-Once the project loads into VSCodium you will be recommended to install the ESLint plugin. This is HIGHLY recommended.
+Once the project loads you may be recommended to install the ESLint plugin. This is HIGHLY recommended.
 
 ## **Environment Setup:**
 
