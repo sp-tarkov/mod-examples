@@ -2,7 +2,7 @@
     "compilerOptions": {
         "allowJs": true,
         "module": "CommonJS",
-        "target": "es2020",
+        "target": "es2021",
         "moduleResolution": "node",
         "esModuleInterop": true,
         "downlevelIteration": true,
