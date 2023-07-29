@@ -40,6 +40,12 @@ export declare class BotLootGenerator {
      * @param botLevel Level of bot
      */
     generateLoot(sessionId: string, botJsonTemplate: IBotType, isPmc: boolean, botRole: string, botInventory: PmcInventory, botLevel: number): void;
+    /**
+     * Force healing items onto bot to ensure they can heal in-raid
+     * @param botInventory Inventory to add items to
+     * @param botRole Role of bot (sptBear/sptUsec)
+     */
+    protected addForcedMedicalItemsToPmcSecure(botInventory: PmcInventory, botRole: string): void;
     protected getRandomisedCount(min: number, max: number, nValue: number): number;
     /**
      * Take random items from a pool and add to an inventory until totalItemCount or totalValueLimit is reached

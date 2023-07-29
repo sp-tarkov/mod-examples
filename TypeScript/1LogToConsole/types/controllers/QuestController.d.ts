@@ -132,7 +132,7 @@ export declare class QuestController {
      */
     protected getQuestsFailedByCompletingQuest(completedQuestId: string): IQuest[];
     /**
-     * Fail the quests provided
+     * Fail the provided quests
      * Update quest in profile, otherwise add fresh quest object with failed status
      * @param sessionID session id
      * @param pmcData player profile

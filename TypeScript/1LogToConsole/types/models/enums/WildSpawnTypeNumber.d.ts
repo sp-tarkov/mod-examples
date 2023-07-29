@@ -31,5 +31,8 @@ export declare enum WildSpawnTypeNumber {
     BOSSZRYACHIY = 29,
     FOLLOWERZRYACHIY = 30,
     ARENAFIGHTER = 31,
-    ARENAFIGHTEREVENT = 32
+    ARENAFIGHTEREVENT = 32,
+    CRAZYASSAULTEVENT = 33,
+    SPTUSEC = 34,
+    SPTBEAR = 35
 }

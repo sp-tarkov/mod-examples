@@ -116,7 +116,7 @@ export declare class QuestHelper {
      * Get quests that can be shown to player after failing a quest
      * @param failedQuestId Id of the quest failed by player
      * @param sessionId Session id
-     * @returns
+     * @returns IQuest array
      */
     failedUnlocked(failedQuestId: string, sessionId: string): IQuest[];
     /**

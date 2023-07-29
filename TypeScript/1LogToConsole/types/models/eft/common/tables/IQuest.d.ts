@@ -69,6 +69,7 @@ export interface AvailableForProps {
     zoneId?: string;
     type?: boolean;
     countInRaid?: boolean;
+    globalQuestCounterId?: any;
 }
 export interface AvailableForCounter {
     id: string;
