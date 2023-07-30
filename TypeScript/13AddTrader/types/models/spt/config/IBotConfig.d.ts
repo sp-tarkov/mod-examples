@@ -62,6 +62,11 @@ export interface PresetBatch {
     gifter: number;
     test: number;
     exUsec: number;
+    arenaFighterEvent: number;
+    arenaFighter: number;
+    crazyAssaultEvent: number;
+    sptUsec: number;
+    sptBear: number;
 }
 export interface LootNvalue {
     scav: number;

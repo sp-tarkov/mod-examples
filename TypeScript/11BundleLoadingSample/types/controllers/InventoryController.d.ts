@@ -4,8 +4,8 @@ import { ItemHelper } from "../helpers/ItemHelper";
 import { PaymentHelper } from "../helpers/PaymentHelper";
 import { PresetHelper } from "../helpers/PresetHelper";
 import { ProfileHelper } from "../helpers/ProfileHelper";
+import { QuestHelper } from "../helpers/QuestHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
-import { IAddItemRequestData } from "../models/eft/inventory/IAddItemRequestData";
 import { IInventoryBindRequestData } from "../models/eft/inventory/IInventoryBindRequestData";
 import { IInventoryCreateMarkerRequestData } from "../models/eft/inventory/IInventoryCreateMarkerRequestData";
 import { IInventoryDeleteMarkerRequestData } from "../models/eft/inventory/IInventoryDeleteMarkerRequestData";
@@ -44,6 +44,7 @@ export declare class InventoryController {
     protected fenceService: FenceService;
     protected presetHelper: PresetHelper;
     protected inventoryHelper: InventoryHelper;
+    protected questHelper: QuestHelper;
     protected ragfairOfferService: RagfairOfferService;
     protected profileHelper: ProfileHelper;
     protected paymentHelper: PaymentHelper;
@@ -51,7 +52,7 @@ export declare class InventoryController {
     protected lootGenerator: LootGenerator;
     protected eventOutputHolder: EventOutputHolder;
     protected httpResponseUtil: HttpResponseUtil;
-    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, itemHelper: ItemHelper, randomUtil: RandomUtil, databaseServer: DatabaseServer, fenceService: FenceService, presetHelper: PresetHelper, inventoryHelper: InventoryHelper, ragfairOfferService: RagfairOfferService, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, lootGenerator: LootGenerator, eventOutputHolder: EventOutputHolder, httpResponseUtil: HttpResponseUtil);
+    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, itemHelper: ItemHelper, randomUtil: RandomUtil, databaseServer: DatabaseServer, fenceService: FenceService, presetHelper: PresetHelper, inventoryHelper: InventoryHelper, questHelper: QuestHelper, ragfairOfferService: RagfairOfferService, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, lootGenerator: LootGenerator, eventOutputHolder: EventOutputHolder, httpResponseUtil: HttpResponseUtil);
     /**
     * Move Item
     * change location of item with parentId and slotId
@@ -63,6 +64,12 @@ export declare class InventoryController {
      * @returns IItemEventRouterResponse
      */
     moveItem(pmcData: IPmcData, moveRequest: IInventoryMoveRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Get a event router response with inventory trader message
+     * @param output Item event router response
+     * @returns Item event router response
+     */
+    protected getTraderExploitErrorResponse(output: IItemEventRouterResponse): IItemEventRouterResponse;
     /**
     * Remove Item from Profile
     * Deep tree item deletion, also removes items from insurance list
@@ -93,11 +100,6 @@ export declare class InventoryController {
     * its used for "reload" if you have weapon in hands and magazine is somewhere else in rig or backpack in equipment
     */
     swapItem(pmcData: IPmcData, body: IInventorySwapRequestData, sessionID: string): IItemEventRouterResponse;
-    /**
-    * Give Item
-    * its used for "add" item like gifts etc.
-    */
-    addItem(pmcData: IPmcData, body: IAddItemRequestData, output: IItemEventRouterResponse, sessionID: string, callback: any, foundInRaid?: boolean, addUpd?: any): IItemEventRouterResponse;
     /**
      * Handles folding of Weapons
      */
@@ -181,6 +183,7 @@ export declare class InventoryController {
      */
     protected sanitiseMapMarkerText(mapNoteText: string): string;
     /**
+     * Handle OpenRandomLootContainer event
      * Handle event fired when a container is unpacked (currently only the halloween pumpkin)
      * @param pmcData Profile data
      * @param body open loot container request data

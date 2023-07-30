@@ -37,6 +37,7 @@ export interface ILocationBase {
     IsSecret: boolean;
     Locked: boolean;
     Loot: any[];
+    MatchMakerMinPlayersByWaitTime: MinPlayerWaitTime[];
     MaxBotPerZone: number;
     MaxDistToFreePoint: number;
     MaxPlayers: number;
@@ -51,6 +52,7 @@ export interface ILocationBase {
     OldSpawn: boolean;
     OpenZones: string;
     Preview: Preview;
+    PlayersRequestCount: number;
     RequiredPlayerLevel?: number;
     RequiredPlayerLevelMin?: number;
     RequiredPlayerLevelMax?: number;
@@ -142,6 +144,10 @@ export interface BotLocationModifier {
 }
 export interface MinMaxBot extends MinMax {
     WildSpawnType: WildSpawnType | string;
+}
+export interface MinPlayerWaitTime {
+    minPlayers: number;
+    time: number;
 }
 export interface Preview {
     path: string;

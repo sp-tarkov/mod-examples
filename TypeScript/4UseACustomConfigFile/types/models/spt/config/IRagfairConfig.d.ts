@@ -29,10 +29,8 @@ export interface Chance {
     overpriced: number;
     underpriced: number;
 }
-export interface Time {
+export interface Time extends MinMax {
     base: number;
-    min: number;
-    max: number;
 }
 export interface Reputation {
     gain: number;
@@ -73,6 +71,13 @@ export interface Dynamic {
     removeSeasonalItemsWhenNotInEvent: boolean;
     /** Flea blacklist settings */
     blacklist: Blacklist;
+    /** Should prices over the multiplier be adjusted */
+    unreasonableModPrices: IUnreasonableModPrices;
+}
+export interface IUnreasonableModPrices {
+    enabled: boolean;
+    handbookPriceOverMultiplier: number;
+    newPriceHandbookMultiplier: number;
 }
 export interface Barter {
     /** Should barter offers be generated */
@@ -100,11 +105,9 @@ export interface OfferAdjustment {
     /** What is the minimum rouble price to consider adjusting price of item */
     priceThreshholdRub: number;
 }
-export interface Condition {
+export interface Condition extends MinMax {
     /** Percentage change durability is altered */
     conditionChance: number;
-    min: number;
-    max: number;
 }
 export interface Blacklist {
     /** Damaged ammo packs */

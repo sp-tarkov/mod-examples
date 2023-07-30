@@ -38,6 +38,8 @@ export interface IPmcConfig {
     enemyTypes: string[];
     /** How many levels above player level can a PMC be */
     botRelativeLevelDeltaMax: number;
+    /** Force a number of healing items into PMCs secure container to ensure they can heal */
+    forceHealingItemsIntoSecure: boolean;
 }
 export interface PmcTypes {
     usec: string;

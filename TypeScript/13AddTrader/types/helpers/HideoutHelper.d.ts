@@ -52,6 +52,11 @@ export declare class HideoutHelper {
      * with all the constants.
      */
     initProduction(recipeId: string, productionTime: number): Production;
+    /**
+     * Is the provided object a Production type
+     * @param productive
+     * @returns
+     */
     isProductionType(productive: Productive): productive is Production;
     applyPlayerUpgradesBonuses(pmcData: IPmcData, bonus: StageBonus): void;
     /**

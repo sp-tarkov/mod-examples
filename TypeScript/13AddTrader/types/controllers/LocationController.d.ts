@@ -34,13 +34,19 @@ export declare class LocationController {
      * @returns ILocationBase
      */
     get(location: string): ILocationBase;
-    private generate;
+    /**
+     * Generate a maps base location without loot
+     * @param name Map name
+     * @returns ILocationBase
+     */
+    protected generate(name: string): ILocationBase;
     /**
      * Handle client/locations
      * Get all maps base location properties without loot data
+     * @param sessionId Players Id
      * @returns ILocationsGenerateAllResponse
      */
-    generateAll(): ILocationsGenerateAllResponse;
+    generateAll(sessionId: string): ILocationsGenerateAllResponse;
     /**
      * Handle client/location/getAirdropLoot
      * Get loot for an airdop container

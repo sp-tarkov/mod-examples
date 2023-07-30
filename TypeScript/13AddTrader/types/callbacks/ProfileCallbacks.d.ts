@@ -76,5 +76,5 @@ export declare class ProfileCallbacks {
     /**
      * Handle /launcher/profiles
      */
-    getAllMiniProfiles(url: string, info: any, sessionID: string): string;
+    getAllMiniProfiles(url: string, info: IEmptyRequestData, sessionID: string): string;
 }

@@ -18,6 +18,8 @@ import { ILogger } from "../models/spt/utils/ILogger";
 import { EventOutputHolder } from "../routers/EventOutputHolder";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { SaveServer } from "../servers/SaveServer";
+import { LocalisationService } from "../services/LocalisationService";
+import { MailSendService } from "../services/MailSendService";
 import { ProfileFixerService } from "../services/ProfileFixerService";
 import { HashUtil } from "../utils/HashUtil";
 import { TimeUtil } from "../utils/TimeUtil";
@@ -29,13 +31,15 @@ export declare class ProfileController {
     protected databaseServer: DatabaseServer;
     protected itemHelper: ItemHelper;
     protected profileFixerService: ProfileFixerService;
+    protected localisationService: LocalisationService;
+    protected mailSendService: MailSendService;
     protected playerScavGenerator: PlayerScavGenerator;
     protected eventOutputHolder: EventOutputHolder;
     protected traderHelper: TraderHelper;
     protected dialogueHelper: DialogueHelper;
     protected questHelper: QuestHelper;
     protected profileHelper: ProfileHelper;
-    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, itemHelper: ItemHelper, profileFixerService: ProfileFixerService, playerScavGenerator: PlayerScavGenerator, eventOutputHolder: EventOutputHolder, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, questHelper: QuestHelper, profileHelper: ProfileHelper);
+    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, itemHelper: ItemHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, mailSendService: MailSendService, playerScavGenerator: PlayerScavGenerator, eventOutputHolder: EventOutputHolder, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, questHelper: QuestHelper, profileHelper: ProfileHelper);
     /**
      * Handle /launcher/profiles
      */
