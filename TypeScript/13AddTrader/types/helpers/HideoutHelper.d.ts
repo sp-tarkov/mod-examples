@@ -83,6 +83,7 @@ export declare class HideoutHelper {
         isGeneratorOn: boolean;
         waterCollectorHasFilter: boolean;
     };
+    protected doesWaterCollectorHaveFilter(waterCollector: HideoutArea): boolean;
     /**
      * Update progress timer for water collector
      * @param pmcData profile to update
@@ -141,9 +142,8 @@ export declare class HideoutHelper {
         isGeneratorOn: boolean;
         waterCollectorHasFilter: boolean;
     }): void;
-    protected updateWaterCollector(sessionId: string, pmcData: IPmcData, area: HideoutArea, isGeneratorOn: boolean): void;
-    protected doesWaterCollectorHaveFilter(waterCollector: HideoutArea): boolean;
     protected updateFuel(generatorArea: HideoutArea, pmcData: IPmcData): void;
+    protected updateWaterCollector(sessionId: string, pmcData: IPmcData, area: HideoutArea, isGeneratorOn: boolean): void;
     /**
      * Adjust water filter objects resourceValue or delete when they reach 0 resource
      * @param waterFilterArea water filter area to update
