@@ -7,6 +7,7 @@ const fs = require("fs-extra");
 const glob = require("glob");
 const zip = require('bestzip');
 const path = require("path");
+const minimatch = require('minimatch');
 
 // Load the package.json file to get some information about the package so we can name things appropriately. This is
 // atypical, and you would never do this in a production environment, but this script is only used for development so
@@ -43,12 +44,14 @@ const ignoreList = [
 ];
 const exclude = glob.sync(`{${ignoreList.join(",")}}`, { realpath: true, dot: true });
 
-// For some reason these basic-bitch functions won't allow us to copy a directory into itself, so we have to resort to
-// using a temporary directory, like an idiot. Excuse the normalize spam; some modules cross-platform, some don't...
-fs.copySync(__dirname, path.normalize(`${__dirname}/../~${modName}`), {filter:(filePath) => 
+fs.copySync(__dirname, path.normalize(`${__dirname}/../~${modName}`), {filter: (src) =>
 {
-    return !exclude.includes(filePath);
-}});
+    const relativePath = path.relative(__dirname, src);
+    const shouldExclude = exclude.some((pattern) => minimatch(relativePath, pattern));
+    console.log(`${relativePath} - Excluded: ${shouldExclude}`);
+    return !shouldExclude;
+},});
+
 fs.moveSync(path.normalize(`${__dirname}/../~${modName}`), path.normalize(`${__dirname}/${modName}`), { overwrite: true });
 fs.copySync(path.normalize(`${__dirname}/${modName}`), path.normalize(`${__dirname}/dist`));
 console.log("Build files copied.");
