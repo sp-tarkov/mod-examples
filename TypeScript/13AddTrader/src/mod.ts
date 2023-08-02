@@ -17,6 +17,7 @@ import * as baseJson from "../db/base.json";
 import { TraderHelper } from "./traderHelpers";
 import { FluentAssortConstructor } from "./fluentTraderAssortCreator";
 import { Money } from "@spt-aki/models/enums/Money";
+import { Traders } from "@spt-aki/models/enums/Traders";
 import { HashUtil } from "@spt-aki/utils/HashUtil";
 
 class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
@@ -52,6 +53,9 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
         this.fluentTraderAssortHeper = new FluentAssortConstructor(hashUtil, this.logger);
         this.traderHeper.registerProfileImage(baseJson, this.mod, preAkiModLoader, imageRouter, "cat.jpg");
         this.traderHeper.setTraderUpdateTime(traderConfig, baseJson, 3600);
+
+        // Add trader to trader enum
+        Traders[baseJson._id] = baseJson._id;
 
         this.logger.debug(`[${this.mod}] preAki Loaded`);
     }
