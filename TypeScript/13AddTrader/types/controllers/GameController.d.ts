@@ -129,6 +129,11 @@ export declare class GameController {
      */
     protected addPlayerToPMCNames(pmcProfile: IPmcData): void;
     /**
+     * Check for a dialog with the key 'undefined', and remove it
+     * @param fullProfile Profile to check for dialog in
+     */
+    protected checkForAndRemoveUndefinedDialogs(fullProfile: IAkiProfile): void;
+    /**
      * Blank out the "test" mail message from prapor
      */
     protected removePraporTestMessage(): void;
