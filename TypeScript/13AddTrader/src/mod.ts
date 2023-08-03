@@ -24,7 +24,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
 {
     private mod: string
     private logger: ILogger
-    private traderHeper: TraderHelper
+    private traderHelper: TraderHelper
     private fluentTraderAssortHeper: FluentAssortConstructor
 
     constructor() {
@@ -49,10 +49,10 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
         const traderConfig: ITraderConfig = configServer.getConfig<ITraderConfig>(ConfigTypes.TRADER);
 
         // Create helper class and use it to register our traders image/icon + set its stock refresh time
-        this.traderHeper = new TraderHelper();
+        this.traderHelper = new TraderHelper();
         this.fluentTraderAssortHeper = new FluentAssortConstructor(hashUtil, this.logger);
-        this.traderHeper.registerProfileImage(baseJson, this.mod, preAkiModLoader, imageRouter, "cat.jpg");
-        this.traderHeper.setTraderUpdateTime(traderConfig, baseJson, 3600);
+        this.traderHelper.registerProfileImage(baseJson, this.mod, preAkiModLoader, imageRouter, "cat.jpg");
+        this.traderHelper.setTraderUpdateTime(traderConfig, baseJson, 3600);
 
         // Add trader to trader enum
         Traders[baseJson._id] = baseJson._id;
@@ -77,7 +77,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
         const tables = databaseServer.getTables();
 
         // Add new trader to the trader dictionary in DatabaseServer - has no assorts (items) yet
-        this.traderHeper.addTraderToDb(baseJson, tables, jsonUtil);
+        this.traderHelper.addTraderToDb(baseJson, tables, jsonUtil);
 
         // Add milk
         const MILK_ID = "575146b724597720a27126d5"; // Can find item ids in `database\templates\items.json` or with https://db.sp-tarkov.com/search
@@ -100,7 +100,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
 
 
         // Add glock as money purchase
-        this.fluentTraderAssortHeper.createComplexAssortItem(this.traderHeper.createGlock())
+        this.fluentTraderAssortHeper.createComplexAssortItem(this.traderHelper.createGlock())
                                     .addUnlimitedStackCount()
                                     .addMoneyCost(Money.ROUBLES, 20000)
                                     .addBuyRestriction(3)
@@ -124,7 +124,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
 
         // Add trader to locale file, ensures trader text shows properly on screen
         // WARNING: adds the same text to ALL locales (e.g. chinese/french/english)
-        this.traderHeper.addTraderToLocales(baseJson, tables, baseJson.name, "Cat", baseJson.nickname, baseJson.location, "This is the cat shop");
+        this.traderHelper.addTraderToLocales(baseJson, tables, baseJson.name, "Cat", baseJson.nickname, baseJson.location, "This is the cat shop");
 
         this.logger.debug(`[${this.mod}] postDb Loaded`);
     }
