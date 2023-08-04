@@ -7,7 +7,7 @@ export interface IAkiProfile {
     characters: Characters;
     /** Clothing purchases */
     suits: string[];
-    weaponbuilds: WeaponBuild[];
+    weaponbuilds: Record<string, WeaponBuild>;
     dialogues: Record<string, Dialogue>;
     aki: Aki;
     vitality: Vitality;

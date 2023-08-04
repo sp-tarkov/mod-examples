@@ -14,7 +14,7 @@ export interface TemplateSide {
     character: IPmcData;
     suits: string[];
     dialogues: Record<string, Dialogue>;
-    weaponbuilds: WeaponBuild[];
+    weaponbuilds: Record<string, WeaponBuild>;
     trader: ProfileTraderTemplate;
 }
 export interface ProfileTraderTemplate {

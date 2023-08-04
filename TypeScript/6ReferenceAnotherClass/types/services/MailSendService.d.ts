@@ -1,3 +1,4 @@
+import { DialogueHelper } from "../helpers/DialogueHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
 import { NotificationSendHelper } from "../helpers/NotificationSendHelper";
 import { NotifierHelper } from "../helpers/NotifierHelper";
@@ -19,11 +20,12 @@ export declare class MailSendService {
     protected saveServer: SaveServer;
     protected databaseServer: DatabaseServer;
     protected notifierHelper: NotifierHelper;
+    protected dialogueHelper: DialogueHelper;
     protected notificationSendHelper: NotificationSendHelper;
     protected localisationService: LocalisationService;
     protected itemHelper: ItemHelper;
     protected readonly systemSenderId = "59e7125688a45068a6249071";
-    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, notifierHelper: NotifierHelper, notificationSendHelper: NotificationSendHelper, localisationService: LocalisationService, itemHelper: ItemHelper);
+    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, notifierHelper: NotifierHelper, dialogueHelper: DialogueHelper, notificationSendHelper: NotificationSendHelper, localisationService: LocalisationService, itemHelper: ItemHelper);
     /**
      * Send a message from an NPC (e.g. prapor) to the player with or without items using direct message text, do not look up any locale
      * @param playerId Players id to send message to

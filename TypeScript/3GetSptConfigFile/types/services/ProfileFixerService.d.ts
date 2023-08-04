@@ -1,6 +1,7 @@
 import { HideoutHelper } from "../helpers/HideoutHelper";
 import { InventoryHelper } from "../helpers/InventoryHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
+import { TraderHelper } from "../helpers/TraderHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { Bonus, HideoutSlot } from "../models/eft/common/tables/IBotBase";
 import { IPmcDataRepeatableQuest, IRepeatableQuest } from "../models/eft/common/tables/IRepeatableQuests";
@@ -20,6 +21,7 @@ export declare class ProfileFixerService {
     protected watermark: Watermark;
     protected hideoutHelper: HideoutHelper;
     protected inventoryHelper: InventoryHelper;
+    protected traderHelper: TraderHelper;
     protected itemHelper: ItemHelper;
     protected localisationService: LocalisationService;
     protected timeUtil: TimeUtil;
@@ -27,7 +29,7 @@ export declare class ProfileFixerService {
     protected configServer: ConfigServer;
     protected coreConfig: ICoreConfig;
     protected ragfairConfig: IRagfairConfig;
-    constructor(logger: ILogger, watermark: Watermark, hideoutHelper: HideoutHelper, inventoryHelper: InventoryHelper, itemHelper: ItemHelper, localisationService: LocalisationService, timeUtil: TimeUtil, databaseServer: DatabaseServer, configServer: ConfigServer);
+    constructor(logger: ILogger, watermark: Watermark, hideoutHelper: HideoutHelper, inventoryHelper: InventoryHelper, traderHelper: TraderHelper, itemHelper: ItemHelper, localisationService: LocalisationService, timeUtil: TimeUtil, databaseServer: DatabaseServer, configServer: ConfigServer);
     /**
      * Find issues in the pmc profile data that may cause issues and fix them
      * @param pmcProfile profile to check and fix
@@ -105,7 +107,7 @@ export declare class ProfileFixerService {
      * @param sessionId Session id
      * @param pmcProfile Profile to check inventory of
      */
-    checkForOrphanedModdedItems(sessionId: string, pmcProfile: IPmcData): void;
+    checkForOrphanedModdedItems(sessionId: string, fullProfile: IAkiProfile): void;
     /**
      * Add `Improvements` object to hideout if missing - added in eft 13.0.21469
      * @param pmcProfile profile to update
