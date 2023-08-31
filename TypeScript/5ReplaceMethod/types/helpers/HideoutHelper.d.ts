@@ -51,7 +51,7 @@ export declare class HideoutHelper {
      * This convenience function initializes new Production Object
      * with all the constants.
      */
-    initProduction(recipeId: string, productionTime: number): Production;
+    initProduction(recipeId: string, productionTime: number, needFuelForAllProductionTime: boolean): Production;
     /**
      * Is the provided object a Production type
      * @param productive
@@ -181,9 +181,10 @@ export declare class HideoutHelper {
      * Get number of ticks that have passed since hideout areas were last processed, reduced when generator is off
      * @param pmcData Player profile
      * @param isGeneratorOn Is the generator on for the duration of elapsed time
+     * @param recipe Hideout production recipe being crafted we need the ticks for
      * @returns Amount of time elapsed in seconds
      */
-    protected getTimeElapsedSinceLastServerTick(pmcData: IPmcData, isGeneratorOn: boolean): number;
+    protected getTimeElapsedSinceLastServerTick(pmcData: IPmcData, isGeneratorOn: boolean, recipe?: IHideoutProduction): number;
     /**
      * Get a count of how many BTC can be gathered by the profile
      * @param pmcData Profile to look up
@@ -206,6 +207,12 @@ export declare class HideoutHelper {
      * @returns Hideout management skill object
      */
     protected getHideoutManagementSkill(pmcData: IPmcData): Common;
+    /**
+     * HideoutManagement skill gives a consumption bonus the higher the level
+     * 0.5% per level per 1-51, (25.5% at max)
+     * @param pmcData Profile to get hideout consumption level level from
+     * @returns consumption bonus
+     */
     protected getHideoutManagementConsumptionBonus(pmcData: IPmcData): number;
     /**
      * Adjust craft time based on crafting skill level found in player profile
@@ -231,7 +238,7 @@ export declare class HideoutHelper {
      */
     protected createBitcoinRequest(pmcData: IPmcData): IAddItemRequestData;
     /**
-     * Upgrade hideout wall from starting level to interactable level if enough time has passed
+     * Upgrade hideout wall from starting level to interactable level if necessary stations have been upgraded
      * @param pmcProfile Profile to upgrade wall in
      */
     unlockHideoutWallInProfile(pmcProfile: IPmcData): void;

@@ -1,6 +1,6 @@
 import { ItemHelper } from "../helpers/ItemHelper";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
-import { IBotConfig } from "../models/spt/config/IBotConfig";
+import { IPmcConfig } from "../models/spt/config/IPmcConfig";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
 import { ItemFilterService } from "../services/ItemFilterService";
@@ -18,7 +18,7 @@ export declare class PMCLootGenerator {
     protected pocketLootPool: string[];
     protected vestLootPool: string[];
     protected backpackLootPool: string[];
-    protected botConfig: IBotConfig;
+    protected pmcConfig: IPmcConfig;
     constructor(itemHelper: ItemHelper, databaseServer: DatabaseServer, configServer: ConfigServer, itemFilterService: ItemFilterService, seasonalEventService: SeasonalEventService);
     /**
      * Create an array of loot items a PMC can have in their pockets

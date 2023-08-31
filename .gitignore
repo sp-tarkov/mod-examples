@@ -2,3 +2,5 @@
 **/package-lock.json
 **/node_modules/
 **/dist/
+updateTypes.ps1
+NewTypes/

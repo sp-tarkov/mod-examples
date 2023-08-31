@@ -3,6 +3,7 @@ import { DurabilityLimitsHelper } from "../helpers/DurabilityLimitsHelper";
 import { Item, Repairable, Upd } from "../models/eft/common/tables/IItem";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
 import { EquipmentFilters, IBotConfig } from "../models/spt/config/IBotConfig";
+import { IPmcConfig } from "../models/spt/config/IPmcConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
@@ -20,6 +21,7 @@ export declare class BotGeneratorHelper {
     protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected botConfig: IBotConfig;
+    protected pmcConfig: IPmcConfig;
     constructor(logger: ILogger, randomUtil: RandomUtil, databaseServer: DatabaseServer, durabilityLimitsHelper: DurabilityLimitsHelper, itemHelper: ItemHelper, applicationContext: ApplicationContext, localisationService: LocalisationService, configServer: ConfigServer);
     /**
      * Adds properties to an item

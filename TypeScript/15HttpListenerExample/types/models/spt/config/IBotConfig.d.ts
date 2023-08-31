@@ -1,8 +1,7 @@
-import { MinMaxWithWhitelist } from "../../../models/eft/common/tables/IBotType";
+import { GenerationData } from "../../../models/eft/common/tables/IBotType";
 import { MinMax } from "../../common/MinMax";
 import { IBaseConfig } from "./IBaseConfig";
 import { IBotDurability } from "./IBotDurability";
-import { IPmcConfig } from "./IPmcConfig";
 export interface IBotConfig extends IBaseConfig {
     kind: "aki-bot";
     /** How many variants of each bot should be generated on raid start */
@@ -15,8 +14,6 @@ export interface IBotConfig extends IBaseConfig {
     lootNValue: LootNvalue;
     /** Control what bots are added to a bots revenge list key: bottype, value: bottypes to revenge on seeing their death */
     revenge: Record<string, string[]>;
-    /** PMC bot specific config settings */
-    pmc: IPmcConfig;
     /** Control how many items are allowed to spawn on a bot
      * key: bottype, value: <key: itemTpl: value: max item count> */
     itemSpawnLimits: Record<string, Record<string, number>>;
@@ -26,11 +23,10 @@ export interface IBotConfig extends IBaseConfig {
     showTypeInNickname: boolean;
     /** Max number of bots that can be spawned in a raid at any one time */
     maxBotCap: Record<string, number>;
+    /** Chance scav has fake pscav name e.g. Scav name (player name) */
     chanceAssaultScavHasPlayerScavName: number;
     /** How many stacks of secret ammo should a bot have in its bot secure container */
     secureContainerAmmoStackCount: number;
-    /** Batch generation size when type not available in cache */
-    botGenerationBatchSizePerType: number;
 }
 /** Number of bots to generate and store in cache on raid start per bot type */
 export interface PresetBatch {
@@ -55,6 +51,7 @@ export interface PresetBatch {
     followerBirdEye: number;
     followerBigPipe: number;
     followerTest: number;
+    followerBoar: number;
     marksman: number;
     pmcBot: number;
     sectantPriest: number;
@@ -65,6 +62,8 @@ export interface PresetBatch {
     arenaFighterEvent: number;
     arenaFighter: number;
     crazyAssaultEvent: number;
+    bossBoar: number;
+    bossBoarSniper: number;
     sptUsec: number;
     sptBear: number;
 }
@@ -102,7 +101,7 @@ export interface ModLimits {
 export interface RandomisationDetails {
     /** Between what levels do these randomisation setting apply to */
     levelRange: MinMax;
-    generation?: Record<string, MinMaxWithWhitelist>;
+    generation?: Record<string, GenerationData>;
     /** Mod slots that should be fully randomisate -ignores mods from bottype.json */
     randomisedWeaponModSlots?: string[];
     /** Armor slots that should be randomised e.g. 'Headwear, Armband' */

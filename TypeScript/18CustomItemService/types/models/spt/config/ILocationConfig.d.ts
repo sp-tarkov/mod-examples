@@ -27,6 +27,23 @@ export interface ILocationConfig extends IBaseConfig {
     enableBotTypeLimits: boolean;
     /** Add limits to a locations base.MinMaxBots array if enableBotTypeLimits is true*/
     botTypeLimits: Record<string, IBotTypeLimit[]>;
+    /** container randomisation settings */
+    containerRandomisationSettings: IContainerRandomistionSettings;
+    /** How full must a random loose magazine be %*/
+    minFillLooseMagazinePercent: number;
+    /** How full must a random static magazine be %*/
+    minFillStaticMagazinePercent: number;
+    makeWishingTreeAlwaysGiveGift: boolean;
+    allowDuplicateItemsInStaticContainers: boolean;
+}
+export interface IContainerRandomistionSettings {
+    enabled: boolean;
+    /** What maps can use the container randomisation feature */
+    maps: Record<string, boolean>;
+    /** Some container types don't work when randomised */
+    containerTypesToNotRandomise: string[];
+    containerGroupMinSizeMultiplier: number;
+    containerGroupMaxSizeMultiplier: number;
 }
 export interface IFixEmptyBotWavesSettings {
     enabled: boolean;

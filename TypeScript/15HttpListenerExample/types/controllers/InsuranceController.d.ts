@@ -56,9 +56,9 @@ export declare class InsuranceController {
     /**
      * Handle client/insurance/items/list/cost
      * Calculate insurance cost
-     * @param info request object
+     * @param request request object
      * @param sessionID session id
      * @returns IGetInsuranceCostResponseData object to send to client
      */
-    cost(info: IGetInsuranceCostRequestData, sessionID: string): IGetInsuranceCostResponseData;
+    cost(request: IGetInsuranceCostRequestData, sessionID: string): IGetInsuranceCostResponseData;
 }

@@ -33,7 +33,7 @@ export declare class EventOutputHolder {
      */
     protected getImprovementsFromProfileAndFlagComplete(pmcData: IPmcData): Record<string, IHideoutImprovement>;
     /**
-     * Return  productions from player profile except those completed crafts the client has already seen
+     * Return productions from player profile except those completed crafts the client has already seen
      * @param pmcData Player profile
      * @returns dictionary of hideout productions
      */

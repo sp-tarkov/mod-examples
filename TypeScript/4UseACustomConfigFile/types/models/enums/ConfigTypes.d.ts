@@ -1,6 +1,7 @@
 export declare enum ConfigTypes {
     AIRDROP = "aki-airdrop",
     BOT = "aki-bot",
+    PMC = "aki-pmc",
     CORE = "aki-core",
     HEALTH = "aki-health",
     HIDEOUT = "aki-hideout",

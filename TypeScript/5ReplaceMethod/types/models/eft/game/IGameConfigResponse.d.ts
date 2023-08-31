@@ -6,6 +6,7 @@ export interface IGameConfigResponse {
     taxonomy: number;
     activeProfileId: string;
     backend: Backend;
+    useProtobuf: boolean;
     utc_time: number;
     /** Total in game time */
     totalInGame: number;

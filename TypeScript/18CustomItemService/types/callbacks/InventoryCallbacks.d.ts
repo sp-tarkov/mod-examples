@@ -21,6 +21,7 @@ import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRout
 export declare class InventoryCallbacks {
     protected inventoryController: InventoryController;
     constructor(inventoryController: InventoryController);
+    /** Handle "move" */
     moveItem(pmcData: IPmcData, body: IInventoryMoveRequestData, sessionID: string): IItemEventRouterResponse;
     removeItem(pmcData: IPmcData, body: IInventoryRemoveRequestData, sessionID: string): IItemEventRouterResponse;
     splitItem(pmcData: IPmcData, body: IInventorySplitRequestData, sessionID: string): IItemEventRouterResponse;

@@ -71,7 +71,7 @@ export declare class RagfairController {
     /**
      * Get offers for the client based on type of search being performed
      * @param searchRequest Client search request data
-     * @param itemsToAdd
+     * @param itemsToAdd comes from ragfairHelper.filterCategories()
      * @param traderAssorts Trader assorts
      * @param pmcProfile Player profile
      * @returns array of offers
@@ -149,6 +149,13 @@ export declare class RagfairController {
     createPlayerOffer(profile: IAkiProfile, requirements: Requirement[], items: Item[], sellInOnePiece: boolean, amountToSend: number): IRagfairOffer;
     getAllFleaPrices(): Record<string, number>;
     getStaticPrices(): Record<string, number>;
+    /**
+     * User requested removal of the offer, actually reduces the time to 71 seconds,
+     * allowing for the possibility of extending the auction before it's end time
+     * @param offerId offer to 'remove'
+     * @param sessionID Players id
+     * @returns IItemEventRouterResponse
+     */
     removeOffer(offerId: string, sessionID: string): IItemEventRouterResponse;
     extendOffer(info: IExtendOfferRequestData, sessionID: string): IItemEventRouterResponse;
 }

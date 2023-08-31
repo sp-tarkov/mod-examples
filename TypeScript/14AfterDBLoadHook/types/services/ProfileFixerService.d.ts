@@ -35,6 +35,9 @@ export declare class ProfileFixerService {
      * @param pmcProfile profile to check and fix
      */
     checkForAndFixPmcProfileIssues(pmcProfile: IPmcData): void;
+    protected addMissingGunStandContainerImprovements(pmcProfile: IPmcData): void;
+    protected addHideoutAreaStashes(pmcProfile: IPmcData): void;
+    protected addMissingHideoutWallAreas(pmcProfile: IPmcData): void;
     protected adjustUnreasonableModFleaPrices(): void;
     /**
      * Add tag to profile to indicate when it was made

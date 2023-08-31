@@ -22,7 +22,9 @@ import { PaymentHelper } from "./PaymentHelper";
 import { ProfileHelper } from "./ProfileHelper";
 import { TraderAssortHelper } from "./TraderAssortHelper";
 export interface OwnerInventoryItems {
+    /** Inventory items from source */
     from: Item[];
+    /** Inventory items at destination */
     to: Item[];
     sameInventory: boolean;
     isMail: boolean;
@@ -66,8 +68,10 @@ export declare class InventoryHelper {
      * @param output IItemEventRouterResponse object
      * @param sessionID Session id
      * @param pmcData Profile to add ammobox to
+     * @param output object to send to client
+     * @param foundInRaid should ammo be FiR
      */
-    protected hydrateAmmoBoxWithAmmo(pmcData: IPmcData, itemToAdd: IAddItemTempObject, parentId: string, sessionID: string, output: IItemEventRouterResponse): void;
+    protected hydrateAmmoBoxWithAmmo(pmcData: IPmcData, itemToAdd: IAddItemTempObject, parentId: string, sessionID: string, output: IItemEventRouterResponse, foundInRaid: boolean): void;
     /**
      *
      * @param assortItems Items to add to inventory
@@ -77,6 +81,7 @@ export declare class InventoryHelper {
     protected splitStackIntoSmallerStacks(assortItems: Item[], requestItem: AddItem, result: IAddItemTempObject[]): void;
     /**
      * Remove item from player inventory + insured items array
+     * Also deletes child items
      * @param pmcData Profile to remove item from
      * @param itemId Items id to remove
      * @param sessionID Session id
@@ -90,9 +95,14 @@ export declare class InventoryHelper {
     protected getInventoryItemHash(inventoryItem: Item[]): InventoryHelper.InventoryItemHash;
     getContainerMap(containerW: number, containerH: number, itemList: Item[], containerId: string): number[][];
     /**
+     * Return the inventory that needs to be modified (scav/pmc etc)
+     * Changes made to result apply to character inventory
      * Based on the item action, determine whose inventories we should be looking at for from and to.
+     * @param request Item interaction request
+     * @param sessionId Session id / playerid
+     * @returns OwnerInventoryItems with inventory of player/scav to adjust
      */
-    getOwnerInventoryItems(body: IInventoryMoveRequestData | IInventorySplitRequestData | IInventoryMergeRequestData, sessionID: string): OwnerInventoryItems;
+    getOwnerInventoryItems(request: IInventoryMoveRequestData | IInventorySplitRequestData | IInventoryMergeRequestData, sessionId: string): OwnerInventoryItems;
     /**
      * Made a 2d array table with 0 - free slot and 1 - used slot
      * @param {Object} pmcData
@@ -101,19 +111,36 @@ export declare class InventoryHelper {
      */
     protected getStashSlotMap(pmcData: IPmcData, sessionID: string): number[][];
     protected getSortingTableSlotMap(pmcData: IPmcData): number[][];
+    /**
+     * Get Player Stash Proper Size
+     * @param sessionID Playerid
+     * @returns Array of 2 values, x and y stash size
+     */
     protected getPlayerStashSize(sessionID: string): Record<number, number>;
+    /**
+     * Get the players stash items tpl
+     * @param sessionID Player id
+     * @returns Stash tpl
+     */
     protected getStashType(sessionID: string): string;
     /**
-    * Internal helper function to transfer an item from one profile to another.
-    * fromProfileData: Profile of the source.
-    * toProfileData: Profile of the destination.
-    * body: Move request
-    */
+     * Internal helper function to transfer an item from one profile to another.
+     * @param fromItems Inventory of the source (can be non-player)
+     * @param toItems Inventory of the destination
+     * @param body Move request
+     */
     moveItemToProfile(fromItems: Item[], toItems: Item[], body: IInventoryMoveRequestData): void;
     /**
-    * Internal helper function to move item within the same profile_f.
-    */
-    moveItemInternal(pmcData: IPmcData, inventoryItems: Item[], moveRequest: IInventoryMoveRequestData): void;
+     * Internal helper function to move item within the same profile_f.
+     * @param pmcData profile to edit
+     * @param inventoryItems
+     * @param moveRequest
+     * @returns True if move was successful
+     */
+    moveItemInternal(pmcData: IPmcData, inventoryItems: Item[], moveRequest: IInventoryMoveRequestData): {
+        success: boolean;
+        errorMessage?: string;
+    };
     /**
      * Update fast panel bindings when an item is moved into a container that doesnt allow quick slot access
      * @param pmcData Player profile

@@ -2,7 +2,6 @@ import { ITraderBase } from "../models/eft/common/tables/ITrader";
 import { DialogueHelper } from "../helpers/DialogueHelper";
 import { HandbookHelper } from "../helpers/HandbookHelper";
 import { ItemHelper } from "../helpers/ItemHelper";
-import { NotificationSendHelper } from "../helpers/NotificationSendHelper";
 import { SecureContainerHelper } from "../helpers/SecureContainerHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
@@ -19,6 +18,7 @@ import { RandomUtil } from "../utils/RandomUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 import { LocaleService } from "./LocaleService";
 import { LocalisationService } from "./LocalisationService";
+import { MailSendService } from "./MailSendService";
 export declare class InsuranceService {
     protected logger: ILogger;
     protected databaseServer: DatabaseServer;
@@ -33,11 +33,11 @@ export declare class InsuranceService {
     protected handbookHelper: HandbookHelper;
     protected localisationService: LocalisationService;
     protected localeService: LocaleService;
-    protected notificationSendHelper: NotificationSendHelper;
+    protected mailSendService: MailSendService;
     protected configServer: ConfigServer;
     protected insured: Record<string, Record<string, Item[]>>;
     protected insuranceConfig: IInsuranceConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, secureContainerHelper: SecureContainerHelper, randomUtil: RandomUtil, itemHelper: ItemHelper, jsonUtil: JsonUtil, timeUtil: TimeUtil, saveServer: SaveServer, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, handbookHelper: HandbookHelper, localisationService: LocalisationService, localeService: LocaleService, notificationSendHelper: NotificationSendHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, secureContainerHelper: SecureContainerHelper, randomUtil: RandomUtil, itemHelper: ItemHelper, jsonUtil: JsonUtil, timeUtil: TimeUtil, saveServer: SaveServer, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, handbookHelper: HandbookHelper, localisationService: LocalisationService, localeService: LocaleService, mailSendService: MailSendService, configServer: ConfigServer);
     /**
      * Does player have insurance array
      * @param sessionId Player id
@@ -67,9 +67,10 @@ export declare class InsuranceService {
     sendInsuredItems(pmcData: IPmcData, sessionID: string, mapId: string): void;
     /**
      * Send a message to player informing them gear was lost
-     * @param sessionID Session id
+     * @param sessionId Session id
+     * @param locationName name of map insurance was lost on
      */
-    sendLostInsuranceMessage(sessionID: string): void;
+    sendLostInsuranceMessage(sessionId: string, locationName?: string): void;
     /**
      * Check all root insured items and remove location property + set slotId to 'hideout'
      * @param sessionId Session id

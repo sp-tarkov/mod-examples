@@ -51,8 +51,8 @@ export declare class RagfairOfferHelper {
     constructor(logger: ILogger, timeUtil: TimeUtil, hashUtil: HashUtil, eventOutputHolder: EventOutputHolder, databaseServer: DatabaseServer, traderHelper: TraderHelper, saveServer: SaveServer, dialogueHelper: DialogueHelper, itemHelper: ItemHelper, paymentHelper: PaymentHelper, presetHelper: PresetHelper, profileHelper: ProfileHelper, ragfairServerHelper: RagfairServerHelper, ragfairSortHelper: RagfairSortHelper, ragfairHelper: RagfairHelper, ragfairOfferService: RagfairOfferService, localeService: LocaleService, localisationService: LocalisationService, configServer: ConfigServer);
     /**
      * Passthrough to ragfairOfferService.getOffers(), get flea offers a player should see
-     * @param searchRequest
-     * @param itemsToAdd
+     * @param searchRequest Data from client
+     * @param itemsToAdd ragfairHelper.filterCategories()
      * @param traderAssorts Trader assorts
      * @param pmcProfile Player profile
      * @returns Offers the player should see
@@ -67,6 +67,13 @@ export declare class RagfairOfferHelper {
      * @returns IRagfairOffer array
      */
     getOffersForBuild(searchRequest: ISearchRequestData, itemsToAdd: string[], traderAssorts: Record<string, ITraderAssort>, pmcProfile: IPmcData): IRagfairOffer[];
+    /**
+     * Check if offer is from trader standing the player does not have
+     * @param offer Offer to check
+     * @param pmcProfile Player profile
+     * @returns True if item is locked, false if item is purchaseable
+     */
+    protected traderOfferLockedBehindLoyaltyLevel(offer: IRagfairOffer, pmcProfile: IPmcData): boolean;
     /**
      * Check if offer item is quest locked for current player by looking at sptQuestLocked property in traders barter_scheme
      * @param offer Offer to check is quest locked
@@ -127,12 +134,12 @@ export declare class RagfairOfferHelper {
     protected completeOffer(sessionID: string, offer: IRagfairOffer, boughtAmount: number): IItemEventRouterResponse;
     /**
      * Should a ragfair offer be visible to the player
-     * @param info Search request
+     * @param searchRequest Search request
      * @param itemsToAdd ?
      * @param traderAssorts Trader assort items
      * @param offer The flea offer
      * @param pmcProfile Player profile
      * @returns True = should be shown to player
      */
-    isDisplayableOffer(info: ISearchRequestData, itemsToAdd: string[], traderAssorts: Record<string, ITraderAssort>, offer: IRagfairOffer, pmcProfile: IPmcData): boolean;
+    isDisplayableOffer(searchRequest: ISearchRequestData, itemsToAdd: string[], traderAssorts: Record<string, ITraderAssort>, offer: IRagfairOffer, pmcProfile: IPmcData): boolean;
 }
