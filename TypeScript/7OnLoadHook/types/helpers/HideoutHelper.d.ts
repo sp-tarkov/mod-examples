@@ -150,6 +150,16 @@ export declare class HideoutHelper {
      */
     protected updateWaterFilters(waterFilterArea: HideoutArea, production: Production, isGeneratorOn: boolean, pmcData: IPmcData): HideoutArea;
     /**
+     * Get an adjusted water filter drain rate based on time elapsed since last run,
+     * handle edge case when craft time has gone on longer than total production time
+     * @param secondsSinceServerTick Time passed
+     * @param totalProductionTime Total time collecting water
+     * @param productionProgress how far water collector has progressed
+     * @param baseFilterDrainRate Base drain rate
+     * @returns
+     */
+    protected adjustWaterFilterDrainRate(secondsSinceServerTick: number, totalProductionTime: number, productionProgress: number, baseFilterDrainRate: number): number;
+    /**
      * Get the water filter drain rate based on hideout bonues player has
      * @param pmcData Player profile
      * @returns Drain rate
@@ -160,7 +170,7 @@ export declare class HideoutHelper {
      * @param prodId Id, e.g. Water collector id
      * @returns seconds to produce item
      */
-    protected getProductionTimeSeconds(prodId: string): number;
+    protected getTotalProductionTimeSeconds(prodId: string): number;
     /**
      * Create a upd object using passed in parameters
      * @param stackCount

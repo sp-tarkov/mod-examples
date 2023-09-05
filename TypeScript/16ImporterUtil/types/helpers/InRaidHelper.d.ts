@@ -2,6 +2,7 @@ import { IPmcData, IPostRaidPmcData } from "../models/eft/common/IPmcData";
 import { Quest, TraderInfo, Victim } from "../models/eft/common/tables/IBotBase";
 import { Item } from "../models/eft/common/tables/IItem";
 import { ISaveProgressRequestData } from "../models/eft/inRaid/ISaveProgressRequestData";
+import { IInRaidConfig } from "../models/spt/config/IInRaidConfig";
 import { ILostOnDeathConfig } from "../models/spt/config/ILostOnDeathConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
@@ -27,6 +28,7 @@ export declare class InRaidHelper {
     protected profileFixerService: ProfileFixerService;
     protected configServer: ConfigServer;
     protected lostOnDeathConfig: ILostOnDeathConfig;
+    protected inRaidConfig: IInRaidConfig;
     constructor(logger: ILogger, saveServer: SaveServer, jsonUtil: JsonUtil, itemHelper: ItemHelper, databaseServer: DatabaseServer, inventoryHelper: InventoryHelper, questHelper: QuestHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, profileFixerService: ProfileFixerService, configServer: ConfigServer);
     /**
      * Lookup quest item loss from lostOnDeath config

@@ -238,6 +238,14 @@ declare class ItemHelper {
      */
     addCartridgesToAmmoBox(ammoBox: Item[], ammoBoxDetails: ITemplateItem): void;
     /**
+     * Check if item is stored inside of a container
+     * @param item Item to check is inside of container
+     * @param desiredContainerSlotId Name of slot to check item is in e.g. SecuredContainer/Backpack
+     * @param items Inventory with child parent items to check
+     * @returns True when item is in container
+     */
+    itemIsInsideContainer(item: Item, desiredContainerSlotId: string, items: Item[]): boolean;
+    /**
      * Add child items (cartridges) to a magazine
      * @param magazine Magazine to add child items to
      * @param magTemplate Db template of magazine

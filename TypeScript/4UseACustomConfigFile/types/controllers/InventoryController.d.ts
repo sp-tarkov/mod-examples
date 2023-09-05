@@ -76,6 +76,7 @@ export declare class InventoryController {
     */
     removeItem(pmcData: IPmcData, itemId: string, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
     /**
+     * Handle Remove event
      * Implements functionality "Discard" from Main menu (Stash etc.)
      * Removes item from PMC Profile
      */

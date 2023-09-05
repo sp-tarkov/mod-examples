@@ -4,6 +4,7 @@ import { AddItem, IAddItemRequestData } from "../models/eft/inventory/IAddItemRe
 import { IAddItemTempObject } from "../models/eft/inventory/IAddItemTempObject";
 import { IInventoryMergeRequestData } from "../models/eft/inventory/IInventoryMergeRequestData";
 import { IInventoryMoveRequestData } from "../models/eft/inventory/IInventoryMoveRequestData";
+import { IInventoryRemoveRequestData } from "../models/eft/inventory/IInventoryRemoveRequestData";
 import { IInventorySplitRequestData } from "../models/eft/inventory/IInventorySplitRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { IInventoryConfig, RewardDetails } from "../models/spt/config/IInventoryConfig";
@@ -80,6 +81,7 @@ export declare class InventoryHelper {
      */
     protected splitStackIntoSmallerStacks(assortItems: Item[], requestItem: AddItem, result: IAddItemTempObject[]): void;
     /**
+     * Handle Remove event
      * Remove item from player inventory + insured items array
      * Also deletes child items
      * @param pmcData Profile to remove item from
@@ -89,6 +91,7 @@ export declare class InventoryHelper {
      * @returns IItemEventRouterResponse
      */
     removeItem(pmcData: IPmcData, itemId: string, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
+    removeItemAndChildrenFromMailRewards(sessionId: string, removeRequest: IInventoryRemoveRequestData, output: IItemEventRouterResponse): IItemEventRouterResponse;
     removeItemByCount(pmcData: IPmcData, itemId: string, count: number, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
     getItemSize(itemTpl: string, itemID: string, inventoryItem: Item[]): number[];
     protected getSizeByInventoryItemHash(itemTpl: string, itemID: string, inventoryItemHash: InventoryHelper.InventoryItemHash): number[];
