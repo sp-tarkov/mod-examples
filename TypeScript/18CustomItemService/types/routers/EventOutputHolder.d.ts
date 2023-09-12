@@ -1,6 +1,6 @@
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
-import { IHideoutImprovement, Productive } from "../models/eft/common/tables/IBotBase";
+import { IHideoutImprovement, Productive, TraderData, TraderInfo } from "../models/eft/common/tables/IBotBase";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
 import { JsonUtil } from "../utils/JsonUtil";
 import { TimeUtil } from "../utils/TimeUtil";
@@ -26,6 +26,12 @@ export declare class EventOutputHolder {
      * @param sessionId Session id
      */
     updateOutputProperties(sessionId: string): void;
+    /**
+     * Convert the internal trader data object into an object we can send to the client
+     * @param traderData server data for traders
+     * @returns
+     */
+    protected constructTraderRelations(traderData: Record<string, TraderInfo>): Record<string, TraderData>;
     /**
      * Return all hideout Improvements from player profile, adjust completed Improvements' completed property to be true
      * @param pmcData Player profile

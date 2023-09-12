@@ -22,9 +22,9 @@ export declare class BotEquipmentFilterService {
      */
     filterBotEquipment(sessionId: string, baseBotNode: IBotType, botLevel: number, botGenerationDetails: BotGenerationDetails): void;
     /**
-     * Iterate over the changes passed in and alter data in baseValues
+     * Iterate over the changes passed in and apply them to baseValues parameter
      * @param equipmentChanges Changes to apply
-     * @param baseValues Values to update
+     * @param baseValues data to update
      */
     protected adjustChances(equipmentChanges: Record<string, number>, baseValues: EquipmentChances | ModsChances): void;
     /**

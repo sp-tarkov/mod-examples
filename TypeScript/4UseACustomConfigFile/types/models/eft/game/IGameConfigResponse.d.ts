@@ -1,5 +1,5 @@
 export interface IGameConfigResponse {
-    aid: string;
+    aid: number;
     lang: string;
     languages: Record<string, string>;
     ndaFree: boolean;

@@ -8,7 +8,6 @@ import { RagfairHelper } from "../helpers/RagfairHelper";
 import { RagfairOfferHelper } from "../helpers/RagfairOfferHelper";
 import { RagfairSellHelper } from "../helpers/RagfairSellHelper";
 import { RagfairSortHelper } from "../helpers/RagfairSortHelper";
-import { RagfairTaxHelper } from "../helpers/RagfairTaxHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
 import { Item } from "../models/eft/common/tables/IItem";
@@ -34,6 +33,7 @@ import { PaymentService } from "../services/PaymentService";
 import { RagfairOfferService } from "../services/RagfairOfferService";
 import { RagfairPriceService } from "../services/RagfairPriceService";
 import { RagfairRequiredItemsService } from "../services/RagfairRequiredItemsService";
+import { RagfairTaxService } from "../services/RagfairTaxService";
 import { HttpResponseUtil } from "../utils/HttpResponseUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 /**
@@ -50,7 +50,7 @@ export declare class RagfairController {
     protected itemHelper: ItemHelper;
     protected saveServer: SaveServer;
     protected ragfairSellHelper: RagfairSellHelper;
-    protected ragfairTaxHelper: RagfairTaxHelper;
+    protected ragfairTaxService: RagfairTaxService;
     protected ragfairSortHelper: RagfairSortHelper;
     protected ragfairOfferHelper: RagfairOfferHelper;
     protected profileHelper: ProfileHelper;
@@ -66,7 +66,7 @@ export declare class RagfairController {
     protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected ragfairConfig: IRagfairConfig;
-    constructor(logger: ILogger, timeUtil: TimeUtil, httpResponse: HttpResponseUtil, eventOutputHolder: EventOutputHolder, ragfairServer: RagfairServer, ragfairPriceService: RagfairPriceService, databaseServer: DatabaseServer, itemHelper: ItemHelper, saveServer: SaveServer, ragfairSellHelper: RagfairSellHelper, ragfairTaxHelper: RagfairTaxHelper, ragfairSortHelper: RagfairSortHelper, ragfairOfferHelper: RagfairOfferHelper, profileHelper: ProfileHelper, paymentService: PaymentService, handbookHelper: HandbookHelper, paymentHelper: PaymentHelper, inventoryHelper: InventoryHelper, traderHelper: TraderHelper, ragfairHelper: RagfairHelper, ragfairOfferService: RagfairOfferService, ragfairRequiredItemsService: RagfairRequiredItemsService, ragfairOfferGenerator: RagfairOfferGenerator, localisationService: LocalisationService, configServer: ConfigServer);
+    constructor(logger: ILogger, timeUtil: TimeUtil, httpResponse: HttpResponseUtil, eventOutputHolder: EventOutputHolder, ragfairServer: RagfairServer, ragfairPriceService: RagfairPriceService, databaseServer: DatabaseServer, itemHelper: ItemHelper, saveServer: SaveServer, ragfairSellHelper: RagfairSellHelper, ragfairTaxService: RagfairTaxService, ragfairSortHelper: RagfairSortHelper, ragfairOfferHelper: RagfairOfferHelper, profileHelper: ProfileHelper, paymentService: PaymentService, handbookHelper: HandbookHelper, paymentHelper: PaymentHelper, inventoryHelper: InventoryHelper, traderHelper: TraderHelper, ragfairHelper: RagfairHelper, ragfairOfferService: RagfairOfferService, ragfairRequiredItemsService: RagfairRequiredItemsService, ragfairOfferGenerator: RagfairOfferGenerator, localisationService: LocalisationService, configServer: ConfigServer);
     getOffers(sessionID: string, searchRequest: ISearchRequestData): IGetOffersResult;
     /**
      * Get offers for the client based on type of search being performed

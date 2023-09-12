@@ -10,6 +10,8 @@ export interface IBotConfig extends IBaseConfig {
     bosses: string[];
     /** Control weapon/armor durability min/max values for each bot type */
     durability: IBotDurability;
+    /** Controls the percentage values of randomization item resources */
+    lootItemResourceRandomization: Record<string, IRandomisedResourceDetails>;
     /** Control the weighting of how expensive an average loot item is on a PMC or Scav */
     lootNValue: LootNvalue;
     /** Control what bots are added to a bots revenge list key: bottype, value: bottypes to revenge on seeing their death */
@@ -133,10 +135,20 @@ export interface WeightingAdjustmentDetails {
     ammo?: AdjustmentDetails;
     /** Key: equipment slot e.g. TacticalVest, value: item tpl + weight */
     equipment?: AdjustmentDetails;
-    /** Key: clothing slor e.g. feet, value: item tpl + weight */
+    /** Key: clothing slot e.g. feet, value: item tpl + weight */
     clothing?: AdjustmentDetails;
 }
 export interface AdjustmentDetails {
     add: Record<string, Record<string, number>>;
     edit: Record<string, Record<string, number>>;
+}
+export interface IRandomisedResourceDetails {
+    food: IRandomisedResourceValues;
+    meds: IRandomisedResourceValues;
+}
+export interface IRandomisedResourceValues {
+    /** Minimum percent of item to randomized between min and max resource*/
+    resourcePercent: number;
+    /** Chance for randomization to not occur */
+    chanceMaxResourcePercent: number;
 }

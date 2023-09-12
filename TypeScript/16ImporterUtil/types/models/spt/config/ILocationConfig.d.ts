@@ -33,7 +33,6 @@ export interface ILocationConfig extends IBaseConfig {
     minFillLooseMagazinePercent: number;
     /** How full must a random static magazine be %*/
     minFillStaticMagazinePercent: number;
-    makeWishingTreeAlwaysGiveGift: boolean;
     allowDuplicateItemsInStaticContainers: boolean;
     /** Key: map, value: loose loot ids to ignore */
     looseLootBlacklist: Record<string, string[]>;

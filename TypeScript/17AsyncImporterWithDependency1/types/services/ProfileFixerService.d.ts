@@ -64,7 +64,6 @@ export declare class ProfileFixerService {
      */
     protected updateProfileQuestDataValues(pmcProfile: IPmcData): void;
     protected addMissingRepeatableQuestsProperty(pmcProfile: IPmcData): void;
-    protected addMissingWorkbenchWeaponSkills(pmcProfile: IPmcData): void;
     /**
      * Some profiles have hideout maxed and therefore no improvements
      * @param pmcProfile Profile to add improvement data to
@@ -92,7 +91,6 @@ export declare class ProfileFixerService {
      * @param pmcProfile
      */
     protected updateProfilePocketsToNewId(pmcProfile: IPmcData): void;
-    addMissingArmorRepairSkill(pmcProfile: IPmcData): void;
     /**
      * Iterate over players hideout areas and find what's build, look for missing bonuses those areas give and add them if missing
      * @param pmcProfile Profile to update
@@ -126,4 +124,9 @@ export declare class ProfileFixerService {
      * @param pmcProfile Profile to update
      */
     removeLegacyScavCaseProductionCrafts(pmcProfile: IPmcData): void;
+    /**
+     * 26126 (7th August) requires bonuses to have an ID, these were not included in the default profile presets
+     * @param pmcProfile Profile to add missing IDs to
+     */
+    addMissingIdsToBonuses(pmcProfile: IPmcData): void;
 }

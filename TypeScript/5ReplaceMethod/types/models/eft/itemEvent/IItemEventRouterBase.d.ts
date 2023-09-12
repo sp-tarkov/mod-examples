@@ -1,6 +1,6 @@
 import { EquipmentBuildType } from "../../../models/enums/EquipmentBuildType";
 import { QuestStatus } from "../../../models/enums/QuestStatus";
-import { Health, Productive, Skills, TraderInfo } from "../common/tables/IBotBase";
+import { Health, Productive, Skills, TraderData } from "../common/tables/IBotBase";
 import { Item, Upd } from "../common/tables/IItem";
 import { IQuest } from "../common/tables/IQuest";
 import { IPmcDataRepeatableQuest } from "../common/tables/IRepeatableQuests";
@@ -29,7 +29,7 @@ export interface ProfileChange {
     improvements: Record<string, Improvement>;
     skills: Skills;
     health: Health;
-    traderRelations: Record<string, TraderInfo>;
+    traderRelations: Record<string, TraderData>;
     repeatableQuests?: IPmcDataRepeatableQuest[];
     recipeUnlocked: Record<string, boolean>;
     changedHideoutStashes?: Record<string, IHideoutStashItem>;

@@ -2,7 +2,7 @@ import { ApplicationContext } from "../context/ApplicationContext";
 import { DurabilityLimitsHelper } from "../helpers/DurabilityLimitsHelper";
 import { Item, Repairable, Upd } from "../models/eft/common/tables/IItem";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
-import { EquipmentFilters, IBotConfig } from "../models/spt/config/IBotConfig";
+import { EquipmentFilters, IBotConfig, IRandomisedResourceValues } from "../models/spt/config/IBotConfig";
 import { IPmcConfig } from "../models/spt/config/IPmcConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
@@ -33,6 +33,13 @@ export declare class BotGeneratorHelper {
     generateExtraPropertiesForItem(itemTemplate: ITemplateItem, botRole?: string): {
         upd?: Upd;
     };
+    /**
+     * Randomize the HpResource for bots e.g (245/400 resources)
+     * @param maxResource Max resource value of medical items
+     * @param randomizationValues Value provided from config
+     * @returns Randomized value from maxHpResource
+     */
+    protected getRandomizedResourceValue(maxResource: number, randomizationValues: IRandomisedResourceValues): number;
     /**
      * Get the chance for the weapon attachment or helmet equipment to be set as activated
      * @param botRole role of bot with weapon/helmet

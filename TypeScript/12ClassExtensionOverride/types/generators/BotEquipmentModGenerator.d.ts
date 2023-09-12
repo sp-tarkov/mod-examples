@@ -83,10 +83,11 @@ export declare class BotEquipmentModGenerator {
      */
     protected modSlotCanHoldScope(modSlot: string, modsParentId: string): boolean;
     /**
-     * Set all scope mod chances to 100%
-     * @param modSpawnChances Chances objet to update
+     * Set mod spawn chances to defined amount
+     * @param modSpawnChances Chance dictionary to update
      */
-    protected setScopeSpawnChancesToFull(modSpawnChances: ModsChances): void;
+    protected adjustSlotSpawnChances(modSpawnChances: ModsChances, modSlotsToAdjust: string[], newChancePercent: number): void;
+    protected modSlotCanHoldMuzzleDevices(modSlot: string, modsParentId: string): boolean;
     protected sortModKeys(unsortedKeys: string[]): string[];
     /**
      * Get a Slot property for an item (chamber/cartridge/slot)
@@ -193,10 +194,12 @@ export declare class BotEquipmentModGenerator {
     protected mergeCamoraPoolsTogether(camorasWithShells: Record<string, string[]>): string[];
     /**
      * Filter out non-whitelisted weapon scopes
+     * Controlled by bot.json weaponSightWhitelist
+     * e.g. filter out rifle scopes from SMGs
      * @param weapon Weapon scopes will be added to
      * @param scopes Full scope pool
-     * @param botWeaponSightWhitelist whitelist of scope types by weapon base type
-     * @returns array of scope tpls that have been filtered
+     * @param botWeaponSightWhitelist Whitelist of scope types by weapon base type
+     * @returns Array of scope tpls that have been filtered to just ones allowed for that weapon type
      */
     protected filterSightsByWeaponType(weapon: Item, scopes: string[], botWeaponSightWhitelist: Record<string, string[]>): string[];
 }

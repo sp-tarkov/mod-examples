@@ -14,6 +14,7 @@ import { IAkiProfile } from "../models/eft/profile/IAkiProfile";
 import { ICoreConfig } from "../models/spt/config/ICoreConfig";
 import { IHttpConfig } from "../models/spt/config/IHttpConfig";
 import { ILocationConfig } from "../models/spt/config/ILocationConfig";
+import { ILootConfig } from "../models/spt/config/ILootConfig";
 import { IPmcConfig } from "../models/spt/config/IPmcConfig";
 import { IRagfairConfig } from "../models/spt/config/IRagfairConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
@@ -58,12 +59,14 @@ export declare class GameController {
     protected locationConfig: ILocationConfig;
     protected ragfairConfig: IRagfairConfig;
     protected pmcConfig: IPmcConfig;
+    protected lootConfig: ILootConfig;
     constructor(logger: ILogger, databaseServer: DatabaseServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, hashUtil: HashUtil, preAkiModLoader: PreAkiModLoader, httpServerHelper: HttpServerHelper, randomUtil: RandomUtil, encodingUtil: EncodingUtil, hideoutHelper: HideoutHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, customLocationWaveService: CustomLocationWaveService, openZoneService: OpenZoneService, seasonalEventService: SeasonalEventService, itemBaseClassService: ItemBaseClassService, giftService: GiftService, applicationContext: ApplicationContext, configServer: ConfigServer);
     /**
      * Handle client/game/start
      */
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
-    protected makeCustomsWishingTreeLootGuaranteed(): void;
+    protected addCustomLooseLootPositions(): void;
+    protected adjustLooseLootSpawnProbabilities(): void;
     protected setHideoutAreasAndCraftsTo30Secs(): void;
     /**
      * 3.7.0 moved AIDs to be numeric, old profiles need to be migrated

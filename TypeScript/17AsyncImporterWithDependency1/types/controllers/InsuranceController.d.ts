@@ -7,6 +7,7 @@ import { IGetInsuranceCostRequestData } from "../models/eft/insurance/IGetInsura
 import { IGetInsuranceCostResponseData } from "../models/eft/insurance/IGetInsuranceCostResponseData";
 import { IInsureRequestData } from "../models/eft/insurance/IInsureRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
+import { Insurance } from "../models/eft/profile/IAkiProfile";
 import { IInsuranceConfig } from "../models/spt/config/IInsuranceConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { EventOutputHolder } from "../routers/EventOutputHolder";
@@ -36,6 +37,11 @@ export declare class InsuranceController {
      * Process insurance items prior to being given to player in mail
      */
     processReturn(): void;
+    /**
+     * Change SlotId of children inside Containers to be a root item
+     * @param insured Insured Items
+     */
+    protected updateSlotIdOfContainersChildren(insured: Insurance): void;
     /**
      * Should the passed in item be removed from player inventory
      * @param insuredItem Insurued item to roll to lose
