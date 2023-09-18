@@ -72,5 +72,5 @@ export declare class BotController {
      * @returns cap number
      */
     getBotCap(): number;
-    getPmcBotTypes(): Record<string, Record<string, Record<string, number>>>;
+    getAiBotBrainTypes(): any;
 }

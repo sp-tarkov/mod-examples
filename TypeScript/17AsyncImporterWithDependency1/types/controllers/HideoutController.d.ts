@@ -207,7 +207,7 @@ export declare class HideoutController {
      */
     protected handleRecipe(sessionID: string, recipe: IHideoutProduction, pmcData: IPmcData, request: IHideoutTakeProductionRequestData, output: IItemEventRouterResponse): IItemEventRouterResponse;
     /**
-     * Handles giving rewards stored in player profile to player after clicking 'get rewards'
+     * Handles generating case rewards and sending to player inventory
      * @param sessionID Session id
      * @param pmcData Player profile
      * @param request Get rewards from scavcase craft request

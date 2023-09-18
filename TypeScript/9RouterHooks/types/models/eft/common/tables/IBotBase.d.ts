@@ -21,7 +21,7 @@ export interface IBotBase {
     BackendCounters: Record<string, BackendCounter>;
     InsuredItems: InsuredItem[];
     Hideout: Hideout;
-    Quests: Quest[];
+    Quests: IQuestStatus[];
     TradersInfo: Record<string, TraderInfo>;
     UnlockedInfo: IUnlockedInfo;
     RagfairInfo: RagfairInfo;
@@ -355,7 +355,7 @@ export declare enum SurvivorClass {
     PARAMEDIC = 3,
     SURVIVOR = 4
 }
-export interface Quest {
+export interface IQuestStatus {
     qid: string;
     startTime: number;
     status: QuestStatus;

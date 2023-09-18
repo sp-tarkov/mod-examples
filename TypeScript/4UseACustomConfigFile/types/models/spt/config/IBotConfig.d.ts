@@ -23,6 +23,8 @@ export interface IBotConfig extends IBaseConfig {
     equipment: Record<string, EquipmentFilters>;
     /** Show a bots botType value after their name */
     showTypeInNickname: boolean;
+    /** What ai brain should a normal scav use per map */
+    assaultBrainType: Record<string, Record<string, number>>;
     /** Max number of bots that can be spawned in a raid at any one time */
     maxBotCap: Record<string, number>;
     /** Chance scav has fake pscav name e.g. Scav name (player name) */

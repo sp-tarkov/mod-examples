@@ -1,5 +1,5 @@
 import { IPmcData } from "../models/eft/common/IPmcData";
-import { Quest } from "../models/eft/common/tables/IBotBase";
+import { IQuestStatus } from "../models/eft/common/tables/IBotBase";
 import { Item } from "../models/eft/common/tables/IItem";
 import { AvailableForConditions, AvailableForProps, IQuest, Reward } from "../models/eft/common/tables/IQuest";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
@@ -84,7 +84,15 @@ export declare class QuestHelper {
      * @param profile Player profile
      * @returns true if loyalty is high enough to fulfill quest requirement
      */
+    traderLoyaltyLevelRequirementCheck(questProperties: AvailableForProps, profile: IPmcData): boolean;
+    /**
+     * Check if trader has sufficient standing to fulfill quest requirement
+     * @param questProperties Quest props
+     * @param profile Player profile
+     * @returns true if standing is high enough to fulfill quest requirement
+     */
     traderStandingRequirementCheck(questProperties: AvailableForProps, profile: IPmcData): boolean;
+    protected compareAvailableForValues(current: number, required: number, compareMethod: string): boolean;
     /**
      * take reward item from quest and set FiR status + fix stack sizes + fix mod Ids
      * @param reward Reward item to fix
@@ -104,7 +112,7 @@ export declare class QuestHelper {
      * @param newState State the new quest should be in when returned
      * @param acceptedQuest Details of accepted quest from client
      */
-    getQuestReadyForProfile(pmcData: IPmcData, newState: QuestStatus, acceptedQuest: IAcceptQuestRequestData): Quest;
+    getQuestReadyForProfile(pmcData: IPmcData, newState: QuestStatus, acceptedQuest: IAcceptQuestRequestData): IQuestStatus;
     /**
      * Get quests that can be shown to player after starting a quest
      * @param startedQuestId Quest started by player
@@ -161,9 +169,10 @@ export declare class QuestHelper {
      * @param pmcData Player profile
      * @param failRequest Fail quest request data
      * @param sessionID Session id
+     * @param output Client output
      * @returns Item event router response
      */
-    failQuest(pmcData: IPmcData, failRequest: IFailQuestRequestData, sessionID: string): IItemEventRouterResponse;
+    failQuest(pmcData: IPmcData, failRequest: IFailQuestRequestData, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
     /**
      * Get List of All Quests from db
      * NOT CLONED
@@ -224,11 +233,12 @@ export declare class QuestHelper {
      */
     protected getIntelCenterRewardBonus(pmcData: IPmcData): number;
     /**
-     * Find quest with 'findItem' requirement that needs the item tpl be handed in
+     * Find quest with 'findItem' condition that needs the item tpl be handed in
      * @param itemTpl item tpl to look for
-     * @returns 'FindItem' condition id
+     * @param questIds Quests to search through for the findItem condition
+     * @returns quest id with 'FindItem' condition id
      */
-    getFindItemIdForQuestHandIn(itemTpl: string): string[];
+    getFindItemConditionByQuestItem(itemTpl: string, questIds: string[], allQuests: IQuest[]): Record<string, string>;
     /**
      * Add all quests to a profile with the provided statuses
      * @param pmcProfile profile to update

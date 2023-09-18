@@ -1,6 +1,5 @@
 import { EquipmentBuildType } from "../../../models/enums/EquipmentBuildType";
-import { QuestStatus } from "../../../models/enums/QuestStatus";
-import { Health, Productive, Skills, TraderData } from "../common/tables/IBotBase";
+import { Health, IQuestStatus, Productive, Skills, TraderData } from "../common/tables/IBotBase";
 import { Item, Upd } from "../common/tables/IItem";
 import { IQuest } from "../common/tables/IQuest";
 import { IPmcDataRepeatableQuest } from "../common/tables/IRepeatableQuests";
@@ -33,19 +32,11 @@ export interface ProfileChange {
     repeatableQuests?: IPmcDataRepeatableQuest[];
     recipeUnlocked: Record<string, boolean>;
     changedHideoutStashes?: Record<string, IHideoutStashItem>;
-    questsStatus: QuestStatusChange[];
+    questsStatus: IQuestStatus[];
 }
 export interface IHideoutStashItem {
     Id: string;
     Tpl: string;
-}
-export interface QuestStatusChange {
-    qid: string;
-    startTime: number;
-    status: QuestStatus;
-    statusTimers: Record<QuestStatus, number>;
-    completedConditions: string[];
-    availableAfter: number;
 }
 export interface IWeaponBuildChange {
     id: string;
