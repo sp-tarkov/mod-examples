@@ -8,7 +8,7 @@
         "downlevelIteration": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
-		"resolveJsonModule": true,
+        "resolveJsonModule": true,
         "outDir": "tmp",
         "baseUrl": ".",
         "paths": {
