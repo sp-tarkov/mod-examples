@@ -32,6 +32,8 @@
 import fs from "fs";
 import os from "os";
 import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 import ignore from "ignore";
 import archiver from "archiver";
 import winston from "winston";
@@ -100,11 +102,11 @@ async function main() {
 
         // Remove the old distribution directory and create a fresh one.
         const distDir = await cleanAndCreateDistDirectory(currentDir);
-        logger.log("info", `Distribution directory successfully cleaned.`);
+        logger.log("info", "Distribution directory successfully cleaned.");
 
         // Create a temporary working directory to perform the build operations.
         projectDir = await createTemporaryDirectoryWithProjectName(projectName);
-        logger.log("success", `Temporary working directory successfully created.`);
+        logger.log("success", "Temporary working directory successfully created.");
         logger.log("info", projectDir);
 
         // Copy files to the temporary directory while respecting the .buildignore rules.
@@ -163,7 +165,7 @@ async function main() {
  * @returns {string} The absolute path of the current working directory.
  */
 function getCurrentDirectory() {
-    return path.dirname(new URL(import.meta.url).pathname);
+    return dirname(fileURLToPath(import.meta.url));
 }
 
 /**
