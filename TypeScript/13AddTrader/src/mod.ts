@@ -10,6 +10,7 @@ import { ImageRouter } from "@spt-aki/routers/ImageRouter";
 import { ConfigServer } from "@spt-aki/servers/ConfigServer";
 import { ConfigTypes } from "@spt-aki/models/enums/ConfigTypes";
 import { ITraderConfig } from "@spt-aki/models/spt/config/ITraderConfig";
+import { IRagfairConfig } from "@spt-aki/models/spt/config/IRagfairConfig";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 
 // New trader settings
@@ -47,6 +48,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
         const hashUtil: HashUtil = container.resolve<HashUtil>("HashUtil");
         const configServer = container.resolve<ConfigServer>("ConfigServer");
         const traderConfig: ITraderConfig = configServer.getConfig<ITraderConfig>(ConfigTypes.TRADER);
+        const ragfairConfig = configServer.getConfig<IRagfairConfig>(ConfigTypes.RAGFAIR);
 
         // Create helper class and use it to register our traders image/icon + set its stock refresh time
         this.traderHelper = new TraderHelper();
@@ -56,6 +58,9 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
 
         // Add trader to trader enum
         Traders[baseJson._id] = baseJson._id;
+
+        // Add trader to flea market
+        ragfairConfig.traders[baseJson._id] = true;
 
         this.logger.debug(`[${this.mod}] preAki Loaded`);
     }
