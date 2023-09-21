@@ -29,7 +29,7 @@
  * @version v1.0.0
  */
 
-import fs from "fs";
+import fs from "fs-extra";
 import os from "os";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -101,7 +101,7 @@ async function main() {
         logger.log("success", `Project name created: ${projectName}`);
 
         // Remove the old distribution directory and create a fresh one.
-        const distDir = await cleanAndCreateDistDirectory(currentDir);
+        const distDir = await removeOldDistDirectory(currentDir);
         logger.log("info", "Distribution directory successfully cleaned.");
 
         // Create a temporary working directory to perform the build operations.
@@ -123,12 +123,12 @@ async function main() {
 
         // Move the zip file inside of the project directory, within the temporary working directory.
         const zipFileInProjectDir = path.join(projectDir, `${projectName}.zip`);
-        await fs.promises.rename(zipFilePath, zipFileInProjectDir);
+        await fs.move(zipFilePath, zipFileInProjectDir);
         logger.log("success", "Archive successfully moved.");
         logger.log("info", zipFileInProjectDir);
 
         // Move the temporary directory into the distribution directory.
-        await fs.promises.rename(projectDir, path.join(distDir));
+        await fs.move(projectDir, distDir);
         logger.log("success", "Temporary directory successfully moved into project distribution directory.");
 
         // Log the success message. Write out the path to the mod package.
@@ -232,25 +232,15 @@ function createProjectName(packageJson) {
 }
 
 /**
- * Sets up the distribution directory where the final mod package will be stored. The method first deletes any existing
- * distribution directory to ensure a clean slate for the build process. It then creates a new distribution directory,
- * providing a fresh and clean environment for each build. This approach helps to avoid potential conflicts with files
- * from previous builds and ensures that each build is isolated and independent.
+ * Defines the location of the distribution directory where the final mod package will be stored and deletes any 
+ * existing distribution directory to ensure a clean slate for the build process.
  *
  * @param {string} currentDirectory - The absolute path of the current working directory.
- * @returns {Promise<string>} A promise that resolves to the absolute path of the newly created distribution directory.
+ * @returns {Promise<string>} A promise that resolves to the absolute path to the distribution directory.
  */
-async function cleanAndCreateDistDirectory(projectDir) {
+async function removeOldDistDirectory(projectDir) {
     const distPath = path.join(projectDir, "dist");
-
-    // Remove the existing distribution directory (if it exists) to ensure a clean slate for the build process.
-    // The force option allows the operation to proceed without errors if the directory does not exist.
-    // The recursive option ensures that all subdirectories and files are deleted.
-    await fs.promises.rm(distPath, { force: true, recursive: true });
-
-    // Create a new distribution directory to store the final mod package.
-    await fs.promises.mkdir(distPath);
-
+    await fs.remove(distPath);
     return distPath;
 }
 
@@ -271,7 +261,7 @@ async function createTemporaryDirectoryWithProjectName(projectName) {
 
     // Create a subdirectory within the temporary directory using the project name for this specific build.
     const projectDir = path.join(tempDir, projectName);
-    await fs.promises.mkdir(projectDir);
+    await fs.ensureDir(projectDir);
 
     return projectDir;
 }
@@ -316,13 +306,13 @@ async function copyFiles(srcDir, destDir, ignoreHandler) {
             if (entry.isDirectory()) {
                 // If the entry is a directory, create the corresponding temporary directory and make a recursive call
                 // to copyFiles to handle copying the contents of the directory.
-                await fs.promises.mkdir(destPath);
+                await fs.ensureDir(destPath);
                 copyOperations.push(copyFiles(srcPath, destPath, ignoreHandler));
             } else {
                 // If the entry is a file, add a copyFile operation to the copyOperations array and log the event when
                 // the operation is successful.
                 copyOperations.push(
-                    fs.promises.copyFile(srcPath, destPath).then(() => {
+                    fs.copy(srcPath, destPath).then(() => {
                         logger.log("info", `Copied: /${path.relative(process.cwd(), srcPath)}`);
                     })
                 );
