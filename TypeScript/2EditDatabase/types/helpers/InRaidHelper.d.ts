@@ -53,7 +53,7 @@ export declare class InRaidHelper {
      * @param victim Who was killed by player
      * @returns a numerical standing gain or loss
      */
-    protected getStandingChangeForKill(victim: Victim): number;
+    protected getFenceStandingChangeForKillAsScav(victim: Victim): number;
     /**
      * Reset a profile to a baseline, used post-raid
      * Reset points earned during session property

@@ -26,6 +26,7 @@ declare class ItemHelper {
     protected itemBaseClassService: ItemBaseClassService;
     protected localisationService: LocalisationService;
     protected localeService: LocaleService;
+    protected readonly defaultInvalidBaseTypes: string[];
     constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, randomUtil: RandomUtil, objectId: ObjectId, mathUtil: MathUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, itemBaseClassService: ItemBaseClassService, localisationService: LocalisationService, localeService: LocaleService);
     /**
      * Checks if an id is a valid item. Valid meaning that it's an item that be stored in stash
@@ -67,6 +68,11 @@ declare class ItemHelper {
      * @returns Price in roubles (undefined if not found)
      */
     getDynamicItemPrice(tpl: string): number;
+    /**
+     * Update items upd.StackObjectsCount to be 1 if its upd is missing or StackObjectsCount is undefined
+     * @param item Item to update
+     * @returns Fixed item
+     */
     fixItemStackCount(item: Item): Item;
     /**
      * AmmoBoxes contain StackSlots which need to be filled for the AmmoBox to have content.
@@ -125,19 +131,19 @@ declare class ItemHelper {
     getItemQualityModifier(item: Item): number;
     /**
      * Get a quality value based on a repairable items (weapon/armor) current state between current and max durability
-     * @param itemDetails
-     * @param repairable repairable object
-     * @param item
-     * @returns a number between 0 and 1
+     * @param itemDetails Db details for item we want quality value for
+     * @param repairable Repairable properties
+     * @param item Item quality value is for
+     * @returns A number between 0 and 1
      */
     protected getRepairableItemQualityValue(itemDetails: ITemplateItem, repairable: Repairable, item: Item): number;
     /**
      * Recursive function that looks at every item from parameter and gets their childrens Ids + includes parent item in results
-     * @param items
-     * @param itemID
+     * @param items Array of items (item + possible children)
+     * @param itemId Parent items id
      * @returns an array of strings
      */
-    findAndReturnChildrenByItems(items: Item[], itemID: string): string[];
+    findAndReturnChildrenByItems(items: Item[], itemId: string): string[];
     /**
      * A variant of findAndReturnChildren where the output is list of item objects instead of their ids.
      * @param items
@@ -165,12 +171,6 @@ declare class ItemHelper {
      */
     isDogtag(tpl: string): boolean;
     /**
-     * Can the item passed in be sold to a trader because it is raw money
-     * @param tpl Item template id to check
-     * @returns true if unsellable
-     */
-    isNotSellable(tpl: string): boolean;
-    /**
      * Gets the identifier for a child using slotId, locationX and locationY.
      * @param item
      * @returns "slotId OR slotid,locationX,locationY"
@@ -183,19 +183,19 @@ declare class ItemHelper {
      */
     isItemTplStackable(tpl: string): boolean;
     /**
-     * split item stack if it exceeds its StackMaxSize property
-     * @param itemToSplit item being split into smaller stacks
+     * split item stack if it exceeds its items StackMaxSize property
+     * @param itemToSplit Item to split into smaller stacks
      * @returns Array of split items
      */
     splitStack(itemToSplit: Item): Item[];
     /**
-     * Find Barter items in the inventory
+     * Find Barter items from array of items
      * @param {string} by tpl or id
-     * @param {Object} pmcData
+     * @param {Item[]} items Array of items to iterate over
      * @param {string} barterItemId
      * @returns Array of Item objects
      */
-    findBarterItems(by: "tpl" | "id", pmcData: IPmcData, barterItemId: string): Item[];
+    findBarterItems(by: "tpl" | "id", items: Item[], barterItemId: string): Item[];
     /**
      * Regenerate all guids with new ids, exceptions are for items that cannot be altered (e.g. stash/sorting table)
      * @param pmcData Player profile
@@ -262,10 +262,21 @@ declare class ItemHelper {
      * @param minSizePercent % the magazine must be filled to
      */
     fillMagazineWithCartridge(magazine: Item[], magTemplate: ITemplateItem, cartridgeTpl: string, minSizePercent?: number): void;
+    /**
+     * Choose a random bullet type from the list of possible a magazine has
+     * @param magTemplate Magazine template from Db
+     * @returns Tpl of cartridge
+     */
     protected getRandomValidCaliber(magTemplate: ITemplateItem): string;
+    /**
+     * Chose a randomly weighted cartridge that fits
+     * @param caliber Desired caliber
+     * @param staticAmmoDist Cartridges and thier weights
+     * @returns Tpl of cartrdige
+     */
     protected drawAmmoTpl(caliber: string, staticAmmoDist: Record<string, IStaticAmmoDetails[]>): string;
     /**
-     *
+     * Create a basic cartrige object
      * @param parentId container cartridges will be placed in
      * @param ammoTpl Cartridge to insert
      * @param stackCount Count of cartridges inside parent

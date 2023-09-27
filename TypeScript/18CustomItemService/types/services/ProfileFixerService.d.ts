@@ -14,6 +14,7 @@ import { IRagfairConfig } from "../models/spt/config/IRagfairConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { JsonUtil } from "../utils/JsonUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 import { Watermark } from "../utils/Watermark";
 import { LocalisationService } from "./LocalisationService";
@@ -27,17 +28,19 @@ export declare class ProfileFixerService {
     protected itemHelper: ItemHelper;
     protected localisationService: LocalisationService;
     protected timeUtil: TimeUtil;
+    protected jsonUtil: JsonUtil;
     protected databaseServer: DatabaseServer;
     protected configServer: ConfigServer;
     protected coreConfig: ICoreConfig;
     protected ragfairConfig: IRagfairConfig;
-    constructor(logger: ILogger, watermark: Watermark, hideoutHelper: HideoutHelper, inventoryHelper: InventoryHelper, traderHelper: TraderHelper, profileHelper: ProfileHelper, itemHelper: ItemHelper, localisationService: LocalisationService, timeUtil: TimeUtil, databaseServer: DatabaseServer, configServer: ConfigServer);
+    constructor(logger: ILogger, watermark: Watermark, hideoutHelper: HideoutHelper, inventoryHelper: InventoryHelper, traderHelper: TraderHelper, profileHelper: ProfileHelper, itemHelper: ItemHelper, localisationService: LocalisationService, timeUtil: TimeUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, configServer: ConfigServer);
     /**
      * Find issues in the pmc profile data that may cause issues and fix them
      * @param pmcProfile profile to check and fix
      */
     checkForAndFixPmcProfileIssues(pmcProfile: IPmcData): void;
     protected addMissingGunStandContainerImprovements(pmcProfile: IPmcData): void;
+    protected ensureGunStandLevelsMatch(pmcProfile: IPmcData): void;
     protected addHideoutAreaStashes(pmcProfile: IPmcData): void;
     protected addMissingHideoutWallAreas(pmcProfile: IPmcData): void;
     protected adjustUnreasonableModFleaPrices(): void;
@@ -131,4 +134,9 @@ export declare class ProfileFixerService {
      * @param pmcProfile Profile to add missing IDs to
      */
     addMissingIdsToBonuses(pmcProfile: IPmcData): void;
+    /**
+     * At some point the property name was changed,migrate data across to new name
+     * @param pmcProfile
+     */
+    protected migrateImprovements(pmcProfile: IPmcData): void;
 }

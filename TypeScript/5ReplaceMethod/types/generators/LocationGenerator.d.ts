@@ -65,10 +65,11 @@ export declare class LocationGenerator {
     protected getGuaranteedContainers(staticContainersOnMap: IStaticContainerData[]): IStaticContainerData[];
     /**
      * Choose a number of containers based on their probabilty value to fulfil the desired count in containerData.chosenCount
+     * @param groupId Name of the group the containers are being collected for
      * @param containerData Containers and probability values for a groupId
      * @returns List of chosen container Ids
      */
-    protected getContainersByProbabilty(containerData: IContainerGroupCount): string[];
+    protected getContainersByProbabilty(groupId: string, containerData: IContainerGroupCount): string[];
     /**
      * Get a mapping of each groupid and the containers in that group + count of containers to spawn on map
      * @param containersGroups Container group values

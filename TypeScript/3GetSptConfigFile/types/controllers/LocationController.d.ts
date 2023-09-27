@@ -4,6 +4,7 @@ import { WeightedRandomHelper } from "../helpers/WeightedRandomHelper";
 import { ILocationBase } from "../models/eft/common/ILocationBase";
 import { ILocationsGenerateAllResponse } from "../models/eft/common/ILocationsSourceDestinationBase";
 import { IAirdropLootResult } from "../models/eft/location/IAirdropLootResult";
+import { IGetLocationRequestData } from "../models/eft/location/IGetLocationRequestData";
 import { AirdropTypeEnum } from "../models/enums/AirdropType";
 import { IAirdropConfig } from "../models/spt/config/IAirdropConfig";
 import { ILocationConfig } from "../models/spt/config/ILocationConfig";
@@ -34,10 +35,11 @@ export declare class LocationController {
     /**
      * Handle client/location/getLocalloot
      * Get a location (map) with generated loot data
-     * @param location Map to generate loot for
+     * @param sessionId Player id
+     * @param request Map request to generate
      * @returns ILocationBase
      */
-    get(location: string): ILocationBase;
+    get(sessionId: string, request: IGetLocationRequestData): ILocationBase;
     /**
      * Generate a maps base location with loot
      * @param name Map name

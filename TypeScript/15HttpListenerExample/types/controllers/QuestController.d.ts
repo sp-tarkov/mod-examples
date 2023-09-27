@@ -61,7 +61,7 @@ export declare class QuestController {
      * @param playerLevel level of player to test against quest
      * @returns true if quest can be seen/accepted by player of defined level
      */
-    protected playerLevelFulfillsQuestRequrement(quest: IQuest, playerLevel: number): boolean;
+    protected playerLevelFulfillsQuestRequirement(quest: IQuest, playerLevel: number): boolean;
     /**
      * Should a quest be shown to the player in trader quest screen
      * @param questId Quest to check

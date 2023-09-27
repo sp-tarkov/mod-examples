@@ -21,6 +21,7 @@ import { IGetMarketPriceRequestData } from "../models/eft/ragfair/IGetMarketPric
 import { IGetOffersResult } from "../models/eft/ragfair/IGetOffersResult";
 import { IRagfairOffer } from "../models/eft/ragfair/IRagfairOffer";
 import { ISearchRequestData } from "../models/eft/ragfair/ISearchRequestData";
+import { IProcessBuyTradeRequestData } from "../models/eft/trade/IProcessBuyTradeRequestData";
 import { IRagfairConfig } from "../models/spt/config/IRagfairConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { EventOutputHolder } from "../routers/EventOutputHolder";
@@ -126,6 +127,18 @@ export declare class RagfairController {
      */
     addPlayerOffer(pmcData: IPmcData, offerRequest: IAddOfferRequestData, sessionID: string): IItemEventRouterResponse;
     /**
+     * Charge player a listing fee for using flea, pulls charge from data previously sent by client
+     * @param sessionID Player id
+     * @param rootItem Base item being listed (used when client tax cost not found and must be done on server)
+     * @param pmcData Player profile
+     * @param requirementsPriceInRub Rouble cost player chose for listing (used when client tax cost not found and must be done on server)
+     * @param itemStackCount How many items were listed in player (used when client tax cost not found and must be done on server)
+     * @param offerRequest Add offer request object from client
+     * @param output IItemEventRouterResponse
+     * @returns True if charging tax to player failed
+     */
+    protected chargePlayerTaxFee(sessionID: string, rootItem: Item, pmcData: IPmcData, requirementsPriceInRub: number, itemStackCount: number, offerRequest: IAddOfferRequestData, output: IItemEventRouterResponse): boolean;
+    /**
      * Is the item to be listed on the flea valid
      * @param offerRequest Client offer request
      * @param errorMessage message to show to player when offer is invalid
@@ -158,4 +171,11 @@ export declare class RagfairController {
      */
     removeOffer(offerId: string, sessionID: string): IItemEventRouterResponse;
     extendOffer(info: IExtendOfferRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Create a basic trader request object with price and currency type
+     * @param currency What currency: RUB, EURO, USD
+     * @param value Amount of currency
+     * @returns IProcessBuyTradeRequestData
+     */
+    protected createBuyTradeRequestObject(currency: string, value: number): IProcessBuyTradeRequestData;
 }

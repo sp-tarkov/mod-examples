@@ -88,11 +88,11 @@ export declare class HideoutController {
      * @param pmcData Profile to edit
      * @param output Object to send back to client
      * @param sessionID Session/player id
-     * @param profileHideoutArea Current hideout data for profile
+     * @param profileParentHideoutArea Current hideout area for profile
      * @param dbHideoutArea Hideout area being upgraded
      * @param hideoutStage Stage hideout area is being upgraded to
      */
-    protected addContainerImprovementToProfile(output: IItemEventRouterResponse, sessionID: string, pmcData: IPmcData, profileHideoutArea: HideoutArea, dbHideoutArea: IHideoutArea, hideoutStage: Stage): void;
+    protected addContainerImprovementToProfile(output: IItemEventRouterResponse, sessionID: string, pmcData: IPmcData, profileParentHideoutArea: HideoutArea, dbHideoutArea: IHideoutArea, hideoutStage: Stage): void;
     /**
      * Add an inventory item to profile from a hideout area stage data
      * @param pmcData Profile to update

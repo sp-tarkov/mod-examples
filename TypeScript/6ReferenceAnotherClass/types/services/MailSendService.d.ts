@@ -35,7 +35,7 @@ export declare class MailSendService {
      * @param items Optional items to send to player
      * @param maxStorageTimeSeconds Optional time to collect items before they expire
      */
-    sendDirectNpcMessageToPlayer(playerId: string, sender: Traders, messageType: MessageType, message: string, items?: Item[], maxStorageTimeSeconds?: any): void;
+    sendDirectNpcMessageToPlayer(playerId: string, sender: Traders, messageType: MessageType, message: string, items?: Item[], maxStorageTimeSeconds?: any, systemData?: any, ragfair?: any): void;
     /**
      * Send a message from an NPC (e.g. prapor) to the player with or without items
      * @param playerId Players id to send message to
@@ -45,7 +45,7 @@ export declare class MailSendService {
      * @param items Optional items to send to player
      * @param maxStorageTimeSeconds Optional time to collect items before they expire
      */
-    sendLocalisedNpcMessageToPlayer(playerId: string, sender: Traders, messageType: MessageType, messageLocaleId: string, items?: Item[], maxStorageTimeSeconds?: any, systemData?: any): void;
+    sendLocalisedNpcMessageToPlayer(playerId: string, sender: Traders, messageType: MessageType, messageLocaleId: string, items?: Item[], maxStorageTimeSeconds?: any, systemData?: any, ragfair?: any): void;
     /**
      * Send a message from SYSTEM to the player with or without items
      * @param playerId Players id to send message to

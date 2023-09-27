@@ -21,6 +21,7 @@ import { DialogueHelper } from "./DialogueHelper";
 import { ItemHelper } from "./ItemHelper";
 import { PaymentHelper } from "./PaymentHelper";
 import { ProfileHelper } from "./ProfileHelper";
+import { QuestConditionHelper } from "./QuestConditionHelper";
 import { RagfairServerHelper } from "./RagfairServerHelper";
 import { TraderHelper } from "./TraderHelper";
 export declare class QuestHelper {
@@ -29,6 +30,7 @@ export declare class QuestHelper {
     protected timeUtil: TimeUtil;
     protected hashUtil: HashUtil;
     protected itemHelper: ItemHelper;
+    protected questConditionHelper: QuestConditionHelper;
     protected eventOutputHolder: EventOutputHolder;
     protected databaseServer: DatabaseServer;
     protected localeService: LocaleService;
@@ -41,7 +43,7 @@ export declare class QuestHelper {
     protected mailSendService: MailSendService;
     protected configServer: ConfigServer;
     protected questConfig: IQuestConfig;
-    constructor(logger: ILogger, jsonUtil: JsonUtil, timeUtil: TimeUtil, hashUtil: HashUtil, itemHelper: ItemHelper, eventOutputHolder: EventOutputHolder, databaseServer: DatabaseServer, localeService: LocaleService, ragfairServerHelper: RagfairServerHelper, dialogueHelper: DialogueHelper, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, traderHelper: TraderHelper, mailSendService: MailSendService, configServer: ConfigServer);
+    constructor(logger: ILogger, jsonUtil: JsonUtil, timeUtil: TimeUtil, hashUtil: HashUtil, itemHelper: ItemHelper, questConditionHelper: QuestConditionHelper, eventOutputHolder: EventOutputHolder, databaseServer: DatabaseServer, localeService: LocaleService, ragfairServerHelper: RagfairServerHelper, dialogueHelper: DialogueHelper, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, traderHelper: TraderHelper, mailSendService: MailSendService, configServer: ConfigServer);
     /**
     * Get status of a quest in player profile by its id
     * @param pmcData Profile to search
@@ -119,7 +121,7 @@ export declare class QuestHelper {
      * @param sessionID Session id
      * @returns Quests accessible to player incuding newly unlocked quests now quest (startedQuestId) was started
      */
-    acceptedUnlocked(startedQuestId: string, sessionID: string): IQuest[];
+    getNewlyAccessibleQuestsWhenStartingQuest(startedQuestId: string, sessionID: string): IQuest[];
     /**
      * Get quests that can be shown to player after failing a quest
      * @param failedQuestId Id of the quest failed by player

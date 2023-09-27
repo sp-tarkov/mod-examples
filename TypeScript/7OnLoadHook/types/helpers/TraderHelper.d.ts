@@ -35,7 +35,7 @@ export declare class TraderHelper {
     protected highestTraderBuyPriceItems: Record<string, number>;
     constructor(logger: ILogger, databaseServer: DatabaseServer, saveServer: SaveServer, profileHelper: ProfileHelper, handbookHelper: HandbookHelper, itemHelper: ItemHelper, playerService: PlayerService, localisationService: LocalisationService, fenceService: FenceService, timeUtil: TimeUtil, randomUtil: RandomUtil, configServer: ConfigServer);
     getTrader(traderID: string, sessionID: string): ITraderBase;
-    getTraderAssortsById(traderId: string): ITraderAssort;
+    getTraderAssortsByTraderId(traderId: string): ITraderAssort;
     /**
      * Reset a profiles trader data back to its initial state as seen by a level 1 player
      * Does NOT take into account different profile levels

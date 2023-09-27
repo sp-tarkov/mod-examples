@@ -61,13 +61,14 @@ export declare class GameController {
     protected pmcConfig: IPmcConfig;
     protected lootConfig: ILootConfig;
     constructor(logger: ILogger, databaseServer: DatabaseServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, hashUtil: HashUtil, preAkiModLoader: PreAkiModLoader, httpServerHelper: HttpServerHelper, randomUtil: RandomUtil, encodingUtil: EncodingUtil, hideoutHelper: HideoutHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, customLocationWaveService: CustomLocationWaveService, openZoneService: OpenZoneService, seasonalEventService: SeasonalEventService, itemBaseClassService: ItemBaseClassService, giftService: GiftService, applicationContext: ApplicationContext, configServer: ConfigServer);
+    load(): void;
     /**
      * Handle client/game/start
      */
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
     protected addCustomLooseLootPositions(): void;
     protected adjustLooseLootSpawnProbabilities(): void;
-    protected setHideoutAreasAndCraftsTo30Secs(): void;
+    protected setHideoutAreasAndCraftsTo40Secs(): void;
     /**
      * 3.7.0 moved AIDs to be numeric, old profiles need to be migrated
      * We store the old AID value in new field `sessionId`
