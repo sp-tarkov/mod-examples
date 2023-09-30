@@ -116,9 +116,30 @@ export declare class TraderHelper {
      */
     getTraderById(traderId: string): Traders;
     /**
+     * Validates that the provided traderEnumValue exists in the Traders enum. If the value is valid, it returns the
+     * same enum value, effectively serving as a trader ID; otherwise, it logs an error and returns an empty string.
+     * This method provides a runtime check to prevent undefined behavior when using the enum as a dictionary key.
+     *
+     * For example, instead of this:
+     * `const traderId = Traders[Traders.PRAPOR];`
+     *
+     * You can use safely use this:
+     * `const traderId = this.traderHelper.getValidTraderIdByEnumValue(Traders.PRAPOR);`
+     *
+     * @param traderEnumValue The trader enum value to validate
+     * @returns The validated trader enum value as a string, or an empty string if invalid
+     */
+    getValidTraderIdByEnumValue(traderEnumValue: Traders): string;
+    /**
      * Does the 'Traders' enum has a value that matches the passed in parameter
-     * @param value Value to check for
+     * @param key Value to check for
      * @returns True, values exists in Traders enum as a value
      */
-    traderEnumHasValue(value: string): boolean;
+    traderEnumHasKey(key: string): boolean;
+    /**
+     * Accepts a trader id
+     * @param traderId Trader id
+     * @returns Ttrue if Traders enum has the param as a value
+     */
+    traderEnumHasValue(traderId: string): boolean;
 }

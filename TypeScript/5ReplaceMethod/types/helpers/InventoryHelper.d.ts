@@ -84,13 +84,13 @@ export declare class InventoryHelper {
      * Handle Remove event
      * Remove item from player inventory + insured items array
      * Also deletes child items
-     * @param pmcData Profile to remove item from
+     * @param profile Profile to remove item from (pmc or scav)
      * @param itemId Items id to remove
      * @param sessionID Session id
      * @param output Existing IItemEventRouterResponse object to append data to, creates new one by default if not supplied
      * @returns IItemEventRouterResponse
      */
-    removeItem(pmcData: IPmcData, itemId: string, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
+    removeItem(profile: IPmcData, itemId: string, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
     removeItemAndChildrenFromMailRewards(sessionId: string, removeRequest: IInventoryRemoveRequestData, output: IItemEventRouterResponse): IItemEventRouterResponse;
     removeItemByCount(pmcData: IPmcData, itemId: string, count: number, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
     getItemSize(itemTpl: string, itemID: string, inventoryItem: Item[]): number[];

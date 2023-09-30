@@ -57,6 +57,13 @@ declare class ItemHelper {
      */
     getItemPrice(tpl: string): number;
     /**
+     * Returns the item price based on the handbook or as a fallback from the prices.json if the item is not
+     * found in the handbook. If the price can't be found at all return 0
+     * @param tpl Item to look price up of
+     * @returns Price in roubles
+     */
+    getItemMaxPrice(tpl: string): number;
+    /**
      * Get the static (handbook) price in roubles for an item by tpl
      * @param tpl Items tpl id to look up price
      * @returns Price in roubles (0 if not found)
