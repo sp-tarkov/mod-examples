@@ -264,7 +264,7 @@ export interface Props {
     CutoffFreq?: number;
     Resonance?: number;
     RolloffMultiplier?: number;
-    ReverbVolume: number;
+    ReverbVolume?: number;
     CompressorVolume?: number;
     AmbientVolume?: number;
     DryVolume?: number;

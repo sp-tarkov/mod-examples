@@ -108,6 +108,12 @@ export declare class MailSendService {
      */
     protected processItemsBeforeAddingToMail(dialogType: MessageType, messageDetails: ISendMessageDetails): MessageItems;
     /**
+     * Try to find the most correct item to be the 'primary' item in a reward mail
+     * @param items Possible items to choose from
+     * @returns Chosen 'primary' item
+     */
+    protected getBaseItemFromRewards(items: Item[]): Item;
+    /**
      * Get a dialog with a specified entity (user/trader)
      * Create and store empty dialog if none exists in profile
      * @param messageDetails Data on what message should do
