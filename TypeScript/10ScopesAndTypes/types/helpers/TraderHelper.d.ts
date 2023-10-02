@@ -1,4 +1,5 @@
 import { IPmcData } from "../models/eft/common/IPmcData";
+import { Item } from "../models/eft/common/tables/IItem";
 import { ProfileTraderTemplate } from "../models/eft/common/tables/IProfileTemplate";
 import { ITraderAssort, ITraderBase, LoyaltyLevel } from "../models/eft/common/tables/ITrader";
 import { Traders } from "../models/enums/Traders";
@@ -35,7 +36,19 @@ export declare class TraderHelper {
     protected highestTraderBuyPriceItems: Record<string, number>;
     constructor(logger: ILogger, databaseServer: DatabaseServer, saveServer: SaveServer, profileHelper: ProfileHelper, handbookHelper: HandbookHelper, itemHelper: ItemHelper, playerService: PlayerService, localisationService: LocalisationService, fenceService: FenceService, timeUtil: TimeUtil, randomUtil: RandomUtil, configServer: ConfigServer);
     getTrader(traderID: string, sessionID: string): ITraderBase;
+    /**
+     * Get all assort data for a particular trader
+     * @param traderId Trader to get assorts for
+     * @returns ITraderAssort
+     */
     getTraderAssortsByTraderId(traderId: string): ITraderAssort;
+    /**
+     * Retrieve the Item from a traders assort data by its id
+     * @param traderId Trader to get assorts for
+     * @param assortId Id of assort to find
+     * @returns Item object
+     */
+    getTraderAssortItemByAssortId(traderId: string, assortId: string): Item;
     /**
      * Reset a profiles trader data back to its initial state as seen by a level 1 player
      * Does NOT take into account different profile levels

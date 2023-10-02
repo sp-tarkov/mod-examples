@@ -229,11 +229,11 @@ export declare class QuestHelper {
      */
     protected findAndAddHideoutProductionIdToProfile(pmcData: IPmcData, craftUnlockReward: Reward, questDetails: IQuest, sessionID: string, response: IItemEventRouterResponse): void;
     /**
-     * Get players intel center bonus from profile
+     * Get players money reward bonus from profile
      * @param pmcData player profile
      * @returns bonus as a percent
      */
-    protected getIntelCenterRewardBonus(pmcData: IPmcData): number;
+    protected getQuestMoneyRewardBonus(pmcData: IPmcData): number;
     /**
      * Find quest with 'findItem' condition that needs the item tpl be handed in
      * @param itemTpl item tpl to look for

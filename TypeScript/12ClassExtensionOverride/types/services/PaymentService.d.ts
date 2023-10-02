@@ -28,9 +28,16 @@ export declare class PaymentService {
      * @param {IPmcData} pmcData Player profile
      * @param {IProcessBuyTradeRequestData} request
      * @param {string} sessionID
-     * @returns Object
+     * @returns IItemEventRouterResponse
      */
     payMoney(pmcData: IPmcData, request: IProcessBuyTradeRequestData, sessionID: string, output: IItemEventRouterResponse): IItemEventRouterResponse;
+    /**
+     * Get the item price of a specific traders assort
+     * @param traderAssortId Id of assort to look up
+     * @param traderId Id of trader with assort
+     * @returns Handbook rouble price of item
+     */
+    protected getTraderItemHandbookPrice(traderAssortId: string, traderId: string): number;
     /**
      * Receive money back after selling
      * @param {IPmcData} pmcData
