@@ -37,7 +37,7 @@ export declare class PaymentService {
      * @param traderId Id of trader with assort
      * @returns Handbook rouble price of item
      */
-    protected getTraderItemHandbookPrice(traderAssortId: string, traderId: string): number;
+    protected getTraderItemHandbookPriceRouble(traderAssortId: string, traderId: string): number;
     /**
      * Receive money back after selling
      * @param {IPmcData} pmcData
