@@ -1,4 +1,5 @@
 import { IPmcData } from "../models/eft/common/IPmcData";
+import { Inventory } from "../models/eft/common/tables/IBotBase";
 import { Item } from "../models/eft/common/tables/IItem";
 import { AddItem, IAddItemRequestData } from "../models/eft/inventory/IAddItemRequestData";
 import { IAddItemTempObject } from "../models/eft/inventory/IAddItemTempObject";
@@ -59,9 +60,20 @@ export declare class InventoryHelper {
      * @param useSortingTable Allow items to go into sorting table when stash has no space
      * @returns IItemEventRouterResponse
      */
-    addItem(pmcData: IPmcData, request: IAddItemRequestData, output: IItemEventRouterResponse, sessionID: string, callback: {
-        (): void;
-    }, foundInRaid?: boolean, addUpd?: any, useSortingTable?: boolean): IItemEventRouterResponse;
+    addItem(pmcData: IPmcData, request: IAddItemRequestData, output: IItemEventRouterResponse, sessionID: string, callback: () => void, foundInRaid?: boolean, addUpd?: any, useSortingTable?: boolean): IItemEventRouterResponse;
+    /**
+     * Take the given item, find a free slot in passed in inventory and place it there
+     * If no space in inventory, place in sorting table
+     * @param itemToAdd Item to add to inventory
+     * @param stashFS2D Two dimentional stash map
+     * @param sortingTableFS2D Two dimentional sorting table stash map
+     * @param itemLib
+     * @param pmcData Player profile
+     * @param useSortingTable Should sorting table be used for overflow items when no inventory space for item
+     * @param output Client output object
+     * @returns Client error output if placing item failed
+     */
+    protected placeItemInInventory(itemToAdd: IAddItemTempObject, stashFS2D: number[][], sortingTableFS2D: number[][], itemLib: Item[], playerInventory: Inventory, useSortingTable: boolean, output: IItemEventRouterResponse): IItemEventRouterResponse;
     /**
      * Add ammo to ammo boxes
      * @param itemToAdd Item to check is ammo box

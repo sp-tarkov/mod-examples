@@ -7,6 +7,7 @@ import { Inventory as PmcInventory } from "../models/eft/common/tables/IBotBase"
 import { IBotType, Inventory, ModsChances } from "../models/eft/common/tables/IBotType";
 import { Item } from "../models/eft/common/tables/IItem";
 import { ITemplateItem } from "../models/eft/common/tables/ITemplateItem";
+import { EquipmentSlots } from "../models/enums/EquipmentSlots";
 import { IBotConfig } from "../models/spt/config/IBotConfig";
 import { IPmcConfig } from "../models/spt/config/IPmcConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
@@ -44,6 +45,12 @@ export declare class BotLootGenerator {
      * @param botLevel Level of bot
      */
     generateLoot(sessionId: string, botJsonTemplate: IBotType, isPmc: boolean, botRole: string, botInventory: PmcInventory, botLevel: number): void;
+    /**
+     * Get an array of the containers a bot has on them (pockets/backpack/vest)
+     * @param botInventory Bot to check
+     * @returns Array of available slots
+     */
+    protected getAvailableContainersBotCanStoreItemsIn(botInventory: PmcInventory): EquipmentSlots[];
     /**
      * Force healing items onto bot to ensure they can heal in-raid
      * @param botInventory Inventory to add items to
