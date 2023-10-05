@@ -2,7 +2,7 @@
     "name": "UseExternalLibraries",
     "version": "1.0.0",
     "main": "src/mod.js",
-    "license": "CC-BY-NC-ND-4.0",
+    "license": "MIT",
     "author": "TheSparta",
     "akiVersion": "~3.7",
     "scripts": {
