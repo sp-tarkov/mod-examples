@@ -6,6 +6,7 @@ export declare class ModCompilerService {
     protected logger: ILogger;
     protected hashCacheService: HashCacheService;
     protected vfs: VFS;
+    protected serverDependencies: string[];
     constructor(logger: ILogger, hashCacheService: HashCacheService, vfs: VFS);
     /**
      * Convert a mods TS into JS

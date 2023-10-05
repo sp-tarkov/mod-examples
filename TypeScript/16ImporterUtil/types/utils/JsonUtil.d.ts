@@ -33,6 +33,7 @@ export declare class JsonUtil {
     * @returns The string converted from the JavaScript value
      */
     serializeJsonC(data: any, filename?: string | null, options?: IStringifyOptions | Reviver): string;
+    serializeJson5(data: any, filename?: string | null, prettify?: boolean): string;
     /**
      * From string to object
      * @param jsonString json string to turn into object
@@ -48,6 +49,7 @@ export declare class JsonUtil {
      * @returns object
      */
     deserializeJsonC<T>(jsonString: string, filename?: string, options?: IParseOptions): T;
+    deserializeJson5<T>(jsonString: string, filename?: string): T;
     deserializeWithCacheCheckAsync<T>(jsonString: string, filePath: string): Promise<T>;
     /**
      * From json string to object

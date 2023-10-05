@@ -46,6 +46,12 @@ export declare class SeasonalEventService {
      */
     itemIsSeasonalRelated(itemTpl: string): boolean;
     /**
+     * Get an array of items that appear during a seasonal event
+     * returns multiple seasonal event items if they are both active
+     * @returns array of tpl strings
+     */
+    getAllSeasonalEventItems(): string[];
+    /**
      * Get an array of seasonal items that should be blocked as season is not currently active
      * @returns Array of tpl strings
      */
