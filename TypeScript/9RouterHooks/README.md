@@ -1,64 +1,66 @@
+# Welcome to the SPT-AKI Modding Project
 
-This project was created to automate most parts of building and setting up an environment.
+This project is designed to streamline the initial setup process for building and creating mods in the SPT-AKI environment. Follow this guide to set up your environment efficiently.
 
-## **NodeJS:**
+## **Table of Contents**
+- [NodeJS Setup](#nodejs-setup)
+- [IDE Setup](#ide-setup)
+- [Workspace Configuration](#workspace-configuration)
+- [Environment Setup](#environment-setup)
+- [Essential Concepts](#essential-concepts)
+- [Coding Guidelines](#coding-guidelines)
+- [Distribution Guidelines](#distribution-guidelines)
 
-The first step would be to install nodejs on your pc, the version you NEED is **16.17.1**
+## **NodeJS Setup**
 
-That version is the one that has been used to test the mod templates and build scripts.
+Before you begin, ensure to install NodeJS version `v16.17.1`, which has been tested thoroughly with our mod templates and build scripts. Download it from the [official NodeJS website](https://nodejs.org/).
 
-It can be downloaded from here: https://nodejs.org/dist/v16.17.1/node-v16.17.1-x64.msi
+After installation, it's advised to reboot your system.
 
-A system reboot may be needed after install.
+## **IDE Setup**
 
-## **IDE:**
+For this project, you can work with either [VSCodium](https://vscodium.com/) or [VSCode](https://code.visualstudio.com/). However, we strongly recommend using VSCode, as all development and testing have been carried out using this IDE, ensuring a smoother experience and compatibility with the project setups. Either way, we have a prepared a workspace file to assist you in setting up your environment.
 
-The second step is having an IDE ready. We've setup a VSCodium workspace file to help with this.
+## **Workspace Configuration**
 
-You CAN use Visual Studio Code if you so desire, just keep in mind that our devs tests on the mod files was done using VSCode.
+With NodeJS and your chosen IDE ready, initiate the `mod.code-workspace` file using your IDE:
 
-You can get VSCode here: https://code.visualstudio.com/
+> File -> Open Workspace from File...
 
-## **Workspace:**
+Upon project loading, consider installing recommended plugins like the ESLint plugin.
 
-Once you have NodeJS and VSCode/VSCodium ready, open the mod.code-workspace file with VSCode (File->Open Workspace from File...).
+## **Environment Setup**
 
-Once the project loads you may be recommended to install the ESLint plugin. This is HIGHLY recommended.
+An automated task is available to configure your environment for Typescript utilization:
 
-## **Environment Setup:**
+> Terminal -> Run Task... -> Show All Tasks... -> npm: install
 
-There is a task that will automatically setup your environment to use typescript.
+Note: Preserve the `node_modules` folder as it contains necessary dependencies for Typescript and other functionalities.
 
-To run it, you just need to go to: 
+## **Essential Concepts**
 
-> Terminal->Run Task...->Show All Tasks...->npm: install
+Prioritize understanding Dependency Injection and Inversion of Control, the architectural principles SPT-AKI adopts. Comprehensive guidelines will be available on the hub upon release.
 
-After running this task, your environment will be ready to start coding.
+Some resources to get you started:
+ - [A quick intro to Dependency Injection](https://www.freecodecamp.org/news/a-quick-intro-to-dependency-injection-what-it-is-and-when-to-use-it-7578c84fa88f/)
+ - [Understanding Inversion of Control (IoC) Principle](https://medium.com/@amitkma/understanding-inversion-of-control-ioc-principle-163b1dc97454)
 
-DO NOT remove the node_modules folder, this is an auto generated directory that has the required dependencies to be able to use typescript and more.
+## **Coding Guidelines**
 
-## **IMPORTANT:**
+Focus your mod development around the `mod.ts` file. In the `package.json` file, only alter these properties: `"name"`, `"version"`, `"license"`, `"author"`, and `"akiVersion"`. 
 
-Before starting to work on your mod, we suggest you read about Dependency Injection and Inversion of Control as this is the adopted architecture SPT-AKI has adopted.
+New to Typescript? Find comprehensive documentation on the [official website](https://www.typescriptlang.org/docs/).
 
-It will be difficult to understand some of the problems you may be having if you dont understand the basics of it.
+## **Distribution Guidelines**
 
-A guide explaining all the essentials will be available on the hub on release for you to read about.
+Automated tasks are set up to bundle all necessary files for your mod to function in SPT-AKI:
 
-## **Coding:**
+> Terminal -> Run Task... -> Show All Tasks... -> npm: build
 
-All your work should be centered around the mod.ts file as an entry point.
-You can ONLY change the following properties from the package.json file: `"name"`, `"version"`, `"license"`: `"MIT"`, `"author"`, `"akiVersion"`.
+The ZIP output, located in the `dist` directory, contains all required files. Ensure all files are included and modify the `.buildignore` file as needed. This ZIP file is your uploadable asset for the hub.
 
-If you have never used typescript before, you can read about it here: https://www.typescriptlang.org/docs/
+## **Conclusion**
 
-## **Distributing your mod:**
+With this setup, you're ready to begin modding with SPT-AKI. If you run into any trouble be sure to check out the [modding documentation on the hub](https://hub.sp-tarkov.com/doc/lexicon/66-modding/). If you really get stuck feel free to join us in the [#mods-development](https://discord.com/channels/875684761291599922/875803116409323562) official Discord channel.
 
-The project has been set up with an automatic task that will copy and zip ALL required files for your mod to work on SPT-AKI.
-To run this task you just need to go to: 
-
-> Terminal->Run Task...->Show All Tasks...->npm: build:zip
-
-The output will be a mod.zip file that will appear on the root of the project.
-
-Always verify that all files were included into the zip file.
+Build something awesome!
