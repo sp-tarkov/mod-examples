@@ -40,7 +40,7 @@ export declare class ScavCaseRewardGenerator {
      */
     protected cacheDbItems(): void;
     /**
-     * Pick a number of items to be rewards, the count is defined by the values in
+     * Pick a number of items to be rewards, the count is defined by the values in `itemFilters` param
      * @param items item pool to pick rewards from
      * @param itemFilters how the rewards should be filtered down (by item count)
      * @returns
