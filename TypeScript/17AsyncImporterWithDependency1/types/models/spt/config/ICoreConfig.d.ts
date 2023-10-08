@@ -9,7 +9,10 @@ export interface ICoreConfig extends IBaseConfig {
     sptFriendNickname: string;
     fixes: IGameFixes;
     features: IServerFeatures;
-    commit: string;
+    /** Commit hash build server was created from */
+    commit?: string;
+    /** Timestamp of server build */
+    buildTime?: string;
 }
 export interface IGameFixes {
     /** Shotguns use a different value than normal guns causing huge pellet dispersion  */
