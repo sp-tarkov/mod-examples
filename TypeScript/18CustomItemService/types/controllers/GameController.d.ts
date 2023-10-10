@@ -27,7 +27,6 @@ import { LocalisationService } from "../services/LocalisationService";
 import { OpenZoneService } from "../services/OpenZoneService";
 import { ProfileFixerService } from "../services/ProfileFixerService";
 import { SeasonalEventService } from "../services/SeasonalEventService";
-import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { RandomUtil } from "../utils/RandomUtil";
 import { TimeUtil } from "../utils/TimeUtil";
@@ -36,7 +35,6 @@ export declare class GameController {
     protected databaseServer: DatabaseServer;
     protected jsonUtil: JsonUtil;
     protected timeUtil: TimeUtil;
-    protected hashUtil: HashUtil;
     protected preAkiModLoader: PreAkiModLoader;
     protected httpServerHelper: HttpServerHelper;
     protected randomUtil: RandomUtil;
@@ -58,7 +56,7 @@ export declare class GameController {
     protected ragfairConfig: IRagfairConfig;
     protected pmcConfig: IPmcConfig;
     protected lootConfig: ILootConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, hashUtil: HashUtil, preAkiModLoader: PreAkiModLoader, httpServerHelper: HttpServerHelper, randomUtil: RandomUtil, hideoutHelper: HideoutHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, customLocationWaveService: CustomLocationWaveService, openZoneService: OpenZoneService, seasonalEventService: SeasonalEventService, itemBaseClassService: ItemBaseClassService, giftService: GiftService, applicationContext: ApplicationContext, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, preAkiModLoader: PreAkiModLoader, httpServerHelper: HttpServerHelper, randomUtil: RandomUtil, hideoutHelper: HideoutHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, customLocationWaveService: CustomLocationWaveService, openZoneService: OpenZoneService, seasonalEventService: SeasonalEventService, itemBaseClassService: ItemBaseClassService, giftService: GiftService, applicationContext: ApplicationContext, configServer: ConfigServer);
     load(): void;
     /**
      * Handle client/game/start
@@ -67,12 +65,6 @@ export declare class GameController {
     protected addCustomLooseLootPositions(): void;
     protected adjustLooseLootSpawnProbabilities(): void;
     protected setHideoutAreasAndCraftsTo40Secs(): void;
-    /**
-     * 3.7.0 moved AIDs to be numeric, old profiles need to be migrated
-     * We store the old AID value in new field `sessionId`
-     * @param fullProfile Profile to update
-     */
-    protected fixIncorrectAidValue(fullProfile: IAkiProfile): void;
     /** Apply custom limits on bot types as defined in configs/location.json/botTypeLimits */
     protected adjustMapBotLimits(): void;
     /**

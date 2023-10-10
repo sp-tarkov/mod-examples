@@ -1,4 +1,5 @@
 import { DependencyContainer } from "tsyringe";
+import { ModDetails } from "../models/eft/profile/IAkiProfile";
 import { ICoreConfig } from "../models/spt/config/ICoreConfig";
 import { IModLoader } from "../models/spt/mod/IModLoader";
 import { IPackageJsonData } from "../models/spt/mod/IPackageJsonData";
@@ -35,6 +36,7 @@ export declare class PreAkiModLoader implements IModLoader {
      */
     getImportedModsNames(): string[];
     getImportedModDetails(): Record<string, IPackageJsonData>;
+    getProfileModsGroupedByModName(profileMods: ModDetails[]): ModDetails[];
     getModPath(mod: string): string;
     protected importMods(): Promise<void>;
     protected sortMods(prev: string, next: string, missingFromOrderJSON: Record<string, boolean>): number;

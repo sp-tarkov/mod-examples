@@ -14,6 +14,7 @@ import { IRagfairConfig } from "../models/spt/config/IRagfairConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { DatabaseServer } from "../servers/DatabaseServer";
+import { HashUtil } from "../utils/HashUtil";
 import { JsonUtil } from "../utils/JsonUtil";
 import { TimeUtil } from "../utils/TimeUtil";
 import { Watermark } from "../utils/Watermark";
@@ -29,11 +30,12 @@ export declare class ProfileFixerService {
     protected localisationService: LocalisationService;
     protected timeUtil: TimeUtil;
     protected jsonUtil: JsonUtil;
+    protected hashUtil: HashUtil;
     protected databaseServer: DatabaseServer;
     protected configServer: ConfigServer;
     protected coreConfig: ICoreConfig;
     protected ragfairConfig: IRagfairConfig;
-    constructor(logger: ILogger, watermark: Watermark, hideoutHelper: HideoutHelper, inventoryHelper: InventoryHelper, traderHelper: TraderHelper, profileHelper: ProfileHelper, itemHelper: ItemHelper, localisationService: LocalisationService, timeUtil: TimeUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, configServer: ConfigServer);
+    constructor(logger: ILogger, watermark: Watermark, hideoutHelper: HideoutHelper, inventoryHelper: InventoryHelper, traderHelper: TraderHelper, profileHelper: ProfileHelper, itemHelper: ItemHelper, localisationService: LocalisationService, timeUtil: TimeUtil, jsonUtil: JsonUtil, hashUtil: HashUtil, databaseServer: DatabaseServer, configServer: ConfigServer);
     /**
      * Find issues in the pmc profile data that may cause issues and fix them
      * @param pmcProfile profile to check and fix
@@ -130,13 +132,24 @@ export declare class ProfileFixerService {
      */
     removeLegacyScavCaseProductionCrafts(pmcProfile: IPmcData): void;
     /**
+     * 3.7.0 moved AIDs to be numeric, old profiles need to be migrated
+     * We store the old AID value in new field `sessionId`
+     * @param fullProfile Profile to update
+     */
+    fixIncorrectAidValue(fullProfile: IAkiProfile): void;
+    /**
+     * Bsg nested `stats` into a sub object called 'eft'
+     * @param fullProfile Profile to check for and migrate stats data
+     */
+    migrateStatsToNewStructure(fullProfile: IAkiProfile): void;
+    /**
      * 26126 (7th August) requires bonuses to have an ID, these were not included in the default profile presets
      * @param pmcProfile Profile to add missing IDs to
      */
     addMissingIdsToBonuses(pmcProfile: IPmcData): void;
     /**
      * At some point the property name was changed,migrate data across to new name
-     * @param pmcProfile
+     * @param pmcProfile Profile to migrate improvements in
      */
     protected migrateImprovements(pmcProfile: IPmcData): void;
 }
