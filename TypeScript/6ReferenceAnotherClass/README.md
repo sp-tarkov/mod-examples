@@ -13,7 +13,7 @@ This project is designed to streamline the initial setup process for building an
 
 ## **NodeJS Setup**
 
-Before you begin, ensure to install NodeJS version `v16.17.1`, which has been tested thoroughly with our mod templates and build scripts. Download it from the [official NodeJS website](https://nodejs.org/).
+Before you begin, ensure to install NodeJS version `v18.15.0`, which has been tested thoroughly with our mod templates and build scripts. Download it from the [official NodeJS website](https://nodejs.org/).
 
 After installation, it's advised to reboot your system.
 
