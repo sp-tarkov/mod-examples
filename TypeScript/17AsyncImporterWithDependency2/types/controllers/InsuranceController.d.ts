@@ -9,7 +9,7 @@ import { IGetInsuranceCostRequestData } from "../models/eft/insurance/IGetInsura
 import { IGetInsuranceCostResponseData } from "../models/eft/insurance/IGetInsuranceCostResponseData";
 import { IInsureRequestData } from "../models/eft/insurance/IInsureRequestData";
 import { IItemEventRouterResponse } from "../models/eft/itemEvent/IItemEventRouterResponse";
-import { Insurance } from "../models/eft/profile/IAkiProfile";
+import { Insurance, ISystemData } from "../models/eft/profile/IAkiProfile";
 import { IInsuranceConfig } from "../models/spt/config/IInsuranceConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { EventOutputHolder } from "../routers/EventOutputHolder";
@@ -67,6 +67,14 @@ export declare class InsuranceController {
      */
     protected processInsuredItems(insuranceDetails: Insurance[], sessionID: string): void;
     /**
+     * Remove an insurance package from a profile using the package's system data information.
+     *
+     * @param sessionID The session ID of the profile to remove the package from.
+     * @param index The array index of the insurance package to remove.
+     * @returns void
+     */
+    protected removeInsurancePackageFromProfile(sessionID: string, packageInfo: ISystemData): void;
+    /**
      * Build an array of items to delete from the insured items.
      *
      * This method orchestrates several steps:
@@ -78,7 +86,7 @@ export declare class InsuranceController {
      * @param insured - The insured items to build a removal array from.
      * @returns An array of IDs representing items that should be deleted.
      */
-    protected findItemsToDelete(insured: Insurance): string[];
+    protected findItemsToDelete(insured: Insurance): Set<string>;
     /**
      * Filters an item based on its existence in the database, raid moddability, and slot requirements.
      *
@@ -108,7 +116,7 @@ export declare class InsuranceController {
      * @param toDelete The array accumulating the IDs of items to be deleted.
      * @returns true if the item is marked for deletion, otherwise false.
      */
-    protected makeRollAndMarkForDeletion(item: Item, traderId: string, toDelete: string[]): boolean;
+    protected makeRollAndMarkForDeletion(item: Item, traderId: string, toDelete: Set<string>): boolean;
     /**
      * Groups child items by their parent IDs in a Map data structure.
      *
@@ -127,7 +135,7 @@ export declare class InsuranceController {
      * @param toDelete The array that accumulates the IDs of the items to be deleted.
      * @returns void
      */
-    protected sortAndFilterChildren(children: Item[], traderId: string, toDelete: string[]): void;
+    protected sortAndFilterChildren(children: Item[], traderId: string, toDelete: Set<string>): void;
     /**
      * Remove items from the insured items that should not be returned to the player.
      *
@@ -135,7 +143,7 @@ export declare class InsuranceController {
      * @param toDelete The items that should be deleted.
      * @returns void
      */
-    protected removeItemsFromInsurance(insured: Insurance, toDelete: string[]): void;
+    protected removeItemsFromInsurance(insured: Insurance, toDelete: Set<string>): void;
     /**
      * Handle sending the insurance message to the user that potentially contains the valid insurance items.
      *
@@ -154,7 +162,7 @@ export declare class InsuranceController {
      * @param itemsBeingDeleted List of items that are already slated for removal.
      * @returns true if the insured item should be removed from inventory, false otherwise.
      */
-    protected rollForItemDelete(insuredItem: Item, traderId: string, itemsBeingDeleted: string[]): boolean;
+    protected rollForItemDelete(insuredItem: Item, traderId: string, itemsBeingDeleted: Set<string>): boolean;
     /**
      * Handle Insure event
      * Add insurance to an item

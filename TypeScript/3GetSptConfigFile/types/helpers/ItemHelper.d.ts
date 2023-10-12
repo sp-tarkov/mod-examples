@@ -303,6 +303,7 @@ declare class ItemHelper {
      * @returns Name of item
      */
     getItemName(itemTpl: string): string;
+    getItemTplsOfBaseType(desiredBaseType: string): string[];
 }
 declare namespace ItemHelper {
     interface ItemSize {

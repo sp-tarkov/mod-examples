@@ -92,6 +92,12 @@ export interface IEliminationConfig {
     minDist: number;
     maxKills: number;
     minKills: number;
+    minBossKills: number;
+    maxBossKills: number;
+    weaponCategoryRequirementProb: number;
+    weaponCategoryRequirements: IWeaponRequirement[];
+    weaponRequirementProb: number;
+    weaponRequirements: IWeaponRequirement[];
 }
 export interface ITarget extends IProbabilityObject {
     data: IBossInfo;
@@ -100,6 +106,9 @@ export interface IBossInfo {
     isBoss: boolean;
 }
 export interface IBodyPart extends IProbabilityObject {
+    data: string[];
+}
+export interface IWeaponRequirement extends IProbabilityObject {
     data: string[];
 }
 export interface IProbabilityObject {

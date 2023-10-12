@@ -52,4 +52,6 @@ export interface AirdropLoot {
     itemStackLimits: Record<string, MinMax>;
     /** Armor levels to allow inside crate e.g. [4,5,6] */
     armorLevelWhitelist?: number[];
+    /** Should boss items be added to airdrop crate */
+    allowBossItems: boolean;
 }

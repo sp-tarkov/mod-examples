@@ -62,10 +62,10 @@ export declare class InraidController {
     savePostRaidProgress(offraidData: ISaveProgressRequestData, sessionID: string): void;
     /**
      * Handle updating player profile post-pmc raid
-     * @param sessionID session id
-     * @param offraidData post-raid data
+     * @param sessionID Session id
+     * @param postRaidRequest Post-raid data
      */
-    protected savePmcProgress(sessionID: string, offraidData: ISaveProgressRequestData): void;
+    protected savePmcProgress(sessionID: string, postRaidRequest: ISaveProgressRequestData): void;
     /**
      * Make changes to pmc profile after they've died in raid,
      * Alter bodypart hp, handle insurance, delete inventory items, remove carried quest items
@@ -91,10 +91,10 @@ export declare class InraidController {
     protected reducePmcHealthToPercent(pmcData: IPmcData, multipler: number): void;
     /**
      * Handle updating the profile post-pscav raid
-     * @param sessionID session id
-     * @param offraidData post-raid data of raid
+     * @param sessionID Session id
+     * @param postRaidRequest Post-raid data of raid
      */
-    protected savePlayerScavProgress(sessionID: string, offraidData: ISaveProgressRequestData): void;
+    protected savePlayerScavProgress(sessionID: string, postRaidRequest: ISaveProgressRequestData): void;
     /**
      * Is the player dead after a raid - dead is anything other than "survived" / "runner"
      * @param statusOnExit exit value from offraidData object
