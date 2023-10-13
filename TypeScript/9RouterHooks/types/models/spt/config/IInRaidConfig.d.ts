@@ -8,6 +8,8 @@ export interface IInRaidConfig extends IBaseConfig {
     save: Save;
     /** Names of car extracts */
     carExtracts: string[];
+    /** Names of coop extracts */
+    coopExtracts: string[];
     /** Fene rep gain from a single car extract */
     carExtractBaseStandingGain: number;
     /** Fence rep gain when successfully extracting as pscav */
