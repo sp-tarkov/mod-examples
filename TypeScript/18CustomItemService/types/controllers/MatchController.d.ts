@@ -1,4 +1,5 @@
 import { ApplicationContext } from "../context/ApplicationContext";
+import { LootGenerator } from "../generators/LootGenerator";
 import { ProfileHelper } from "../helpers/ProfileHelper";
 import { TraderHelper } from "../helpers/TraderHelper";
 import { IPmcData } from "../models/eft/common/IPmcData";
@@ -12,16 +13,24 @@ import { IJoinMatchResult } from "../models/eft/match/IJoinMatchResult";
 import { IInRaidConfig } from "../models/spt/config/IInRaidConfig";
 import { IMatchConfig } from "../models/spt/config/IMatchConfig";
 import { IPmcConfig } from "../models/spt/config/IPmcConfig";
+import { ITraderConfig } from "../models/spt/config/ITraderConfig";
 import { ILogger } from "../models/spt/utils/ILogger";
 import { ConfigServer } from "../servers/ConfigServer";
 import { SaveServer } from "../servers/SaveServer";
 import { BotGenerationCacheService } from "../services/BotGenerationCacheService";
 import { BotLootCacheService } from "../services/BotLootCacheService";
+import { MailSendService } from "../services/MailSendService";
 import { MatchLocationService } from "../services/MatchLocationService";
 import { ProfileSnapshotService } from "../services/ProfileSnapshotService";
+import { HashUtil } from "../utils/HashUtil";
+import { RandomUtil } from "../utils/RandomUtil";
+import { TimeUtil } from "../utils/TimeUtil";
 export declare class MatchController {
     protected logger: ILogger;
     protected saveServer: SaveServer;
+    protected timeUtil: TimeUtil;
+    protected randomUtil: RandomUtil;
+    protected hashUtil: HashUtil;
     protected profileHelper: ProfileHelper;
     protected matchLocationService: MatchLocationService;
     protected traderHelper: TraderHelper;
@@ -29,11 +38,14 @@ export declare class MatchController {
     protected configServer: ConfigServer;
     protected profileSnapshotService: ProfileSnapshotService;
     protected botGenerationCacheService: BotGenerationCacheService;
+    protected mailSendService: MailSendService;
+    protected lootGenerator: LootGenerator;
     protected applicationContext: ApplicationContext;
     protected matchConfig: IMatchConfig;
     protected inraidConfig: IInRaidConfig;
+    protected traderConfig: ITraderConfig;
     protected pmcConfig: IPmcConfig;
-    constructor(logger: ILogger, saveServer: SaveServer, profileHelper: ProfileHelper, matchLocationService: MatchLocationService, traderHelper: TraderHelper, botLootCacheService: BotLootCacheService, configServer: ConfigServer, profileSnapshotService: ProfileSnapshotService, botGenerationCacheService: BotGenerationCacheService, applicationContext: ApplicationContext);
+    constructor(logger: ILogger, saveServer: SaveServer, timeUtil: TimeUtil, randomUtil: RandomUtil, hashUtil: HashUtil, profileHelper: ProfileHelper, matchLocationService: MatchLocationService, traderHelper: TraderHelper, botLootCacheService: BotLootCacheService, configServer: ConfigServer, profileSnapshotService: ProfileSnapshotService, botGenerationCacheService: BotGenerationCacheService, mailSendService: MailSendService, lootGenerator: LootGenerator, applicationContext: ApplicationContext);
     getEnabled(): boolean;
     /** Handle raid/profile/list */
     getProfile(info: IGetProfileRequestData): IPmcData[];
@@ -59,6 +71,13 @@ export declare class MatchController {
     protected convertDifficultyDropdownIntoBotDifficulty(botDifficulty: string): string;
     /** Handle client/match/offline/end */
     endOfflineRaid(info: IEndOfflineRaidRequestData, sessionId: string): void;
+    /**
+     * Did player take a COOP extract
+     * @param extractName Name of extract player took
+     * @returns True if coop extract
+     */
+    protected extractWasViaCoop(extractName: string): boolean;
+    protected sendCoopTakenFenceMessage(sessionId: string): void;
     /**
      * Was extract by car
      * @param extractName name of extract

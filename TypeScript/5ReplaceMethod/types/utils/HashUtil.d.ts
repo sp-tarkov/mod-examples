@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import crypto from "crypto";
+import crypto from "node:crypto";
 import { TimeUtil } from "./TimeUtil";
 export declare class HashUtil {
     protected timeUtil: TimeUtil;

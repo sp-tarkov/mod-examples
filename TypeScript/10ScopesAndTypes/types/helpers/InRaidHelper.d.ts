@@ -111,11 +111,11 @@ export declare class InRaidHelper {
      * Add new items found in raid to profile
      * Store insurance items in profile
      * @param sessionID Session id
-     * @param pmcData Profile to update
+     * @param serverProfile Profile to update
      * @param postRaidProfile Profile returned by client after a raid
      * @returns Updated profile
      */
-    setInventory(sessionID: string, pmcData: IPmcData, postRaidProfile: IPmcData): IPmcData;
+    setInventory(sessionID: string, serverProfile: IPmcData, postRaidProfile: IPmcData): IPmcData;
     /**
      * Clear pmc inventory of all items except those that are exempt
      * Used post-raid to remove items after death

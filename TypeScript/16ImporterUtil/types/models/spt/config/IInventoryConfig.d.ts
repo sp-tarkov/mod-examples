@@ -23,4 +23,5 @@ export interface ISealedAirdropContainerSettings {
     weaponModRewardLimits: Record<string, MinMax>;
     rewardTypeLimits: Record<string, MinMax>;
     ammoBoxWhitelist: string[];
+    allowBossItems: boolean;
 }

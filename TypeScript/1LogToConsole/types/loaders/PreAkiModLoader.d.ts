@@ -1,4 +1,5 @@
 import { DependencyContainer } from "tsyringe";
+import { ModDetails } from "../models/eft/profile/IAkiProfile";
 import { ICoreConfig } from "../models/spt/config/ICoreConfig";
 import { IModLoader } from "../models/spt/mod/IModLoader";
 import { IPackageJsonData } from "../models/spt/mod/IPackageJsonData";
@@ -35,6 +36,7 @@ export declare class PreAkiModLoader implements IModLoader {
      */
     getImportedModsNames(): string[];
     getImportedModDetails(): Record<string, IPackageJsonData>;
+    getProfileModsGroupedByModName(profileMods: ModDetails[]): ModDetails[];
     getModPath(mod: string): string;
     protected importMods(): Promise<void>;
     protected sortMods(prev: string, next: string, missingFromOrderJSON: Record<string, boolean>): number;
@@ -64,6 +66,10 @@ export declare class PreAkiModLoader implements IModLoader {
     protected isModCombatibleWithAki(mod: IPackageJsonData): boolean;
     protected executeMods(container: DependencyContainer): Promise<void>;
     sortModsLoadOrder(): string[];
+    /**
+     * Compile mod and add into class property "imported"
+     * @param mod Name of mod to compile/add
+     */
     protected addMod(mod: string): Promise<void>;
     protected autoInstallDependencies(modPath: string, pkg: IPackageJsonData): void;
     protected areModDependenciesFulfilled(pkg: IPackageJsonData, loadedMods: Record<string, IPackageJsonData>): boolean;
