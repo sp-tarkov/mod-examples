@@ -49,7 +49,6 @@ export declare class GameController {
     protected giftService: GiftService;
     protected applicationContext: ApplicationContext;
     protected configServer: ConfigServer;
-    protected os: any;
     protected httpConfig: IHttpConfig;
     protected coreConfig: ICoreConfig;
     protected locationConfig: ILocationConfig;

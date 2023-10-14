@@ -66,6 +66,10 @@ export declare class PreAkiModLoader implements IModLoader {
     protected isModCombatibleWithAki(mod: IPackageJsonData): boolean;
     protected executeMods(container: DependencyContainer): Promise<void>;
     sortModsLoadOrder(): string[];
+    /**
+     * Compile mod and add into class property "imported"
+     * @param mod Name of mod to compile/add
+     */
     protected addMod(mod: string): Promise<void>;
     protected autoInstallDependencies(modPath: string, pkg: IPackageJsonData): void;
     protected areModDependenciesFulfilled(pkg: IPackageJsonData, loadedMods: Record<string, IPackageJsonData>): boolean;

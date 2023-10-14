@@ -1,6 +1,6 @@
 /// <reference types="node" />
 /// <reference types="node" />
-import fs from "fs";
+import fs from "node:fs";
 import "reflect-metadata";
 import { IAsyncQueue } from "../models/spt/utils/IAsyncQueue";
 import { IUUidGenerator } from "../models/spt/utils/IUuidGenerator";

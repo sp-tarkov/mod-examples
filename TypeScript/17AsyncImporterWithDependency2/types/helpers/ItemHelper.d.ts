@@ -226,6 +226,48 @@ declare class ItemHelper {
      */
     isQuestItem(tpl: string): boolean;
     /**
+     * Checks to see if the item is *actually* moddable in-raid. Checks include the items existence in the database, the
+     * parent items existence in the database, the existence (and value) of the items RaidModdable property, and that
+     * the parents slot-required property exists, matches that of the item, and it's value.
+     *
+     * Note: this function does not preform any checks to see if the item and parent are *actually* related.
+     *
+     * @param item The item to be checked
+     * @param parent The parent of the item to be checked
+     * @returns True if the item is actually moddable, false if it is not, and null if the check cannot be performed.
+     */
+    isRaidModdable(item: Item, parent: Item): boolean | null;
+    /**
+     * Retrieves the main parent item for a given attachment item.
+     *
+     * This method traverses up the hierarchy of items starting from a given `itemId`, until it finds the main parent
+     * item that is not an attached attachment itself. In other words, if you pass it an item id of a suppressor, it
+     * will traverse up the muzzle brake, barrel, upper receiver, and return the gun that the suppressor is ultimately
+     * attached to, even if that gun is located within multiple containers.
+     *
+     * It's important to note that traversal is expensive, so this method requires that you pass it a Map of the items
+     * to traverse, where the keys are the item IDs and the values are the corresponding Item objects. This alleviates
+     * some of the performance concerns, as it allows for quick lookups of items by ID.
+     *
+     * To generate the map:
+     * ```
+     * const itemsMap = new Map<string, Item>();
+     * items.forEach(item => itemsMap.set(item._id, item));
+     * ```
+     *
+     * @param itemId - The unique identifier of the item for which to find the main parent.
+     * @param itemsMap - A Map containing item IDs mapped to their corresponding Item objects for quick lookup.
+     * @returns The Item object representing the top-most parent of the given item, or `null` if no such parent exists.
+     */
+    getAttachmentMainParent(itemId: string, itemsMap: Map<string, Item>): Item | null;
+    /**
+     * Determines if an item is an attachment that is currently attached to it's parent item.
+     *
+     * @param item The item to check.
+     * @returns true if the item is attached attachment, otherwise false.
+     */
+    isAttachmentAttached(item: Item): boolean;
+    /**
      * Get the inventory size of an item
      * @param items Item with children
      * @param rootItemId

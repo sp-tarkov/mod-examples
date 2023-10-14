@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import http, { IncomingMessage } from "http";
+import http, { IncomingMessage } from "node:http";
 import WebSocket from "ws";
 import { HttpServerHelper } from "../helpers/HttpServerHelper";
 import { INotification } from "../models/eft/notifier/INotifier";

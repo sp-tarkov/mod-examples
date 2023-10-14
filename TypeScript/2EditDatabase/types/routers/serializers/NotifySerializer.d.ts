@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import { IncomingMessage, ServerResponse } from "http";
+import { IncomingMessage, ServerResponse } from "node:http";
 import { NotifierController } from "../../controllers/NotifierController";
 import { Serializer } from "../../di/Serializer";
 import { HttpServerHelper } from "../../helpers/HttpServerHelper";
