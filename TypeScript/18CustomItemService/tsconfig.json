@@ -2,8 +2,8 @@
     "compilerOptions": {
         "allowJs": true,
         "module": "CommonJS",
-        "target": "es2021",
-        "moduleResolution": "node",
+        "target": "ES2022",
+        "moduleResolution": "Node10",
         "esModuleInterop": true,
         "downlevelIteration": true,
         "experimentalDecorators": true,
@@ -15,9 +15,6 @@
             "@spt-aki/*": ["./types/*"]
         }
     },
-    "lib": [
-        "es2020"
-    ],
     "include": [
         "src/*",
         "src/**/*"
