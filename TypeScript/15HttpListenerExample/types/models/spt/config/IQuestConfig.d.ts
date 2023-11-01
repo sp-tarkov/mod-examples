@@ -1,7 +1,7 @@
-import { MinMax } from "../../../models/common/MinMax";
-import { SeasonalEventType } from "../../../models/enums/SeasonalEventType";
-import { ELocationName } from "../../enums/ELocationName";
-import { IBaseConfig } from "./IBaseConfig";
+import { MinMax } from "@spt-aki/models/common/MinMax";
+import { ELocationName } from "@spt-aki/models/enums/ELocationName";
+import { SeasonalEventType } from "@spt-aki/models/enums/SeasonalEventType";
+import { IBaseConfig } from "@spt-aki/models/spt/config/IBaseConfig";
 export interface IQuestConfig extends IBaseConfig {
     kind: "aki-quest";
     redeemTime: number;
@@ -31,6 +31,7 @@ export interface IEventQuestData {
     yearly: boolean;
 }
 export interface IRepeatableQuestConfig {
+    id: string;
     name: string;
     side: string;
     types: string[];
@@ -62,6 +63,7 @@ export interface ITraderWhitelist {
 export interface IRepeatableQuestTypesConfig {
     Exploration: IExploration;
     Completion: ICompletion;
+    Pickup: IPickup;
     Elimination: IEliminationConfig[];
 }
 export interface IExploration {
@@ -80,6 +82,14 @@ export interface ICompletion {
     useWhitelist: boolean;
     useBlacklist: boolean;
 }
+export interface IPickup {
+    ItemTypeToFetchWithMaxCount: IPickupTypeWithMaxCount[];
+}
+export interface IPickupTypeWithMaxCount {
+    itemType: string;
+    maxPickupCount: number;
+    minPickupCount: number;
+}
 export interface IEliminationConfig {
     levelRange: MinMax;
     targets: ITarget[];
@@ -94,6 +104,8 @@ export interface IEliminationConfig {
     minKills: number;
     minBossKills: number;
     maxBossKills: number;
+    minPmcKills: number;
+    maxPmcKills: number;
     weaponCategoryRequirementProb: number;
     weaponCategoryRequirements: IWeaponRequirement[];
     weaponRequirementProb: number;
@@ -104,6 +116,7 @@ export interface ITarget extends IProbabilityObject {
 }
 export interface IBossInfo {
     isBoss: boolean;
+    isPmc: boolean;
 }
 export interface IBodyPart extends IProbabilityObject {
     data: string[];

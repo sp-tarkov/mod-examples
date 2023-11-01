@@ -1,9 +1,9 @@
-import { OnLoad } from "../di/OnLoad";
-import { OnUpdate } from "../di/OnUpdate";
-import { ILogger } from "../models/spt/utils/ILogger";
-import { LocalisationService } from "../services/LocalisationService";
-import { EncodingUtil } from "./EncodingUtil";
-import { TimeUtil } from "./TimeUtil";
+import { OnLoad } from "@spt-aki/di/OnLoad";
+import { OnUpdate } from "@spt-aki/di/OnUpdate";
+import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
+import { LocalisationService } from "@spt-aki/services/LocalisationService";
+import { EncodingUtil } from "@spt-aki/utils/EncodingUtil";
+import { TimeUtil } from "@spt-aki/utils/TimeUtil";
 export declare class App {
     protected logger: ILogger;
     protected timeUtil: TimeUtil;

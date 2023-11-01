@@ -1,4 +1,4 @@
-import { IProcessBaseTradeRequestData } from "./IProcessBaseTradeRequestData";
+import { IProcessBaseTradeRequestData } from "@spt-aki/models/eft/trade/IProcessBaseTradeRequestData";
 export interface IProcessBuyTradeRequestData extends IProcessBaseTradeRequestData {
     Action: "buy_from_trader" | "TradingConfirm" | "RestoreHealth" | "";
     type: string;

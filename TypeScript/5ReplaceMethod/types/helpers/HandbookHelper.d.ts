@@ -1,4 +1,4 @@
-import { DatabaseServer } from "../servers/DatabaseServer";
+import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 declare class LookupItem<T, I> {
     readonly byId: Map<string, T>;
     readonly byParent: Map<string, I[]>;
