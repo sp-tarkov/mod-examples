@@ -13,6 +13,7 @@ import { IQuestTypePool } from "@spt-aki/models/spt/repeatable/IQuestTypePool";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 import { EventOutputHolder } from "@spt-aki/routers/EventOutputHolder";
 import { ConfigServer } from "@spt-aki/servers/ConfigServer";
+import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 import { PaymentService } from "@spt-aki/services/PaymentService";
 import { ProfileFixerService } from "@spt-aki/services/ProfileFixerService";
 import { HttpResponseUtil } from "@spt-aki/utils/HttpResponseUtil";
@@ -21,8 +22,9 @@ import { ObjectId } from "@spt-aki/utils/ObjectId";
 import { RandomUtil } from "@spt-aki/utils/RandomUtil";
 import { TimeUtil } from "@spt-aki/utils/TimeUtil";
 export declare class RepeatableQuestController {
-    protected timeUtil: TimeUtil;
     protected logger: ILogger;
+    protected databaseServer: DatabaseServer;
+    protected timeUtil: TimeUtil;
     protected randomUtil: RandomUtil;
     protected httpResponse: HttpResponseUtil;
     protected jsonUtil: JsonUtil;
@@ -37,7 +39,7 @@ export declare class RepeatableQuestController {
     protected questHelper: QuestHelper;
     protected configServer: ConfigServer;
     protected questConfig: IQuestConfig;
-    constructor(timeUtil: TimeUtil, logger: ILogger, randomUtil: RandomUtil, httpResponse: HttpResponseUtil, jsonUtil: JsonUtil, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, ragfairServerHelper: RagfairServerHelper, eventOutputHolder: EventOutputHolder, paymentService: PaymentService, objectId: ObjectId, repeatableQuestGenerator: RepeatableQuestGenerator, repeatableQuestHelper: RepeatableQuestHelper, questHelper: QuestHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, timeUtil: TimeUtil, randomUtil: RandomUtil, httpResponse: HttpResponseUtil, jsonUtil: JsonUtil, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, ragfairServerHelper: RagfairServerHelper, eventOutputHolder: EventOutputHolder, paymentService: PaymentService, objectId: ObjectId, repeatableQuestGenerator: RepeatableQuestGenerator, repeatableQuestHelper: RepeatableQuestHelper, questHelper: QuestHelper, configServer: ConfigServer);
     /**
      * Handle client/repeatalbeQuests/activityPeriods
      * Returns an array of objects in the format of repeatable quests to the client.
@@ -64,6 +66,13 @@ export declare class RepeatableQuestController {
      * @returns  {array}                    array of "repeatableQuestObjects" as descibed above
      */
     getClientRepeatableQuests(_info: IEmptyRequestData, sessionID: string): IPmcDataRepeatableQuest[];
+    /**
+     * Get the number of quests to generate - takes into account charisma state of player
+     * @param repeatableConfig Config
+     * @param pmcData Player profile
+     * @returns Quest count
+     */
+    protected getQuestCount(repeatableConfig: IRepeatableQuestConfig, pmcData: IPmcData): number;
     /**
      * Get repeatable quest data from profile from name (daily/weekly), creates base repeatable quest object if none exists
      * @param repeatableConfig daily/weekly config

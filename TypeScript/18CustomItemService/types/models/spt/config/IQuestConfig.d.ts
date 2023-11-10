@@ -55,6 +55,8 @@ export interface IRewardScaling {
     items: number[];
     reputation: number[];
     rewardSpread: number;
+    skillRewardChance: number[];
+    skillPointReward: number[];
 }
 export interface ITraderWhitelist {
     traderId: string;
@@ -66,7 +68,7 @@ export interface IRepeatableQuestTypesConfig {
     Pickup: IPickup;
     Elimination: IEliminationConfig[];
 }
-export interface IExploration {
+export interface IExploration extends IBaseQuestConfig {
     maxExtracts: number;
     specificExits: ISpecificExits;
 }
@@ -74,7 +76,7 @@ export interface ISpecificExits {
     probability: number;
     passageRequirementWhitelist: string[];
 }
-export interface ICompletion {
+export interface ICompletion extends IBaseQuestConfig {
     minRequestedAmount: number;
     maxRequestedAmount: number;
     minRequestedBulletAmount: number;
@@ -82,7 +84,7 @@ export interface ICompletion {
     useWhitelist: boolean;
     useBlacklist: boolean;
 }
-export interface IPickup {
+export interface IPickup extends IBaseQuestConfig {
     ItemTypeToFetchWithMaxCount: IPickupTypeWithMaxCount[];
 }
 export interface IPickupTypeWithMaxCount {
@@ -90,7 +92,7 @@ export interface IPickupTypeWithMaxCount {
     maxPickupCount: number;
     minPickupCount: number;
 }
-export interface IEliminationConfig {
+export interface IEliminationConfig extends IBaseQuestConfig {
     levelRange: MinMax;
     targets: ITarget[];
     bodyPartProb: number;
@@ -110,6 +112,9 @@ export interface IEliminationConfig {
     weaponCategoryRequirements: IWeaponRequirement[];
     weaponRequirementProb: number;
     weaponRequirements: IWeaponRequirement[];
+}
+export interface IBaseQuestConfig {
+    possibleSkillRewards: string[];
 }
 export interface ITarget extends IProbabilityObject {
     data: IBossInfo;

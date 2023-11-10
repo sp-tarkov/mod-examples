@@ -179,7 +179,7 @@ export declare class BotEquipmentModGenerator {
      * Ammo is not put into the magazine directly but assigned to the magazine's slots: The "camora_xxx" slots.
      * This function is a helper called by generateModsForItem for mods with parent type "CylinderMagazine"
      * @param items The items where the CylinderMagazine's camora are appended to
-     * @param modPool modPool which should include available cartrigdes
+     * @param modPool modPool which should include available cartridges
      * @param parentId The CylinderMagazine's UID
      * @param parentTemplate The CylinderMagazine's template
      */

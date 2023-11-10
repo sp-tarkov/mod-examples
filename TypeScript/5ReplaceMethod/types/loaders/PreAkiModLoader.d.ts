@@ -29,7 +29,7 @@ export declare class PreAkiModLoader implements IModLoader {
     protected imported: Record<string, IPackageJsonData>;
     protected akiConfig: ICoreConfig;
     protected serverDependencies: Record<string, string>;
-    protected skippedMods: string[];
+    protected skippedMods: Set<string>;
     constructor(logger: ILogger, vfs: VFS, jsonUtil: JsonUtil, modCompilerService: ModCompilerService, bundleLoader: BundleLoader, localisationService: LocalisationService, configServer: ConfigServer, modLoadOrder: ModLoadOrder, modTypeCheck: ModTypeCheck);
     load(container: DependencyContainer): Promise<void>;
     /**
@@ -44,27 +44,22 @@ export declare class PreAkiModLoader implements IModLoader {
     protected sortMods(prev: string, next: string, missingFromOrderJSON: Record<string, boolean>): number;
     /**
      * Check for duplicate mods loaded, show error if any
-     * @param modPackageData Dictionary of mod package.json data
+     * @param modPackageData map of mod package.json data
      */
-    protected checkForDuplicateMods(modPackageData: Record<string, IPackageJsonData>): void;
+    protected checkForDuplicateMods(modPackageData: Map<string, IPackageJsonData>): void;
     /**
-     * Check for and return duplicate strings inside an array
-     * @param stringArray Array to check for duplicates
-     * @returns string array of duplicates, empty if none found
-     */
-    protected getDuplicates(stringArray: string[]): string[];
-    /**
-     * Get an array of mods with errors that prevent them from working with SPT
+     * Returns an array of valid mods.
+     *
      * @param mods mods to validate
-     * @returns Mod names as array
+     * @returns array of mod folder names
      */
-    protected getBrokenMods(mods: string[]): string[];
+    protected getValidMods(mods: string[]): string[];
     /**
      * Get packageJson data for mods
      * @param mods mods to get packageJson for
-     * @returns dictionary <modName - package.json>
+     * @returns map <modFolderName - package.json>
      */
-    protected getModsPackageData(mods: string[]): Record<string, IPackageJsonData>;
+    protected getModsPackageData(mods: string[]): Map<string, IPackageJsonData>;
     /**
      * Is the passed in mod compatible with the running server version
      * @param mod Mod to check compatibiltiy with AKI
@@ -86,10 +81,17 @@ export declare class PreAkiModLoader implements IModLoader {
      * Compile mod and add into class property "imported"
      * @param mod Name of mod to compile/add
      */
-    protected addModAsync(mod: string): Promise<void>;
+    protected addModAsync(mod: string, pkg: IPackageJsonData): Promise<void>;
+    /**
+     * Checks if a given mod should be loaded or skipped.
+     *
+     * @param pkg mod package.json data
+     * @returns
+     */
+    protected shouldSkipMod(pkg: IPackageJsonData): boolean;
     protected autoInstallDependencies(modPath: string, pkg: IPackageJsonData): void;
-    protected areModDependenciesFulfilled(pkg: IPackageJsonData, loadedMods: Record<string, IPackageJsonData>): boolean;
-    protected isModCompatible(mod: IPackageJsonData, loadedMods: Record<string, IPackageJsonData>): boolean;
+    protected areModDependenciesFulfilled(pkg: IPackageJsonData, loadedMods: Map<string, IPackageJsonData>): boolean;
+    protected isModCompatible(mod: IPackageJsonData, loadedMods: Map<string, IPackageJsonData>): boolean;
     /**
      * Validate a mod passes a number of checks
      * @param modName name of mod in /mods/ to validate

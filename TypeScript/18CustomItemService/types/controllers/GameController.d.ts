@@ -61,6 +61,10 @@ export declare class GameController {
      * Handle client/game/start
      */
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
+    /**
+     * Out of date/incorrectly made trader mods forget this data
+     */
+    protected checkTraderRepairValuesExist(): void;
     protected addCustomLooseLootPositions(): void;
     protected adjustLooseLootSpawnProbabilities(): void;
     protected setHideoutAreasAndCraftsTo40Secs(): void;

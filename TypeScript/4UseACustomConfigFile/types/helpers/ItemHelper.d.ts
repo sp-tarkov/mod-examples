@@ -7,6 +7,7 @@ import { ITemplateItem } from "@spt-aki/models/eft/common/tables/ITemplateItem";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 import { ItemBaseClassService } from "@spt-aki/services/ItemBaseClassService";
+import { ItemFilterService } from "@spt-aki/services/ItemFilterService";
 import { LocaleService } from "@spt-aki/services/LocaleService";
 import { LocalisationService } from "@spt-aki/services/LocalisationService";
 import { HashUtil } from "@spt-aki/utils/HashUtil";
@@ -24,10 +25,11 @@ declare class ItemHelper {
     protected databaseServer: DatabaseServer;
     protected handbookHelper: HandbookHelper;
     protected itemBaseClassService: ItemBaseClassService;
+    protected itemFilterService: ItemFilterService;
     protected localisationService: LocalisationService;
     protected localeService: LocaleService;
     protected readonly defaultInvalidBaseTypes: string[];
-    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, randomUtil: RandomUtil, objectId: ObjectId, mathUtil: MathUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, itemBaseClassService: ItemBaseClassService, localisationService: LocalisationService, localeService: LocaleService);
+    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, randomUtil: RandomUtil, objectId: ObjectId, mathUtil: MathUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, itemBaseClassService: ItemBaseClassService, itemFilterService: ItemFilterService, localisationService: LocalisationService, localeService: LocaleService);
     /**
      * Checks if an id is a valid item. Valid meaning that it's an item that be stored in stash
      * @param       {string}    tpl       the template id / tpl

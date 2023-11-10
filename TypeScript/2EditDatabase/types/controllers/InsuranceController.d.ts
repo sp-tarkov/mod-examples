@@ -8,7 +8,7 @@ import { IGetInsuranceCostRequestData } from "@spt-aki/models/eft/insurance/IGet
 import { IGetInsuranceCostResponseData } from "@spt-aki/models/eft/insurance/IGetInsuranceCostResponseData";
 import { IInsureRequestData } from "@spt-aki/models/eft/insurance/IInsureRequestData";
 import { IItemEventRouterResponse } from "@spt-aki/models/eft/itemEvent/IItemEventRouterResponse";
-import { Insurance, ISystemData } from "@spt-aki/models/eft/profile/IAkiProfile";
+import { ISystemData, Insurance } from "@spt-aki/models/eft/profile/IAkiProfile";
 import { IInsuranceConfig } from "@spt-aki/models/spt/config/IInsuranceConfig";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 import { EventOutputHolder } from "@spt-aki/routers/EventOutputHolder";

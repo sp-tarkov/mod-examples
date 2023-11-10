@@ -83,7 +83,7 @@ export declare class BotLootGenerator {
      * @param equipmentSlot slot to place the preset in (backpack)
      * @param templateInventory bots template, assault.json
      * @param modChances chances for mods to spawn on weapon
-     * @param botRole bots role, .e.g. pmcBot
+     * @param botRole bots role .e.g. pmcBot
      * @param isPmc are we generating for a pmc
      */
     protected addLooseWeaponsToInventorySlot(sessionId: string, botInventory: PmcInventory, equipmentSlot: string, templateInventory: Inventory, modChances: ModsChances, botRole: string, isPmc: boolean, botLevel: number): void;
@@ -120,16 +120,16 @@ export declare class BotLootGenerator {
     protected itemHasReachedSpawnLimit(itemTemplate: ITemplateItem, botRole: string, isPmc: boolean, limitCount: Record<string, number>, itemSpawnLimits: Record<string, number>): boolean;
     /**
      * Randomise the stack size of a money object, uses different values for pmc or scavs
-     * @param isPmc is this a PMC
-     * @param itemTemplate item details
-     * @param moneyItem Money stack to randomise
+     * @param isPmc Is money on a PMC bot
+     * @param itemTemplate item details from db
+     * @param moneyItem Money item to randomise
      */
     protected randomiseMoneyStackSize(isPmc: boolean, itemTemplate: ITemplateItem, moneyItem: Item): void;
     /**
      * Randomise the size of an ammo stack
-     * @param isPmc is this a PMC
-     * @param itemTemplate item details
-     * @param ammoItem Ammo stack to randomise
+     * @param isPmc Is ammo on a PMC bot
+     * @param itemTemplate item details from db
+     * @param ammoItem Ammo item to randomise
      */
     protected randomiseAmmoStackSize(isPmc: boolean, itemTemplate: ITemplateItem, ammoItem: Item): void;
     /**

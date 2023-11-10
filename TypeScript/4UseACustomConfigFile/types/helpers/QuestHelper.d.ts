@@ -6,7 +6,7 @@ import { QuestConditionHelper } from "@spt-aki/helpers/QuestConditionHelper";
 import { RagfairServerHelper } from "@spt-aki/helpers/RagfairServerHelper";
 import { TraderHelper } from "@spt-aki/helpers/TraderHelper";
 import { IPmcData } from "@spt-aki/models/eft/common/IPmcData";
-import { IQuestStatus } from "@spt-aki/models/eft/common/tables/IBotBase";
+import { Common, IQuestStatus } from "@spt-aki/models/eft/common/tables/IBotBase";
 import { Item } from "@spt-aki/models/eft/common/tables/IItem";
 import { AvailableForConditions, AvailableForProps, IQuest, Reward } from "@spt-aki/models/eft/common/tables/IQuest";
 import { IItemEventRouterResponse } from "@spt-aki/models/eft/itemEvent/IItemEventRouterResponse";
@@ -66,14 +66,12 @@ export declare class QuestHelper {
      */
     getDeltaQuests(before: IQuest[], after: IQuest[]): IQuest[];
     /**
-     * Increase skill points of a skill on player profile
-     * Dupe of PlayerService.incrementSkillLevel()
-     * @param sessionID Session id
-     * @param pmcData Player profile
-     * @param skillName Name of skill to increase skill points of
-     * @param progressAmount Amount of skill points to add to skill
+     * Adjust skill experience for low skill levels, mimicing the official client
+     * @param profileSkill the skill experience is being added to
+     * @param progressAmount the amount of experience being added to the skill
+     * @returns the adjusted skill progress gain
      */
-    rewardSkillPoints(sessionID: string, pmcData: IPmcData, skillName: string, progressAmount: number): void;
+    adjustSkillExpForLowLevels(profileSkill: Common, progressAmount: number): number;
     /**
      * Get quest name by quest id
      * @param questId id to get

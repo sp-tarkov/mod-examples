@@ -8,7 +8,7 @@ import { Exit } from "@spt-aki/models/eft/common/ILocationBase";
 import { TraderInfo } from "@spt-aki/models/eft/common/tables/IBotBase";
 import { ICompletion, ICompletionAvailableFor, IElimination, IEliminationCondition, IExploration, IExplorationCondition, IPickup, IRepeatableQuest, IReward, IRewards } from "@spt-aki/models/eft/common/tables/IRepeatableQuests";
 import { ITemplateItem } from "@spt-aki/models/eft/common/tables/ITemplateItem";
-import { IBossInfo, IEliminationConfig, IQuestConfig, IRepeatableQuestConfig } from "@spt-aki/models/spt/config/IQuestConfig";
+import { IBaseQuestConfig, IBossInfo, IEliminationConfig, IQuestConfig, IRepeatableQuestConfig } from "@spt-aki/models/spt/config/IQuestConfig";
 import { IQuestTypePool } from "@spt-aki/models/spt/repeatable/IQuestTypePool";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 import { EventOutputHolder } from "@spt-aki/routers/EventOutputHolder";
@@ -155,7 +155,7 @@ export declare class RepeatableQuestGenerator {
      * @param   {object}    repeatableConfig    The configuration for the repeatably kind (daily, weekly) as configured in QuestConfig for the requestd quest
      * @returns {object}                        object of "Reward"-type that can be given for a repeatable mission
      */
-    protected generateReward(pmcLevel: number, difficulty: number, traderId: string, repeatableConfig: IRepeatableQuestConfig): IRewards;
+    protected generateReward(pmcLevel: number, difficulty: number, traderId: string, repeatableConfig: IRepeatableQuestConfig, questConfig: IBaseQuestConfig): IRewards;
     /**
      * Select a number of items that have a colelctive value of the passed in parameter
      * @param repeatableConfig Config

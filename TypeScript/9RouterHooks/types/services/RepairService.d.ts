@@ -1,5 +1,5 @@
 import { ItemHelper } from "@spt-aki/helpers/ItemHelper";
-import { QuestHelper } from "@spt-aki/helpers/QuestHelper";
+import { ProfileHelper } from "@spt-aki/helpers/ProfileHelper";
 import { RepairHelper } from "@spt-aki/helpers/RepairHelper";
 import { TraderHelper } from "@spt-aki/helpers/TraderHelper";
 import { WeightedRandomHelper } from "@spt-aki/helpers/WeightedRandomHelper";
@@ -9,6 +9,7 @@ import { ITemplateItem } from "@spt-aki/models/eft/common/tables/ITemplateItem";
 import { IItemEventRouterResponse } from "@spt-aki/models/eft/itemEvent/IItemEventRouterResponse";
 import { RepairKitsInfo } from "@spt-aki/models/eft/repair/IRepairActionDataRequest";
 import { RepairItem } from "@spt-aki/models/eft/repair/ITraderRepairActionDataRequest";
+import { SkillTypes } from "@spt-aki/models/enums/SkillTypes";
 import { BonusSettings, IRepairConfig } from "@spt-aki/models/spt/config/IRepairConfig";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 import { ConfigServer } from "@spt-aki/servers/ConfigServer";
@@ -19,7 +20,7 @@ import { RandomUtil } from "@spt-aki/utils/RandomUtil";
 export declare class RepairService {
     protected logger: ILogger;
     protected databaseServer: DatabaseServer;
-    protected questHelper: QuestHelper;
+    protected profileHelper: ProfileHelper;
     protected randomUtil: RandomUtil;
     protected itemHelper: ItemHelper;
     protected traderHelper: TraderHelper;
@@ -29,7 +30,7 @@ export declare class RepairService {
     protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected repairConfig: IRepairConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, questHelper: QuestHelper, randomUtil: RandomUtil, itemHelper: ItemHelper, traderHelper: TraderHelper, weightedRandomHelper: WeightedRandomHelper, paymentService: PaymentService, repairHelper: RepairHelper, localisationService: LocalisationService, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, profileHelper: ProfileHelper, randomUtil: RandomUtil, itemHelper: ItemHelper, traderHelper: TraderHelper, weightedRandomHelper: WeightedRandomHelper, paymentService: PaymentService, repairHelper: RepairHelper, localisationService: LocalisationService, configServer: ConfigServer);
     /**
      * Use trader to repair an items durability
      * @param sessionID Session id
@@ -57,6 +58,12 @@ export declare class RepairService {
      */
     addRepairSkillPoints(sessionId: string, repairDetails: RepairDetails, pmcData: IPmcData): void;
     /**
+     * Return an appromixation of the amount of skill points live would return for the given repairDetails
+     * @param repairDetails the repair details to calculate skill points for
+     * @returns the number of skill points to reward the user
+     */
+    protected getWeaponRepairSkillPoints(repairDetails: RepairDetails): number;
+    /**
      *
      * @param sessionId Session id
      * @param pmcData Profile to update repaired item in
@@ -81,6 +88,13 @@ export declare class RepairService {
      * @returns Multiplier value
      */
     protected getBonusMultiplierValue(skillBonusName: string, pmcData: IPmcData): number;
+    /**
+     * Should a repair kit apply total durability loss on repair
+     * @param pmcData Player profile
+     * @param applyRandomizeDurabilityLoss Value from repair config
+     * @returns True if loss should be applied
+     */
+    protected shouldRepairKitApplyDurabilityLoss(pmcData: IPmcData, applyRandomizeDurabilityLoss: boolean): boolean;
     /**
      * Update repair kits Resource object if it doesn't exist
      * @param repairKitDetails Repair kit details from db
@@ -112,7 +126,7 @@ export declare class RepairService {
      * @param itemTemplate Item to check for skill
      * @returns Skill name
      */
-    protected getItemSkillType(itemTemplate: ITemplateItem): string;
+    protected getItemSkillType(itemTemplate: ITemplateItem): SkillTypes;
     /**
      * Ensure multiplier is between 1 and 0.01
      * @param receiveDurabilityMaxPercent Max durabiltiy percent
@@ -123,6 +137,7 @@ export declare class RepairService {
 }
 export declare class RepairDetails {
     repairCost?: number;
+    repairPoints?: number;
     repairedItem: Item;
     repairedItemIsArmor: boolean;
     repairAmount: number;

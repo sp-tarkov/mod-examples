@@ -1,11 +1,13 @@
 import { ItemHelper } from "@spt-aki/helpers/ItemHelper";
 import { IPmcData } from "@spt-aki/models/eft/common/IPmcData";
-import { CounterKeyValue, Stats } from "@spt-aki/models/eft/common/tables/IBotBase";
+import { Common, CounterKeyValue, Stats } from "@spt-aki/models/eft/common/tables/IBotBase";
 import { IAkiProfile } from "@spt-aki/models/eft/profile/IAkiProfile";
 import { IValidateNicknameRequestData } from "@spt-aki/models/eft/profile/IValidateNicknameRequestData";
+import { SkillTypes } from "@spt-aki/models/enums/SkillTypes";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 import { SaveServer } from "@spt-aki/servers/SaveServer";
+import { LocalisationService } from "@spt-aki/services/LocalisationService";
 import { ProfileSnapshotService } from "@spt-aki/services/ProfileSnapshotService";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 import { TimeUtil } from "@spt-aki/utils/TimeUtil";
@@ -19,7 +21,8 @@ export declare class ProfileHelper {
     protected databaseServer: DatabaseServer;
     protected itemHelper: ItemHelper;
     protected profileSnapshotService: ProfileSnapshotService;
-    constructor(logger: ILogger, jsonUtil: JsonUtil, watermark: Watermark, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, itemHelper: ItemHelper, profileSnapshotService: ProfileSnapshotService);
+    protected localisationService: LocalisationService;
+    constructor(logger: ILogger, jsonUtil: JsonUtil, watermark: Watermark, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, itemHelper: ItemHelper, profileSnapshotService: ProfileSnapshotService, localisationService: LocalisationService);
     /**
      * Remove/reset a completed quest condtion from players profile quest data
      * @param sessionID Session id
@@ -101,4 +104,21 @@ export declare class ProfileHelper {
      * @param keyToIncrement Key
      */
     incrementStatCounter(counters: CounterKeyValue[], keyToIncrement: string): void;
+    /**
+     * Check if player has a skill at elite level
+     * @param skillType Skill to check
+     * @param pmcProfile Profile to find skill in
+     * @returns True if player has skill at elite level
+     */
+    hasEliteSkillLevel(skillType: SkillTypes, pmcProfile: IPmcData): boolean;
+    /**
+     * Add points to a specific skill in player profile
+     * @param skill Skill to add points to
+     * @param pointsToAdd Points to add
+     * @param pmcProfile Player profile with skill
+     * @param useSkillProgressRateMultipler Skills are multiplied by a value in globals, default is off to maintain compatibility with legacy code
+     * @returns
+     */
+    addSkillPointsToPlayer(pmcProfile: IPmcData, skill: SkillTypes, pointsToAdd: number, useSkillProgressRateMultipler?: boolean): void;
+    getSkillFromProfile(pmcData: IPmcData, skill: SkillTypes): Common;
 }

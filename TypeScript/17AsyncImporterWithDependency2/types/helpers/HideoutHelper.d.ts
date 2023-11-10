@@ -1,7 +1,7 @@
 import { InventoryHelper } from "@spt-aki/helpers/InventoryHelper";
 import { ProfileHelper } from "@spt-aki/helpers/ProfileHelper";
 import { IPmcData } from "@spt-aki/models/eft/common/IPmcData";
-import { Common, HideoutArea, IHideoutImprovement, Production, Productive } from "@spt-aki/models/eft/common/tables/IBotBase";
+import { HideoutArea, IHideoutImprovement, Production, Productive } from "@spt-aki/models/eft/common/tables/IBotBase";
 import { Upd } from "@spt-aki/models/eft/common/tables/IItem";
 import { StageBonus } from "@spt-aki/models/eft/hideout/IHideoutArea";
 import { IHideoutContinuousProductionStartRequestData } from "@spt-aki/models/eft/hideout/IHideoutContinuousProductionStartRequestData";
@@ -202,21 +202,9 @@ export declare class HideoutHelper {
      */
     protected getBTCSlots(pmcData: IPmcData): number;
     /**
-     * Does profile have elite hideout management skill
-     * @param pmcData Profile to look at
-     * @returns True if profile has skill
-     */
-    protected hasEliteHideoutManagementSkill(pmcData: IPmcData): boolean;
-    /**
      * Get a count of bitcoins player miner can hold
      */
     protected getBitcoinMinerContainerSlotSize(): number;
-    /**
-     * Get the hideout management skill from player profile
-     * @param pmcData Profile to look at
-     * @returns Hideout management skill object
-     */
-    protected getHideoutManagementSkill(pmcData: IPmcData): Common;
     /**
      * HideoutManagement skill gives a consumption bonus the higher the level
      * 0.5% per level per 1-51, (25.5% at max)

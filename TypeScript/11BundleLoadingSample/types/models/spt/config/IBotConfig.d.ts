@@ -102,6 +102,8 @@ export interface EquipmentFilters {
     weightingAdjustmentsByBotLevel: WeightingAdjustmentDetails[];
     /** Same as weightingAdjustments but based on player level instead of bot level */
     weightingAdjustmentsByPlayerLevel?: WeightingAdjustmentDetails[];
+    /** Should the stock mod be forced to spawn on bot */
+    forceStock: boolean;
 }
 export interface ModLimits {
     /** How many scopes are allowed on a weapon - hard coded to work with OPTIC_SCOPE, ASSAULT_SCOPE, COLLIMATOR, COMPACT_COLLIMATOR */
