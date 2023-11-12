@@ -138,12 +138,22 @@ export declare class InventoryController {
     tagItem(pmcData: IPmcData, body: IInventoryTagRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * Bind an inventory item to the quick access menu at bottom of player screen
+     * Handle bind event
      * @param pmcData Player profile
      * @param bindRequest Reqeust object
      * @param sessionID Session id
      * @returns IItemEventRouterResponse
      */
     bindItem(pmcData: IPmcData, bindRequest: IInventoryBindRequestData, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Unbind an inventory item from quick access menu at bottom of player screen
+     * Handle unbind event
+     * @param pmcData Player profile
+     * @param bindRequest Request object
+     * @param sessionID Session id
+     * @returns IItemEventRouterResponse
+     */
+    unbindItem(pmcData: IPmcData, request: IInventoryBindRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * Handles examining an item
      * @param pmcData player profile
