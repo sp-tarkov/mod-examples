@@ -1,7 +1,7 @@
-import { GenerationData } from "../../../models/eft/common/tables/IBotType";
-import { MinMax } from "../../common/MinMax";
-import { IBaseConfig } from "./IBaseConfig";
-import { IBotDurability } from "./IBotDurability";
+import { MinMax } from "@spt-aki/models/common/MinMax";
+import { GenerationData } from "@spt-aki/models/eft/common/tables/IBotType";
+import { IBaseConfig } from "@spt-aki/models/spt/config/IBaseConfig";
+import { IBotDurability } from "@spt-aki/models/spt/config/IBotDurability";
 export interface IBotConfig extends IBaseConfig {
     kind: "aki-bot";
     /** How many variants of each bot should be generated on raid start */
@@ -102,6 +102,8 @@ export interface EquipmentFilters {
     weightingAdjustmentsByBotLevel: WeightingAdjustmentDetails[];
     /** Same as weightingAdjustments but based on player level instead of bot level */
     weightingAdjustmentsByPlayerLevel?: WeightingAdjustmentDetails[];
+    /** Should the stock mod be forced to spawn on bot */
+    forceStock: boolean;
 }
 export interface ModLimits {
     /** How many scopes are allowed on a weapon - hard coded to work with OPTIC_SCOPE, ASSAULT_SCOPE, COLLIMATOR, COMPACT_COLLIMATOR */

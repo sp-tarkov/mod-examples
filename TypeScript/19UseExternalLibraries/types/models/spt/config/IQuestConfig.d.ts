@@ -1,7 +1,7 @@
-import { MinMax } from "../../../models/common/MinMax";
-import { SeasonalEventType } from "../../../models/enums/SeasonalEventType";
-import { ELocationName } from "../../enums/ELocationName";
-import { IBaseConfig } from "./IBaseConfig";
+import { MinMax } from "@spt-aki/models/common/MinMax";
+import { ELocationName } from "@spt-aki/models/enums/ELocationName";
+import { SeasonalEventType } from "@spt-aki/models/enums/SeasonalEventType";
+import { IBaseConfig } from "@spt-aki/models/spt/config/IBaseConfig";
 export interface IQuestConfig extends IBaseConfig {
     kind: "aki-quest";
     redeemTime: number;
@@ -31,6 +31,7 @@ export interface IEventQuestData {
     yearly: boolean;
 }
 export interface IRepeatableQuestConfig {
+    id: string;
     name: string;
     side: string;
     types: string[];
@@ -54,6 +55,8 @@ export interface IRewardScaling {
     items: number[];
     reputation: number[];
     rewardSpread: number;
+    skillRewardChance: number[];
+    skillPointReward: number[];
 }
 export interface ITraderWhitelist {
     traderId: string;
@@ -62,9 +65,10 @@ export interface ITraderWhitelist {
 export interface IRepeatableQuestTypesConfig {
     Exploration: IExploration;
     Completion: ICompletion;
+    Pickup: IPickup;
     Elimination: IEliminationConfig[];
 }
-export interface IExploration {
+export interface IExploration extends IBaseQuestConfig {
     maxExtracts: number;
     specificExits: ISpecificExits;
 }
@@ -72,7 +76,7 @@ export interface ISpecificExits {
     probability: number;
     passageRequirementWhitelist: string[];
 }
-export interface ICompletion {
+export interface ICompletion extends IBaseQuestConfig {
     minRequestedAmount: number;
     maxRequestedAmount: number;
     minRequestedBulletAmount: number;
@@ -80,7 +84,15 @@ export interface ICompletion {
     useWhitelist: boolean;
     useBlacklist: boolean;
 }
-export interface IEliminationConfig {
+export interface IPickup extends IBaseQuestConfig {
+    ItemTypeToFetchWithMaxCount: IPickupTypeWithMaxCount[];
+}
+export interface IPickupTypeWithMaxCount {
+    itemType: string;
+    maxPickupCount: number;
+    minPickupCount: number;
+}
+export interface IEliminationConfig extends IBaseQuestConfig {
     levelRange: MinMax;
     targets: ITarget[];
     bodyPartProb: number;
@@ -94,16 +106,22 @@ export interface IEliminationConfig {
     minKills: number;
     minBossKills: number;
     maxBossKills: number;
+    minPmcKills: number;
+    maxPmcKills: number;
     weaponCategoryRequirementProb: number;
     weaponCategoryRequirements: IWeaponRequirement[];
     weaponRequirementProb: number;
     weaponRequirements: IWeaponRequirement[];
+}
+export interface IBaseQuestConfig {
+    possibleSkillRewards: string[];
 }
 export interface ITarget extends IProbabilityObject {
     data: IBossInfo;
 }
 export interface IBossInfo {
     isBoss: boolean;
+    isPmc: boolean;
 }
 export interface IBodyPart extends IProbabilityObject {
     data: string[];

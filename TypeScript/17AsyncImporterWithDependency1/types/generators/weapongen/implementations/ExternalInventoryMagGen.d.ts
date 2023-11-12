@@ -1,9 +1,9 @@
-import { BotWeaponGeneratorHelper } from "../../../helpers/BotWeaponGeneratorHelper";
-import { ItemHelper } from "../../../helpers/ItemHelper";
-import { ILogger } from "../../../models/spt/utils/ILogger";
-import { LocalisationService } from "../../../services/LocalisationService";
-import { IInventoryMagGen } from "../IInventoryMagGen";
-import { InventoryMagGen } from "../InventoryMagGen";
+import { IInventoryMagGen } from "@spt-aki/generators/weapongen/IInventoryMagGen";
+import { InventoryMagGen } from "@spt-aki/generators/weapongen/InventoryMagGen";
+import { BotWeaponGeneratorHelper } from "@spt-aki/helpers/BotWeaponGeneratorHelper";
+import { ItemHelper } from "@spt-aki/helpers/ItemHelper";
+import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
+import { LocalisationService } from "@spt-aki/services/LocalisationService";
 export declare class ExternalInventoryMagGen implements IInventoryMagGen {
     protected logger: ILogger;
     protected itemHelper: ItemHelper;
