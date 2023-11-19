@@ -120,13 +120,6 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
                                     .addLoyaltyLevel(1)
                                     .export(tables.traders[baseJson._id]);
 
-
-        // Add some singular items to trader (items without sub-items e.g. milk/bandage)
-        //this.traderHeper.addSingleItemsToTrader(tables, baseJson._id);
-
-        // Add more complex items to trader (items with sub-items, e.g. guns)
-        //this.traderHeper.addComplexItemsToTrader(tables, baseJson._id, jsonUtil);
-
         // Add trader to locale file, ensures trader text shows properly on screen
         // WARNING: adds the same text to ALL locales (e.g. chinese/french/english)
         this.traderHelper.addTraderToLocales(baseJson, tables, baseJson.name, "Cat", baseJson.nickname, baseJson.location, "This is the cat shop");
