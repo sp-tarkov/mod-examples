@@ -104,7 +104,6 @@ export declare class BotEquipmentModGenerator {
      */
     protected shouldModBeSpawned(itemSlot: Slot, modSlot: string, modSpawnChances: ModsChances): boolean;
     /**
-     *
      * @param modSlot Slot mod will fit into
      * @param isRandomisableSlot Will generate a randomised mod pool if true
      * @param modsParent Parent slot the item will be a part of
@@ -116,6 +115,13 @@ export declare class BotEquipmentModGenerator {
      * @returns ITemplateItem
      */
     protected chooseModToPutIntoSlot(modSlot: string, isRandomisableSlot: boolean, botWeaponSightWhitelist: Record<string, string[]>, botEquipBlacklist: EquipmentFilterDetails, itemModPool: Record<string, string[]>, weapon: Item[], ammoTpl: string, parentTemplate: ITemplateItem): [boolean, ITemplateItem];
+    /**
+     * Temp fix to prevent certain combinations of weapons with mods that are known to be incompatible
+     * @param weapon Weapon
+     * @param modTpl Mod to check compatibility with weapon
+     * @returns True if incompatible
+     */
+    protected weaponModComboIsIncompatible(weapon: Item[], modTpl: string): boolean;
     /**
      * Create a mod item with parameters as properties
      * @param modId _id

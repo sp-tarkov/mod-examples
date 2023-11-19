@@ -86,7 +86,6 @@ export declare class InventoryHelper {
      */
     protected hydrateAmmoBoxWithAmmo(pmcData: IPmcData, itemToAdd: IAddItemTempObject, parentId: string, sessionID: string, output: IItemEventRouterResponse, foundInRaid: boolean): void;
     /**
-     *
      * @param assortItems Items to add to inventory
      * @param requestItem Details of purchased item to add to inventory
      * @param result Array split stacks are added to
@@ -163,8 +162,8 @@ export declare class InventoryHelper {
      */
     protected updateFastPanelBinding(pmcData: IPmcData, itemBeingMoved: Item): void;
     /**
-    * Internal helper function to handle cartridges in inventory if any of them exist.
-    */
+     * Internal helper function to handle cartridges in inventory if any of them exist.
+     */
     protected handleCartridges(items: Item[], body: IInventoryMoveRequestData): void;
     /**
      * Get details for how a random loot container should be handled, max rewards, possible reward tpls

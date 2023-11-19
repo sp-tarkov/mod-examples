@@ -21,11 +21,9 @@ export declare class DynamicRouter extends Router {
     getHandledRoutes(): HandledRoute[];
 }
 export declare class ItemEventRouterDefinition extends Router {
-    constructor();
     handleItemEvent(url: string, pmcData: IPmcData, body: any, sessionID: string): IItemEventRouterResponse;
 }
 export declare class SaveLoadRouter extends Router {
-    constructor();
     handleLoad(profile: IAkiProfile): IAkiProfile;
 }
 export declare class HandledRoute {

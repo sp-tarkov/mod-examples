@@ -6,6 +6,7 @@ import { RagfairServerHelper } from "@spt-aki/helpers/RagfairServerHelper";
 import { RepeatableQuestHelper } from "@spt-aki/helpers/RepeatableQuestHelper";
 import { Exit } from "@spt-aki/models/eft/common/ILocationBase";
 import { TraderInfo } from "@spt-aki/models/eft/common/tables/IBotBase";
+import { Item } from "@spt-aki/models/eft/common/tables/IItem";
 import { ICompletion, ICompletionAvailableFor, IElimination, IEliminationCondition, IExploration, IExplorationCondition, IPickup, IRepeatableQuest, IReward, IRewards } from "@spt-aki/models/eft/common/tables/IRepeatableQuests";
 import { ITemplateItem } from "@spt-aki/models/eft/common/tables/ITemplateItem";
 import { IBaseQuestConfig, IBossInfo, IEliminationConfig, IQuestConfig, IRepeatableQuestConfig } from "@spt-aki/models/spt/config/IQuestConfig";
@@ -105,11 +106,11 @@ export declare class RepeatableQuestGenerator {
      * A repeatable quest, besides some more or less static components, exists of reward and condition (see assets/database/templates/repeatableQuests.json)
      * This is a helper method for GenerateCompletionQuest to create a completion condition (of which a completion quest theoretically can have many)
      *
-     * @param   {string}    targetItemId    id of the item to request
+     * @param   {string}    itemTpl    id of the item to request
      * @param   {integer}   value           amount of items of this specific type to request
      * @returns {object}                    object of "Completion"-condition
      */
-    protected generateCompletionAvailableForFinish(targetItemId: string, value: number): ICompletionAvailableFor;
+    protected generateCompletionAvailableForFinish(itemTpl: string, value: number): ICompletionAvailableFor;
     /**
      * Generates a valid Exploration quest
      *
@@ -157,12 +158,25 @@ export declare class RepeatableQuestGenerator {
      */
     protected generateReward(pmcLevel: number, difficulty: number, traderId: string, repeatableConfig: IRepeatableQuestConfig, questConfig: IBaseQuestConfig): IRewards;
     /**
+     * Should reward item have stack size increased (25% chance)
+     * @param item Item to possibly increase stack size of
+     * @param maxRoublePriceToStack Maximum rouble price an item can be to still be chosen for stacking
+     * @returns True if it should
+     */
+    protected canIncreaseRewardItemStackSize(item: ITemplateItem, maxRoublePriceToStack: number): boolean;
+    /**
+     * Get a randomised number a reward items stack size should be based on its handbook price
+     * @param item Reward item to get stack size for
+     * @returns Stack size value
+     */
+    protected getRandomisedRewardItemStackSizeByPrice(item: ITemplateItem): number;
+    /**
      * Select a number of items that have a colelctive value of the passed in parameter
      * @param repeatableConfig Config
      * @param roublesBudget Total value of items to return
      * @returns Array of reward items that fit budget
      */
-    protected chooseRewardItemsWithinBudget(repeatableConfig: IRepeatableQuestConfig, roublesBudget: number): ITemplateItem[];
+    protected chooseRewardItemsWithinBudget(repeatableConfig: IRepeatableQuestConfig, roublesBudget: number, traderId: string): ITemplateItem[];
     /**
      * Helper to create a reward item structured as required by the client
      *
@@ -171,20 +185,20 @@ export declare class RepeatableQuestGenerator {
      * @param   {integer}   index           All rewards will be appended to a list, for unknown reasons the client wants the index
      * @returns {object}                    Object of "Reward"-item-type
      */
-    protected generateRewardItem(tpl: string, value: number, index: number, preset?: any): IReward;
+    protected generateRewardItem(tpl: string, value: number, index: number, preset?: Item[]): IReward;
     /**
-    * Picks rewardable items from items.json. This means they need to fit into the inventory and they shouldn't be keys (debatable)
+     * Picks rewardable items from items.json. This means they need to fit into the inventory and they shouldn't be keys (debatable)
      * @param repeatableQuestConfig Config file
      * @returns List of rewardable items [[_tpl, itemTemplate],...]
      */
-    protected getRewardableItems(repeatableQuestConfig: IRepeatableQuestConfig): [string, ITemplateItem][];
+    protected getRewardableItems(repeatableQuestConfig: IRepeatableQuestConfig, traderId: string): [string, ITemplateItem][];
     /**
      * Checks if an id is a valid item. Valid meaning that it's an item that may be a reward
      * or content of bot loot. Items that are tested as valid may be in a player backpack or stash.
      * @param {string} tpl template id of item to check
      * @returns True if item is valid reward
      */
-    protected isValidRewardItem(tpl: string, repeatableQuestConfig: IRepeatableQuestConfig): boolean;
+    protected isValidRewardItem(tpl: string, repeatableQuestConfig: IRepeatableQuestConfig, itemBaseWhitelist: string[]): boolean;
     /**
      * Generates the base object of quest type format given as templates in assets/database/templates/repeatableQuests.json
      * The templates include Elimination, Completion and Extraction quest types

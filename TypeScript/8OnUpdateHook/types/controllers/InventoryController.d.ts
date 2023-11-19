@@ -54,10 +54,10 @@ export declare class InventoryController {
     protected httpResponseUtil: HttpResponseUtil;
     constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, itemHelper: ItemHelper, randomUtil: RandomUtil, databaseServer: DatabaseServer, fenceService: FenceService, presetHelper: PresetHelper, inventoryHelper: InventoryHelper, questHelper: QuestHelper, ragfairOfferService: RagfairOfferService, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, lootGenerator: LootGenerator, eventOutputHolder: EventOutputHolder, httpResponseUtil: HttpResponseUtil);
     /**
-    * Move Item
-    * change location of item with parentId and slotId
-    * transfers items from one profile to another if fromOwner/toOwner is set in the body.
-    * otherwise, move is contained within the same profile_f.
+     * Move Item
+     * change location of item with parentId and slotId
+     * transfers items from one profile to another if fromOwner/toOwner is set in the body.
+     * otherwise, move is contained within the same profile_f.
      * @param pmcData Profile
      * @param moveRequest Move request data
      * @param sessionID Session id
@@ -71,9 +71,9 @@ export declare class InventoryController {
      */
     protected getTraderExploitErrorResponse(output: IItemEventRouterResponse): IItemEventRouterResponse;
     /**
-    * Remove Item from Profile
-    * Deep tree item deletion, also removes items from insurance list
-    */
+     * Remove Item from Profile
+     * Deep tree item deletion, also removes items from insurance list
+     */
     removeItem(pmcData: IPmcData, itemId: string, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
     /**
      * Handle Remove event
@@ -111,10 +111,10 @@ export declare class InventoryController {
      */
     transferItem(pmcData: IPmcData, body: IInventoryTransferRequestData, sessionID: string): IItemEventRouterResponse;
     /**
-    * Swap Item
-    * its used for "reload" if you have weapon in hands and magazine is somewhere else in rig or backpack in equipment
-    * Also used to swap items using quick selection on character screen
-    */
+     * Swap Item
+     * its used for "reload" if you have weapon in hands and magazine is somewhere else in rig or backpack in equipment
+     * Also used to swap items using quick selection on character screen
+     */
     swapItem(pmcData: IPmcData, request: IInventorySwapRequestData, sessionID: string): IItemEventRouterResponse;
     /**
      * Handles folding of Weapons

@@ -79,6 +79,12 @@ export declare class MatchController {
     protected extractWasViaCoop(extractName: string): boolean;
     protected sendCoopTakenFenceMessage(sessionId: string): void;
     /**
+     * Handle when a player extracts using a coop extract - add rep to fence
+     * @param pmcData Profile
+     * @param extractName Name of extract taken
+     */
+    protected handleCoopExtract(pmcData: IPmcData, extractName: string): void;
+    /**
      * Was extract by car
      * @param extractName name of extract
      * @returns true if car extract
@@ -92,10 +98,11 @@ export declare class MatchController {
      */
     protected handleCarExtract(extractName: string, pmcData: IPmcData, sessionId: string): void;
     /**
-     * Update players fence trader standing value in profile
-     * @param pmcData Player profile
-     * @param fenceId Id of fence trader
-     * @param extractName Name of extract used
+     * Get the fence rep gain from using a car or coop extract
+     * @param pmcData Profile
+     * @param baseGain amount gained for the first extract
+     * @param extractCount Number of times extract was taken
+     * @returns Fence standing after taking extract
      */
-    protected updateFenceStandingInProfile(pmcData: IPmcData, fenceId: string, extractName: string): void;
+    protected getFenceStandingAfterExtract(pmcData: IPmcData, baseGain: number, extractCount: number): number;
 }

@@ -44,4 +44,9 @@ export declare class EventOutputHolder {
      * @returns dictionary of hideout productions
      */
     protected getProductionsFromProfileAndFlagComplete(productions: Record<string, Productive>): Record<string, Productive>;
+    /**
+     * Required as continuous productions don't reset and stay at 100% completion but client thinks it hasn't started
+     * @param productions Productions in a profile
+     */
+    protected resetSptIsCompleteFlaggedCrafts(productions: Record<string, Productive>): void;
 }

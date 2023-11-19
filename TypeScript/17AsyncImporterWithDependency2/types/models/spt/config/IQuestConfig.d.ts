@@ -61,6 +61,9 @@ export interface IRewardScaling {
 export interface ITraderWhitelist {
     traderId: string;
     questTypes: string[];
+    rewardBaseWhitelist: string[];
+    rewardCanBeWeapon: boolean;
+    weaponRewardChancePercent: number;
 }
 export interface IRepeatableQuestTypesConfig {
     Exploration: IExploration;
@@ -70,6 +73,7 @@ export interface IRepeatableQuestTypesConfig {
 }
 export interface IExploration extends IBaseQuestConfig {
     maxExtracts: number;
+    maxExtractsWithSpecificExit: number;
     specificExits: ISpecificExits;
 }
 export interface ISpecificExits {
@@ -79,6 +83,7 @@ export interface ISpecificExits {
 export interface ICompletion extends IBaseQuestConfig {
     minRequestedAmount: number;
     maxRequestedAmount: number;
+    uniqueItemCount: number;
     minRequestedBulletAmount: number;
     maxRequestedBulletAmount: number;
     useWhitelist: boolean;

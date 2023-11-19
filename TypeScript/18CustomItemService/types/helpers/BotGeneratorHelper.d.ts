@@ -30,7 +30,7 @@ export declare class BotGeneratorHelper {
      * @param botRole Used by weapons to randomize the durability values. Null for non-equipped items
      * @returns Item Upd object with extra properties
      */
-    generateExtraPropertiesForItem(itemTemplate: ITemplateItem, botRole?: string): {
+    generateExtraPropertiesForItem(itemTemplate: ITemplateItem, botRole?: any): {
         upd?: Upd;
     };
     /**

@@ -41,7 +41,6 @@ export declare class RepairService {
      */
     repairItemByTrader(sessionID: string, pmcData: IPmcData, repairItemDetails: RepairItem, traderId: string): RepairDetails;
     /**
-     *
      * @param sessionID Session id
      * @param pmcData profile to take money from
      * @param repairedItemId Repaired item id
@@ -64,7 +63,6 @@ export declare class RepairService {
      */
     protected getWeaponRepairSkillPoints(repairDetails: RepairDetails): number;
     /**
-     *
      * @param sessionId Session id
      * @param pmcData Profile to update repaired item in
      * @param repairKits Array of Repair kits to use

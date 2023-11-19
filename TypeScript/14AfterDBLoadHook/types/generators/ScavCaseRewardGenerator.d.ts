@@ -84,7 +84,6 @@ export declare class ScavCaseRewardGenerator {
         upd: Upd;
     }, rarity: string): void;
     /**
-     *
      * @param dbItems all items from the items.json
      * @param itemFilters controls how the dbItems will be filtered and returned (handbook price)
      * @returns filtered dbItems array

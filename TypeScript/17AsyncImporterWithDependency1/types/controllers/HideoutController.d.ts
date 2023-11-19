@@ -85,7 +85,6 @@ export declare class HideoutController {
      */
     protected checkAndUpgradeWall(pmcData: IPmcData): void;
     /**
-     *
      * @param pmcData Profile to edit
      * @param output Object to send back to client
      * @param sessionID Session/player id
@@ -102,7 +101,6 @@ export declare class HideoutController {
      */
     protected addUpdateInventoryItemToProfile(pmcData: IPmcData, dbHideoutData: IHideoutArea, hideoutStage: Stage): void;
     /**
-     *
      * @param output Objet to send to client
      * @param sessionID Session/player id
      * @param areaType Hideout area that had stash added
@@ -229,7 +227,7 @@ export declare class HideoutController {
      * // TODO - implement this
      * @param sessionId Session id
      * @returns IQteData array
-    */
+     */
     getQteList(sessionId: string): IQteData[];
     /**
      * Handle HideoutQuickTimeEvent on client/game/profile/items/moving
