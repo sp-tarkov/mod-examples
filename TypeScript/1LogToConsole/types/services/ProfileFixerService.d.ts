@@ -104,7 +104,6 @@ export declare class ProfileFixerService {
      */
     addMissingHideoutBonusesToProfile(pmcProfile: IPmcData): void;
     /**
-     *
      * @param profileBonuses bonuses from profile
      * @param bonus bonus to find
      * @returns matching bonus

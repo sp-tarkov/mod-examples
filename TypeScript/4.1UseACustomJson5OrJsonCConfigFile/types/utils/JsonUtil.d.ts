@@ -28,9 +28,9 @@ export declare class JsonUtil {
     /**
      * From object to string
      * @param data object to turn into JSON
-    * @param filename Name of file being serialized
-    * @param options Stringify options or a replacer.
-    * @returns The string converted from the JavaScript value
+     * @param filename Name of file being serialized
+     * @param options Stringify options or a replacer.
+     * @returns The string converted from the JavaScript value
      */
     serializeJsonC(data: any, filename?: string | null, options?: IStringifyOptions | Reviver): string;
     serializeJson5(data: any, filename?: string | null, prettify?: boolean): string;

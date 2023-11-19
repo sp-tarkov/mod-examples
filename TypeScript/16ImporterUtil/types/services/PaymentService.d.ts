@@ -49,13 +49,13 @@ export declare class PaymentService {
      */
     getMoney(pmcData: IPmcData, amount: number, body: IProcessSellTradeRequestData, output: IItemEventRouterResponse, sessionID: string): IItemEventRouterResponse;
     /**
-   * Recursively checks if the given item is
-   * inside the stash, that is it has the stash as
-   * ancestor with slotId=hideout
-   */
+     * Recursively checks if the given item is
+     * inside the stash, that is it has the stash as
+     * ancestor with slotId=hideout
+     */
     protected isItemInStash(pmcData: IPmcData, item: Item): boolean;
     /**
-     * Remove currency from player stash/inventory
+     * Remove currency from player stash/inventory and update client object with changes
      * @param pmcData Player profile to find and remove currency from
      * @param currencyTpl Type of currency to pay
      * @param amountToPay money value to pay

@@ -36,18 +36,19 @@ export declare class InsuranceController {
     protected mailSendService: MailSendService;
     protected configServer: ConfigServer;
     protected insuranceConfig: IInsuranceConfig;
+    protected roubleTpl: string;
     constructor(logger: ILogger, randomUtil: RandomUtil, eventOutputHolder: EventOutputHolder, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, itemHelper: ItemHelper, profileHelper: ProfileHelper, dialogueHelper: DialogueHelper, traderHelper: TraderHelper, paymentService: PaymentService, insuranceService: InsuranceService, mailSendService: MailSendService, configServer: ConfigServer);
     /**
      * Process insurance items of all profiles prior to being given back to the player through the mail service.
      *
      * @returns void
-    */
+     */
     processReturn(): void;
     /**
      * Process insurance items of a single profile prior to being given back to the player through the mail service.
      *
      * @returns void
-    */
+     */
     processReturnByProfile(sessionID: string): void;
     /**
      * Get all insured items that are ready to be processed in a specific profile.

@@ -45,11 +45,11 @@ export declare class QuestHelper {
     protected questConfig: IQuestConfig;
     constructor(logger: ILogger, jsonUtil: JsonUtil, timeUtil: TimeUtil, hashUtil: HashUtil, itemHelper: ItemHelper, questConditionHelper: QuestConditionHelper, eventOutputHolder: EventOutputHolder, databaseServer: DatabaseServer, localeService: LocaleService, ragfairServerHelper: RagfairServerHelper, dialogueHelper: DialogueHelper, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, traderHelper: TraderHelper, mailSendService: MailSendService, configServer: ConfigServer);
     /**
-    * Get status of a quest in player profile by its id
-    * @param pmcData Profile to search
-    * @param questId Quest id to look up
-    * @returns QuestStatus enum
-    */
+     * Get status of a quest in player profile by its id
+     * @param pmcData Profile to search
+     * @param questId Quest id to look up
+     * @returns QuestStatus enum
+     */
     getQuestStatus(pmcData: IPmcData, questId: string): QuestStatus;
     /**
      * returns true is the level condition is satisfied

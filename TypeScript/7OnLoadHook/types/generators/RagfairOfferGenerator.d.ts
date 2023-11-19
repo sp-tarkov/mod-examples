@@ -121,7 +121,6 @@ export declare class RagfairOfferGenerator {
      */
     generateDynamicOffers(expiredOffers?: Item[]): Promise<void>;
     /**
-     *
      * @param assortItemIndex Index of assort item
      * @param assortItemsToProcess Item array containing index
      * @param expiredOffers Currently expired offers on flea

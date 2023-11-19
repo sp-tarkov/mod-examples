@@ -25,10 +25,10 @@ export declare class RagfairHelper {
     protected ragfairConfig: IRagfairConfig;
     constructor(logger: ILogger, jsonUtil: JsonUtil, traderAssortHelper: TraderAssortHelper, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, itemHelper: ItemHelper, ragfairLinkedItemService: RagfairLinkedItemService, utilityHelper: UtilityHelper, configServer: ConfigServer);
     /**
-    * Gets currency TAG from TPL
-    * @param {string} currency
-    * @returns string
-    */
+     * Gets currency TAG from TPL
+     * @param {string} currency
+     * @returns string
+     */
     getCurrencyTag(currency: string): string;
     filterCategories(sessionID: string, info: ISearchRequestData): string[];
     getDisplayableAssorts(sessionID: string): Record<string, ITraderAssort>;

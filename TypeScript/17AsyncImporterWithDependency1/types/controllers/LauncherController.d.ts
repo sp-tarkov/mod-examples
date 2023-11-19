@@ -8,12 +8,14 @@ import { Info, ModDetails } from "@spt-aki/models/eft/profile/IAkiProfile";
 import { IConnectResponse } from "@spt-aki/models/eft/profile/IConnectResponse";
 import { ICoreConfig } from "@spt-aki/models/spt/config/ICoreConfig";
 import { IPackageJsonData } from "@spt-aki/models/spt/mod/IPackageJsonData";
+import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 import { ConfigServer } from "@spt-aki/servers/ConfigServer";
 import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 import { SaveServer } from "@spt-aki/servers/SaveServer";
 import { LocalisationService } from "@spt-aki/services/LocalisationService";
 import { HashUtil } from "@spt-aki/utils/HashUtil";
 export declare class LauncherController {
+    protected logger: ILogger;
     protected hashUtil: HashUtil;
     protected saveServer: SaveServer;
     protected httpServerHelper: HttpServerHelper;
@@ -23,11 +25,11 @@ export declare class LauncherController {
     protected preAkiModLoader: PreAkiModLoader;
     protected configServer: ConfigServer;
     protected coreConfig: ICoreConfig;
-    constructor(hashUtil: HashUtil, saveServer: SaveServer, httpServerHelper: HttpServerHelper, profileHelper: ProfileHelper, databaseServer: DatabaseServer, localisationService: LocalisationService, preAkiModLoader: PreAkiModLoader, configServer: ConfigServer);
+    constructor(logger: ILogger, hashUtil: HashUtil, saveServer: SaveServer, httpServerHelper: HttpServerHelper, profileHelper: ProfileHelper, databaseServer: DatabaseServer, localisationService: LocalisationService, preAkiModLoader: PreAkiModLoader, configServer: ConfigServer);
     connect(): IConnectResponse;
     /**
-     * Get descriptive text for each of the profile edtions a player can choose
-     * @returns
+     * Get descriptive text for each of the profile edtions a player can choose, keyed by profile.json profile type e.g. "Edge Of Darkness"
+     * @returns Dictionary of profile types with related descriptive text
      */
     protected getProfileDescriptions(): Record<string, string>;
     find(sessionIdKey: string): Info;

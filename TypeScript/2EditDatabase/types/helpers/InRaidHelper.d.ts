@@ -87,13 +87,6 @@ export declare class InRaidHelper {
      */
     protected applyTraderStandingAdjustments(tradersServerProfile: Record<string, TraderInfo>, tradersClientProfile: Record<string, TraderInfo>): void;
     /**
-     * Some maps have one-time-use keys (e.g. Labs
-     * Remove the relevant key from an inventory based on the post-raid request data passed in
-     * @param offraidData post-raid data
-     * @param sessionID Session id
-     */
-    protected removeMapAccessKey(offraidData: ISaveProgressRequestData, sessionID: string): void;
-    /**
      * Set the SPT inraid location Profile property to 'none'
      * @param sessionID Session id
      */

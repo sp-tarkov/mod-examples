@@ -5,8 +5,12 @@ export interface IProfileTemplates {
     "Left Behind": IProfileSides;
     "Prepare To Escape": IProfileSides;
     "Edge Of Darkness": IProfileSides;
+    "SPT Developer": IProfileSides;
+    "SPT Easy start": IProfileSides;
+    "SPT Zero to hero": IProfileSides;
 }
 export interface IProfileSides {
+    descriptionLocaleKey: string;
     usec: TemplateSide;
     bear: TemplateSide;
 }
