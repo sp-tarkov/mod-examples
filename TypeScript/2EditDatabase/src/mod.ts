@@ -29,7 +29,7 @@ class Mod implements IPostDBLoadMod
 
         // ---------------------------------------------------------
         // example #2
-        // get globals settings and set flea market min level to be 1
+        // Get globals settings and set flea market min level to be 1
         tables.globals.config.RagFair.minUserLevel = 1;
 
         // ---------------------------------------------------------
@@ -38,11 +38,12 @@ class Mod implements IPostDBLoadMod
 
         // Get ItemHelper ready to use
         const itemHelper: ItemHelper = container.resolve<ItemHelper>("ItemHelper");
+
         // Get all items in the database as an array so we can loop over them later
         const items = Object.values(tables.templates.items);
 
         // Use the itemHelper class to assist us in getting only magazines
-        // We are filtering all tiems to only those with a base class of MAGAZINE (5448bc234bdc2d3c308b4569)
+        // We are filtering all items to only those with a base class of MAGAZINE (5448bc234bdc2d3c308b4569)
         const magazines = items.filter(x => itemHelper.isOfBaseclass(x._id, BaseClasses.MAGAZINE));
 
         // Loop over all the magazines the above code found
