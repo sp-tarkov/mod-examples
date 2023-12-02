@@ -40,6 +40,9 @@ class Mod implements IPostDBLoadMod
         const itemHelper: ItemHelper = container.resolve<ItemHelper>("ItemHelper");
 
         // Get all items in the database as an array so we can loop over them later
+        // tables.templates.items is a dictionary, the key being the items template id, the value being the objects data,
+        // we want to convert it into an array so we can loop over all the items easily
+        // Object.values lets us grab the 'value' part as an array and ignore the 'key' part
         const items = Object.values(tables.templates.items);
 
         // Use the itemHelper class to assist us in getting only magazines
