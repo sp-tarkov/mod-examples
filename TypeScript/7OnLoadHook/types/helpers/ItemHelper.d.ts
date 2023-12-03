@@ -323,7 +323,7 @@ declare class ItemHelper {
      * Chose a randomly weighted cartridge that fits
      * @param caliber Desired caliber
      * @param staticAmmoDist Cartridges and thier weights
-     * @returns Tpl of cartrdige
+     * @returns Tpl of cartridge
      */
     protected drawAmmoTpl(caliber: string, staticAmmoDist: Record<string, IStaticAmmoDetails[]>): string;
     /**

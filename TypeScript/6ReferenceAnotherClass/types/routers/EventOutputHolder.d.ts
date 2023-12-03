@@ -1,6 +1,7 @@
 import { ProfileHelper } from "@spt-aki/helpers/ProfileHelper";
 import { IPmcData } from "@spt-aki/models/eft/common/IPmcData";
-import { IHideoutImprovement, Productive, TraderData, TraderInfo } from "@spt-aki/models/eft/common/tables/IBotBase";
+import { IHideoutImprovement, Productive, TraderInfo } from "@spt-aki/models/eft/common/tables/IBotBase";
+import { TraderData } from "@spt-aki/models/eft/itemEvent/IItemEventRouterBase";
 import { IItemEventRouterResponse } from "@spt-aki/models/eft/itemEvent/IItemEventRouterResponse";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 import { TimeUtil } from "@spt-aki/utils/TimeUtil";
@@ -48,5 +49,5 @@ export declare class EventOutputHolder {
      * Required as continuous productions don't reset and stay at 100% completion but client thinks it hasn't started
      * @param productions Productions in a profile
      */
-    protected resetSptIsCompleteFlaggedCrafts(productions: Record<string, Productive>): void;
+    protected cleanUpCompleteCraftsInProfile(productions: Record<string, Productive>): void;
 }

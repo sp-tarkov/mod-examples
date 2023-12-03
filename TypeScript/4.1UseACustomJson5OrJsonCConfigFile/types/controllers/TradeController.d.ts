@@ -41,7 +41,7 @@ declare class TradeController {
     /** Handle RagFairBuyOffer event */
     confirmRagfairTrading(pmcData: IPmcData, body: IProcessRagfairTradeRequestData, sessionID: string): IItemEventRouterResponse;
     /** Handle SellAllFromSavage event */
-    sellScavItemsToFence(pmcData: IPmcData, body: ISellScavItemsToFenceRequestData, sessionId: string): IItemEventRouterResponse;
+    sellScavItemsToFence(pmcData: IPmcData, request: ISellScavItemsToFenceRequestData, sessionId: string): IItemEventRouterResponse;
     /**
      * Sell all sellable items to a trader from inventory
      * WILL DELETE ITEMS FROM INVENTORY + CHILDREN OF ITEMS SOLD

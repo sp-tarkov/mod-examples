@@ -9,6 +9,8 @@ import { ICheckVersionResponse } from "@spt-aki/models/eft/game/ICheckVersionRes
 import { ICurrentGroupResponse } from "@spt-aki/models/eft/game/ICurrentGroupResponse";
 import { IGameConfigResponse } from "@spt-aki/models/eft/game/IGameConfigResponse";
 import { IGameKeepAliveResponse } from "@spt-aki/models/eft/game/IGameKeepAliveResponse";
+import { IGetRaidTimeRequest } from "@spt-aki/models/eft/game/IGetRaidTimeRequest";
+import { IGetRaidTimeResponse } from "@spt-aki/models/eft/game/IGetRaidTimeResponse";
 import { IServerDetails } from "@spt-aki/models/eft/game/IServerDetails";
 import { IAkiProfile } from "@spt-aki/models/eft/profile/IAkiProfile";
 import { ICoreConfig } from "@spt-aki/models/spt/config/ICoreConfig";
@@ -26,7 +28,9 @@ import { ItemBaseClassService } from "@spt-aki/services/ItemBaseClassService";
 import { LocalisationService } from "@spt-aki/services/LocalisationService";
 import { OpenZoneService } from "@spt-aki/services/OpenZoneService";
 import { ProfileFixerService } from "@spt-aki/services/ProfileFixerService";
+import { RaidTimeAdjustmentService } from "@spt-aki/services/RaidTimeAdjustmentService";
 import { SeasonalEventService } from "@spt-aki/services/SeasonalEventService";
+import { HashUtil } from "@spt-aki/utils/HashUtil";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 import { RandomUtil } from "@spt-aki/utils/RandomUtil";
 import { TimeUtil } from "@spt-aki/utils/TimeUtil";
@@ -35,6 +39,7 @@ export declare class GameController {
     protected databaseServer: DatabaseServer;
     protected jsonUtil: JsonUtil;
     protected timeUtil: TimeUtil;
+    protected hashUtil: HashUtil;
     protected preAkiModLoader: PreAkiModLoader;
     protected httpServerHelper: HttpServerHelper;
     protected randomUtil: RandomUtil;
@@ -47,6 +52,7 @@ export declare class GameController {
     protected seasonalEventService: SeasonalEventService;
     protected itemBaseClassService: ItemBaseClassService;
     protected giftService: GiftService;
+    protected raidTimeAdjustmentService: RaidTimeAdjustmentService;
     protected applicationContext: ApplicationContext;
     protected configServer: ConfigServer;
     protected httpConfig: IHttpConfig;
@@ -55,12 +61,17 @@ export declare class GameController {
     protected ragfairConfig: IRagfairConfig;
     protected pmcConfig: IPmcConfig;
     protected lootConfig: ILootConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, preAkiModLoader: PreAkiModLoader, httpServerHelper: HttpServerHelper, randomUtil: RandomUtil, hideoutHelper: HideoutHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, customLocationWaveService: CustomLocationWaveService, openZoneService: OpenZoneService, seasonalEventService: SeasonalEventService, itemBaseClassService: ItemBaseClassService, giftService: GiftService, applicationContext: ApplicationContext, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, jsonUtil: JsonUtil, timeUtil: TimeUtil, hashUtil: HashUtil, preAkiModLoader: PreAkiModLoader, httpServerHelper: HttpServerHelper, randomUtil: RandomUtil, hideoutHelper: HideoutHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, customLocationWaveService: CustomLocationWaveService, openZoneService: OpenZoneService, seasonalEventService: SeasonalEventService, itemBaseClassService: ItemBaseClassService, giftService: GiftService, raidTimeAdjustmentService: RaidTimeAdjustmentService, applicationContext: ApplicationContext, configServer: ConfigServer);
     load(): void;
     /**
      * Handle client/game/start
      */
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
+    /**
+     * Attempt to fix common item issues that corrupt profiles
+     * @param pmcProfile Profile to check items of
+     */
+    protected fixProfileBreakingInventoryItemIssues(pmcProfile: IPmcData): void;
     /**
      * Out of date/incorrectly made trader mods forget this data
      */
@@ -90,6 +101,10 @@ export declare class GameController {
      * Handle client/game/keepalive
      */
     getKeepAlive(sessionId: string): IGameKeepAliveResponse;
+    /**
+     * Handle singleplayer/settings/getRaidTime
+     */
+    getRaidTime(sessionId: string, request: IGetRaidTimeRequest): IGetRaidTimeResponse;
     /**
      * BSG have two values for shotgun dispersion, we make sure both have the same value
      */

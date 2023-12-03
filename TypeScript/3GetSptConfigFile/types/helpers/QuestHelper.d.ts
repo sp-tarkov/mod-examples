@@ -207,15 +207,22 @@ export declare class QuestHelper {
      */
     updateQuestState(pmcData: IPmcData, newQuestState: QuestStatus, questId: string): void;
     /**
+     * Resets a quests values back to its chosen state
+     * @param pmcData Profile to update
+     * @param newQuestState New state the quest should be in
+     * @param questId Id of the quest to alter the status of
+     */
+    resetQuestState(pmcData: IPmcData, newQuestState: QuestStatus, questId: string): void;
+    /**
      * Give player quest rewards - Skills/exp/trader standing/items/assort unlocks - Returns reward items player earned
-     * @param pmcData Player profile
+     * @param profileData Player profile (scav or pmc)
      * @param questId questId of quest to get rewards for
      * @param state State of the quest to get rewards for
      * @param sessionId Session id
      * @param questResponse Response to send back to client
      * @returns Array of reward objects
      */
-    applyQuestReward(pmcData: IPmcData, questId: string, state: QuestStatus, sessionId: string, questResponse: IItemEventRouterResponse): Reward[];
+    applyQuestReward(profileData: IPmcData, questId: string, state: QuestStatus, sessionId: string, questResponse: IItemEventRouterResponse): Reward[];
     /**
      * WIP - Find hideout craft id and add to unlockedProductionRecipe array in player profile
      * also update client response recipeUnlocked array with craft id

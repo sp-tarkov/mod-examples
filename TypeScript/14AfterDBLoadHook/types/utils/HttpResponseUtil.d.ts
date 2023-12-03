@@ -15,6 +15,13 @@ export declare class HttpResponseUtil {
      * @returns
      */
     noBody(data: any): any;
+    /**
+     * Game client needs server responses in a particular format
+     * @param data
+     * @param err
+     * @param errmsg
+     * @returns
+     */
     getBody<T>(data: T, err?: number, errmsg?: any): IGetBodyResponseData<T>;
     getUnclearedBody(data: any, err?: number, errmsg?: any): string;
     emptyResponse(): IGetBodyResponseData<string>;
