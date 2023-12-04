@@ -121,11 +121,11 @@ export declare class LocationGenerator {
     generateDynamicLoot(dynamicLootDist: ILooseLoot, staticAmmoDist: Record<string, IStaticAmmoDetails[]>, locationName: string): SpawnpointTemplate[];
     /**
      * Add forced spawn point loot into loot parameter array
-     * @param loot array to add forced loot to
-     * @param forcedSpawnPoints forced loot to add
-     * @param name of map currently generating forced loot for
+     * @param lootLocationTemplates array to add forced loot spawn locations to
+     * @param forcedSpawnPoints forced Forced loot locations that must be added
+     * @param locationName Name of map currently having force loot created for
      */
-    protected addForcedLoot(loot: SpawnpointTemplate[], forcedSpawnPoints: SpawnpointsForced[], locationName: string): void;
+    protected addForcedLoot(lootLocationTemplates: SpawnpointTemplate[], forcedSpawnPoints: SpawnpointsForced[], locationName: string): void;
     /**
      * Create array of item (with child items) and return
      * @param chosenComposedKey Key we want to look up items for

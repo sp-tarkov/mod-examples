@@ -68,11 +68,6 @@ export declare class GameController {
      */
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
     /**
-     * Attempt to fix common item issues that corrupt profiles
-     * @param pmcProfile Profile to check items of
-     */
-    protected fixProfileBreakingInventoryItemIssues(pmcProfile: IPmcData): void;
-    /**
      * Out of date/incorrectly made trader mods forget this data
      */
     protected checkTraderRepairValuesExist(): void;

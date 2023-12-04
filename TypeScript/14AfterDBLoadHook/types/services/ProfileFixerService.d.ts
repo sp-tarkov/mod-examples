@@ -121,6 +121,11 @@ export declare class ProfileFixerService {
      */
     checkForOrphanedModdedItems(sessionId: string, fullProfile: IAkiProfile): void;
     /**
+     * Attempt to fix common item issues that corrupt profiles
+     * @param pmcProfile Profile to check items of
+     */
+    fixProfileBreakingInventoryItemIssues(pmcProfile: IPmcData): void;
+    /**
      * Add `Improvements` object to hideout if missing - added in eft 13.0.21469
      * @param pmcProfile profile to update
      */
