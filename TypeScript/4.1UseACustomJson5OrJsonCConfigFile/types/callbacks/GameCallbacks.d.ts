@@ -8,6 +8,7 @@ import { IGameEmptyCrcRequestData } from "@spt-aki/models/eft/game/IGameEmptyCrc
 import { IGameKeepAliveResponse } from "@spt-aki/models/eft/game/IGameKeepAliveResponse";
 import { IGameLogoutResponseData } from "@spt-aki/models/eft/game/IGameLogoutResponseData";
 import { IGameStartResponse } from "@spt-aki/models/eft/game/IGameStartResponse";
+import { IGetRaidTimeRequest } from "@spt-aki/models/eft/game/IGetRaidTimeRequest";
 import { IReportNicknameRequestData } from "@spt-aki/models/eft/game/IReportNicknameRequestData";
 import { IServerDetails } from "@spt-aki/models/eft/game/IServerDetails";
 import { IVersionValidateRequestData } from "@spt-aki/models/eft/game/IVersionValidateRequestData";
@@ -68,5 +69,10 @@ declare class GameCallbacks implements OnLoad {
      */
     getVersion(url: string, info: IEmptyRequestData, sessionID: string): string;
     reportNickname(url: string, info: IReportNicknameRequestData, sessionID: string): INullResponseData;
+    /**
+ * Handle singleplayer/settings/getRaidTime
+ * @returns string
+ */
+    getRaidTime(url: string, request: IGetRaidTimeRequest, sessionID: string): any;
 }
 export { GameCallbacks };

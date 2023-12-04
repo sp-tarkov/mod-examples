@@ -10,11 +10,12 @@ export declare class ApplicationContext {
      *
      * const activePlayerSessionId = this.applicationContext.getLatestValue(ContextVariableType.SESSION_ID).getValue<string>();
      *
-     * const matchInfo = this.applicationContext.getLatestValue(ContextVariableType.MATCH_INFO).getValue<IStartOfflineRaidRequestData>();
+     * const matchInfo = this.applicationContext.getLatestValue(ContextVariableType.RAID_CONFIGURATION).getValue<IGetRaidConfigurationRequestData>();
      * @param type
      * @returns
      */
     getLatestValue(type: ContextVariableType): ContextVariable;
     getValues(type: ContextVariableType): ContextVariable[];
     addValue(type: ContextVariableType, value: any): void;
+    clearValues(type: ContextVariableType): void;
 }

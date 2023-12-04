@@ -95,9 +95,14 @@ export declare class InraidController {
     /**
      * Does provided profile contain any condition counters
      * @param profile Profile to check for condition counters
-     * @returns
+     * @returns Profile has condition counters
      */
     protected profileHasConditionCounters(profile: IPmcData): boolean;
+    /**
+     * Scav quest progress isnt transferred automatically from scav to pmc, we do this manually
+     * @param scavProfile Scav profile with quest progress post-raid
+     * @param pmcProfile Server pmc profile to copy scav quest progress into
+     */
     protected migrateScavQuestProgressToPmcProfile(scavProfile: IPmcData, pmcProfile: IPmcData): void;
     /**
      * Is the player dead after a raid - dead is anything other than "survived" / "runner"

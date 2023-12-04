@@ -309,6 +309,8 @@ export interface Productive {
     sptIsScavCase?: boolean;
     /** Some crafts are always inProgress, but need to be reset, e.g. water collector */
     sptIsComplete?: boolean;
+    /** Is the craft a Continuous, e.g bitcoins/water collector */
+    sptIsContinuous?: boolean;
 }
 export interface Production extends Productive {
     RecipeId: string;
@@ -361,7 +363,7 @@ export interface IQuestStatus {
     startTime: number;
     status: QuestStatus;
     statusTimers?: Record<string, number>;
-    /** SPT specific property */
+    /** Property does not exist in live profile data, but is used by ProfileChanges.questsStatus when sent to client*/
     completedConditions?: string[];
     availableAfter?: number;
 }
@@ -370,14 +372,6 @@ export interface TraderInfo {
     salesSum: number;
     standing: number;
     nextResupply: number;
-    unlocked: boolean;
-    disabled: boolean;
-}
-/** This object is sent to the client as part of traderRelations */
-export interface TraderData {
-    salesSum: number;
-    standing: number;
-    loyalty: number;
     unlocked: boolean;
     disabled: boolean;
 }

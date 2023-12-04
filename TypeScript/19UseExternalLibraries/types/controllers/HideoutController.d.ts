@@ -101,7 +101,7 @@ export declare class HideoutController {
      */
     protected addUpdateInventoryItemToProfile(pmcData: IPmcData, dbHideoutData: IHideoutArea, hideoutStage: Stage): void;
     /**
-     * @param output Objet to send to client
+     * @param output Object to send to client
      * @param sessionID Session/player id
      * @param areaType Hideout area that had stash added
      * @param hideoutDbData Hideout area that caused addition of stash

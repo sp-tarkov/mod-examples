@@ -1,3 +1,4 @@
+import { ApplicationContext } from "@spt-aki/context/ApplicationContext";
 import { LocationGenerator } from "@spt-aki/generators/LocationGenerator";
 import { LootGenerator } from "@spt-aki/generators/LootGenerator";
 import { WeightedRandomHelper } from "@spt-aki/helpers/WeightedRandomHelper";
@@ -13,6 +14,7 @@ import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 import { ConfigServer } from "@spt-aki/servers/ConfigServer";
 import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 import { LocalisationService } from "@spt-aki/services/LocalisationService";
+import { RaidTimeAdjustmentService } from "@spt-aki/services/RaidTimeAdjustmentService";
 import { HashUtil } from "@spt-aki/utils/HashUtil";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 import { RandomUtil } from "@spt-aki/utils/RandomUtil";
@@ -25,13 +27,15 @@ export declare class LocationController {
     protected logger: ILogger;
     protected locationGenerator: LocationGenerator;
     protected localisationService: LocalisationService;
+    protected raidTimeAdjustmentService: RaidTimeAdjustmentService;
     protected lootGenerator: LootGenerator;
     protected databaseServer: DatabaseServer;
     protected timeUtil: TimeUtil;
     protected configServer: ConfigServer;
+    protected applicationContext: ApplicationContext;
     protected airdropConfig: IAirdropConfig;
     protected locationConfig: ILocationConfig;
-    constructor(jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, weightedRandomHelper: WeightedRandomHelper, logger: ILogger, locationGenerator: LocationGenerator, localisationService: LocalisationService, lootGenerator: LootGenerator, databaseServer: DatabaseServer, timeUtil: TimeUtil, configServer: ConfigServer);
+    constructor(jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, weightedRandomHelper: WeightedRandomHelper, logger: ILogger, locationGenerator: LocationGenerator, localisationService: LocalisationService, raidTimeAdjustmentService: RaidTimeAdjustmentService, lootGenerator: LootGenerator, databaseServer: DatabaseServer, timeUtil: TimeUtil, configServer: ConfigServer, applicationContext: ApplicationContext);
     /**
      * Handle client/location/getLocalloot
      * Get a location (map) with generated loot data

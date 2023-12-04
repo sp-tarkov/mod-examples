@@ -41,6 +41,11 @@ export declare class ProfileFixerService {
      * @param pmcProfile profile to check and fix
      */
     checkForAndFixPmcProfileIssues(pmcProfile: IPmcData): void;
+    /**
+     * Find issues in the scav profile data that may cause issues
+     * @param scavProfile profile to check and fix
+     */
+    checkForAndFixScavProfileIssues(scavProfile: IPmcData): void;
     protected addMissingGunStandContainerImprovements(pmcProfile: IPmcData): void;
     protected ensureGunStandLevelsMatch(pmcProfile: IPmcData): void;
     protected addHideoutAreaStashes(pmcProfile: IPmcData): void;
@@ -67,9 +72,9 @@ export declare class ProfileFixerService {
      * Adjust profile quest status and statusTimers object values
      * quest.status is numeric e.g. 2
      * quest.statusTimers keys are numeric as strings e.g. "2"
-     * @param pmcProfile profile to update
+     * @param profile profile to update
      */
-    protected updateProfileQuestDataValues(pmcProfile: IPmcData): void;
+    protected updateProfileQuestDataValues(profile: IPmcData): void;
     protected addMissingRepeatableQuestsProperty(pmcProfile: IPmcData): void;
     /**
      * Some profiles have hideout maxed and therefore no improvements
@@ -115,6 +120,11 @@ export declare class ProfileFixerService {
      * @param pmcProfile Profile to check inventory of
      */
     checkForOrphanedModdedItems(sessionId: string, fullProfile: IAkiProfile): void;
+    /**
+     * Attempt to fix common item issues that corrupt profiles
+     * @param pmcProfile Profile to check items of
+     */
+    fixProfileBreakingInventoryItemIssues(pmcProfile: IPmcData): void;
     /**
      * Add `Improvements` object to hideout if missing - added in eft 13.0.21469
      * @param pmcProfile profile to update
