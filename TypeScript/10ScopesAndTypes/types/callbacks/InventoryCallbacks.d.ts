@@ -17,6 +17,7 @@ import { IInventoryTagRequestData } from "@spt-aki/models/eft/inventory/IInvento
 import { IInventoryToggleRequestData } from "@spt-aki/models/eft/inventory/IInventoryToggleRequestData";
 import { IInventoryTransferRequestData } from "@spt-aki/models/eft/inventory/IInventoryTransferRequestData";
 import { IOpenRandomLootContainerRequestData } from "@spt-aki/models/eft/inventory/IOpenRandomLootContainerRequestData";
+import { IRedeemProfileRequestData } from "@spt-aki/models/eft/inventory/IRedeemProfileRequestData";
 import { IItemEventRouterResponse } from "@spt-aki/models/eft/itemEvent/IItemEventRouterResponse";
 export declare class InventoryCallbacks {
     protected inventoryController: InventoryController;
@@ -46,4 +47,5 @@ export declare class InventoryCallbacks {
     editMapMarker(pmcData: IPmcData, body: IInventoryEditMarkerRequestData, sessionID: string): IItemEventRouterResponse;
     /** Handle OpenRandomLootContainer */
     openRandomLootContainer(pmcData: IPmcData, body: IOpenRandomLootContainerRequestData, sessionID: string): IItemEventRouterResponse;
+    redeemProfileReward(pmcData: IPmcData, body: IRedeemProfileRequestData, sessionId: string): IItemEventRouterResponse;
 }

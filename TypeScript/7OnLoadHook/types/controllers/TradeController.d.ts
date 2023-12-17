@@ -20,7 +20,7 @@ import { LocalisationService } from "@spt-aki/services/LocalisationService";
 import { RagfairPriceService } from "@spt-aki/services/RagfairPriceService";
 import { HttpResponseUtil } from "@spt-aki/utils/HttpResponseUtil";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
-declare class TradeController {
+export declare class TradeController {
     protected logger: ILogger;
     protected eventOutputHolder: EventOutputHolder;
     protected tradeHelper: TradeHelper;
@@ -63,4 +63,3 @@ declare class TradeController {
     protected getPriceOfItemAndChildren(parentItemId: string, items: Item[], handbookPrices: Record<string, number>, traderDetails: ITraderBase): number;
     protected confirmTradingInternal(pmcData: IPmcData, body: IProcessBaseTradeRequestData, sessionID: string, foundInRaid?: boolean, upd?: Upd): IItemEventRouterResponse;
 }
-export { TradeController };

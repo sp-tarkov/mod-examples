@@ -10,7 +10,6 @@ import { ConfigServer } from "@spt-aki/servers/ConfigServer";
 import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 import { SaveServer } from "@spt-aki/servers/SaveServer";
 import { LocalisationService } from "@spt-aki/services/LocalisationService";
-import { RagfairCategoriesService } from "@spt-aki/services/RagfairCategoriesService";
 import { HttpResponseUtil } from "@spt-aki/utils/HttpResponseUtil";
 import { RagfairOfferHolder } from "@spt-aki/utils/RagfairOfferHolder";
 import { TimeUtil } from "@spt-aki/utils/TimeUtil";
@@ -20,7 +19,6 @@ export declare class RagfairOfferService {
     protected databaseServer: DatabaseServer;
     protected saveServer: SaveServer;
     protected ragfairServerHelper: RagfairServerHelper;
-    protected ragfairCategoriesService: RagfairCategoriesService;
     protected profileHelper: ProfileHelper;
     protected eventOutputHolder: EventOutputHolder;
     protected httpResponse: HttpResponseUtil;
@@ -30,7 +28,7 @@ export declare class RagfairOfferService {
     protected expiredOffers: Record<string, IRagfairOffer>;
     protected ragfairConfig: IRagfairConfig;
     protected ragfairOfferHandler: RagfairOfferHolder;
-    constructor(logger: ILogger, timeUtil: TimeUtil, databaseServer: DatabaseServer, saveServer: SaveServer, ragfairServerHelper: RagfairServerHelper, ragfairCategoriesService: RagfairCategoriesService, profileHelper: ProfileHelper, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, localisationService: LocalisationService, configServer: ConfigServer);
+    constructor(logger: ILogger, timeUtil: TimeUtil, databaseServer: DatabaseServer, saveServer: SaveServer, ragfairServerHelper: RagfairServerHelper, profileHelper: ProfileHelper, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, localisationService: LocalisationService, configServer: ConfigServer);
     /**
      * Get all offers
      * @returns IRagfairOffer array

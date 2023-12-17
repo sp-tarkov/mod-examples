@@ -44,6 +44,7 @@ export declare class TraderAssortHelper {
      * Filter out assorts not unlocked due to level OR quest completion
      * @param sessionId session id
      * @param traderId traders id
+     * @param flea Should assorts player hasn't unlocked be returned - default false
      * @returns a traders' assorts
      */
     getAssort(sessionId: string, traderId: string, flea?: boolean): ITraderAssort;

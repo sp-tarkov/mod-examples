@@ -1,3 +1,4 @@
+import { Category } from "@spt-aki/models/eft/common/tables/IHandbookBase";
 import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 declare class LookupItem<T, I> {
@@ -59,5 +60,6 @@ export declare class HandbookHelper {
      * @returns currency count in desired type
      */
     fromRUB(roubleCurrencyCount: number, currencyTypeTo: string): number;
+    getCategoryById(handbookId: string): Category;
 }
 export {};

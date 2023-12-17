@@ -84,7 +84,7 @@ export declare class RagfairController {
      * @param offers ragfair offers to get categories for
      * @returns record with tpls + counts
      */
-    protected getSpecificCategories(searchRequest: ISearchRequestData, offers: IRagfairOffer[]): Record<string, number>;
+    protected getSpecificCategories(pmcProfile: IPmcData, searchRequest: ISearchRequestData, offers: IRagfairOffer[]): Record<string, number>;
     /**
      * Add Required offers to offers result
      * @param searchRequest Client search request data

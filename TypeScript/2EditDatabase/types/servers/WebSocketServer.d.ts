@@ -9,6 +9,7 @@ import { ConfigServer } from "@spt-aki/servers/ConfigServer";
 import { LocalisationService } from "@spt-aki/services/LocalisationService";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 import { RandomUtil } from "@spt-aki/utils/RandomUtil";
+import { ProfileHelper } from "@spt-aki/helpers/ProfileHelper";
 export declare class WebSocketServer {
     protected logger: ILogger;
     protected randomUtil: RandomUtil;
@@ -16,7 +17,8 @@ export declare class WebSocketServer {
     protected localisationService: LocalisationService;
     protected jsonUtil: JsonUtil;
     protected httpServerHelper: HttpServerHelper;
-    constructor(logger: ILogger, randomUtil: RandomUtil, configServer: ConfigServer, localisationService: LocalisationService, jsonUtil: JsonUtil, httpServerHelper: HttpServerHelper);
+    protected profileHelper: ProfileHelper;
+    constructor(logger: ILogger, randomUtil: RandomUtil, configServer: ConfigServer, localisationService: LocalisationService, jsonUtil: JsonUtil, httpServerHelper: HttpServerHelper, profileHelper: ProfileHelper);
     protected httpConfig: IHttpConfig;
     protected defaultNotification: INotification;
     protected webSockets: Record<string, WebSocket.WebSocket>;

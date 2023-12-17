@@ -77,10 +77,10 @@ export declare class BotWeaponGeneratorHelper {
      */
     addItemWithChildrenToEquipmentSlot(equipmentSlots: string[], parentId: string, parentTpl: string, itemWithChildren: Item[], inventory: Inventory): ItemAddedResult;
     /**
-     * is the provided item allowed inside a container
-     * @param slot location item wants to be placed in
-     * @param itemTpl item being placed
-     * @returns true if allowed
+     * Is the provided item allowed inside a container
+     * @param slotGrid Items sub-grid we want to place item inside
+     * @param itemTpl Item tpl being placed
+     * @returns True if allowed
      */
-    protected itemAllowedInContainer(slot: Grid, itemTpl: string): boolean;
+    protected itemAllowedInContainer(slotGrid: Grid, itemTpl: string): boolean;
 }
