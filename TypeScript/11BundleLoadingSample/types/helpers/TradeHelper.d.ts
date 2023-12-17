@@ -53,5 +53,11 @@ export declare class TradeHelper {
      * @param itemsPurchasedCount number of items being bought
      */
     protected incrementAssortBuyCount(assortBeingPurchased: Item, itemsPurchasedCount: number): void;
+    /**
+     * Traders allow a limited number of purchases per refresh cycle (default 60 mins)
+     * @param assortBeingPurchased the item from trader being bought
+     * @param assortId Id of assort being purchased
+     * @param count How many are being bought
+     */
     protected checkPurchaseIsWithinTraderItemLimit(assortBeingPurchased: Item, assortId: string, count: number): void;
 }

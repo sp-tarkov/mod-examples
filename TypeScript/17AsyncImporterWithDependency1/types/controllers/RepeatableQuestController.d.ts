@@ -61,7 +61,9 @@ export declare class RepeatableQuestController {
      * (if the are on "Succeed" but not "Completed" we keep them, to allow the player to complete them and get the rewards)
      * The new quests generated are again persisted in profile.RepeatableQuests
      *
-     * @param   {string}    sessionId       Player's session id
+     * @param   {string}    _info       Request from client
+     * @param   {string}    sessionID       Player's session id
+     *
      * @returns  {array}                    array of "repeatableQuestObjects" as descibed above
      */
     getClientRepeatableQuests(_info: IEmptyRequestData, sessionID: string): IPmcDataRepeatableQuest[];

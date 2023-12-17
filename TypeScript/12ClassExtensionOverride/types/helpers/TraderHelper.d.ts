@@ -63,6 +63,12 @@ export declare class TraderHelper {
      * @param traderID trader id to reset
      */
     resetTrader(sessionID: string, traderID: string): void;
+    /**
+     * Get the starting standing of a trader based on the current profiles type (e.g. EoD, Standard etc)
+     * @param traderId Trader id to get standing for
+     * @param rawProfileTemplate Raw profile from profiles.json to look up standing from
+     * @returns Standing value
+     */
     protected getStartingStanding(traderId: string, rawProfileTemplate: ProfileTraderTemplate): number;
     /**
      * Alter a traders unlocked status

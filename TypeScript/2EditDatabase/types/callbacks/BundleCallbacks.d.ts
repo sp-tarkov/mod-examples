@@ -12,7 +12,7 @@ export declare class BundleCallbacks {
     protected configServer: ConfigServer;
     protected httpConfig: IHttpConfig;
     constructor(logger: ILogger, httpResponse: HttpResponseUtil, httpFileUtil: HttpFileUtil, bundleLoader: BundleLoader, configServer: ConfigServer);
-    sendBundle(sessionID: string, req: any, resp: any, body: any): any;
+    sendBundle(sessionID: string, req: any, resp: any, body: any): void;
     /**
      * Handle singleplayer/bundles
      */

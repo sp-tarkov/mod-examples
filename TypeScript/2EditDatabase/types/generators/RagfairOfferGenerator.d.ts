@@ -15,7 +15,6 @@ import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 import { SaveServer } from "@spt-aki/servers/SaveServer";
 import { FenceService } from "@spt-aki/services/FenceService";
 import { LocalisationService } from "@spt-aki/services/LocalisationService";
-import { RagfairCategoriesService } from "@spt-aki/services/RagfairCategoriesService";
 import { RagfairOfferService } from "@spt-aki/services/RagfairOfferService";
 import { RagfairPriceService } from "@spt-aki/services/RagfairPriceService";
 import { HashUtil } from "@spt-aki/utils/HashUtil";
@@ -38,7 +37,6 @@ export declare class RagfairOfferGenerator {
     protected ragfairPriceService: RagfairPriceService;
     protected localisationService: LocalisationService;
     protected paymentHelper: PaymentHelper;
-    protected ragfairCategoriesService: RagfairCategoriesService;
     protected fenceService: FenceService;
     protected itemHelper: ItemHelper;
     protected configServer: ConfigServer;
@@ -47,7 +45,7 @@ export declare class RagfairOfferGenerator {
         tpl: string;
         price: number;
     }[];
-    constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, ragfairServerHelper: RagfairServerHelper, handbookHelper: HandbookHelper, saveServer: SaveServer, presetHelper: PresetHelper, ragfairAssortGenerator: RagfairAssortGenerator, ragfairOfferService: RagfairOfferService, ragfairPriceService: RagfairPriceService, localisationService: LocalisationService, paymentHelper: PaymentHelper, ragfairCategoriesService: RagfairCategoriesService, fenceService: FenceService, itemHelper: ItemHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, ragfairServerHelper: RagfairServerHelper, handbookHelper: HandbookHelper, saveServer: SaveServer, presetHelper: PresetHelper, ragfairAssortGenerator: RagfairAssortGenerator, ragfairOfferService: RagfairOfferService, ragfairPriceService: RagfairPriceService, localisationService: LocalisationService, paymentHelper: PaymentHelper, fenceService: FenceService, itemHelper: ItemHelper, configServer: ConfigServer);
     /**
      * Create a flea offer and store it in the Ragfair server offers array
      * @param userID Owner of the offer

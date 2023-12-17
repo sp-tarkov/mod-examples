@@ -15,9 +15,11 @@ import { SaveServer } from "@spt-aki/servers/SaveServer";
 import { LocalisationService } from "@spt-aki/services/LocalisationService";
 import { ProfileFixerService } from "@spt-aki/services/ProfileFixerService";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
+import { TimeUtil } from "@spt-aki/utils/TimeUtil";
 import { ProfileHelper } from "./ProfileHelper";
 export declare class InRaidHelper {
     protected logger: ILogger;
+    protected timeUtil: TimeUtil;
     protected saveServer: SaveServer;
     protected jsonUtil: JsonUtil;
     protected itemHelper: ItemHelper;
@@ -31,7 +33,7 @@ export declare class InRaidHelper {
     protected configServer: ConfigServer;
     protected lostOnDeathConfig: ILostOnDeathConfig;
     protected inRaidConfig: IInRaidConfig;
-    constructor(logger: ILogger, saveServer: SaveServer, jsonUtil: JsonUtil, itemHelper: ItemHelper, databaseServer: DatabaseServer, inventoryHelper: InventoryHelper, profileHelper: ProfileHelper, questHelper: QuestHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, profileFixerService: ProfileFixerService, configServer: ConfigServer);
+    constructor(logger: ILogger, timeUtil: TimeUtil, saveServer: SaveServer, jsonUtil: JsonUtil, itemHelper: ItemHelper, databaseServer: DatabaseServer, inventoryHelper: InventoryHelper, profileHelper: ProfileHelper, questHelper: QuestHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, profileFixerService: ProfileFixerService, configServer: ConfigServer);
     /**
      * Lookup quest item loss from lostOnDeath config
      * @returns True if items should be removed from inventory
@@ -60,7 +62,6 @@ export declare class InRaidHelper {
      * Reset a profile to a baseline, used post-raid
      * Reset points earned during session property
      * Increment exp
-     * Remove Labs keycard
      * @param profileData Profile to update
      * @param saveProgressRequest post raid save data request data
      * @param sessionID Session id
@@ -89,13 +90,13 @@ export declare class InRaidHelper {
      */
     updateScavProfileDataPostRaid(scavData: IPmcData, saveProgressRequest: ISaveProgressRequestData, sessionId: string): void;
     /**
-     * Look for quests with status = fail that were not failed pre-raid and run the failQuest() function
+     * Look for quests with a status different from what it began the raid with
      * @param sessionId Player id
      * @param pmcData Player profile
      * @param preRaidQuests Quests prior to starting raid
-     * @param postRaidProfile Profile sent by client
+     * @param postRaidProfile Profile sent by client with post-raid quests
      */
-    protected processFailedQuests(sessionId: string, pmcData: IPmcData, preRaidQuests: IQuestStatus[], postRaidProfile: IPostRaidPmcData): void;
+    protected processAlteredQuests(sessionId: string, pmcData: IPmcData, preRaidQuests: IQuestStatus[], postRaidProfile: IPostRaidPmcData): void;
     /**
      * Take body part effects from client profile and apply to server profile
      * @param saveProgressRequest post-raid request

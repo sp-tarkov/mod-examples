@@ -56,6 +56,7 @@ export declare class RepairService {
      * @param pmcData Profile to add points to
      */
     addRepairSkillPoints(sessionId: string, repairDetails: RepairDetails, pmcData: IPmcData): void;
+    protected getIntellectGainedFromRepair(repairDetails: RepairDetails): number;
     /**
      * Return an appromixation of the amount of skill points live would return for the given repairDetails
      * @param repairDetails the repair details to calculate skill points for

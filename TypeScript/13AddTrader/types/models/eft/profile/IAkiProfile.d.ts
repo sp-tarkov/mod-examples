@@ -3,6 +3,7 @@ import { Item } from "@spt-aki/models/eft/common/tables/IItem";
 import { EquipmentBuildType } from "@spt-aki/models/enums/EquipmentBuildType";
 import { MemberCategory } from "@spt-aki/models/enums/MemberCategory";
 import { MessageType } from "@spt-aki/models/enums/MessageType";
+import { IProfileChangeEvent } from "@spt-aki/models/spt/dialog/ISendMessageDetails";
 export interface IAkiProfile {
     info: Info;
     characters: Characters;
@@ -95,7 +96,7 @@ export interface Message {
     items?: MessageItems;
     maxStorageTime?: number;
     systemData?: ISystemData;
-    profileChangeEvents?: any[];
+    profileChangeEvents?: IProfileChangeEvent[];
 }
 export interface MessagePreview {
     uid: string;

@@ -15,7 +15,7 @@ import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 import { MathUtil } from "@spt-aki/utils/MathUtil";
 import { ObjectId } from "@spt-aki/utils/ObjectId";
 import { RandomUtil } from "@spt-aki/utils/RandomUtil";
-declare class ItemHelper {
+export declare class ItemHelper {
     protected logger: ILogger;
     protected hashUtil: HashUtil;
     protected jsonUtil: JsonUtil;
@@ -355,4 +355,4 @@ declare namespace ItemHelper {
         height: number;
     }
 }
-export { ItemHelper };
+export {};

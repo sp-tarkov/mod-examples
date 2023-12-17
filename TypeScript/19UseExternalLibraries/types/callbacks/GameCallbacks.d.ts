@@ -17,7 +17,7 @@ import { INullResponseData } from "@spt-aki/models/eft/httpResponse/INullRespons
 import { SaveServer } from "@spt-aki/servers/SaveServer";
 import { HttpResponseUtil } from "@spt-aki/utils/HttpResponseUtil";
 import { Watermark } from "@spt-aki/utils/Watermark";
-declare class GameCallbacks implements OnLoad {
+export declare class GameCallbacks implements OnLoad {
     protected httpResponse: HttpResponseUtil;
     protected watermark: Watermark;
     protected saveServer: SaveServer;
@@ -75,4 +75,3 @@ declare class GameCallbacks implements OnLoad {
  */
     getRaidTime(url: string, request: IGetRaidTimeRequest, sessionID: string): any;
 }
-export { GameCallbacks };
