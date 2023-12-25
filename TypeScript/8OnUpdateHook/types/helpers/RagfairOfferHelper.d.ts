@@ -151,6 +151,12 @@ export declare class RagfairOfferHelper {
      */
     isDisplayableOffer(searchRequest: ISearchRequestData, itemsToAdd: string[], traderAssorts: Record<string, ITraderAssort>, offer: IRagfairOffer, pmcProfile: IPmcData): boolean;
     /**
+     * Does the passed in item have a condition property
+     * @param item Item to check
+     * @returns True if has condition
+     */
+    protected isConditionItem(item: Item): boolean;
+    /**
      * Is items quality value within desired range
      * @param item Item to check quality of
      * @param min Desired minimum quality

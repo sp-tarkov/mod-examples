@@ -22,7 +22,7 @@ export declare class HttpResponseUtil {
      * @param errmsg
      * @returns
      */
-    getBody<T>(data: T, err?: number, errmsg?: any): IGetBodyResponseData<T>;
+    getBody<T>(data: T, err?: number, errmsg?: any, sanitize?: boolean): IGetBodyResponseData<T>;
     getUnclearedBody(data: any, err?: number, errmsg?: any): string;
     emptyResponse(): IGetBodyResponseData<string>;
     nullResponse(): INullResponseData;

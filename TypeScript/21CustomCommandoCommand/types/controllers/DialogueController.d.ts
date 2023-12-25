@@ -8,6 +8,7 @@ import { ISendMessageRequest } from "@spt-aki/models/eft/dialog/ISendMessageRequ
 import { Dialogue, DialogueInfo, IAkiProfile, IUserDialogInfo, Message } from "@spt-aki/models/eft/profile/IAkiProfile";
 import { MessageType } from "@spt-aki/models/enums/MessageType";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
+import { ConfigServer } from "@spt-aki/servers/ConfigServer";
 import { SaveServer } from "@spt-aki/servers/SaveServer";
 import { MailSendService } from "@spt-aki/services/MailSendService";
 import { TimeUtil } from "@spt-aki/utils/TimeUtil";
@@ -17,8 +18,9 @@ export declare class DialogueController {
     protected timeUtil: TimeUtil;
     protected dialogueHelper: DialogueHelper;
     protected mailSendService: MailSendService;
+    protected configServer: ConfigServer;
     protected dialogueChatBots: IDialogueChatBot[];
-    constructor(logger: ILogger, saveServer: SaveServer, timeUtil: TimeUtil, dialogueHelper: DialogueHelper, mailSendService: MailSendService, dialogueChatBots: IDialogueChatBot[]);
+    constructor(logger: ILogger, saveServer: SaveServer, timeUtil: TimeUtil, dialogueHelper: DialogueHelper, mailSendService: MailSendService, configServer: ConfigServer, dialogueChatBots: IDialogueChatBot[]);
     registerChatBot(chatBot: IDialogueChatBot): void;
     /** Handle onUpdate spt event */
     update(): void;

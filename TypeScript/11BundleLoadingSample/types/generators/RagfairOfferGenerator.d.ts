@@ -45,6 +45,8 @@ export declare class RagfairOfferGenerator {
         tpl: string;
         price: number;
     }[];
+    /** Internal counter to ensure each offer created has a unique value for its intId property */
+    protected offerCounter: number;
     constructor(logger: ILogger, jsonUtil: JsonUtil, hashUtil: HashUtil, randomUtil: RandomUtil, timeUtil: TimeUtil, databaseServer: DatabaseServer, ragfairServerHelper: RagfairServerHelper, handbookHelper: HandbookHelper, saveServer: SaveServer, presetHelper: PresetHelper, ragfairAssortGenerator: RagfairAssortGenerator, ragfairOfferService: RagfairOfferService, ragfairPriceService: RagfairPriceService, localisationService: LocalisationService, paymentHelper: PaymentHelper, fenceService: FenceService, itemHelper: ItemHelper, configServer: ConfigServer);
     /**
      * Create a flea offer and store it in the Ragfair server offers array

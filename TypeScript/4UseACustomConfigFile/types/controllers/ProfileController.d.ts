@@ -54,8 +54,11 @@ export declare class ProfileController {
     getCompleteProfile(sessionID: string): IPmcData[];
     /**
      * Handle client/game/profile/create
+     * @param info Client reqeust object
+     * @param sessionID Player id
+     * @returns Profiles _id value
      */
-    createProfile(info: IProfileCreateRequestData, sessionID: string): void;
+    createProfile(info: IProfileCreateRequestData, sessionID: string): string;
     /**
      * Delete a profile
      * @param sessionID Id of profile to delete

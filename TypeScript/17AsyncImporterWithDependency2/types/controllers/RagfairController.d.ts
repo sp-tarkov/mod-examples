@@ -19,6 +19,7 @@ import { IExtendOfferRequestData } from "@spt-aki/models/eft/ragfair/IExtendOffe
 import { IGetItemPriceResult } from "@spt-aki/models/eft/ragfair/IGetItemPriceResult";
 import { IGetMarketPriceRequestData } from "@spt-aki/models/eft/ragfair/IGetMarketPriceRequestData";
 import { IGetOffersResult } from "@spt-aki/models/eft/ragfair/IGetOffersResult";
+import { IGetRagfairOfferByIdRequest } from "@spt-aki/models/eft/ragfair/IGetRagfairOfferByIdRequest";
 import { IRagfairOffer } from "@spt-aki/models/eft/ragfair/IRagfairOffer";
 import { ISearchRequestData } from "@spt-aki/models/eft/ragfair/ISearchRequestData";
 import { IProcessBuyTradeRequestData } from "@spt-aki/models/eft/trade/IProcessBuyTradeRequestData";
@@ -70,6 +71,13 @@ export declare class RagfairController {
     constructor(logger: ILogger, timeUtil: TimeUtil, httpResponse: HttpResponseUtil, eventOutputHolder: EventOutputHolder, ragfairServer: RagfairServer, ragfairPriceService: RagfairPriceService, databaseServer: DatabaseServer, itemHelper: ItemHelper, saveServer: SaveServer, ragfairSellHelper: RagfairSellHelper, ragfairTaxService: RagfairTaxService, ragfairSortHelper: RagfairSortHelper, ragfairOfferHelper: RagfairOfferHelper, profileHelper: ProfileHelper, paymentService: PaymentService, handbookHelper: HandbookHelper, paymentHelper: PaymentHelper, inventoryHelper: InventoryHelper, traderHelper: TraderHelper, ragfairHelper: RagfairHelper, ragfairOfferService: RagfairOfferService, ragfairRequiredItemsService: RagfairRequiredItemsService, ragfairOfferGenerator: RagfairOfferGenerator, localisationService: LocalisationService, configServer: ConfigServer);
     getOffers(sessionID: string, searchRequest: ISearchRequestData): IGetOffersResult;
     /**
+     *  Handle client/ragfair/offer/findbyid
+     * @param sessionId Player id
+     * @param request Request data
+     * @returns IRagfairOffer
+     */
+    getOfferById(sessionId: string, request: IGetRagfairOfferByIdRequest): IRagfairOffer;
+    /**
      * Get offers for the client based on type of search being performed
      * @param searchRequest Client search request data
      * @param itemsToAdd comes from ragfairHelper.filterCategories()
@@ -111,6 +119,9 @@ export declare class RagfairController {
     protected setTraderOfferStackSize(offer: IRagfairOffer): void;
     protected isLinkedSearch(info: ISearchRequestData): boolean;
     protected isRequiredSearch(info: ISearchRequestData): boolean;
+    /**
+     * Check all profiles and sell player offers / send player money for listing if it sold
+     */
     update(): void;
     /**
      * Called when creating an offer on flea, fills values in top right corner

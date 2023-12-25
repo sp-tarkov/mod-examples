@@ -6,6 +6,7 @@ import { IPmcData } from "@spt-aki/models/eft/common/IPmcData";
 import { ICreateGroupRequestData } from "@spt-aki/models/eft/match/ICreateGroupRequestData";
 import { IEndOfflineRaidRequestData } from "@spt-aki/models/eft/match/IEndOfflineRaidRequestData";
 import { IGetGroupStatusRequestData } from "@spt-aki/models/eft/match/IGetGroupStatusRequestData";
+import { IGetGroupStatusResponse } from "@spt-aki/models/eft/match/IGetGroupStatusResponse";
 import { IGetProfileRequestData } from "@spt-aki/models/eft/match/IGetProfileRequestData";
 import { IGetRaidConfigurationRequestData } from "@spt-aki/models/eft/match/IGetRaidConfigurationRequestData";
 import { IJoinMatchRequestData } from "@spt-aki/models/eft/match/IJoinMatchRequestData";
@@ -56,7 +57,7 @@ export declare class MatchController {
     /** Handle match/group/start_game */
     joinMatch(info: IJoinMatchRequestData, sessionId: string): IJoinMatchResult;
     /** Handle client/match/group/status */
-    getGroupStatus(info: IGetGroupStatusRequestData): any;
+    getGroupStatus(info: IGetGroupStatusRequestData): IGetGroupStatusResponse;
     /**
      * Handle /client/raid/configuration
      * @param request Raid config request

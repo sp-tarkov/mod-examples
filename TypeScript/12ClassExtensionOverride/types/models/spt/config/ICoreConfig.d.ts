@@ -24,4 +24,14 @@ export interface IGameFixes {
 }
 export interface IServerFeatures {
     autoInstallModDependencies: boolean;
+    compressProfile: boolean;
+    chatbotFeatures: IChatbotFeatures;
+}
+export interface IChatbotFeatures {
+    sptFriendEnabled: boolean;
+    commandoEnabled: boolean;
+    commandoFeatures: ICommandoFeatures;
+}
+export interface ICommandoFeatures {
+    giveCommandEnabled: boolean;
 }
