@@ -5,6 +5,7 @@ import { MemberCategory } from "@spt-aki/models/enums/MemberCategory";
 import { MailSendService } from "@spt-aki/services/MailSendService";
 import { inject, injectable } from "tsyringe";
 
+//    \/   dont forger this annotation here!
 @injectable()
 export class CustomChatBot implements IDialogueChatBot
 {

@@ -1,12 +1,13 @@
-import {ICommandoCommand} from "@spt-aki/helpers/Dialogue/Commando/ICommandoCommand";
+import { IChatCommand } from "@spt-aki/helpers/Dialogue/Commando/IChatCommand";
 import { ISendMessageRequest } from "@spt-aki/models/eft/dialog/ISendMessageRequest";
 import { IUserDialogInfo } from "@spt-aki/models/eft/profile/IAkiProfile";
 import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 import { MailSendService } from "@spt-aki/services/MailSendService";
-import { delay, inject, injectable } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 
+//    \/   dont forger this annotation here!
 @injectable()
-export class CustomCommandoCommand implements ICommandoCommand
+export class CustomCommandoCommand implements IChatCommand
 {
     public constructor(
         @inject("MailSendService") protected mailSendService: MailSendService,

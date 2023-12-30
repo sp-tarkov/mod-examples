@@ -5,6 +5,7 @@ import { ISendMessageRequest } from "@spt-aki/models/eft/dialog/ISendMessageRequ
 import { IUserDialogInfo } from "@spt-aki/models/eft/profile/IAkiProfile";
 import { inject, injectable } from "tsyringe";
 
+//    \/   dont forger this annotation here!
 @injectable()
 export class CustomAkiCommand implements ISptCommand
 {
