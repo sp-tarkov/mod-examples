@@ -1,4 +1,4 @@
-# Mod examples for v3.7.6
+# Mod examples for v3.8.0
 
 A collection of example mods that perform typical actions in SPT
 
