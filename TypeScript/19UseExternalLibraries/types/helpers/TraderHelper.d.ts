@@ -117,10 +117,10 @@ export declare class TraderHelper {
      */
     addTraderPurchasesToPlayerProfile(sessionID: string, newPurchaseDetails: {
         items: {
-            item_id: string;
+            itemId: string;
             count: number;
         }[];
-        tid: string;
+        traderId: string;
     }): void;
     /**
      * Get the highest rouble price for an item from traders

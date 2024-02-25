@@ -15,6 +15,7 @@ import { SaveServer } from "@spt-aki/servers/SaveServer";
 import { LocalisationService } from "@spt-aki/services/LocalisationService";
 import { ProfileFixerService } from "@spt-aki/services/ProfileFixerService";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
+import { RandomUtil } from "@spt-aki/utils/RandomUtil";
 import { TimeUtil } from "@spt-aki/utils/TimeUtil";
 import { ProfileHelper } from "./ProfileHelper";
 export declare class InRaidHelper {
@@ -31,9 +32,10 @@ export declare class InRaidHelper {
     protected localisationService: LocalisationService;
     protected profileFixerService: ProfileFixerService;
     protected configServer: ConfigServer;
+    protected randomUtil: RandomUtil;
     protected lostOnDeathConfig: ILostOnDeathConfig;
     protected inRaidConfig: IInRaidConfig;
-    constructor(logger: ILogger, timeUtil: TimeUtil, saveServer: SaveServer, jsonUtil: JsonUtil, itemHelper: ItemHelper, databaseServer: DatabaseServer, inventoryHelper: InventoryHelper, profileHelper: ProfileHelper, questHelper: QuestHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, profileFixerService: ProfileFixerService, configServer: ConfigServer);
+    constructor(logger: ILogger, timeUtil: TimeUtil, saveServer: SaveServer, jsonUtil: JsonUtil, itemHelper: ItemHelper, databaseServer: DatabaseServer, inventoryHelper: InventoryHelper, profileHelper: ProfileHelper, questHelper: QuestHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, profileFixerService: ProfileFixerService, configServer: ConfigServer, randomUtil: RandomUtil);
     /**
      * Lookup quest item loss from lostOnDeath config
      * @returns True if items should be removed from inventory
@@ -51,7 +53,8 @@ export declare class InRaidHelper {
      * @param victims Array of kills player performed
      * @returns adjusted karma level after kills are taken into account
      */
-    calculateFenceStandingChangeFromKills(existingFenceStanding: number, victims: Victim[]): number;
+    calculateFenceStandingChangeFromKillsAsScav(existingFenceStanding: number, victims: Victim[]): number;
+    protected getAdditionalLossForKill(fenceStanding: number, repChangeForKill: number): number;
     /**
      * Get the standing gain/loss for killing an npc
      * @param victim Who was killed by player
@@ -74,7 +77,7 @@ export declare class InRaidHelper {
      */
     protected resetSkillPointsEarnedDuringRaid(profile: IPmcData): void;
     /** Check counters are correct in profile */
-    protected validateBackendCounters(saveProgressRequest: ISaveProgressRequestData, profileData: IPmcData): void;
+    protected validateTaskConditionCounters(saveProgressRequest: ISaveProgressRequestData, profileData: IPmcData): void;
     /**
      * Update various serverPMC profile values; quests/limb hp/trader standing with values post-raic
      * @param pmcData Server PMC profile
@@ -110,6 +113,12 @@ export declare class InRaidHelper {
      */
     protected applyTraderStandingAdjustments(tradersServerProfile: Record<string, TraderInfo>, tradersClientProfile: Record<string, TraderInfo>): void;
     /**
+     * Transfer client achievements into profile
+     * @param profile Player pmc profile
+     * @param clientAchievements Achievements from client
+     */
+    protected updateProfileAchievements(profile: IPmcData, clientAchievements: Record<string, number>): void;
+    /**
      * Set the SPT inraid location Profile property to 'none'
      * @param sessionID Session id
      */
@@ -129,16 +138,15 @@ export declare class InRaidHelper {
      * @param sessionID Session id
      * @param serverProfile Profile to update
      * @param postRaidProfile Profile returned by client after a raid
-     * @returns Updated profile
      */
-    setInventory(sessionID: string, serverProfile: IPmcData, postRaidProfile: IPmcData): IPmcData;
+    setInventory(sessionID: string, serverProfile: IPmcData, postRaidProfile: IPmcData): void;
     /**
-     * Clear pmc inventory of all items except those that are exempt
+     * Clear PMC inventory of all items except those that are exempt
      * Used post-raid to remove items after death
      * @param pmcData Player profile
-     * @param sessionID Session id
+     * @param sessionId Session id
      */
-    deleteInventory(pmcData: IPmcData, sessionID: string): void;
+    deleteInventory(pmcData: IPmcData, sessionId: string): void;
     /**
      * Get an array of items from a profile that will be lost on death
      * @param pmcProfile Profile to get items from

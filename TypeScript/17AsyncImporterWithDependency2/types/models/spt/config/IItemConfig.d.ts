@@ -5,4 +5,5 @@ export interface IItemConfig extends IBaseConfig {
     blacklist: string[];
     /** Items that can only be found on bosses */
     bossItems: string[];
+    handbookPriceOverride: Record<string, number>;
 }

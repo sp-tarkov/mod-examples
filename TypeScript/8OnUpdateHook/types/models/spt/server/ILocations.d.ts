@@ -18,6 +18,8 @@ export interface ILocations {
     terminal?: ILocationData;
     town?: ILocationData;
     woods?: ILocationData;
+    sandbox?: ILocationData;
+    /** Holds a mapping of the linkages between locations on the UI */
     base?: ILocationsBase;
 }
 export interface ILocationData {

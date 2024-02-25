@@ -43,7 +43,7 @@ export declare class MatchController {
     protected lootGenerator: LootGenerator;
     protected applicationContext: ApplicationContext;
     protected matchConfig: IMatchConfig;
-    protected inraidConfig: IInRaidConfig;
+    protected inRaidConfig: IInRaidConfig;
     protected traderConfig: ITraderConfig;
     protected pmcConfig: IPmcConfig;
     constructor(logger: ILogger, saveServer: SaveServer, timeUtil: TimeUtil, randomUtil: RandomUtil, hashUtil: HashUtil, profileHelper: ProfileHelper, matchLocationService: MatchLocationService, traderHelper: TraderHelper, botLootCacheService: BotLootCacheService, configServer: ConfigServer, profileSnapshotService: ProfileSnapshotService, botGenerationCacheService: BotGenerationCacheService, mailSendService: MailSendService, lootGenerator: LootGenerator, applicationContext: ApplicationContext);

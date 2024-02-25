@@ -71,8 +71,8 @@ export declare class GameCallbacks implements OnLoad {
     getVersion(url: string, info: IEmptyRequestData, sessionID: string): string;
     reportNickname(url: string, info: IReportNicknameRequestData, sessionID: string): INullResponseData;
     /**
- * Handle singleplayer/settings/getRaidTime
- * @returns string
- */
+     * Handle singleplayer/settings/getRaidTime
+     * @returns string
+     */
     getRaidTime(url: string, request: IGetRaidTimeRequest, sessionID: string): IGetRaidTimeResponse;
 }

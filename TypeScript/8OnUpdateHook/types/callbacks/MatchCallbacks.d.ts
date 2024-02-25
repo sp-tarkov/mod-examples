@@ -71,4 +71,6 @@ export declare class MatchCallbacks {
     endOfflineRaid(url: string, info: IEndOfflineRaidRequestData, sessionID: string): INullResponseData;
     /** Handle client/raid/configuration */
     getRaidConfiguration(url: string, info: IGetRaidConfigurationRequestData, sessionID: string): INullResponseData;
+    /** Handle client/raid/configuration-by-profile */
+    getConfigurationByProfile(url: string, info: IGetRaidConfigurationRequestData, sessionID: string): INullResponseData;
 }

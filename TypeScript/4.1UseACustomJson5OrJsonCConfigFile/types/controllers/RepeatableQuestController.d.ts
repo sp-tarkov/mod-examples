@@ -8,6 +8,7 @@ import { IPmcData } from "@spt-aki/models/eft/common/IPmcData";
 import { IPmcDataRepeatableQuest, IRepeatableQuest } from "@spt-aki/models/eft/common/tables/IRepeatableQuests";
 import { IItemEventRouterResponse } from "@spt-aki/models/eft/itemEvent/IItemEventRouterResponse";
 import { IRepeatableQuestChangeRequest } from "@spt-aki/models/eft/quests/IRepeatableQuestChangeRequest";
+import { ELocationName } from "@spt-aki/models/enums/ELocationName";
 import { IQuestConfig, IRepeatableQuestConfig } from "@spt-aki/models/spt/config/IQuestConfig";
 import { IQuestTypePool } from "@spt-aki/models/spt/repeatable/IQuestTypePool";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
@@ -62,9 +63,9 @@ export declare class RepeatableQuestController {
      * The new quests generated are again persisted in profile.RepeatableQuests
      *
      * @param   {string}    _info       Request from client
-     * @param   {string}    sessionID       Player's session id
+     * @param   {string}    sessionID   Player's session id
      *
-     * @returns  {array}                    array of "repeatableQuestObjects" as descibed above
+     * @returns  {array}                Array of "repeatableQuestObjects" as descibed above
      */
     getClientRepeatableQuests(_info: IEmptyRequestData, sessionID: string): IPmcDataRepeatableQuest[];
     /**
@@ -95,6 +96,20 @@ export declare class RepeatableQuestController {
      */
     protected generateQuestPool(repeatableConfig: IRepeatableQuestConfig, pmcLevel: number): IQuestTypePool;
     protected createBaseQuestPool(repeatableConfig: IRepeatableQuestConfig): IQuestTypePool;
+    /**
+     * Return the locations this PMC is allowed to get daily quests for based on their level
+     * @param locations The original list of locations
+     * @param pmcLevel The level of the player PMC
+     * @returns A filtered list of locations that allow the player PMC level to access it
+     */
+    protected getAllowedLocations(locations: Record<ELocationName, string[]>, pmcLevel: number): Partial<Record<ELocationName, string[]>>;
+    /**
+     * Return true if the given pmcLevel is allowed on the given location
+     * @param location The location name to check
+     * @param pmcLevel The level of the pmc
+     * @returns True if the given pmc level is allowed to access the given location
+     */
+    protected isPmcLevelAllowedOnLocation(location: string, pmcLevel: number): boolean;
     debugLogRepeatableQuestIds(pmcData: IPmcData): void;
     /**
      * Handle RepeatableQuestChange event

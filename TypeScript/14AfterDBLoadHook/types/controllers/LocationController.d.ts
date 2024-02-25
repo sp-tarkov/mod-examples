@@ -59,7 +59,7 @@ export declare class LocationController {
     generateAll(sessionId: string): ILocationsGenerateAllResponse;
     /**
      * Handle client/location/getAirdropLoot
-     * Get loot for an airdop container
+     * Get loot for an airdrop container
      * Generates it randomly based on config/airdrop.json values
      * @returns Array of LootItem objects
      */

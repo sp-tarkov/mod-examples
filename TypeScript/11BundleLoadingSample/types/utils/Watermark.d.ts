@@ -18,9 +18,9 @@ export declare class Watermark {
     protected localisationService: LocalisationService;
     protected watermarkLocale?: WatermarkLocale;
     protected akiConfig: ICoreConfig;
-    constructor(logger: ILogger, configServer: ConfigServer, localisationService: LocalisationService, watermarkLocale?: WatermarkLocale);
     protected text: string[];
     protected versionLabel: string;
+    constructor(logger: ILogger, configServer: ConfigServer, localisationService: LocalisationService, watermarkLocale?: WatermarkLocale);
     initialize(): void;
     /**
      * Get a version string (x.x.x) or (x.x.x-BLEEDINGEDGE) OR (X.X.X (18xxx))

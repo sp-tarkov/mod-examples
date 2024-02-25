@@ -9,6 +9,7 @@ import { ITemplateItem } from "@spt-aki/models/eft/common/tables/ITemplateItem";
 import { IItemEventRouterResponse } from "@spt-aki/models/eft/itemEvent/IItemEventRouterResponse";
 import { RepairKitsInfo } from "@spt-aki/models/eft/repair/IRepairActionDataRequest";
 import { RepairItem } from "@spt-aki/models/eft/repair/ITraderRepairActionDataRequest";
+import { BonusType } from "@spt-aki/models/enums/BonusType";
 import { SkillTypes } from "@spt-aki/models/enums/SkillTypes";
 import { BonusSettings, IRepairConfig } from "@spt-aki/models/spt/config/IRepairConfig";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
@@ -82,11 +83,11 @@ export declare class RepairService {
     protected getKitDivisor(itemToRepairDetails: ITemplateItem, isArmor: boolean, pmcData: IPmcData): number;
     /**
      * Get the bonus multiplier for a skill from a player profile
-     * @param skillBonusName Name of bonus to get multipler of
+     * @param skillBonus Bonus to get multipler of
      * @param pmcData Player profile to look in for skill
      * @returns Multiplier value
      */
-    protected getBonusMultiplierValue(skillBonusName: string, pmcData: IPmcData): number;
+    protected getBonusMultiplierValue(skillBonus: BonusType, pmcData: IPmcData): number;
     /**
      * Should a repair kit apply total durability loss on repair
      * @param pmcData Player profile
@@ -125,12 +126,12 @@ export declare class RepairService {
      * @param itemTemplate Item to check for skill
      * @returns Skill name
      */
-    protected getItemSkillType(itemTemplate: ITemplateItem): SkillTypes;
+    protected getItemSkillType(itemTemplate: ITemplateItem): SkillTypes | undefined;
     /**
      * Ensure multiplier is between 1 and 0.01
-     * @param receiveDurabilityMaxPercent Max durabiltiy percent
+     * @param receiveDurabilityMaxPercent Max durability percent
      * @param receiveDurabilityPercent current durability percent
-     * @returns durability multipler value
+     * @returns durability multiplier value
      */
     protected getDurabilityMultiplier(receiveDurabilityMaxPercent: number, receiveDurabilityPercent: number): number;
 }

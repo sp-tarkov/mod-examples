@@ -65,6 +65,10 @@ export interface Dynamic {
     nonStackableCount: MinMax;
     /** Range of rating offers for items being listed */
     rating: MinMax;
+    /** Armor specific flea settings */
+    armor: IArmorSettings;
+    /** A multipler to apply to individual tpls price just prior to item quality adjustment */
+    itemPriceMultiplier: Record<string, number>;
     /** Percentages to sell offers in each currency */
     currencies: Record<string, number>;
     /** Item tpls that should be forced to sell as a single item */
@@ -82,8 +86,6 @@ export interface IPriceRanges {
     pack: MinMax;
 }
 export interface IBarterDetails {
-    /** Should barter offers be generated */
-    enable: boolean;
     /** Percentage change an offer is listed as a barter */
     chancePercent: number;
     /** Min number of required items for a barter requirement */
@@ -98,8 +100,6 @@ export interface IBarterDetails {
     itemTypeBlacklist: string[];
 }
 export interface IPackDetails {
-    /** Should pack offers be generated */
-    enable: boolean;
     /** Percentage change an offer is listed as a pack */
     chancePercent: number;
     /** Min number of required items for a pack */
@@ -119,9 +119,11 @@ export interface OfferAdjustment {
     /** What is the minimum rouble price to consider adjusting price of item */
     priceThreshholdRub: number;
 }
-export interface Condition extends MinMax {
+export interface Condition {
     /** Percentage change durability is altered */
     conditionChance: number;
+    current: MinMax;
+    max: MinMax;
 }
 export interface Blacklist {
     /** Damaged ammo packs */
@@ -134,9 +136,26 @@ export interface Blacklist {
     enableQuestList: boolean;
     /** Should trader items that are blacklisted by bsg be listed on flea */
     traderItems: boolean;
+    /** Maximum level an armor plate can be found in a flea-listed armor item */
+    armorPlate: IArmorPlateBlacklistSettings;
+}
+export interface IArmorPlateBlacklistSettings {
+    /** Max level of plates an armor can have without being removed */
+    maxProtectionLevel: number;
+    /** Item slots to NOT remove from items on flea */
+    ignoreSlots: string[];
 }
 export interface IUnreasonableModPrices {
+    /** Enable a system that adjusts very high ragfair prices to be below a max multiple of items the handbook values */
     enabled: boolean;
+    /** Multipler to start adjusting item values from, e.g. a value of 10 means any value over 10x the handbook price gets adjusted  */
     handbookPriceOverMultiplier: number;
+    /** The new multiplier for items found using above property, e.g. a value of 4 means set items price to 4x handbook price */
     newPriceHandbookMultiplier: number;
+}
+export interface IArmorSettings {
+    /** % chance / 100 that armor plates will be removed from an offer before listing */
+    removeRemovablePlateChance: number;
+    /** What slots are to be removed when removeRemovablePlateChance is true */
+    plateSlotIdToRemovePool: string[];
 }

@@ -1,6 +1,6 @@
 import { ItemHelper } from "@spt-aki/helpers/ItemHelper";
-import { Product } from "@spt-aki/models/eft/common/tables/IBotBase";
-import { Upd } from "@spt-aki/models/eft/common/tables/IItem";
+import { PresetHelper } from "@spt-aki/helpers/PresetHelper";
+import { Item } from "@spt-aki/models/eft/common/tables/IItem";
 import { ITemplateItem } from "@spt-aki/models/eft/common/tables/ITemplateItem";
 import { IHideoutScavCase } from "@spt-aki/models/eft/hideout/IHideoutScavCase";
 import { IScavCaseConfig } from "@spt-aki/models/spt/config/IScavCaseConfig";
@@ -11,6 +11,7 @@ import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 import { ItemFilterService } from "@spt-aki/services/ItemFilterService";
 import { RagfairPriceService } from "@spt-aki/services/RagfairPriceService";
 import { HashUtil } from "@spt-aki/utils/HashUtil";
+import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 import { RandomUtil } from "@spt-aki/utils/RandomUtil";
 /**
  * Handle the creation of randomised scav case rewards
@@ -18,8 +19,10 @@ import { RandomUtil } from "@spt-aki/utils/RandomUtil";
 export declare class ScavCaseRewardGenerator {
     protected logger: ILogger;
     protected randomUtil: RandomUtil;
+    protected jsonUtil: JsonUtil;
     protected hashUtil: HashUtil;
     protected itemHelper: ItemHelper;
+    protected presetHelper: PresetHelper;
     protected databaseServer: DatabaseServer;
     protected ragfairPriceService: RagfairPriceService;
     protected itemFilterService: ItemFilterService;
@@ -27,13 +30,13 @@ export declare class ScavCaseRewardGenerator {
     protected scavCaseConfig: IScavCaseConfig;
     protected dbItemsCache: ITemplateItem[];
     protected dbAmmoItemsCache: ITemplateItem[];
-    constructor(logger: ILogger, randomUtil: RandomUtil, hashUtil: HashUtil, itemHelper: ItemHelper, databaseServer: DatabaseServer, ragfairPriceService: RagfairPriceService, itemFilterService: ItemFilterService, configServer: ConfigServer);
+    constructor(logger: ILogger, randomUtil: RandomUtil, jsonUtil: JsonUtil, hashUtil: HashUtil, itemHelper: ItemHelper, presetHelper: PresetHelper, databaseServer: DatabaseServer, ragfairPriceService: RagfairPriceService, itemFilterService: ItemFilterService, configServer: ConfigServer);
     /**
      * Create an array of rewards that will be given to the player upon completing their scav case build
      * @param recipeId recipe of the scav case craft
      * @returns Product array
      */
-    generate(recipeId: string): Product[];
+    generate(recipeId: string): Item[][];
     /**
      * Get all db items that are not blacklisted in scavcase config or global blacklist
      * Store in class field
@@ -72,17 +75,7 @@ export declare class ScavCaseRewardGenerator {
      * @param rewardItems items to convert
      * @returns Product array
      */
-    protected randomiseContainerItemRewards(rewardItems: ITemplateItem[], rarity: string): Product[];
-    /**
-     * Add a randomised stack count to ammo or money items
-     * @param item money or ammo item
-     * @param resultItem money or ammo item with a randomise stack size
-     */
-    protected addStackCountToAmmoAndMoney(item: ITemplateItem, resultItem: {
-        _id: string;
-        _tpl: string;
-        upd: Upd;
-    }, rarity: string): void;
+    protected randomiseContainerItemRewards(rewardItems: ITemplateItem[], rarity: string): Item[][];
     /**
      * @param dbItems all items from the items.json
      * @param itemFilters controls how the dbItems will be filtered and returned (handbook price)

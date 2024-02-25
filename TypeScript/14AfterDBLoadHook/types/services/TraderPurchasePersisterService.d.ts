@@ -24,6 +24,14 @@ export declare class TraderPurchasePersisterService {
      */
     getProfileTraderPurchases(sessionId: string, traderId: string): Record<string, TraderPurchaseData>;
     /**
+     * Get a purchase made from a trader for requested profile before the last trader reset
+     * @param sessionId Session id
+     * @param traderId Trader to loop up purchases for
+     * @param assortId Id of assort to get data for
+     * @returns TraderPurchaseData
+     */
+    getProfileTraderPurchase(sessionId: string, traderId: string, assortId: string): TraderPurchaseData;
+    /**
      * Remove all trader purchase records from all profiles that exist
      * @param traderId Traders id
      */

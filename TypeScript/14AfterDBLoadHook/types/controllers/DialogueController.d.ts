@@ -110,7 +110,7 @@ export declare class DialogueController {
      * Get all uncollected items attached to mail in a particular dialog
      * @param dialogueId Dialog to get mail attachments from
      * @param sessionId Session id
-     * @returns
+     * @returns IGetAllAttachmentsResponse
      */
     getAllAttachments(dialogueId: string, sessionId: string): IGetAllAttachmentsResponse;
     /** client/mail/msg/send */
