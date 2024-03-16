@@ -178,9 +178,8 @@ export declare class QuestHelper {
      * @param failRequest Fail quest request data
      * @param sessionID Session id
      * @param output Client output
-     * @returns Item event router response
      */
-    failQuest(pmcData: IPmcData, failRequest: IFailQuestRequestData, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
+    failQuest(pmcData: IPmcData, failRequest: IFailQuestRequestData, sessionID: string, output?: IItemEventRouterResponse): void;
     /**
      * Get List of All Quests from db
      * NOT CLONED

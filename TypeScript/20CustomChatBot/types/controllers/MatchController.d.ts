@@ -3,11 +3,9 @@ import { LootGenerator } from "@spt-aki/generators/LootGenerator";
 import { ProfileHelper } from "@spt-aki/helpers/ProfileHelper";
 import { TraderHelper } from "@spt-aki/helpers/TraderHelper";
 import { IPmcData } from "@spt-aki/models/eft/common/IPmcData";
-import { ICreateGroupRequestData } from "@spt-aki/models/eft/match/ICreateGroupRequestData";
 import { IEndOfflineRaidRequestData } from "@spt-aki/models/eft/match/IEndOfflineRaidRequestData";
 import { IGetGroupStatusRequestData } from "@spt-aki/models/eft/match/IGetGroupStatusRequestData";
 import { IGetGroupStatusResponse } from "@spt-aki/models/eft/match/IGetGroupStatusResponse";
-import { IGetProfileRequestData } from "@spt-aki/models/eft/match/IGetProfileRequestData";
 import { IGetRaidConfigurationRequestData } from "@spt-aki/models/eft/match/IGetRaidConfigurationRequestData";
 import { IJoinMatchRequestData } from "@spt-aki/models/eft/match/IJoinMatchRequestData";
 import { IJoinMatchResult } from "@spt-aki/models/eft/match/IJoinMatchResult";
@@ -48,10 +46,6 @@ export declare class MatchController {
     protected pmcConfig: IPmcConfig;
     constructor(logger: ILogger, saveServer: SaveServer, timeUtil: TimeUtil, randomUtil: RandomUtil, hashUtil: HashUtil, profileHelper: ProfileHelper, matchLocationService: MatchLocationService, traderHelper: TraderHelper, botLootCacheService: BotLootCacheService, configServer: ConfigServer, profileSnapshotService: ProfileSnapshotService, botGenerationCacheService: BotGenerationCacheService, mailSendService: MailSendService, lootGenerator: LootGenerator, applicationContext: ApplicationContext);
     getEnabled(): boolean;
-    /** Handle raid/profile/list */
-    getProfile(info: IGetProfileRequestData): IPmcData[];
-    /** Handle client/match/group/create */
-    createGroup(sessionID: string, info: ICreateGroupRequestData): any;
     /** Handle client/match/group/delete */
     deleteGroup(info: any): void;
     /** Handle match/group/start_game */

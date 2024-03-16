@@ -7,12 +7,28 @@ export interface ICoreConfig extends IBaseConfig {
     serverName: string;
     profileSaveIntervalSeconds: number;
     sptFriendNickname: string;
+    release: IRelease;
     fixes: IGameFixes;
     features: IServerFeatures;
     /** Commit hash build server was created from */
     commit?: string;
     /** Timestamp of server build */
     buildTime?: string;
+}
+export interface IRelease {
+    betaDisclaimerText?: string;
+    betaDisclaimerAcceptText: string;
+    serverModsLoadedText: string;
+    serverModsLoadedDebugText: string;
+    clientModsLoadedText: string;
+    clientModsLoadedDebugText: string;
+    illegalPluginsLoadedText: string;
+    illegalPluginsExceptionText: string;
+    releaseSummaryText?: string;
+    isBeta?: boolean;
+    isModdable?: boolean;
+    isModded: boolean;
+    betaDisclaimerTimeoutDelay: number;
 }
 export interface IGameFixes {
     /** Shotguns use a different value than normal guns causing huge pellet dispersion  */

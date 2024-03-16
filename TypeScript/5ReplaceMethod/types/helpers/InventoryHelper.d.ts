@@ -74,9 +74,9 @@ export declare class InventoryHelper {
      * @param itemWithChildren An item
      * @param foundInRaid Item was found in raid
      */
-    private setFindInRaidStatusForItem;
+    protected setFindInRaidStatusForItem(itemWithChildren: Item[], foundInRaid: boolean): void;
     /**
-     * Remove properties from a Upd object used by a trader/ragfair
+     * Remove properties from a Upd object used by a trader/ragfair that are unnecessary to a player
      * @param upd Object to update
      */
     protected removeTraderRagfairRelatedUpdProperties(upd: Upd): void;
@@ -106,8 +106,9 @@ export declare class InventoryHelper {
      * @param containerFS2D Container grid to add item to
      * @param itemWithChildren Item to add to grid
      * @param containerId Id of the container we're fitting item into
+     * @param desiredSlotId slot id value to use, default is "hideout"
      */
-    placeItemInContainer(containerFS2D: number[][], itemWithChildren: Item[], containerId: string): void;
+    placeItemInContainer(containerFS2D: number[][], itemWithChildren: Item[], containerId: string, desiredSlotId?: string): void;
     /**
      * Find a location to place an item into inventory and place it
      * @param stashFS2D 2-dimensional representation of the container slots
@@ -119,9 +120,10 @@ export declare class InventoryHelper {
      */
     protected placeItemInInventory(stashFS2D: number[][], sortingTableFS2D: number[][], itemWithChildren: Item[], playerInventory: Inventory, useSortingTable: boolean, output: IItemEventRouterResponse): void;
     /**
+     * Split an items stack size based on its StackMaxSize value
      * @param assortItems Items to add to inventory
      * @param requestItem Details of purchased item to add to inventory
-     * @param result Array split stacks are added to
+     * @param result Array split stacks are appended to
      */
     protected splitStackIntoSmallerChildStacks(assortItems: Item[], requestItem: AddItem, result: IAddItemTempObject[]): void;
     /**
@@ -134,13 +136,48 @@ export declare class InventoryHelper {
      * @param output OPTIONAL - IItemEventRouterResponse
      */
     removeItem(profile: IPmcData, itemId: string, sessionID: string, output?: IItemEventRouterResponse): void;
-    removeItemAndChildrenFromMailRewards(sessionId: string, removeRequest: IInventoryRemoveRequestData, output: IItemEventRouterResponse): void;
-    removeItemByCount(pmcData: IPmcData, itemId: string, count: number, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
+    /**
+     * Delete desired item from a player profiles mail
+     * @param sessionId Session id
+     * @param removeRequest Remove request
+     * @param output OPTIONAL - IItemEventRouterResponse
+     */
+    removeItemAndChildrenFromMailRewards(sessionId: string, removeRequest: IInventoryRemoveRequestData, output?: IItemEventRouterResponse): void;
+    /**
+     * Find item by id in player inventory and remove x of its count
+     * @param pmcData player profile
+     * @param itemId Item id to decrement StackObjectsCount of
+     * @param countToRemove Number of item to remove
+     * @param sessionID Session id
+     * @param output IItemEventRouterResponse
+     * @returns IItemEventRouterResponse
+     */
+    removeItemByCount(pmcData: IPmcData, itemId: string, countToRemove: number, sessionID: string, output?: IItemEventRouterResponse): IItemEventRouterResponse;
+    /**
+     * Get the height and width of an item - can have children that alter size
+     * @param itemTpl Item to get size of
+     * @param itemID Items id to get size of
+     * @param inventoryItems
+     * @returns [width, height]
+     */
     getItemSize(itemTpl: string, itemID: string, inventoryItems: Item[]): number[];
     protected getSizeByInventoryItemHash(itemTpl: string, itemID: string, inventoryItemHash: InventoryHelper.InventoryItemHash): number[];
-    protected getInventoryItemHash(inventoryItem: Item[]): InventoryHelper.InventoryItemHash;
+    /**
+     * Get a blank two-dimentional representation of a container
+     * @param containerH Horizontal size of container
+     * @param containerY Vertical size of container
+     * @returns Two-dimensional representation of container
+     */
     protected getBlankContainerMap(containerH: number, containerY: number): number[][];
+    /**
+     * @param containerH Horizontal size of container
+     * @param containerV Vertical size of container
+     * @param itemList
+     * @param containerId Id of the container
+     * @returns Two-dimensional representation of container
+     */
     getContainerMap(containerH: number, containerV: number, itemList: Item[], containerId: string): number[][];
+    protected getInventoryItemHash(inventoryItem: Item[]): InventoryHelper.InventoryItemHash;
     /**
      * Return the inventory that needs to be modified (scav/pmc etc)
      * Changes made to result apply to character inventory
@@ -151,18 +188,29 @@ export declare class InventoryHelper {
      */
     getOwnerInventoryItems(request: IInventoryMoveRequestData | IInventorySplitRequestData | IInventoryMergeRequestData | IInventoryTransferRequestData, sessionId: string): IOwnerInventoryItems;
     /**
-     * Made a 2d array table with 0 - free slot and 1 - used slot
-     * @param {Object} pmcData
-     * @param {string} sessionID
-     * @returns Array
+     * Get a two dimensional array to represent stash slots
+     * 0 value = free, 1 = taken
+     * @param pmcData Player profile
+     * @param sessionID session id
+     * @returns 2-dimensional array
      */
     protected getStashSlotMap(pmcData: IPmcData, sessionID: string): number[][];
+    /**
+     * Get a blank two-dimensional array representation of a container
+     * @param containerTpl Container to get data for
+     * @returns blank two-dimensional array
+     */
     getContainerSlotMap(containerTpl: string): number[][];
+    /**
+     * Get a two-dimensional array representation of the players sorting table
+     * @param pmcData Player profile
+     * @returns two-dimensional array
+     */
     protected getSortingTableSlotMap(pmcData: IPmcData): number[][];
     /**
-     * Get Player Stash Proper Size
-     * @param sessionID Playerid
-     * @returns Array of 2 values, x and y stash size
+     * Get Players Stash Size
+     * @param sessionID Players id
+     * @returns Array of 2 values, horizontal and vertical stash size
      */
     protected getPlayerStashSize(sessionID: string): Record<number, number>;
     /**

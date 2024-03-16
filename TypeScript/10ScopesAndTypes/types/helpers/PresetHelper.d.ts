@@ -38,4 +38,10 @@ export declare class PresetHelper {
      */
     getDefaultPreset(templateId: string): IPreset;
     getBaseItemTpl(presetId: string): string;
+    /**
+     * Return the price of the preset for the given item tpl, or for the tpl itself if no preset exists
+     * @param tpl The item template to get the price of
+     * @returns The price of the given item preset, or base item if no preset exists
+     */
+    getDefaultPresetOrItemPrice(tpl: string): number;
 }

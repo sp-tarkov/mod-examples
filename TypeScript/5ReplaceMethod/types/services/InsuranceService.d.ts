@@ -71,12 +71,6 @@ export declare class InsuranceService {
      */
     sendInsuredItems(pmcData: IPmcData, sessionID: string, mapId: string): void;
     /**
-     * Send a message to player informing them gear was completely lost
-     * @param sessionId Session id
-     * @param locationName name of map insurance was lost on
-     */
-    sendLostInsuranceMessage(sessionId: string, locationName?: string): void;
-    /**
      * Check all root insured items and remove location property + set slotId to 'hideout'
      * @param sessionId Session id
      * @param traderId Trader id

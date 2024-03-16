@@ -46,8 +46,8 @@ export declare class VFS {
     removeDirAsync(filepath: string): Promise<void>;
     rename(oldPath: string, newPath: string): void;
     renameAsync(oldPath: string, newPath: string): Promise<void>;
-    protected lockFileSync(filepath: any): void;
-    protected checkFileSync(filepath: any): any;
+    protected lockFileSync(filepath: any): () => void;
+    protected checkFileSync(filepath: any): boolean;
     protected unlockFileSync(filepath: any): void;
     getFileExtension(filepath: string): string;
     stripExtension(filepath: string): string;

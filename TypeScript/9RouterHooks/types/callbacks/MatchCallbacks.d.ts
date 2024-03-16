@@ -1,16 +1,14 @@
 import { MatchController } from "@spt-aki/controllers/MatchController";
 import { IEmptyRequestData } from "@spt-aki/models/eft/common/IEmptyRequestData";
-import { IPmcData } from "@spt-aki/models/eft/common/IPmcData";
 import { IGetBodyResponseData } from "@spt-aki/models/eft/httpResponse/IGetBodyResponseData";
 import { INullResponseData } from "@spt-aki/models/eft/httpResponse/INullResponseData";
 import { IAcceptGroupInviteRequest } from "@spt-aki/models/eft/match/IAcceptGroupInviteRequest";
 import { IAcceptGroupInviteResponse } from "@spt-aki/models/eft/match/IAcceptGroupInviteResponse";
 import { ICancelGroupInviteRequest } from "@spt-aki/models/eft/match/ICancelGroupInviteRequest";
-import { ICreateGroupRequestData } from "@spt-aki/models/eft/match/ICreateGroupRequestData";
+import { IDeclineGroupInviteRequest } from "@spt-aki/models/eft/match/IDeclineGroupInviteRequest";
 import { IEndOfflineRaidRequestData } from "@spt-aki/models/eft/match/IEndOfflineRaidRequestData";
 import { IGetGroupStatusRequestData } from "@spt-aki/models/eft/match/IGetGroupStatusRequestData";
 import { IGetGroupStatusResponse } from "@spt-aki/models/eft/match/IGetGroupStatusResponse";
-import { IGetProfileRequestData } from "@spt-aki/models/eft/match/IGetProfileRequestData";
 import { IGetRaidConfigurationRequestData } from "@spt-aki/models/eft/match/IGetRaidConfigurationRequestData";
 import { IJoinMatchRequestData } from "@spt-aki/models/eft/match/IJoinMatchRequestData";
 import { IJoinMatchResult } from "@spt-aki/models/eft/match/IJoinMatchResult";
@@ -39,6 +37,8 @@ export declare class MatchCallbacks {
     sendGroupInvite(url: string, info: ISendGroupInviteRequest, sessionID: string): IGetBodyResponseData<string>;
     /** Handle client/match/group/invite/accept */
     acceptGroupInvite(url: string, info: IAcceptGroupInviteRequest, sessionID: string): IGetBodyResponseData<IAcceptGroupInviteResponse[]>;
+    /** Handle client/match/group/invite/decline */
+    declineGroupInvite(url: string, info: IDeclineGroupInviteRequest, sessionID: string): IGetBodyResponseData<any>;
     /** Handle client/match/group/invite/cancel */
     cancelGroupInvite(url: string, info: ICancelGroupInviteRequest, sessionID: string): IGetBodyResponseData<boolean>;
     /** Handle client/match/group/transfer */
@@ -47,8 +47,6 @@ export declare class MatchCallbacks {
     cancelAllGroupInvite(url: string, info: any, sessionID: string): INullResponseData;
     /** @deprecated - not called on raid start/end or game start/exit */
     putMetrics(url: string, info: IPutMetricsRequestData, sessionID: string): INullResponseData;
-    /** Handle raid/profile/list */
-    getProfile(url: string, info: IGetProfileRequestData, sessionID: string): IGetBodyResponseData<IPmcData[]>;
     serverAvailable(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<boolean>;
     /** Handle match/group/start_game */
     joinMatch(url: string, info: IJoinMatchRequestData, sessionID: string): IGetBodyResponseData<IJoinMatchResult>;
@@ -60,8 +58,6 @@ export declare class MatchCallbacks {
      * @returns
      */
     getGroupStatus(url: string, info: IGetGroupStatusRequestData, sessionID: string): IGetBodyResponseData<IGetGroupStatusResponse>;
-    /** Handle client/match/group/create */
-    createGroup(url: string, info: ICreateGroupRequestData, sessionID: string): IGetBodyResponseData<any>;
     /** Handle client/match/group/delete */
     deleteGroup(url: string, info: any, sessionID: string): INullResponseData;
     leaveGroup(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<boolean>;

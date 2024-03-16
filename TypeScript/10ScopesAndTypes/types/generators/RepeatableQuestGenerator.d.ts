@@ -1,54 +1,34 @@
-import { HandbookHelper } from "@spt-aki/helpers/HandbookHelper";
+import { RepeatableQuestRewardGenerator } from "@spt-aki/generators/RepeatableQuestRewardGenerator";
 import { ItemHelper } from "@spt-aki/helpers/ItemHelper";
-import { PresetHelper } from "@spt-aki/helpers/PresetHelper";
-import { ProfileHelper } from "@spt-aki/helpers/ProfileHelper";
-import { RagfairServerHelper } from "@spt-aki/helpers/RagfairServerHelper";
 import { RepeatableQuestHelper } from "@spt-aki/helpers/RepeatableQuestHelper";
 import { Exit } from "@spt-aki/models/eft/common/ILocationBase";
 import { TraderInfo } from "@spt-aki/models/eft/common/tables/IBotBase";
-import { Item } from "@spt-aki/models/eft/common/tables/IItem";
-import { IQuestCondition, IQuestConditionCounterCondition, IQuestReward, IQuestRewards } from "@spt-aki/models/eft/common/tables/IQuest";
+import { IQuestCondition, IQuestConditionCounterCondition } from "@spt-aki/models/eft/common/tables/IQuest";
 import { IRepeatableQuest } from "@spt-aki/models/eft/common/tables/IRepeatableQuests";
-import { ITemplateItem } from "@spt-aki/models/eft/common/tables/ITemplateItem";
-import { IBaseQuestConfig, IBossInfo, IEliminationConfig, IQuestConfig, IRepeatableQuestConfig } from "@spt-aki/models/spt/config/IQuestConfig";
+import { IBossInfo, IEliminationConfig, IQuestConfig, IRepeatableQuestConfig } from "@spt-aki/models/spt/config/IQuestConfig";
 import { IQuestTypePool } from "@spt-aki/models/spt/repeatable/IQuestTypePool";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
-import { EventOutputHolder } from "@spt-aki/routers/EventOutputHolder";
 import { ConfigServer } from "@spt-aki/servers/ConfigServer";
 import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
-import { ItemFilterService } from "@spt-aki/services/ItemFilterService";
 import { LocalisationService } from "@spt-aki/services/LocalisationService";
-import { PaymentService } from "@spt-aki/services/PaymentService";
-import { ProfileFixerService } from "@spt-aki/services/ProfileFixerService";
-import { HttpResponseUtil } from "@spt-aki/utils/HttpResponseUtil";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 import { MathUtil } from "@spt-aki/utils/MathUtil";
 import { ObjectId } from "@spt-aki/utils/ObjectId";
 import { ProbabilityObjectArray, RandomUtil } from "@spt-aki/utils/RandomUtil";
-import { TimeUtil } from "@spt-aki/utils/TimeUtil";
 export declare class RepeatableQuestGenerator {
-    protected timeUtil: TimeUtil;
     protected logger: ILogger;
     protected randomUtil: RandomUtil;
-    protected httpResponse: HttpResponseUtil;
     protected mathUtil: MathUtil;
     protected jsonUtil: JsonUtil;
     protected databaseServer: DatabaseServer;
     protected itemHelper: ItemHelper;
-    protected presetHelper: PresetHelper;
-    protected profileHelper: ProfileHelper;
-    protected profileFixerService: ProfileFixerService;
-    protected handbookHelper: HandbookHelper;
-    protected ragfairServerHelper: RagfairServerHelper;
-    protected eventOutputHolder: EventOutputHolder;
     protected localisationService: LocalisationService;
-    protected paymentService: PaymentService;
     protected objectId: ObjectId;
-    protected itemFilterService: ItemFilterService;
     protected repeatableQuestHelper: RepeatableQuestHelper;
+    protected repeatableQuestRewardGenerator: RepeatableQuestRewardGenerator;
     protected configServer: ConfigServer;
     protected questConfig: IQuestConfig;
-    constructor(timeUtil: TimeUtil, logger: ILogger, randomUtil: RandomUtil, httpResponse: HttpResponseUtil, mathUtil: MathUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper, presetHelper: PresetHelper, profileHelper: ProfileHelper, profileFixerService: ProfileFixerService, handbookHelper: HandbookHelper, ragfairServerHelper: RagfairServerHelper, eventOutputHolder: EventOutputHolder, localisationService: LocalisationService, paymentService: PaymentService, objectId: ObjectId, itemFilterService: ItemFilterService, repeatableQuestHelper: RepeatableQuestHelper, configServer: ConfigServer);
+    constructor(logger: ILogger, randomUtil: RandomUtil, mathUtil: MathUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper, localisationService: LocalisationService, objectId: ObjectId, repeatableQuestHelper: RepeatableQuestHelper, repeatableQuestRewardGenerator: RepeatableQuestRewardGenerator, configServer: ConfigServer);
     /**
      * This method is called by /GetClientRepeatableQuests/ and creates one element of quest type format (see assets/database/templates/repeatableQuests.json).
      * It randomly draws a quest type (currently Elimination, Completion or Exploration) as well as a trader who is providing the quest
@@ -144,71 +124,6 @@ export declare class RepeatableQuestGenerator {
      * @returns {object}                            Exit condition
      */
     protected generateExplorationExitCondition(exit: Exit): IQuestConditionCounterCondition;
-    /**
-     * Generate the reward for a mission. A reward can consist of
-     * - Experience
-     * - Money
-     * - Items
-     * - Trader Reputation
-     *
-     * The reward is dependent on the player level as given by the wiki. The exact mapping of pmcLevel to
-     * experience / money / items / trader reputation can be defined in QuestConfig.js
-     *
-     * There's also a random variation of the reward the spread of which can be also defined in the config.
-     *
-     * Additionally, a scaling factor w.r.t. quest difficulty going from 0.2...1 can be used
-     *
-     * @param   {integer}   pmcLevel            player's level
-     * @param   {number}    difficulty          a reward scaling factor from 0.2 to 1
-     * @param   {string}    traderId            the trader for reputation gain (and possible in the future filtering of reward item type based on trader)
-     * @param   {object}    repeatableConfig    The configuration for the repeatable kind (daily, weekly) as configured in QuestConfig for the requested quest
-     * @returns {object}                        object of "Reward"-type that can be given for a repeatable mission
-     */
-    protected generateReward(pmcLevel: number, difficulty: number, traderId: string, repeatableConfig: IRepeatableQuestConfig, questConfig: IBaseQuestConfig): IQuestRewards;
-    protected addMoneyReward(traderId: string, rewards: IQuestRewards, rewardRoubles: number, rewardIndex: number): void;
-    protected calculateAmmoStackSizeThatFitsBudget(itemSelected: ITemplateItem, roublesBudget: number, rewardNumItems: number): number;
-    /**
-     * Should reward item have stack size increased (25% chance)
-     * @param item Item to possibly increase stack size of
-     * @param maxRoublePriceToStack Maximum rouble price an item can be to still be chosen for stacking
-     * @returns True if it should
-     */
-    protected canIncreaseRewardItemStackSize(item: ITemplateItem, maxRoublePriceToStack: number): boolean;
-    /**
-     * Get a randomised number a reward items stack size should be based on its handbook price
-     * @param item Reward item to get stack size for
-     * @returns Stack size value
-     */
-    protected getRandomisedRewardItemStackSizeByPrice(item: ITemplateItem): number;
-    /**
-     * Select a number of items that have a colelctive value of the passed in parameter
-     * @param repeatableConfig Config
-     * @param roublesBudget Total value of items to return
-     * @returns Array of reward items that fit budget
-     */
-    protected chooseRewardItemsWithinBudget(repeatableConfig: IRepeatableQuestConfig, roublesBudget: number, traderId: string): ITemplateItem[];
-    /**
-     * Helper to create a reward item structured as required by the client
-     *
-     * @param   {string}    tpl             ItemId of the rewarded item
-     * @param   {integer}   value           Amount of items to give
-     * @param   {integer}   index           All rewards will be appended to a list, for unknown reasons the client wants the index
-     * @returns {object}                    Object of "Reward"-item-type
-     */
-    protected generateRewardItem(tpl: string, value: number, index: number, preset?: Item[]): IQuestReward;
-    /**
-     * Picks rewardable items from items.json. This means they need to fit into the inventory and they shouldn't be keys (debatable)
-     * @param repeatableQuestConfig Config file
-     * @returns List of rewardable items [[_tpl, itemTemplate],...]
-     */
-    protected getRewardableItems(repeatableQuestConfig: IRepeatableQuestConfig, traderId: string): [string, ITemplateItem][];
-    /**
-     * Checks if an id is a valid item. Valid meaning that it's an item that may be a reward
-     * or content of bot loot. Items that are tested as valid may be in a player backpack or stash.
-     * @param {string} tpl template id of item to check
-     * @returns True if item is valid reward
-     */
-    protected isValidRewardItem(tpl: string, repeatableQuestConfig: IRepeatableQuestConfig, itemBaseWhitelist: string[]): boolean;
     /**
      * Generates the base object of quest type format given as templates in assets/database/templates/repeatableQuests.json
      * The templates include Elimination, Completion and Extraction quest types

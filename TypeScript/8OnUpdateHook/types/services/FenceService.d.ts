@@ -39,8 +39,6 @@ export declare class FenceService {
     protected fenceDiscountAssort: ITraderAssort;
     /** Hydrated on initial assort generation as part of generateFenceAssorts() */
     protected desiredAssortCounts: IFenceAssortGenerationValues;
-    /** Items that have a multi-stack */
-    protected multiStackItems: Record<string, boolean>;
     constructor(logger: ILogger, jsonUtil: JsonUtil, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, itemHelper: ItemHelper, presetHelper: PresetHelper, localisationService: LocalisationService, configServer: ConfigServer);
     /**
      * Replace main fence assort with new assort
@@ -162,6 +160,22 @@ export declare class FenceService {
         current: number;
         max: number;
     }>, loyaltyLevel: number): void;
+    /**
+     * Find an assort item that matches the first parameter, also matches based on upd properties
+     * e.g. salewa hp resource units left
+     * @param rootItemBeingAdded item to look for a match against
+     * @param itemDbDetails Db details of matching item
+     * @param fenceItemAssorts Items to search through
+     * @returns Matching assort item
+     */
+    protected getMatchingItem(rootItemBeingAdded: Item, itemDbDetails: ITemplateItem, fenceItemAssorts: Item[]): Item;
+    /**
+     * Should this item be forced into only 1 stack on fence
+     * @param existingItem Existing item from fence assort
+     * @param itemDbDetails Item we want to add db details
+     * @returns True item should be force stacked
+     */
+    protected itemShouldBeForceStacked(existingItem: Item, itemDbDetails: ITemplateItem): boolean;
     /**
      * Adjust price of item based on what is left to buy (resource/uses left)
      * @param barterSchemes All barter scheme for item having price adjusted

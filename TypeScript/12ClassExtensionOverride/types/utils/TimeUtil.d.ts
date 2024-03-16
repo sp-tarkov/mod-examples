@@ -61,4 +61,5 @@ export declare class TimeUtil {
      * @returns {number} The equivalent number of seconds.
      */
     getHoursAsSeconds(hours: number): number;
+    getTimestampOfNextHour(): number;
 }

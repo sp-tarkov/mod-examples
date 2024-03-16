@@ -54,6 +54,7 @@ export interface Info {
     LowerNickname: string;
     Side: string;
     SquadInviteRestriction: boolean;
+    HasCoopExtension: boolean;
     Voice: string;
     Level: number;
     Experience: number;
@@ -314,8 +315,8 @@ export interface Productive {
     sptIsComplete?: boolean;
     /** Is the craft a Continuous, e.g bitcoins/water collector */
     sptIsContinuous?: boolean;
-    /** Stores a list of tools used in this craft, to give back once the craft is done */
-    sptRequiredTools?: string[];
+    /** Stores a list of tools used in this craft and whether they're FiR, to give back once the craft is done */
+    sptRequiredTools?: Item[];
 }
 export interface Production extends Productive {
     RecipeId: string;

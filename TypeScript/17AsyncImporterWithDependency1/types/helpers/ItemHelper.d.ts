@@ -71,6 +71,10 @@ export declare class ItemHelper {
      * @returns True if it needs armor inserts
      */
     itemRequiresSoftInserts(itemTpl: string): boolean;
+    /**
+     * Get all soft insert slot ids
+     * @returns An array of soft insert ids (e.g. soft_armor_back, helmet_top)
+     */
     getSoftInsertSlotIds(): string[];
     /**
      * Returns the items total price based on the handbook or as a fallback from the prices.json if the item is not
@@ -221,6 +225,12 @@ export declare class ItemHelper {
      * @returns Item[]
      */
     replaceIDs(originalItems: Item[], pmcData?: IPmcData | null, insuredItems?: InsuredItem[] | null, fastPanel?: any): Item[];
+    /**
+     * Mark the passed in array of items as found in raid.
+     * Modifies passed in items
+     * @param items The list of items to mark as FiR
+     */
+    setFoundInRaid(items: Item[]): void;
     /**
      * WARNING, SLOW. Recursively loop down through an items hierarchy to see if any of the ids match the supplied list, return true if any do
      * @param {string} tpl Items tpl to check parents of
@@ -432,6 +442,13 @@ export declare class ItemHelper {
      * @returns A Map where the keys are the item IDs and the values are the corresponding Item objects.
      */
     generateItemsMap(items: Item[]): Map<string, Item>;
+    /**
+     * Add a blank upd object to passed in item if it does not exist already
+     * @param item item to add upd to
+     * @param warningMessageWhenMissing text to write to log when upd object was not found
+     * @returns True when upd object was added
+     */
+    addUpdObjectToItem(item: Item, warningMessageWhenMissing?: string): boolean;
 }
 declare namespace ItemHelper {
     interface ItemSize {

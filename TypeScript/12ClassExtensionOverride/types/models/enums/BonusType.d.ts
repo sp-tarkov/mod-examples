@@ -28,5 +28,6 @@ export declare enum BonusType {
     STASH_SIZE = "StashSize",
     MAXIMUM_ENERGY_RESERVE = "MaximumEnergyReserve",
     TEXT_BONUS = "TextBonus",
-    SKILL_GROUP_LEVELING_BOOST = "SkillGroupLevelingBoost"
+    SKILL_GROUP_LEVELING_BOOST = "SkillGroupLevelingBoost",
+    STASH_ROWS = "StashRows"
 }

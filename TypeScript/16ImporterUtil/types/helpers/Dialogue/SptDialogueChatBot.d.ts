@@ -3,6 +3,7 @@ import { ProfileHelper } from "@spt-aki/helpers/ProfileHelper";
 import { ISendMessageRequest } from "@spt-aki/models/eft/dialog/ISendMessageRequest";
 import { IUserDialogInfo } from "@spt-aki/models/eft/profile/IAkiProfile";
 import { ICoreConfig } from "@spt-aki/models/spt/config/ICoreConfig";
+import { IWeatherConfig } from "@spt-aki/models/spt/config/IWeatherConfig";
 import { ConfigServer } from "@spt-aki/servers/ConfigServer";
 import { GiftService } from "@spt-aki/services/GiftService";
 import { MailSendService } from "@spt-aki/services/MailSendService";
@@ -14,6 +15,7 @@ export declare class SptDialogueChatBot implements IDialogueChatBot {
     protected giftService: GiftService;
     protected configServer: ConfigServer;
     protected coreConfig: ICoreConfig;
+    protected weatherConfig: IWeatherConfig;
     constructor(profileHelper: ProfileHelper, randomUtil: RandomUtil, mailSendService: MailSendService, giftService: GiftService, configServer: ConfigServer);
     getChatBot(): IUserDialogInfo;
     /**
