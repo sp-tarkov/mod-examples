@@ -4,11 +4,17 @@ export interface IRagfairConfig extends IBaseConfig {
     kind: "aki-ragfair";
     /** How many seconds should pass before expired offers and procesed + player offers checked if sold */
     runIntervalSeconds: number;
+    /** Default values used to hydrate `runIntervalSeconds` with */
+    runIntervalValues: IRunIntervalValues;
     /** Player listing settings */
     sell: Sell;
     /** Trader ids + should their assorts be listed on flea*/
     traders: Record<string, boolean>;
     dynamic: Dynamic;
+}
+export interface IRunIntervalValues {
+    inRaid: number;
+    outOfRaid: number;
 }
 export interface Sell {
     /** Should a fee be deducted from player when liting an item for sale */

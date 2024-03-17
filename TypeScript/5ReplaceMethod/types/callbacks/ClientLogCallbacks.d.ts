@@ -21,4 +21,8 @@ export declare class ClientLogCallbacks {
      * Handle /singleplayer/release
      */
     releaseNotes(): string;
+    /**
+     * Handle /singleplayer/enableBSGlogging
+     */
+    bsgLogging(): string;
 }

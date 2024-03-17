@@ -73,7 +73,7 @@ export declare class RagfairPriceService implements OnLoad {
      */
     getStaticPriceForItem(itemTpl: string): number;
     /**
-     * Get prices for all items on flea, priorities dynamic prices from prices.json, use handbook prices if missing
+     * Get prices for all items on flea, prioritize handbook prices first, use prices from prices.json if missing
      * @returns Dictionary of item tpls and rouble cost
      */
     getAllFleaPrices(): Record<string, number>;
