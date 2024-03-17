@@ -54,7 +54,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
         this.traderHelper = new TraderHelper();
         this.fluentTraderAssortHeper = new FluentAssortConstructor(hashUtil, this.logger);
         this.traderHelper.registerProfileImage(baseJson, this.mod, preAkiModLoader, imageRouter, "cat.jpg");
-        this.traderHelper.setTraderUpdateTime(traderConfig, baseJson, 3600);
+        this.traderHelper.setTraderUpdateTime(traderConfig, baseJson, 3600, 4000);
 
         // Add trader to trader enum
         Traders[baseJson._id] = baseJson._id;

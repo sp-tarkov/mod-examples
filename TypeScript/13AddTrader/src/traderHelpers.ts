@@ -28,14 +28,18 @@ export class TraderHelper
      * Add record to trader config to set the refresh time of trader in seconds (default is 60 minutes)
      * @param traderConfig trader config to add our trader to
      * @param baseJson json file for trader (db/base.json)
-     * @param refreshTimeSeconds How many sections between trader stock refresh
+     * @param refreshTimeSecondsMin How many seconds between trader stock refresh min time
+     * @param refreshTimeSecondsMax How many seconds between trader stock refresh max time
      */
-    public setTraderUpdateTime(traderConfig: ITraderConfig, baseJson: any, refreshTimeSeconds: number): void
+    public setTraderUpdateTime(traderConfig: ITraderConfig, baseJson: any, refreshTimeSecondsMin: number, refreshTimeSecondsMax: number): void
     {
         // Add refresh time in seconds to config
         const traderRefreshRecord: UpdateTime = {
             traderId: baseJson._id,
-            seconds: refreshTimeSeconds };
+            seconds: {
+                min: refreshTimeSecondsMin,
+                max: refreshTimeSecondsMax
+            } };
 
         traderConfig.updateTime.push(traderRefreshRecord);
     }
