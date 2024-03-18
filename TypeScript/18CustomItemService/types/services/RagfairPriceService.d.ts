@@ -93,12 +93,12 @@ export declare class RagfairPriceService implements OnLoad {
     getBarterPrice(barterScheme: IBarterScheme[]): number;
     /**
      * Generate a currency cost for an item and its mods
-     * @param items Item with mods to get price for
+     * @param offerItems Item with mods to get price for
      * @param desiredCurrency Currency price desired in
      * @param isPackOffer Price is for a pack type offer
      * @returns cost of item in desired currency
      */
-    getDynamicOfferPriceForOffer(items: Item[], desiredCurrency: string, isPackOffer: boolean): number;
+    getDynamicOfferPriceForOffer(offerItems: Item[], desiredCurrency: string, isPackOffer: boolean): number;
     /**
      * using data from config, adjust an items price to be relative to its handbook price
      * @param handbookPrices Prices of items in handbook

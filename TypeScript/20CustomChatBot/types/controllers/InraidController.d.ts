@@ -116,6 +116,13 @@ export declare class InraidController {
      */
     protected mergePmcAndScavEncyclopedias(primary: IPmcData, secondary: IPmcData): void;
     /**
+     * Post-scav-raid any charisma increase must be propigated into PMC profile
+     * @param postRaidServerScavProfile Scav profile after adjustments made from raid
+     * @param postRaidServerPmcProfile Pmc profile after raid
+     * @param preRaidScavCharismaProgress charisma progress value pre-raid
+     */
+    protected updatePmcCharismaSkillPostScavRaid(postRaidServerScavProfile: IPmcData, postRaidServerPmcProfile: IPmcData, preRaidScavCharismaProgress: number): void;
+    /**
      * Does provided profile contain any condition counters
      * @param profile Profile to check for condition counters
      * @returns Profile has condition counters
