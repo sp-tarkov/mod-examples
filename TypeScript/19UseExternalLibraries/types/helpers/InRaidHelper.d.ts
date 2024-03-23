@@ -3,7 +3,7 @@ import { ItemHelper } from "@spt-aki/helpers/ItemHelper";
 import { PaymentHelper } from "@spt-aki/helpers/PaymentHelper";
 import { QuestHelper } from "@spt-aki/helpers/QuestHelper";
 import { IPmcData, IPostRaidPmcData } from "@spt-aki/models/eft/common/IPmcData";
-import { IQuestStatus, TraderInfo, Victim } from "@spt-aki/models/eft/common/tables/IBotBase";
+import { IQuestStatus, TraderInfo } from "@spt-aki/models/eft/common/tables/IBotBase";
 import { Item } from "@spt-aki/models/eft/common/tables/IItem";
 import { ISaveProgressRequestData } from "@spt-aki/models/eft/inRaid/ISaveProgressRequestData";
 import { IInRaidConfig } from "@spt-aki/models/spt/config/IInRaidConfig";
@@ -47,20 +47,6 @@ export declare class InRaidHelper {
      * @param items Items array to check
      */
     addUpdToMoneyFromRaid(items: Item[]): void;
-    /**
-     * Add karma changes up and return the new value
-     * @param existingFenceStanding Current fence standing level
-     * @param victims Array of kills player performed
-     * @returns adjusted karma level after kills are taken into account
-     */
-    calculateFenceStandingChangeFromKillsAsScav(existingFenceStanding: number, victims: Victim[]): number;
-    protected getAdditionalLossForKill(fenceStanding: number, repChangeForKill: number): number;
-    /**
-     * Get the standing gain/loss for killing an npc
-     * @param victim Who was killed by player
-     * @returns a numerical standing gain or loss
-     */
-    protected getFenceStandingChangeForKillAsScav(victim: Victim): number;
     /**
      * Reset a profile to a baseline, used post-raid
      * Reset points earned during session property

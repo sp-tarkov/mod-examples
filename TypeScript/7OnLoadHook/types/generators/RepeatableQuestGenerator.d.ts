@@ -105,7 +105,7 @@ export declare class RepeatableQuestGenerator {
     /**
      * Filter a maps exits to just those for the desired side
      * @param locationKey Map id (e.g. factory4_day)
-     * @param playerSide Scav/Bear
+     * @param playerSide Scav/Pmc
      * @returns Array of Exit objects
      */
     protected getLocationExitsForSide(locationKey: string, playerSide: string): Exit[];

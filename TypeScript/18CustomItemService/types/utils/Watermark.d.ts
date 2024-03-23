@@ -40,6 +40,4 @@ export declare class Watermark {
     protected resetCursor(): void;
     /** Draw the watermark */
     protected draw(): void;
-    /** Caculate text length */
-    protected textLength(s: string): number;
 }

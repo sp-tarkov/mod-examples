@@ -205,6 +205,7 @@ export interface Exit {
     PassageRequirement: string;
     PlayersCount: number;
     RequirementTip: string;
+    Side?: string;
 }
 export interface MaxItemCountInLocation {
     TemplateId: string;

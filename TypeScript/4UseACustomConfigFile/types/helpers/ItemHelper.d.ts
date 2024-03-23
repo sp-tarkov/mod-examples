@@ -60,6 +60,12 @@ export declare class ItemHelper {
      */
     armorItemCanHoldMods(itemTpl: string): boolean;
     /**
+     * Does the provided item tpl need soft/removable inserts to function
+     * @param itemTpl Armor item
+     * @returns True if item needs some kind of insert
+     */
+    armorItemHasRemovableOrSoftInsertSlots(itemTpl: string): boolean;
+    /**
      * Does the pased in tpl have ability to hold removable plate items
      * @param itemTpl item tpl to check for plate support
      * @returns True when armor can hold plates
