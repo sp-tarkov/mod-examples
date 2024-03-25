@@ -1,7 +1,7 @@
 import { HttpServerHelper } from "@spt-aki/helpers/HttpServerHelper";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 import { VFS } from "@spt-aki/utils/VFS";
-declare class BundleInfo {
+export declare class BundleInfo {
     modPath: string;
     key: string;
     path: string;
@@ -30,4 +30,3 @@ export interface BundleManifestEntry {
     key: string;
     path: string;
 }
-export {};

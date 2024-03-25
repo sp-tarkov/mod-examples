@@ -158,8 +158,9 @@ export declare class InraidController {
      * Update profile with scav karma values based on in-raid actions
      * @param pmcData Pmc profile
      * @param offraidData Post-raid save request
+     * @param scavData Scav profile
      */
-    protected handlePostRaidPlayerScavKarmaChanges(pmcData: IPmcData, offraidData: ISaveProgressRequestData): void;
+    protected handlePostRaidPlayerScavKarmaChanges(pmcData: IPmcData, offraidData: ISaveProgressRequestData, scavData: IPmcData): void;
     /**
      * Get the inraid config from configs/inraid.json
      * @returns InRaid Config

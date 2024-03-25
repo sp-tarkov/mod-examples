@@ -129,6 +129,12 @@ export declare class QuestHelper {
      */
     getNewlyAccessibleQuestsWhenStartingQuest(startedQuestId: string, sessionID: string): IQuest[];
     /**
+     * Is the quest for the opposite side the player is on
+     * @param playerSide Player side (usec/bear)
+     * @param questId QuestId to check
+     */
+    questIsForOtherSide(playerSide: string, questId: string): boolean;
+    /**
      * Get quests that can be shown to player after failing a quest
      * @param failedQuestId Id of the quest failed by player
      * @param sessionId Session id

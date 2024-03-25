@@ -70,12 +70,6 @@ export declare class QuestController {
      */
     protected showEventQuestToPlayer(questId: string): boolean;
     /**
-     * Is the quest for the opposite side the player is on
-     * @param playerSide Player side (usec/bear)
-     * @param questId QuestId to check
-     */
-    protected questIsForOtherSide(playerSide: string, questId: string): boolean;
-    /**
      * Handle QuestAccept event
      * Handle the client accepting a quest and starting it
      * Send starting rewards if any to player and

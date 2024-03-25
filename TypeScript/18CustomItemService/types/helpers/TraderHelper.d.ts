@@ -59,7 +59,7 @@ export declare class TraderHelper {
     /**
      * Reset a profiles trader data back to its initial state as seen by a level 1 player
      * Does NOT take into account different profile levels
-     * @param sessionID session id
+     * @param sessionID session id of player
      * @param traderID trader id to reset
      */
     resetTrader(sessionID: string, traderID: string): void;
@@ -74,13 +74,13 @@ export declare class TraderHelper {
      * Alter a traders unlocked status
      * @param traderId Trader to alter
      * @param status New status to use
-     * @param sessionId Session id
+     * @param sessionId Session id of player
      */
     setTraderUnlockedState(traderId: string, status: boolean, sessionId: string): void;
     /**
      * Add standing to a trader and level them up if exp goes over level threshold
-     * @param sessionId Session id
-     * @param traderId Traders id
+     * @param sessionId Session id of player
+     * @param traderId Traders id to add standing to
      * @param standingToAdd Standing value to add to trader
      */
     addStandingToTrader(sessionId: string, traderId: string, standingToAdd: number): void;
