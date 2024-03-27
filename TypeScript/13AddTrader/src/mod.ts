@@ -16,7 +16,7 @@ import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 // New trader settings
 import * as baseJson from "../db/base.json";
 import { TraderHelper } from "./traderHelpers";
-import { FluentAssortConstructor } from "./fluentTraderAssortCreator";
+import { FluentAssortConstructor as FluentAssortCreator } from "./fluentTraderAssortCreator";
 import { Money } from "@spt-aki/models/enums/Money";
 import { Traders } from "@spt-aki/models/enums/Traders";
 import { HashUtil } from "@spt-aki/utils/HashUtil";
@@ -26,7 +26,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
     private mod: string
     private logger: ILogger
     private traderHelper: TraderHelper
-    private fluentTraderAssortHeper: FluentAssortConstructor
+    private fluentAssortCreator: FluentAssortCreator
 
     constructor() {
         this.mod = "13AddTrader"; // Set name of mod so we can log it to console later
@@ -52,7 +52,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
 
         // Create helper class and use it to register our traders image/icon + set its stock refresh time
         this.traderHelper = new TraderHelper();
-        this.fluentTraderAssortHeper = new FluentAssortConstructor(hashUtil, this.logger);
+        this.fluentAssortCreator = new FluentAssortCreator(hashUtil, this.logger);
         this.traderHelper.registerProfileImage(baseJson, this.mod, preAkiModLoader, imageRouter, "cat.jpg");
         this.traderHelper.setTraderUpdateTime(traderConfig, baseJson, 3600, 4000);
 
@@ -86,7 +86,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
 
         // Add milk
         const MILK_ID = "575146b724597720a27126d5"; // Can find item ids in `database\templates\items.json` or with https://db.sp-tarkov.com/search
-        this.fluentTraderAssortHeper.createSingleAssortItem(MILK_ID)
+        this.fluentAssortCreator.createSingleAssortItem(MILK_ID)
                                     .addStackCount(200)
                                     .addBuyRestriction(10)
                                     .addMoneyCost(Money.ROUBLES, 2000)
@@ -96,7 +96,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
         // Add 3x bitcoin + salewa for milk barter
         const BITCOIN_ID = "59faff1d86f7746c51718c9c"
         const SALEWA_ID = "544fb45d4bdc2dee738b4568";
-        this.fluentTraderAssortHeper.createSingleAssortItem(MILK_ID)
+        this.fluentAssortCreator.createSingleAssortItem(MILK_ID)
                                     .addStackCount(100)
                                     .addBarterCost(BITCOIN_ID, 3)
                                     .addBarterCost(SALEWA_ID, 1)
@@ -105,7 +105,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
 
 
         // Add glock as money purchase
-        this.fluentTraderAssortHeper.createComplexAssortItem(this.traderHelper.createGlock())
+        this.fluentAssortCreator.createComplexAssortItem(this.traderHelper.createGlock())
                                     .addUnlimitedStackCount()
                                     .addMoneyCost(Money.ROUBLES, 20000)
                                     .addBuyRestriction(3)
@@ -113,7 +113,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
                                     .export(tables.traders[baseJson._id]);
 
         // Add mp133 preset as mayo barter
-        this.fluentTraderAssortHeper.createComplexAssortItem(tables.globals.ItemPresets["584148f2245977598f1ad387"]._items)
+        this.fluentAssortCreator.createComplexAssortItem(tables.globals.ItemPresets["584148f2245977598f1ad387"]._items)
                                     .addStackCount(200)
                                     .addBarterCost("5bc9b156d4351e00367fbce9", 1)
                                     .addBuyRestriction(3)
