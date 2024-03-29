@@ -44,7 +44,7 @@ export declare class MatchCallbacks {
     /** Handle client/match/group/transfer */
     transferGroup(url: string, info: ITransferGroupRequest, sessionID: string): IGetBodyResponseData<boolean>;
     /** Handle client/match/group/invite/cancel-all */
-    cancelAllGroupInvite(url: string, info: any, sessionID: string): INullResponseData;
+    cancelAllGroupInvite(url: string, info: IEmptyRequestData, sessionID: string): INullResponseData;
     /** @deprecated - not called on raid start/end or game start/exit */
     putMetrics(url: string, info: IPutMetricsRequestData, sessionID: string): INullResponseData;
     serverAvailable(url: string, info: IEmptyRequestData, sessionID: string): IGetBodyResponseData<boolean>;
@@ -53,7 +53,7 @@ export declare class MatchCallbacks {
     /** Handle client/getMetricsConfig */
     getMetrics(url: string, info: any, sessionID: string): IGetBodyResponseData<string>;
     /**
-     * @deprecated - not called on raid start/end or game start/exit
+     * Called periodically while in a group
      * Handle client/match/group/status
      * @returns
      */
