@@ -15,6 +15,7 @@ import { IServerDetails } from "@spt-aki/models/eft/game/IServerDetails";
 import { IAkiProfile } from "@spt-aki/models/eft/profile/IAkiProfile";
 import { IBotConfig } from "@spt-aki/models/spt/config/IBotConfig";
 import { ICoreConfig } from "@spt-aki/models/spt/config/ICoreConfig";
+import { IHideoutConfig } from "@spt-aki/models/spt/config/IHideoutConfig";
 import { IHttpConfig } from "@spt-aki/models/spt/config/IHttpConfig";
 import { ILocationConfig } from "@spt-aki/models/spt/config/ILocationConfig";
 import { ILootConfig } from "@spt-aki/models/spt/config/ILootConfig";
@@ -60,6 +61,7 @@ export declare class GameController {
     protected coreConfig: ICoreConfig;
     protected locationConfig: ILocationConfig;
     protected ragfairConfig: IRagfairConfig;
+    protected hideoutConfig: IHideoutConfig;
     protected pmcConfig: IPmcConfig;
     protected lootConfig: ILootConfig;
     protected botConfig: IBotConfig;
