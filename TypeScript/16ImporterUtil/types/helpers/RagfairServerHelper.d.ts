@@ -54,6 +54,12 @@ export declare class RagfairServerHelper {
      */
     protected isItemOnCustomFleaBlacklist(itemTemplateId: string): boolean;
     /**
+     * Is supplied parent id on the ragfair custom item category blacklist
+     * @param parentId Parent Id to check is blacklisted
+     * @returns true if blacklisted
+     */
+    protected isItemCategoryOnCustomFleaBlacklist(itemParentId: string): boolean;
+    /**
      * is supplied id a trader
      * @param traderId
      * @returns True if id was a trader
@@ -96,11 +102,4 @@ export declare class RagfairServerHelper {
      * @returns
      */
     getPresetItemsByTpl(item: Item): Item[];
-    /**
-     * Generate new unique ids for child items while preserving hierarchy
-     * @param rootItem Base/primary item of preset
-     * @param preset Primary item + children of primary item
-     * @returns Item array with new IDs
-     */
-    reparentPresets(rootItem: Item, preset: Item[]): Item[];
 }

@@ -49,6 +49,11 @@ export declare class TraderAssortHelper {
      */
     getAssort(sessionId: string, traderId: string, flea?: boolean): ITraderAssort;
     /**
+     * Reset every traders root item `BuyRestrictionCurrent` property to 0
+     * @param assortItems Items to adjust
+     */
+    protected resetBuyRestrictionCurrentValue(assortItems: Item[]): void;
+    /**
      * Create a dict of all assort id = quest id mappings used to work out what items should be shown to player based on the quests they've started/completed/failed
      */
     protected hydrateMergedQuestAssorts(): void;

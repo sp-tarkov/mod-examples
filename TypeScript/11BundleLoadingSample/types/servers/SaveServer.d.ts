@@ -75,8 +75,9 @@ export declare class SaveServer {
      * Save changes from in-memory profile to user/profiles json
      * Execute onBeforeSaveCallbacks callbacks prior to being saved to json
      * @param sessionID profile id (user/profiles/id.json)
+     * @returns time taken to save in MS
      */
-    saveProfile(sessionID: string): void;
+    saveProfile(sessionID: string): number;
     /**
      * Remove a physical profile json from user/profiles
      * @param sessionID Profile id to remove

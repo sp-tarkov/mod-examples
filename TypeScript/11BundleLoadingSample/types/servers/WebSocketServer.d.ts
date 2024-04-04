@@ -2,6 +2,7 @@
 import http, { IncomingMessage } from "node:http";
 import WebSocket from "ws";
 import { HttpServerHelper } from "@spt-aki/helpers/HttpServerHelper";
+import { ProfileHelper } from "@spt-aki/helpers/ProfileHelper";
 import { INotification } from "@spt-aki/models/eft/notifier/INotifier";
 import { IHttpConfig } from "@spt-aki/models/spt/config/IHttpConfig";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
@@ -9,7 +10,6 @@ import { ConfigServer } from "@spt-aki/servers/ConfigServer";
 import { LocalisationService } from "@spt-aki/services/LocalisationService";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 import { RandomUtil } from "@spt-aki/utils/RandomUtil";
-import { ProfileHelper } from "@spt-aki/helpers/ProfileHelper";
 export declare class WebSocketServer {
     protected logger: ILogger;
     protected randomUtil: RandomUtil;

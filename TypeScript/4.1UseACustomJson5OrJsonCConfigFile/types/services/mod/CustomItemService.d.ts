@@ -4,6 +4,7 @@ import { CreateItemResult, LocaleDetails, NewItemDetails, NewItemFromCloneDetail
 import { IDatabaseTables } from "@spt-aki/models/spt/server/IDatabaseTables";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
+import { ItemBaseClassService } from "@spt-aki/services/ItemBaseClassService";
 import { HashUtil } from "@spt-aki/utils/HashUtil";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 export declare class CustomItemService {
@@ -12,8 +13,9 @@ export declare class CustomItemService {
     protected jsonUtil: JsonUtil;
     protected databaseServer: DatabaseServer;
     protected itemHelper: ItemHelper;
+    protected itemBaseClassService: ItemBaseClassService;
     protected tables: IDatabaseTables;
-    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper);
+    constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, databaseServer: DatabaseServer, itemHelper: ItemHelper, itemBaseClassService: ItemBaseClassService);
     /**
      * Create a new item from a cloned item base
      * WARNING - If no item id is supplied, an id will be generated, this id will be random every time you add an item and will not be the same on each subsequent server start
@@ -79,6 +81,11 @@ export declare class CustomItemService {
      * @param fleaPriceRoubles Price of the new item
      */
     protected addToFleaPriceDb(newItemId: string, fleaPriceRoubles: number): void;
+    /**
+     * Add a weapon to the hideout weapon shelf whitelist
+     * @param newItemId Weapon id to add
+     */
+    protected addToWeaponShelf(newItemId: string): void;
     /**
      * Add a custom weapon to PMCs loadout
      * @param weaponTpl Custom weapon tpl to add to PMCs

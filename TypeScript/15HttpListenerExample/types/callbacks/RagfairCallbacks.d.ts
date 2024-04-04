@@ -47,7 +47,7 @@ export declare class RagfairCallbacks implements OnLoad, OnUpdate {
     getMarketPrice(url: string, info: IGetMarketPriceRequestData, sessionID: string): IGetBodyResponseData<IGetItemPriceResult>;
     /** Handle RagFairAddOffer event */
     addOffer(pmcData: IPmcData, info: IAddOfferRequestData, sessionID: string): IItemEventRouterResponse;
-    /** \Handle RagFairRemoveOffer event */
+    /** Handle RagFairRemoveOffer event */
     removeOffer(pmcData: IPmcData, info: IRemoveOfferRequestData, sessionID: string): IItemEventRouterResponse;
     /** Handle RagFairRenewOffer event */
     extendOffer(pmcData: IPmcData, info: IExtendOfferRequestData, sessionID: string): IItemEventRouterResponse;
