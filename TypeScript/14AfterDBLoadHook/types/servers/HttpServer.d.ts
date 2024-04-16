@@ -19,6 +19,7 @@ export declare class HttpServer {
     protected applicationContext: ApplicationContext;
     protected webSocketServer: WebSocketServer;
     protected httpConfig: IHttpConfig;
+    protected started: boolean;
     constructor(logger: ILogger, databaseServer: DatabaseServer, httpServerHelper: HttpServerHelper, localisationService: LocalisationService, httpListeners: IHttpListener[], configServer: ConfigServer, applicationContext: ApplicationContext, webSocketServer: WebSocketServer);
     /**
      * Handle server loading event
@@ -26,4 +27,5 @@ export declare class HttpServer {
     load(): void;
     protected handleRequest(req: IncomingMessage, resp: ServerResponse): void;
     protected getCookies(req: IncomingMessage): Record<string, string>;
+    isStarted(): boolean;
 }

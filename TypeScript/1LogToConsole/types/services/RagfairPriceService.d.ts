@@ -100,6 +100,15 @@ export declare class RagfairPriceService implements OnLoad {
      */
     getDynamicOfferPriceForOffer(offerItems: Item[], desiredCurrency: string, isPackOffer: boolean): number;
     /**
+     * @param itemTemplateId
+     * @param desiredCurrency
+     * @param item
+     * @param offerItems
+     * @param isPackOffer
+     * @returns
+     */
+    getDynamicItemPrice(itemTemplateId: string, desiredCurrency: string, item?: Item, offerItems?: Item[], isPackOffer?: boolean): number;
+    /**
      * using data from config, adjust an items price to be relative to its handbook price
      * @param handbookPrices Prices of items in handbook
      * @param unreasonableItemChange Change object from config

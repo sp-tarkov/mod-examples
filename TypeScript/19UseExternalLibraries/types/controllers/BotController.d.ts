@@ -51,12 +51,13 @@ export declare class BotController {
     getBotCoreDifficulty(): IBotCore;
     /**
      * Get bot difficulty settings
-     * adjust PMC settings to ensure they engage the correct bot types
+     * Adjust PMC settings to ensure they engage the correct bot types
      * @param type what bot the server is requesting settings for
      * @param diffLevel difficulty level server requested settings for
      * @returns Difficulty object
      */
     getBotDifficulty(type: string, diffLevel: string): Difficulty;
+    getAllBotDifficulties(): Record<string, any>;
     /**
      * Generate bot profiles and store in cache
      * @param sessionId Session id
