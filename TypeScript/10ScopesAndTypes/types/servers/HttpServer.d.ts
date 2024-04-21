@@ -26,6 +26,12 @@ export declare class HttpServer {
      */
     load(): void;
     protected handleRequest(req: IncomingMessage, resp: ServerResponse): void;
+    /**
+     * Check against hardcoded values that determine its from a local address
+     * @param remoteAddress Address to check
+     * @returns True if its local
+     */
+    protected isLocalRequest(remoteAddress: string): boolean;
     protected getCookies(req: IncomingMessage): Record<string, string>;
     isStarted(): boolean;
 }

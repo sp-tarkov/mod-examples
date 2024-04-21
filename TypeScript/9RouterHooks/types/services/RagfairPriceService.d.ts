@@ -45,7 +45,7 @@ export declare class RagfairPriceService implements OnLoad {
     /**
      * Create a dictionary and store prices from prices.json in it
      */
-    protected generateDynamicPrices(): void;
+    generateDynamicPrices(): void;
     /**
      * Get the dynamic price for an item. If value doesn't exist, use static (handbook) value.
      * if no static value, return 1
