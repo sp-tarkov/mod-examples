@@ -47,6 +47,21 @@ export declare class FenceService {
      */
     setFenceAssort(assort: ITraderAssort): void;
     /**
+     * Replace discount fence assort with new assort
+     * @param assort New assorts to replace old with
+     */
+    setDiscountFenceAssort(assort: ITraderAssort): void;
+    /**
+     * Get main fence assort
+     * @return ITraderAssort
+     */
+    getMainFenceAssort(): ITraderAssort;
+    /**
+     * Get discount fence assort
+     * @return ITraderAssort
+     */
+    getDiscountFenceAssort(): ITraderAssort;
+    /**
      * Replace high rep level fence assort with new assort
      * @param discountAssort New assorts to replace old with
      */
@@ -119,8 +134,8 @@ export declare class FenceService {
     protected deleteRandomAssorts(itemCountToReplace: number, assort: ITraderAssort): void;
     /**
      * Choose an item at random and remove it + mods from assorts
-     * @param assort Items to remove from
-     * @param rootItems Assort root items to pick from to remove
+     * @param assort Trader assort to remove item from
+     * @param rootItems Pool of root items to pick from to remove
      */
     protected removeRandomItemFromAssorts(assort: ITraderAssort, rootItems: Item[]): void;
     /**

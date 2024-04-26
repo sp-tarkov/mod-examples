@@ -183,4 +183,9 @@ export declare class ProfileFixerService {
      * @param pmcProfile Profile to remove dead quests from
      */
     protected removeOrphanedQuests(pmcProfile: IPmcData): void;
+    /**
+     * If someone has run a mod from pre-3.8.0, it results in an invalid `nextResupply` value
+     * Resolve this by setting the nextResupply to 0 if it's null
+     */
+    protected fixNullTraderNextResupply(pmcProfile: IPmcData): void;
 }

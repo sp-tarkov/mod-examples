@@ -54,9 +54,10 @@ export declare class BotController {
      * Adjust PMC settings to ensure they engage the correct bot types
      * @param type what bot the server is requesting settings for
      * @param diffLevel difficulty level server requested settings for
+     * @param ignoreRaidSettings should raid settings chosen pre-raid be ignored
      * @returns Difficulty object
      */
-    getBotDifficulty(type: string, diffLevel: string): Difficulty;
+    getBotDifficulty(type: string, diffLevel: string, ignoreRaidSettings?: boolean): Difficulty;
     getAllBotDifficulties(): Record<string, any>;
     /**
      * Generate bot profiles and store in cache
