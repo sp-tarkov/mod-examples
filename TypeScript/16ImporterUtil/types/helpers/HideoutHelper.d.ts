@@ -162,7 +162,7 @@ export declare class HideoutHelper {
      * @param applyHideoutManagementBonus should the hideout mgmt bonus be appled to the calculation
      * @returns Items craft time with bonuses subtracted
      */
-    protected getAdjustedCraftTimeWithSkills(pmcData: IPmcData, recipeId: string, applyHideoutManagementBonus?: boolean): number;
+    getAdjustedCraftTimeWithSkills(pmcData: IPmcData, recipeId: string, applyHideoutManagementBonus?: boolean): number;
     /**
      * Adjust water filter objects resourceValue or delete when they reach 0 resource
      * @param waterFilterArea water filter area to update

@@ -7,4 +7,8 @@ export interface IHideoutConfig extends IBaseConfig {
     runIntervalValues: IRunIntervalValues;
     hoursForSkillCrafting: number;
     expCraftAmount: number;
+    overrideCraftTimeSeconds: number;
+    overrideBuildTimeSeconds: number;
+    /** Only process a profiles hideout crafts when it has been active in the last x minutes */
+    updateProfileHideoutWhenActiveWithinMinutes: number;
 }
