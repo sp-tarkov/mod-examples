@@ -4,7 +4,7 @@
     "main": "src/mod.js",
     "license": "MIT",
     "author": "TheSparta",
-    "akiVersion": "~3.8",
+    "akiVersion": "~3.9",
 	"loadBefore": [],
 	"loadAfter": [],
 	"incompatibilities": [],

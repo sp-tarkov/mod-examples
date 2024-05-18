@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"main": "src/mod.js",
 	"isBundleMod": true,
-    "akiVersion": "~3.8",
+    "akiVersion": "~3.9",
 	"loadBefore": [],
 	"loadAfter": [],
 	"incompatibilities": [],
