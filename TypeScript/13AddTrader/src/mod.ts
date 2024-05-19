@@ -128,4 +128,4 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
     }
 }
 
-module.exports = { mod: new SampleTrader() }
+export const mod = new SampleTrader();
