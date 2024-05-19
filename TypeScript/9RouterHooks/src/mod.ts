@@ -77,4 +77,5 @@ class Mod implements IPreAkiLoadMod
         
     }
 }
+
 module.exports = {mod: new Mod()}

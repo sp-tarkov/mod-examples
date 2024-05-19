@@ -27,4 +27,5 @@ class Mod implements IPreAkiLoadMod
         return false; // we didnt do anything
     }
 }
+
 module.exports = {mod: new Mod()}

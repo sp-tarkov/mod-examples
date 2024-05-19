@@ -39,5 +39,4 @@ export class MyCustomLauncherCallbacks extends LauncherCallbacks // <<<<=== This
         this.logger.success("Our custom method is dancing baby!");
         return "Lets dance";
     }
-    
 }

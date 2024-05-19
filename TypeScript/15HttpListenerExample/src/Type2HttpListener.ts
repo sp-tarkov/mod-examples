@@ -12,5 +12,4 @@ export class Type2HttpListener implements IHttpListener
         resp.writeHead(200, "OK");
         resp.end("[2] This is the second example of a mod hooking into the HttpServer");
     }
-
 }

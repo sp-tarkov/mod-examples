@@ -18,6 +18,4 @@ class Mod implements IPreAkiLoadMod {
     }
 }
 
-module.exports = {
-	mod: new Mod()
-}
+module.exports = { mod: new Mod() }

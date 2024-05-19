@@ -21,4 +21,5 @@ class Mod implements IPreAkiLoadMod
         logger.info("MyCustomMod custom function is loading right now")
     }
 }
+
 module.exports = {mod: new Mod()}

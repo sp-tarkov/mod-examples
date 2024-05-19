@@ -12,6 +12,4 @@ class Mod implements IPostDBLoadMod {
 	}
 }
 
-module.exports = {
-	mod: new Mod()
-}
+module.exports = { mod: new Mod() }
