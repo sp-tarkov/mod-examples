@@ -1,7 +1,8 @@
 # Exclude these folders from linting
-node_modules
-dist/
-types/
+**/node_modules
+/tmp
+/dist
+/types
 
 # Exclude these filetypes from linting
 *.json

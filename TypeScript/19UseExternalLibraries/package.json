@@ -1,22 +1,20 @@
 {
     "name": "UseExternalLibraries",
     "version": "1.0.0",
-    "main": "src/mod.js",
-    "license": "MIT",
-    "author": "TheSparta",
     "akiVersion": "~3.9",
-	"loadBefore": [],
-	"loadAfter": [],
-	"incompatibilities": [],
-	"contributors": [],
+    "loadBefore": [],
+    "loadAfter": [],
+    "incompatibilities": [],
+    "isBundleMod": false,
+    "main": "src/mod.js",
     "scripts": {
         "setup": "npm i",
         "build": "node ./build.mjs",
         "buildinfo": "node ./build.mjs --verbose"
     },
-	"dependencies": {
-		"ora-classic": "5.4.2"
-	},
+    "dependencies": {
+        "ora-classic": "5.4.2"
+    },
     "devDependencies": {
         "@types/node": "20.11",
         "@typescript-eslint/eslint-plugin": "7.2",
@@ -25,9 +23,11 @@
         "eslint": "8.57",
         "fs-extra": "11.2",
         "ignore": "^5.2",
-        "os": "^0.1",
         "tsyringe": "4.8.0",
         "typescript": "5.4",
         "winston": "3.12"
-    }
+    },
+    "author": "TheSparta",
+    "contributors": [],
+    "license": "MIT"
 }
