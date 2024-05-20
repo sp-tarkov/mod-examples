@@ -8,4 +8,4 @@ Dive into a specific mod folder and follow the instructions in the `README.md` f
 
 # Mod Upgrade Guide
 
-Read [Here](https://hub.sp-tarkov.com/doc/entry/51-modding-in-2-4-0/)
+Read [Here](https://hub.sp-tarkov.com/doc/entry/51-modding-in-spt-3-x-x/)
