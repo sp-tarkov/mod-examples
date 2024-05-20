@@ -29,11 +29,10 @@
  * @version v1.0.0
  */
 
+import os from "node:os";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import fs from "fs-extra";
-import os from "os";
-import path from "path";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
 import ignore from "ignore";
 import archiver from "archiver";
 import winston from "winston";
@@ -165,7 +164,7 @@ async function main() {
  * @returns {string} The absolute path of the current working directory.
  */
 function getCurrentDirectory() {
-    return dirname(fileURLToPath(import.meta.url));
+    return path.dirname(fileURLToPath(import.meta.url));
 }
 
 /**
@@ -225,10 +224,9 @@ function createProjectName(packageJson) {
     // Remove any non-alphanumeric characters from the author and name.
     const author = packageJson.author.replace(/\W/g, "");
     const name = packageJson.name.replace(/\W/g, "");
-    const version = packageJson.version;
 
     // Ensure the name is lowercase, as per the package.json specification.
-    return `${author}-${name}-${version}`.toLowerCase();
+    return `${author}-${name}`.toLowerCase();
 }
 
 /**

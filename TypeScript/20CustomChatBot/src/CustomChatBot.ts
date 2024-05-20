@@ -1,25 +1,26 @@
+import { inject, injectable } from "tsyringe";
+
 import { IDialogueChatBot } from "@spt-aki/helpers/Dialogue/IDialogueChatBot";
 import { ISendMessageRequest } from "@spt-aki/models/eft/dialog/ISendMessageRequest";
 import { IUserDialogInfo } from "@spt-aki/models/eft/profile/IAkiProfile";
 import { MemberCategory } from "@spt-aki/models/enums/MemberCategory";
 import { MailSendService } from "@spt-aki/services/MailSendService";
-import { inject, injectable } from "tsyringe";
 
 //    \/   dont forger this annotation here!
 @injectable()
 export class CustomChatBot implements IDialogueChatBot
 {
-    public constructor(
+    constructor(
         @inject("MailSendService") protected mailSendService: MailSendService,
     )
-    {
-    }
+    {}
 
     public getChatBot(): IUserDialogInfo
     {
         return {
             _id: "modderBuddy",
-            info: {
+            aid: 9999999,
+            Info: {
                 Level: 1,
                 MemberCategory: MemberCategory.SHERPA,
                 Nickname: "Buddy",
@@ -37,5 +38,4 @@ export class CustomChatBot implements IDialogueChatBot
         );
         return request.dialogId;
     }
-
 }

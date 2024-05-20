@@ -1,21 +1,19 @@
 {
     "name": "AsyncWithDependency1",
     "version": "1.0.0",
-    "main": "src/mod.js",
-    "license": "MIT",
-    "author": "Chomp",
     "akiVersion": "~3.9",
-	"loadBefore": [],
-	"loadAfter": [],
-	"incompatibilities": [],
-	"contributors": [],
-    "modDependencies": {
-        "17AsyncImporterWithDependency2": "~1"
-    },
+    "loadBefore": [],
+    "loadAfter": [],
+    "incompatibilities": [],
+    "isBundleMod": false,
+    "main": "src/mod.js",
     "scripts": {
         "setup": "npm i",
         "build": "node ./build.mjs",
         "buildinfo": "node ./build.mjs --verbose"
+    },
+    "modDependencies": {
+        "17AsyncImporterWithDependency2": "~1"
     },
     "devDependencies": {
         "@types/node": "20.11",
@@ -25,9 +23,11 @@
         "eslint": "8.57",
         "fs-extra": "11.2",
         "ignore": "^5.2",
-        "os": "^0.1",
         "tsyringe": "4.8.0",
         "typescript": "5.4",
         "winston": "3.12"
-    }
+    },
+    "author": "Chomp",
+    "contributors": [],
+    "license": "MIT"
 }

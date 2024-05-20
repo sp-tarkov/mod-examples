@@ -1,15 +1,16 @@
+import { inject, injectable } from "tsyringe";
+
 import { IChatCommand } from "@spt-aki/helpers/Dialogue/Commando/IChatCommand";
 import { ISendMessageRequest } from "@spt-aki/models/eft/dialog/ISendMessageRequest";
 import { IUserDialogInfo } from "@spt-aki/models/eft/profile/IAkiProfile";
 import { MailSendService } from "@spt-aki/services/MailSendService";
-import { inject, injectable } from "tsyringe";
 
 //    \/   dont forger this annotation here!
 @injectable()
 export class AnotherCoolCommand implements IChatCommand
 {
     constructor(
-        @inject("MailSendService") protected mailSendService: MailSendService
+        @inject("MailSendService") protected mailSendService: MailSendService,
     )
     {}
 
@@ -25,7 +26,7 @@ export class AnotherCoolCommand implements IChatCommand
             return "Usage: anotherExample test";
         }
     }
-    
+
     public getCommands(): Set<string>
     {
         return new Set<string>(["test"]);
@@ -39,5 +40,4 @@ export class AnotherCoolCommand implements IChatCommand
             return request.dialogId;
         }
     }
-    
 }

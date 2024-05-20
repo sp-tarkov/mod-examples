@@ -1,8 +1,8 @@
 {
-	"manifest": [
-		{
-			"key": "assets/content/weapons/usable_items/item_bottle/textures/client_assets.bundle",
-			"dependencyKeys": []
-		}
-	]
+    "manifest": [
+        {
+            "key": "assets/content/weapons/usable_items/item_bottle/textures/client_assets.bundle",
+            "dependencyKeys": []
+        }
+    ]
 }

@@ -1,16 +1,17 @@
+import { inject, injectAll, injectable } from "tsyringe";
+
 import { AbstractDialogueChatBot } from "@spt-aki/helpers/Dialogue/AbstractDialogueChatBot";
 import { IChatCommand } from "@spt-aki/helpers/Dialogue/Commando/IChatCommand";
 import { IUserDialogInfo } from "@spt-aki/models/eft/profile/IAkiProfile";
 import { MemberCategory } from "@spt-aki/models/enums/MemberCategory";
 import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 import { MailSendService } from "@spt-aki/services/MailSendService";
-import { inject, injectAll, injectable } from "tsyringe";
 
 //    \/   dont forger this annotation here!
 @injectable()
 export class CustomSimpleChatBot extends AbstractDialogueChatBot
 {
-    public constructor(
+    constructor(
         @inject("WinstonLogger") logger: ILogger,
         @inject("MailSendService") mailSendService: MailSendService,
         // Remember to replace MyCommand for something unique to your mod!
@@ -19,7 +20,7 @@ export class CustomSimpleChatBot extends AbstractDialogueChatBot
         @injectAll("MyCommand") chatCommands: IChatCommand[],
     )
     {
-        super(logger, mailSendService, chatCommands)
+        super(logger, mailSendService, chatCommands);
     }
 
     public getChatBot(): IUserDialogInfo
@@ -37,7 +38,6 @@ export class CustomSimpleChatBot extends AbstractDialogueChatBot
 
     protected getUnrecognizedCommandMessage(): string
     {
-        return "No clue what you are talking about bud!"
+        return "No clue what you are talking about bud!";
     }
-
 }
