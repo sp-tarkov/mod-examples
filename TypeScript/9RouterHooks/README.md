@@ -47,7 +47,7 @@ Some resources to get you started:
 
 ## **Coding Guidelines**
 
-Focus your mod development around the `mod.ts` file. In the `package.json` file, only alter these properties: `"name"`, `"version"`, `"license"`, `"author"`, and `"akiVersion"`. 
+Focus your mod development around the `mod.ts` file. In the `package.json` file, only alter these properties: `"name"`, `"version"`, `"akiVersion"`, `"loadBefore"`, `"loadAfter"`, `"incompatibilities"`, `"isBundleMod"`, `"author"`, and `"license"`.
 
 New to Typescript? Find comprehensive documentation on the [official website](https://www.typescriptlang.org/docs/).
 
