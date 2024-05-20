@@ -12,21 +12,22 @@ import { ConfigTypes } from "@spt-aki/models/enums/ConfigTypes";
 import { ITraderConfig } from "@spt-aki/models/spt/config/ITraderConfig";
 import { IRagfairConfig } from "@spt-aki/models/spt/config/IRagfairConfig";
 import { JsonUtil } from "@spt-aki/utils/JsonUtil";
-
-// New trader settings
-import * as baseJson from "../db/base.json";
-import { TraderHelper } from "./traderHelpers";
-import { FluentAssortConstructor as FluentAssortCreator } from "./fluentTraderAssortCreator";
 import { Money } from "@spt-aki/models/enums/Money";
 import { Traders } from "@spt-aki/models/enums/Traders";
 import { HashUtil } from "@spt-aki/utils/HashUtil";
 
+// New trader settings
+import * as baseJson from "../db/base.json";
+
+import { TraderHelper } from "./traderHelpers";
+import { FluentAssortConstructor as FluentAssortCreator } from "./fluentTraderAssortCreator";
+
 class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
 {
-    private mod: string
-    private logger: ILogger
-    private traderHelper: TraderHelper
-    private fluentAssortCreator: FluentAssortCreator
+    private mod: string;
+    private logger: ILogger;
+    private traderHelper: TraderHelper;
+    private fluentAssortCreator: FluentAssortCreator;
 
     constructor() {
         this.mod = "13AddTrader"; // Set name of mod so we can log it to console later
@@ -64,7 +65,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
 
         this.logger.debug(`[${this.mod}] preAki Loaded`);
     }
-    
+
     /**
      * Majority of trader-related work occurs after the aki database has been loaded but prior to SPT code being run
      * @param container Dependency container
@@ -86,39 +87,43 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
 
         // Add milk
         const MILK_ID = "575146b724597720a27126d5"; // Can find item ids in `database\templates\items.json` or with https://db.sp-tarkov.com/search
-        this.fluentAssortCreator.createSingleAssortItem(MILK_ID)
-                                    .addStackCount(200)
-                                    .addBuyRestriction(10)
-                                    .addMoneyCost(Money.ROUBLES, 2000)
-                                    .addLoyaltyLevel(1)
-                                    .export(tables.traders[baseJson._id]);
+        this.fluentAssortCreator
+            .createSingleAssortItem(MILK_ID)
+            .addStackCount(200)
+            .addBuyRestriction(10)
+            .addMoneyCost(Money.ROUBLES, 2000)
+            .addLoyaltyLevel(1)
+            .export(tables.traders[baseJson._id]);
 
         // Add 3x bitcoin + salewa for milk barter
-        const BITCOIN_ID = "59faff1d86f7746c51718c9c"
+        const BITCOIN_ID = "59faff1d86f7746c51718c9c";
         const SALEWA_ID = "544fb45d4bdc2dee738b4568";
-        this.fluentAssortCreator.createSingleAssortItem(MILK_ID)
-                                    .addStackCount(100)
-                                    .addBarterCost(BITCOIN_ID, 3)
-                                    .addBarterCost(SALEWA_ID, 1)
-                                    .addLoyaltyLevel(1)
-                                    .export(tables.traders[baseJson._id]);
+        this.fluentAssortCreator
+            .createSingleAssortItem(MILK_ID)
+            .addStackCount(100)
+            .addBarterCost(BITCOIN_ID, 3)
+            .addBarterCost(SALEWA_ID, 1)
+            .addLoyaltyLevel(1)
+            .export(tables.traders[baseJson._id]);
 
 
         // Add glock as money purchase
-        this.fluentAssortCreator.createComplexAssortItem(this.traderHelper.createGlock())
-                                    .addUnlimitedStackCount()
-                                    .addMoneyCost(Money.ROUBLES, 20000)
-                                    .addBuyRestriction(3)
-                                    .addLoyaltyLevel(1)
-                                    .export(tables.traders[baseJson._id]);
+        this.fluentAssortCreator
+            .createComplexAssortItem(this.traderHelper.createGlock())
+            .addUnlimitedStackCount()
+            .addMoneyCost(Money.ROUBLES, 20000)
+            .addBuyRestriction(3)
+            .addLoyaltyLevel(1)
+            .export(tables.traders[baseJson._id]);
 
         // Add mp133 preset as mayo barter
-        this.fluentAssortCreator.createComplexAssortItem(tables.globals.ItemPresets["584148f2245977598f1ad387"]._items)
-                                    .addStackCount(200)
-                                    .addBarterCost("5bc9b156d4351e00367fbce9", 1)
-                                    .addBuyRestriction(3)
-                                    .addLoyaltyLevel(1)
-                                    .export(tables.traders[baseJson._id]);
+        this.fluentAssortCreator
+            .createComplexAssortItem(tables.globals.ItemPresets["584148f2245977598f1ad387"]._items)
+            .addStackCount(200)
+            .addBarterCost("5bc9b156d4351e00367fbce9", 1)
+            .addBuyRestriction(3)
+            .addLoyaltyLevel(1)
+            .export(tables.traders[baseJson._id]);
 
         // Add trader to locale file, ensures trader text shows properly on screen
         // WARNING: adds the same text to ALL locales (e.g. chinese/french/english)

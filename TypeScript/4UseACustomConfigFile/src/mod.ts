@@ -6,7 +6,7 @@ import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 class Mod implements IPostAkiLoadMod
 {
     private modConfig = require("../config/config.json");
-    
+
     public postAkiLoad(container: DependencyContainer): void {
         // get logger
         const logger = container.resolve<ILogger>("WinstonLogger");

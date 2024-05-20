@@ -8,11 +8,10 @@ import { BaseClasses } from "@spt-aki/models/enums/BaseClasses";
 
 class Mod implements IPostDBLoadMod
 {
-    public postDBLoad(container: DependencyContainer): void 
+    public postDBLoad(container: DependencyContainer): void
     {
         // get database from server
         const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
-        
 
         // Get all the in-memory json found in /assets/database
         const tables: IDatabaseTables = databaseServer.getTables();
@@ -62,4 +61,4 @@ class Mod implements IPostDBLoadMod
     }
 }
 
-module.exports = { mod: new Mod() }
+export const mod = new Mod();

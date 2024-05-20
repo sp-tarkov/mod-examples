@@ -17,7 +17,7 @@ class Mod implements IPreAkiLoadMod, IPostAkiLoadMod, IPostDBLoadMod
         const logger = container.resolve<ILogger>("WinstonLogger");
         logger.logWithColor(`Database item table state: ${databaseServer.getTables().templates} (<<< should be undefined)`, LogTextColor.RED, LogBackgroundColor.YELLOW);
     }
-    
+
     public postDBLoad(container: DependencyContainer): void {
         // Database will be loaded, this is the fresh state of the DB so NOTHING from the AKI
         // logic has modified anything yet. This is the DB loaded straight from the JSON files
@@ -25,7 +25,7 @@ class Mod implements IPreAkiLoadMod, IPostAkiLoadMod, IPostDBLoadMod
         const logger = container.resolve<ILogger>("WinstonLogger");
         logger.logWithColor(`Database item size: ${Object.entries(databaseServer.getTables().templates.items).length}`, LogTextColor.RED, LogBackgroundColor.YELLOW);
         // lets do a quick modification and see how this reflect later on, on the postAkiLoad()
-        
+
         // find the nvgs item by its Id
         const nvgs = databaseServer.getTables().templates.items["5c0558060db834001b735271"];
         // Lets log the state before the modification:

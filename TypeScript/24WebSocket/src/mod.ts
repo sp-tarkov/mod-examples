@@ -1,11 +1,10 @@
-import { DependencyContainer } from 'tsyringe';
+import { DependencyContainer } from "tsyringe";
 
 import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
-import { CustomWebSocketConnectionHandler } from './CustomWebSocketConnectionHandler';
-import { IWebSocketConnectionHandler } from '@spt-aki/servers/ws/IWebSocketConnectionHandler';
-import { CustomAkiWebSocketMessageHandler } from './CustomAkiWebSocketMessageHandler';
-import { IAkiWebSocketMessageHandler } from '@spt-aki/servers/ws/message/IAkiWebSocketMessageHandler';
-
+import { CustomWebSocketConnectionHandler } from "./CustomWebSocketConnectionHandler";
+import { IWebSocketConnectionHandler } from "@spt-aki/servers/ws/IWebSocketConnectionHandler";
+import { CustomAkiWebSocketMessageHandler } from "./CustomAkiWebSocketMessageHandler";
+import { IAkiWebSocketMessageHandler } from "@spt-aki/servers/ws/message/IAkiWebSocketMessageHandler";
 
 class Mod implements IPreAkiLoadMod {
     public preAkiLoad(container: DependencyContainer): void {

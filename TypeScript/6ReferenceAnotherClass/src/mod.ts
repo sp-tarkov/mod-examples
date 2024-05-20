@@ -6,8 +6,8 @@ import { MoreCode } from "./MoreCode";
 
 class Mod implements IPostAkiLoadMod
 {
-    public postAkiLoad(container: DependencyContainer): void 
-    { 
+    public postAkiLoad(container: DependencyContainer): void
+    {
         // get logger
         const logger = container.resolve<ILogger>("WinstonLogger");
 
