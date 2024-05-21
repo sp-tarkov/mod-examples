@@ -1,15 +1,12 @@
 {
-	"name": "BundleLoading",
-	"version": "1.0.0",
-	"author": "Chomp",
-	"license": "MIT",
-	"main": "src/mod.js",
-	"isBundleMod": true,
-    "akiVersion": "~3.8",
-	"loadBefore": [],
-	"loadAfter": [],
-	"incompatibilities": [],
-	"contributors": [],
+    "name": "BundleLoading",
+    "version": "1.0.0",
+    "akiVersion": "~3.9",
+    "loadBefore": [],
+    "loadAfter": [],
+    "incompatibilities": [],
+    "isBundleMod": true,
+    "main": "src/mod.js",
     "scripts": {
         "setup": "npm i",
         "build": "node ./build.mjs",
@@ -23,9 +20,11 @@
         "eslint": "8.57",
         "fs-extra": "11.2",
         "ignore": "^5.2",
-        "os": "^0.1",
         "tsyringe": "4.8.0",
         "typescript": "5.4",
         "winston": "3.12"
-    }
+    },
+    "author": "Chomp",
+    "contributors": [],
+    "license": "MIT"
 }

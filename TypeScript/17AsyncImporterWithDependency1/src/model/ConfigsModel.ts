@@ -1,17 +1,17 @@
 export class ConfigsModelBase {
-	db: ConfigsModelDb;
-	config: ConfigModel;
+    db: ConfigsModelDb;
+    config: ConfigModel;
 }
 
 export class ConfigsModelDb {
-	moredb: ConfigsModelMoreDb;
-	config: ConfigModel;
+    moredb: ConfigsModelMoreDb;
+    config: ConfigModel;
 }
 
 export class ConfigsModelMoreDb {
-	config: ConfigModel;
+    config: ConfigModel;
 }
 
 export class ConfigModel {
-	myProperty: string;
+    myProperty: string;
 }

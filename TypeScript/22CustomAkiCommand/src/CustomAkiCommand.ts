@@ -1,20 +1,20 @@
+import { inject, injectable } from "tsyringe";
+
 import { ISptCommand } from "@spt-aki/helpers/Dialogue/Commando/SptCommands/ISptCommand";
 import { ItemHelper } from "@spt-aki/helpers/ItemHelper";
 import { MailSendService } from "@spt-aki/services/MailSendService";
 import { ISendMessageRequest } from "@spt-aki/models/eft/dialog/ISendMessageRequest";
 import { IUserDialogInfo } from "@spt-aki/models/eft/profile/IAkiProfile";
-import { inject, injectable } from "tsyringe";
 
 //    \/   dont forger this annotation here!
 @injectable()
 export class CustomAkiCommand implements ISptCommand
 {
-    public constructor(
+    constructor(
         @inject("ItemHelper") protected itemHelper: ItemHelper,
         @inject("MailSendService") protected mailSendService: MailSendService,
     )
-    {
-    }
+    {}
 
     public getCommand(): string
     {
@@ -23,7 +23,7 @@ export class CustomAkiCommand implements ISptCommand
 
     public getCommandHelp(): string
     {
-        return "Usage: spt getName tplId"
+        return "Usage: spt getName tplId";
     }
 
     public performAction(commandHandler: IUserDialogInfo, sessionId: string, request: ISendMessageRequest): string

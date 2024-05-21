@@ -1,5 +1,7 @@
 import { IDialogueChatBot } from "@spt-aki/helpers/Dialogue/IDialogueChatBot";
 import { DialogueHelper } from "@spt-aki/helpers/DialogueHelper";
+import { IFriendRequestData } from "@spt-aki/models/eft/dialog/IFriendRequestData";
+import { IFriendRequestSendResponse } from "@spt-aki/models/eft/dialog/IFriendRequestSendResponse";
 import { IGetAllAttachmentsResponse } from "@spt-aki/models/eft/dialog/IGetAllAttachmentsResponse";
 import { IGetFriendListDataResponse } from "@spt-aki/models/eft/dialog/IGetFriendListDataResponse";
 import { IGetMailDialogViewRequestData } from "@spt-aki/models/eft/dialog/IGetMailDialogViewRequestData";
@@ -145,4 +147,6 @@ export declare class DialogueController {
      * @returns true or false
      */
     protected messageHasExpired(message: Message): boolean;
+    /** Handle client/friend/request/send  */
+    sendFriendRequest(sessionID: string, request: IFriendRequestData): IFriendRequestSendResponse;
 }

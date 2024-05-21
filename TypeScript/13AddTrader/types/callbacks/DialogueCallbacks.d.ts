@@ -3,8 +3,11 @@ import { OnUpdate } from "@spt-aki/di/OnUpdate";
 import { IEmptyRequestData } from "@spt-aki/models/eft/common/IEmptyRequestData";
 import { IUIDRequestData } from "@spt-aki/models/eft/common/request/IUIDRequestData";
 import { IAcceptFriendRequestData, ICancelFriendRequestData, IDeclineFriendRequestData } from "@spt-aki/models/eft/dialog/IAcceptFriendRequestData";
+import { IAddUserGroupMailRequest } from "@spt-aki/models/eft/dialog/IAddUserGroupMailRequest";
+import { IChangeGroupMailOwnerRequest } from "@spt-aki/models/eft/dialog/IChangeGroupMailOwnerRequest";
 import { IChatServer } from "@spt-aki/models/eft/dialog/IChatServer";
 import { IClearMailMessageRequest } from "@spt-aki/models/eft/dialog/IClearMailMessageRequest";
+import { ICreateGroupMailRequest } from "@spt-aki/models/eft/dialog/ICreateGroupMailRequest";
 import { IDeleteFriendRequest } from "@spt-aki/models/eft/dialog/IDeleteFriendRequest";
 import { IFriendRequestData } from "@spt-aki/models/eft/dialog/IFriendRequestData";
 import { IFriendRequestSendResponse } from "@spt-aki/models/eft/dialog/IFriendRequestSendResponse";
@@ -19,6 +22,7 @@ import { IGetMailDialogViewResponseData } from "@spt-aki/models/eft/dialog/IGetM
 import { IPinDialogRequestData } from "@spt-aki/models/eft/dialog/IPinDialogRequestData";
 import { IRemoveDialogRequestData } from "@spt-aki/models/eft/dialog/IRemoveDialogRequestData";
 import { IRemoveMailMessageRequest } from "@spt-aki/models/eft/dialog/IRemoveMailMessageRequest";
+import { IRemoveUserGroupMailRequest } from "@spt-aki/models/eft/dialog/IRemoveUserGroupMailRequest";
 import { ISendMessageRequest } from "@spt-aki/models/eft/dialog/ISendMessageRequest";
 import { ISetDialogReadRequestData } from "@spt-aki/models/eft/dialog/ISetDialogReadRequestData";
 import { IGetBodyResponseData } from "@spt-aki/models/eft/httpResponse/IGetBodyResponseData";
@@ -98,6 +102,10 @@ export declare class DialogueCallbacks implements OnUpdate {
     unIgnoreFriend(url: string, request: IUIDRequestData, sessionID: string): INullResponseData;
     clearMail(url: string, request: IClearMailMessageRequest, sessionID: string): IGetBodyResponseData<any[]>;
     removeMail(url: string, request: IRemoveMailMessageRequest, sessionID: string): IGetBodyResponseData<any[]>;
+    createGroupMail(url: string, info: ICreateGroupMailRequest, sessionID: string): IGetBodyResponseData<any[]>;
+    changeMailGroupOwner(url: string, info: IChangeGroupMailOwnerRequest, sessionID: string): IGetBodyResponseData<any[]>;
+    addUserToMail(url: string, info: IAddUserGroupMailRequest, sessionID: string): IGetBodyResponseData<any[]>;
+    removeUserFromMail(url: string, info: IRemoveUserGroupMailRequest, sessionID: string): IGetBodyResponseData<any[]>;
     onUpdate(timeSinceLastRun: number): Promise<boolean>;
     getRoute(): string;
 }

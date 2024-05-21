@@ -50,4 +50,9 @@ export declare class LocaleService {
      * @returns langage part of locale e.g. 'en' part of 'en-US'
      */
     protected getPlatformForClientLocale(): string;
+    /**
+     * This is in a function so we can overwrite it during testing
+     * @returns The current platform locale
+     */
+    protected getPlatformLocale(): Intl.Locale;
 }
