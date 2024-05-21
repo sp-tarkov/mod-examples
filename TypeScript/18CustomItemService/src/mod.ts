@@ -1,12 +1,12 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPostDBLoadMod } from "@spt-aki/models/external/IPostDBLoadMod";
-import { CustomItemService } from "@spt-aki/services/mod/CustomItemService";
-import { NewItemFromCloneDetails } from "@spt-aki/models/spt/mod/NewItemDetails";
-import { IPostAkiLoadMod } from "@spt-aki/models/external/IPostAkiLoadMod";
-import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
+import { IPostDBLoadMod } from "@spt/models/external/IPostDBLoadMod";
+import { CustomItemService } from "@spt/services/mod/CustomItemService";
+import { NewItemFromCloneDetails } from "@spt/models/spt/mod/NewItemDetails";
+import { IPostSptLoadMod } from "@spt/models/external/IPostSptLoadMod";
+import { DatabaseServer } from "@spt/servers/DatabaseServer";
 
-class Mod implements IPostDBLoadMod, IPostAkiLoadMod
+class Mod implements IPostDBLoadMod, IPostSptLoadMod
 {
     public postDBLoad(container: DependencyContainer): void
     {
@@ -57,7 +57,7 @@ class Mod implements IPostDBLoadMod, IPostAkiLoadMod
             fleaPriceRoubles: 50000, //Self explanatary
             handbookPriceRoubles: 42500,
             handbookParentId: "5b5f78e986f77447ed5636b1", //Handbook Parent Id refers to the category the gun will be under
-            //you see those side box tab thing that only select gun under specific icon? Handbook parent can be found in Aki_Data\Server\database\templates.
+            //you see those side box tab thing that only select gun under specific icon? Handbook parent can be found in SPT_Data\Server\database\templates.
             locales: {
                 en: {
                     name: "MP-18 12g",
@@ -71,7 +71,7 @@ class Mod implements IPostDBLoadMod, IPostAkiLoadMod
     }
 
     //Check if our item is in the server or not
-    public postAkiLoad(container: DependencyContainer): void {
+    public postSptLoad(container: DependencyContainer): void {
         const db = container.resolve<DatabaseServer>("DatabaseServer");
         const item = db.getTables().templates.items;
 

@@ -1,12 +1,12 @@
 import { inject, injectable } from "tsyringe";
 
-import { LauncherCallbacks } from "@spt-aki/callbacks/LauncherCallbacks";
-import { LauncherController } from "@spt-aki/controllers/LauncherController";
-import { IEmptyRequestData } from "@spt-aki/models/eft/common/IEmptyRequestData";
-import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
-import { SaveServer } from "@spt-aki/servers/SaveServer";
-import { HttpResponseUtil } from "@spt-aki/utils/HttpResponseUtil";
-import { Watermark } from "@spt-aki/utils/Watermark";
+import { LauncherCallbacks } from "@spt/callbacks/LauncherCallbacks";
+import { LauncherController } from "@spt/controllers/LauncherController";
+import { IEmptyRequestData } from "@spt/models/eft/common/IEmptyRequestData";
+import { ILogger } from "@spt/models/spt/utils/ILogger";
+import { SaveServer } from "@spt/servers/SaveServer";
+import { HttpResponseUtil } from "@spt/utils/HttpResponseUtil";
+import { Watermark } from "@spt/utils/Watermark";
 
 // We need to declare this class as injectable, this will add the container
 // metadata

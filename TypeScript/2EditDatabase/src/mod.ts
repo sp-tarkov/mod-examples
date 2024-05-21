@@ -1,10 +1,10 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPostDBLoadMod } from "@spt-aki/models/external/IPostDBLoadMod";
-import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
-import { IDatabaseTables } from "@spt-aki/models/spt/server/IDatabaseTables";
-import { ItemHelper } from "@spt-aki/helpers/ItemHelper";
-import { BaseClasses } from "@spt-aki/models/enums/BaseClasses";
+import { IPostDBLoadMod } from "@spt/models/external/IPostDBLoadMod";
+import { DatabaseServer } from "@spt/servers/DatabaseServer";
+import { IDatabaseTables } from "@spt/models/spt/server/IDatabaseTables";
+import { ItemHelper } from "@spt/helpers/ItemHelper";
+import { BaseClasses } from "@spt/models/enums/BaseClasses";
 
 class Mod implements IPostDBLoadMod
 {
