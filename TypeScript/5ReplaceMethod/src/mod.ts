@@ -1,13 +1,13 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
-import { LauncherController } from "@spt-aki/controllers/LauncherController";
-import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
-import { ILoginRequestData } from "@spt-aki/models/eft/launcher/ILoginRequestData";
-import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
-import { SaveServer } from "@spt-aki/servers/SaveServer";
+import { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod";
+import { LauncherController } from "@spt/controllers/LauncherController";
+import { DatabaseServer } from "@spt/servers/DatabaseServer";
+import { ILoginRequestData } from "@spt/models/eft/launcher/ILoginRequestData";
+import { ILogger } from "@spt/models/spt/utils/ILogger";
+import { SaveServer } from "@spt/servers/SaveServer";
 
-class Mod implements IPreAkiLoadMod
+class Mod implements IPreSptLoadMod
 {
     // DO NOT leave static references to ANY resolved dependency.
     // ALWAYS use the container to resolve dependencies
@@ -15,7 +15,7 @@ class Mod implements IPreAkiLoadMod
     private static container: DependencyContainer;
 
     // Perform these actions before server fully loads
-    public preAkiLoad(container: DependencyContainer): void
+    public preSptLoad(container: DependencyContainer): void
     {
         // We will save a reference to the dependency container to resolve dependencies
         // that we may need down the line

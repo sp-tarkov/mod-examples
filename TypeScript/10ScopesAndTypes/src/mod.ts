@@ -1,15 +1,15 @@
 import { DependencyContainer, Lifecycle } from "tsyringe";
 
-import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
-import { IPostAkiLoadMod } from "@spt-aki/models/external/IPostAkiLoadMod";
+import { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod";
+import { IPostSptLoadMod } from "@spt/models/external/IPostSptLoadMod";
 import { MyMod } from "./MyMod";
 import { Processing } from "./Processing";
 
-class Mod implements IPreAkiLoadMod, IPostAkiLoadMod
+class Mod implements IPreSptLoadMod, IPostSptLoadMod
 {
 
     // Perform these actions before server fully loads
-    public preAkiLoad(container: DependencyContainer): void {
+    public preSptLoad(container: DependencyContainer): void {
         // This class is registered as a singleton. This means ONE and only ONE bean
         // of this class will ever exist.
         container.register<MyMod>("MyMod", MyMod, {lifecycle: Lifecycle.Singleton});
@@ -19,7 +19,7 @@ class Mod implements IPreAkiLoadMod, IPostAkiLoadMod
         container.register<Processing>("Processing", Processing);
     }
 
-    public postAkiLoad(container: DependencyContainer): void
+    public postSptLoad(container: DependencyContainer): void
     {
         // We will run this in a quick 5 loop to show how singletons and transients work
         for (let i = 0; i < 5; i++)

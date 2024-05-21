@@ -1,7 +1,7 @@
 {
     "name": "ImporterUtil",
     "version": "1.0.0",
-    "akiVersion": "~3.9",
+    "sptVersion": "~3.9",
     "loadBefore": [],
     "loadAfter": [],
     "incompatibilities": [],

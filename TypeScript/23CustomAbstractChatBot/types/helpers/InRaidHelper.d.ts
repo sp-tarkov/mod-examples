@@ -1,27 +1,27 @@
-import { InventoryHelper } from "@spt-aki/helpers/InventoryHelper";
-import { ItemHelper } from "@spt-aki/helpers/ItemHelper";
-import { PaymentHelper } from "@spt-aki/helpers/PaymentHelper";
-import { QuestHelper } from "@spt-aki/helpers/QuestHelper";
-import { IPmcData, IPostRaidPmcData } from "@spt-aki/models/eft/common/IPmcData";
-import { IQuestStatus, TraderInfo, Victim } from "@spt-aki/models/eft/common/tables/IBotBase";
-import { Item } from "@spt-aki/models/eft/common/tables/IItem";
-import { ISaveProgressRequestData } from "@spt-aki/models/eft/inRaid/ISaveProgressRequestData";
-import { IInRaidConfig } from "@spt-aki/models/spt/config/IInRaidConfig";
-import { ILostOnDeathConfig } from "@spt-aki/models/spt/config/ILostOnDeathConfig";
-import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
-import { ConfigServer } from "@spt-aki/servers/ConfigServer";
-import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
-import { SaveServer } from "@spt-aki/servers/SaveServer";
-import { LocalisationService } from "@spt-aki/services/LocalisationService";
-import { ProfileFixerService } from "@spt-aki/services/ProfileFixerService";
-import { JsonUtil } from "@spt-aki/utils/JsonUtil";
-import { TimeUtil } from "@spt-aki/utils/TimeUtil";
+import { InventoryHelper } from "@spt/helpers/InventoryHelper";
+import { ItemHelper } from "@spt/helpers/ItemHelper";
+import { PaymentHelper } from "@spt/helpers/PaymentHelper";
+import { QuestHelper } from "@spt/helpers/QuestHelper";
+import { IPmcData, IPostRaidPmcData } from "@spt/models/eft/common/IPmcData";
+import { IQuestStatus, TraderInfo } from "@spt/models/eft/common/tables/IBotBase";
+import { Item } from "@spt/models/eft/common/tables/IItem";
+import { ISaveProgressRequestData } from "@spt/models/eft/inRaid/ISaveProgressRequestData";
+import { IInRaidConfig } from "@spt/models/spt/config/IInRaidConfig";
+import { ILostOnDeathConfig } from "@spt/models/spt/config/ILostOnDeathConfig";
+import { ILogger } from "@spt/models/spt/utils/ILogger";
+import { ConfigServer } from "@spt/servers/ConfigServer";
+import { DatabaseServer } from "@spt/servers/DatabaseServer";
+import { SaveServer } from "@spt/servers/SaveServer";
+import { LocalisationService } from "@spt/services/LocalisationService";
+import { ProfileFixerService } from "@spt/services/ProfileFixerService";
+import { ICloner } from "@spt/utils/cloners/ICloner";
+import { RandomUtil } from "@spt/utils/RandomUtil";
+import { TimeUtil } from "@spt/utils/TimeUtil";
 import { ProfileHelper } from "./ProfileHelper";
 export declare class InRaidHelper {
     protected logger: ILogger;
     protected timeUtil: TimeUtil;
     protected saveServer: SaveServer;
-    protected jsonUtil: JsonUtil;
     protected itemHelper: ItemHelper;
     protected databaseServer: DatabaseServer;
     protected inventoryHelper: InventoryHelper;
@@ -31,9 +31,11 @@ export declare class InRaidHelper {
     protected localisationService: LocalisationService;
     protected profileFixerService: ProfileFixerService;
     protected configServer: ConfigServer;
+    protected randomUtil: RandomUtil;
+    protected cloner: ICloner;
     protected lostOnDeathConfig: ILostOnDeathConfig;
     protected inRaidConfig: IInRaidConfig;
-    constructor(logger: ILogger, timeUtil: TimeUtil, saveServer: SaveServer, jsonUtil: JsonUtil, itemHelper: ItemHelper, databaseServer: DatabaseServer, inventoryHelper: InventoryHelper, profileHelper: ProfileHelper, questHelper: QuestHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, profileFixerService: ProfileFixerService, configServer: ConfigServer);
+    constructor(logger: ILogger, timeUtil: TimeUtil, saveServer: SaveServer, itemHelper: ItemHelper, databaseServer: DatabaseServer, inventoryHelper: InventoryHelper, profileHelper: ProfileHelper, questHelper: QuestHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, profileFixerService: ProfileFixerService, configServer: ConfigServer, randomUtil: RandomUtil, cloner: ICloner);
     /**
      * Lookup quest item loss from lostOnDeath config
      * @returns True if items should be removed from inventory
@@ -45,19 +47,6 @@ export declare class InRaidHelper {
      * @param items Items array to check
      */
     addUpdToMoneyFromRaid(items: Item[]): void;
-    /**
-     * Add karma changes up and return the new value
-     * @param existingFenceStanding Current fence standing level
-     * @param victims Array of kills player performed
-     * @returns adjusted karma level after kills are taken into account
-     */
-    calculateFenceStandingChangeFromKills(existingFenceStanding: number, victims: Victim[]): number;
-    /**
-     * Get the standing gain/loss for killing an npc
-     * @param victim Who was killed by player
-     * @returns a numerical standing gain or loss
-     */
-    protected getFenceStandingChangeForKillAsScav(victim: Victim): number;
     /**
      * Reset a profile to a baseline, used post-raid
      * Reset points earned during session property
@@ -74,7 +63,7 @@ export declare class InRaidHelper {
      */
     protected resetSkillPointsEarnedDuringRaid(profile: IPmcData): void;
     /** Check counters are correct in profile */
-    protected validateBackendCounters(saveProgressRequest: ISaveProgressRequestData, profileData: IPmcData): void;
+    protected validateTaskConditionCounters(saveProgressRequest: ISaveProgressRequestData, profileData: IPmcData): void;
     /**
      * Update various serverPMC profile values; quests/limb hp/trader standing with values post-raic
      * @param pmcData Server PMC profile
@@ -110,6 +99,12 @@ export declare class InRaidHelper {
      */
     protected applyTraderStandingAdjustments(tradersServerProfile: Record<string, TraderInfo>, tradersClientProfile: Record<string, TraderInfo>): void;
     /**
+     * Transfer client achievements into profile
+     * @param profile Player pmc profile
+     * @param clientAchievements Achievements from client
+     */
+    protected updateProfileAchievements(profile: IPmcData, clientAchievements: Record<string, number>): void;
+    /**
      * Set the SPT inraid location Profile property to 'none'
      * @param sessionID Session id
      */
@@ -129,16 +124,15 @@ export declare class InRaidHelper {
      * @param sessionID Session id
      * @param serverProfile Profile to update
      * @param postRaidProfile Profile returned by client after a raid
-     * @returns Updated profile
      */
-    setInventory(sessionID: string, serverProfile: IPmcData, postRaidProfile: IPmcData): IPmcData;
+    setInventory(sessionID: string, serverProfile: IPmcData, postRaidProfile: IPmcData): void;
     /**
-     * Clear pmc inventory of all items except those that are exempt
+     * Clear PMC inventory of all items except those that are exempt
      * Used post-raid to remove items after death
      * @param pmcData Player profile
-     * @param sessionID Session id
+     * @param sessionId Session id
      */
-    deleteInventory(pmcData: IPmcData, sessionID: string): void;
+    deleteInventory(pmcData: IPmcData, sessionId: string): void;
     /**
      * Get an array of items from a profile that will be lost on death
      * @param pmcProfile Profile to get items from

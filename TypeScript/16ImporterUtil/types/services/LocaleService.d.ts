@@ -1,7 +1,7 @@
-import { ILocaleConfig } from "@spt-aki/models/spt/config/ILocaleConfig";
-import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
-import { ConfigServer } from "@spt-aki/servers/ConfigServer";
-import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
+import { ILocaleConfig } from "@spt/models/spt/config/ILocaleConfig";
+import { ILogger } from "@spt/models/spt/utils/ILogger";
+import { ConfigServer } from "@spt/servers/ConfigServer";
+import { DatabaseServer } from "@spt/servers/DatabaseServer";
 /**
  * Handles getting locales from config or users machine
  */
