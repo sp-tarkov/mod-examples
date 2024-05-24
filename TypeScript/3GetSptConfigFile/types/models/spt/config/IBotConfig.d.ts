@@ -39,6 +39,8 @@ export interface IBotConfig extends IBaseConfig {
     walletLoot: IWalletLootSettings;
     /** Currency weights, Keyed by botrole / currency */
     currencyStackSize: Record<string, Record<string, Record<string, number>>>;
+    /** Tpls for low profile gas blocks */
+    lowProfileGasBlockTpls: string[];
 }
 /** Number of bots to generate and store in cache on raid start per bot type */
 export interface PresetBatch {

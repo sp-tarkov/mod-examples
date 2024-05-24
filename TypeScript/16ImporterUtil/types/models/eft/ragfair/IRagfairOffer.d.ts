@@ -39,6 +39,7 @@ export interface IRagfairOfferUser {
     memberType: MemberCategory;
     avatar?: string;
     isRatingGrowing?: boolean;
+    aid?: number;
 }
 export interface SellResult {
     sellTime: number;

@@ -16,6 +16,8 @@ export interface ICoreConfig extends IBaseConfig {
     commit?: string;
     /** Timestamp of server build */
     buildTime?: string;
+    /** Server locale keys that will be added to the bottom of the startup watermark */
+    customWatermarkLocaleKeys?: string[];
 }
 export interface IBsgLogging {
     /**

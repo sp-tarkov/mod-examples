@@ -5,29 +5,21 @@ import { IPmcConfig } from "@spt/models/spt/config/IPmcConfig";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { ConfigServer } from "@spt/servers/ConfigServer";
 import { DatabaseServer } from "@spt/servers/DatabaseServer";
-import { LocalisationService } from "@spt/services/LocalisationService";
 import { RandomUtil } from "@spt/utils/RandomUtil";
 export declare class BotHelper {
     protected logger: ILogger;
     protected databaseServer: DatabaseServer;
     protected randomUtil: RandomUtil;
-    protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected botConfig: IBotConfig;
     protected pmcConfig: IPmcConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, randomUtil: RandomUtil, localisationService: LocalisationService, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseServer: DatabaseServer, randomUtil: RandomUtil, configServer: ConfigServer);
     /**
      * Get a template object for the specified botRole from bots.types db
      * @param role botRole to get template for
      * @returns IBotType object
      */
     getBotTemplate(role: string): IBotType;
-    /**
-     * Randomize the chance the PMC will attack their own side
-     * Look up value in bot.json/chanceSameSideIsHostilePercent
-     * @param difficultySettings pmc difficulty settings
-     */
-    randomizePmcHostility(difficultySettings: Difficulty): void;
     /**
      * Is the passed in bot role a PMC (usec/bear/pmc)
      * @param botRole bot role to check
@@ -42,12 +34,6 @@ export declare class BotHelper {
      * @param typeToAdd bot type to add to friendly list
      */
     addBotToFriendlyList(difficultySettings: Difficulty, typeToAdd: string): void;
-    /**
-     * Add a bot to the ENEMY_BOT_TYPES array, do not add itself if its on the enemy list
-     * @param difficultySettings bot settings to alter
-     * @param typesToAdd bot type to add to enemy list
-     */
-    addBotToEnemyList(difficultySettings: Difficulty, typesToAdd: string[], typeBeingEdited: string): void;
     /**
      * Add a bot to the REVENGE_BOT_TYPES array
      * @param difficultySettings bot settings to alter
@@ -85,4 +71,5 @@ export declare class BotHelper {
      * @returns pmc side as string
      */
     protected getRandomizedPmcSide(): string;
+    getPmcNicknameOfMaxLength(userId: string, maxLength: number): string;
 }
