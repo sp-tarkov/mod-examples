@@ -11,19 +11,19 @@ class Mod implements IPostSptLoadMod
     public postSptLoad(container: DependencyContainer): void
     {
         // get logger
-        const logger = container.resolve<ILogger>("WinstonLogger");
+        const logger = container.resolve<ILogger>("PrimaryLogger");
 
         // get the config server so we can get a config with it
         const configServer = container.resolve<ConfigServer>("ConfigServer");
 
         // Request the map location config
-        // Required - ConfigTypes.LOCATION is the enum of the config we want, others include ConfigTypes.Airdrop
+        // Required - ConfigTypes.LOCATION is the enum of the config we want, others include ConfigTypes.AIRDROP/ConfigTypes.IN_RAID/ConfigTypes.BOT
         const locationConfig: ILocationConfig = configServer.getConfig<ILocationConfig>(ConfigTypes.LOCATION);
 
         // Log the original customs loose loot multipler
         logger.info(`Here is the original customs map loose loot multipler: ${locationConfig.looseLootMultiplier.bigmap}`);
 
-        // Adjust the multipler (customs is called bigmap in bsg land)
+        // Adjust the multipler (BSGs internal name for `Customs` is `bigmap`)
         locationConfig.looseLootMultiplier.bigmap = 10;
 
         // Log the new multipler
