@@ -3,9 +3,9 @@ export interface ITemplateItem {
     _id: string;
     _name: string;
     _parent: string;
-    _type: string;
+    _type: ItemType;
     _props: Props;
-    _proto: string;
+    _proto?: string;
 }
 export interface Props {
     AllowSpawnOnLocations?: any[];
@@ -528,4 +528,8 @@ export interface IShotsGroupSettings {
     ShotRecoilRadianRange: Ixyz;
     ShotRecoilRotationStrength: Ixyz;
     StartShotIndex: number;
+}
+export declare enum ItemType {
+    NODE = "Node",
+    ITEM = "Item"
 }

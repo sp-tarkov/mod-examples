@@ -1,4 +1,5 @@
 /// <reference types="node" />
+/// <reference types="node" />
 import { IncomingMessage } from "http";
 import { WebSocket } from "ws";
 import { ProfileHelper } from "@spt/helpers/ProfileHelper";
@@ -20,7 +21,7 @@ export declare class SptWebSocketConnectionHandler implements IWebSocketConnecti
     protected httpConfig: IHttpConfig;
     protected webSockets: Map<string, WebSocket>;
     protected defaultNotification: IWsNotificationEvent;
-    protected websocketPingHandler: any;
+    protected websocketPingHandler: NodeJS.Timeout | undefined;
     constructor(logger: ILogger, profileHelper: ProfileHelper, localisationService: LocalisationService, configServer: ConfigServer, jsonUtil: JsonUtil, sptWebSocketMessageHandlers: ISptWebSocketMessageHandler[]);
     getSocketId(): string;
     getHookUrl(): string;

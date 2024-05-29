@@ -56,5 +56,5 @@ export declare class RaidTimeAdjustmentService {
      * @param newRaidTimeMinutes How long raid is in minutes
      * @returns List of  exit changes to send to client
      */
-    protected getExitAdjustments(mapBase: ILocationBase, newRaidTimeMinutes: number): ExtractChange[];
+    protected getExitAdjustments(mapBase: ILocationBase, newRaidTimeMinutes: number): ExtractChange[] | undefined;
 }

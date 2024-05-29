@@ -3,7 +3,7 @@ import { WeightedRandomHelper } from "@spt/helpers/WeightedRandomHelper";
 import { ITemplateItem } from "@spt/models/eft/common/tables/ITemplateItem";
 import { IPmcConfig } from "@spt/models/spt/config/IPmcConfig";
 import { ConfigServer } from "@spt/servers/ConfigServer";
-import { DatabaseServer } from "@spt/servers/DatabaseServer";
+import { DatabaseService } from "@spt/services/DatabaseService";
 import { ItemFilterService } from "@spt/services/ItemFilterService";
 import { RagfairPriceService } from "@spt/services/RagfairPriceService";
 import { SeasonalEventService } from "@spt/services/SeasonalEventService";
@@ -13,7 +13,7 @@ import { SeasonalEventService } from "@spt/services/SeasonalEventService";
  */
 export declare class PMCLootGenerator {
     protected itemHelper: ItemHelper;
-    protected databaseServer: DatabaseServer;
+    protected databaseService: DatabaseService;
     protected configServer: ConfigServer;
     protected itemFilterService: ItemFilterService;
     protected ragfairPriceService: RagfairPriceService;
@@ -24,7 +24,7 @@ export declare class PMCLootGenerator {
     protected backpackLootPool: Record<string, number>;
     protected pmcConfig: IPmcConfig;
     protected roubleTpl: string;
-    constructor(itemHelper: ItemHelper, databaseServer: DatabaseServer, configServer: ConfigServer, itemFilterService: ItemFilterService, ragfairPriceService: RagfairPriceService, seasonalEventService: SeasonalEventService, weightedRandomHelper: WeightedRandomHelper);
+    constructor(itemHelper: ItemHelper, databaseService: DatabaseService, configServer: ConfigServer, itemFilterService: ItemFilterService, ragfairPriceService: RagfairPriceService, seasonalEventService: SeasonalEventService, weightedRandomHelper: WeightedRandomHelper);
     /**
      * Create an array of loot items a PMC can have in their pockets
      * @returns string array of tpls

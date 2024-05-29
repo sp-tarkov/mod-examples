@@ -163,11 +163,11 @@ export declare class InsuranceService {
      * @param traderId Trader item is insured with
      * @returns price in roubles
      */
-    getPremium(pmcData: IPmcData, inventoryItem: Item, traderId: string): number;
+    getRoublePriceToInsureItemWithTrader(pmcData: IPmcData, inventoryItem: Item, traderId: string): number;
     /**
      * Returns the ID that should be used for a root-level Item's parentId property value within in the context of insurance.
-     *
-     * @returns The ID.
+     * @param sessionID Players id
+     * @returns The root item Id.
      */
     getRootItemParentID(sessionID: string): string;
 }

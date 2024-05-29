@@ -17,23 +17,23 @@ import { IModToSpawnRequest } from "@spt/models/spt/bots/IModToSpawnRequest";
 import { EquipmentFilterDetails, EquipmentFilters, IBotConfig } from "@spt/models/spt/config/IBotConfig";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { ConfigServer } from "@spt/servers/ConfigServer";
-import { DatabaseServer } from "@spt/servers/DatabaseServer";
 import { BotEquipmentFilterService } from "@spt/services/BotEquipmentFilterService";
 import { BotEquipmentModPoolService } from "@spt/services/BotEquipmentModPoolService";
 import { BotWeaponModLimitService } from "@spt/services/BotWeaponModLimitService";
+import { DatabaseService } from "@spt/services/DatabaseService";
 import { ItemFilterService } from "@spt/services/ItemFilterService";
 import { LocalisationService } from "@spt/services/LocalisationService";
 import { ICloner } from "@spt/utils/cloners/ICloner";
 import { HashUtil } from "@spt/utils/HashUtil";
 import { RandomUtil } from "@spt/utils/RandomUtil";
+import { IFilterPlateModsForSlotByLevelResult } from "../models/spt/bots/IFilterPlateModsForSlotByLevelResult";
 import { IGenerateEquipmentProperties } from "./BotInventoryGenerator";
-import { IFilterPlateModsForSlotByLevelResult } from "./IFilterPlateModsForSlotByLevelResult";
 export declare class BotEquipmentModGenerator {
     protected logger: ILogger;
     protected hashUtil: HashUtil;
     protected randomUtil: RandomUtil;
     protected probabilityHelper: ProbabilityHelper;
-    protected databaseServer: DatabaseServer;
+    protected databaseService: DatabaseService;
     protected itemHelper: ItemHelper;
     protected botEquipmentFilterService: BotEquipmentFilterService;
     protected itemFilterService: ItemFilterService;
@@ -49,7 +49,7 @@ export declare class BotEquipmentModGenerator {
     protected configServer: ConfigServer;
     protected cloner: ICloner;
     protected botConfig: IBotConfig;
-    constructor(logger: ILogger, hashUtil: HashUtil, randomUtil: RandomUtil, probabilityHelper: ProbabilityHelper, databaseServer: DatabaseServer, itemHelper: ItemHelper, botEquipmentFilterService: BotEquipmentFilterService, itemFilterService: ItemFilterService, profileHelper: ProfileHelper, botWeaponModLimitService: BotWeaponModLimitService, botHelper: BotHelper, botGeneratorHelper: BotGeneratorHelper, botWeaponGeneratorHelper: BotWeaponGeneratorHelper, weightedRandomHelper: WeightedRandomHelper, presetHelper: PresetHelper, localisationService: LocalisationService, botEquipmentModPoolService: BotEquipmentModPoolService, configServer: ConfigServer, cloner: ICloner);
+    constructor(logger: ILogger, hashUtil: HashUtil, randomUtil: RandomUtil, probabilityHelper: ProbabilityHelper, databaseService: DatabaseService, itemHelper: ItemHelper, botEquipmentFilterService: BotEquipmentFilterService, itemFilterService: ItemFilterService, profileHelper: ProfileHelper, botWeaponModLimitService: BotWeaponModLimitService, botHelper: BotHelper, botGeneratorHelper: BotGeneratorHelper, botWeaponGeneratorHelper: BotWeaponGeneratorHelper, weightedRandomHelper: WeightedRandomHelper, presetHelper: PresetHelper, localisationService: LocalisationService, botEquipmentModPoolService: BotEquipmentModPoolService, configServer: ConfigServer, cloner: ICloner);
     /**
      * Check mods are compatible and add to array
      * @param equipment Equipment item to add mods to
@@ -117,7 +117,7 @@ export declare class BotEquipmentModGenerator {
      * @param request Data used to choose an appropriate mod with
      * @returns itemHelper.getItem() result
      */
-    protected chooseModToPutIntoSlot(request: IModToSpawnRequest): [boolean, ITemplateItem];
+    protected chooseModToPutIntoSlot(request: IModToSpawnRequest): [boolean, ITemplateItem] | undefined;
     protected pickWeaponModTplForSlotFromPool(modPool: string[], parentSlot: Slot, modSpawnResult: ModSpawn, weapon: Item[], modSlotname: string): IChooseRandomCompatibleModResult;
     /**
      * Filter mod pool down based on various criteria:
@@ -140,7 +140,7 @@ export declare class BotEquipmentModGenerator {
      * @param parentItemTpl
      * @returns Default preset found
      */
-    protected getMatchingPreset(weaponTemplate: ITemplateItem, parentItemTpl: string): IPreset;
+    protected getMatchingPreset(weaponTemplate: ITemplateItem, parentItemTpl: string): IPreset | undefined;
     /**
      * Temp fix to prevent certain combinations of weapons with mods that are known to be incompatible
      * @param weapon Weapon
@@ -172,7 +172,7 @@ export declare class BotEquipmentModGenerator {
      * @param items items to ensure picked mod is compatible with
      * @returns item tpl
      */
-    protected getRandomModTplFromItemDb(modTpl: string, parentSlot: Slot, modSlot: string, items: Item[]): string;
+    protected getRandomModTplFromItemDb(modTpl: string, parentSlot: Slot, modSlot: string, items: Item[]): string | undefined;
     /**
      * Check if mod exists in db + is for a required slot
      * @param modToAdd Db template of mod to check

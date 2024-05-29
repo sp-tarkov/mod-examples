@@ -10,8 +10,8 @@ import { IInRaidConfig } from "@spt/models/spt/config/IInRaidConfig";
 import { ILostOnDeathConfig } from "@spt/models/spt/config/ILostOnDeathConfig";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { ConfigServer } from "@spt/servers/ConfigServer";
-import { DatabaseServer } from "@spt/servers/DatabaseServer";
 import { SaveServer } from "@spt/servers/SaveServer";
+import { DatabaseService } from "@spt/services/DatabaseService";
 import { LocalisationService } from "@spt/services/LocalisationService";
 import { ProfileFixerService } from "@spt/services/ProfileFixerService";
 import { ICloner } from "@spt/utils/cloners/ICloner";
@@ -23,7 +23,7 @@ export declare class InRaidHelper {
     protected timeUtil: TimeUtil;
     protected saveServer: SaveServer;
     protected itemHelper: ItemHelper;
-    protected databaseServer: DatabaseServer;
+    protected databaseService: DatabaseService;
     protected inventoryHelper: InventoryHelper;
     protected profileHelper: ProfileHelper;
     protected questHelper: QuestHelper;
@@ -35,7 +35,7 @@ export declare class InRaidHelper {
     protected cloner: ICloner;
     protected lostOnDeathConfig: ILostOnDeathConfig;
     protected inRaidConfig: IInRaidConfig;
-    constructor(logger: ILogger, timeUtil: TimeUtil, saveServer: SaveServer, itemHelper: ItemHelper, databaseServer: DatabaseServer, inventoryHelper: InventoryHelper, profileHelper: ProfileHelper, questHelper: QuestHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, profileFixerService: ProfileFixerService, configServer: ConfigServer, randomUtil: RandomUtil, cloner: ICloner);
+    constructor(logger: ILogger, timeUtil: TimeUtil, saveServer: SaveServer, itemHelper: ItemHelper, databaseService: DatabaseService, inventoryHelper: InventoryHelper, profileHelper: ProfileHelper, questHelper: QuestHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, profileFixerService: ProfileFixerService, configServer: ConfigServer, randomUtil: RandomUtil, cloner: ICloner);
     /**
      * Lookup quest item loss from lostOnDeath config
      * @returns True if items should be removed from inventory

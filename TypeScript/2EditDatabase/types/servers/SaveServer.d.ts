@@ -44,6 +44,7 @@ export declare class SaveServer {
      * @returns ISptProfile
      */
     getProfile(sessionId: string): ISptProfile;
+    profileExists(id: string): boolean;
     /**
      * Get all profiles from memory
      * @returns Dictionary of ISptProfile

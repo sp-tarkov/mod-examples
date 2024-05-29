@@ -44,7 +44,7 @@ export declare class EventOutputHolder {
      * @param pmcData Player profile
      * @returns dictionary of hideout productions
      */
-    protected getProductionsFromProfileAndFlagComplete(productions: Record<string, Productive>): Record<string, Productive>;
+    protected getProductionsFromProfileAndFlagComplete(productions: Record<string, Productive>): Record<string, Productive> | undefined;
     /**
      * Required as continuous productions don't reset and stay at 100% completion but client thinks it hasn't started
      * @param productions Productions in a profile

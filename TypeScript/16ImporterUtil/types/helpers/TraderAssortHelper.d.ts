@@ -49,6 +49,12 @@ export declare class TraderAssortHelper {
      */
     getAssort(sessionId: string, traderId: string, flea?: boolean): ITraderAssort;
     /**
+     * Given the blacklist provided, remove root items from assort
+     * @param assortToFilter Trader assort to modify
+     * @param itemsTplsToRemove Item TPLs the assort should not have
+     */
+    protected removeItemsFromAssort(assortToFilter: ITraderAssort, itemsTplsToRemove: string[]): void;
+    /**
      * Reset every traders root item `BuyRestrictionCurrent` property to 0
      * @param assortItems Items to adjust
      */

@@ -6,6 +6,7 @@ import { PaymentHelper } from "@spt/helpers/PaymentHelper";
 import { PresetHelper } from "@spt/helpers/PresetHelper";
 import { ProfileHelper } from "@spt/helpers/ProfileHelper";
 import { QuestHelper } from "@spt/helpers/QuestHelper";
+import { TraderHelper } from "@spt/helpers/TraderHelper";
 import { IPmcData } from "@spt/models/eft/common/IPmcData";
 import { IInventoryBindRequestData } from "@spt/models/eft/inventory/IInventoryBindRequestData";
 import { IInventoryCreateMarkerRequestData } from "@spt/models/eft/inventory/IInventoryCreateMarkerRequestData";
@@ -30,7 +31,7 @@ import { IItemEventRouterResponse } from "@spt/models/eft/itemEvent/IItemEventRo
 import { ISptProfile } from "@spt/models/eft/profile/ISptProfile";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { EventOutputHolder } from "@spt/routers/EventOutputHolder";
-import { DatabaseServer } from "@spt/servers/DatabaseServer";
+import { DatabaseService } from "@spt/services/DatabaseService";
 import { FenceService } from "@spt/services/FenceService";
 import { LocalisationService } from "@spt/services/LocalisationService";
 import { PlayerService } from "@spt/services/PlayerService";
@@ -44,7 +45,7 @@ export declare class InventoryController {
     protected hashUtil: HashUtil;
     protected itemHelper: ItemHelper;
     protected randomUtil: RandomUtil;
-    protected databaseServer: DatabaseServer;
+    protected databaseService: DatabaseService;
     protected fenceService: FenceService;
     protected presetHelper: PresetHelper;
     protected inventoryHelper: InventoryHelper;
@@ -53,13 +54,14 @@ export declare class InventoryController {
     protected ragfairOfferService: RagfairOfferService;
     protected profileHelper: ProfileHelper;
     protected paymentHelper: PaymentHelper;
+    protected traderHelper: TraderHelper;
     protected localisationService: LocalisationService;
     protected playerService: PlayerService;
     protected lootGenerator: LootGenerator;
     protected eventOutputHolder: EventOutputHolder;
     protected httpResponseUtil: HttpResponseUtil;
     protected cloner: ICloner;
-    constructor(logger: ILogger, hashUtil: HashUtil, itemHelper: ItemHelper, randomUtil: RandomUtil, databaseServer: DatabaseServer, fenceService: FenceService, presetHelper: PresetHelper, inventoryHelper: InventoryHelper, questHelper: QuestHelper, hideoutHelper: HideoutHelper, ragfairOfferService: RagfairOfferService, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, localisationService: LocalisationService, playerService: PlayerService, lootGenerator: LootGenerator, eventOutputHolder: EventOutputHolder, httpResponseUtil: HttpResponseUtil, cloner: ICloner);
+    constructor(logger: ILogger, hashUtil: HashUtil, itemHelper: ItemHelper, randomUtil: RandomUtil, databaseService: DatabaseService, fenceService: FenceService, presetHelper: PresetHelper, inventoryHelper: InventoryHelper, questHelper: QuestHelper, hideoutHelper: HideoutHelper, ragfairOfferService: RagfairOfferService, profileHelper: ProfileHelper, paymentHelper: PaymentHelper, traderHelper: TraderHelper, localisationService: LocalisationService, playerService: PlayerService, lootGenerator: LootGenerator, eventOutputHolder: EventOutputHolder, httpResponseUtil: HttpResponseUtil, cloner: ICloner);
     /**
      * Move Item
      * change location of item with parentId and slotId

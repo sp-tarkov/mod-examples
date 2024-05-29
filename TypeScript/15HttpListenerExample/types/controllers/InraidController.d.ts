@@ -21,8 +21,8 @@ import { ITraderConfig } from "@spt/models/spt/config/ITraderConfig";
 import { ITraderServiceModel } from "@spt/models/spt/services/ITraderServiceModel";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { ConfigServer } from "@spt/servers/ConfigServer";
-import { DatabaseServer } from "@spt/servers/DatabaseServer";
 import { SaveServer } from "@spt/servers/SaveServer";
+import { DatabaseService } from "@spt/services/DatabaseService";
 import { InsuranceService } from "@spt/services/InsuranceService";
 import { LocalisationService } from "@spt/services/LocalisationService";
 import { MailSendService } from "@spt/services/MailSendService";
@@ -38,7 +38,7 @@ export declare class InraidController {
     protected logger: ILogger;
     protected saveServer: SaveServer;
     protected timeUtil: TimeUtil;
-    protected databaseServer: DatabaseServer;
+    protected databaseService: DatabaseService;
     protected pmcChatResponseService: PmcChatResponseService;
     protected matchBotDetailsCacheService: MatchBotDetailsCacheService;
     protected questHelper: QuestHelper;
@@ -62,7 +62,7 @@ export declare class InraidController {
     protected locationConfig: ILocationConfig;
     protected ragfairConfig: IRagfairConfig;
     protected hideoutConfig: IHideoutConfig;
-    constructor(logger: ILogger, saveServer: SaveServer, timeUtil: TimeUtil, databaseServer: DatabaseServer, pmcChatResponseService: PmcChatResponseService, matchBotDetailsCacheService: MatchBotDetailsCacheService, questHelper: QuestHelper, itemHelper: ItemHelper, profileHelper: ProfileHelper, playerScavGenerator: PlayerScavGenerator, healthHelper: HealthHelper, traderHelper: TraderHelper, traderServicesService: TraderServicesService, localisationService: LocalisationService, insuranceService: InsuranceService, inRaidHelper: InRaidHelper, applicationContext: ApplicationContext, configServer: ConfigServer, mailSendService: MailSendService, randomUtil: RandomUtil);
+    constructor(logger: ILogger, saveServer: SaveServer, timeUtil: TimeUtil, databaseService: DatabaseService, pmcChatResponseService: PmcChatResponseService, matchBotDetailsCacheService: MatchBotDetailsCacheService, questHelper: QuestHelper, itemHelper: ItemHelper, profileHelper: ProfileHelper, playerScavGenerator: PlayerScavGenerator, healthHelper: HealthHelper, traderHelper: TraderHelper, traderServicesService: TraderServicesService, localisationService: LocalisationService, insuranceService: InsuranceService, inRaidHelper: InRaidHelper, applicationContext: ApplicationContext, configServer: ConfigServer, mailSendService: MailSendService, randomUtil: RandomUtil);
     /**
      * Save locationId to active profiles inraid object AND app context
      * @param sessionID Session id

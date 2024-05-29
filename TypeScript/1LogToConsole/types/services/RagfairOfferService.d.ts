@@ -34,8 +34,8 @@ export declare class RagfairOfferService {
      * @returns IRagfairOffer array
      */
     getOffers(): IRagfairOffer[];
-    getOfferByOfferId(offerId: string): IRagfairOffer;
-    getOffersOfType(templateId: string): IRagfairOffer[];
+    getOfferByOfferId(offerId: string): IRagfairOffer | undefined;
+    getOffersOfType(templateId: string): IRagfairOffer[] | undefined;
     addOffer(offer: IRagfairOffer): void;
     addOfferToExpired(staleOffer: IRagfairOffer): void;
     /**

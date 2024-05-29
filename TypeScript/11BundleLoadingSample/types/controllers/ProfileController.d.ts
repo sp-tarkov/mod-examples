@@ -19,8 +19,8 @@ import { ISptProfile } from "@spt/models/eft/profile/ISptProfile";
 import { IValidateNicknameRequestData } from "@spt/models/eft/profile/IValidateNicknameRequestData";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { EventOutputHolder } from "@spt/routers/EventOutputHolder";
-import { DatabaseServer } from "@spt/servers/DatabaseServer";
 import { SaveServer } from "@spt/servers/SaveServer";
+import { DatabaseService } from "@spt/services/DatabaseService";
 import { LocalisationService } from "@spt/services/LocalisationService";
 import { MailSendService } from "@spt/services/MailSendService";
 import { ProfileFixerService } from "@spt/services/ProfileFixerService";
@@ -32,7 +32,7 @@ export declare class ProfileController {
     protected hashUtil: HashUtil;
     protected timeUtil: TimeUtil;
     protected saveServer: SaveServer;
-    protected databaseServer: DatabaseServer;
+    protected databaseService: DatabaseService;
     protected itemHelper: ItemHelper;
     protected profileFixerService: ProfileFixerService;
     protected localisationService: LocalisationService;
@@ -44,7 +44,8 @@ export declare class ProfileController {
     protected dialogueHelper: DialogueHelper;
     protected questHelper: QuestHelper;
     protected profileHelper: ProfileHelper;
-    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, saveServer: SaveServer, databaseServer: DatabaseServer, itemHelper: ItemHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, seasonalEventService: SeasonalEventService, mailSendService: MailSendService, playerScavGenerator: PlayerScavGenerator, eventOutputHolder: EventOutputHolder, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, questHelper: QuestHelper, profileHelper: ProfileHelper);
+    protected defaultInventoryTpl: string;
+    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, saveServer: SaveServer, databaseService: DatabaseService, itemHelper: ItemHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, seasonalEventService: SeasonalEventService, mailSendService: MailSendService, playerScavGenerator: PlayerScavGenerator, eventOutputHolder: EventOutputHolder, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, questHelper: QuestHelper, profileHelper: ProfileHelper);
     /**
      * Handle /launcher/profiles
      */
@@ -84,9 +85,9 @@ export declare class ProfileController {
     protected givePlayerStartingQuestRewards(profileDetails: ISptProfile, sessionID: string, response: IItemEventRouterResponse): void;
     /**
      * For each trader reset their state to what a level 1 player would see
-     * @param sessionID Session id of profile to reset
+     * @param sessionId Session id of profile to reset
      */
-    protected resetAllTradersInProfile(sessionID: string): void;
+    protected resetAllTradersInProfile(sessionId: string): void;
     /**
      * Generate a player scav object
      * PMC profile MUST exist first before pscav can be generated

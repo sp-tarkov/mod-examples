@@ -11,7 +11,7 @@ import { ICreateFenceAssortsResult } from "@spt/models/spt/fence/ICreateFenceAss
 import { IFenceAssortGenerationValues, IGenerationAssortValues } from "@spt/models/spt/fence/IFenceAssortGenerationValues";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { ConfigServer } from "@spt/servers/ConfigServer";
-import { DatabaseServer } from "@spt/servers/DatabaseServer";
+import { DatabaseService } from "@spt/services/DatabaseService";
 import { LocalisationService } from "@spt/services/LocalisationService";
 import { ICloner } from "@spt/utils/cloners/ICloner";
 import { RandomUtil } from "@spt/utils/RandomUtil";
@@ -24,7 +24,7 @@ export declare class FenceService {
     protected logger: ILogger;
     protected timeUtil: TimeUtil;
     protected randomUtil: RandomUtil;
-    protected databaseServer: DatabaseServer;
+    protected databaseService: DatabaseService;
     protected handbookHelper: HandbookHelper;
     protected itemHelper: ItemHelper;
     protected presetHelper: PresetHelper;
@@ -35,13 +35,13 @@ export declare class FenceService {
     /** Time when some items in assort will be replaced  */
     protected nextPartialRefreshTimestamp: number;
     /** Main assorts you see at all rep levels */
-    protected fenceAssort: ITraderAssort;
+    protected fenceAssort?: ITraderAssort;
     /** Assorts shown on a separate tab when you max out fence rep */
-    protected fenceDiscountAssort: ITraderAssort;
+    protected fenceDiscountAssort?: ITraderAssort;
     /** Desired baseline counts - Hydrated on initial assort generation as part of generateFenceAssorts() */
     protected desiredAssortCounts: IFenceAssortGenerationValues;
     protected fenceItemUpdCompareProperties: Set<string>;
-    constructor(logger: ILogger, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseServer: DatabaseServer, handbookHelper: HandbookHelper, itemHelper: ItemHelper, presetHelper: PresetHelper, localisationService: LocalisationService, configServer: ConfigServer, cloner: ICloner);
+    constructor(logger: ILogger, timeUtil: TimeUtil, randomUtil: RandomUtil, databaseService: DatabaseService, handbookHelper: HandbookHelper, itemHelper: ItemHelper, presetHelper: PresetHelper, localisationService: LocalisationService, configServer: ConfigServer, cloner: ICloner);
     /**
      * Replace main fence assort with new assort
      * @param assort New assorts to replace old with
@@ -56,12 +56,12 @@ export declare class FenceService {
      * Get main fence assort
      * @return ITraderAssort
      */
-    getMainFenceAssort(): ITraderAssort;
+    getMainFenceAssort(): ITraderAssort | undefined;
     /**
      * Get discount fence assort
      * @return ITraderAssort
      */
-    getDiscountFenceAssort(): ITraderAssort;
+    getDiscountFenceAssort(): ITraderAssort | undefined;
     /**
      * Replace high rep level fence assort with new assort
      * @param discountAssort New assorts to replace old with
@@ -217,7 +217,7 @@ export declare class FenceService {
      * @param itemsWithChildren Items to search through
      * @returns Matching assort item
      */
-    protected getMatchingItem(rootItemBeingAdded: Item, itemDbDetails: ITemplateItem, itemsWithChildren: Item[][]): Item;
+    protected getMatchingItem(rootItemBeingAdded: Item, itemDbDetails: ITemplateItem, itemsWithChildren: Item[][]): Item | undefined;
     /**
      * Should this item be forced into only 1 stack on fence
      * @param existingItem Existing item from fence assort
@@ -239,7 +239,7 @@ export declare class FenceService {
     }>, itemTpl: string): {
         current: number;
         max: number;
-    };
+    } | undefined;
     /**
      * Find presets in base fence assort and add desired number to 'assorts' parameter
      * @param desiredWeaponPresetsCount

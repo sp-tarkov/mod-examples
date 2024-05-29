@@ -97,13 +97,19 @@ export declare class ProfileHelper {
      * @param sessionID Profile id to get
      * @returns ISptProfile object
      */
-    getFullProfile(sessionID: string): ISptProfile;
+    getFullProfile(sessionID: string): ISptProfile | undefined;
     /**
      * Get a PMC profile by its session id
      * @param sessionID Profile id to return
      * @returns IPmcData object
      */
-    getPmcProfile(sessionID: string): IPmcData;
+    getPmcProfile(sessionID: string): IPmcData | undefined;
+    /**
+     * Is this user id the logged in player
+     * @param userId Id to test
+     * @returns True is the current player
+     */
+    isPlayer(userId: string): boolean;
     /**
      * Get a full profiles scav-specific sub-profile
      * @param sessionID Profiles id

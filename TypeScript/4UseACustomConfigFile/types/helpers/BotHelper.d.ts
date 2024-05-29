@@ -4,16 +4,16 @@ import { EquipmentFilters, IBotConfig, RandomisationDetails } from "@spt/models/
 import { IPmcConfig } from "@spt/models/spt/config/IPmcConfig";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { ConfigServer } from "@spt/servers/ConfigServer";
-import { DatabaseServer } from "@spt/servers/DatabaseServer";
+import { DatabaseService } from "@spt/services/DatabaseService";
 import { RandomUtil } from "@spt/utils/RandomUtil";
 export declare class BotHelper {
     protected logger: ILogger;
-    protected databaseServer: DatabaseServer;
+    protected databaseService: DatabaseService;
     protected randomUtil: RandomUtil;
     protected configServer: ConfigServer;
     protected botConfig: IBotConfig;
     protected pmcConfig: IPmcConfig;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, randomUtil: RandomUtil, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseService: DatabaseService, randomUtil: RandomUtil, configServer: ConfigServer);
     /**
      * Get a template object for the specified botRole from bots.types db
      * @param role botRole to get template for
@@ -54,7 +54,7 @@ export declare class BotHelper {
      * @param botEquipConfig bot equipment json
      * @returns RandomisationDetails
      */
-    getBotRandomizationDetails(botLevel: number, botEquipConfig: EquipmentFilters): RandomisationDetails;
+    getBotRandomizationDetails(botLevel: number, botEquipConfig: EquipmentFilters): RandomisationDetails | undefined;
     /**
      * Choose between sptBear and sptUsec at random based on the % defined in pmcConfig.isUsec
      * @returns pmc role

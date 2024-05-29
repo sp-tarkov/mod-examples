@@ -44,7 +44,7 @@ export declare class PresetHelper {
      * @param templateId Item id to get preset for
      * @returns Null if no default preset, otherwise IPreset
      */
-    getDefaultPreset(templateId: string): IPreset;
+    getDefaultPreset(templateId: string): IPreset | undefined;
     getBaseItemTpl(presetId: string): string;
     /**
      * Return the price of the preset for the given item tpl, or for the tpl itself if no preset exists

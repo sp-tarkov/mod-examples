@@ -36,13 +36,13 @@ export declare class GiftService {
      * @param giftData Gift to send player
      * @returns trader/user/system id
      */
-    protected getSenderId(giftData: Gift): string;
+    protected getSenderId(giftData: Gift): string | undefined;
     /**
      * Convert GiftSenderType into a dialog MessageType
      * @param giftData Gift to send player
      * @returns MessageType enum value
      */
-    protected getMessageType(giftData: Gift): MessageType;
+    protected getMessageType(giftData: Gift): MessageType | undefined;
     /**
      * Prapor sends gifts to player for first week after profile creation
      * @param sessionId Player id

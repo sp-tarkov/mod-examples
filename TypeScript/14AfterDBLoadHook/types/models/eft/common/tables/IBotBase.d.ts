@@ -83,7 +83,7 @@ export interface Settings {
     AggressorBonus: number;
 }
 export interface IBan {
-    type: BanType;
+    banType: BanType;
     dateTime: number;
 }
 export declare enum BanType {
@@ -163,7 +163,7 @@ export interface Common extends IBaseSkill {
 export interface Mastering extends IBaseSkill {
 }
 export interface Stats {
-    Eft: IEftStats;
+    Eft?: IEftStats;
 }
 export interface IEftStats {
     CarriedQuestItems: string[];

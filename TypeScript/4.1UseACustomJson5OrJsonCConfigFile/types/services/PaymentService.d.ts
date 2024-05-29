@@ -84,5 +84,5 @@ export declare class PaymentService {
      * @param playerStashId Players stash id
      * @returns true if its in inventory
      */
-    protected isInStash(itemId: string, inventoryItems: Item[], playerStashId: string): boolean;
+    protected isInStash(itemId: string | undefined, inventoryItems: Item[], playerStashId: string): boolean;
 }

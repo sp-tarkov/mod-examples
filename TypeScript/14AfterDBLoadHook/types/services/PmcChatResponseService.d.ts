@@ -41,7 +41,7 @@ export declare class PmcChatResponseService {
      * @param pmcData Player profile
      * @returns Message from PMC to player
      */
-    protected chooseMessage(isVictim: boolean, pmcData: IPmcData): string;
+    protected chooseMessage(isVictim: boolean, pmcData: IPmcData): string | undefined;
     /**
      * Should capitalisation be stripped from the message response before sending
      * @param isVictim Was responder a victim of player
