@@ -9,7 +9,7 @@ import { ConfigsModelBase } from "./model/ConfigsModel";
 class Mod implements IPreSptLoadMod {
     public preSptLoad(container: DependencyContainer): void {
         // get logger
-        const logger = container.resolve<ILogger>("WinstonLogger");
+        const logger = container.resolve<ILogger>("PrimaryLogger");
 
         const importerUtil = container.resolve<ImporterUtil>("ImporterUtil");
         const modImporter = container.resolve<PreSptModLoader>("PreSptModLoader");

@@ -8,7 +8,7 @@ class Mod implements IPostSptLoadMod
     public postSptLoad(container: DependencyContainer): void
     {
         // get the logger from the server container
-        const logger = container.resolve<ILogger>("WinstonLogger");
+        const logger = container.resolve<ILogger>("PrimaryLogger");
 
         logger.info("Loading: Bundle Loading Sample");
     }

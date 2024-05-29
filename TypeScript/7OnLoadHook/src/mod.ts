@@ -8,7 +8,7 @@ class Mod implements IPreSptLoadMod
 {
     public preSptLoad(container: DependencyContainer): void
     {
-        const logger = container.resolve<ILogger>("WinstonLogger");
+        const logger = container.resolve<ILogger>("PrimaryLogger");
         const onLoadModService = container.resolve<OnLoadModService>("OnLoadModService");
         onLoadModService.registerOnLoad(
             "MyCustomMod", // route key

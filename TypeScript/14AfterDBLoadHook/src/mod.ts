@@ -14,7 +14,7 @@ class Mod implements IPreSptLoadMod, IPostSptLoadMod, IPostDBLoadMod
     public preSptLoad(container: DependencyContainer): void {
         // Database will be empty in here
         const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
-        const logger = container.resolve<ILogger>("WinstonLogger");
+        const logger = container.resolve<ILogger>("PrimaryLogger");
         logger.logWithColor(`Database item table state: ${databaseServer.getTables().templates} (<<< should be undefined)`, LogTextColor.RED, LogBackgroundColor.YELLOW);
     }
 
@@ -22,7 +22,7 @@ class Mod implements IPreSptLoadMod, IPostSptLoadMod, IPostDBLoadMod
         // Database will be loaded, this is the fresh state of the DB so NOTHING from the SPT
         // logic has modified anything yet. This is the DB loaded straight from the JSON files
         const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
-        const logger = container.resolve<ILogger>("WinstonLogger");
+        const logger = container.resolve<ILogger>("PrimaryLogger");
         logger.logWithColor(`Database item size: ${Object.entries(databaseServer.getTables().templates.items).length}`, LogTextColor.RED, LogBackgroundColor.YELLOW);
         // lets do a quick modification and see how this reflect later on, on the postSptLoad()
 
@@ -38,7 +38,7 @@ class Mod implements IPreSptLoadMod, IPostSptLoadMod, IPostDBLoadMod
         // The modification we made above would have been processed by now by SPT, so any values we changed had
         // already been passed through the initial lifecycles (OnLoad) of SPT.
         const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
-        const logger = container.resolve<ILogger>("WinstonLogger");
+        const logger = container.resolve<ILogger>("PrimaryLogger");
 
         // find the nvgs item again by its Id
         const nvgs = databaseServer.getTables().templates.items["5c0558060db834001b735271"];

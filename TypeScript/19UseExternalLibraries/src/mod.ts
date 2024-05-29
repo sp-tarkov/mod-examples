@@ -13,7 +13,7 @@ import ora from "ora-classic";
 class Mod implements IPreSptLoadMod, IPostSptLoadMod {
     public preSptLoad(container: DependencyContainer): void {
         const vfs = container.resolve<VFS>("VFS");
-        const logger = container.resolve<ILogger>("WinstonLogger");
+        const logger = container.resolve<ILogger>("PrimaryLogger");
 
         const parsedJsonC = jsonc.parse(vfs.readFile(path.resolve(__dirname, "../test.jsonc")));
 

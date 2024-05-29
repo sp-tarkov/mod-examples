@@ -9,7 +9,7 @@ class Mod implements IPostSptLoadMod
 
     public postSptLoad(container: DependencyContainer): void {
         // get logger
-        const logger = container.resolve<ILogger>("WinstonLogger");
+        const logger = container.resolve<ILogger>("PrimaryLogger");
 
         // log the 'myProperty' value to the console
         logger.info(`here is the value from my config: ${this.modConfig.myProperty}`);

@@ -8,7 +8,7 @@ import type {StaticRouterModService} from "@spt/services/mod/staticRouter/Static
 class Mod implements IPreSptLoadMod
 {
     public preSptLoad(container: DependencyContainer): void {
-        const logger = container.resolve<ILogger>("WinstonLogger");
+        const logger = container.resolve<ILogger>("PrimaryLogger");
         const dynamicRouterModService = container.resolve<DynamicRouterModService>("DynamicRouterModService");
         const staticRouterModService = container.resolve<StaticRouterModService>("StaticRouterModService");
 

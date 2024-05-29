@@ -7,7 +7,7 @@ import { OnUpdateModService } from "@spt/services/mod/onUpdate/OnUpdateModServic
 class Mod implements IPreSptLoadMod
 {
     public preSptLoad(container: DependencyContainer): void {
-        const logger = container.resolve<ILogger>("WinstonLogger");
+        const logger = container.resolve<ILogger>("PrimaryLogger");
         const onUpdateModService = container.resolve<OnUpdateModService>("OnUpdateModService");
 
         onUpdateModService.registerOnUpdate(

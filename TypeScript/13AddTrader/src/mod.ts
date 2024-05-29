@@ -40,7 +40,7 @@ class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod
     public preSptLoad(container: DependencyContainer): void
     {
         // Get a logger
-        this.logger = container.resolve<ILogger>("WinstonLogger");
+        this.logger = container.resolve<ILogger>("PrimaryLogger");
         this.logger.debug(`[${this.mod}] preSpt Loading... `);
 
         // Get SPT code/data we need later

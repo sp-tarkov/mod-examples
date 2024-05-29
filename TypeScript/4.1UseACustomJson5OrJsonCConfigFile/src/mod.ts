@@ -12,7 +12,7 @@ class Mod implements IPostSptLoadMod
 {
     public postSptLoad(container: DependencyContainer): void {
         // get logger
-        const logger = container.resolve<ILogger>("WinstonLogger");
+        const logger = container.resolve<ILogger>("PrimaryLogger");
 
         // Get VFS to read in configs
         const vfs = container.resolve<VFS>("VFS");

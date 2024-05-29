@@ -9,7 +9,7 @@ class Mod implements IPostSptLoadMod
     public postSptLoad(container: DependencyContainer): void
     {
         // get logger
-        const logger = container.resolve<ILogger>("WinstonLogger");
+        const logger = container.resolve<ILogger>("PrimaryLogger");
 
         // Make a new instance of the 'MoreCode' class
         const moreCode = new MoreCode();

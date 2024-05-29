@@ -54,7 +54,7 @@ class Mod implements IPreSptLoadMod
 
         // This is now extra stuff we want to add
         // We resolve 2 more dependencies: The logger and the DatabaseServer
-        const logger = Mod.container.resolve<ILogger>("WinstonLogger");
+        const logger = Mod.container.resolve<ILogger>("PrimaryLogger");
         const dbServer = Mod.container.resolve<DatabaseServer>("DatabaseServer");
 
         // As an example Im counting the amount of loaded items on the DB
