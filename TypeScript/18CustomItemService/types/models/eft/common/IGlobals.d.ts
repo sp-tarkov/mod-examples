@@ -802,7 +802,6 @@ export interface IMaxActiveOfferCount {
     from: number;
     to: number;
     count: number;
-    countForSpecialEditions: number;
 }
 export interface IMaxSumForRarity {
     Common: IRarityMaxSum;

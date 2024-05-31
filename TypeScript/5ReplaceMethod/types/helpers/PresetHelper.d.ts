@@ -1,16 +1,16 @@
 import { IPreset } from "@spt/models/eft/common/IGlobals";
 import { BaseClasses } from "@spt/models/enums/BaseClasses";
-import { DatabaseServer } from "@spt/servers/DatabaseServer";
+import { DatabaseService } from "@spt/services/DatabaseService";
 import { ICloner } from "@spt/utils/cloners/ICloner";
 import { ItemHelper } from "./ItemHelper";
 export declare class PresetHelper {
-    protected databaseServer: DatabaseServer;
+    protected databaseService: DatabaseService;
     protected itemHelper: ItemHelper;
     protected cloner: ICloner;
     protected lookup: Record<string, string[]>;
     protected defaultEquipmentPresets: Record<string, IPreset>;
     protected defaultWeaponPresets: Record<string, IPreset>;
-    constructor(databaseServer: DatabaseServer, itemHelper: ItemHelper, cloner: ICloner);
+    constructor(databaseService: DatabaseService, itemHelper: ItemHelper, cloner: ICloner);
     hydratePresetStore(input: Record<string, string[]>): void;
     /**
      * Get default weapon and equipment presets

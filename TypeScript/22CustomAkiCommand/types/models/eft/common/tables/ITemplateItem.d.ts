@@ -63,7 +63,7 @@ export interface Props {
     DiscardingBlock?: boolean;
     DropSoundType?: string;
     RagFairCommissionModifier?: number;
-    RarityPvE: string;
+    RarityPvE?: string;
     IsAlwaysAvailableForInsurance?: boolean;
     DiscardLimit?: number;
     MaxResource?: number;
@@ -414,6 +414,12 @@ export interface Props {
     LayoutName?: string;
     Lower75Prefab?: Prefab;
     MaxUsages?: number;
+    ScavKillExpPenalty?: number;
+    ScavKillExpPenaltyPVE?: number;
+    ScavKillStandingPenalty?: number;
+    ScavKillStandingPenaltyPVE?: number;
+    TradersDiscount?: number;
+    TradersDiscountPVE?: number;
 }
 export interface IHealthEffect {
     type: string;

@@ -10,7 +10,7 @@ import { Traders } from "@spt/models/enums/Traders";
 import { ITraderConfig } from "@spt/models/spt/config/ITraderConfig";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { ConfigServer } from "@spt/servers/ConfigServer";
-import { DatabaseServer } from "@spt/servers/DatabaseServer";
+import { DatabaseService } from "@spt/services/DatabaseService";
 import { FenceService } from "@spt/services/FenceService";
 import { LocalisationService } from "@spt/services/LocalisationService";
 import { PlayerService } from "@spt/services/PlayerService";
@@ -18,7 +18,7 @@ import { RandomUtil } from "@spt/utils/RandomUtil";
 import { TimeUtil } from "@spt/utils/TimeUtil";
 export declare class TraderHelper {
     protected logger: ILogger;
-    protected databaseServer: DatabaseServer;
+    protected databaseService: DatabaseService;
     protected profileHelper: ProfileHelper;
     protected handbookHelper: HandbookHelper;
     protected itemHelper: ItemHelper;
@@ -33,7 +33,7 @@ export declare class TraderHelper {
     protected highestTraderPriceItems?: Record<string, number>;
     /** Dictionary of item tpl and the highest trader buy back rouble price */
     protected highestTraderBuyPriceItems?: Record<string, number>;
-    constructor(logger: ILogger, databaseServer: DatabaseServer, profileHelper: ProfileHelper, handbookHelper: HandbookHelper, itemHelper: ItemHelper, playerService: PlayerService, localisationService: LocalisationService, fenceService: FenceService, timeUtil: TimeUtil, randomUtil: RandomUtil, configServer: ConfigServer);
+    constructor(logger: ILogger, databaseService: DatabaseService, profileHelper: ProfileHelper, handbookHelper: HandbookHelper, itemHelper: ItemHelper, playerService: PlayerService, localisationService: LocalisationService, fenceService: FenceService, timeUtil: TimeUtil, randomUtil: RandomUtil, configServer: ConfigServer);
     /**
      * Get a trader base object, update profile to reflect players current standing in profile
      * when trader not found in profile
