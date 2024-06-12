@@ -67,6 +67,7 @@ export interface IChatbotFeatures {
     sptFriendEnabled: boolean;
     commandoEnabled: boolean;
     commandoFeatures: ICommandoFeatures;
+    commandUseLimits: Record<string, number>;
 }
 export interface ICommandoFeatures {
     giveCommandEnabled: boolean;

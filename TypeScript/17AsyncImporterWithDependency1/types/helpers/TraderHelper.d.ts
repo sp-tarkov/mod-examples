@@ -31,8 +31,6 @@ export declare class TraderHelper {
     protected traderConfig: ITraderConfig;
     /** Dictionary of item tpl and the highest trader sell rouble price */
     protected highestTraderPriceItems?: Record<string, number>;
-    /** Dictionary of item tpl and the highest trader buy back rouble price */
-    protected highestTraderBuyPriceItems?: Record<string, number>;
     constructor(logger: ILogger, databaseService: DatabaseService, profileHelper: ProfileHelper, handbookHelper: HandbookHelper, itemHelper: ItemHelper, playerService: PlayerService, localisationService: LocalisationService, fenceService: FenceService, timeUtil: TimeUtil, randomUtil: RandomUtil, configServer: ConfigServer);
     /**
      * Get a trader base object, update profile to reflect players current standing in profile
@@ -133,6 +131,13 @@ export declare class TraderHelper {
         }[];
         traderId: string;
     }, itemPurchased: Item): void;
+    /**
+     * EoD and Unheard get a 20% bonus to personal trader limit purchases
+     * @param buyRestrictionMax Existing value from trader item
+     * @param gameVersion Profiles game version
+     * @returns buyRestrictionMax value
+     */
+    getAccountTypeAdjustedTraderPurchaseLimit(buyRestrictionMax: number, gameVersion: string): number;
     /**
      * Get the highest rouble price for an item from traders
      * UNUSED

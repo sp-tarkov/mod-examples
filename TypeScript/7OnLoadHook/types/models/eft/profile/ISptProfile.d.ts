@@ -168,6 +168,8 @@ export interface Spt {
     receivedGifts: ReceivedGift[];
     /** item TPLs blacklisted from being sold on flea for this profile */
     blacklistedItemTpls?: string[];
+    /** key: daily type */
+    freeRepeatableChangeCount: Record<string, number>;
 }
 export interface ModDetails {
     name: string;
@@ -178,7 +180,8 @@ export interface ModDetails {
 }
 export interface ReceivedGift {
     giftId: string;
-    timestampAccepted: number;
+    timestampLastAccepted: number;
+    current: number;
 }
 export interface Vitality {
     health: Health;

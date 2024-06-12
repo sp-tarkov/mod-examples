@@ -90,6 +90,7 @@ export declare class QuestController {
      * @returns IItemEventRouterResponse
      */
     acceptRepeatableQuest(pmcData: IPmcData, acceptedQuest: IAcceptQuestRequestData, sessionID: string): IItemEventRouterResponse;
+    protected createAcceptedQuestClientResponse(sessionID: string, pmcData: IPmcData, repeatableQuestProfile: IRepeatableQuest): IItemEventRouterResponse;
     /**
      * Look for an accepted quest inside player profile, return matching
      * @param pmcData Profile to search through

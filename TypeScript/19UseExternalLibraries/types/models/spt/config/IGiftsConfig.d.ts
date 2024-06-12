@@ -28,4 +28,5 @@ export interface Gift {
     collectionTimeHours: number;
     /** Optional, can be used to change profile settings like level/skills */
     profileChangeEvents?: IProfileChangeEvent[];
+    maxToSendPlayer?: number;
 }

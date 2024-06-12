@@ -177,7 +177,7 @@ export declare class RagfairOfferHelper {
      * @param pmcProfile Player profile
      * @returns True = should be shown to player
      */
-    isDisplayableOffer(searchRequest: ISearchRequestData, itemsToAdd: string[], traderAssorts: Record<string, ITraderAssort>, offer: IRagfairOffer, pmcProfile: IPmcData): boolean;
+    isDisplayableOffer(searchRequest: ISearchRequestData, itemsToAdd: string[], traderAssorts: Record<string, ITraderAssort>, offer: IRagfairOffer, pmcProfile: IPmcData, playerIsFleaBanned?: boolean): boolean;
     isDisplayableOfferThatNeedsItem(searchRequest: ISearchRequestData, offer: IRagfairOffer): boolean;
     /**
      * Does the passed in item have a condition property

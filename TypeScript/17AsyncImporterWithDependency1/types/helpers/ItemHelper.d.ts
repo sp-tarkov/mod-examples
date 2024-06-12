@@ -416,7 +416,7 @@ export declare class ItemHelper {
     /**
      * Get the name of an item from the locale file using the item tpl
      * @param itemTpl Tpl of item to get name of
-     * @returns Name of item
+     * @returns Full name, short name if not found
      */
     getItemName(itemTpl: string): string;
     /**

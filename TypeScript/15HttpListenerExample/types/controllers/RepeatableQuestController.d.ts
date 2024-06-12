@@ -2,7 +2,6 @@ import { RepeatableQuestGenerator } from "@spt/generators/RepeatableQuestGenerat
 import { ProfileHelper } from "@spt/helpers/ProfileHelper";
 import { QuestHelper } from "@spt/helpers/QuestHelper";
 import { RepeatableQuestHelper } from "@spt/helpers/RepeatableQuestHelper";
-import { IEmptyRequestData } from "@spt/models/eft/common/IEmptyRequestData";
 import { IPmcData } from "@spt/models/eft/common/IPmcData";
 import { IPmcDataRepeatableQuest, IRepeatableQuest } from "@spt/models/eft/common/tables/IRepeatableQuests";
 import { IItemEventRouterResponse } from "@spt/models/eft/itemEvent/IItemEventRouterResponse";
@@ -62,12 +61,31 @@ export declare class RepeatableQuestController {
      * (if the are on "Succeed" but not "Completed" we keep them, to allow the player to complete them and get the rewards)
      * The new quests generated are again persisted in profile.RepeatableQuests
      *
-     * @param   {string}    _info       Request from client
      * @param   {string}    sessionID   Player's session id
      *
      * @returns  {array}                Array of "repeatableQuestObjects" as described above
      */
-    getClientRepeatableQuests(_info: IEmptyRequestData, sessionID: string): IPmcDataRepeatableQuest[];
+    getClientRepeatableQuests(sessionID: string): IPmcDataRepeatableQuest[];
+    /**
+     * Check if a repeatable quest type (daily/weekly) is active for the given profile
+     * @param repeatableConfig Repeatable quest config
+     * @param pmcData Player profile
+     * @returns True if profile is allowed to access dailies
+     */
+    protected canProfileAccessRepeatableQuests(repeatableConfig: IRepeatableQuestConfig, pmcData: IPmcData): boolean;
+    /**
+     * Does player have daily scav quests unlocked
+     * @param pmcData Player profile to check
+     * @returns True if unlocked
+     */
+    protected playerHasDailyScavQuestsUnlocked(pmcData: IPmcData): boolean;
+    /**
+     * Does player have daily pmc quests unlocked
+     * @param pmcData Player profile to check
+     * @param repeatableConfig Config of daily type to check
+     * @returns True if unlocked
+     */
+    protected playerHasDailyPmcQuestsUnlocked(pmcData: IPmcData, repeatableConfig: IRepeatableQuestConfig): boolean;
     /**
      * Get the number of quests to generate - takes into account charisma state of player
      * @param repeatableConfig Config
@@ -99,10 +117,10 @@ export declare class RepeatableQuestController {
     /**
      * Return the locations this PMC is allowed to get daily quests for based on their level
      * @param locations The original list of locations
-     * @param pmcLevel The level of the player PMC
+     * @param pmcLevel The players level
      * @returns A filtered list of locations that allow the player PMC level to access it
      */
-    protected getAllowedLocations(locations: Record<ELocationName, string[]>, pmcLevel: number): Partial<Record<ELocationName, string[]>>;
+    protected getAllowedLocationsForPmcLevel(locations: Record<ELocationName, string[]>, pmcLevel: number): Partial<Record<ELocationName, string[]>>;
     /**
      * Return true if the given pmcLevel is allowed on the given location
      * @param location The location name to check
@@ -113,6 +131,12 @@ export declare class RepeatableQuestController {
     debugLogRepeatableQuestIds(pmcData: IPmcData): void;
     /**
      * Handle RepeatableQuestChange event
+     *
+     * Replace a players repeatable quest
+     * @param pmcData Player profile
+     * @param changeRequest Request object
+     * @param sessionID Session id
+     * @returns IItemEventRouterResponse
      */
     changeRepeatableQuest(pmcData: IPmcData, changeRequest: IRepeatableQuestChangeRequest, sessionID: string): IItemEventRouterResponse;
     protected attemptToGenerateRepeatableQuest(pmcData: IPmcData, questTypePool: IQuestTypePool, repeatableConfig: IRepeatableQuestConfig): IRepeatableQuest;

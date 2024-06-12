@@ -24,6 +24,17 @@ export declare class GiftService {
      * @returns True if it exists in  db
      */
     giftExists(giftId: string): boolean;
+    getGiftById(giftId: string): Gift;
+    /**
+     * Get dictionary of all gifts
+     * @returns Dict keyed by gift id
+     */
+    getGifts(): Record<string, Gift>;
+    /**
+     * Get an array of all gift ids
+     * @returns string array of gift ids
+     */
+    getGiftIds(): string[];
     /**
      * Send player a gift from a range of sources
      * @param playerId Player to send gift to / sessionId

@@ -102,7 +102,7 @@ export declare class BotController {
      */
     protected generateWithBotDetails(condition: Condition, botGenerationDetails: BotGenerationDetails, sessionId: string): Promise<void>;
     /**
-     * Generate a single bot and store it in the cache
+     * Generate a single bot and store in the cache
      * @param botGenerationDetails the bot details to generate the bot with
      * @param sessionId Session id
      * @param cacheKey the cache key to store the bot with
@@ -125,8 +125,9 @@ export declare class BotController {
     /**
      * Get the max number of bots allowed on a map
      * Looks up location player is entering when getting cap value
+     * @param location The map location cap was requested for
      * @returns cap number
      */
-    getBotCap(): number;
+    getBotCap(location: string): number;
     getAiBotBrainTypes(): any;
 }

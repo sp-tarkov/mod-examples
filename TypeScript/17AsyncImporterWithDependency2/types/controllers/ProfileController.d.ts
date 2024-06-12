@@ -10,6 +10,7 @@ import { IMiniProfile } from "@spt/models/eft/launcher/IMiniProfile";
 import { GetProfileStatusResponseData } from "@spt/models/eft/profile/GetProfileStatusResponseData";
 import { IGetOtherProfileRequest } from "@spt/models/eft/profile/IGetOtherProfileRequest";
 import { IGetOtherProfileResponse } from "@spt/models/eft/profile/IGetOtherProfileResponse";
+import { IGetProfileSettingsRequest } from "@spt/models/eft/profile/IGetProfileSettingsRequest";
 import { IProfileChangeNicknameRequestData } from "@spt/models/eft/profile/IProfileChangeNicknameRequestData";
 import { IProfileChangeVoiceRequestData } from "@spt/models/eft/profile/IProfileChangeVoiceRequestData";
 import { IProfileCreateRequestData } from "@spt/models/eft/profile/IProfileCreateRequestData";
@@ -25,11 +26,13 @@ import { LocalisationService } from "@spt/services/LocalisationService";
 import { MailSendService } from "@spt/services/MailSendService";
 import { ProfileFixerService } from "@spt/services/ProfileFixerService";
 import { SeasonalEventService } from "@spt/services/SeasonalEventService";
+import { ICloner } from "@spt/utils/cloners/ICloner";
 import { HashUtil } from "@spt/utils/HashUtil";
 import { TimeUtil } from "@spt/utils/TimeUtil";
 export declare class ProfileController {
     protected logger: ILogger;
     protected hashUtil: HashUtil;
+    protected cloner: ICloner;
     protected timeUtil: TimeUtil;
     protected saveServer: SaveServer;
     protected databaseService: DatabaseService;
@@ -45,7 +48,7 @@ export declare class ProfileController {
     protected questHelper: QuestHelper;
     protected profileHelper: ProfileHelper;
     protected defaultInventoryTpl: string;
-    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, saveServer: SaveServer, databaseService: DatabaseService, itemHelper: ItemHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, seasonalEventService: SeasonalEventService, mailSendService: MailSendService, playerScavGenerator: PlayerScavGenerator, eventOutputHolder: EventOutputHolder, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, questHelper: QuestHelper, profileHelper: ProfileHelper);
+    constructor(logger: ILogger, hashUtil: HashUtil, cloner: ICloner, timeUtil: TimeUtil, saveServer: SaveServer, databaseService: DatabaseService, itemHelper: ItemHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, seasonalEventService: SeasonalEventService, mailSendService: MailSendService, playerScavGenerator: PlayerScavGenerator, eventOutputHolder: EventOutputHolder, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, questHelper: QuestHelper, profileHelper: ProfileHelper);
     /**
      * Handle /launcher/profiles
      */
@@ -53,7 +56,7 @@ export declare class ProfileController {
     /**
      * Handle launcher/profile/info
      */
-    getMiniProfile(sessionID: string): any;
+    getMiniProfile(sessionID: string): IMiniProfile;
     /**
      * Handle client/game/profile/list
      */
@@ -117,4 +120,8 @@ export declare class ProfileController {
      */
     getProfileStatus(sessionId: string): GetProfileStatusResponseData;
     getOtherProfile(sessionId: string, request: IGetOtherProfileRequest): IGetOtherProfileResponse;
+    /**
+     * Handle client/profile/settings
+     */
+    setChosenProfileIcon(sessionId: string, request: IGetProfileSettingsRequest): void;
 }

@@ -21,8 +21,8 @@ export declare class BotDifficultyHelper {
      * Get a difficulty object modified to handle fighting other PMCs
      * @param pmcType 'bear or 'usec'
      * @param difficulty easy / normal / hard / impossible
-     * @param usecType sptUsec
-     * @param bearType sptBear
+     * @param usecType pmcUSEC
+     * @param bearType pmcBEAR
      * @returns Difficulty object
      */
     getPmcDifficultySettings(pmcType: "bear" | "usec", difficulty: string, usecType: string, bearType: string): Difficulty;

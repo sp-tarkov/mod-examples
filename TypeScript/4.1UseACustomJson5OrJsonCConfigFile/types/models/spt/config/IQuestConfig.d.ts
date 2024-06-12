@@ -54,6 +54,7 @@ export interface IRewardScaling {
     levels: number[];
     experience: number[];
     roubles: number[];
+    gpCoins: number[];
     items: number[];
     reputation: number[];
     rewardSpread: number;

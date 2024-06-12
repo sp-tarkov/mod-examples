@@ -36,7 +36,7 @@ export declare class LauncherController {
      * @returns Dictionary of profile types with related descriptive text
      */
     protected getProfileDescriptions(): Record<string, string>;
-    find(sessionIdKey: string): Info;
+    find(sessionId: string): Info;
     login(info: ILoginRequestData): string;
     register(info: IRegisterData): string;
     protected createAccount(info: IRegisterData): string;

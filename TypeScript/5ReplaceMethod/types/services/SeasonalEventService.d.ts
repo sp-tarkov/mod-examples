@@ -146,9 +146,9 @@ export declare class SeasonalEventService {
     /**
      * Send gift to player if they'e not already received it
      * @param playerId Player to send gift to
-     * @param giftkey Key of gift to give
+     * @param giftKey Key of gift to give
      */
-    protected giveGift(playerId: string, giftkey: string): void;
+    protected giveGift(playerId: string, giftKey: string): void;
     /**
      * Get the underlying bot type for an event bot e.g. `peacefullZryachiyEvent` will return `bossZryachiy`
      * @param eventBotRole Event bot role type

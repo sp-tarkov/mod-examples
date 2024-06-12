@@ -1,5 +1,6 @@
 import { HideoutController } from "@spt/controllers/HideoutController";
 import { RagfairController } from "@spt/controllers/RagfairController";
+import { TraderHelper } from "@spt/helpers/TraderHelper";
 import { IEmptyRequestData } from "@spt/models/eft/common/IEmptyRequestData";
 import { IGlobals } from "@spt/models/eft/common/IGlobals";
 import { ICustomizationItem } from "@spt/models/eft/common/tables/ICustomizationItem";
@@ -13,15 +14,18 @@ import { IGetBodyResponseData } from "@spt/models/eft/httpResponse/IGetBodyRespo
 import { ISettingsBase } from "@spt/models/spt/server/ISettingsBase";
 import { DatabaseService } from "@spt/services/DatabaseService";
 import { HttpResponseUtil } from "@spt/utils/HttpResponseUtil";
+import { TimeUtil } from "@spt/utils/TimeUtil";
 /**
  * Handle client requests
  */
 export declare class DataCallbacks {
     protected httpResponse: HttpResponseUtil;
+    protected timeUtil: TimeUtil;
+    protected traderHelper: TraderHelper;
     protected databaseService: DatabaseService;
     protected ragfairController: RagfairController;
     protected hideoutController: HideoutController;
-    constructor(httpResponse: HttpResponseUtil, databaseService: DatabaseService, ragfairController: RagfairController, hideoutController: HideoutController);
+    constructor(httpResponse: HttpResponseUtil, timeUtil: TimeUtil, traderHelper: TraderHelper, databaseService: DatabaseService, ragfairController: RagfairController, hideoutController: HideoutController);
     /**
      * Handle client/settings
      * @returns ISettingsBase
