@@ -19,6 +19,7 @@ import { IInventorySplitRequestData } from "@spt/models/eft/inventory/IInventory
 import { IInventoryTransferRequestData } from "@spt/models/eft/inventory/IInventoryTransferRequestData";
 import { IItemEventRouterResponse } from "@spt/models/eft/itemEvent/IItemEventRouterResponse";
 import { IInventoryConfig, RewardDetails } from "@spt/models/spt/config/IInventoryConfig";
+import { IOwnerInventoryItems } from "@spt/models/spt/inventory/IOwnerInventoryItems";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { ConfigServer } from "@spt/servers/ConfigServer";
 import { DatabaseServer } from "@spt/servers/DatabaseServer";
@@ -27,14 +28,6 @@ import { LocalisationService } from "@spt/services/LocalisationService";
 import { ICloner } from "@spt/utils/cloners/ICloner";
 import { HashUtil } from "@spt/utils/HashUtil";
 import { HttpResponseUtil } from "@spt/utils/HttpResponseUtil";
-export interface IOwnerInventoryItems {
-    /** Inventory items from source */
-    from: Item[];
-    /** Inventory items at destination */
-    to: Item[];
-    sameInventory: boolean;
-    isMail: boolean;
-}
 export declare class InventoryHelper {
     protected logger: ILogger;
     protected hashUtil: HashUtil;
@@ -220,17 +213,17 @@ export declare class InventoryHelper {
      */
     protected getStashType(sessionID: string): string;
     /**
-     * Internal helper function to transfer an item from one profile to another.
-     * @param fromItems Inventory of the source (can be non-player)
+     * Internal helper function to transfer an item + children from one profile to another.
+     * @param sourceItems Inventory of the source (can be non-player)
      * @param toItems Inventory of the destination
-     * @param body Move request
+     * @param request Move request
      */
-    moveItemToProfile(fromItems: Item[], toItems: Item[], body: IInventoryMoveRequestData): void;
+    moveItemToProfile(sourceItems: Item[], toItems: Item[], request: IInventoryMoveRequestData): void;
     /**
      * Internal helper function to move item within the same profile_f.
      * @param pmcData profile to edit
      * @param inventoryItems
-     * @param moveRequest
+     * @param moveRequest client move request
      * @returns True if move was successful
      */
     moveItemInternal(pmcData: IPmcData, inventoryItems: Item[], moveRequest: IInventoryMoveRequestData): {
@@ -246,7 +239,7 @@ export declare class InventoryHelper {
     /**
      * Internal helper function to handle cartridges in inventory if any of them exist.
      */
-    protected handleCartridges(items: Item[], body: IInventoryMoveRequestData): void;
+    protected handleCartridges(items: Item[], request: IInventoryMoveRequestData): void;
     /**
      * Get details for how a random loot container should be handled, max rewards, possible reward tpls
      * @param itemTpl Container being opened

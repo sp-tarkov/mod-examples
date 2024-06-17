@@ -1016,6 +1016,10 @@ export interface IInsurance {
     MaxStorageTimeInHour: number;
     CoefOfSendingMessageTime: number;
     CoefOfHavingMarkOfUnknown: number;
+    EditionSendingMessageTime: Record<string, IMessageSendTImeMultipler>;
+}
+export interface IMessageSendTImeMultipler {
+    multiplier: number;
 }
 export interface ISkillsSettings {
     SkillProgressRate: number;
@@ -1427,6 +1431,8 @@ export interface IFenceLevel {
     PriceModTaxi: number;
     PriceModDelivery: number;
     PriceModCleanUp: number;
+    ReactOnMarkOnUnknowns: boolean;
+    ReactOnMarkOnUnknownsPVE: boolean;
     DeliveryGridSize: Ixyz;
     CanInteractWithBtr: boolean;
 }

@@ -40,13 +40,13 @@ export declare class InRaidHelper {
      * Lookup quest item loss from lostOnDeath config
      * @returns True if items should be removed from inventory
      */
-    removeQuestItemsOnDeath(): boolean;
+    shouldQuestItemsBeRemovedOnDeath(): boolean;
     /**
      * Check items array and add an upd object to money with a stack count of 1
      * Single stack money items have no upd object and thus no StackObjectsCount, causing issues
      * @param items Items array to check
      */
-    addUpdToMoneyFromRaid(items: Item[]): void;
+    addStackCountToMoneyFromRaid(items: Item[]): void;
     /**
      * Reset a profile to a baseline, used post-raid
      * Reset points earned during session property
@@ -86,6 +86,7 @@ export declare class InRaidHelper {
      * @param postRaidProfile Profile sent by client with post-raid quests
      */
     protected processAlteredQuests(sessionId: string, pmcData: IPmcData, preRaidQuests: IQuestStatus[], postRaidProfile: IPostRaidPmcData): void;
+    protected handleFailRestartableQuestStatus(pmcData: IPmcData, postRaidProfile: IPostRaidPmcData, postRaidQuest: IQuestStatus): void;
     /**
      * Take body part effects from client profile and apply to server profile
      * @param saveProgressRequest post-raid request

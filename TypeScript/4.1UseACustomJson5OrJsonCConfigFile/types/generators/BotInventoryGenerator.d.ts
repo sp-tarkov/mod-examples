@@ -40,9 +40,10 @@ export declare class BotInventoryGenerator {
      * @param botRole Role bot has (assault/pmcBot)
      * @param isPmc Is bot being converted into a pmc
      * @param botLevel Level of bot being generated
+     * @param chosenGameVersion Game version for bot, only really applies for PMCs
      * @returns PmcInventory object with equipment/weapons/loot
      */
-    generateInventory(sessionId: string, botJsonTemplate: IBotType, botRole: string, isPmc: boolean, botLevel: number): PmcInventory;
+    generateInventory(sessionId: string, botJsonTemplate: IBotType, botRole: string, isPmc: boolean, botLevel: number, chosenGameVersion: string): PmcInventory;
     /**
      * Create a pmcInventory object with all the base/generic items needed
      * @returns PmcInventory object
@@ -55,8 +56,9 @@ export declare class BotInventoryGenerator {
      * @param botRole Role bot has (assault/pmcBot)
      * @param botInventory Inventory to add equipment to
      * @param botLevel Level of bot
+     * @param chosenGameVersion Game version for bot, only really applies for PMCs
      */
-    protected generateAndAddEquipmentToBot(templateInventory: Inventory, wornItemChances: Chances, botRole: string, botInventory: PmcInventory, botLevel: number): void;
+    protected generateAndAddEquipmentToBot(templateInventory: Inventory, wornItemChances: Chances, botRole: string, botInventory: PmcInventory, botLevel: number, chosenGameVersion: string): void;
     /**
      * Remove non-armored rigs from parameter data
      * @param templateInventory
@@ -133,4 +135,6 @@ export interface IGenerateEquipmentProperties {
     botEquipmentConfig: EquipmentFilters;
     /** Settings from bot.json to adjust how item is generated */
     randomisationDetails: RandomisationDetails;
+    /** OPTIONAL - Do not generate mods for tpls in this array */
+    generateModsBlacklist?: string[];
 }

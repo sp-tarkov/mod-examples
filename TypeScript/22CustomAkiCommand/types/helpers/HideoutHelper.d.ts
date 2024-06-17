@@ -39,8 +39,6 @@ export declare class HideoutHelper {
     static bitcoinFarm: string;
     static bitcoinProductionId: string;
     static waterCollector: string;
-    static bitcoinTpl: string;
-    static expeditionaryFuelTank: string;
     static maxSkillPoint: number;
     protected hideoutConfig: IHideoutConfig;
     constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, databaseService: DatabaseService, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, inventoryHelper: InventoryHelper, playerService: PlayerService, localisationService: LocalisationService, itemHelper: ItemHelper, configServer: ConfigServer, cloner: ICloner);

@@ -47,7 +47,6 @@ export declare class ProfileController {
     protected dialogueHelper: DialogueHelper;
     protected questHelper: QuestHelper;
     protected profileHelper: ProfileHelper;
-    protected defaultInventoryTpl: string;
     constructor(logger: ILogger, hashUtil: HashUtil, cloner: ICloner, timeUtil: TimeUtil, saveServer: SaveServer, databaseService: DatabaseService, itemHelper: ItemHelper, profileFixerService: ProfileFixerService, localisationService: LocalisationService, seasonalEventService: SeasonalEventService, mailSendService: MailSendService, playerScavGenerator: PlayerScavGenerator, eventOutputHolder: EventOutputHolder, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, questHelper: QuestHelper, profileHelper: ProfileHelper);
     /**
      * Handle /launcher/profiles

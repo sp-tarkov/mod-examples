@@ -74,8 +74,11 @@ export declare class GameController {
      * Handle client/game/start
      */
     gameStart(_url: string, _info: IEmptyRequestData, sessionID: string, startTimeStampMS: number): void;
-    protected adjustHideoutCraftTimes(): void;
-    protected adjustHideoutBuildTimes(): void;
+    protected adjustHideoutCraftTimes(overrideSeconds: number): void;
+    /**
+     * Adjust all hideout craft times to be no higher than the override
+     */
+    protected adjustHideoutBuildTimes(overrideSeconds: number): void;
     protected adjustLocationBotValues(): void;
     /**
      * Out of date/incorrectly made trader mods forget this data
@@ -122,7 +125,7 @@ export declare class GameController {
      * @param pmcProfile Player profile
      */
     protected warnOnActiveBotReloadSkill(pmcProfile: IPmcData): void;
-    protected flagAllItemsInDbAsSellableOnFlea(): void;
+    protected setAllDbItemsAsSellableOnFlea(): void;
     /**
      * When player logs in, iterate over all active effects and reduce timer
      * @param pmcProfile Profile to adjust values for

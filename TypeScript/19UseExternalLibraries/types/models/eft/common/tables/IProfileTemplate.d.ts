@@ -25,9 +25,9 @@ export interface ITemplateSide {
 }
 export interface ProfileTraderTemplate {
     initialLoyaltyLevel: Record<string, number>;
+    initialStanding: Record<string, number>;
     setQuestsAvailableForStart?: boolean;
     setQuestsAvailableForFinish?: boolean;
-    initialStanding: number;
     initialSalesSum: number;
     jaegerUnlocked: boolean;
     /** How many days is usage of the flea blocked for upon profile creation */

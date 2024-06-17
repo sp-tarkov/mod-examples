@@ -78,13 +78,14 @@ export declare class BotGenerator {
      * @returns IBotBase object
      */
     protected generateBot(sessionId: string, bot: IBotBase, botJsonTemplate: IBotType, botGenerationDetails: BotGenerationDetails): IBotBase;
+    protected addAdditionalPocketLootWeightsForUnheardBot(botJsonTemplate: IBotType): void;
     /**
      * Remove items from item.json/lootableItemBlacklist from bots inventory
      * @param botInventory Bot to filter
      */
     protected removeBlacklistedLootFromBotTemplate(botInventory: Inventory): void;
     /**
-     * Choose various appearance settings for a bot using weights
+     * Choose various appearance settings for a bot using weights: head/body/feet/hands
      * @param bot Bot to adjust
      * @param appearance Appearance settings to choose from
      * @param botGenerationDetails Generation details
@@ -143,12 +144,25 @@ export declare class BotGenerator {
      * Chooses from all the game versions (standard, eod etc)
      * Chooses account type (default, Sherpa, etc)
      * @param botInfo bot info object to update
+     * @returns Chosen game version
      */
-    protected getRandomisedGameVersionAndCategory(botInfo: Info): void;
+    protected setRandomisedGameVersionAndCategory(botInfo: Info): string;
     /**
      * Add a side-specific (usec/bear) dogtag item to a bots inventory
      * @param bot bot to add dogtag to
      * @returns Bot with dogtag added
      */
     protected addDogtagToBot(bot: IBotBase): void;
+    /**
+     * Get a dogtag tpl that matches the bots game version and side
+     * @param side Usec/Bear
+     * @param gameVersion edge_of_darkness / standard
+     * @returns item tpl
+     */
+    protected getDogtagTplByGameVersionAndSide(side: string, gameVersion: string): string;
+    /**
+     * Adjust a PMCs pocket tpl to UHD if necessary, otherwise do nothing
+     * @param bot Pmc object to adjust
+     */
+    protected setPmcPocketsByGameVersion(bot: IBotBase): void;
 }

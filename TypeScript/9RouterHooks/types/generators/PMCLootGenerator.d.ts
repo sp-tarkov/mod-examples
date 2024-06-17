@@ -23,7 +23,6 @@ export declare class PMCLootGenerator {
     protected vestLootPool: Record<string, number>;
     protected backpackLootPool: Record<string, number>;
     protected pmcConfig: IPmcConfig;
-    protected roubleTpl: string;
     constructor(itemHelper: ItemHelper, databaseService: DatabaseService, configServer: ConfigServer, itemFilterService: ItemFilterService, ragfairPriceService: RagfairPriceService, seasonalEventService: SeasonalEventService, weightedRandomHelper: WeightedRandomHelper);
     /**
      * Create an array of loot items a PMC can have in their pockets
@@ -42,6 +41,13 @@ export declare class PMCLootGenerator {
      * @returns true if it fits
      */
     protected itemFitsInto2By2Slot(item: ITemplateItem): boolean;
+    /**
+     * Check if item has a width/height that lets it fit into a 1x2 slot
+     * 1x1 / 1x2 / 2x1
+     * @param item Item to check size of
+     * @returns true if it fits
+     */
+    protected itemFitsInto1By2Slot(item: ITemplateItem): boolean;
     /**
      * Create an array of loot items a PMC can have in their backpack
      * @returns string array of tpls

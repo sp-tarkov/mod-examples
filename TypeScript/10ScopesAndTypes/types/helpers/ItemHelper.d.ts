@@ -4,6 +4,7 @@ import { IPmcData } from "@spt/models/eft/common/IPmcData";
 import { InsuredItem } from "@spt/models/eft/common/tables/IBotBase";
 import { Item, Repairable, Upd } from "@spt/models/eft/common/tables/IItem";
 import { ITemplateItem } from "@spt/models/eft/common/tables/ITemplateItem";
+import { ItemTpl } from "@spt/models/enums/ItemTpl";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { DatabaseService } from "@spt/services/DatabaseService";
 import { ItemBaseClassService } from "@spt/services/ItemBaseClassService";
@@ -34,6 +35,22 @@ export declare class ItemHelper {
     protected cloner: ICloner;
     protected readonly defaultInvalidBaseTypes: string[];
     constructor(logger: ILogger, hashUtil: HashUtil, jsonUtil: JsonUtil, randomUtil: RandomUtil, objectId: ObjectId, mathUtil: MathUtil, databaseService: DatabaseService, handbookHelper: HandbookHelper, itemBaseClassService: ItemBaseClassService, itemFilterService: ItemFilterService, localisationService: LocalisationService, localeService: LocaleService, compareUtil: CompareUtil, cloner: ICloner);
+    /**
+     * Does the provided pool of items contain the desired item
+     * @param itemPool Item collection to check
+     * @param item Item to look for
+     * @param slotId OPTIONAL - slotid of desired item
+     * @returns True if pool contains item
+     */
+    hasItemWithTpl(itemPool: Item[], item: ItemTpl, slotId?: string): boolean;
+    /**
+     * Get the first item from provided pool with the desired tpl
+     * @param itemPool Item collection to search
+     * @param item Item to look for
+     * @param slotId OPTIONAL - slotid of desired item
+     * @returns Item or undefined
+     */
+    getItemFromPoolByTpl(itemPool: Item[], item: ItemTpl, slotId?: string): Item | undefined;
     /**
      * This method will compare two items (with all its children) and see if the are equivalent.
      * This method will NOT compare IDs on the items

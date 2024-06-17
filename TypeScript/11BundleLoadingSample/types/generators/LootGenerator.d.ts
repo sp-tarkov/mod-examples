@@ -44,7 +44,7 @@ export declare class LootGenerator {
      * @param options Loot request options - armor level etc
      * @returns True if item has desired armor level
      */
-    protected armorIsDesiredProtectionLevel(armor: IPreset, options: LootRequest): boolean;
+    protected isArmorOfDesiredProtectionLevel(armor: IPreset, options: LootRequest): boolean;
     /**
      * Construct item limit record to hold max and current item count for each item type
      * @param limits limits as defined in config

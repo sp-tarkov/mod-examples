@@ -169,7 +169,7 @@ export interface Spt {
     /** item TPLs blacklisted from being sold on flea for this profile */
     blacklistedItemTpls?: string[];
     /** key: daily type */
-    freeRepeatableChangeCount: Record<string, number>;
+    freeRepeatableRefreshUsedCount: Record<string, number>;
 }
 export interface ModDetails {
     name: string;

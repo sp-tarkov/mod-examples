@@ -197,4 +197,5 @@ export declare class ProfileHelper {
      * @param achievementId Id of achievement to add
      */
     addAchievementToProfile(pmcProfile: IPmcData, achievementId: string): void;
+    hasAccessToRepeatableFreeRefreshSystem(pmcProfile: IPmcData): boolean;
 }

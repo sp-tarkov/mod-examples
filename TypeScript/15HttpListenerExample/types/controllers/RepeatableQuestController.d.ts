@@ -5,6 +5,7 @@ import { RepeatableQuestHelper } from "@spt/helpers/RepeatableQuestHelper";
 import { IPmcData } from "@spt/models/eft/common/IPmcData";
 import { IPmcDataRepeatableQuest, IRepeatableQuest } from "@spt/models/eft/common/tables/IRepeatableQuests";
 import { IItemEventRouterResponse } from "@spt/models/eft/itemEvent/IItemEventRouterResponse";
+import { ISptProfile } from "@spt/models/eft/profile/ISptProfile";
 import { IRepeatableQuestChangeRequest } from "@spt/models/eft/quests/IRepeatableQuestChangeRequest";
 import { ELocationName } from "@spt/models/enums/ELocationName";
 import { IQuestConfig, IRepeatableQuestConfig } from "@spt/models/spt/config/IQuestConfig";
@@ -66,6 +67,12 @@ export declare class RepeatableQuestController {
      * @returns  {array}                Array of "repeatableQuestObjects" as described above
      */
     getClientRepeatableQuests(sessionID: string): IPmcDataRepeatableQuest[];
+    /**
+     * Expire quests and replace expired quests with ready-to-hand-in quests inside generatedRepeatables.activeQuests
+     * @param generatedRepeatables Repeatables to process (daily/weekly)
+     * @param pmcData Player profile
+     */
+    protected processExpiredQuests(generatedRepeatables: IPmcDataRepeatableQuest, pmcData: IPmcData): void;
     /**
      * Check if a repeatable quest type (daily/weekly) is active for the given profile
      * @param repeatableConfig Repeatable quest config
@@ -140,4 +147,12 @@ export declare class RepeatableQuestController {
      */
     changeRepeatableQuest(pmcData: IPmcData, changeRequest: IRepeatableQuestChangeRequest, sessionID: string): IItemEventRouterResponse;
     protected attemptToGenerateRepeatableQuest(pmcData: IPmcData, questTypePool: IQuestTypePool, repeatableConfig: IRepeatableQuestConfig): IRepeatableQuest;
+    /**
+     * Some accounts have access to repeatable quest refreshes for free
+     * Track the usage of them inside players profile
+     * @param fullProfile Profile of player
+     * @param repeatableSubType Can be daily/weekly/scav repeatables
+     * @param repeatableTypeName Subtype of repeatables: daily / weekly / scav
+     */
+    protected handleFreeRefreshUses(fullProfile: ISptProfile, repeatableSubType: IPmcDataRepeatableQuest, repeatableTypeName: string): void;
 }

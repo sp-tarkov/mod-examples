@@ -48,7 +48,6 @@ export declare class InsuranceController {
     protected configServer: ConfigServer;
     protected cloner: ICloner;
     protected insuranceConfig: IInsuranceConfig;
-    protected roubleTpl: string;
     constructor(logger: ILogger, randomUtil: RandomUtil, mathUtil: MathUtil, hashUtil: HashUtil, eventOutputHolder: EventOutputHolder, timeUtil: TimeUtil, saveServer: SaveServer, databaseService: DatabaseService, itemHelper: ItemHelper, profileHelper: ProfileHelper, dialogueHelper: DialogueHelper, weightedRandomHelper: WeightedRandomHelper, traderHelper: TraderHelper, paymentService: PaymentService, insuranceService: InsuranceService, mailSendService: MailSendService, ragfairPriceService: RagfairPriceService, localisationService: LocalisationService, configServer: ConfigServer, cloner: ICloner);
     /**
      * Process insurance items of all profiles prior to being given back to the player through the mail service.
