@@ -1,6 +1,6 @@
-import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
-import { ICloner } from "@spt-aki/utils/cloners/ICloner";
-import { MathUtil } from "@spt-aki/utils/MathUtil";
+import { ILogger } from "@spt/models/spt/utils/ILogger";
+import { ICloner } from "@spt/utils/cloners/ICloner";
+import { MathUtil } from "@spt/utils/MathUtil";
 /**
  * Array of ProbabilityObjectArray which allow to randomly draw of the contained objects
  * based on the relative probability of each of its elements.
@@ -44,7 +44,7 @@ export declare class ProbabilityObjectArray<K, V = undefined> extends Array<Prob
      * @param       {string}                        key                     The key of the element whose data shall be retrieved
      * @returns     {object}                                                The data object
      */
-    data(key: K): V;
+    data(key: K): V | undefined;
     /**
      * Get the relative probability of an element by its key
      *
@@ -93,7 +93,7 @@ export declare class ProbabilityObjectArray<K, V = undefined> extends Array<Prob
 export declare class ProbabilityObject<K, V = undefined> {
     key: K;
     relativeProbability: number;
-    data: V;
+    data?: V;
     /**
      * Constructor for the ProbabilityObject
      * @param       {string}                        key                         The key of the element
