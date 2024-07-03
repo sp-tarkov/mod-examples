@@ -148,11 +148,12 @@ export declare class RepeatableQuestController {
     changeRepeatableQuest(pmcData: IPmcData, changeRequest: IRepeatableQuestChangeRequest, sessionID: string): IItemEventRouterResponse;
     protected attemptToGenerateRepeatableQuest(pmcData: IPmcData, questTypePool: IQuestTypePool, repeatableConfig: IRepeatableQuestConfig): IRepeatableQuest;
     /**
-     * Some accounts have access to repeatable quest refreshes for free
+     * Some accounts have access to free repeatable quest refreshes
      * Track the usage of them inside players profile
-     * @param fullProfile Profile of player
-     * @param repeatableSubType Can be daily/weekly/scav repeatables
-     * @param repeatableTypeName Subtype of repeatables: daily / weekly / scav
+     * @param fullProfile Player profile
+     * @param repeatableSubType Can be daily / weekly / scav repeatable
+     * @param repeatableTypeName Subtype of repeatable quest: daily / weekly / scav
+     * @returns Is the repeatable being replaced for free
      */
-    protected handleFreeRefreshUses(fullProfile: ISptProfile, repeatableSubType: IPmcDataRepeatableQuest, repeatableTypeName: string): void;
+    protected useFreeRefreshIfAvailable(fullProfile: ISptProfile, repeatableSubType: IPmcDataRepeatableQuest, repeatableTypeName: string): boolean;
 }

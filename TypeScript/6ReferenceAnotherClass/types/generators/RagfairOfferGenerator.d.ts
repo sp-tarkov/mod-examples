@@ -170,7 +170,7 @@ export declare class RagfairOfferGenerator {
      * @param tpl Item to look for matching condition object
      * @returns condition id
      */
-    protected getDynamicConditionIdForTpl(tpl: string): string;
+    protected getDynamicConditionIdForTpl(tpl: string): string | undefined;
     /**
      * Alter an items condition based on its item base type
      * @param conditionSettingsId also the parentId of item being altered
