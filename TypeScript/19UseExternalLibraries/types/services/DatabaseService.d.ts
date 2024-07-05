@@ -52,7 +52,7 @@ export declare class DatabaseService {
     getLocations(): ILocations;
     /**
      * Get specific location by its Id
-     * @param locationId Desired trader id
+     * @param locationId Desired location id
      * @returns assets/database/locations/
      */
     getLocation(locationId: string): ILocation;

@@ -9,6 +9,7 @@ import { ISptProfile } from "@spt/models/eft/profile/ISptProfile";
 import { IRepeatableQuestChangeRequest } from "@spt/models/eft/quests/IRepeatableQuestChangeRequest";
 import { ELocationName } from "@spt/models/enums/ELocationName";
 import { IQuestConfig, IRepeatableQuestConfig } from "@spt/models/spt/config/IQuestConfig";
+import { IGetRepeatableByIdResult } from "@spt/models/spt/quests/IGetRepeatableByIdResult";
 import { IQuestTypePool } from "@spt/models/spt/repeatable/IQuestTypePool";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { EventOutputHolder } from "@spt/routers/EventOutputHolder";
@@ -146,6 +147,13 @@ export declare class RepeatableQuestController {
      * @returns IItemEventRouterResponse
      */
     changeRepeatableQuest(pmcData: IPmcData, changeRequest: IRepeatableQuestChangeRequest, sessionID: string): IItemEventRouterResponse;
+    /**
+     * Find a repeatable (daily/weekly/scav) from a players profile by its id
+     * @param questId Id of quest to find
+     * @param pmcData Profile that contains quests to look through
+     * @returns IGetRepeatableByIdResult
+     */
+    protected getRepeatableById(questId: string, pmcData: IPmcData): IGetRepeatableByIdResult;
     protected attemptToGenerateRepeatableQuest(pmcData: IPmcData, questTypePool: IQuestTypePool, repeatableConfig: IRepeatableQuestConfig): IRepeatableQuest;
     /**
      * Some accounts have access to free repeatable quest refreshes
