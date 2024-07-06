@@ -1,6 +1,6 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod"
+import { IPreAkiLoadMod } from "@spt/models/external/IPreAkiLoadMod"
 import { MyCustomLauncherCallbacks } from "./MyCustomLauncherCallbacks";
 
 class Mod implements IPreAkiLoadMod

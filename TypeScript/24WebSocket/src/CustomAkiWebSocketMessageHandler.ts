@@ -1,8 +1,8 @@
 import { inject, injectable } from "tsyringe";
 import { WebSocket, RawData } from "ws";
 
-import { IAkiWebSocketMessageHandler } from "@spt-aki/servers/ws/message/IAkiWebSocketMessageHandler";
-import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
+import { IAkiWebSocketMessageHandler } from "@spt/servers/ws/message/IAkiWebSocketMessageHandler";
+import { ILogger } from "@spt/models/spt/utils/ILogger";
 
 //    \/   dont forger this annotation here!
 @injectable()

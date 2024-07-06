@@ -1,7 +1,7 @@
 import { DependencyContainer, Lifecycle } from "tsyringe";
 
-import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
-import { IPostAkiLoadMod } from "@spt-aki/models/external/IPostAkiLoadMod";
+import { IPreAkiLoadMod } from "@spt/models/external/IPreAkiLoadMod";
+import { IPostAkiLoadMod } from "@spt/models/external/IPostAkiLoadMod";
 import { MyMod } from "./MyMod";
 import { Processing } from "./Processing";
 

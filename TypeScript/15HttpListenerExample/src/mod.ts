@@ -1,8 +1,8 @@
 import { IncomingMessage, ServerResponse } from "node:http";
 import { DependencyContainer } from "tsyringe";
 
-import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
-import { HttpListenerModService } from "@spt-aki/services/mod/httpListener/HttpListenerModService";
+import { IPreAkiLoadMod } from "@spt/models/external/IPreAkiLoadMod";
+import { HttpListenerModService } from "@spt/services/mod/httpListener/HttpListenerModService";
 import { Type2HttpListener } from "./Type2HttpListener";
 
 class Mod implements IPreAkiLoadMod

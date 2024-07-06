@@ -1,8 +1,8 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
-import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
-import { OnLoadModService } from "@spt-aki/services/mod/onLoad/OnLoadModService";
+import { IPreAkiLoadMod } from "@spt/models/external/IPreAkiLoadMod";
+import { ILogger } from "@spt/models/spt/utils/ILogger";
+import { OnLoadModService } from "@spt/services/mod/onLoad/OnLoadModService";
 
 class Mod implements IPreAkiLoadMod
 {

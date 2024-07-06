@@ -1,7 +1,7 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPostDBLoadMod } from "@spt-aki/models/external/IPostDBLoadMod";
-import { SptCommandoCommands } from "@spt-aki/helpers/Dialogue/Commando/SptCommandoCommands";
+import { IPostDBLoadMod } from "@spt/models/external/IPostDBLoadMod";
+import { SptCommandoCommands } from "@spt/helpers/Dialogue/Commando/SptCommandoCommands";
 import { CustomAkiCommand } from "./CustomAkiCommand";
 
 class Mod implements IPostDBLoadMod {

@@ -1,20 +1,20 @@
 import { DependencyContainer } from "tsyringe";
 
 // SPT types
-import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
-import { IPostDBLoadMod } from "@spt-aki/models/external/IPostDBLoadMod";
-import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
-import { PreAkiModLoader } from "@spt-aki/loaders/PreAkiModLoader";
-import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
-import { ImageRouter } from "@spt-aki/routers/ImageRouter";
-import { ConfigServer } from "@spt-aki/servers/ConfigServer";
-import { ConfigTypes } from "@spt-aki/models/enums/ConfigTypes";
-import { ITraderConfig } from "@spt-aki/models/spt/config/ITraderConfig";
-import { IRagfairConfig } from "@spt-aki/models/spt/config/IRagfairConfig";
-import { JsonUtil } from "@spt-aki/utils/JsonUtil";
-import { Money } from "@spt-aki/models/enums/Money";
-import { Traders } from "@spt-aki/models/enums/Traders";
-import { HashUtil } from "@spt-aki/utils/HashUtil";
+import { IPreAkiLoadMod } from "@spt/models/external/IPreAkiLoadMod";
+import { IPostDBLoadMod } from "@spt/models/external/IPostDBLoadMod";
+import { ILogger } from "@spt/models/spt/utils/ILogger";
+import { PreAkiModLoader } from "@spt/loaders/PreAkiModLoader";
+import { DatabaseServer } from "@spt/servers/DatabaseServer";
+import { ImageRouter } from "@spt/routers/ImageRouter";
+import { ConfigServer } from "@spt/servers/ConfigServer";
+import { ConfigTypes } from "@spt/models/enums/ConfigTypes";
+import { ITraderConfig } from "@spt/models/spt/config/ITraderConfig";
+import { IRagfairConfig } from "@spt/models/spt/config/IRagfairConfig";
+import { JsonUtil } from "@spt/utils/JsonUtil";
+import { Money } from "@spt/models/enums/Money";
+import { Traders } from "@spt/models/enums/Traders";
+import { HashUtil } from "@spt/utils/HashUtil";
 
 // New trader settings
 import * as baseJson from "../db/base.json";

@@ -1,10 +1,10 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPostAkiLoadMod } from "@spt-aki/models/external/IPostAkiLoadMod";
-import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
-import { ConfigServer } from "@spt-aki/servers/ConfigServer";
-import { ConfigTypes } from "@spt-aki/models/enums/ConfigTypes";
-import { ILocationConfig } from "@spt-aki/models/spt/config/ILocationConfig";
+import { IPostAkiLoadMod } from "@spt/models/external/IPostAkiLoadMod";
+import { ILogger } from "@spt/models/spt/utils/ILogger";
+import { ConfigServer } from "@spt/servers/ConfigServer";
+import { ConfigTypes } from "@spt/models/enums/ConfigTypes";
+import { ILocationConfig } from "@spt/models/spt/config/ILocationConfig";
 
 class Mod implements IPostAkiLoadMod
 {

@@ -1,10 +1,10 @@
 import { inject, injectable } from "tsyringe";
 
-import { ISptCommand } from "@spt-aki/helpers/Dialogue/Commando/SptCommands/ISptCommand";
-import { ItemHelper } from "@spt-aki/helpers/ItemHelper";
-import { MailSendService } from "@spt-aki/services/MailSendService";
-import { ISendMessageRequest } from "@spt-aki/models/eft/dialog/ISendMessageRequest";
-import { IUserDialogInfo } from "@spt-aki/models/eft/profile/IAkiProfile";
+import { ISptCommand } from "@spt/helpers/Dialogue/Commando/SptCommands/ISptCommand";
+import { ItemHelper } from "@spt/helpers/ItemHelper";
+import { MailSendService } from "@spt/services/MailSendService";
+import { ISendMessageRequest } from "@spt/models/eft/dialog/ISendMessageRequest";
+import { IUserDialogInfo } from "@spt/models/eft/profile/IAkiProfile";
 
 //    \/   dont forger this annotation here!
 @injectable()

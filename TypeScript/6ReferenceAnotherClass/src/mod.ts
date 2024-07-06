@@ -1,7 +1,7 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPostAkiLoadMod } from "@spt-aki/models/external/IPostAkiLoadMod";
-import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
+import { IPostAkiLoadMod } from "@spt/models/external/IPostAkiLoadMod";
+import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { MoreCode } from "./MoreCode";
 
 class Mod implements IPostAkiLoadMod

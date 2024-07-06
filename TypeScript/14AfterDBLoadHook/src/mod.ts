@@ -1,12 +1,12 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
-import { IPostAkiLoadMod } from "@spt-aki/models/external/IPostAkiLoadMod";
-import { IPostDBLoadMod } from "@spt-aki/models/external/IPostDBLoadMod";
-import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
-import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
-import { LogTextColor } from "@spt-aki/models/spt/logging/LogTextColor";
-import { LogBackgroundColor } from "@spt-aki/models/spt/logging/LogBackgroundColor";
+import { IPreAkiLoadMod } from "@spt/models/external/IPreAkiLoadMod";
+import { IPostAkiLoadMod } from "@spt/models/external/IPostAkiLoadMod";
+import { IPostDBLoadMod } from "@spt/models/external/IPostDBLoadMod";
+import { ILogger } from "@spt/models/spt/utils/ILogger";
+import { DatabaseServer } from "@spt/servers/DatabaseServer";
+import { LogTextColor } from "@spt/models/spt/logging/LogTextColor";
+import { LogBackgroundColor } from "@spt/models/spt/logging/LogBackgroundColor";
 
 
 class Mod implements IPreAkiLoadMod, IPostAkiLoadMod, IPostDBLoadMod

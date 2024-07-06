@@ -1,10 +1,10 @@
 import path from "node:path";
 import { DependencyContainer } from "tsyringe";
 
-import { IPostAkiLoadMod } from "@spt-aki/models/external/IPostAkiLoadMod";
-import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
-import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
-import { VFS } from "@spt-aki/utils/VFS";
+import { IPostAkiLoadMod } from "@spt/models/external/IPostAkiLoadMod";
+import { IPreAkiLoadMod } from "@spt/models/external/IPreAkiLoadMod";
+import { ILogger } from "@spt/models/spt/utils/ILogger";
+import { VFS } from "@spt/utils/VFS";
 import { jsonc } from "jsonc";
 
 // Our dynamically imported package (via pnpm) not bundled into the server

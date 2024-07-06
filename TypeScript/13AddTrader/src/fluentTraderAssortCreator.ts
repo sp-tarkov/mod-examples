@@ -1,8 +1,8 @@
-import { Item } from "@spt-aki/models/eft/common/tables/IItem";
-import { IBarterScheme, ITrader } from "@spt-aki/models/eft/common/tables/ITrader";
-import { Money } from "@spt-aki/models/enums/Money";
-import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
-import { HashUtil } from "@spt-aki/utils/HashUtil";
+import { Item } from "@spt/models/eft/common/tables/IItem";
+import { IBarterScheme, ITrader } from "@spt/models/eft/common/tables/ITrader";
+import { Money } from "@spt/models/enums/Money";
+import { ILogger } from "@spt/models/spt/utils/ILogger";
+import { HashUtil } from "@spt/utils/HashUtil";
 
 export class FluentAssortConstructor
 {

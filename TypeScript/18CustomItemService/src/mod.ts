@@ -1,10 +1,10 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPostDBLoadMod } from "@spt-aki/models/external/IPostDBLoadMod";
-import { CustomItemService } from "@spt-aki/services/mod/CustomItemService";
-import { NewItemFromCloneDetails } from "@spt-aki/models/spt/mod/NewItemDetails";
-import { IPostAkiLoadMod } from "@spt-aki/models/external/IPostAkiLoadMod";
-import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
+import { IPostDBLoadMod } from "@spt/models/external/IPostDBLoadMod";
+import { CustomItemService } from "@spt/services/mod/CustomItemService";
+import { NewItemFromCloneDetails } from "@spt/models/spt/mod/NewItemDetails";
+import { IPostAkiLoadMod } from "@spt/models/external/IPostAkiLoadMod";
+import { DatabaseServer } from "@spt/servers/DatabaseServer";
 
 class Mod implements IPostDBLoadMod, IPostAkiLoadMod
 {

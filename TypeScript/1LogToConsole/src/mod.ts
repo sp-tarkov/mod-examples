@@ -1,9 +1,9 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
-import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
-import { LogTextColor } from "@spt-aki/models/spt/logging/LogTextColor";
-import { LogBackgroundColor } from "@spt-aki/models/spt/logging/LogBackgroundColor";
+import { IPreAkiLoadMod } from "@spt/models/external/IPreAkiLoadMod";
+import { ILogger } from "@spt/models/spt/utils/ILogger";
+import { LogTextColor } from "@spt/models/spt/logging/LogTextColor";
+import { LogBackgroundColor } from "@spt/models/spt/logging/LogBackgroundColor";
 
 class Mod implements IPreAkiLoadMod
 {

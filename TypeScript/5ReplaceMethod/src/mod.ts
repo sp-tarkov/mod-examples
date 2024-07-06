@@ -1,11 +1,11 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
-import { LauncherController } from "@spt-aki/controllers/LauncherController";
-import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
-import { ILoginRequestData } from "@spt-aki/models/eft/launcher/ILoginRequestData";
-import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
-import { SaveServer } from "@spt-aki/servers/SaveServer";
+import { IPreAkiLoadMod } from "@spt/models/external/IPreAkiLoadMod";
+import { LauncherController } from "@spt/controllers/LauncherController";
+import { DatabaseServer } from "@spt/servers/DatabaseServer";
+import { ILoginRequestData } from "@spt/models/eft/launcher/ILoginRequestData";
+import { ILogger } from "@spt/models/spt/utils/ILogger";
+import { SaveServer } from "@spt/servers/SaveServer";
 
 class Mod implements IPreAkiLoadMod
 {
