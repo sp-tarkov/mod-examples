@@ -1,10 +1,10 @@
 import { DependencyContainer } from "tsyringe";
 
 // SPT types
-import { IPreAkiLoadMod } from "@spt/models/external/IPreAkiLoadMod";
+import { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod";
 import { IPostDBLoadMod } from "@spt/models/external/IPostDBLoadMod";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
-import { PreAkiModLoader } from "@spt/loaders/PreAkiModLoader";
+import { PreSptModLoader } from "@spt/loaders/PreSptModLoader";
 import { DatabaseServer } from "@spt/servers/DatabaseServer";
 import { ImageRouter } from "@spt/routers/ImageRouter";
 import { ConfigServer } from "@spt/servers/ConfigServer";
@@ -22,7 +22,7 @@ import * as baseJson from "../db/base.json";
 import { TraderHelper } from "./traderHelpers";
 import { FluentAssortConstructor as FluentAssortCreator } from "./fluentTraderAssortCreator";
 
-class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
+class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod
 {
     private mod: string;
     private logger: ILogger;
@@ -37,14 +37,14 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
      * Some work needs to be done prior to SPT code being loaded, registering the profile image + setting trader update time inside the trader config json
      * @param container Dependency container
      */
-    public preAkiLoad(container: DependencyContainer): void
+    public preSptLoad(container: DependencyContainer): void
     {
         // Get a logger
         this.logger = container.resolve<ILogger>("WinstonLogger");
-        this.logger.debug(`[${this.mod}] preAki Loading... `);
+        this.logger.debug(`[${this.mod}] preSpt Loading... `);
 
         // Get SPT code/data we need later
-        const preAkiModLoader: PreAkiModLoader = container.resolve<PreAkiModLoader>("PreAkiModLoader");
+        const preSptModLoader: PreSptModLoader = container.resolve<PreSptModLoader>("PreSptModLoader");
         const imageRouter: ImageRouter = container.resolve<ImageRouter>("ImageRouter");
         const hashUtil: HashUtil = container.resolve<HashUtil>("HashUtil");
         const configServer = container.resolve<ConfigServer>("ConfigServer");
@@ -54,7 +54,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
         // Create helper class and use it to register our traders image/icon + set its stock refresh time
         this.traderHelper = new TraderHelper();
         this.fluentAssortCreator = new FluentAssortCreator(hashUtil, this.logger);
-        this.traderHelper.registerProfileImage(baseJson, this.mod, preAkiModLoader, imageRouter, "cat.jpg");
+        this.traderHelper.registerProfileImage(baseJson, this.mod, preSptModLoader, imageRouter, "cat.jpg");
         this.traderHelper.setTraderUpdateTime(traderConfig, baseJson, 3600, 4000);
 
         // Add trader to trader enum
@@ -63,7 +63,7 @@ class SampleTrader implements IPreAkiLoadMod, IPostDBLoadMod
         // Add trader to flea market
         ragfairConfig.traders[baseJson._id] = true;
 
-        this.logger.debug(`[${this.mod}] preAki Loaded`);
+        this.logger.debug(`[${this.mod}] preSpt Loaded`);
     }
 
     /**

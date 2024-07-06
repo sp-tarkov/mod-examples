@@ -1,16 +1,16 @@
 import path from "node:path";
 import { DependencyContainer } from "tsyringe";
 
-import { IPostAkiLoadMod } from "@spt/models/external/IPostAkiLoadMod";
+import { IPostSptLoadMod } from "@spt/models/external/IPostSptLoadMod";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { VFS } from "@spt/utils/VFS";
 
 import JSON5 from "json5";
 import { jsonc } from "jsonc";
 
-class Mod implements IPostAkiLoadMod
+class Mod implements IPostSptLoadMod
 {
-    public postAkiLoad(container: DependencyContainer): void {
+    public postSptLoad(container: DependencyContainer): void {
         // get logger
         const logger = container.resolve<ILogger>("WinstonLogger");
 

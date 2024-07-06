@@ -1,7 +1,7 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPreAkiLoadMod } from "@spt/models/external/IPreAkiLoadMod";
-import { IPostAkiLoadMod } from "@spt/models/external/IPostAkiLoadMod";
+import { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod";
+import { IPostSptLoadMod } from "@spt/models/external/IPostSptLoadMod";
 import { IPostDBLoadMod } from "@spt/models/external/IPostDBLoadMod";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { DatabaseServer } from "@spt/servers/DatabaseServer";
@@ -9,9 +9,9 @@ import { LogTextColor } from "@spt/models/spt/logging/LogTextColor";
 import { LogBackgroundColor } from "@spt/models/spt/logging/LogBackgroundColor";
 
 
-class Mod implements IPreAkiLoadMod, IPostAkiLoadMod, IPostDBLoadMod
+class Mod implements IPreSptLoadMod, IPostSptLoadMod, IPostDBLoadMod
 {
-    public preAkiLoad(container: DependencyContainer): void {
+    public preSptLoad(container: DependencyContainer): void {
         // Database will be empty in here
         const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
         const logger = container.resolve<ILogger>("WinstonLogger");
@@ -24,7 +24,7 @@ class Mod implements IPreAkiLoadMod, IPostAkiLoadMod, IPostDBLoadMod
         const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");
         const logger = container.resolve<ILogger>("WinstonLogger");
         logger.logWithColor(`Database item size: ${Object.entries(databaseServer.getTables().templates.items).length}`, LogTextColor.RED, LogBackgroundColor.YELLOW);
-        // lets do a quick modification and see how this reflect later on, on the postAkiLoad()
+        // lets do a quick modification and see how this reflect later on, on the postSptLoad()
 
         // find the nvgs item by its Id
         const nvgs = databaseServer.getTables().templates.items["5c0558060db834001b735271"];
@@ -34,7 +34,7 @@ class Mod implements IPreAkiLoadMod, IPostAkiLoadMod, IPostDBLoadMod
         nvgs._props.CanSellOnRagfair = true;
     }
 
-    public postAkiLoad(container: DependencyContainer): void {
+    public postSptLoad(container: DependencyContainer): void {
         // The modification we made above would have been processed by now by AKI, so any values we changed had
         // already been passed through the initial lifecycles (OnLoad) of AKI.
         const databaseServer = container.resolve<DatabaseServer>("DatabaseServer");

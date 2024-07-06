@@ -1,14 +1,14 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPreAkiLoadMod } from "@spt/models/external/IPreAkiLoadMod";
+import { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { LogTextColor } from "@spt/models/spt/logging/LogTextColor";
 import { LogBackgroundColor } from "@spt/models/spt/logging/LogBackgroundColor";
 
-class Mod implements IPreAkiLoadMod
+class Mod implements IPreSptLoadMod
 {
     // Code added here will load BEFORE the server has started loading
-    public preAkiLoad(container: DependencyContainer): void
+    public preSptLoad(container: DependencyContainer): void
     {
         // get the logger from the server container
         const logger = container.resolve<ILogger>("WinstonLogger");

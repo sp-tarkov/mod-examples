@@ -1,13 +1,13 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPostAkiLoadMod } from "@spt/models/external/IPostAkiLoadMod";
+import { IPostSptLoadMod } from "@spt/models/external/IPostSptLoadMod";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 
-class Mod implements IPostAkiLoadMod
+class Mod implements IPostSptLoadMod
 {
     private modConfig = require("../config/config.json");
 
-    public postAkiLoad(container: DependencyContainer): void {
+    public postSptLoad(container: DependencyContainer): void {
         // get logger
         const logger = container.resolve<ILogger>("WinstonLogger");
 

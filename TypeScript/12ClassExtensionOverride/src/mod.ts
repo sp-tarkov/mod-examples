@@ -1,9 +1,9 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPreAkiLoadMod } from "@spt/models/external/IPreAkiLoadMod"
+import { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod"
 import { MyCustomLauncherCallbacks } from "./MyCustomLauncherCallbacks";
 
-class Mod implements IPreAkiLoadMod
+class Mod implements IPreSptLoadMod
 {
     // This example will show you how to override and register your own components and use them
     // The container will by default register all AKI dependencies, but you can inject into it
@@ -12,11 +12,11 @@ class Mod implements IPreAkiLoadMod
     // for our own custom method that will return "Lets dance" instead of "pong!"
 
     // Perform these actions before server fully loads
-    public preAkiLoad(container: DependencyContainer): void {
+    public preSptLoad(container: DependencyContainer): void {
         // Here we register our override for the component and we NEED to use the same
         // token the server is using to register it.
         // You can find this tokens here:
-        // https://dev.sp-tarkov.com/SPT-AKI/Server/src/branch/development/project/src/di/Container.ts
+        // https://dev.sp-tarkov.com/SPT/Server/src/branch/development/project/src/di/Container.ts
         // In this scenario we want to override LauncherCallbacks, so we find the proper registry:
         //
         // depContainer.register<LauncherCallbacks>("LauncherCallbacks", { useClass: LauncherCallbacks });

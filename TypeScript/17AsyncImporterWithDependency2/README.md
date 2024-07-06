@@ -1,4 +1,4 @@
-# Welcome to the SPT-AKI Modding Project
+# Welcome to the SPT Modding Project
 
 This project is designed to streamline the initial setup process for building and creating mods in the SPT-AKI environment. Follow this guide to set up your environment efficiently.
 
@@ -47,7 +47,7 @@ Some resources to get you started:
 
 ## **Coding Guidelines**
 
-Focus your mod development around the `mod.ts` file. In the `package.json` file, only alter these properties: `"name"`, `"version"`, `"akiVersion"`, `"loadBefore"`, `"loadAfter"`, `"incompatibilities"`, `"isBundleMod"`, `"author"`, and `"license"`.
+Focus your mod development around the `mod.ts` file. In the `package.json` file, only alter these properties: `"name"`, `"version"`, `"sptVersion"`, `"loadBefore"`, `"loadAfter"`, `"incompatibilities"`, `"isBundleMod"`, `"author"`, and `"license"`.
 
 New to Typescript? Find comprehensive documentation on the [official website](https://www.typescriptlang.org/docs/).
 

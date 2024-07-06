@@ -1,12 +1,12 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPreAkiLoadMod } from "@spt/models/external/IPreAkiLoadMod";
+import { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { OnLoadModService } from "@spt/services/mod/onLoad/OnLoadModService";
 
-class Mod implements IPreAkiLoadMod
+class Mod implements IPreSptLoadMod
 {
-    public preAkiLoad(container: DependencyContainer): void
+    public preSptLoad(container: DependencyContainer): void
     {
         const logger = container.resolve<ILogger>("WinstonLogger");
         const onLoadModService = container.resolve<OnLoadModService>("OnLoadModService");

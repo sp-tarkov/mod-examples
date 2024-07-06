@@ -1,14 +1,14 @@
 import { IncomingMessage, ServerResponse } from "node:http";
 import { DependencyContainer } from "tsyringe";
 
-import { IPreAkiLoadMod } from "@spt/models/external/IPreAkiLoadMod";
+import { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod";
 import { HttpListenerModService } from "@spt/services/mod/httpListener/HttpListenerModService";
 import { Type2HttpListener } from "./Type2HttpListener";
 
-class Mod implements IPreAkiLoadMod
+class Mod implements IPreSptLoadMod
 {
     // Code added here will load BEFORE the server has started loading
-    public preAkiLoad(container: DependencyContainer): void
+    public preSptLoad(container: DependencyContainer): void
     {
         const httpListenerService = container.resolve<HttpListenerModService>("HttpListenerModService");
         httpListenerService.registerHttpListener("Type1HttpListener", this.canHandleOverride, this.handleOverride)

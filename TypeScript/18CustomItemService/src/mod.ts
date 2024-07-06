@@ -3,10 +3,10 @@ import { DependencyContainer } from "tsyringe";
 import { IPostDBLoadMod } from "@spt/models/external/IPostDBLoadMod";
 import { CustomItemService } from "@spt/services/mod/CustomItemService";
 import { NewItemFromCloneDetails } from "@spt/models/spt/mod/NewItemDetails";
-import { IPostAkiLoadMod } from "@spt/models/external/IPostAkiLoadMod";
+import { IPostSptLoadMod } from "@spt/models/external/IPostSptLoadMod";
 import { DatabaseServer } from "@spt/servers/DatabaseServer";
 
-class Mod implements IPostDBLoadMod, IPostAkiLoadMod
+class Mod implements IPostDBLoadMod, IPostSptLoadMod
 {
     public postDBLoad(container: DependencyContainer): void
     {
@@ -71,7 +71,7 @@ class Mod implements IPostDBLoadMod, IPostAkiLoadMod
     }
 
     //Check if our item is in the server or not
-    public postAkiLoad(container: DependencyContainer): void {
+    public postSptLoad(container: DependencyContainer): void {
         const db = container.resolve<DatabaseServer>("DatabaseServer");
         const item = db.getTables().templates.items;
 
