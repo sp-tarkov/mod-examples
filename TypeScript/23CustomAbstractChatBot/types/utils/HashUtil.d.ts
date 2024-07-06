@@ -1,8 +1,6 @@
 /// <reference types="node" />
-/// <reference types="node" />
 import crypto from "node:crypto";
-import fs from "node:fs";
-import { TimeUtil } from "@spt/utils/TimeUtil";
+import { TimeUtil } from "@spt-aki/utils/TimeUtil";
 export declare class HashUtil {
     protected timeUtil: TimeUtil;
     constructor(timeUtil: TimeUtil);
@@ -13,7 +11,6 @@ export declare class HashUtil {
     generate(): string;
     generateMd5ForData(data: string): string;
     generateSha1ForData(data: string): string;
-    generateCRC32ForFile(filePath: fs.PathLike): number;
     /**
      * Create a hash for the data parameter
      * @param algorithm algorithm to use to hash

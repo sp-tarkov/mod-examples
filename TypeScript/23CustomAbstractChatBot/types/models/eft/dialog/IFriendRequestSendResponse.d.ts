@@ -1,5 +1,5 @@
 export interface IFriendRequestSendResponse {
     status: number;
-    requestId: string;
+    requestid: string;
     retryAfter: number;
 }

@@ -7,8 +7,8 @@ export interface IMiniProfile {
     prevexp: number;
     nextlvl: number;
     maxlvl: number;
-    sptData: SPTData;
+    akiData: AkiData;
 }
-export interface SPTData {
+export interface AkiData {
     version: string;
 }

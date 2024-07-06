@@ -1,6 +1,6 @@
 import { IncomingMessage, ServerResponse } from "node:http";
 
-import { IHttpListener } from "@spt/servers/http/IHttpListener";
+import { IHttpListener } from "@spt-aki/servers/http/IHttpListener";
 
 export class Type2HttpListener implements IHttpListener
 {

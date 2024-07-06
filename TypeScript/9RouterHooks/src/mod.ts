@@ -1,14 +1,14 @@
 import { DependencyContainer } from "tsyringe";
 
-import type { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod";
-import type { ILogger } from "@spt/models/spt/utils/ILogger";
-import type {DynamicRouterModService} from "@spt/services/mod/dynamicRouter/DynamicRouterModService";
-import type {StaticRouterModService} from "@spt/services/mod/staticRouter/StaticRouterModService";
+import type { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
+import type { ILogger } from "@spt-aki/models/spt/utils/ILogger";
+import type {DynamicRouterModService} from "@spt-aki/services/mod/dynamicRouter/DynamicRouterModService";
+import type {StaticRouterModService} from "@spt-aki/services/mod/staticRouter/StaticRouterModService";
 
-class Mod implements IPreSptLoadMod
+class Mod implements IPreAkiLoadMod
 {
-    public preSptLoad(container: DependencyContainer): void {
-        const logger = container.resolve<ILogger>("PrimaryLogger");
+    public preAkiLoad(container: DependencyContainer): void {
+        const logger = container.resolve<ILogger>("WinstonLogger");
         const dynamicRouterModService = container.resolve<DynamicRouterModService>("DynamicRouterModService");
         const staticRouterModService = container.resolve<StaticRouterModService>("StaticRouterModService");
 
@@ -44,9 +44,9 @@ class Mod implements IPreSptLoadMod
             "custom-static-my-mod"
         );
 
-        // Hook up to existing SPT dynamic route
+        // Hook up to existing AKI dynamic route
         dynamicRouterModService.registerDynamicRouter(
-            "DynamicRoutePeekingSpt",
+            "DynamicRoutePeekingAki",
             [
                 {
                     url: "/client/menu/locale/",
@@ -57,12 +57,12 @@ class Mod implements IPreSptLoadMod
                     }
                 }
             ],
-            "spt"
+            "aki"
         );
 
-        // Hook up to existing SPT static route
+        // Hook up to existing AKI static route
         staticRouterModService.registerStaticRouter(
-            "StaticRoutePeekingSpt",
+            "StaticRoutePeekingAki",
             [
                 {
                     url: "/launcher/ping",
@@ -73,7 +73,7 @@ class Mod implements IPreSptLoadMod
                     }
                 }
             ],
-            "spt"
+            "aki"
         );
     }
 }

@@ -1,6 +1,6 @@
-# Welcome to the SPT Modding Project
+# Welcome to the SPT-AKI Modding Project
 
-This project is designed to streamline the initial setup process for building and creating mods in the SPT environment. Follow this guide to set up your environment efficiently.
+This project is designed to streamline the initial setup process for building and creating mods in the SPT-AKI environment. Follow this guide to set up your environment efficiently.
 
 ## **Table of Contents**
 - [NodeJS Setup](#nodejs-setup)
@@ -39,7 +39,7 @@ Note: Preserve the `node_modules` folder as it contains necessary dependencies f
 
 ## **Essential Concepts**
 
-Prioritize understanding Dependency Injection and Inversion of Control, the architectural principles SPT adopts. Comprehensive guidelines will be available on the hub upon release.
+Prioritize understanding Dependency Injection and Inversion of Control, the architectural principles SPT-AKI adopts. Comprehensive guidelines will be available on the hub upon release.
 
 Some resources to get you started:
  - [A quick intro to Dependency Injection](https://www.freecodecamp.org/news/a-quick-intro-to-dependency-injection-what-it-is-and-when-to-use-it-7578c84fa88f/)
@@ -47,13 +47,13 @@ Some resources to get you started:
 
 ## **Coding Guidelines**
 
-Focus your mod development around the `mod.ts` file. In the `package.json` file, only alter these properties: `"name"`, `"version"`, `"sptVersion"`, `"loadBefore"`, `"loadAfter"`, `"incompatibilities"`, `"isBundleMod"`, `"author"`, and `"license"`.
+Focus your mod development around the `mod.ts` file. In the `package.json` file, only alter these properties: `"name"`, `"version"`, `"akiVersion"`, `"loadBefore"`, `"loadAfter"`, `"incompatibilities"`, `"isBundleMod"`, `"author"`, and `"license"`.
 
 New to Typescript? Find comprehensive documentation on the [official website](https://www.typescriptlang.org/docs/).
 
 ## **Distribution Guidelines**
 
-Automated tasks are set up to bundle all necessary files for your mod to function in SPT:
+Automated tasks are set up to bundle all necessary files for your mod to function in SPT-AKI:
 
 > Terminal -> Run Task... -> Show All Tasks... -> npm: build
 
@@ -61,6 +61,6 @@ The ZIP output, located in the `dist` directory, contains all required files. En
 
 ## **Conclusion**
 
-With this setup, you're ready to begin modding with SPT. If you run into any trouble be sure to check out the [modding documentation on the hub](https://hub.sp-tarkov.com/doc/lexicon/66-modding/). If you really get stuck feel free to join us in the [#mods-development](https://discord.com/channels/875684761291599922/875803116409323562) official Discord channel.
+With this setup, you're ready to begin modding with SPT-AKI. If you run into any trouble be sure to check out the [modding documentation on the hub](https://hub.sp-tarkov.com/doc/lexicon/66-modding/). If you really get stuck feel free to join us in the [#mods-development](https://discord.com/channels/875684761291599922/875803116409323562) official Discord channel.
 
 Build something awesome!

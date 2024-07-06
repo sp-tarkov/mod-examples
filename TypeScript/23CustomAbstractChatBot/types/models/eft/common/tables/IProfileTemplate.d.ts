@@ -1,7 +1,7 @@
-import { IPmcData } from "@spt/models/eft/common/IPmcData";
-import { Dialogue, IUserBuilds } from "@spt/models/eft/profile/ISptProfile";
+import { IPmcData } from "@spt-aki/models/eft/common/IPmcData";
+import { Dialogue, IUserBuilds } from "@spt-aki/models/eft/profile/IAkiProfile";
 export interface IProfileTemplates {
-    "Standard": IProfileSides;
+    Standard: IProfileSides;
     "Left Behind": IProfileSides;
     "Prepare To Escape": IProfileSides;
     "Edge Of Darkness": IProfileSides;
@@ -11,10 +11,10 @@ export interface IProfileTemplates {
 }
 export interface IProfileSides {
     descriptionLocaleKey: string;
-    usec: ITemplateSide;
-    bear: ITemplateSide;
+    usec: TemplateSide;
+    bear: TemplateSide;
 }
-export interface ITemplateSide {
+export interface TemplateSide {
     character: IPmcData;
     suits: string[];
     dialogues: Record<string, Dialogue>;
@@ -22,7 +22,7 @@ export interface ITemplateSide {
     trader: ProfileTraderTemplate;
 }
 export interface ProfileTraderTemplate {
-    initialLoyaltyLevel: Record<string, number>;
+    initialLoyaltyLevel: number;
     setQuestsAvailableForStart?: boolean;
     setQuestsAvailableForFinish?: boolean;
     initialStanding: number;

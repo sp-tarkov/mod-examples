@@ -1,21 +1,21 @@
-import { ISptProfile } from "@spt/models/eft/profile/ISptProfile";
-import { ICloner } from "@spt/utils/cloners/ICloner";
+import { IAkiProfile } from "@spt-aki/models/eft/profile/IAkiProfile";
+import { JsonUtil } from "@spt-aki/utils/JsonUtil";
 export declare class ProfileSnapshotService {
-    protected cloner: ICloner;
-    protected storedProfileSnapshots: Record<string, ISptProfile>;
-    constructor(cloner: ICloner);
+    protected jsonUtil: JsonUtil;
+    protected storedProfileSnapshots: Record<string, IAkiProfile>;
+    constructor(jsonUtil: JsonUtil);
     /**
      * Store a profile into an in-memory object
      * @param sessionID session id - acts as the key
      * @param profile - profile to save
      */
-    storeProfileSnapshot(sessionID: string, profile: ISptProfile): void;
+    storeProfileSnapshot(sessionID: string, profile: IAkiProfile): void;
     /**
      * Retreve a stored profile
      * @param sessionID key
      * @returns A player profile object
      */
-    getProfileSnapshot(sessionID: string): ISptProfile;
+    getProfileSnapshot(sessionID: string): IAkiProfile;
     /**
      * Does a profile exists against the provided key
      * @param sessionID key

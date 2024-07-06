@@ -1,12 +1,10 @@
-import { Item } from "@spt/models/eft/common/tables/IItem";
-import { ITraderServiceModel } from "@spt/models/spt/services/ITraderServiceModel";
+import { Item } from "@spt-aki/models/eft/common/tables/IItem";
 export interface ITrader {
-    assort?: ITraderAssort;
+    assort: ITraderAssort;
     base: ITraderBase;
     dialogue?: Record<string, string[]>;
-    questassort?: Record<string, Record<string, string>>;
+    questassort: Record<string, Record<string, string>>;
     suits?: ISuit[];
-    services?: ITraderServiceModel[];
 }
 export interface ITraderBase {
     refreshTraderRagfairOffers: boolean;

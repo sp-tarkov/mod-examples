@@ -1,21 +1,21 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPostDBLoadMod } from "@spt/models/external/IPostDBLoadMod";
-import { CustomItemService } from "@spt/services/mod/CustomItemService";
-import { NewItemFromCloneDetails } from "@spt/models/spt/mod/NewItemDetails";
-import { IPostSptLoadMod } from "@spt/models/external/IPostSptLoadMod";
-import { DatabaseService } from "@spt/services/DatabaseService";
+import { IPostDBLoadMod } from "@spt-aki/models/external/IPostDBLoadMod";
+import { CustomItemService } from "@spt-aki/services/mod/CustomItemService";
+import { NewItemFromCloneDetails } from "@spt-aki/models/spt/mod/NewItemDetails";
+import { IPostAkiLoadMod } from "@spt-aki/models/external/IPostAkiLoadMod";
+import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
 
-class Mod implements IPostDBLoadMod, IPostSptLoadMod
+class Mod implements IPostDBLoadMod, IPostAkiLoadMod
 {
     public postDBLoad(container: DependencyContainer): void
     {
-        // Resolve the CustomItemService
-        const customItemService = container.resolve<CustomItemService>("CustomItemService");
+        // Resolve the CustomItemService container
+        const CustomItem = container.resolve<CustomItemService>("CustomItemService");
 
-        // Clone the mp-18 and adjust its properties slightly
-        const exampleCloneItem: NewItemFromCloneDetails = {
-            itemTplToClone: "61f7c9e189e6fb1a5e3ea78d", // MP-18 id
+        //Example of adding new item by cloning existing item using createclonedetails
+        const ExampleCloneItem: NewItemFromCloneDetails = {
+            itemTplToClone: "61f7c9e189e6fb1a5e3ea78d", //the item we want to clone, in this example i will cloning the MP-18
             overrideProperties: {
                 Chambers: [
                     {
@@ -41,42 +41,40 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod
                                         "5d6e68b3a4b9361bca7e50b5",
                                         "5d6e6891a4b9361bd473feea",
                                         "5d6e689ca4b9361bc8618956",
-                                        "5d6e68d1a4b93622fe60e845"
-                                    ]
-                                }
-                            ]
+                                        "5d6e68d1a4b93622fe60e845",
+                                    ],
+                                },
+                            ],
                         },
                         _required: false,
                         _mergeSlotWithChildren: false,
-                        _proto: "55d4af244bdc2d962f8b4571"
-                    }
-                ]
-            }, // Overried properties basically tell the server on what data inside _props to be modified from the cloned item, in this example i am modifying the ammo used to be 12G
-            parentId: "5447b6094bdc2dc3278b4567", // ParentId refers to the Node item the gun will be under. For this example we use `Shotgun`, you can check it in https://db.sp-tarkov.com/search
-            newId: "CustomMP18", // The new id of our cloned item
-            fleaPriceRoubles: 50000, // Average price of item on flea
+                        _proto: "55d4af244bdc2d962f8b4571",
+                    },
+                ],
+            }, //Overried properties basically tell the server on what data inside _props to be modified from the cloned item, in this example i am modifying the ammo used to be 12G
+            parentId: "5447b6094bdc2dc3278b4567", //ParentId refers to the Node item the gun will be under, you can check it in https://db.sp-tarkov.com/search
+            newId: "CustomMP18", //The new id of our cloned item
+            fleaPriceRoubles: 50000, //Self explanatary
             handbookPriceRoubles: 42500,
-            handbookParentId: "5b5f78e986f77447ed5636b1", // Handbook Parent Id refers to the category the gun will be under
-            // You see those side box tab thing that only select gun under specific icon? Handbook parent can be found in SPT_Data\Server\database\templates.
+            handbookParentId: "5b5f78e986f77447ed5636b1", //Handbook Parent Id refers to the category the gun will be under
+            //you see those side box tab thing that only select gun under specific icon? Handbook parent can be found in Aki_Data\Server\database\templates.
             locales: {
                 en: {
                     name: "MP-18 12g",
                     shortName: "Custom MP18",
-                    description: "A custom MP18 chambered in 12G"
-                }
-            }
+                    description: "A custom MP18 chambered in 12G",
+                },
+            },
         };
 
-        customItemService.createItemFromClone(exampleCloneItem); // Tell the server to add our Cloned item into the server using custom item service
+        CustomItem.createItemFromClone(ExampleCloneItem); //Basically calls the function and tell the server to add our Cloned new item into the server
     }
 
     //Check if our item is in the server or not
-    public postSptLoad(container: DependencyContainer): void 
-    {
-        const databaseService = container.resolve<DatabaseService>("DatabaseService");
-        const item = databaseService.getItems();
+    public postAkiLoad(container: DependencyContainer): void {
+        const db = container.resolve<DatabaseServer>("DatabaseServer");
+        const item = db.getTables().templates.items;
 
-        // Log our new guns properties to console
         console.log(item["CustomMP18"]._props);
     }
 }

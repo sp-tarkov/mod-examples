@@ -19,7 +19,7 @@ import { ISettingsBase } from "@spt/models/spt/server/ISettingsBase";
 import { ITemplates } from "@spt/models/spt/templates/ITemplates";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { DatabaseServer } from "@spt/servers/DatabaseServer";
-import { LocalisationService } from "./LocalisationService";
+import { LocalisationService } from "@spt/services/LocalisationService";
 export declare class DatabaseService {
     protected logger: ILogger;
     protected databaseServer: DatabaseServer;
@@ -52,7 +52,7 @@ export declare class DatabaseService {
     getLocations(): ILocations;
     /**
      * Get specific location by its Id
-     * @param locationId Desired trader id
+     * @param locationId Desired location id
      * @returns assets/database/locations/
      */
     getLocation(locationId: string): ILocation;

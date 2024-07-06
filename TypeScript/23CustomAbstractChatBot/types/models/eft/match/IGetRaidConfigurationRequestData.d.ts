@@ -1,6 +1,32 @@
-import { IRaidSettings } from "@spt/models/eft/match/IRaidSettings";
-export interface IGetRaidConfigurationRequestData extends IRaidSettings {
+export interface IGetRaidConfigurationRequestData {
     keyId: string;
-    CanShowGroupPreview: boolean;
-    MaxGroupCount: number;
+    side: string;
+    location: string;
+    timeVariant: string;
+    raidMode: string;
+    metabolismDisabled: boolean;
+    playersSpawnPlace: string;
+    timeAndWeatherSettings: TimeAndWeatherSettings;
+    botSettings: BotSettings;
+    wavesSettings: WavesSettings;
+}
+export interface TimeAndWeatherSettings {
+    isRandomTime: boolean;
+    isRandomWeather: boolean;
+    cloudinessType: string;
+    rainType: string;
+    windType: string;
+    fogType: string;
+    timeFlowType: string;
+    hourOfDay: number;
+}
+export interface BotSettings {
+    isScavWars: boolean;
+    botAmount: string;
+}
+export interface WavesSettings {
+    botAmount: string;
+    botDifficulty: string;
+    isBosses: boolean;
+    isTaggedAndCursed: boolean;
 }

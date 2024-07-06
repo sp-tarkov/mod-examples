@@ -1,8 +1,10 @@
-import { IAsyncQueue } from "@spt/models/spt/utils/IAsyncQueue";
-import { AbstractWinstonLogger } from "@spt/utils/logging/AbstractWinstonLogger";
+import { IAsyncQueue } from "@spt-aki/models/spt/utils/IAsyncQueue";
+import { IUUidGenerator } from "@spt-aki/models/spt/utils/IUuidGenerator";
+import { AbstractWinstonLogger } from "@spt-aki/utils/logging/AbstractWinstonLogger";
 export declare class WinstonMainLogger extends AbstractWinstonLogger {
     protected asyncQueue: IAsyncQueue;
-    constructor(asyncQueue: IAsyncQueue);
+    protected uuidGenerator: IUUidGenerator;
+    constructor(asyncQueue: IAsyncQueue, uuidGenerator: IUUidGenerator);
     protected isLogExceptions(): boolean;
     protected isLogToFile(): boolean;
     protected isLogToConsole(): boolean;

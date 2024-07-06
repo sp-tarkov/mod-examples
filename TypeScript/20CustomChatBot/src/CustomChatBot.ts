@@ -1,10 +1,10 @@
 import { inject, injectable } from "tsyringe";
 
-import { IDialogueChatBot } from "@spt/helpers/Dialogue/IDialogueChatBot";
-import { ISendMessageRequest } from "@spt/models/eft/dialog/ISendMessageRequest";
-import { IUserDialogInfo } from "@spt/models/eft/profile/ISptProfile";
-import { MemberCategory } from "@spt/models/enums/MemberCategory";
-import { MailSendService } from "@spt/services/MailSendService";
+import { IDialogueChatBot } from "@spt-aki/helpers/Dialogue/IDialogueChatBot";
+import { ISendMessageRequest } from "@spt-aki/models/eft/dialog/ISendMessageRequest";
+import { IUserDialogInfo } from "@spt-aki/models/eft/profile/IAkiProfile";
+import { MemberCategory } from "@spt-aki/models/enums/MemberCategory";
+import { MailSendService } from "@spt-aki/services/MailSendService";
 
 //    \/   dont forger this annotation here!
 @injectable()

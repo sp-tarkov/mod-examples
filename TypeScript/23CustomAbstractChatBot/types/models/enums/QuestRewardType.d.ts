@@ -8,6 +8,5 @@ export declare enum QuestRewardType {
     PRODUCTIONS_SCHEME = "ProductionScheme",
     TRADER_STANDING_RESET = "TraderStandingReset",
     TRADER_STANDING_RESTORE = "TraderStandingRestore",
-    STASH_ROWS = "StashRows",
-    ACHIEVEMENT = "Achievement"
+    STASH_ROWS = "StashRows"
 }

@@ -47,6 +47,11 @@ export declare class BotHelper {
      */
     shouldBotBePmc(botRole: string): boolean;
     rollChanceToBePmc(role: string, botConvertMinMax: MinMax): boolean;
+    /**
+     * is the provided role a PMC, case-agnostic
+     * @param botRole Role to check
+     * @returns True if role is PMC
+     */
     botRoleIsPmc(botRole: string): boolean;
     /**
      * Get randomization settings for bot from config/bot.json

@@ -31,6 +31,7 @@ import { PmcChatResponseService } from "@spt/services/PmcChatResponseService";
 import { TraderServicesService } from "@spt/services/TraderServicesService";
 import { RandomUtil } from "@spt/utils/RandomUtil";
 import { TimeUtil } from "@spt/utils/TimeUtil";
+import { IBotConfig } from "@spt/models/spt/config/IBotConfig";
 /**
  * Logic for handling In Raid callbacks
  */
@@ -62,6 +63,7 @@ export declare class InraidController {
     protected locationConfig: ILocationConfig;
     protected ragfairConfig: IRagfairConfig;
     protected hideoutConfig: IHideoutConfig;
+    protected botConfig: IBotConfig;
     constructor(logger: ILogger, saveServer: SaveServer, timeUtil: TimeUtil, databaseService: DatabaseService, pmcChatResponseService: PmcChatResponseService, matchBotDetailsCacheService: MatchBotDetailsCacheService, questHelper: QuestHelper, itemHelper: ItemHelper, profileHelper: ProfileHelper, playerScavGenerator: PlayerScavGenerator, healthHelper: HealthHelper, traderHelper: TraderHelper, traderServicesService: TraderServicesService, localisationService: LocalisationService, insuranceService: InsuranceService, inRaidHelper: InRaidHelper, applicationContext: ApplicationContext, configServer: ConfigServer, mailSendService: MailSendService, randomUtil: RandomUtil);
     /**
      * Save locationId to active profiles inraid object AND app context
@@ -189,4 +191,5 @@ export declare class InraidController {
     itemDelivery(sessionId: string, traderId: string, items: Item[]): void;
     getTraitorScavHostileChance(url: string, sessionID: string): number;
     getSandboxMaxPatrolValue(url: string, sessionID: string): number;
+    getBossConvertSettings(url: string, sessionId: string): string[];
 }

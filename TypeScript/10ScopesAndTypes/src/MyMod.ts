@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 
-import { ILogger } from "@spt/models/spt/utils/ILogger";
+import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
 import { Processing } from "./Processing";
 
 @injectable()

@@ -1,7 +1,7 @@
-import { GenerationData } from "@spt/models/eft/common/tables/IBotType";
-import { IBaseConfig } from "@spt/models/spt/config/IBaseConfig";
+import { GenerationData } from "@spt-aki/models/eft/common/tables/IBotType";
+import { IBaseConfig } from "@spt-aki/models/spt/config/IBaseConfig";
 export interface IPlayerScavConfig extends IBaseConfig {
-    kind: "spt-playerscav";
+    kind: "aki-playerscav";
     karmaLevel: Record<string, KarmaLevel>;
 }
 export interface KarmaLevel {
@@ -9,7 +9,7 @@ export interface KarmaLevel {
     modifiers: Modifiers;
     itemLimits: ItemLimits;
     equipmentBlacklist: Record<string, string[]>;
-    lootItemsToAddChancePercent: Record<string, number>;
+    labsAccessCardChancePercent: number;
 }
 export interface Modifiers {
     equipment: Record<string, number>;

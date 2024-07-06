@@ -1,3 +1,3 @@
 export interface IRoute {
-    spt: any;
+    aki: any;
 }

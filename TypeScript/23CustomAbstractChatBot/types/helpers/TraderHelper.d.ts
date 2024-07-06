@@ -1,21 +1,21 @@
-import { HandbookHelper } from "@spt/helpers/HandbookHelper";
-import { ItemHelper } from "@spt/helpers/ItemHelper";
-import { ProfileHelper } from "@spt/helpers/ProfileHelper";
-import { IPmcData } from "@spt/models/eft/common/IPmcData";
-import { Item } from "@spt/models/eft/common/tables/IItem";
-import { ProfileTraderTemplate } from "@spt/models/eft/common/tables/IProfileTemplate";
-import { ITraderAssort, ITraderBase, LoyaltyLevel } from "@spt/models/eft/common/tables/ITrader";
-import { Traders } from "@spt/models/enums/Traders";
-import { ITraderConfig } from "@spt/models/spt/config/ITraderConfig";
-import { ILogger } from "@spt/models/spt/utils/ILogger";
-import { ConfigServer } from "@spt/servers/ConfigServer";
-import { DatabaseServer } from "@spt/servers/DatabaseServer";
-import { SaveServer } from "@spt/servers/SaveServer";
-import { FenceService } from "@spt/services/FenceService";
-import { LocalisationService } from "@spt/services/LocalisationService";
-import { PlayerService } from "@spt/services/PlayerService";
-import { RandomUtil } from "@spt/utils/RandomUtil";
-import { TimeUtil } from "@spt/utils/TimeUtil";
+import { HandbookHelper } from "@spt-aki/helpers/HandbookHelper";
+import { ItemHelper } from "@spt-aki/helpers/ItemHelper";
+import { ProfileHelper } from "@spt-aki/helpers/ProfileHelper";
+import { IPmcData } from "@spt-aki/models/eft/common/IPmcData";
+import { Item } from "@spt-aki/models/eft/common/tables/IItem";
+import { ProfileTraderTemplate } from "@spt-aki/models/eft/common/tables/IProfileTemplate";
+import { ITraderAssort, ITraderBase, LoyaltyLevel } from "@spt-aki/models/eft/common/tables/ITrader";
+import { Traders } from "@spt-aki/models/enums/Traders";
+import { ITraderConfig } from "@spt-aki/models/spt/config/ITraderConfig";
+import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
+import { ConfigServer } from "@spt-aki/servers/ConfigServer";
+import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
+import { SaveServer } from "@spt-aki/servers/SaveServer";
+import { FenceService } from "@spt-aki/services/FenceService";
+import { LocalisationService } from "@spt-aki/services/LocalisationService";
+import { PlayerService } from "@spt-aki/services/PlayerService";
+import { RandomUtil } from "@spt-aki/utils/RandomUtil";
+import { TimeUtil } from "@spt-aki/utils/TimeUtil";
 export declare class TraderHelper {
     protected logger: ILogger;
     protected databaseServer: DatabaseServer;
@@ -59,7 +59,7 @@ export declare class TraderHelper {
     /**
      * Reset a profiles trader data back to its initial state as seen by a level 1 player
      * Does NOT take into account different profile levels
-     * @param sessionID session id of player
+     * @param sessionID session id
      * @param traderID trader id to reset
      */
     resetTrader(sessionID: string, traderID: string): void;
@@ -74,13 +74,13 @@ export declare class TraderHelper {
      * Alter a traders unlocked status
      * @param traderId Trader to alter
      * @param status New status to use
-     * @param sessionId Session id of player
+     * @param sessionId Session id
      */
     setTraderUnlockedState(traderId: string, status: boolean, sessionId: string): void;
     /**
      * Add standing to a trader and level them up if exp goes over level threshold
-     * @param sessionId Session id of player
-     * @param traderId Traders id to add standing to
+     * @param sessionId Session id
+     * @param traderId Traders id
      * @param standingToAdd Standing value to add to trader
      */
     addStandingToTrader(sessionId: string, traderId: string, standingToAdd: number): void;
@@ -117,11 +117,11 @@ export declare class TraderHelper {
      */
     addTraderPurchasesToPlayerProfile(sessionID: string, newPurchaseDetails: {
         items: {
-            itemId: string;
+            item_id: string;
             count: number;
         }[];
-        traderId: string;
-    }, itemPurchased: Item): void;
+        tid: string;
+    }): void;
     /**
      * Get the highest rouble price for an item from traders
      * UNUSED

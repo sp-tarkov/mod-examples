@@ -11,7 +11,7 @@
         "resolveJsonModule": true,
         "outDir": "tmp",
         "paths": {
-            "@spt/*": ["./types/*"],
+            "@spt-aki/*": ["./types/*"],
         },
     },
     "exclude": ["node_modules", "dist", "tmp"],

@@ -118,12 +118,22 @@ export declare class RepeatableQuestRewardGenerator {
      * Helper to create a reward item structured as required by the client
      *
      * @param   {string}    tpl             ItemId of the rewarded item
-     * @param   {integer}   value           Amount of items to give
+     * @param   {integer}   count           Amount of items to give
      * @param   {integer}   index           All rewards will be appended to a list, for unknown reasons the client wants the index
      * @param preset Optional array of preset items
      * @returns {object}                    Object of "Reward"-item-type
      */
-    protected generateRewardItem(tpl: string, value: number, index: number, preset?: Item[]): IQuestReward;
+    protected generateItemReward(tpl: string, count: number, index: number): IQuestReward;
+    /**
+     * Helper to create a reward item structured as required by the client
+     *
+     * @param   {string}    tpl             ItemId of the rewarded item
+     * @param   {integer}   count           Amount of items to give
+     * @param   {integer}   index           All rewards will be appended to a list, for unknown reasons the client wants the index
+     * @param preset Optional array of preset items
+     * @returns {object}                    Object of "Reward"-item-type
+     */
+    protected generatePresetReward(tpl: string, count: number, index: number, preset?: Item[]): IQuestReward;
     /**
      * Picks rewardable items from items.json
      * This means they must:

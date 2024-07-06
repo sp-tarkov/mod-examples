@@ -1,18 +1,18 @@
 import { DependencyContainer } from "tsyringe";
 
-import { PreSptModLoader } from "@spt/loaders/PreSptModLoader";
-import { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod";
-import { ILogger } from "@spt/models/spt/utils/ILogger";
-import { ImporterUtil } from "@spt/utils/ImporterUtil";
+import { PreAkiModLoader } from "@spt-aki/loaders/PreAkiModLoader";
+import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
+import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
+import { ImporterUtil } from "@spt-aki/utils/ImporterUtil";
 import { ConfigsModelBase } from "./model/ConfigsModel";
 
-class Mod implements IPreSptLoadMod {
-    public preSptLoad(container: DependencyContainer): void {
+class Mod implements IPreAkiLoadMod {
+    public preAkiLoad(container: DependencyContainer): void {
         // get logger
-        const logger = container.resolve<ILogger>("PrimaryLogger");
+        const logger = container.resolve<ILogger>("WinstonLogger");
 
         const importerUtil = container.resolve<ImporterUtil>("ImporterUtil");
-        const modImporter = container.resolve<PreSptModLoader>("PreSptModLoader");
+        const modImporter = container.resolve<PreAkiModLoader>("PreAkiModLoader");
         const path = modImporter.getModPath("16ImporterUtil");
 
         const configPath = `${path}config/`;

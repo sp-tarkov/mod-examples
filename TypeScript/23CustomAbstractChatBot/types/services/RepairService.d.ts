@@ -1,23 +1,22 @@
-import { ItemHelper } from "@spt/helpers/ItemHelper";
-import { ProfileHelper } from "@spt/helpers/ProfileHelper";
-import { RepairHelper } from "@spt/helpers/RepairHelper";
-import { TraderHelper } from "@spt/helpers/TraderHelper";
-import { WeightedRandomHelper } from "@spt/helpers/WeightedRandomHelper";
-import { IPmcData } from "@spt/models/eft/common/IPmcData";
-import { Item } from "@spt/models/eft/common/tables/IItem";
-import { ITemplateItem } from "@spt/models/eft/common/tables/ITemplateItem";
-import { IItemEventRouterResponse } from "@spt/models/eft/itemEvent/IItemEventRouterResponse";
-import { RepairKitsInfo } from "@spt/models/eft/repair/IRepairActionDataRequest";
-import { RepairItem } from "@spt/models/eft/repair/ITraderRepairActionDataRequest";
-import { BonusType } from "@spt/models/enums/BonusType";
-import { SkillTypes } from "@spt/models/enums/SkillTypes";
-import { BonusSettings, IRepairConfig } from "@spt/models/spt/config/IRepairConfig";
-import { ILogger } from "@spt/models/spt/utils/ILogger";
-import { ConfigServer } from "@spt/servers/ConfigServer";
-import { DatabaseServer } from "@spt/servers/DatabaseServer";
-import { LocalisationService } from "@spt/services/LocalisationService";
-import { PaymentService } from "@spt/services/PaymentService";
-import { RandomUtil } from "@spt/utils/RandomUtil";
+import { ItemHelper } from "@spt-aki/helpers/ItemHelper";
+import { ProfileHelper } from "@spt-aki/helpers/ProfileHelper";
+import { RepairHelper } from "@spt-aki/helpers/RepairHelper";
+import { TraderHelper } from "@spt-aki/helpers/TraderHelper";
+import { WeightedRandomHelper } from "@spt-aki/helpers/WeightedRandomHelper";
+import { IPmcData } from "@spt-aki/models/eft/common/IPmcData";
+import { Item } from "@spt-aki/models/eft/common/tables/IItem";
+import { ITemplateItem } from "@spt-aki/models/eft/common/tables/ITemplateItem";
+import { IItemEventRouterResponse } from "@spt-aki/models/eft/itemEvent/IItemEventRouterResponse";
+import { RepairKitsInfo } from "@spt-aki/models/eft/repair/IRepairActionDataRequest";
+import { RepairItem } from "@spt-aki/models/eft/repair/ITraderRepairActionDataRequest";
+import { SkillTypes } from "@spt-aki/models/enums/SkillTypes";
+import { BonusSettings, IRepairConfig } from "@spt-aki/models/spt/config/IRepairConfig";
+import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
+import { ConfigServer } from "@spt-aki/servers/ConfigServer";
+import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
+import { LocalisationService } from "@spt-aki/services/LocalisationService";
+import { PaymentService } from "@spt-aki/services/PaymentService";
+import { RandomUtil } from "@spt-aki/utils/RandomUtil";
 export declare class RepairService {
     protected logger: ILogger;
     protected databaseServer: DatabaseServer;
@@ -83,11 +82,11 @@ export declare class RepairService {
     protected getKitDivisor(itemToRepairDetails: ITemplateItem, isArmor: boolean, pmcData: IPmcData): number;
     /**
      * Get the bonus multiplier for a skill from a player profile
-     * @param skillBonus Bonus to get multipler of
+     * @param skillBonusName Name of bonus to get multipler of
      * @param pmcData Player profile to look in for skill
      * @returns Multiplier value
      */
-    protected getBonusMultiplierValue(skillBonus: BonusType, pmcData: IPmcData): number;
+    protected getBonusMultiplierValue(skillBonusName: string, pmcData: IPmcData): number;
     /**
      * Should a repair kit apply total durability loss on repair
      * @param pmcData Player profile
@@ -126,12 +125,12 @@ export declare class RepairService {
      * @param itemTemplate Item to check for skill
      * @returns Skill name
      */
-    protected getItemSkillType(itemTemplate: ITemplateItem): SkillTypes | undefined;
+    protected getItemSkillType(itemTemplate: ITemplateItem): SkillTypes;
     /**
      * Ensure multiplier is between 1 and 0.01
-     * @param receiveDurabilityMaxPercent Max durability percent
+     * @param receiveDurabilityMaxPercent Max durabiltiy percent
      * @param receiveDurabilityPercent current durability percent
-     * @returns durability multiplier value
+     * @returns durability multipler value
      */
     protected getDurabilityMultiplier(receiveDurabilityMaxPercent: number, receiveDurabilityPercent: number): number;
 }

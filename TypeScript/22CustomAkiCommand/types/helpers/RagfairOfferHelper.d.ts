@@ -3,6 +3,7 @@ import { ItemHelper } from "@spt/helpers/ItemHelper";
 import { PaymentHelper } from "@spt/helpers/PaymentHelper";
 import { PresetHelper } from "@spt/helpers/PresetHelper";
 import { ProfileHelper } from "@spt/helpers/ProfileHelper";
+import { QuestHelper } from "@spt/helpers/QuestHelper";
 import { RagfairHelper } from "@spt/helpers/RagfairHelper";
 import { RagfairServerHelper } from "@spt/helpers/RagfairServerHelper";
 import { RagfairSortHelper } from "@spt/helpers/RagfairSortHelper";
@@ -28,7 +29,6 @@ import { RagfairOfferService } from "@spt/services/RagfairOfferService";
 import { RagfairRequiredItemsService } from "@spt/services/RagfairRequiredItemsService";
 import { HashUtil } from "@spt/utils/HashUtil";
 import { TimeUtil } from "@spt/utils/TimeUtil";
-import { QuestHelper } from "./QuestHelper";
 export declare class RagfairOfferHelper {
     protected logger: ILogger;
     protected timeUtil: TimeUtil;

@@ -1,7 +1,7 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPostDBLoadMod } from "@spt/models/external/IPostDBLoadMod";
-import { CommandoDialogueChatBot } from "@spt/helpers/Dialogue/CommandoDialogueChatBot";
+import { IPostDBLoadMod } from "@spt-aki/models/external/IPostDBLoadMod";
+import { CommandoDialogueChatBot } from "@spt-aki/helpers/Dialogue/CommandoDialogueChatBot";
 import { CustomCommandoCommand } from "./CustomCommandoCommand";
 
 class Mod implements IPostDBLoadMod {

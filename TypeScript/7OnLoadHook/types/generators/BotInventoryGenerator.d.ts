@@ -6,9 +6,10 @@ import { BotHelper } from "@spt/helpers/BotHelper";
 import { ItemHelper } from "@spt/helpers/ItemHelper";
 import { WeightedRandomHelper } from "@spt/helpers/WeightedRandomHelper";
 import { Inventory as PmcInventory } from "@spt/models/eft/common/tables/IBotBase";
-import { Chances, Generation, IBotType, Inventory, Mods } from "@spt/models/eft/common/tables/IBotType";
+import { Chances, Equipment, Generation, IBotType, Inventory } from "@spt/models/eft/common/tables/IBotType";
 import { EquipmentSlots } from "@spt/models/enums/EquipmentSlots";
-import { EquipmentFilterDetails, EquipmentFilters, IBotConfig, RandomisationDetails } from "@spt/models/spt/config/IBotConfig";
+import { IGenerateEquipmentProperties } from "@spt/models/spt/bots/IGenerateEquipmentProperties";
+import { EquipmentFilterDetails, IBotConfig } from "@spt/models/spt/config/IBotConfig";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { ConfigServer } from "@spt/servers/ConfigServer";
 import { BotEquipmentModPoolService } from "@spt/services/BotEquipmentModPoolService";
@@ -61,14 +62,14 @@ export declare class BotInventoryGenerator {
     protected generateAndAddEquipmentToBot(templateInventory: Inventory, wornItemChances: Chances, botRole: string, botInventory: PmcInventory, botLevel: number, chosenGameVersion: string): void;
     /**
      * Remove non-armored rigs from parameter data
-     * @param templateInventory
+     * @param templateEquipment Equpiment to filter TacticalVest of
      */
-    protected filterRigsToThoseWithProtection(templateInventory: Inventory): void;
+    protected filterRigsToThoseWithProtection(templateEquipment: Equipment): void;
     /**
      * Remove armored rigs from parameter data
-     * @param templateInventory
+     * @param templateEquipment Equpiment to filter TacticalVest of
      */
-    protected filterRigsToThoseWithoutProtection(templateInventory: Inventory): void;
+    protected filterRigsToThoseWithoutProtection(templateEquipment: Equipment): void;
     /**
      * Add a piece of equipment with mods to inventory from the provided pools
      * @param settings Values to adjust how item is chosen and added to bot
@@ -90,8 +91,8 @@ export declare class BotInventoryGenerator {
      * @param botInventory Inventory to add weapons to
      * @param botRole assault/pmcBot/bossTagilla etc
      * @param isPmc Is the bot being generated as a pmc
-     * @param botLevel level of bot having weapon generated
      * @param itemGenerationLimitsMinMax Limits for items the bot can have
+     * @param botLevel level of bot having weapon generated
      */
     protected generateAndAddWeaponsToBot(templateInventory: Inventory, equipmentChances: Chances, sessionId: string, botInventory: PmcInventory, botRole: string, isPmc: boolean, itemGenerationLimitsMinMax: Generation, botLevel: number): void;
     /**
@@ -118,23 +119,4 @@ export declare class BotInventoryGenerator {
         slot: EquipmentSlots;
         shouldSpawn: boolean;
     }, templateInventory: Inventory, botInventory: PmcInventory, equipmentChances: Chances, botRole: string, isPmc: boolean, itemGenerationWeights: Generation, botLevel: number): void;
-}
-export interface IGenerateEquipmentProperties {
-    /** Root Slot being generated */
-    rootEquipmentSlot: string;
-    /** Equipment pool for root slot being generated */
-    rootEquipmentPool: Record<string, number>;
-    modPool: Mods;
-    /** Dictionary of mod items and their chance to spawn for this bot type */
-    spawnChances: Chances;
-    /** Role being generated for */
-    botRole: string;
-    /** Level of bot being generated */
-    botLevel: number;
-    inventory: PmcInventory;
-    botEquipmentConfig: EquipmentFilters;
-    /** Settings from bot.json to adjust how item is generated */
-    randomisationDetails: RandomisationDetails;
-    /** OPTIONAL - Do not generate mods for tpls in this array */
-    generateModsBlacklist?: string[];
 }

@@ -3,6 +3,7 @@ import { BotGenerator } from "@spt/generators/BotGenerator";
 import { BotDifficultyHelper } from "@spt/helpers/BotDifficultyHelper";
 import { BotHelper } from "@spt/helpers/BotHelper";
 import { ProfileHelper } from "@spt/helpers/ProfileHelper";
+import { WeightedRandomHelper } from "@spt/helpers/WeightedRandomHelper";
 import { MinMax } from "@spt/models/common/MinMax";
 import { Condition, IGenerateBotsRequestData } from "@spt/models/eft/bot/IGenerateBotsRequestData";
 import { IPmcData } from "@spt/models/eft/common/IPmcData";
@@ -27,6 +28,7 @@ export declare class BotController {
     protected botGenerator: BotGenerator;
     protected botHelper: BotHelper;
     protected botDifficultyHelper: BotDifficultyHelper;
+    protected weightedRandomHelper: WeightedRandomHelper;
     protected botGenerationCacheService: BotGenerationCacheService;
     protected matchBotDetailsCacheService: MatchBotDetailsCacheService;
     protected localisationService: LocalisationService;
@@ -38,7 +40,7 @@ export declare class BotController {
     protected cloner: ICloner;
     protected botConfig: IBotConfig;
     protected pmcConfig: IPmcConfig;
-    constructor(logger: ILogger, databaseService: DatabaseService, botGenerator: BotGenerator, botHelper: BotHelper, botDifficultyHelper: BotDifficultyHelper, botGenerationCacheService: BotGenerationCacheService, matchBotDetailsCacheService: MatchBotDetailsCacheService, localisationService: LocalisationService, seasonalEventService: SeasonalEventService, profileHelper: ProfileHelper, configServer: ConfigServer, applicationContext: ApplicationContext, randomUtil: RandomUtil, cloner: ICloner);
+    constructor(logger: ILogger, databaseService: DatabaseService, botGenerator: BotGenerator, botHelper: BotHelper, botDifficultyHelper: BotDifficultyHelper, weightedRandomHelper: WeightedRandomHelper, botGenerationCacheService: BotGenerationCacheService, matchBotDetailsCacheService: MatchBotDetailsCacheService, localisationService: LocalisationService, seasonalEventService: SeasonalEventService, profileHelper: ProfileHelper, configServer: ConfigServer, applicationContext: ApplicationContext, randomUtil: RandomUtil, cloner: ICloner);
     /**
      * Return the number of bot load-out varieties to be generated
      * @param type bot Type we want the load-out gen count for
@@ -116,6 +118,7 @@ export declare class BotController {
      * @returns Single IBotBase object
      */
     protected returnSingleBotFromCache(sessionId: string, request: IGenerateBotsRequestData): Promise<IBotBase[]>;
+    protected updateBotGenerationDetailsToRandomBoss(botGenerationDetails: BotGenerationDetails, possibleBossTypeWeights: Record<string, number>): void;
     /**
      * Get the difficulty passed in, if its not "asonline", get selected difficulty from config
      * @param requestedDifficulty

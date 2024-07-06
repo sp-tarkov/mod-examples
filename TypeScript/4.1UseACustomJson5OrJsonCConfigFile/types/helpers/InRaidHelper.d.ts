@@ -1,6 +1,7 @@
 import { InventoryHelper } from "@spt/helpers/InventoryHelper";
 import { ItemHelper } from "@spt/helpers/ItemHelper";
 import { PaymentHelper } from "@spt/helpers/PaymentHelper";
+import { ProfileHelper } from "@spt/helpers/ProfileHelper";
 import { QuestHelper } from "@spt/helpers/QuestHelper";
 import { IPmcData, IPostRaidPmcData } from "@spt/models/eft/common/IPmcData";
 import { IQuestStatus, TraderInfo } from "@spt/models/eft/common/tables/IBotBase";
@@ -17,7 +18,6 @@ import { ProfileFixerService } from "@spt/services/ProfileFixerService";
 import { ICloner } from "@spt/utils/cloners/ICloner";
 import { RandomUtil } from "@spt/utils/RandomUtil";
 import { TimeUtil } from "@spt/utils/TimeUtil";
-import { ProfileHelper } from "./ProfileHelper";
 export declare class InRaidHelper {
     protected logger: ILogger;
     protected timeUtil: TimeUtil;

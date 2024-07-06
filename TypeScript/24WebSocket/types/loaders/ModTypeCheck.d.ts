@@ -1,40 +1,40 @@
-import { IPostDBLoadMod } from "@spt/models/external/IPostDBLoadMod";
-import { IPostDBLoadModAsync } from "@spt/models/external/IPostDBLoadModAsync";
-import { IPostSptLoadMod } from "@spt/models/external/IPostSptLoadMod";
-import { IPostSptLoadModAsync } from "@spt/models/external/IPostSptLoadModAsync";
-import { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod";
-import { IPreSptLoadModAsync } from "@spt/models/external/IPreSptLoadModAsync";
+import { IPostAkiLoadMod } from "@spt-aki/models/external/IPostAkiLoadMod";
+import { IPostAkiLoadModAsync } from "@spt-aki/models/external/IPostAkiLoadModAsync";
+import { IPostDBLoadMod } from "@spt-aki/models/external/IPostDBLoadMod";
+import { IPostDBLoadModAsync } from "@spt-aki/models/external/IPostDBLoadModAsync";
+import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
+import { IPreAkiLoadModAsync } from "@spt-aki/models/external/IPreAkiLoadModAsync";
 export declare class ModTypeCheck {
     /**
-     * Use defined safe guard to check if the mod is a IPreSptLoadMod
+     * Use defined safe guard to check if the mod is a IPreAkiLoadMod
      * @returns boolean
      */
-    isPreSptLoad(mod: any): mod is IPreSptLoadMod;
+    isPreAkiLoad(mod: any): mod is IPreAkiLoadMod;
     /**
-     * Use defined safe guard to check if the mod is a IPostSptLoadMod
+     * Use defined safe guard to check if the mod is a IPostAkiLoadMod
      * @returns boolean
      */
-    isPostSptLoad(mod: any): mod is IPostSptLoadMod;
+    isPostAkiLoad(mod: any): mod is IPostAkiLoadMod;
     /**
      * Use defined safe guard to check if the mod is a IPostDBLoadMod
      * @returns boolean
      */
-    isPostDBLoad(mod: any): mod is IPostDBLoadMod;
+    isPostDBAkiLoad(mod: any): mod is IPostDBLoadMod;
     /**
-     * Use defined safe guard to check if the mod is a IPreSptLoadModAsync
+     * Use defined safe guard to check if the mod is a IPreAkiLoadModAsync
      * @returns boolean
      */
-    isPreSptLoadAsync(mod: any): mod is IPreSptLoadModAsync;
+    isPreAkiLoadAsync(mod: any): mod is IPreAkiLoadModAsync;
     /**
-     * Use defined safe guard to check if the mod is a IPostSptLoadModAsync
+     * Use defined safe guard to check if the mod is a IPostAkiLoadModAsync
      * @returns boolean
      */
-    isPostSptLoadAsync(mod: any): mod is IPostSptLoadModAsync;
+    isPostAkiLoadAsync(mod: any): mod is IPostAkiLoadModAsync;
     /**
      * Use defined safe guard to check if the mod is a IPostDBLoadModAsync
      * @returns boolean
      */
-    isPostDBLoadAsync(mod: any): mod is IPostDBLoadModAsync;
+    isPostDBAkiLoadAsync(mod: any): mod is IPostDBLoadModAsync;
     /**
      * Checks for mod to be compatible with 3.X+
      * @returns boolean

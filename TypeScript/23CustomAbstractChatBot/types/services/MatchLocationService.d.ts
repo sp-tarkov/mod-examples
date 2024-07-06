@@ -1,9 +1,9 @@
-import { SaveServer } from "@spt/servers/SaveServer";
-import { TimeUtil } from "@spt/utils/TimeUtil";
+import { ICreateGroupRequestData } from "@spt-aki/models/eft/match/ICreateGroupRequestData";
+import { TimeUtil } from "@spt-aki/utils/TimeUtil";
 export declare class MatchLocationService {
     protected timeUtil: TimeUtil;
-    protected saveServer: SaveServer;
     protected locations: {};
-    constructor(timeUtil: TimeUtil, saveServer: SaveServer);
+    constructor(timeUtil: TimeUtil);
+    createGroup(sessionID: string, info: ICreateGroupRequestData): any;
     deleteGroup(info: any): void;
 }

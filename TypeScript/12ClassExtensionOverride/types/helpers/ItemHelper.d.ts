@@ -182,15 +182,18 @@ export declare class ItemHelper {
     /**
      * Calcualte the average quality of an item and its children
      * @param items An offers item to process
+     * @param skipArmorItemsWithoutDurability Skip over armor items without durability
      * @returns % quality modifer between 0 and 1
      */
-    getItemQualityModifierForOfferItems(items: Item[]): number;
+    getItemQualityModifierForItems(items: Item[], skipArmorItemsWithoutDurability?: boolean): number;
     /**
      * get normalized value (0-1) based on item condition
+     * Will return -1 for base armor items with 0 durability
      * @param item
-     * @returns number between 0 and 1
+     * @param skipArmorItemsWithoutDurability return -1 for armor items that have maxdurability of 0
+     * @returns Number between 0 and 1
      */
-    getItemQualityModifier(item: Item): number;
+    getItemQualityModifier(item: Item, skipArmorItemsWithoutDurability?: boolean): number;
     /**
      * Get a quality value based on a repairable items (weapon/armor) current state between current and max durability
      * @param itemDetails Db details for item we want quality value for

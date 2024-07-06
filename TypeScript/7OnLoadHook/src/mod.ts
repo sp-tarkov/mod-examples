@@ -1,14 +1,14 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod";
-import { ILogger } from "@spt/models/spt/utils/ILogger";
-import { OnLoadModService } from "@spt/services/mod/onLoad/OnLoadModService";
+import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
+import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
+import { OnLoadModService } from "@spt-aki/services/mod/onLoad/OnLoadModService";
 
-class Mod implements IPreSptLoadMod
+class Mod implements IPreAkiLoadMod
 {
-    public preSptLoad(container: DependencyContainer): void
+    public preAkiLoad(container: DependencyContainer): void
     {
-        const logger = container.resolve<ILogger>("PrimaryLogger");
+        const logger = container.resolve<ILogger>("WinstonLogger");
         const onLoadModService = container.resolve<OnLoadModService>("OnLoadModService");
         onLoadModService.registerOnLoad(
             "MyCustomMod", // route key

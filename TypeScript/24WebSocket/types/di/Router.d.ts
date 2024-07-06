@@ -1,6 +1,6 @@
-import { IPmcData } from "@spt/models/eft/common/IPmcData";
-import { IItemEventRouterResponse } from "@spt/models/eft/itemEvent/IItemEventRouterResponse";
-import { ISptProfile } from "@spt/models/eft/profile/ISptProfile";
+import { IPmcData } from "@spt-aki/models/eft/common/IPmcData";
+import { IItemEventRouterResponse } from "@spt-aki/models/eft/itemEvent/IItemEventRouterResponse";
+import { IAkiProfile } from "@spt-aki/models/eft/profile/IAkiProfile";
 export declare class Router {
     protected handledRoutes: HandledRoute[];
     getTopLevelRoute(): string;
@@ -24,7 +24,7 @@ export declare class ItemEventRouterDefinition extends Router {
     handleItemEvent(url: string, pmcData: IPmcData, body: any, sessionID: string, output: IItemEventRouterResponse): Promise<any>;
 }
 export declare class SaveLoadRouter extends Router {
-    handleLoad(profile: ISptProfile): ISptProfile;
+    handleLoad(profile: IAkiProfile): IAkiProfile;
 }
 export declare class HandledRoute {
     route: string;

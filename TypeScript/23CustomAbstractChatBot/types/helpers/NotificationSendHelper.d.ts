@@ -1,22 +1,22 @@
-import { Dialogue, IUserDialogInfo } from "@spt/models/eft/profile/ISptProfile";
-import { IWsNotificationEvent } from "@spt/models/eft/ws/IWsNotificationEvent";
-import { MessageType } from "@spt/models/enums/MessageType";
-import { SaveServer } from "@spt/servers/SaveServer";
-import { SptWebSocketConnectionHandler } from "@spt/servers/ws/SptWebSocketConnectionHandler";
-import { NotificationService } from "@spt/services/NotificationService";
-import { HashUtil } from "@spt/utils/HashUtil";
+import { INotification } from "@spt-aki/models/eft/notifier/INotifier";
+import { Dialogue, IUserDialogInfo } from "@spt-aki/models/eft/profile/IAkiProfile";
+import { MessageType } from "@spt-aki/models/enums/MessageType";
+import { SaveServer } from "@spt-aki/servers/SaveServer";
+import { WebSocketServer } from "@spt-aki/servers/WebSocketServer";
+import { NotificationService } from "@spt-aki/services/NotificationService";
+import { HashUtil } from "@spt-aki/utils/HashUtil";
 export declare class NotificationSendHelper {
-    protected sptWebSocketConnection: SptWebSocketConnectionHandler;
+    protected webSocketServer: WebSocketServer;
     protected hashUtil: HashUtil;
     protected saveServer: SaveServer;
     protected notificationService: NotificationService;
-    constructor(sptWebSocketConnection: SptWebSocketConnectionHandler, hashUtil: HashUtil, saveServer: SaveServer, notificationService: NotificationService);
+    constructor(webSocketServer: WebSocketServer, hashUtil: HashUtil, saveServer: SaveServer, notificationService: NotificationService);
     /**
      * Send notification message to the appropriate channel
      * @param sessionID
      * @param notificationMessage
      */
-    sendMessage(sessionID: string, notificationMessage: IWsNotificationEvent): void;
+    sendMessage(sessionID: string, notificationMessage: INotification): void;
     /**
      * Send a message directly to the player
      * @param sessionId Session id

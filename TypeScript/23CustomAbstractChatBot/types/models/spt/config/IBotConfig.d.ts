@@ -1,19 +1,19 @@
-import { MinMax } from "@spt/models/common/MinMax";
-import { GenerationData } from "@spt/models/eft/common/tables/IBotType";
-import { IBaseConfig } from "@spt/models/spt/config/IBaseConfig";
-import { IBotDurability } from "@spt/models/spt/config/IBotDurability";
+import { MinMax } from "@spt-aki/models/common/MinMax";
+import { GenerationData } from "@spt-aki/models/eft/common/tables/IBotType";
+import { IBaseConfig } from "@spt-aki/models/spt/config/IBaseConfig";
+import { IBotDurability } from "@spt-aki/models/spt/config/IBotDurability";
 export interface IBotConfig extends IBaseConfig {
-    kind: "spt-bot";
+    kind: "aki-bot";
     /** How many variants of each bot should be generated on raid start */
     presetBatch: PresetBatch;
-    /** Bot roles that should not have PMC types (sptBear/sptUsec) added as enemies to */
-    botsToNotAddPMCsAsEnemiesTo: string[];
     /** What bot types should be classified as bosses */
     bosses: string[];
     /** Control weapon/armor durability min/max values for each bot type */
     durability: IBotDurability;
     /** Controls the percentage values of randomization item resources */
     lootItemResourceRandomization: Record<string, IRandomisedResourceDetails>;
+    /** Control the weighting of how expensive an average loot item is on a PMC or Scav */
+    lootNValue: LootNvalue;
     /** Control what bots are added to a bots revenge list key: bottype, value: bottypes to revenge on seeing their death */
     revenge: Record<string, string[]>;
     /** Control how many items are allowed to spawn on a bot
@@ -33,12 +33,6 @@ export interface IBotConfig extends IBaseConfig {
     chanceAssaultScavHasPlayerScavName: number;
     /** How many stacks of secret ammo should a bot have in its bot secure container */
     secureContainerAmmoStackCount: number;
-    /** Bot roles in this array will be given a dog tag on generation */
-    botRolesWithDogTags: string[];
-    /** Settings to control the items that get added into wallets on bots */
-    walletLoot: IWalletLootSettings;
-    /** Currency weights, Keyed by botrole / currency */
-    currencyStackSize: Record<string, Record<string, Record<string, number>>>;
 }
 /** Number of bots to generate and store in cache on raid start per bot type */
 export interface PresetBatch {
@@ -79,14 +73,9 @@ export interface PresetBatch {
     sptUsec: number;
     sptBear: number;
 }
-export interface IWalletLootSettings {
-    /** Chance wallets have loot in them */
-    chancePercent: number;
-    itemCount: MinMax;
-    stackSizeWeight: Record<string, number>;
-    currencyWeight: Record<string, number>;
-    /** What wallets will have money in them */
-    walletTplPool: string[];
+export interface LootNvalue {
+    scav: number;
+    pmc: number;
 }
 export interface EquipmentFilters {
     /** Limits for mod types per weapon .e.g. scopes */
@@ -105,11 +94,6 @@ export interface EquipmentFilters {
     nvgIsActiveChanceDayPercent?: number;
     /** Chance NODS are down/active during the night */
     nvgIsActiveChanceNightPercent?: number;
-    forceOnlyArmoredRigWhenNoArmor?: boolean;
-    /** Should plates be filtered by level */
-    filterPlatesByLevel?: boolean;
-    /** What additional slot ids should be seen as required when choosing a mod to add to a weapon */
-    weaponSlotIdsToMakeRequired?: string[];
     /** Adjust weighting/chances of items on bot by level of bot */
     randomisation: RandomisationDetails[];
     /** Blacklist equipment by level of bot */
@@ -121,8 +105,7 @@ export interface EquipmentFilters {
     /** Same as weightingAdjustments but based on player level instead of bot level */
     weightingAdjustmentsByPlayerLevel?: WeightingAdjustmentDetails[];
     /** Should the stock mod be forced to spawn on bot */
-    forceStock?: boolean;
-    armorPlateWeighting?: IArmorPlateWeights[];
+    forceStock: boolean;
 }
 export interface ModLimits {
     /** How many scopes are allowed on a weapon - hard coded to work with OPTIC_SCOPE, ASSAULT_SCOPE, COLLIMATOR, COMPACT_COLLIMATOR */
@@ -134,16 +117,14 @@ export interface RandomisationDetails {
     /** Between what levels do these randomisation setting apply to */
     levelRange: MinMax;
     generation?: Record<string, GenerationData>;
-    /** Mod slots that should be fully randomised -ignores mods from bottype.json and instaed creates a pool using items.json */
+    /** Mod slots that should be fully randomisate -ignores mods from bottype.json */
     randomisedWeaponModSlots?: string[];
     /** Armor slots that should be randomised e.g. 'Headwear, Armband' */
     randomisedArmorSlots?: string[];
     /** Equipment chances */
     equipment?: Record<string, number>;
-    /** Weapon mod chances */
-    weaponMods?: Record<string, number>;
-    /** Equipment mod chances */
-    equipmentMods?: Record<string, number>;
+    /** Mod chances */
+    mods?: Record<string, number>;
 }
 export interface EquipmentFilterDetails {
     /** Between what levels do these equipment filter setting apply to */
@@ -157,25 +138,22 @@ export interface WeightingAdjustmentDetails {
     /** Between what levels do these weight settings apply to */
     levelRange: MinMax;
     /** Key: ammo type e.g. Caliber556x45NATO, value: item tpl + weight */
-    ammo?: IAdjustmentDetails;
+    ammo?: AdjustmentDetails;
     /** Key: equipment slot e.g. TacticalVest, value: item tpl + weight */
-    equipment?: IAdjustmentDetails;
+    equipment?: AdjustmentDetails;
     /** Key: clothing slot e.g. feet, value: item tpl + weight */
-    clothing?: IAdjustmentDetails;
+    clothing?: AdjustmentDetails;
 }
-export interface IAdjustmentDetails {
+export interface AdjustmentDetails {
     add: Record<string, Record<string, number>>;
     edit: Record<string, Record<string, number>>;
-}
-export interface IArmorPlateWeights extends Record<string, any> {
-    levelRange: MinMax;
 }
 export interface IRandomisedResourceDetails {
     food: IRandomisedResourceValues;
     meds: IRandomisedResourceValues;
 }
 export interface IRandomisedResourceValues {
-    /** Minimum percent of item to randomized between min and max resource */
+    /** Minimum percent of item to randomized between min and max resource*/
     resourcePercent: number;
     /** Chance for randomization to not occur */
     chanceMaxResourcePercent: number;

@@ -1,13 +1,13 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod";
-import { LauncherController } from "@spt/controllers/LauncherController";
-import { ILoginRequestData } from "@spt/models/eft/launcher/ILoginRequestData";
-import { ILogger } from "@spt/models/spt/utils/ILogger";
-import { SaveServer } from "@spt/servers/SaveServer";
-import { DatabaseService } from "@spt/services/DatabaseService";
+import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
+import { LauncherController } from "@spt-aki/controllers/LauncherController";
+import { DatabaseServer } from "@spt-aki/servers/DatabaseServer";
+import { ILoginRequestData } from "@spt-aki/models/eft/launcher/ILoginRequestData";
+import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
+import { SaveServer } from "@spt-aki/servers/SaveServer";
 
-class Mod implements IPreSptLoadMod
+class Mod implements IPreAkiLoadMod
 {
     // DO NOT leave static references to ANY resolved dependency.
     // ALWAYS use the container to resolve dependencies
@@ -15,7 +15,7 @@ class Mod implements IPreSptLoadMod
     private static container: DependencyContainer;
 
     // Perform these actions before server fully loads
-    public preSptLoad(container: DependencyContainer): void
+    public preAkiLoad(container: DependencyContainer): void
     {
         // We will save a reference to the dependency container to resolve dependencies
         // that we may need down the line
@@ -26,16 +26,16 @@ class Mod implements IPreSptLoadMod
         container.afterResolution("LauncherController", (_t, result: LauncherController) =>
         {
             // We want to replace the original method logic with something different
-            result.login = (info: ILoginRequestData) => 
+            result.login = (info: ILoginRequestData) =>
             {
                 return this.replacementFunction(info);
             }
             // The modifier Always makes sure this replacement method is ALWAYS replaced
-        }, { frequency: "Always" });
+        }, {frequency: "Always"});
     }
 
     // our new replacement function, ready to be used
-    public replacementFunction(info: ILoginRequestData): string 
+    public replacementFunction(info: ILoginRequestData): string
     {
         // The original method requires the save server to be loaded
         const saveServer = Mod.container.resolve<SaveServer>("SaveServer");
@@ -54,17 +54,16 @@ class Mod implements IPreSptLoadMod
 
         // This is now extra stuff we want to add
         // We resolve 2 more dependencies: The logger and the DatabaseServer
-        const logger = Mod.container.resolve<ILogger>("PrimaryLogger");
-        const databaseService = Mod.container.resolve<DatabaseService>("DatabaseService");
+        const logger = Mod.container.resolve<ILogger>("WinstonLogger");
+        const dbServer = Mod.container.resolve<DatabaseServer>("DatabaseServer");
 
-        // As an example lets count the number of items in the database
-        const loadedItems = Object.entries(databaseService.getItems()).length;
-
+        // As an example Im counting the amount of loaded items on the DB
+        const loadedItems = Object.entries(dbServer.getTables().templates.items).length;
         // Lets do a few informational messages
         logger.success(`User ${info.username} logged in to SPT, there are ${loadedItems} items loaded into the database`);
         logger.success(originalReturn.length > 0 ? `User session ID: ${originalReturn}` : "User not found");
 
-        // And finally return whatever we were supposed to return originally through this function
+        // And finally return whatever we were supposed to return through this function
         return originalReturn;
     }
 }

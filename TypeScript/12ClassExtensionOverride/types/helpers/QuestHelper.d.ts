@@ -144,11 +144,11 @@ export declare class QuestHelper {
     /**
      * Adjust quest money rewards by passed in multiplier
      * @param quest Quest to multiple money rewards
-     * @param multiplier Value to adjust money rewards by
+     * @param bonusPercent Value to adjust money rewards by
      * @param questStatus Status of quest to apply money boost to rewards of
      * @returns Updated quest
      */
-    applyMoneyBoost(quest: IQuest, multiplier: number, questStatus: QuestStatus): IQuest;
+    applyMoneyBoost(quest: IQuest, bonusPercent: number, questStatus: QuestStatus): IQuest;
     /**
      * Sets the item stack to new value, or delete the item if value <= 0
      * // TODO maybe merge this function and the one from customization

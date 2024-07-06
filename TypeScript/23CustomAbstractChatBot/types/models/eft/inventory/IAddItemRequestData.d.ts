@@ -5,6 +5,6 @@ export interface IAddItemRequestData {
 }
 export interface AddItem {
     count: number;
-    sptIsPreset?: boolean;
+    isPreset?: boolean;
     item_id: string;
 }

@@ -1,4 +1,4 @@
-import { IWsNotificationEvent } from "@spt/models/eft/ws/IWsNotificationEvent";
+import { INotification } from "@spt-aki/models/eft/notifier/INotifier";
 export declare class NotificationService {
     protected messageQueue: Record<string, any[]>;
     getMessageQueue(): Record<string, any[]>;
@@ -12,7 +12,7 @@ export declare class NotificationService {
     /**
      * Add message to queue
      */
-    add(sessionID: string, message: IWsNotificationEvent): void;
+    add(sessionID: string, message: INotification): void;
     /**
      * Get message queue for session
      * @param sessionID

@@ -1,7 +1,7 @@
 import { DependencyContainer } from "tsyringe";
 
-import { IPostDBLoadMod } from "@spt/models/external/IPostDBLoadMod";
-import { DialogueController } from "@spt/controllers/DialogueController";
+import { IPostDBLoadMod } from "@spt-aki/models/external/IPostDBLoadMod";
+import { DialogueController } from "@spt-aki/controllers/DialogueController";
 import { CustomSimpleChatBot } from "./CustomSimpleChatBot";
 import { MyCoolCommand } from "./MyCoolCommand";
 import { AnotherCoolCommand } from "./AnotherCoolCommand";

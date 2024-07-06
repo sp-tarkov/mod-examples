@@ -1,26 +1,26 @@
 import path from "node:path";
 import { DependencyContainer } from "tsyringe";
 
-import { IPostSptLoadMod } from "@spt/models/external/IPostSptLoadMod";
-import { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod";
-import { ILogger } from "@spt/models/spt/utils/ILogger";
-import { VFS } from "@spt/utils/VFS";
+import { IPostAkiLoadMod } from "@spt-aki/models/external/IPostAkiLoadMod";
+import { IPreAkiLoadMod } from "@spt-aki/models/external/IPreAkiLoadMod";
+import { ILogger } from "@spt-aki/models/spt/utils/ILogger";
+import { VFS } from "@spt-aki/utils/VFS";
 import { jsonc } from "jsonc";
 
 // Our dynamically imported package (via pnpm) not bundled into the server
 import ora from "ora-classic";
 
-class Mod implements IPreSptLoadMod, IPostSptLoadMod {
-    public preSptLoad(container: DependencyContainer): void {
+class Mod implements IPreAkiLoadMod, IPostAkiLoadMod {
+    public preAkiLoad(container: DependencyContainer): void {
         const vfs = container.resolve<VFS>("VFS");
-        const logger = container.resolve<ILogger>("PrimaryLogger");
+        const logger = container.resolve<ILogger>("WinstonLogger");
 
         const parsedJsonC = jsonc.parse(vfs.readFile(path.resolve(__dirname, "../test.jsonc")));
 
         logger.success(jsonc.stringify(parsedJsonC, null, "\t")); // you could use the built in JSON api here if you really wanted too aswell, i used jsonc to really drive home the point that it works
     }
 
-    public postSptLoad(container: DependencyContainer): void {
+    public postAkiLoad(container: DependencyContainer): void {
         // this first timeout is just to prevent a weird formatting problem on the console, you can ignore it, you don't really need it anyways, it's just so that it looks right on the console
         setTimeout(() => {
             const spinner = ora({

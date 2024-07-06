@@ -1,8 +1,8 @@
+import { ItemHelper } from "@spt/helpers/ItemHelper";
 import { IPreset } from "@spt/models/eft/common/IGlobals";
 import { BaseClasses } from "@spt/models/enums/BaseClasses";
 import { DatabaseService } from "@spt/services/DatabaseService";
 import { ICloner } from "@spt/utils/cloners/ICloner";
-import { ItemHelper } from "./ItemHelper";
 export declare class PresetHelper {
     protected databaseService: DatabaseService;
     protected itemHelper: ItemHelper;

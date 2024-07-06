@@ -1,9 +1,9 @@
 import { inject, injectable } from "tsyringe";
 
-import { IChatCommand } from "@spt/helpers/Dialogue/Commando/IChatCommand";
-import { ISendMessageRequest } from "@spt/models/eft/dialog/ISendMessageRequest";
-import { IUserDialogInfo } from "@spt/models/eft/profile/ISptProfile";
-import { MailSendService } from "@spt/services/MailSendService";
+import { IChatCommand } from "@spt-aki/helpers/Dialogue/Commando/IChatCommand";
+import { ISendMessageRequest } from "@spt-aki/models/eft/dialog/ISendMessageRequest";
+import { IUserDialogInfo } from "@spt-aki/models/eft/profile/IAkiProfile";
+import { MailSendService } from "@spt-aki/services/MailSendService";
 
 //    \/   dont forger this annotation here!
 @injectable()
