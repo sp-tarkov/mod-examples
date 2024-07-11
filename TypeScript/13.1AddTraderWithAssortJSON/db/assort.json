@@ -1,0 +1,124 @@
+{
+    "items": [
+      {
+        "_id": "MILK_ID",
+        "_tpl": "575146b724597720a27126d5",
+        "parentId": "hideout",
+        "slotId": "hideout",
+        "upd": {
+          "UnlimitedCount": false,
+          "StackObjectsCount": 200,
+          "BuyRestrictionMax": 10,
+          "BuyRestrictionCurrent": 0
+        }
+      },
+      {
+        "_id": "MILK_ID_BARTER",
+        "_tpl": "575146b724597720a27126d5",
+        "parentId": "hideout",
+        "slotId": "hideout",
+        "upd": {
+          "UnlimitedCount": false,
+          "StackObjectsCount": 200,
+          "BuyRestrictionMax": 10,
+          "BuyRestrictionCurrent": 0
+        }
+      },
+      {
+        "_id": "HELMET_ID",
+        "_tpl": "5b40e3f35acfc40016388218",
+        "parentId": "hideout",
+        "slotId": "hideout",
+        "upd": {
+          "UnlimitedCount": false,
+          "StackObjectsCount": 200,
+          "BuyRestrictionMax": 10,
+          "BuyRestrictionCurrent": 0
+        }
+      },
+      {
+        "_id": "HELMET_SOFT_ARMOUR_TOP_ID",
+        "_tpl": "657f95bff92cd718b701550c",
+        "parentId": "HELMET_ID",
+        "slotId": "Helmet_top"
+      },
+      {
+        "_id": "HELMET_SOFT_ARMOUR_BACK_ID",
+        "_tpl": "657f9605f4c82973640b2358",
+        "parentId": "HELMET_ID",
+        "slotId": "Helmet_back"
+      },
+      {
+        "_id": "HELMET_ID_BARTER",
+        "_tpl": "5b40e3f35acfc40016388218",
+        "parentId": "hideout",
+        "slotId": "hideout",
+        "upd": {
+          "UnlimitedCount": false,
+          "StackObjectsCount": 200,
+          "BuyRestrictionMax": 10,
+          "BuyRestrictionCurrent": 0
+        }
+      },
+      {
+        "_id": "HELMET_SOFT_ARMOUR_TOP_ID_BARTER",
+        "_tpl": "657f95bff92cd718b701550c",
+        "parentId": "HELMET_ID_BARTER",
+        "slotId": "Helmet_top"
+      },
+      {
+        "_id": "HELMET_SOFT_ARMOUR_BACK_ID_BARTER",
+        "_tpl": "657f9605f4c82973640b2358",
+        "parentId": "HELMET_ID_BARTER",
+        "slotId": "Helmet_back"
+      }
+    ],
+    "barter_scheme": {
+      "MILK_ID": [
+        [
+          {
+            "count": 2000,
+            "_tpl": "5449016a4bdc2d6f028b456f"
+          }
+        ]
+      ],
+      "MILK_ID_BARTER": [
+        [
+          {
+            "count": 3,
+            "_tpl": "59faff1d86f7746c51718c9c"
+          },
+          {
+            "count": 1,
+            "_tpl": "544fb45d4bdc2dee738b4568"
+          }
+        ]
+      ],
+      "HELMET_ID": [
+        [
+          {
+            "count": 2000,
+            "_tpl": "5449016a4bdc2d6f028b456f"
+          }
+        ]
+      ],
+      "HELMET_ID_BARTER": [
+        [
+          {
+            "count": 3,
+            "_tpl": "59faff1d86f7746c51718c9c"
+          },
+          {
+            "count": 1,
+            "_tpl": "544fb45d4bdc2dee738b4568"
+          }
+        ]
+      ]
+    },
+    "loyal_level_items": {
+      "MILK_ID": 1,
+      "MILK_ID_BARTER": 1,
+      "HELMET_ID": 1,
+      "HELMET_ID_BARTER": 1
+    }
+}
