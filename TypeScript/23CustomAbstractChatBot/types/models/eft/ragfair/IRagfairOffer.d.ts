@@ -1,5 +1,5 @@
-import { Item } from "@spt-aki/models/eft/common/tables/IItem";
-import { MemberCategory } from "@spt-aki/models/enums/MemberCategory";
+import { Item } from "@spt/models/eft/common/tables/IItem";
+import { MemberCategory } from "@spt/models/enums/MemberCategory";
 export interface IRagfairOffer {
     sellResult?: SellResult[];
     _id: string;
@@ -9,23 +9,20 @@ export interface IRagfairOffer {
     intId: number;
     /** Handbook price */
     itemsCost: number;
-    /** Rouble price */
+    /** Rouble price per item */
     requirementsCost: number;
     startTime: number;
     endTime: number;
     sellInOnePiece: boolean;
+    /** Rouble price - same as requirementsCost */
+    summaryCost: number;
+    user: IRagfairOfferUser;
+    /** Trader only */
+    unlimitedCount?: boolean;
     loyaltyLevel: number;
     buyRestrictionMax?: number;
     buyRestrictionCurrent?: number;
-    locked: boolean;
-    unlimitedCount: boolean;
-    /** Rouble price */
-    summaryCost: number;
-    user: IRagfairOfferUser;
-    notAvailable: boolean;
-    /** TODO - implement this value - not currently used */
-    CurrentItemCount: number;
-    priority: boolean;
+    locked?: boolean;
 }
 export interface OfferRequirement {
     _tpl: string;
@@ -37,8 +34,10 @@ export interface IRagfairOfferUser {
     nickname?: string;
     rating?: number;
     memberType: MemberCategory;
+    selectedMemberCategory?: MemberCategory;
     avatar?: string;
     isRatingGrowing?: boolean;
+    aid?: number;
 }
 export interface SellResult {
     sellTime: number;
