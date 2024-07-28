@@ -6,7 +6,7 @@ import { MyCustomLauncherCallbacks } from "./MyCustomLauncherCallbacks";
 class Mod implements IPreSptLoadMod
 {
     // This example will show you how to override and register your own components and use them
-    // The container will by default register all AKI dependencies, but you can inject into it
+    // The container will by default register all SPT dependencies, but you can inject into it
     // you own custom implementations the server will then use.
     // In this example we will take the LauncherCallbacks class and override the ping() method
     // for our own custom method that will return "Lets dance" instead of "pong!"

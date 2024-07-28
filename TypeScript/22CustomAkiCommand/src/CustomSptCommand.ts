@@ -4,11 +4,11 @@ import { ISptCommand } from "@spt/helpers/Dialogue/Commando/SptCommands/ISptComm
 import { ItemHelper } from "@spt/helpers/ItemHelper";
 import { MailSendService } from "@spt/services/MailSendService";
 import { ISendMessageRequest } from "@spt/models/eft/dialog/ISendMessageRequest";
-import { IUserDialogInfo } from "@spt/models/eft/profile/IAkiProfile";
+import { IUserDialogInfo } from "@spt/models/eft/profile/ISptProfile";
 
 //    \/   dont forger this annotation here!
 @injectable()
-export class CustomAkiCommand implements ISptCommand
+export class CustomSptCommand implements ISptCommand
 {
     constructor(
         @inject("ItemHelper") protected itemHelper: ItemHelper,
