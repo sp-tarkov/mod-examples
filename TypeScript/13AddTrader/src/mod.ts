@@ -21,9 +21,9 @@ import * as baseJson from "../db/base.json";
 
 import { TraderHelper } from "./traderHelpers";
 import { FluentAssortConstructor as FluentAssortCreator } from "./fluentTraderAssortCreator";
+import { ItemTpl } from "@spt/models/enums/ItemTpl";
 
-class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod
-{
+class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod {
     private mod: string;
     private logger: ILogger;
     private traderHelper: TraderHelper;
@@ -37,8 +37,7 @@ class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod
      * Some work needs to be done prior to SPT code being loaded, registering the profile image + setting trader update time inside the trader config json
      * @param container Dependency container
      */
-    public preSptLoad(container: DependencyContainer): void
-    {
+    public preSptLoad(container: DependencyContainer): void {
         // Get a logger
         this.logger = container.resolve<ILogger>("WinstonLogger");
         this.logger.debug(`[${this.mod}] preSpt Loading... `);
@@ -70,8 +69,7 @@ class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod
      * Majority of trader-related work occurs after the aki database has been loaded but prior to SPT code being run
      * @param container Dependency container
      */
-    public postDBLoad(container: DependencyContainer): void
-    {
+    public postDBLoad(container: DependencyContainer): void {
         this.logger.debug(`[${this.mod}] postDb Loading... `);
 
         // Resolve SPT classes we'll use
@@ -86,9 +84,9 @@ class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod
         this.traderHelper.addTraderToDb(baseJson, tables, jsonUtil);
 
         // Add milk
-        const MILK_ID = "575146b724597720a27126d5"; // Can find item ids in `database\templates\items.json` or with https://db.sp-tarkov.com/search
+
         this.fluentAssortCreator
-            .createSingleAssortItem(MILK_ID)
+            .createSingleAssortItem(ItemTpl.DRINK_PACK_OF_MILK)
             .addStackCount(200)
             .addBuyRestriction(10)
             .addMoneyCost(Money.ROUBLES, 2000)
@@ -96,13 +94,11 @@ class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod
             .export(tables.traders[baseJson._id]);
 
         // Add 3x bitcoin + salewa for milk barter
-        const BITCOIN_ID = "59faff1d86f7746c51718c9c";
-        const SALEWA_ID = "544fb45d4bdc2dee738b4568";
         this.fluentAssortCreator
-            .createSingleAssortItem(MILK_ID)
+            .createSingleAssortItem(ItemTpl.DRINK_PACK_OF_MILK)
             .addStackCount(100)
-            .addBarterCost(BITCOIN_ID, 3)
-            .addBarterCost(SALEWA_ID, 1)
+            .addBarterCost(ItemTpl.BARTER_PHYSICAL_BITCOIN, 3)
+            .addBarterCost(ItemTpl.MEDKIT_SALEWA_FIRST_AID_KIT, 1)
             .addLoyaltyLevel(1)
             .export(tables.traders[baseJson._id]);
 
@@ -118,9 +114,9 @@ class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod
 
         // Add mp133 preset as mayo barter
         this.fluentAssortCreator
-            .createComplexAssortItem(tables.globals.ItemPresets["584148f2245977598f1ad387"]._items)
+            .createComplexAssortItem(tables.globals.ItemPresets["584148f2245977598f1ad387"]._items) // Weapon preset id comes from globals.json
             .addStackCount(200)
-            .addBarterCost("5bc9b156d4351e00367fbce9", 1)
+            .addBarterCost(ItemTpl.FOOD_JAR_OF_DEVILDOG_MAYO, 1)
             .addBuyRestriction(3)
             .addLoyaltyLevel(1)
             .export(tables.traders[baseJson._id]);
