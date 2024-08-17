@@ -22,6 +22,7 @@ import { HashUtil } from "@spt/utils/HashUtil";
 import { RandomUtil } from "@spt/utils/RandomUtil";
 import { TimeUtil } from "@spt/utils/TimeUtil";
 import { ICloner } from "@spt/utils/cloners/ICloner";
+import { ProfileHelper } from "@spt/helpers/ProfileHelper";
 export declare class InsuranceService {
     protected logger: ILogger;
     protected databaseService: DatabaseService;
@@ -39,10 +40,11 @@ export declare class InsuranceService {
     protected mailSendService: MailSendService;
     protected configServer: ConfigServer;
     protected cloner: ICloner;
+    protected profileHelper: ProfileHelper;
     protected insured: Record<string, Record<string, Item[]>>;
     protected insuranceConfig: IInsuranceConfig;
     protected lostOnDeathConfig: ILostOnDeathConfig;
-    constructor(logger: ILogger, databaseService: DatabaseService, secureContainerHelper: SecureContainerHelper, randomUtil: RandomUtil, itemHelper: ItemHelper, hashUtil: HashUtil, timeUtil: TimeUtil, saveServer: SaveServer, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, handbookHelper: HandbookHelper, localisationService: LocalisationService, localeService: LocaleService, mailSendService: MailSendService, configServer: ConfigServer, cloner: ICloner);
+    constructor(logger: ILogger, databaseService: DatabaseService, secureContainerHelper: SecureContainerHelper, randomUtil: RandomUtil, itemHelper: ItemHelper, hashUtil: HashUtil, timeUtil: TimeUtil, saveServer: SaveServer, traderHelper: TraderHelper, dialogueHelper: DialogueHelper, handbookHelper: HandbookHelper, localisationService: LocalisationService, localeService: LocaleService, mailSendService: MailSendService, configServer: ConfigServer, cloner: ICloner, profileHelper: ProfileHelper);
     /**
      * Does player have insurance array
      * @param sessionId Player id

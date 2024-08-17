@@ -77,6 +77,14 @@ export declare class BotEquipmentModGenerator {
      */
     generateModsForWeapon(sessionId: string, request: IGenerateWeaponRequest): Item[];
     /**
+     * Should the provided bot have its stock chance values altered to 100%
+     * @param modSlot Slot to check
+     * @param botEquipConfig Bots equipment config/chance values
+     * @param modToAddTemplate Mod being added to bots weapon
+     * @returns True if it should
+     */
+    protected shouldForceSubStockSlots(modSlot: string, botEquipConfig: EquipmentFilters, modToAddTemplate: ITemplateItem): boolean;
+    /**
      * Is this modslot a front or rear sight
      * @param modSlot Slot to check
      * @returns true if it's a front/rear sight
