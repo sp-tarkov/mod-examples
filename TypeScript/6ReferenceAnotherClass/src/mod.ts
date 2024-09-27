@@ -17,7 +17,7 @@ class Mod implements IPostSptLoadMod
         // call the function 'getTheWordFlub()' and assign the result to 'result'
         const result = moreCode.getTheWordFlub();
 
-        // log the 'myProperty' property to the console
+        // log the result of running getTheWordFlub() from the other class
         logger.info(`Here is the value from my second class: ${result}`);
     }
 }
