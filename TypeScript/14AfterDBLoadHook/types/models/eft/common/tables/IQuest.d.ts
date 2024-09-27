@@ -1,4 +1,4 @@
-import { Item } from "@spt/models/eft/common/tables/IItem";
+import { IItem } from "@spt/models/eft/common/tables/IItem";
 import { QuestRewardType } from "@spt/models/enums/QuestRewardType";
 import { QuestStatus } from "@spt/models/enums/QuestStatus";
 import { QuestTypeEnum } from "@spt/models/enums/QuestTypeEnum";
@@ -50,7 +50,7 @@ export interface IQuestCondition {
     index?: number;
     compareMethod?: string;
     dynamicLocale: boolean;
-    visibilityConditions?: VisibilityCondition[];
+    visibilityConditions?: IVisibilityCondition[];
     globalQuestCounterId?: string;
     parentId?: string;
     target: string[] | string;
@@ -61,8 +61,11 @@ export interface IQuestCondition {
     dispersion?: number;
     onlyFoundInRaid?: boolean;
     oneSessionOnly?: boolean;
+    isResetOnConditionFailed?: boolean;
+    isNecessary?: boolean;
     doNotResetIfCounterCompleted?: boolean;
     dogtagLevel?: number;
+    traderId?: string;
     maxDurability?: number;
     minDurability?: number;
     counter?: IQuestConditionCounter;
@@ -120,7 +123,7 @@ export interface IDaytimeCounter {
     from: number;
     to: number;
 }
-export interface VisibilityCondition {
+export interface IVisibilityCondition {
     id: string;
     target: string;
     value?: number;
@@ -143,7 +146,7 @@ export interface IQuestReward {
     type: QuestRewardType;
     index: number;
     target?: string;
-    items?: Item[];
+    items?: IItem[];
     loyaltyLevel?: number;
     /** Hideout area id */
     traderId?: string;

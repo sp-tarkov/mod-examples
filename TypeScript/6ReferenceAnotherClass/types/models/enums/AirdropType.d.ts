@@ -1,6 +1,6 @@
 export declare enum AirdropTypeEnum {
-    MIXED = "mixed",
-    WEAPONARMOR = "weaponarmor",
-    FOODMEDICAL = "foodmedical",
-    BARTER = "barter"
+    COMMON = "mixed",
+    SUPPLY = "barter",
+    FOOD_MEDICAL = "foodMedical",
+    WEAPON_ARMOR = "weaponArmor"
 }

@@ -6,12 +6,14 @@ import { PaymentHelper } from "@spt/helpers/PaymentHelper";
 import { PresetHelper } from "@spt/helpers/PresetHelper";
 import { ProfileHelper } from "@spt/helpers/ProfileHelper";
 import { IPmcData } from "@spt/models/eft/common/IPmcData";
-import { HideoutArea, ITaskConditionCounter, Product } from "@spt/models/eft/common/tables/IBotBase";
+import { IBotHideoutArea, IProduct, ITaskConditionCounter } from "@spt/models/eft/common/tables/IBotBase";
 import { HideoutUpgradeCompleteRequestData } from "@spt/models/eft/hideout/HideoutUpgradeCompleteRequestData";
 import { IHandleQTEEventRequestData } from "@spt/models/eft/hideout/IHandleQTEEventRequestData";
 import { IHideoutArea, Stage } from "@spt/models/eft/hideout/IHideoutArea";
 import { IHideoutCancelProductionRequestData } from "@spt/models/eft/hideout/IHideoutCancelProductionRequestData";
+import { IHideoutCircleOfCultistProductionStartRequestData } from "@spt/models/eft/hideout/IHideoutCircleOfCultistProductionStartRequestData";
 import { IHideoutContinuousProductionStartRequestData } from "@spt/models/eft/hideout/IHideoutContinuousProductionStartRequestData";
+import { IHideoutDeleteProductionRequestData } from "@spt/models/eft/hideout/IHideoutDeleteProductionRequestData";
 import { IHideoutImproveAreaRequestData } from "@spt/models/eft/hideout/IHideoutImproveAreaRequestData";
 import { IHideoutProduction } from "@spt/models/eft/hideout/IHideoutProduction";
 import { IHideoutPutItemInRequestData } from "@spt/models/eft/hideout/IHideoutPutItemInRequestData";
@@ -30,6 +32,7 @@ import { ILogger } from "@spt/models/spt/utils/ILogger";
 import { EventOutputHolder } from "@spt/routers/EventOutputHolder";
 import { ConfigServer } from "@spt/servers/ConfigServer";
 import { SaveServer } from "@spt/servers/SaveServer";
+import { CircleOfCultistService } from "@spt/services/CircleOfCultistService";
 import { DatabaseService } from "@spt/services/DatabaseService";
 import { FenceService } from "@spt/services/FenceService";
 import { LocalisationService } from "@spt/services/LocalisationService";
@@ -61,11 +64,12 @@ export declare class HideoutController {
     protected profileActivityService: ProfileActivityService;
     protected configServer: ConfigServer;
     protected fenceService: FenceService;
+    protected circleOfCultistService: CircleOfCultistService;
     protected cloner: ICloner;
     /** Key used in TaskConditionCounters array */
     protected static nameTaskConditionCountersCrafting: string;
     protected hideoutConfig: IHideoutConfig;
-    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, databaseService: DatabaseService, randomUtil: RandomUtil, inventoryHelper: InventoryHelper, itemHelper: ItemHelper, saveServer: SaveServer, playerService: PlayerService, presetHelper: PresetHelper, paymentHelper: PaymentHelper, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, hideoutHelper: HideoutHelper, scavCaseRewardGenerator: ScavCaseRewardGenerator, localisationService: LocalisationService, profileActivityService: ProfileActivityService, configServer: ConfigServer, fenceService: FenceService, cloner: ICloner);
+    constructor(logger: ILogger, hashUtil: HashUtil, timeUtil: TimeUtil, databaseService: DatabaseService, randomUtil: RandomUtil, inventoryHelper: InventoryHelper, itemHelper: ItemHelper, saveServer: SaveServer, playerService: PlayerService, presetHelper: PresetHelper, paymentHelper: PaymentHelper, eventOutputHolder: EventOutputHolder, httpResponse: HttpResponseUtil, profileHelper: ProfileHelper, hideoutHelper: HideoutHelper, scavCaseRewardGenerator: ScavCaseRewardGenerator, localisationService: LocalisationService, profileActivityService: ProfileActivityService, configServer: ConfigServer, fenceService: FenceService, circleOfCultistService: CircleOfCultistService, cloner: ICloner);
     /**
      * Handle HideoutUpgrade event
      * Start a hideout area upgrade
@@ -88,7 +92,7 @@ export declare class HideoutController {
      * Upgrade wall status to visible in profile if medstation/water collector are both level 1
      * @param pmcData Player profile
      */
-    protected checkAndUpgradeWall(pmcData: IPmcData): void;
+    protected SetWallVisibleIfPrereqsMet(pmcData: IPmcData): void;
     /**
      * @param pmcData Profile to edit
      * @param output Object to send back to client
@@ -97,14 +101,23 @@ export declare class HideoutController {
      * @param dbHideoutArea Hideout area being upgraded
      * @param hideoutStage Stage hideout area is being upgraded to
      */
-    protected addContainerImprovementToProfile(output: IItemEventRouterResponse, sessionID: string, pmcData: IPmcData, profileParentHideoutArea: HideoutArea, dbHideoutArea: IHideoutArea, hideoutStage: Stage): void;
+    protected addContainerImprovementToProfile(output: IItemEventRouterResponse, sessionID: string, pmcData: IPmcData, profileParentHideoutArea: IBotHideoutArea, dbHideoutArea: IHideoutArea, hideoutStage: Stage): void;
+    /**
+     * Add stand1/stand2/stand3 inventory items to profile, depending on passed in hideout stage
+     * @param sessionId Session id
+     * @param equipmentPresetStage Current EQUIPMENT_PRESETS_STAND stage data
+     * @param pmcData Player profile
+     * @param equipmentPresetHideoutArea
+     * @param output Response to send back to client
+     */
+    protected addMissingPresetStandItemsToProfile(sessionId: string, equipmentPresetStage: Stage, pmcData: IPmcData, equipmentPresetHideoutArea: IHideoutArea, output: IItemEventRouterResponse): void;
     /**
      * Add an inventory item to profile from a hideout area stage data
      * @param pmcData Profile to update
-     * @param dbHideoutData Hideout area from db being upgraded
+     * @param dbHideoutArea Hideout area from db being upgraded
      * @param hideoutStage Stage area upgraded to
      */
-    protected addUpdateInventoryItemToProfile(pmcData: IPmcData, dbHideoutData: IHideoutArea, hideoutStage: Stage): void;
+    protected addUpdateInventoryItemToProfile(sessionId: string, pmcData: IPmcData, dbHideoutArea: IHideoutArea, hideoutStage: Stage): void;
     /**
      * @param output Object to send to client
      * @param sessionID Session/player id
@@ -112,7 +125,7 @@ export declare class HideoutController {
      * @param hideoutDbData Hideout area that caused addition of stash
      * @param hideoutStage Hideout area upgraded to this
      */
-    protected addContainerUpgradeToClientOutput(output: IItemEventRouterResponse, sessionID: string, areaType: HideoutAreas, hideoutDbData: IHideoutArea, hideoutStage: Stage): void;
+    protected addContainerUpgradeToClientOutput(sessionID: string, areaType: HideoutAreas, hideoutDbData: IHideoutArea, hideoutStage: Stage, output: IItemEventRouterResponse): void;
     /**
      * Handle HideoutPutItemsInAreaSlots
      * Create item in hideout slot item array, remove item from player inventory
@@ -140,7 +153,7 @@ export declare class HideoutController {
      * @param hideoutArea Area fuel is being removed from
      * @returns IItemEventRouterResponse response
      */
-    protected removeResourceFromArea(sessionID: string, pmcData: IPmcData, removeResourceRequest: IHideoutTakeItemOutRequestData, output: IItemEventRouterResponse, hideoutArea: HideoutArea): IItemEventRouterResponse;
+    protected removeResourceFromArea(sessionID: string, pmcData: IPmcData, removeResourceRequest: IHideoutTakeItemOutRequestData, output: IItemEventRouterResponse, hideoutArea: IBotHideoutArea): IItemEventRouterResponse;
     /**
      * Handle HideoutToggleArea event
      * Toggle area on/off
@@ -182,7 +195,7 @@ export declare class HideoutController {
      * @param rewards reward items to add to profile
      * @param recipeId recipe id to save into Production dict
      */
-    protected addScavCaseRewardsToProfile(pmcData: IPmcData, rewards: Product[], recipeId: string): void;
+    protected addScavCaseRewardsToProfile(pmcData: IPmcData, rewards: IProduct[], recipeId: string): void;
     /**
      * Start production of continuously created item
      * @param pmcData Player profile
@@ -263,7 +276,22 @@ export declare class HideoutController {
      */
     cancelProduction(sessionId: string, pmcData: IPmcData, request: IHideoutCancelProductionRequestData): IItemEventRouterResponse;
     /**
-     * Function called every x seconds as part of onUpdate event
+     * Handle client/game/profile/items/moving - HideoutCircleOfCultistProductionStart
+     * @param sessionId Session id
+     * @param pmcData Profile of crafter
+     * @param request Request data
+     */
+    circleOfCultistProductionStart(sessionId: string, pmcData: IPmcData, request: IHideoutCircleOfCultistProductionStartRequestData): IItemEventRouterResponse;
+    /**
+     * Handle HideoutDeleteProductionCommand event
+     * @param sessionId Session id
+     * @param pmcData Player profile
+     * @param request Client request data
+     * @returns IItemEventRouterResponse
+     */
+    hideoutDeleteProductionCommand(sessionId: string, pmcData: IPmcData, request: IHideoutDeleteProductionRequestData): IItemEventRouterResponse;
+    /**
+     * Function called every `hideoutConfig.runIntervalSeconds` seconds as part of onUpdate event
      */
     update(): void;
 }

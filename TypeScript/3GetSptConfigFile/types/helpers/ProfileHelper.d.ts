@@ -1,6 +1,6 @@
 import { ItemHelper } from "@spt/helpers/ItemHelper";
 import { IPmcData } from "@spt/models/eft/common/IPmcData";
-import { Common, CounterKeyValue, Stats } from "@spt/models/eft/common/tables/IBotBase";
+import { Common, ICounterKeyValue, IStats } from "@spt/models/eft/common/tables/IBotBase";
 import { ISptProfile } from "@spt/models/eft/profile/ISptProfile";
 import { IValidateNicknameRequestData } from "@spt/models/eft/profile/IValidateNicknameRequestData";
 import { BonusType } from "@spt/models/enums/BonusType";
@@ -59,7 +59,12 @@ export declare class ProfileHelper {
      * @param scavProfile post-raid scav profile
      * @returns Updated profile array
      */
-    protected postRaidXpWorkaroundFix(sessionId: string, pmcProfile: IPmcData, scavProfile: IPmcData, output: IPmcData[]): IPmcData[];
+    protected postRaidXpWorkaroundFix(sessionId: string, clonedPmc: IPmcData, clonedScav: IPmcData, output: IPmcData[]): IPmcData[];
+    /**
+     * Sanitize any information from the profile that the client does not expect to receive
+     * @param clonedProfile A clone of the full player profile
+     */
+    protected sanitizeProfileForClient(clonedProfile: ISptProfile): void;
     /**
      * Check if a nickname is used by another profile loaded by the server
      * @param nicknameRequest nickname request object
@@ -121,7 +126,7 @@ export declare class ProfileHelper {
      * Get baseline counter values for a fresh profile
      * @returns Default profile Stats object
      */
-    getDefaultCounters(): Stats;
+    getDefaultCounters(): IStats;
     /**
      * is this profile flagged for data removal
      * @param sessionID Profile id
@@ -155,7 +160,7 @@ export declare class ProfileHelper {
      * @param counters Counters to search for key
      * @param keyToIncrement Key
      */
-    incrementStatCounter(counters: CounterKeyValue[], keyToIncrement: string): void;
+    incrementStatCounter(counters: ICounterKeyValue[], keyToIncrement: string): void;
     /**
      * Check if player has a skill at elite level
      * @param skillType Skill to check
@@ -206,4 +211,10 @@ export declare class ProfileHelper {
      */
     addAchievementToProfile(pmcProfile: IPmcData, achievementId: string): void;
     hasAccessToRepeatableFreeRefreshSystem(pmcProfile: IPmcData): boolean;
+    /**
+     * Find a profiles "Pockets" item and replace its tpl with passed in value
+     * @param pmcProfile Player profile
+     * @param newPocketTpl New tpl to set profiles Pockets to
+     */
+    replaceProfilePocketTpl(pmcProfile: IPmcData, newPocketTpl: string): void;
 }
