@@ -50,7 +50,6 @@ export class TraderHelper {
      * @param tables database
      * @param jsonUtil json utility class
      */
-    // rome-ignore lint/suspicious/noExplicitAny: traderDetailsToAdd comes from base.json, so no type
     public addTraderToDb(traderDetailsToAdd: any, tables: IDatabaseTables, jsonUtil: JsonUtil): void {
         // Add trader to trader table, key is the traders id
         tables.traders[traderDetailsToAdd._id] = {
