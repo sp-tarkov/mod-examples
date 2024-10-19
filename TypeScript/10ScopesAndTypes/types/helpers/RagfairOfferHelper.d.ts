@@ -15,6 +15,7 @@ import { IItemEventRouterResponse } from "@spt/models/eft/itemEvent/IItemEventRo
 import { ISptProfile } from "@spt/models/eft/profile/ISptProfile";
 import { IRagfairOffer } from "@spt/models/eft/ragfair/IRagfairOffer";
 import { ISearchRequestData } from "@spt/models/eft/ragfair/ISearchRequestData";
+import { IBotConfig } from "@spt/models/spt/config/IBotConfig";
 import { IQuestConfig } from "@spt/models/spt/config/IQuestConfig";
 import { IRagfairConfig, ITieredFlea } from "@spt/models/spt/config/IRagfairConfig";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
@@ -55,6 +56,7 @@ export declare class RagfairOfferHelper {
     protected static goodSoldTemplate: string;
     protected ragfairConfig: IRagfairConfig;
     protected questConfig: IQuestConfig;
+    protected botConfig: IBotConfig;
     constructor(logger: ILogger, timeUtil: TimeUtil, hashUtil: HashUtil, eventOutputHolder: EventOutputHolder, databaseService: DatabaseService, traderHelper: TraderHelper, saveServer: SaveServer, itemHelper: ItemHelper, botHelper: BotHelper, paymentHelper: PaymentHelper, presetHelper: PresetHelper, profileHelper: ProfileHelper, questHelper: QuestHelper, ragfairServerHelper: RagfairServerHelper, ragfairSortHelper: RagfairSortHelper, ragfairHelper: RagfairHelper, ragfairOfferService: RagfairOfferService, ragfairRequiredItemsService: RagfairRequiredItemsService, localeService: LocaleService, localisationService: LocalisationService, mailSendService: MailSendService, configServer: ConfigServer);
     /**
      * Passthrough to ragfairOfferService.getOffers(), get flea offers a player should see
@@ -65,7 +67,7 @@ export declare class RagfairOfferHelper {
      * @returns Offers the player should see
      */
     getValidOffers(searchRequest: ISearchRequestData, itemsToAdd: string[], traderAssorts: Record<string, ITraderAssort>, pmcData: IPmcData): IRagfairOffer[];
-    protected offerIsHiddenFromPlayerTieredFlea(tieredFlea: ITieredFlea, offer: IRagfairOffer, tieredFleaLimitTypes: string[], playerLevel: number): boolean;
+    protected checkAndLockOfferFromPlayerTieredFlea(tieredFlea: ITieredFlea, offer: IRagfairOffer, tieredFleaLimitTypes: string[], playerLevel: number): void;
     /**
      * Get matching offers that require the desired item and filter out offers from non traders if player is below ragfair unlock level
      * @param searchRequest Search request from client

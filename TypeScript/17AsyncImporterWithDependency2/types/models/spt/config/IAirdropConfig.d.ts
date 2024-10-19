@@ -1,11 +1,12 @@
 import { MinMax } from "@spt/models/common/MinMax";
-import { AirdropTypeEnum } from "@spt/models/enums/AirdropType";
+import { AirdropTypeEnum, SptAirdropTypeEnum } from "@spt/models/enums/AirdropType";
 import { IBaseConfig } from "@spt/models/spt/config/IBaseConfig";
 export interface IAirdropConfig extends IBaseConfig {
     kind: "spt-airdrop";
-    airdropTypeWeightings: Record<AirdropTypeEnum, number>;
+    airdropTypeWeightings: Record<SptAirdropTypeEnum, number>;
     /** What rewards will the loot crate contain, keyed by drop type e.g. mixed/weaponArmor/foodMedical/barter */
     loot: Record<string, IAirdropLoot>;
+    customAirdropMapping: Record<string, SptAirdropTypeEnum>;
 }
 /** Chance map will have an airdrop occur out of 100 - locations not included count as 0% */
 export interface IAirdropChancePercent {
@@ -20,6 +21,7 @@ export interface IAirdropChancePercent {
 }
 /** Loot inside crate */
 export interface IAirdropLoot {
+    icon: AirdropTypeEnum;
     /** Min/max of weapons inside crate */
     weaponPresetCount?: MinMax;
     /** Min/max of armors (head/chest/rig) inside crate */
@@ -40,4 +42,6 @@ export interface IAirdropLoot {
     armorLevelWhitelist?: number[];
     /** Should boss items be added to airdrop crate */
     allowBossItems: boolean;
+    useForcedLoot?: boolean;
+    forcedLoot?: Record<string, MinMax>;
 }
