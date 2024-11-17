@@ -93,6 +93,7 @@ export interface IBotInfoSettings {
     Experience: number;
     StandingForKill: number;
     AggressorBonus: number;
+    UseSimpleAnimator: boolean;
 }
 export interface IBan {
     banType: BanType;
@@ -218,6 +219,7 @@ export interface IVictim {
     Level: number;
     Weapon: string;
     Role: string;
+    Location: string;
 }
 export interface ISessionCounters {
     Items: ICounterKeyValue[];

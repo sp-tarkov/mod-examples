@@ -160,6 +160,8 @@ export interface IRandomisationDetails {
     /** Equipment mod chances */
     equipmentMods?: Record<string, number>;
     nighttimeChanges?: INighttimeChanges;
+    /** Key = weapon tpl, value = min size of magaizne allowed */
+    minimumMagazineSize?: Record<string, number>;
 }
 export interface INighttimeChanges {
     /** Applies changes to values stored in equipmentMods */
@@ -169,9 +171,11 @@ export interface IEquipmentFilterDetails {
     /** Between what levels do these equipment filter setting apply to */
     levelRange: MinMax;
     /** Key: mod slot name e.g. mod_magazine, value: item tpls */
-    equipment: Record<string, string[]>;
+    equipment?: Record<string, string[]>;
+    /** Key: equipment slot name e.g. FirstPrimaryWeapon, value: item tpls */
+    gear?: Record<string, string[]>;
     /** Key: cartridge type e.g. Caliber23x75, value: item tpls */
-    cartridge: Record<string, string[]>;
+    cartridge?: Record<string, string[]>;
 }
 export interface IWeightingAdjustmentDetails {
     /** Between what levels do these weight settings apply to */
