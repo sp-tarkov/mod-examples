@@ -113,12 +113,12 @@ export declare class QuestHelper {
      */
     protected generateArmorRewardChildSlots(originalRewardRootItem: IItem, questReward: IQuestReward): void;
     /**
-     * Gets a flat list of reward items for the given quest at a specific state (e.g. Fail/Success)
+     * Gets a flat list of reward items for the given quest at a specific state for the specified game version (e.g. Fail/Success)
      * @param quest quest to get rewards for
      * @param status Quest status that holds the items (Started, Success, Fail)
      * @returns array of items with the correct maxStack
      */
-    getQuestRewardItems(quest: IQuest, status: QuestStatus): IItem[];
+    getQuestRewardItems(quest: IQuest, status: QuestStatus, gameVersion: string): IItem[];
     /**
      * Look up quest in db by accepted quest id and construct a profile-ready object ready to store in profile
      * @param pmcData Player profile
@@ -321,6 +321,15 @@ export declare class QuestHelper {
      * @returns array of IQuest
      */
     getClientQuests(sessionID: string): IQuest[];
+    /**
+     * Create a clone of the given quest array with the rewards updated to reflect the
+     * given game version
+     *
+     * @param quests The list of quests to check
+     * @param gameVersion The game version of the profile
+     * @returns array of IQuest objects with the rewards filtered correctly for the game version
+     */
+    protected updateQuestsForGameEdition(quests: IQuest[], gameVersion: string): IQuest[];
     /**
      * Return a list of quests that would fail when supplied quest is completed
      * @param completedQuestId quest completed id

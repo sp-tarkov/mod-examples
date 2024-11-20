@@ -120,4 +120,5 @@ export declare class ProfileFixerService {
      * @returns matching bonus
      */
     protected getBonusFromProfile(profileBonuses: IBonus[], bonus: IStageBonus): IBonus | undefined;
+    checkForAndRemoveInvalidTraders(fullProfile: ISptProfile): void;
 }
