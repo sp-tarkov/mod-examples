@@ -1,6 +1,7 @@
 import { ItemHelper } from "@spt/helpers/ItemHelper";
 import { IPmcData } from "@spt/models/eft/common/IPmcData";
 import { Common, ICounterKeyValue, IStats } from "@spt/models/eft/common/tables/IBotBase";
+import { IItem } from "@spt/models/eft/common/tables/IItem";
 import { ISptProfile } from "@spt/models/eft/profile/ISptProfile";
 import { IValidateNicknameRequestData } from "@spt/models/eft/profile/IValidateNicknameRequestData";
 import { BonusType } from "@spt/models/enums/BonusType";
@@ -202,4 +203,10 @@ export declare class ProfileHelper {
      * @param newPocketTpl New tpl to set profiles Pockets to
      */
     replaceProfilePocketTpl(pmcProfile: IPmcData, newPocketTpl: string): void;
+    /**
+     * Return all quest items current in the supplied profile
+     * @param profile Profile to get quest items from
+     * @returns Array of item objects
+     */
+    getQuestItemsInProfile(profile: IPmcData): IItem[];
 }
