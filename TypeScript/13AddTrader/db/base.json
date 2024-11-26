@@ -1,5 +1,5 @@
 {
-    "_id": "cat",
+    "_id": "66eeef8b2a166b73d2066a7e",
     "working": true,
     "availableInRaid": false,
     "items_buy": {
@@ -14,7 +14,7 @@
     "name": "Cat",
     "surname": " ",
     "nickname": "Maxwell",
-    "location": "Here is the cat shop",
+    "location": "Downtown tarkov",
     "avatar": "/files/trader/avatar/cat.jpg",
     "balance_rub": 5000000,
     "balance_dol": 0,

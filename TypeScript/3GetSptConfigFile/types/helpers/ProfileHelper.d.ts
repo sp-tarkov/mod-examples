@@ -1,6 +1,7 @@
 import { ItemHelper } from "@spt/helpers/ItemHelper";
 import { IPmcData } from "@spt/models/eft/common/IPmcData";
-import { Common, CounterKeyValue, Stats } from "@spt/models/eft/common/tables/IBotBase";
+import { Common, ICounterKeyValue, IStats } from "@spt/models/eft/common/tables/IBotBase";
+import { IItem } from "@spt/models/eft/common/tables/IItem";
 import { ISptProfile } from "@spt/models/eft/profile/ISptProfile";
 import { IValidateNicknameRequestData } from "@spt/models/eft/profile/IValidateNicknameRequestData";
 import { BonusType } from "@spt/models/enums/BonusType";
@@ -11,7 +12,6 @@ import { ConfigServer } from "@spt/servers/ConfigServer";
 import { SaveServer } from "@spt/servers/SaveServer";
 import { DatabaseService } from "@spt/services/DatabaseService";
 import { LocalisationService } from "@spt/services/LocalisationService";
-import { ProfileSnapshotService } from "@spt/services/ProfileSnapshotService";
 import { HashUtil } from "@spt/utils/HashUtil";
 import { TimeUtil } from "@spt/utils/TimeUtil";
 import { Watermark } from "@spt/utils/Watermark";
@@ -24,12 +24,11 @@ export declare class ProfileHelper {
     protected saveServer: SaveServer;
     protected databaseService: DatabaseService;
     protected itemHelper: ItemHelper;
-    protected profileSnapshotService: ProfileSnapshotService;
     protected localisationService: LocalisationService;
     protected configServer: ConfigServer;
     protected cloner: ICloner;
     protected inventoryConfig: IInventoryConfig;
-    constructor(logger: ILogger, hashUtil: HashUtil, watermark: Watermark, timeUtil: TimeUtil, saveServer: SaveServer, databaseService: DatabaseService, itemHelper: ItemHelper, profileSnapshotService: ProfileSnapshotService, localisationService: LocalisationService, configServer: ConfigServer, cloner: ICloner);
+    constructor(logger: ILogger, hashUtil: HashUtil, watermark: Watermark, timeUtil: TimeUtil, saveServer: SaveServer, databaseService: DatabaseService, itemHelper: ItemHelper, localisationService: LocalisationService, configServer: ConfigServer, cloner: ICloner);
     /**
      * Remove/reset a completed quest condtion from players profile quest data
      * @param sessionID Session id
@@ -48,18 +47,10 @@ export declare class ProfileHelper {
      */
     getCompleteProfile(sessionId: string): IPmcData[];
     /**
-     * Fix xp doubling on post-raid xp reward screen by sending a 'dummy' profile to the post-raid screen
-     * Server saves the post-raid changes prior to the xp screen getting the profile, this results in the xp screen using
-     * the now updated profile values as a base, meaning it shows x2 xp gained
-     * Instead, clone the post-raid profile (so we dont alter its values), apply the pre-raid xp values to the cloned objects and return
-     * Delete snapshot of pre-raid profile prior to returning profile data
-     * @param sessionId Session id
-     * @param output pmc and scav profiles array
-     * @param pmcProfile post-raid pmc profile
-     * @param scavProfile post-raid scav profile
-     * @returns Updated profile array
+     * Sanitize any information from the profile that the client does not expect to receive
+     * @param clonedProfile A clone of the full player profile
      */
-    protected postRaidXpWorkaroundFix(sessionId: string, pmcProfile: IPmcData, scavProfile: IPmcData, output: IPmcData[]): IPmcData[];
+    protected sanitizeProfileForClient(clonedProfile: ISptProfile): void;
     /**
      * Check if a nickname is used by another profile loaded by the server
      * @param nicknameRequest nickname request object
@@ -121,7 +112,7 @@ export declare class ProfileHelper {
      * Get baseline counter values for a fresh profile
      * @returns Default profile Stats object
      */
-    getDefaultCounters(): Stats;
+    getDefaultCounters(): IStats;
     /**
      * is this profile flagged for data removal
      * @param sessionID Profile id
@@ -155,7 +146,7 @@ export declare class ProfileHelper {
      * @param counters Counters to search for key
      * @param keyToIncrement Key
      */
-    incrementStatCounter(counters: CounterKeyValue[], keyToIncrement: string): void;
+    incrementStatCounter(counters: ICounterKeyValue[], keyToIncrement: string): void;
     /**
      * Check if player has a skill at elite level
      * @param skillType Skill to check
@@ -206,4 +197,16 @@ export declare class ProfileHelper {
      */
     addAchievementToProfile(pmcProfile: IPmcData, achievementId: string): void;
     hasAccessToRepeatableFreeRefreshSystem(pmcProfile: IPmcData): boolean;
+    /**
+     * Find a profiles "Pockets" item and replace its tpl with passed in value
+     * @param pmcProfile Player profile
+     * @param newPocketTpl New tpl to set profiles Pockets to
+     */
+    replaceProfilePocketTpl(pmcProfile: IPmcData, newPocketTpl: string): void;
+    /**
+     * Return all quest items current in the supplied profile
+     * @param profile Profile to get quest items from
+     * @returns Array of item objects
+     */
+    getQuestItemsInProfile(profile: IPmcData): IItem[];
 }

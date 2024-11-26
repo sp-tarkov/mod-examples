@@ -1,4 +1,4 @@
-import { Item } from "@spt/models/eft/common/tables/IItem";
+import { IItem } from "@spt/models/eft/common/tables/IItem";
 import { IBarterScheme, ITrader } from "@spt/models/eft/common/tables/ITrader";
 import { Money } from "@spt/models/enums/Money";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
@@ -6,7 +6,7 @@ import { HashUtil } from "@spt/utils/HashUtil";
 
 export class FluentAssortConstructor
 {
-    protected itemsToSell: Item[] = [];
+    protected itemsToSell: IItem[] = [];
     protected barterScheme: Record<string, IBarterScheme[][]> = {};
     protected loyaltyLevel: Record<string, number> = {};
     protected hashUtil: HashUtil;
@@ -26,7 +26,7 @@ export class FluentAssortConstructor
     public createSingleAssortItem(itemTpl: string, itemId: string = undefined): FluentAssortConstructor
     {
         // Create item ready for insertion into assort table
-        const newItemToAdd: Item = {
+        const newItemToAdd: IItem = {
             _id: itemId ?? this.hashUtil.generate(),
             _tpl: itemTpl,
             parentId: "hideout", // Should always be "hideout"
@@ -42,7 +42,7 @@ export class FluentAssortConstructor
         return this;
     }
 
-    public createComplexAssortItem(items: Item[]): FluentAssortConstructor
+    public createComplexAssortItem(items: IItem[]): FluentAssortConstructor
     {
         items[0].parentId = "hideout";
         items[0].slotId = "hideout";

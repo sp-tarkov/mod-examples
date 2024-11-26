@@ -16,7 +16,7 @@ import { Money } from "@spt/models/enums/Money";
 import { Traders } from "@spt/models/enums/Traders";
 import { HashUtil } from "@spt/utils/HashUtil";
 
-// New trader settings
+// Get trader settings
 import * as baseJson from "../db/base.json";
 
 import { TraderHelper } from "./traderHelpers";
@@ -29,8 +29,14 @@ class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod {
     private traderHelper: TraderHelper;
     private fluentAssortCreator: FluentAssortCreator;
 
+    private traderBase;
+    private traderNickname: string;
+
     constructor() {
         this.mod = "13AddTrader"; // Set name of mod so we can log it to console later
+        // Get base json from /db/ folder
+        this.traderBase = baseJson;
+        this.traderNickname = "Cat"
     }
 
     /**
@@ -50,17 +56,21 @@ class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod {
         const traderConfig: ITraderConfig = configServer.getConfig<ITraderConfig>(ConfigTypes.TRADER);
         const ragfairConfig = configServer.getConfig<IRagfairConfig>(ConfigTypes.RAGFAIR);
 
+        // IMPORTANT - YOUR TRADER NEEDS A UNIQUE MONGO-ID, ASK IN DISCORD IF YOU DONT KNOW WHAT THAT IS
+        // GOOGLE "mongoid generator"
+        this.traderBase._id = "66eeef8b2a166b73d2066a7e";
+
         // Create helper class and use it to register our traders image/icon + set its stock refresh time
         this.traderHelper = new TraderHelper();
         this.fluentAssortCreator = new FluentAssortCreator(hashUtil, this.logger);
-        this.traderHelper.registerProfileImage(baseJson, this.mod, preSptModLoader, imageRouter, "cat.jpg");
-        this.traderHelper.setTraderUpdateTime(traderConfig, baseJson, 3600, 4000);
+        this.traderHelper.registerProfileImage(this.traderBase, this.mod, preSptModLoader, imageRouter, "cat.jpg");
+        this.traderHelper.setTraderUpdateTime(traderConfig, this.traderBase, 3600, 4000);
 
         // Add trader to trader enum
-        Traders[baseJson._id] = baseJson._id;
+        Traders[this.traderBase._id] = this.traderBase._id;
 
         // Add trader to flea market
-        ragfairConfig.traders[baseJson._id] = true;
+        ragfairConfig.traders[this.traderBase._id] = true;
 
         this.logger.debug(`[${this.mod}] preSpt Loaded`);
     }
@@ -74,14 +84,13 @@ class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod {
 
         // Resolve SPT classes we'll use
         const databaseServer: DatabaseServer = container.resolve<DatabaseServer>("DatabaseServer");
-        const configServer: ConfigServer = container.resolve<ConfigServer>("ConfigServer");
         const jsonUtil: JsonUtil = container.resolve<JsonUtil>("JsonUtil");
 
         // Get a reference to the database tables
         const tables = databaseServer.getTables();
 
         // Add new trader to the trader dictionary in DatabaseServer - has no assorts (items) yet
-        this.traderHelper.addTraderToDb(baseJson, tables, jsonUtil);
+        this.traderHelper.addTraderToDb(this.traderBase, tables, jsonUtil);
 
         // Add milk
 
@@ -91,7 +100,7 @@ class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod {
             .addBuyRestriction(10)
             .addMoneyCost(Money.ROUBLES, 2000)
             .addLoyaltyLevel(1)
-            .export(tables.traders[baseJson._id]);
+            .export(tables.traders[this.traderBase._id]);
 
         // Add 3x bitcoin + salewa for milk barter
         this.fluentAssortCreator
@@ -100,30 +109,37 @@ class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod {
             .addBarterCost(ItemTpl.BARTER_PHYSICAL_BITCOIN, 3)
             .addBarterCost(ItemTpl.MEDKIT_SALEWA_FIRST_AID_KIT, 1)
             .addLoyaltyLevel(1)
-            .export(tables.traders[baseJson._id]);
+            .export(tables.traders[this.traderBase._id]);
 
 
-        // Add glock as money purchase
+        // Add glock as a money purchase
         this.fluentAssortCreator
             .createComplexAssortItem(this.traderHelper.createGlock())
             .addUnlimitedStackCount()
             .addMoneyCost(Money.ROUBLES, 20000)
             .addBuyRestriction(3)
             .addLoyaltyLevel(1)
-            .export(tables.traders[baseJson._id]);
+            .export(tables.traders[this.traderBase._id]);
 
-        // Add mp133 preset as mayo barter
+        // Add mp133 preset as a barter for mayonase 
         this.fluentAssortCreator
             .createComplexAssortItem(tables.globals.ItemPresets["584148f2245977598f1ad387"]._items) // Weapon preset id comes from globals.json
             .addStackCount(200)
             .addBarterCost(ItemTpl.FOOD_JAR_OF_DEVILDOG_MAYO, 1)
             .addBuyRestriction(3)
             .addLoyaltyLevel(1)
-            .export(tables.traders[baseJson._id]);
+            .export(tables.traders[this.traderBase._id]);
 
         // Add trader to locale file, ensures trader text shows properly on screen
         // WARNING: adds the same text to ALL locales (e.g. chinese/french/english)
-        this.traderHelper.addTraderToLocales(baseJson, tables, baseJson.name, "Cat", baseJson.nickname, baseJson.location, "This is the cat shop");
+        this.traderHelper.addTraderToLocales(
+            this.traderBase,
+            tables,
+            this.traderBase.name,
+            this.traderNickname,
+            this.traderBase.nickname,
+            this.traderBase.location,
+            `This is the ${this.traderNickname} shop`);
 
         this.logger.debug(`[${this.mod}] postDb Loaded`);
     }

@@ -22,6 +22,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod
         const tables: IDatabaseTables = databaseService.getTables();
 
         //Example of adding new item by cloning existing item using createclonedetails
+        const crateId = "new_crate_with_randomized_content";
         const exampleCloneItem: NewItemFromCloneDetails = {
             itemTplToClone: "6489b2b131a2135f0d7d0fcb", //the item we want to clone, in this example i will cloning the sealed weapon crate
             overrideProperties: {
@@ -32,7 +33,7 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod
 
             }, //Overried properties basically tell the server on what data inside _props to be modified from the cloned item, in this example i am modifying the name, shortname, description, and weight
             parentId: "62f109593b54472778797866", //ParentId refers to the Node item the container will be under, you can check it in https://db.sp-tarkov.com/search
-            newId: "new_crate_with_randomized_content", //The new id of our cloned item
+            newId: crateId, //The new id of our cloned item
             fleaPriceRoubles: 50000, //Self explanatary
             handbookPriceRoubles: 42500,
             handbookParentId: "62f109593b54472778797866", //Handbook Parent Id refers to the category the container will be under
@@ -49,11 +50,12 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod
         customItem.createItemFromClone(exampleCloneItem); //Basically calls the function and tell the server to add our Cloned new item into the server
 
         // Change item _name to remove it from the *actual* sealed weapon crate logic, this removes it from airdrops and allows easier access to change the contents
-        const customIteminDB = tables.templates.items["new_crate_with_randomized_content"];
-        customIteminDB._name = "new_crate_with_randomized_content";
+        
+        const customIteminDB = tables.templates.items[crateId];
+        customIteminDB._name = crateId;
 
         // Add to inventory config with custom item pool
-        inventoryConfig.randomLootContainers["new_crate_with_randomized_content"] = {
+        inventoryConfig.randomLootContainers[crateId] = {
             rewardCount: 6,
             foundInRaid: true,
             rewardTplPool: {

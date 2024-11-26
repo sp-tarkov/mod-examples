@@ -5,6 +5,7 @@ import { ITraderConfig, UpdateTime } from "@spt/models/spt/config/ITraderConfig"
 import { IDatabaseTables } from "@spt/models/spt/server/IDatabaseTables";
 import { ImageRouter } from "@spt/routers/ImageRouter";
 import { JsonUtil } from "@spt/utils/JsonUtil";
+import { NewItemIds } from "./newitemIds";
 
 export class TraderHelper {
     /**
@@ -49,7 +50,6 @@ export class TraderHelper {
      * @param tables database
      * @param jsonUtil json utility class
      */
-    // rome-ignore lint/suspicious/noExplicitAny: traderDetailsToAdd comes from base.json, so no type
     public addTraderToDb(traderDetailsToAdd: any, tables: IDatabaseTables, jsonUtil: JsonUtil): void {
         // Add trader to trader table, key is the traders id
         tables.traders[traderDetailsToAdd._id] = {
@@ -89,63 +89,63 @@ export class TraderHelper {
 
         // Add the base first
         glock.push({ // Add the base weapon first
-            _id: "glockBase", // Ids dont matter, as long as they are unique (can use hashUtil.generate() if you dont want to type every id by hand)
+            _id: NewItemIds.GLOCK_BASE, // Ids matter, MUST BE UNIQUE See mod.ts for more details
             _tpl: "5a7ae0c351dfba0017554310", // This is the weapons tpl, found on: https://db.sp-tarkov.com/search
         });
 
         // Add barrel
         glock.push({
-            _id: "glockbarrel",
+            _id: NewItemIds.GLOCK_BARREL,
             _tpl: "5a6b60158dc32e000a31138b",
-            parentId: "glockBase", // This is a sub item, you need to define its parent its attached to / inserted into
-            slotId: "mod_barrel", // Required for mods, you need to define what 'role' they have
+            parentId: NewItemIds.GLOCK_BASE, // This is a sub item, you need to define its parent its attached to / inserted into
+            slotId: "mod_barrel", // Required for mods, you need to define what 'slot' the mod will fill on the weapon
         });
 
         // Add reciever
         glock.push({
-            _id: "glockReciever",
+            _id: NewItemIds.GLOCK_RECIEVER,
             _tpl: "5a9685b1a2750c0032157104",
-            parentId: "glockBase",
+            parentId: NewItemIds.GLOCK_BASE,
             slotId: "mod_reciever",
         });
 
         // Add compensator
         glock.push({
-            _id: "glockCompensator",
+            _id: NewItemIds.GLOCK_COMPENSATOR,
             _tpl: "5a7b32a2e899ef00135e345a",
-            parentId: "glockReciever", // The parent of this mod is the reciever NOT weapon, be careful to get the correct parent
+            parentId: NewItemIds.GLOCK_RECIEVER, // The parent of this mod is the reciever NOT weapon, be careful to get the correct parent
             slotId: "mod_muzzle",
         });
 
         // Add Pistol grip
         glock.push({
-            _id: "glockPistolGrip",
+            _id: NewItemIds.GLOCK_PISTOL_GRIP,
             _tpl: "5a7b4960e899ef197b331a2d",
-            parentId: "glockBase",
+            parentId: NewItemIds.GLOCK_BASE,
             slotId: "mod_pistol_grip",
         });
 
         // Add front sight
         glock.push({
-            _id: "glockRearSight",
+            _id: NewItemIds.GLOCK_FRONT_SIGHT,
             _tpl: "5a6f5d528dc32e00094b97d9",
-            parentId: "glockReciever",
+            parentId: NewItemIds.GLOCK_RECIEVER,
             slotId: "mod_sight_rear",
         });
 
         // Add rear sight
         glock.push({
-            _id: "glockFrontSight",
+            _id: NewItemIds.GLOCK_REAR_SIGHT,
             _tpl: "5a6f58f68dc32e000a311390",
-            parentId: "glockReciever",
+            parentId: NewItemIds.GLOCK_RECIEVER,
             slotId: "mod_sight_front",
         });
 
         // Add magazine
         glock.push({
-            _id: "glockMagazine",
+            _id: NewItemIds.GLOCK_MAGAZINE,
             _tpl: "630769c4962d0247b029dc60",
-            parentId: "glockBase",
+            parentId: NewItemIds.GLOCK_BASE,
             slotId: "mod_magazine",
         });
 
