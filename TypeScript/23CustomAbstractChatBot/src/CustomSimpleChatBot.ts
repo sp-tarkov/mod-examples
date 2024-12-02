@@ -23,7 +23,7 @@ export class CustomSimpleChatBot extends AbstractDialogueChatBot {
 
     public getChatBot(): IUserDialogInfo {
         return {
-            _id: "modderAbstractBot",
+            _id: "674db14ed849a3727ef24da0", // REQUIRES a valid monogo_id, use online generator to create one
             aid: 1234567,
             Info: {
                 Level: 1,
