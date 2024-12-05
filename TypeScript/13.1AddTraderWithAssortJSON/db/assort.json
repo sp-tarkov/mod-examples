@@ -1,7 +1,8 @@
 {
     "items": [
       {
-        "_id": "MILK_ID",
+        "_name": "milk",
+        "_id": "6751d7d0ac6207409b0823a0",
         "_tpl": "575146b724597720a27126d5",
         "parentId": "hideout",
         "slotId": "hideout",
@@ -13,7 +14,8 @@
         }
       },
       {
-        "_id": "MILK_ID_BARTER",
+        "_name": "milk barter",
+        "_id": "6751d7d0ac6207409b0823a1",
         "_tpl": "575146b724597720a27126d5",
         "parentId": "hideout",
         "slotId": "hideout",
@@ -25,7 +27,8 @@
         }
       },
       {
-        "_id": "HELMET_ID",
+        "_name": "helmet",
+        "_id": "6751d7d0ac6207409b0823a2",
         "_tpl": "5b40e3f35acfc40016388218",
         "parentId": "hideout",
         "slotId": "hideout",
@@ -37,19 +40,22 @@
         }
       },
       {
-        "_id": "HELMET_SOFT_ARMOUR_TOP_ID",
+        "_name": "HELMET_SOFT_ARMOUR_TOP",
+        "_id": "6751d7d0ac6207409b0823a3",
         "_tpl": "657f95bff92cd718b701550c",
         "parentId": "HELMET_ID",
         "slotId": "Helmet_top"
       },
       {
-        "_id": "HELMET_SOFT_ARMOUR_BACK_ID",
+        "_name": "HELMET_SOFT_ARMOUR_BACK_ID",
+        "_id": "6751d7d0ac6207409b0823a4",
         "_tpl": "657f9605f4c82973640b2358",
         "parentId": "HELMET_ID",
         "slotId": "Helmet_back"
       },
       {
-        "_id": "HELMET_ID_BARTER",
+        "_name": "HELMET_ID_BARTER",
+        "_id": "6751d7d0ac6207409b0823a5",
         "_tpl": "5b40e3f35acfc40016388218",
         "parentId": "hideout",
         "slotId": "hideout",
@@ -61,20 +67,22 @@
         }
       },
       {
-        "_id": "HELMET_SOFT_ARMOUR_TOP_ID_BARTER",
+        "_name": "HELMET_SOFT_ARMOUR_TOP_ID_BARTER",
+        "_id": "6751d7d0ac6207409b0823a5",
         "_tpl": "657f95bff92cd718b701550c",
         "parentId": "HELMET_ID_BARTER",
         "slotId": "Helmet_top"
       },
       {
-        "_id": "HELMET_SOFT_ARMOUR_BACK_ID_BARTER",
+        "_name": "HELMET_SOFT_ARMOUR_BACK_ID_BARTER",
+        "_id": "6751d7d0ac6207409b0823a6",
         "_tpl": "657f9605f4c82973640b2358",
         "parentId": "HELMET_ID_BARTER",
         "slotId": "Helmet_back"
       }
     ],
     "barter_scheme": {
-      "MILK_ID": [
+      "6751d7d0ac6207409b0823a0": [
         [
           {
             "count": 2000,
@@ -82,7 +90,7 @@
           }
         ]
       ],
-      "MILK_ID_BARTER": [
+      "6751d7d0ac6207409b0823a1": [
         [
           {
             "count": 3,
@@ -94,7 +102,7 @@
           }
         ]
       ],
-      "HELMET_ID": [
+      "6751d7d0ac6207409b0823a2": [
         [
           {
             "count": 2000,
@@ -102,7 +110,7 @@
           }
         ]
       ],
-      "HELMET_ID_BARTER": [
+      "6751d7d0ac6207409b0823a5": [
         [
           {
             "count": 3,
@@ -116,9 +124,9 @@
       ]
     },
     "loyal_level_items": {
-      "MILK_ID": 1,
-      "MILK_ID_BARTER": 1,
-      "HELMET_ID": 1,
-      "HELMET_ID_BARTER": 1
+      "6751d7d0ac6207409b0823a0": 1,
+      "6751d7d0ac6207409b0823a1": 1,
+      "6751d7d0ac6207409b0823a2": 1,
+      "6751d7d0ac6207409b0823a5": 1
     }
 }
