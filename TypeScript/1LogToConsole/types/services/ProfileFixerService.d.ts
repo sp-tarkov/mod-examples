@@ -88,6 +88,12 @@ export declare class ProfileFixerService {
      */
     protected verifyQuestProductionUnlock(pmcProfile: IPmcData, productionUnlockReward: IQuestReward, questDetails: IQuest): void;
     /**
+     * Initial release of SPT 3.10 used an incorrect favorites structure, reformat
+     * the structure to the correct MongoID array structure
+     * @param pmcProfile
+     */
+    protected fixFavorites(pmcProfile: IPmcData): void;
+    /**
      * If the profile has elite Hideout Managment skill, add the additional slots from globals
      * NOTE: This seems redundant, but we will leave it here just incase.
      * @param pmcProfile profile to add slots to

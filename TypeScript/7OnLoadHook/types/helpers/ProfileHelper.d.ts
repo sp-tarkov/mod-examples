@@ -209,4 +209,10 @@ export declare class ProfileHelper {
      * @returns Array of item objects
      */
     getQuestItemsInProfile(profile: IPmcData): IItem[];
+    /**
+     * Return a favorites array in the format expected by the getOtherProfile call
+     * @param profile
+     * @returns An array of IItem objects representing the favorited data
+     */
+    getOtherProfileFavorites(profile: IPmcData): IItem[];
 }
