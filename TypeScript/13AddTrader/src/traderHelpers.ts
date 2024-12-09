@@ -1,11 +1,11 @@
 import { PreSptModLoader } from "@spt/loaders/PreSptModLoader";
-import { Item } from "@spt/models/eft/common/tables/IItem";
+import { IItem } from "@spt/models/eft/common/tables/IItem";
 import { ITraderBase, ITraderAssort } from "@spt/models/eft/common/tables/ITrader";
-import { ITraderConfig, UpdateTime } from "@spt/models/spt/config/ITraderConfig";
+import { ITraderConfig, IUpdateTime } from "@spt/models/spt/config/ITraderConfig";
 import { IDatabaseTables } from "@spt/models/spt/server/IDatabaseTables";
 import { ImageRouter } from "@spt/routers/ImageRouter";
 import { JsonUtil } from "@spt/utils/JsonUtil";
-import { NewItemIds } from "./newitemIds";
+import { NewItemIds } from "./newItemIds";
 
 export class TraderHelper {
     /**
@@ -33,7 +33,7 @@ export class TraderHelper {
      */
     public setTraderUpdateTime(traderConfig: ITraderConfig, baseJson: any, refreshTimeSecondsMin: number, refreshTimeSecondsMax: number): void {
         // Add refresh time in seconds to config
-        const traderRefreshRecord: UpdateTime = {
+        const traderRefreshRecord: IUpdateTime = {
             traderId: baseJson._id,
             seconds: {
                 min: refreshTimeSecondsMin,
@@ -83,9 +83,9 @@ export class TraderHelper {
      * Create a weapon from scratch, ready to be added to trader
      * @returns Item[]
      */
-    public createGlock(): Item[] {
+    public createGlock(): IItem[] {
         // Create an array ready to hold weapon + all mods
-        const glock: Item[] = [];
+        const glock: IItem[] = [];
 
         // Add the base first
         glock.push({ // Add the base weapon first
