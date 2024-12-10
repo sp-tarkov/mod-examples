@@ -23,11 +23,13 @@ import { TraderHelper } from "./traderHelpers";
 class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod
 {
     private mod: string;
+    private traderImgPath: string;
     private logger: ILogger;
     private traderHelper: TraderHelper;
 
     constructor() {
-        this.mod = "acidphantasm-131AddTraderWithAssortJSON"; // Set name of mod so we can log it to console later - match this to your folder name that's built for \user\mods\
+        this.mod = "131AddTraderWithAssortJSON"; // Set name of mod so we can log it to console later - match this to your folder name that's built for \user\mods\
+        this.traderImgPath = "res/cat.jpg"; // Set path to trader image
     }
 
     /**
@@ -49,7 +51,7 @@ class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod
 
         // Create helper class and use it to register our traders image/icon + set its stock refresh time
         this.traderHelper = new TraderHelper();
-        this.traderHelper.registerProfileImage(baseJson, this.mod, preSptModLoader, imageRouter, "cat.jpg");
+        imageRouter.addRoute(baseJson.avatar.replace(".jpg", ""), `${preSptModLoader.getModPath(this.mod)}${this.traderImgPath}`);
         this.traderHelper.setTraderUpdateTime(traderConfig, baseJson, 3600, 4000);
 
         // Add trader to trader enum
