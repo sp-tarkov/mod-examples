@@ -154,7 +154,7 @@ export declare class RepeatableQuestController {
      * @returns IGetRepeatableByIdResult
      */
     protected getRepeatableById(questId: string, pmcData: IPmcData): IGetRepeatableByIdResult;
-    protected attemptToGenerateRepeatableQuest(pmcData: IPmcData, questTypePool: IQuestTypePool, repeatableConfig: IRepeatableQuestConfig): IRepeatableQuest;
+    protected attemptToGenerateRepeatableQuest(sessionId: string, pmcData: IPmcData, questTypePool: IQuestTypePool, repeatableConfig: IRepeatableQuestConfig): IRepeatableQuest;
     /**
      * Some accounts have access to free repeatable quest refreshes
      * Track the usage of them inside players profile

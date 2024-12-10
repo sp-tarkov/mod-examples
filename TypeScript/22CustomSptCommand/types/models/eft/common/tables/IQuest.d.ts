@@ -148,8 +148,10 @@ export interface IQuestReward {
     loyaltyLevel?: number;
     /** Hideout area id */
     traderId?: string;
+    isEncoded?: boolean;
     unknown?: boolean;
     findInRaid?: boolean;
+    gameMode?: string[];
     /** Game editions whitelisted to get reward */
     availableInGameEditions?: string[];
     /** Game editions blacklisted from getting reward */
