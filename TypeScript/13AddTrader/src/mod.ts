@@ -4,7 +4,6 @@ import { DependencyContainer } from "tsyringe";
 import { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod";
 import { IPostDBLoadMod } from "@spt/models/external/IPostDBLoadMod";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
-import { PreSptModLoader } from "@spt/loaders/PreSptModLoader";
 import { DatabaseServer } from "@spt/servers/DatabaseServer";
 import { ImageRouter } from "@spt/routers/ImageRouter";
 import { ConfigServer } from "@spt/servers/ConfigServer";
@@ -25,6 +24,7 @@ import { ItemTpl } from "@spt/models/enums/ItemTpl";
 
 class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod {
     private mod: string;
+    private traderImgPath: string;
     private logger: ILogger;
     private traderHelper: TraderHelper;
     private fluentAssortCreator: FluentAssortCreator;
@@ -34,6 +34,7 @@ class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod {
 
     constructor() {
         this.mod = "13AddTrader"; // Set name of mod so we can log it to console later
+        this.traderImgPath = "res/cat.jpg"; // Set path to trader image
         // Get base json from /db/ folder
         this.traderBase = baseJson;
         this.traderNickname = "Cat"
@@ -49,7 +50,6 @@ class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod {
         this.logger.debug(`[${this.mod}] preSpt Loading... `);
 
         // Get SPT code/data we need later
-        const preSptModLoader: PreSptModLoader = container.resolve<PreSptModLoader>("PreSptModLoader");
         const imageRouter: ImageRouter = container.resolve<ImageRouter>("ImageRouter");
         const hashUtil: HashUtil = container.resolve<HashUtil>("HashUtil");
         const configServer = container.resolve<ConfigServer>("ConfigServer");
@@ -58,12 +58,15 @@ class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod {
 
         // IMPORTANT - YOUR TRADER NEEDS A UNIQUE MONGO-ID, ASK IN DISCORD IF YOU DONT KNOW WHAT THAT IS
         // GOOGLE "mongoid generator"
-        this.traderBase._id = "66eeef8b2a166b73d2066a7e";
+        this.traderBase = {
+            ...baseJson,
+            _id: "66eeef8b2a166b73d2066a7e" // This is a unique ID for your trader, also the first key in base.json
+        };
 
         // Create helper class and use it to register our traders image/icon + set its stock refresh time
         this.traderHelper = new TraderHelper();
         this.fluentAssortCreator = new FluentAssortCreator(hashUtil, this.logger);
-        this.traderHelper.registerProfileImage(this.traderBase, this.mod, preSptModLoader, imageRouter, "cat.jpg");
+        imageRouter.addRoute(this.traderBase.avatar.replace(".jpg", ""), this.traderImgPath);
         this.traderHelper.setTraderUpdateTime(traderConfig, this.traderBase, 3600, 4000);
 
         // Add trader to trader enum
