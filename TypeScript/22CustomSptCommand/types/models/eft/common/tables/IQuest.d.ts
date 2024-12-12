@@ -33,6 +33,11 @@ export interface IQuest {
     changeQuestMessageText: string;
     /** "Pmc" or "Scav" */
     side: string;
+    acceptanceAndFinishingSource: string;
+    progressSource: string;
+    rankingModes: string[];
+    gameModes: string[];
+    arenaLocations: string[];
     /** Status of quest to player */
     sptStatus?: QuestStatus;
 }
