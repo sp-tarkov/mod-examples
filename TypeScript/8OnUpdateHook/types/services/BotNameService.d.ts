@@ -1,5 +1,6 @@
 import { BotHelper } from "@spt/helpers/BotHelper";
 import { ProfileHelper } from "@spt/helpers/ProfileHelper";
+import { IBotBase } from "@spt/models/eft/common/tables/IBotBase";
 import { IBotType } from "@spt/models/eft/common/tables/IBotType";
 import { IBotGenerationDetails } from "@spt/models/spt/bots/BotGenerationDetails";
 import { IBotConfig } from "@spt/models/spt/config/IBotConfig";
@@ -38,10 +39,13 @@ export declare class BotNameService {
      */
     generateUniqueBotNickname(botJsonTemplate: IBotType, botGenerationDetails: IBotGenerationDetails, botRole: string, uniqueRoles?: string[]): string;
     /**
-     * Should this bot have a name like "name (Pmc Name)"
-     * @param botRole Role bot has
-     * @returns True if name should be simulated pscav
+     * Add random PMC name to bots MainProfileNickname property
+     * @param bot Bot to update
      */
-    protected shouldSimulatePlayerScavName(botRole: string): boolean;
-    protected addPlayerScavNameSimulationSuffix(nickname: string): string;
+    addRandomPmcNameToBotMainProfileNicknameProperty(bot: IBotBase): void;
+    /**
+     * Choose a random PMC name from bear or usec bot jsons
+     * @returns PMC name as string
+     */
+    protected getRandomPMCName(): string;
 }

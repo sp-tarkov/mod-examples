@@ -89,6 +89,12 @@ export declare class SeasonalEventService {
      */
     protected getEventBotGear(eventType: SeasonalEventType): Record<string, Record<string, Record<string, number>>>;
     /**
+     * Get a dictionary of loot changes to apply to bots for a specific event e.g. Christmas/Halloween
+     * @param eventName Name of event to get gear changes for
+     * @returns bots with loot changes
+     */
+    protected getEventBotLoot(eventType: SeasonalEventType): Record<string, Record<string, Record<string, number>>>;
+    /**
      * Get the dates each seasonal event starts and ends at
      * @returns Record with event name + start/end date
      */
@@ -171,6 +177,11 @@ export declare class SeasonalEventService {
      * @param eventName Name of the event to read equipment in from config
      */
     protected addEventGearToBots(eventType: SeasonalEventType): void;
+    /**
+     * Read in data from seasonalEvents.json and add found loot items to bots
+     * @param eventName Name of the event to read loot in from config
+     */
+    protected addEventLootToBots(eventType: SeasonalEventType): void;
     /**
      * Add pumpkin loot boxes to scavs
      */

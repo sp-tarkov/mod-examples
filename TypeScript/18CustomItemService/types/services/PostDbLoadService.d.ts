@@ -74,4 +74,6 @@ export declare class PostDbLoadService {
      */
     protected validateQuestAssortUnlocksExist(): void;
     protected setAllDbItemsAsSellableOnFlea(): void;
+    protected addMissingTraderBuyRestrictionMaxValue(): void;
+    protected applyFleaPriceOverrides(): void;
 }
