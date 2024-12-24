@@ -37,14 +37,6 @@ export declare class SeasonalEventService {
     constructor(logger: ILogger, databaseService: DatabaseService, databaseImporter: DatabaseImporter, giftService: GiftService, localisationService: LocalisationService, botHelper: BotHelper, profileHelper: ProfileHelper, configServer: ConfigServer);
     protected get christmasEventItems(): string[];
     protected get halloweenEventItems(): string[];
-    protected getActiveEvents(): ISeasonalEvent[];
-    /**
-     * Sets the currently active events
-     * @param activeEvents Array of active events
-     * @param halloweenEventActive Halloween event
-     * @param christmasEventActive Christmas event
-     */
-    setActiveEvents(activeEvents: ISeasonalEvent[], halloweenEventActive: boolean, christmasEventActive: boolean): void;
     /**
      * Get an array of christmas items found in bots inventories as loot
      * @returns array
@@ -122,7 +114,7 @@ export declare class SeasonalEventService {
     /**
      * Store active events inside class array property `currentlyActiveEvents` + set class properties: christmasEventActive/halloweenEventActive
      */
-    protected cacheActiveEvents(): void;
+    cacheActiveEvents(): void;
     /**
      * Get the currently active weather season e.g. SUMMER/AUTUMN/WINTER
      * @returns Season enum value
