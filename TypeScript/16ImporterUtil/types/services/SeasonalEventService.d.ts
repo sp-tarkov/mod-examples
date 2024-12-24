@@ -122,7 +122,7 @@ export declare class SeasonalEventService {
     /**
      * Store active events inside class array property `currentlyActiveEvents` + set class properties: christmasEventActive/halloweenEventActive
      */
-    protected cacheActiveEvents(): void;
+    cacheActiveEvents(): void;
     /**
      * Get the currently active weather season e.g. SUMMER/AUTUMN/WINTER
      * @returns Season enum value

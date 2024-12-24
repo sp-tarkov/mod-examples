@@ -8,23 +8,6 @@ import { JsonUtil } from "@spt/utils/JsonUtil";
 export class TraderHelper
 {
     /**
-     * Add profile picture to our trader
-     * @param baseJson json file for trader (db/base.json)
-     * @param modName mod folder name
-     * @param preSptModLoader mod loader class - used to get the mods file path
-     * @param imageRouter image router class - used to register the trader image path so we see their image on trader page
-     * @param traderImageName Filename of the trader icon to use
-     */
-    public registerProfileImage(baseJson: any, modName: string, preSptModLoader: PreSptModLoader, imageRouter: ImageRouter, traderImageName: string): void
-    {
-        // Reference the mod "res" folder
-        const imageFilepath = `./${preSptModLoader.getModPath(modName)}res`;
-
-        // Register a route to point to the profile picture - remember to remove the .jpg from it
-        imageRouter.addRoute(baseJson.avatar.replace(".jpg", ""), `${imageFilepath}/${traderImageName}`);
-    }
-
-    /**
      * Add record to trader config to set the refresh time of trader in seconds (default is 60 minutes)
      * @param traderConfig trader config to add our trader to
      * @param baseJson json file for trader (db/base.json)
