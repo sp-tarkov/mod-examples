@@ -48,6 +48,12 @@ export declare class ProfileFixerService {
      */
     checkForAndFixPmcProfileIssues(pmcProfile: IPmcData): void;
     /**
+     * Resolve any dialogue attachments that were accidentally created using the player's equipment ID as
+     * the stash root object ID
+     * @param fullProfile
+     */
+    checkForAndFixDialogueAttachments(fullProfile: ISptProfile): void;
+    /**
      * Find issues in the scav profile data that may cause issues
      * @param scavProfile profile to check and fix
      */

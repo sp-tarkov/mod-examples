@@ -37,6 +37,14 @@ export declare class SeasonalEventService {
     constructor(logger: ILogger, databaseService: DatabaseService, databaseImporter: DatabaseImporter, giftService: GiftService, localisationService: LocalisationService, botHelper: BotHelper, profileHelper: ProfileHelper, configServer: ConfigServer);
     protected get christmasEventItems(): string[];
     protected get halloweenEventItems(): string[];
+    protected getActiveEvents(): ISeasonalEvent[];
+    /**
+     * Sets the currently active events
+     * @param activeEvents Array of active events
+     * @param halloweenEventActive Halloween event
+     * @param christmasEventActive Christmas event
+     */
+    setActiveEvents(activeEvents: ISeasonalEvent[], halloweenEventActive: boolean, christmasEventActive: boolean): void;
     /**
      * Get an array of christmas items found in bots inventories as loot
      * @returns array
