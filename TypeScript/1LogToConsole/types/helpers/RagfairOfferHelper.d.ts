@@ -92,6 +92,12 @@ export declare class RagfairOfferHelper {
      */
     getOffersForBuild(searchRequest: ISearchRequestData, itemsToAdd: string[], traderAssorts: Record<string, ITraderAssort>, pmcData: IPmcData): IRagfairOffer[];
     /**
+     * Get offers that have not exceeded buy limits
+     * @param possibleOffers offers to process
+     * @returns Offers
+     */
+    protected getOffersInsideBuyRestrictionLimits(possibleOffers: IRagfairOffer[]): IRagfairOffer[];
+    /**
      * Check if offer is from trader standing the player does not have
      * @param offer Offer to check
      * @param pmcProfile Player profile
@@ -209,4 +215,10 @@ export declare class RagfairOfferHelper {
      * @returns True if in range
      */
     protected itemQualityInRange(item: IItem, min: number, max: number): boolean;
+    /**
+     * Does this offer come from a trader
+     * @param offer Offer to check
+     * @returns True = from trader
+     */
+    offerIsFromTrader(offer: IRagfairOffer): boolean;
 }

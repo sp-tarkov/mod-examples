@@ -62,14 +62,6 @@ export declare class InsuranceService {
      * @returns Timestamp to return items to player in seconds
      */
     protected getInsuranceReturnTimestamp(pmcData: IPmcData, trader: ITraderBase): number;
-    /**
-     * Take the insurance item packages within a profile session and ensure that each of the items in that package are
-     * not orphaned from their parent ID.
-     *
-     * @param sessionID The session ID to update insurance equipment packages in.
-     * @returns void
-     */
-    protected adoptOrphanedInsEquipment(sessionID: string): void;
     protected getMaxInsuranceStorageTime(traderBase: ITraderBase): number;
     /**
      * Store lost gear post-raid inside profile, ready for later code to pick it up and mail it
@@ -127,10 +119,4 @@ export declare class InsuranceService {
      * @returns price in roubles
      */
     getRoublePriceToInsureItemWithTrader(pmcData: IPmcData, inventoryItem: IItem, traderId: string): number;
-    /**
-     * Returns the ID that should be used for a root-level Item's parentId property value within in the context of insurance.
-     * @param sessionID Players id
-     * @returns The root item Id.
-     */
-    getRootItemParentID(sessionID: string): string;
 }

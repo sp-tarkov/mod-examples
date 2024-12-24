@@ -66,7 +66,9 @@ export interface IPmcTypes {
     bear: string;
 }
 export interface ISlotLootSettings {
+    /** Item Type whitelist */
     whitelist: string[];
+    /** item tpl blacklist */
     blacklist: string[];
 }
 export interface IMinMaxLootValue extends MinMax {

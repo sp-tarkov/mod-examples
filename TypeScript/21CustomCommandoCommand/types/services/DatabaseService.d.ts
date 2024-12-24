@@ -85,7 +85,7 @@ export declare class DatabaseService {
      */
     getCustomization(): Record<string, ICustomizationItem>;
     /**
-     * @returns assets/database/templates/items.json
+     * @returns assets/database/templates/handbook.json
      */
     getHandbook(): IHandbookBase;
     /**
@@ -101,7 +101,7 @@ export declare class DatabaseService {
      */
     getProfiles(): IProfileTemplates;
     /**
-     * @returns assets/database/templates/items.json
+     * @returns assets/database/templates/quests.json
      */
     getQuests(): Record<string, IQuest>;
     /**
