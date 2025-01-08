@@ -5,18 +5,19 @@ import { CustomItemService } from "@spt/services/mod/CustomItemService";
 import { NewItemFromCloneDetails } from "@spt/models/spt/mod/NewItemDetails";
 import { IPostSptLoadMod } from "@spt/models/external/IPostSptLoadMod";
 import { DatabaseServer } from "@spt/servers/DatabaseServer";
+import { ItemTpl } from "@spt/models/enums/ItemTpl";
 
 class Mod implements IPostDBLoadMod, IPostSptLoadMod
 {
     public postDBLoad(container: DependencyContainer): void
     {
-        // Resolve the CustomItemService container
+        // Resolve the CustomItemService container for use
         const CustomItem = container.resolve<CustomItemService>("CustomItemService");
 
-        //Example of adding new item by cloning existing item using createclonedetails
+        //Example of adding new item by cloning an existing item using `createCloneDetails`
         const ExampleCloneItem: NewItemFromCloneDetails = {
-            itemTplToClone: "61f7c9e189e6fb1a5e3ea78d", //the item we want to clone, in this example i will cloning the MP-18
-            overrideProperties: {
+            itemTplToClone: ItemTpl.SHOTGUN_MP18_762X54R_SINGLESHOT_RIFLE, // Tpl of the item we want to clone, we're choosing the MP-18
+            overrideProperties: { // These are the properties we will modify from the item we cloned, we are modifying the ammo used to be 12G
                 Chambers: [
                     {
                         _name: "patron_in_weapon_000",
@@ -51,13 +52,13 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod
                         _proto: "55d4af244bdc2d962f8b4571",
                     },
                 ],
-            }, //Overried properties basically tell the server on what data inside _props to be modified from the cloned item, in this example i am modifying the ammo used to be 12G
-            parentId: "5447b6094bdc2dc3278b4567", //ParentId refers to the Node item the gun will be under, you can check it in https://db.sp-tarkov.com/search
-            newId: "CustomMP18", //The new id of our cloned item
-            fleaPriceRoubles: 50000, //Self explanatary
-            handbookPriceRoubles: 42500,
-            handbookParentId: "5b5f78e986f77447ed5636b1", //Handbook Parent Id refers to the category the gun will be under
-            //you see those side box tab thing that only select gun under specific icon? Handbook parent can be found in Aki_Data\Server\database\templates.
+            },
+            parentId: "5447b6094bdc2dc3278b4567", // ParentId refers to the Node item the gun will be under, you can check it in https://db.sp-tarkov.com/search
+            newId: "677eed5f2e040616bc7246b6", // The new id of our cloned item - MUST be a valid mongo id, search online for mongo id generators
+            fleaPriceRoubles: 50000, // Flea price of item
+            handbookPriceRoubles: 42500, // Price of item in handbook
+            handbookParentId: "5b5f78e986f77447ed5636b1", // Handbook Parent Id refers to the category the gun will be under
+            //you see those side box tab thing that only select gun under specific icon? Handbook parent can be found in Spt_Data\Server\database\templates.
             locales: {
                 en: {
                     name: "MP-18 12g",
@@ -67,10 +68,10 @@ class Mod implements IPostDBLoadMod, IPostSptLoadMod
             },
         };
 
-        CustomItem.createItemFromClone(ExampleCloneItem); //Basically calls the function and tell the server to add our Cloned new item into the server
+        CustomItem.createItemFromClone(ExampleCloneItem); // Send our data to the function that creates our item
     }
 
-    //Check if our item is in the server or not
+    // Optional - check if our item is in the server or not
     public postSptLoad(container: DependencyContainer): void {
         const db = container.resolve<DatabaseServer>("DatabaseServer");
         const item = db.getTables().templates.items;
