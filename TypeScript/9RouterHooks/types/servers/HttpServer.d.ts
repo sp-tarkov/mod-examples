@@ -2,7 +2,7 @@ import { IncomingMessage, ServerResponse } from "node:http";
 import { ApplicationContext } from "@spt/context/ApplicationContext";
 import { HttpServerHelper } from "@spt/helpers/HttpServerHelper";
 import { IHttpConfig } from "@spt/models/spt/config/IHttpConfig";
-import { ILogger } from "@spt/models/spt/utils/ILogger";
+import type { ILogger } from "@spt/models/spt/utils/ILogger";
 import { ConfigServer } from "@spt/servers/ConfigServer";
 import { WebSocketServer } from "@spt/servers/WebSocketServer";
 import { IHttpListener } from "@spt/servers/http/IHttpListener";
@@ -28,7 +28,7 @@ export declare class HttpServer {
      * @param remoteAddress Address to check
      * @returns True if its local
      */
-    protected isLocalRequest(remoteAddress: string): boolean;
+    protected isLocalRequest(remoteAddress: string | undefined): boolean | undefined;
     protected getCookies(req: IncomingMessage): Record<string, string>;
     isStarted(): boolean;
 }

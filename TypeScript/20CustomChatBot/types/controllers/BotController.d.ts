@@ -14,7 +14,7 @@ import { IGetRaidConfigurationRequestData } from "@spt/models/eft/match/IGetRaid
 import { IBotGenerationDetails } from "@spt/models/spt/bots/BotGenerationDetails";
 import { IBotConfig } from "@spt/models/spt/config/IBotConfig";
 import { IPmcConfig } from "@spt/models/spt/config/IPmcConfig";
-import { ILogger } from "@spt/models/spt/utils/ILogger";
+import type { ILogger } from "@spt/models/spt/utils/ILogger";
 import { ConfigServer } from "@spt/servers/ConfigServer";
 import { BotGenerationCacheService } from "@spt/services/BotGenerationCacheService";
 import { DatabaseService } from "@spt/services/DatabaseService";
@@ -22,7 +22,7 @@ import { LocalisationService } from "@spt/services/LocalisationService";
 import { MatchBotDetailsCacheService } from "@spt/services/MatchBotDetailsCacheService";
 import { SeasonalEventService } from "@spt/services/SeasonalEventService";
 import { RandomUtil } from "@spt/utils/RandomUtil";
-import { ICloner } from "@spt/utils/cloners/ICloner";
+import type { ICloner } from "@spt/utils/cloners/ICloner";
 export declare class BotController {
     protected logger: ILogger;
     protected databaseService: DatabaseService;

@@ -14,7 +14,7 @@ import { IBotConfig } from "@spt/models/spt/config/IBotConfig";
 import { IArmorPlateBlacklistSettings, IBarterDetails, IDynamic, IRagfairConfig } from "@spt/models/spt/config/IRagfairConfig";
 import { ITraderConfig } from "@spt/models/spt/config/ITraderConfig";
 import { ITplWithFleaPrice } from "@spt/models/spt/ragfair/ITplWithFleaPrice";
-import { ILogger } from "@spt/models/spt/utils/ILogger";
+import type { ILogger } from "@spt/models/spt/utils/ILogger";
 import { ConfigServer } from "@spt/servers/ConfigServer";
 import { SaveServer } from "@spt/servers/SaveServer";
 import { DatabaseService } from "@spt/services/DatabaseService";
@@ -25,7 +25,7 @@ import { RagfairPriceService } from "@spt/services/RagfairPriceService";
 import { HashUtil } from "@spt/utils/HashUtil";
 import { RandomUtil } from "@spt/utils/RandomUtil";
 import { TimeUtil } from "@spt/utils/TimeUtil";
-import { ICloner } from "@spt/utils/cloners/ICloner";
+import type { ICloner } from "@spt/utils/cloners/ICloner";
 export declare class RagfairOfferGenerator {
     protected logger: ILogger;
     protected hashUtil: HashUtil;
