@@ -4,18 +4,17 @@ import { DependencyContainer } from "tsyringe";
 import { IPostSptLoadMod } from "@spt/models/external/IPostSptLoadMod";
 import { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
-import { VFS } from "@spt/utils/VFS";
-import { jsonc } from "jsonc";
+import { FileSystemSync } from "@spt/utils/FileSystemSync";
 
-// Our dynamically imported package (via pnpm) not bundled into the server
+import { jsonc } from "jsonc";
 import ora from "ora-classic";
 
 class Mod implements IPreSptLoadMod, IPostSptLoadMod {
     public preSptLoad(container: DependencyContainer): void {
-        const vfs = container.resolve<VFS>("VFS");
+        const fileSystem = container.resolve<FileSystemSync>("FileSystemSync");
         const logger = container.resolve<ILogger>("WinstonLogger");
 
-        const parsedJsonC = jsonc.parse(vfs.readFile(path.resolve(__dirname, "../test.jsonc")));
+        const parsedJsonC = jsonc.parse(fileSystem.read(path.resolve(__dirname, "../test.jsonc")));
 
         logger.success(jsonc.stringify(parsedJsonC, null, "\t")); // you could use the built in JSON api here if you really wanted too aswell, i used jsonc to really drive home the point that it works
     }
