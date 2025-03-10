@@ -9,7 +9,10 @@
         ],
         "id_list": []
     },
-    "items_buy_prohibited": {},
+    "items_buy_prohibited": {
+        "category": [],
+        "id_list": []
+    },
     "customization_seller": false,
     "name": "Cat",
     "surname": " ",
