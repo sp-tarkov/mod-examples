@@ -27,7 +27,7 @@
         }
       },
       {
-        "_name": "helmet",
+        "_name": "HELMET_PARENT",
         "_id": "6751d7d0ac6207409b0823a2",
         "_tpl": "5b40e3f35acfc40016388218",
         "parentId": "hideout",
@@ -43,18 +43,18 @@
         "_name": "HELMET_SOFT_ARMOUR_TOP",
         "_id": "6751d7d0ac6207409b0823a3",
         "_tpl": "657f95bff92cd718b701550c",
-        "parentId": "HELMET_ID",
+        "parentId": "6751d7d0ac6207409b0823a2",
         "slotId": "Helmet_top"
       },
       {
-        "_name": "HELMET_SOFT_ARMOUR_BACK_ID",
+        "_name": "HELMET_SOFT_ARMOUR_BACK",
         "_id": "6751d7d0ac6207409b0823a4",
         "_tpl": "657f9605f4c82973640b2358",
-        "parentId": "HELMET_ID",
+        "parentId": "6751d7d0ac6207409b0823a2",
         "slotId": "Helmet_back"
       },
       {
-        "_name": "HELMET_ID_BARTER",
+        "_name": "HELMET_PARENT_BARTER",
         "_id": "6751d7d0ac6207409b0823a5",
         "_tpl": "5b40e3f35acfc40016388218",
         "parentId": "hideout",
@@ -67,17 +67,17 @@
         }
       },
       {
-        "_name": "HELMET_SOFT_ARMOUR_TOP_ID_BARTER",
-        "_id": "6751d7d0ac6207409b0823a5",
+        "_name": "HELMET_SOFT_ARMOUR_TOP_BARTER",
+        "_id": "6751d7d0ac6207409b0823a6",
         "_tpl": "657f95bff92cd718b701550c",
-        "parentId": "HELMET_ID_BARTER",
+        "parentId": "6751d7d0ac6207409b0823a5",
         "slotId": "Helmet_top"
       },
       {
-        "_name": "HELMET_SOFT_ARMOUR_BACK_ID_BARTER",
-        "_id": "6751d7d0ac6207409b0823a6",
+        "_name": "HELMET_SOFT_ARMOUR_BACK_BARTER",
+        "_id": "6751d7d0ac6207409b0823a7",
         "_tpl": "657f9605f4c82973640b2358",
-        "parentId": "HELMET_ID_BARTER",
+        "parentId": "6751d7d0ac6207409b0823a5",
         "slotId": "Helmet_back"
       }
     ],
