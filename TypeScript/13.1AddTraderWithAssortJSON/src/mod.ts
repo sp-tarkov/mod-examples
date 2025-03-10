@@ -86,7 +86,8 @@ class SampleTrader implements IPreSptLoadMod, IPostDBLoadMod
         * Helmet w/ soft armour available for roubles at LL1
         * Helmet w/ soft armour available for item barter at LL1
         * 
-        * It is *highly recommended* to use MongoIDs for the IDs in the assort, this example does not in order to make it easier to understand.
+        * Your assort MUST use mongoID for _ids
+        * You can use friendly names for _name
         */
         this.traderHelper.addTraderToDb(baseJson, tables, jsonUtil, assortJson);
         this.traderHelper.addTraderToLocales(baseJson, tables, baseJson.name, "Cat", baseJson.nickname, baseJson.location, "This is the cat shop");
