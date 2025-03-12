@@ -31,4 +31,5 @@ export declare class ClientLogCallbacks {
      * Handle /singleplayer/enableBSGlogging
      */
     bsgLogging(): string;
+    private handleClientLog;
 }

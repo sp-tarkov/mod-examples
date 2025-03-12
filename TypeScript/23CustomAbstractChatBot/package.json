@@ -21,7 +21,7 @@
         "fs-extra": "11.2",
         "ignore": "^5.2",
         "tsyringe": "4.8.0",
-        "typescript": "5.4",
+        "typescript": "5.8",
         "winston": "3.12"
     },
     "author": "clodan",

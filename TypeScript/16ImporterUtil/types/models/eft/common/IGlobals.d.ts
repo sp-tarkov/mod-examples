@@ -1701,12 +1701,12 @@ export interface IBotPreset {
 export interface IAudioSettings {
     AudioGroupPresets: IAudioGroupPreset[];
     EnvironmentSettings: IEnvironmentSettings;
-    HeadphoneSettings: IHeadphoneSettings;
+    HeadphonesSettings: IHeadphonesSettings;
     MetaXRAudioPluginSettings: IMetaXRAudioPluginSettings;
     PlayerSettings: IPlayerSettings;
     RadioBroadcastSettings: IRadioBroadcastSettings;
 }
-export interface IHeadphoneSettings {
+export interface IHeadphonesSettings {
     FadeDuration: number;
     FadeIn: string;
     FadeOut: string;
