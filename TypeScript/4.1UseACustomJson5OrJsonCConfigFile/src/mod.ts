@@ -3,10 +3,11 @@ import { DependencyContainer } from "tsyringe";
 
 import { IPostSptLoadMod } from "@spt/models/external/IPostSptLoadMod";
 import { ILogger } from "@spt/models/spt/utils/ILogger";
-import { VFS } from "@spt/utils/VFS";
+import { FileSystemSync } from "@spt/utils/FileSystemSync";
 
 import JSON5 from "json5";
 import { jsonc } from "jsonc";
+
 
 class Mod implements IPostSptLoadMod
 {
@@ -14,14 +15,14 @@ class Mod implements IPostSptLoadMod
         // get logger
         const logger = container.resolve<ILogger>("WinstonLogger");
 
-        // Get VFS to read in configs
-        const vfs = container.resolve<VFS>("VFS");
+        // Get FileSystemSync to read in configs
+        const fileSystem = container.resolve<FileSystemSync>("FileSystemSync");
 
         // Read in the json 5 config content and parse it into json
-        const modConfigJson5 = JSON5.parse(vfs.readFile(path.resolve(__dirname, "../config/config.json5")));
+        const modConfigJson5 = JSON5.parse(fileSystem.read(path.resolve(__dirname, "../config/config.json5")));
 
         // Read in the json c config content and parse it into json
-        const modConfigJsonC = jsonc.parse(vfs.readFile(path.resolve(__dirname, "../config/config.jsonc")));
+        const modConfigJsonC = jsonc.parse(fileSystem.read(path.resolve(__dirname, "../config/config.jsonc")));
 
         // log the 'myProperty' values to the console
         logger.success(`here is the value from my json5 config: ${modConfigJson5.myProperty}`);
