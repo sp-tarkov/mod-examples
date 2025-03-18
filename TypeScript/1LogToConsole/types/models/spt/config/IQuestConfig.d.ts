@@ -98,6 +98,9 @@ export interface ICompletion extends IBaseQuestConfig {
     maxRequestedBulletAmount: number;
     useWhitelist: boolean;
     useBlacklist: boolean;
+    /** Should supplied items be required FiR */
+    requiredItemsAreFiR: boolean;
+    requiredItemMinDurabilityMinMax: MinMax;
 }
 export interface IPickup extends IBaseQuestConfig {
     ItemTypeToFetchWithMaxCount: IPickupTypeWithMaxCount[];
